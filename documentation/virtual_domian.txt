@@ -1,0 +1,52 @@
+************************************************
+-> C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1   modernoglamour.local
+127.0.0.1   erp.modernoglamour.local
+127.0.0.1   punto.modernoglamour.local
+************************************************
+-> C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/ecommerce/modernoglamour-ecommerce/public"
+    ServerName modernoglamour.local
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/ecommerce/modernoglamour-ecommerce/public"
+    ServerName erp.modernoglamour.local
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/ecommerce/modernoglamour-ecommerce/public"
+    ServerName punto.modernoglamour.local
+</VirtualHost>
+************************************************
+-> routes/web.php
+
+use Illuminate\Support\Facades\Route;
+
+Route::domain('erp.modernoglamour.local')->group(function () {
+    Route::get('/', function () {
+        return 'This is the erp subdomain';
+    });
+    // Más rutas para erp
+});
+
+Route::domain('punto.modernoglamour.local')->group(function () {
+    Route::get('/', function () {
+        return 'This is the punto subdomain';
+    });
+    // Más rutas para punto
+});
+
+Route::domain('modernoglamour.local')->group(function () {
+    Route::get('/', function () {
+        return 'This is the main site';
+    });
+    // Más rutas para el sitio principal
+});
+************************************************
+http://modernoglamour.local
+http://erp.modernoglamour.local
+http://punto.modernoglamour.local

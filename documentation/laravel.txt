@@ -1,0 +1,68 @@
+*****************************************************************
+
+composer create-project laravel/laravel modernoglamour-ecommerce
+
+php artisan serve
+
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+
+npm install
+npm run dev / build
+
+->Configurar el .env con la base de datos mysql = puntodeventadb.
+->Crear la base de datos en phpmyadmin.
+
+php artisan migrate
+
+*****************************************************************
+
+php artisan make:model Marca -mfsc
+php artisan make:model Color -mfsc
+
+php artisan migrate:fresh --seed
+
+php artisan migrate:fresh
+
+php artisan migrate
+
+php artisan make:model Talla -mfsc
+
+php artisan make:model Categoria -mfsc
+
+php artisan make:request CategoriaRequest
+
+dump($id);
+dd($id);
+
+php artisan make:model Subcategoria -mfsc
+
+php artisan make:model Producto -mfsc
+php artisan make:request ProductoRequest
+*****************************************************************
+
+php artisan make:model Variacion -mfsc
+php artisan make:request VariacionRequest
+
+php artisan make:model Inventario -mfsc
+php artisan make:request InventarioRequest
+*****************************************************************
+
+php artisan make:livewire Administrador/Producto
+php artisan make:livewire Administrador/ProductoCrear
+
+php artisan make:model ListaPrecio -mfsc
+
+php artisan make:model VariacionListaPrecios -mfsc
+*****************************************************************
+
+php artisan make:model Requerimiento -mfsc
+php artisan make:model RequerimientoDetalle -mfsc
+
+php artisan make:livewire Administrador/RequerimientoCrear
+
+php artisan make:livewire Erp/Menu/MenuPrincipal
+php artisan make:livewire Punto/Menu/MenuPrincipal
+
+php artisan make:controller Erp/Inicio/InicioController
+php artisan make:controller Punto/Inicio/InicioController
