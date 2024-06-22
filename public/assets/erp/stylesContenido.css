@@ -40,10 +40,10 @@ header {
 }
 
 .contenido_pagina {
-    background-color: white;
+    /*background-color: white;
     border: 0px solid #ebf1f6;
     border-radius: 12px;
-    box-shadow: 0px 2px 4px -1px rgba(175, 182, 201, 0.2);
+    box-shadow: 0px 2px 4px -1px rgba(175, 182, 201, 0.2);*/
     padding: 10px;
 }
 
