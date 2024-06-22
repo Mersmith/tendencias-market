@@ -20,16 +20,28 @@
 </head>
 
 <body>
-    <!--MENU PRINCIPAL WEB-->
+    <div x-data="xDataLayout()" x-init="initLayout" class="contenedor_layout_general">
+        <!--MENU PRINCIPAL WEB-->
+        @include('layouts.erp.menu-principal')
 
-    <!--MAIN PÁGINA-->
-    <main class="contenedor_layout_erp">
-        <h1>GA</h1>
-        @yield('content')
-        @if (isset($slot))
-            {{ $slot }}
-        @endif
-    </main>
+        <!-- BLOQUE PAGINA -->
+        <div class="contenedor_layout_pagina" :class="{ 'estilo_contenedor_layout_pagina': estadoNavAbierto }">
+            <!--HEADER-->
+            @livewire('erp.header.erp-header-livewire')
+
+            <!--CONTENIDO PÁGINA-->
+            <div class="contenedor_pagina">
+                <div class="centrar_pagina">
+                    <main class="contenido_pagina">
+                        @yield('content')
+                        @if (isset($slot))
+                            {{ $slot }}
+                        @endif
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--SCRIPTS-->
     @include('layouts.erp.components.js')

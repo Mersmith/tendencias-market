@@ -18,3 +18,5 @@ php artisan migrate
 *****************************************************************
 
 php artisan make:controller Erp/Inicio/ErpInicioController
+
+php artisan make:livewire Erp/Header/ErpHeaderLivewire

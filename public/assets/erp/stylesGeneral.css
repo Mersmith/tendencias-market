@@ -1,0 +1,39 @@
+/*CONTENEDOR NAVBAR ADMINISTRADOR*/
+*{
+    margin: 0px;
+}
+
+body {
+    font-family: 'Manrope', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.contenedor_layout_general{
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-height: 100vh;
+}
