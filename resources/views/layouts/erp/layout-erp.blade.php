@@ -20,17 +20,18 @@
 </head>
 
 <body>
+    <!--CONTENEDOR LAYOUT GENERAL-->
     <div x-data="xDataLayout()" x-init="initLayout" class="contenedor_layout_general">
-        <!--MENU PRINCIPAL WEB-->
+        <!--MENU PRINCIPAL-->
         @include('layouts.erp.menu-principal')
 
-        <!-- BLOQUE PAGINA -->
+        <!--CONTENEDOR LAYOUT PAGINA-->
         <div class="contenedor_layout_pagina" :class="{ 'estilo_contenedor_layout_pagina': estadoNavAbierto }">
-            <!--HEADER-->
+            <!--HEADER LAYOUT PAGINA-->
             @livewire('erp.header.erp-header-livewire')
 
-            <!--CONTENIDO PÁGINA-->
-            <div class="contenedor_pagina">
+            <!--CONTENIDO LAYOUT PAGINA-->
+            <div class="contenido_layout_pagina">
                 <div class="centrar_pagina">
                     <main class="contenido_pagina">
                         @yield('content')

@@ -4,50 +4,51 @@
 
 @section('content')
     <div>
-
-        <!--CONTENEDOR CABECERA-->
-        <div class="card cabecera_titulo_pagina">
-            <!--CONTENEDOR TITULO-->
+        <!--CABECERA TITULO PAGINA-->
+        <div class="g_panel cabecera_titulo_pagina">
+            <!--TITULO-->
             <h2>Marcas <span>Cantidad: 100</span></h2>
 
-            <!--CONTENEDOR BOTONES-->
-            <div class="contenedor_botones_erp">
-                <a href="{{ route('erp.marca.vista.todas') }}" class="">
+            <!--BOTONES-->
+            <div class="cabecera_titulo_botones">
+                <a href="{{ route('erp.marca.vista.todas') }}" class="g_boton g_boton_light">
                     Inicio <i class="fa-solid fa-house"></i></a>
 
-                <a href="{{ route('erp.marca.vista.crear') }}" class="btn-primary">
+                <a href="{{ route('erp.marca.vista.crear') }}" class="g_boton g_boton_primary">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
             </div>
         </div>
 
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
-        <div class="card">
+        <div class="g_panel">
             <!--TABLA-->
             @if ($marcas->count())
+                <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
-                    <!--CONTENEDOR BOTONES-->
-                    <div class="contenedor_botones_erp_control">
+                    <!--TABLA CABECERA BOTONES-->
+                    <div class="tabla_cabecera_botones">
                         <button>
                             PDF <i class="fa-solid fa-file-pdf"></i>
                         </button>
+
                         <button>
                             EXCEL <i class="fa-regular fa-file-excel"></i>
                         </button>
                     </div>
 
-                    <!--CONTENEDOR SUBTITULO-->
-                    <div class="contenedor_subtitulo_erp">
+                    <!--TABLA CABECERA BUSCAR-->
+                    <div class="tabla_cabecera_buscar">
                         <form action="">
-                            <input type="text" class="form-control" id="text-srh"
-                                placeholder="Search Product">
+                            <input type="text" placeholder="Buscar...">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </form>
                     </div>
                 </div>
 
-                <!--TABLA-->
-                <div class="tabla_administrador">
+                <!--TABLA CONTENIDO-->
+                <div class="tabla_contenido">
                     <div class="contenedor_tabla">
+                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>
@@ -66,17 +67,17 @@
                             <tbody>
                                 @foreach ($marcas as $item)
                                     <tr>
-                                        <td class="resaltar">
+                                        <td class="g_resaltar">
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td class="resaltar">
+                                        <td class="g_resaltar">
                                             {{ $item->nombre }}
                                         </td>
-                                        <td class="inferior resumir">
+                                        <td class="g_inferior g_resumir">
                                             {{ $item->descripcion }}
                                         </td>
-                                        <td class="inferior">
-                                            <span class="estado {{ $item->activo == 1 ? 'activo' : 'desactivado' }}"><i
+                                        <td class="g_inferior">
+                                            <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                     class="fa-solid fa-circle"></i></span>
                                             @if ($item->activo == 1)
                                                 Activo
@@ -85,12 +86,12 @@
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
-                                            <a href="{{ route('erp.marca.vista.ver', $item->id) }}" class="accion_ver">
+                                            <a href="{{ route('erp.marca.vista.ver', $item->id) }}" class="g_accion_ver">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
 
                                             <a href="{{ route('erp.marca.vista.editar', $item->id) }}"
-                                                class="accion_editar">
+                                                class="g_accion_editar">
                                                 <span><i class="fa-solid fa-pencil"></i></span>
                                             </a>
                                         </td>
@@ -101,9 +102,9 @@
                     </div>
                 </div>
             @else
-                <div class="contenedor_no_existe_elementos">
+                <div class="g_vacio">
                     <p>No hay elementos.</p>
-                    <i class="fa-solid fa-spinner"></i>
+                    <i class="fa-regular fa-face-grin-wink"></i>
                 </div>
             @endif
         </div>

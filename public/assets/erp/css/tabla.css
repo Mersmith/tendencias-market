@@ -1,4 +1,5 @@
-.tabla_administrador {
+/*TABLA CONTENIDO*/
+.tabla_contenido {
     border-collapse: collapse;
     width: 100%;
     font-size: 13px;
@@ -14,51 +15,37 @@
     border-collapse: collapse;
 }
 
+/*TABLA*/
 .tabla {
     min-width: 100%;
     width: 100%;
     border-collapse: collapse;
 }
 
-.tabla_administrador th {
+.tabla th {
     font-weight: 600;
 }
 
-.tabla_administrador a {
+.tabla a {
     cursor: pointer;
 }
 
-tbody tr:nth-child(odd) {
+.tabla tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
-.tabla_administrador tr:hover {
+.tabla tr:hover {
     background-color: #eff4fa;
 }
 
-th,
-td {
+.tabla th,
+.tabla td {
     padding: 12px 24px;
     text-align: left;
 }
 
-.inferior {
-    color: #98A4AE;
-}
-
-.resumir {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
-}
-
-.resaltar {
-    color: #29343d;
-}
-
-tr:not(:last-child) td,
-th {
+.tabla tr:not(:last-child) td,
+.tabla th {
     border-bottom: 1px solid #e0e6eb;
 }
 
@@ -72,20 +59,4 @@ th {
 .centrar_iconos {
     display: flex;
     gap: 10px;
-}
-
-.activo {
-    color: #36C76C
-}
-
-.desactivado {
-    color: #FF6692
-}
-
-.accion_ver {
-    color: #F8C20A;
-}
-
-.accion_editar {
-    color: #46caeb;
 }

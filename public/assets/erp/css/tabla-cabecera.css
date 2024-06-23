@@ -1,11 +1,20 @@
+/*TABLA CABECERA*/
 .tabla_cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/*TABLA CABECERA BOTONES*/
+.tabla_cabecera_botones {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px 0px;
 }
 
-.contenedor_botones_erp_control {
+.tabla_cabecera_botones {
     display: flex;
     gap: 15px;
     overflow-y: auto;
@@ -13,22 +22,23 @@
     justify-content: flex-end;
 }
 
-.contenedor_botones_erp_control a,
-.contenedor_botones_erp_control button {
+.tabla_cabecera_botones a,
+.tabla_cabecera_botones button {
     border-radius: 6px;
     padding: 5px 10px;
     font-size: 12px;
 }
 
-.contenedor_subtitulo_erp {
+/*TABLA CABECERA BUSCAR*/
+.tabla_cabecera_buscar {
     display: flex;
 }
 
-.contenedor_subtitulo_erp form {
+.tabla_cabecera_buscar form {
     position: relative;
 }
 
-.form-control {
+.tabla_cabecera_buscar form input {
     display: block;
     width: 100%;
     padding: 10px 16px;
@@ -43,7 +53,7 @@
     padding-left: 3rem;
 }
 
-.contenedor_subtitulo_erp i {
+.tabla_cabecera_buscar form i {
     position: absolute;
     top: 50%;
     left: 0;
@@ -51,8 +61,8 @@
     margin-left: 1rem;
 }
 
-.form-control:focus,
-.form-control:active {
+.tabla_cabecera_buscar form input:focus,
+.tabla_cabecera_buscar form input:active {
     outline: none;
     box-shadow: none;
     border-color: #635BFF;
@@ -61,20 +71,26 @@
 }
 
 @media (max-width: 900px) {
-    .contenedor_botones_erp_control {
-        justify-content: flex-start;
-    }
 
+    /*TABLA CABECERA*/
     .tabla_cabecera {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .contenedor_subtitulo_erp {
+    /*TABLA CABECERA BOTONES*/
+    .tabla_cabecera_botones {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    /*TABLA CABECERA BUSCAR*/
+    .tabla_cabecera_buscar {
         width: 100%;
     }
 
-    .contenedor_subtitulo_erp form {
+    .tabla_cabecera_buscar form {
         width: 100%;
     }
+
 }

@@ -1,18 +1,19 @@
+<!--CONTENEDOR ASIDE-->
 <aside class="contenedor_aside" :class="{ 'estilo_abierto_contenedor_aside': estadoAsideAbierto }">
+    <!--CONTENEDOR NAV ICONOS-->
     <div class="contenedor_nav_iconos">
         <span x-on:click="toggleContenedorNavLinks" class="contenedor_menu_hamburguesa"><i
                 class="fa-solid fa-bars"></i></span>
         <ul>
             <template x-for="dataMenu in dataMenuPrincipal" :key="dataMenu.id">
                 <li>
-                    <span @click.prevent="toggleSubmenuPrincipal(dataMenu)"><i
-                            :class="dataMenu.icono"></i></span>
+                    <span @click.prevent="toggleSubmenuPrincipal(dataMenu)"><i :class="dataMenu.icono"></i></span>
                 </li>
             </template>
         </ul>
     </div>
 
-    <!-- BLOQUE PARTE -->
+    <!--CONTENEDOR NAV LINKS-->
     <div class="contenedor_nav_links" :class="{ 'estilo_abierto_contenedor_nav_links': estadoNavAbierto }">
         <div class="contenedor_logo">
             <a href="#">
@@ -91,8 +92,7 @@
                                                                                     'has-children': dataSubmenu4
                                                                                         .submenu.length > 0
                                                                                 }">
-                                                                                <i
-                                                                                    class="fa-solid fa-user-gear"></i>
+                                                                                <i class="fa-solid fa-user-gear"></i>
                                                                                 <span
                                                                                     x-text="dataSubmenu4.title"></span>
                                                                                 <i class="fa-solid fa-sort-down"
