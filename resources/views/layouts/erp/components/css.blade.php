@@ -25,3 +25,6 @@
 <!--TABLA-->
 <link rel="stylesheet" href="{{ asset('assets/erp/css/tabla-cabecera.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/erp/css/tabla.css') }}">
+
+<!--FORMULARIO-->
+<link rel="stylesheet" href="{{ asset('assets/erp/css/formulario.css') }}">
