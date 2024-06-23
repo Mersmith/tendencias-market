@@ -11,3 +11,4 @@
 <link rel="stylesheet" href="{{ asset('assets/erp/stylesMenu.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/erp/cabecerapagina.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/erp/tabla.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/erp/tablaCabecera.css') }}">

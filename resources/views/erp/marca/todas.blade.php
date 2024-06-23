@@ -6,9 +6,9 @@
     <div>
 
         <!--CONTENEDOR CABECERA-->
-        <div class="cabecera_titulo_pagina">
+        <div class="card cabecera_titulo_pagina">
             <!--CONTENEDOR TITULO-->
-            <h2>Marcas</h2>
+            <h2>Marcas <span>Cantidad: 100</span></h2>
 
             <!--CONTENEDOR BOTONES-->
             <div class="contenedor_botones_erp">
@@ -21,17 +21,12 @@
         </div>
 
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
-        <div class="contenedor_erp_panel">
+        <div class="card">
             <!--TABLA-->
-            <div class="contenedor_panel_cuerpo">
-                @if ($marcas->count())
-                    <!--CONTENEDOR SUBTITULO-->
-                    <div class="contenedor_subtitulo_erp">
-                        <h3>Lista<span> Cantidad: {{ $marcas->count() }}</span></h3>
-                    </div>
-
+            @if ($marcas->count())
+                <div class="tabla_cabecera">
                     <!--CONTENEDOR BOTONES-->
-                    <div class="contenedor_botones_erp">
+                    <div class="contenedor_botones_erp_control">
                         <button>
                             PDF <i class="fa-solid fa-file-pdf"></i>
                         </button>
@@ -40,53 +35,77 @@
                         </button>
                     </div>
 
-                    <!--TABLA-->
-                    <div class="tabla_administrador py-4 overflow-x-auto">
-                        <div class="inline-block min-w-full overflow-hidden">
-                            <table class="min-w-full leading-normal">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Nº</th>
-                                        <th>
-                                            nombre</th>
-                                        <th>
-                                            Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($marcas as $item)
-                                        <tr style="text-align: center;">
-                                            <td>
-                                                {{ $loop->iteration }}
-                                            </td>
-                                            <td>
-                                                {{ $item->nombre }}
-                                            </td>
-                                            <td>
-                                                <a style="color: #009eff;"
-                                                    href="{{ route('erp.marca.vista.ver', $item->id) }}">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
+                    <!--CONTENEDOR SUBTITULO-->
+                    <div class="contenedor_subtitulo_erp">
+                        <form action="">
+                            <input type="text" class="form-control" id="text-srh"
+                                placeholder="Search Product">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </form>
+                    </div>
+                </div>
 
-                                                <a style="color: teal;"
-                                                    href="{{ route('erp.marca.vista.editar', $item->id) }}">
-                                                    <span><i class="fa-solid fa-pencil"></i></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                <!--TABLA-->
+                <div class="tabla_administrador">
+                    <div class="contenedor_tabla">
+                        <table class="tabla">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nº</th>
+                                    <th>
+                                        Nombre</th>
+                                    <th>
+                                        Descripción</th>
+                                    <th>
+                                        Activo</th>
+                                    <th>
+                                        Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($marcas as $item)
+                                    <tr>
+                                        <td class="resaltar">
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td class="resaltar">
+                                            {{ $item->nombre }}
+                                        </td>
+                                        <td class="inferior resumir">
+                                            {{ $item->descripcion }}
+                                        </td>
+                                        <td class="inferior">
+                                            <span class="estado {{ $item->activo == 1 ? 'activo' : 'desactivado' }}"><i
+                                                    class="fa-solid fa-circle"></i></span>
+                                            @if ($item->activo == 1)
+                                                Activo
+                                            @else
+                                                Desactivo
+                                            @endif
+                                        </td>
+                                        <td class="centrar_iconos">
+                                            <a href="{{ route('erp.marca.vista.ver', $item->id) }}" class="accion_ver">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+
+                                            <a href="{{ route('erp.marca.vista.editar', $item->id) }}"
+                                                class="accion_editar">
+                                                <span><i class="fa-solid fa-pencil"></i></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                @else
-                    <div class="contenedor_no_existe_elementos">
-                        <p>No hay elementos.</p>
-                        <i class="fa-solid fa-spinner"></i>
-                    </div>
-                @endif
-            </div>
+                </div>
+            @else
+                <div class="contenedor_no_existe_elementos">
+                    <p>No hay elementos.</p>
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

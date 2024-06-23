@@ -2,117 +2,90 @@
     border-collapse: collapse;
     width: 100%;
     font-size: 13px;
+    overflow-x: auto;
+}
+
+.contenedor_tabla {
+    overflow: hidden;
+    min-width: 100%;
+    display: inline-block;
+    border-radius: 12px;
+    border: 1px solid #e0e6eb;
+    border-collapse: collapse;
+}
+
+.tabla {
+    min-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla_administrador th {
+    font-weight: 600;
 }
 
 .tabla_administrador a {
     cursor: pointer;
 }
 
-.tabla_administrador td,
-.tabla_administrador th {
-    padding: 15px 5px;
-}
-
-.tabla_administrador tr:nth-child(even) {
-    background-color: #f2f2f2;
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
 }
 
 .tabla_administrador tr:hover {
-    background-color: #ddd;
+    background-color: #eff4fa;
 }
 
-.tabla_administrador th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #f6fafc;
-    font-weight: 600;
-    border: 1px solid rgb(239, 242, 245);
+th,
+td {
+    padding: 12px 24px;
+    text-align: left;
 }
 
-.tabla_administrador_bordes {
-    border: 1px solid #ccc;
+.inferior {
+    color: #98A4AE;
 }
 
-.tabla_administrador_bordes td,
-.tabla_administrador_bordes th,
-.tabla_administrador_bordes tr{
-    border: 1px solid #ccc;
+.resumir {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 
-.tabla_administrador .tabla_editar {
-    color: green;
-    font-weight: 500;
+.resaltar {
+    color: #29343d;
 }
 
-.tabla_imagen {
-    height: 30px;
-    display: flex;
-    justify-content: center;
+tr:not(:last-child) td,
+th {
+    border-bottom: 1px solid #e0e6eb;
 }
 
-.tabla_imagen img {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-}
-
-/*SWITCH*/
-.tabla_switch {
-    position: relative;
+.estado {
+    font-size: 8px;
     display: inline-block;
-    width: 49px;
-    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px
 }
 
-.tabla_switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+.centrar_iconos {
+    display: flex;
+    gap: 10px;
 }
 
-.tabla_switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+.activo {
+    color: #36C76C
 }
 
-.tabla_switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+.desactivado {
+    color: #FF6692
 }
 
-.tabla_switch input:checked+.slider {
-    background-color: #009b54;
+.accion_ver {
+    color: #F8C20A;
 }
 
-.tabla_switch input:focus+.slider {
-    box-shadow: 0 0 1px #009b54;
-}
-
-.tabla_switch input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.tabla_switch .slider.redondo {
-    border-radius: 34px;
-}
-
-.tabla_switch .slider.redondo:before {
-    border-radius: 50%;
+.accion_editar {
+    color: #46caeb;
 }
