@@ -15,6 +15,13 @@ function alertaNormal(mensaje) {
             showConfirmButton: false,
             timer: 2500
         });
+    } else if (mensaje == "Eliminado") {
+        Swal.fire({
+            icon: 'success',
+            title: mensaje,
+            showConfirmButton: false,
+            timer: 2500
+        });
     } else {
         console.log("MENSAJE GAAAAAA");
     }

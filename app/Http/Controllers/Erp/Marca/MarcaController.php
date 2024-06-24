@@ -33,12 +33,6 @@ class MarcaController extends Controller
         return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Creado');
     }
 
-    public function vistaVer($id)
-    {
-        $marca = Marca::find($id);
-        return view('erp.marca.ver', compact('marca'));
-    }
-
     public function vistaEditar($id)
     {
         $marca = Marca::find($id);
@@ -61,6 +55,6 @@ class MarcaController extends Controller
         $marca = Marca::find($id);
         $marca->delete();
 
-        return redirect()->route('marca.vista.todas')->with('mensajeCrud', 'Se elimino correctamente.');
+        return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Eliminado');
     }
 }

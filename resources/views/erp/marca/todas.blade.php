@@ -86,10 +86,6 @@
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
-                                            <a href="{{ route('erp.marca.vista.ver', $item->id) }}" class="g_accion_ver">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </a>
-
                                             <a href="{{ route('erp.marca.vista.editar', $item->id) }}"
                                                 class="g_accion_editar">
                                                 <span><i class="fa-solid fa-pencil"></i></span>

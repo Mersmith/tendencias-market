@@ -15,7 +15,16 @@
                     Inicio <i class="fa-solid fa-house"></i></a>
 
                 <a href="{{ route('erp.marca.vista.crear') }}" class="g_boton g_boton_primary">
-                    Crear <i class="fa-solid fa-rotate-left"></i></a>
+                    Crear <i class="fa-solid fa-square-plus"></i></a>
+
+                <button class="g_boton g_boton_danger" id="eliminarMarca">
+                    Eliminar <i class="fa-solid fa-trash-can"></i>
+                </button>
+                <form action="{{ route('erp.marca.eliminar', $marca->id) }}" method="POST" id="formEliminarMarca"
+                    style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
 
                 <a href="{{ route('erp.marca.vista.todas') }}" class="g_boton g_boton_darkt">
                     Regresar <i class="fa-solid fa-rotate-left"></i></a>
@@ -75,3 +84,24 @@
         </form>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('eliminarMarca').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Quieres eliminar?',
+                text: "No podrás recuparlo.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('formEliminarMarca').submit();
+                }
+            });
+        });
+    });
+</script>
