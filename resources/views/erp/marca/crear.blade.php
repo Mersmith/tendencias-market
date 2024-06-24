@@ -23,25 +23,40 @@
             <div class="g_columna_8">
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">General</h4>
-                    <form action="{{ route('erp.marca.crear') }}" method="POST">
+                    <form action="{{ route('erp.marca.crear') }}" method="POST" class="formulario">
                         @csrf
-                        <p>Nombre:</p>
-                        <input type="text" name="nombre">
-                        <br>
-
-                        <p>Descripción:</p>
-                        <textarea name="descripcion"></textarea>
-                        <br>
-
-                        <button type="submit">Enviar</button>
+                        <div class="g_margin_bottom_20">
+                            <label for="nombre">Nombre <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <input type="text" id="nombre" name="nombre">
+                            <p class="leyenda">La marca debe tener un nombre único.</p>
+                        </div>
+                        <div>
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion" name="descripcion"></textarea>
+                            <p class="leyenda">Se mostrará en el SEO.</p>
+                        </div>
                     </form>
                 </div>
             </div>
 
             <div class="g_columna_4">
                 <div class="g_panel">
-                    <p>2</p>
+                    <h4 class="g_panel_titulo">Estado</h4>
+                    <form action="{{ route('erp.marca.crear') }}" method="POST" class="formulario">
+                        @csrf
+                        <select id="estado" name="estado">
+                            <option value="" disabled>Seleccione</option>
+                            <option value="INHABILITADO">INHABILITADO</option>
+                            <option value="HABILITADO">HABILITADO</option>
+                        </select>
+                    </form>
                 </div>
+            </div>
+
+            <div class="formulario_botones">
+                <button class="guardar">Guardar</button>
+                <button class="cancelar">Cancelar</button>
             </div>
         </div>
 

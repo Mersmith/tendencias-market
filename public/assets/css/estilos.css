@@ -1,5 +1,5 @@
 .g_panel {
-    padding: 10px 20px;
+    padding: 30px 30px;
     margin-bottom: 20px;
     background-color: white;
     background-clip: border-box;
@@ -8,10 +8,11 @@
     box-shadow: 0px 2px 4px -1px rgba(175, 182, 201, 0.2);
 }
 
-.g_panel_titulo{
+.g_panel_titulo {
     font-size: 18px;
     margin-bottom: 8px;
     color: #29343d;
+    font-weight: 600;
 }
 
 .g_boton {
@@ -132,6 +133,10 @@
 
 .g_columna_4 {
     width: 33.33333333%;
+}
+
+.g_margin_bottom_20 {
+    margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {
