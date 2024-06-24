@@ -7,7 +7,7 @@
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Marcas <span>Cantidad: {{$marcas->count()}}</span></h2>
+            <h2>Marcas <span>Cantidad: {{ $marcas->count() }}</span></h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -39,7 +39,7 @@
                     <!--TABLA CABECERA BUSCAR-->
                     <div class="tabla_cabecera_buscar">
                         <form action="">
-                            <input type="text" placeholder="Buscar...">
+                            <input type="text" id="buscar" name="buscar" placeholder="Buscar...">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </form>
                     </div>

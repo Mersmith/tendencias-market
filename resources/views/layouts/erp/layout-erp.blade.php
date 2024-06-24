@@ -49,6 +49,14 @@
     @stack('modals')
     @livewireScripts
     @stack('script')
+    <script>
+        @if (session('alerta'))
+            window.onload = function() {
+                let mensaje = @json(session('alerta'));
+                alertaNormal(mensaje);
+            };
+        @endif
+    </script>
 </body>
 
 </html>
