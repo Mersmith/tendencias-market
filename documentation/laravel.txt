@@ -30,3 +30,9 @@ php artisan make:request CategoriaRequest
 php artisan migrate:fresh --seed
 
 php artisan migrate:fresh
+
+php artisan make:model Talla -mfsc
+php artisan make:request TallaRequest
+
+php artisan make:model Color -mfsc
+php artisan make:request ColorRequest

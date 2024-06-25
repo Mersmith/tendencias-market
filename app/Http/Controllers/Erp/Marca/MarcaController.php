@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Erp\Marca;
 
-;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MarcaRequest;
 use App\Models\Marca;
@@ -26,7 +24,6 @@ class MarcaController extends Controller
     {
         $marca = new Marca();
         $marca->nombre = $request->nombre;
-        $marca->descripcion = $request->descripcion;
         $marca->activo = $request->activo;
         $marca->save();
 
@@ -43,7 +40,6 @@ class MarcaController extends Controller
     {
         $marca = Marca::findOrFail($id);
         $marca->nombre = $request->nombre;
-        $marca->descripcion = $request->descripcion;
         $marca->activo = $request->activo;
         $marca->save();
 
