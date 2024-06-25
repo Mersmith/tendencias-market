@@ -25,7 +25,7 @@
                 <div class="g_columna_8">
                     <div class="g_panel">
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -69,6 +69,7 @@
                 <div class="g_columna_4">
                     <div class="g_panel">
                         <h4 class="g_panel_titulo">Activo</h4>
+                        
                         <select id="activo" name="activo">
                             <option value="" disabled>Seleccione</option>
                             <option value="2" {{ old('activo') == '2' ? 'selected' : '' }}>DESACTIVADO</option>

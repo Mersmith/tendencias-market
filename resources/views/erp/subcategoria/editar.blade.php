@@ -100,7 +100,10 @@
                     </div>
 
                     <div class="g_panel">
-                        <h4 class="g_panel_titulo">Categoria</h4>
+                        <h4 class="g_panel_titulo">Detalle</h4>
+
+                        <label for="slug">Categoria <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
                         <select id="categoria_id" name="categoria_id">
                             <option value="" @if (old('categoria_id', $subcategoria->categoria_id) == '') selected @endif disabled>Seleccione
                             </option>

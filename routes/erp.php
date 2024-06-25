@@ -4,8 +4,11 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\Erp\ErpInicioController;
 use App\Http\Controllers\Erp\MarcaController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
+use App\Livewire\Erp\Producto\ProductoCrearLivewire;
+use App\Livewire\Erp\Producto\ProductoTodasLivewire;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', ErpInicioController::class)->name('inicio');
@@ -54,3 +57,6 @@ Route::controller(SubcategoriaController::class)->group(function () {
     Route::put('subcategoria/editar/{id}', 'editar')->name('subcategoria.editar');
     Route::delete('subcategoria/eliminar/{id}', 'eliminar')->name('subcategoria.eliminar');
 });
+
+Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');
+Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');

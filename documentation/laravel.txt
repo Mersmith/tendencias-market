@@ -39,3 +39,9 @@ php artisan make:request ColorRequest
 
 php artisan make:model Subcategoria -mfsc
 php artisan make:request SubcategoriaRequest
+
+php artisan make:model Producto -mfsc
+php artisan make:request ProductoRequest
+
+php artisan make:livewire Erp/Producto/ProductoCrearLivewire
+php artisan make:livewire Erp/Producto/ProductoTodasLivewire

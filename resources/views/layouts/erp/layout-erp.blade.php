@@ -56,6 +56,15 @@
                 alertaNormal(mensaje);
             };
         @endif
+
+        Livewire.on('alertaLivewire', mensaje => {
+            Swal.fire({
+                icon: 'success',
+                title: mensaje,
+                showConfirmButton: false,
+                timer: 2500
+            })
+        })
     </script>
 </body>
 

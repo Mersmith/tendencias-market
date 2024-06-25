@@ -22,13 +22,13 @@
     /*background-color: rgb(245, 245, 245);*/
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #009b54;
+    color: #635BFF;
     font-size: .9rem;
     line-height: 1.5;
 }
 
 .formulario input[type=checkbox]:checked {
-    background-color: #009b54;
+    background-color: #635BFF;
 }
 
 .formulario *:disabled {
@@ -111,4 +111,21 @@
 .formulario_botones .cancelar {
     background-color: #FFCCDB;
     color: #FF6692;
+}
+
+.boton_checkbox {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0px;
+}
+
+.boton_checkbox input {
+    margin-top: 3px;
+}
+
+.boton_checkbox label {
+    margin-bottom: 0px;
 }
