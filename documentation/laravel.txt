@@ -45,3 +45,8 @@ php artisan make:request ProductoRequest
 
 php artisan make:livewire Erp/Producto/ProductoCrearLivewire
 php artisan make:livewire Erp/Producto/ProductoTodasLivewire
+php artisan make:livewire Erp/Producto/ProductoVariacionEditarLivewire
+
+php artisan make:model Variacion -mfsc
+php artisan make:request VariacionRequest
+

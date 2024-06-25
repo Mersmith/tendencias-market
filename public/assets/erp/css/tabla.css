@@ -60,3 +60,28 @@
     display: flex;
     gap: 10px;
 }
+
+/*TABLA PARA ELIMINARD*/
+.tabla_eliminar {
+    width: 100%;
+    font-size: 13px;
+}
+
+.tabla_eliminar th,
+.tabla_eliminar td {
+    padding: 5px 5px;
+    text-align: left;
+}
+
+.tabla_eliminar .boton_eliminar {
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #FFCCDB;
+    color: #FF6692;
+}
+
+.tabla_eliminar .boton_eliminar:hover {
+    filter: brightness(1.1);
+}

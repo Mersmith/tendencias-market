@@ -58,12 +58,22 @@
         @endif
 
         Livewire.on('alertaLivewire', mensaje => {
-            Swal.fire({
-                icon: 'success',
-                title: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            })
+            if (mensaje == 'Creado' || mensaje == 'Actualizado') {
+                Swal.fire({
+                    icon: 'success',
+                    title: mensaje,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            } else if (mensaje == "Error") {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Alto!',
+                    text: mensaje,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            }
         })
     </script>
 </body>

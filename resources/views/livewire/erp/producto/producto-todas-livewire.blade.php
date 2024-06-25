@@ -93,6 +93,11 @@
                                             class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
                                         </a>
+
+                                        <a href="{{ route('erp.producto.variacion.vista.editar', $item) }}"
+                                            class="g_accion_ver">
+                                            <span><i class="fa-solid fa-align-center"></i></span>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

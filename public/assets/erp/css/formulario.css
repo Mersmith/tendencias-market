@@ -113,6 +113,11 @@
     color: #FF6692;
 }
 
+.formulario_botones .agregar {
+    background-color: #dddbff;
+    color: #635BFF;
+}
+
 .boton_checkbox {
     display: flex;
     gap: 10px;
