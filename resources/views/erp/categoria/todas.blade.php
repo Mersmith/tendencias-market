@@ -1,20 +1,20 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Marcas')
+@section('tituloPagina', 'Categorias')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Marcas <span>Total: {{ $marcas->count() }}</span></h2>
+            <h2>Categorias <span>Total: {{ $categorias->count() }}</span></h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
-                <a href="{{ route('erp.marca.vista.todas') }}" class="g_boton g_boton_light">
+                <a href="{{ route('erp.categoria.vista.todas') }}" class="g_boton g_boton_light">
                     Inicio <i class="fa-solid fa-house"></i></a>
 
-                <a href="{{ route('erp.marca.vista.crear') }}" class="g_boton g_boton_primary">
+                <a href="{{ route('erp.categoria.vista.crear') }}" class="g_boton g_boton_primary">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
         <div class="g_panel">
             <!--TABLA-->
-            @if ($marcas->count())
+            @if ($categorias->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
                     <!--TABLA CABECERA BOTONES-->
@@ -59,13 +59,15 @@
                                     <th>
                                         Descripción</th>
                                     <th>
+                                        Icono</th>
+                                    <th>
                                         Activo</th>
                                     <th>
                                         Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($marcas as $item)
+                                @foreach ($categorias as $item)
                                     <tr>
                                         <td class="g_resaltar">
                                             {{ $loop->iteration }}
@@ -75,6 +77,9 @@
                                         </td>
                                         <td class="g_inferior g_resumir">
                                             {{ $item->descripcion }}
+                                        </td>
+                                        <td>
+                                            {!! $item->icono !!}
                                         </td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
@@ -86,7 +91,7 @@
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
-                                            <a href="{{ route('erp.marca.vista.editar', $item->id) }}"
+                                            <a href="{{ route('erp.categoria.vista.editar', $item->id) }}"
                                                 class="g_accion_editar">
                                                 <span><i class="fa-solid fa-pencil"></i></span>
                                             </a>

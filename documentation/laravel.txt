@@ -22,5 +22,11 @@ php artisan make:controller Erp/Inicio/ErpInicioController
 php artisan make:livewire Erp/Header/ErpHeaderLivewire
 
 php artisan make:model Marca -mfsc
-
 php artisan make:request MarcaRequest
+
+php artisan make:model Categoria -mfsc
+php artisan make:request CategoriaRequest
+
+php artisan migrate:fresh --seed
+
+php artisan migrate:fresh
