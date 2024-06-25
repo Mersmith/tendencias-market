@@ -1,20 +1,20 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Categorias')
+@section('tituloPagina', 'Subcategorias')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Categorias <span>Total: {{ $categorias->count() }}</span></h2>
+            <h2>Subcategorias <span>Total: {{ $subcategorias->count() }}</span></h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
-                <a href="{{ route('erp.categoria.vista.todas') }}" class="g_boton g_boton_light">
+                <a href="{{ route('erp.subcategoria.vista.todas') }}" class="g_boton g_boton_light">
                     Inicio <i class="fa-solid fa-house"></i></a>
 
-                <a href="{{ route('erp.categoria.vista.crear') }}" class="g_boton g_boton_primary">
+                <a href="{{ route('erp.subcategoria.vista.crear') }}" class="g_boton g_boton_primary">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
         <div class="g_panel">
             <!--TABLA-->
-            @if ($categorias->count())
+            @if ($subcategorias->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
                     <!--TABLA CABECERA BOTONES-->
@@ -69,7 +69,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categorias as $item)
+                                @foreach ($subcategorias as $item)
                                     <tr>
                                         <td class="g_resaltar">
                                             {{ $loop->iteration }}
@@ -96,7 +96,7 @@
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
-                                            <a href="{{ route('erp.categoria.vista.editar', $item->id) }}"
+                                            <a href="{{ route('erp.subcategoria.vista.editar', $item->id) }}"
                                                 class="g_accion_editar">
                                                 <span><i class="fa-solid fa-pencil"></i></span>
                                             </a>

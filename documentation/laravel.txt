@@ -36,3 +36,6 @@ php artisan make:request TallaRequest
 
 php artisan make:model Color -mfsc
 php artisan make:request ColorRequest
+
+php artisan make:model Subcategoria -mfsc
+php artisan make:request SubcategoriaRequest

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Erp\Marca;
+namespace App\Http\Controllers\Erp;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MarcaRequest;
