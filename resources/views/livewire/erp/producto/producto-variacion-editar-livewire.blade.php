@@ -29,33 +29,11 @@
                     </div>
                 </div>
 
-                <div class="g_panel">
-                    <h4 class="g_panel_titulo">Variación</h4>
+                @if ($producto->variacion_talla || $producto->variacion_color)
+                    <div class="g_panel">
+                        <h4 class="g_panel_titulo">Agregar variación al producto</h4>
 
-                    <div class="g_fila">
-                        <div class="g_columna_6">
-                            <div class="g_margin_bottom_20">
-                                <div class="boton_checkbox">
-                                    <label for="variacion_talla">Tiene talla</label>
-                                    <input type="checkbox" id="variacion_talla" name="variacion_talla"
-                                        @if ($producto->variacion_talla) checked @endif onclick="return false;">
-                                </div>
-                                <p class="leyenda">No se puede modificar.</p>
-                            </div>
-                        </div>
-
-                        <div class="g_columna_6">
-                            <div class="">
-                                <div class="boton_checkbox">
-                                    <label for="variacion_color">Tiene color</label>
-                                    <input type="checkbox" id="variacion_color" name="variacion_color"
-                                        @if ($producto->variacion_color) checked @endif onclick="return false;">
-                                </div>
-                                <p class="leyenda">No se puede modificar.</p>
-                            </div>
-                        </div>
-
-                        @if ($producto->variacion_talla || $producto->variacion_color)
+                        <div class="g_fila">
                             <!--VARIACION TALLA-->
                             @if ($producto->variacion_talla)
                                 <div class="g_columna_6">
@@ -170,7 +148,31 @@
                                 @endif
 
                             </div>
-                        @endif
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="g_columna_4">
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Variación</h4>
+
+                    <div class="g_margin_bottom_20">
+                        <div class="boton_checkbox">
+                            <label for="variacion_talla">Tiene talla</label>
+                            <input type="checkbox" id="variacion_talla" name="variacion_talla"
+                                @if ($producto->variacion_talla) checked @endif onclick="return false;">
+                        </div>
+                        <p class="leyenda">No se puede modificar.</p>
+                    </div>
+
+                    <div class="">
+                        <div class="boton_checkbox">
+                            <label for="variacion_color">Tiene color</label>
+                            <input type="checkbox" id="variacion_color" name="variacion_color"
+                                @if ($producto->variacion_color) checked @endif onclick="return false;">
+                        </div>
+                        <p class="leyenda">No se puede modificar.</p>
                     </div>
                 </div>
             </div>
