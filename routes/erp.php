@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
+use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoVariacionEditarLivewire;
 use Illuminate\Support\Facades\Route;
@@ -62,3 +63,4 @@ Route::controller(SubcategoriaController::class)->group(function () {
 Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');
 Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');
+Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');

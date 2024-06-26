@@ -1,0 +1,124 @@
+@section('tituloPagina', 'Productos')
+
+<div>
+    <!--CABECERA TITULO PAGINA-->
+    <div class="g_panel cabecera_titulo_pagina">
+        <!--TITULO-->
+        <h2>Producto inventario <span>Total: {{ count($variaciones) }}</span></h2>
+
+        <!--BOTONES-->
+        <div class="cabecera_titulo_botones">
+            <a href="{{ route('erp.producto.vista.todas') }}" class="g_boton g_boton_light">
+                Inicio <i class="fa-solid fa-house"></i></a>
+
+            <a href="{{ route('erp.producto.vista.todas') }}" class="g_boton g_boton_darkt">
+                <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+        </div>
+    </div>
+
+    <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+    <div class="g_panel">
+        <!--TABLA-->
+        @if (!empty($variaciones))
+            <!--TABLA CABECERA-->
+            <div class="tabla_cabecera">
+                <!--TABLA CABECERA BOTONES-->
+                <div class="tabla_cabecera_botones">
+                    <button>
+                        PDF <i class="fa-solid fa-file-pdf"></i>
+                    </button>
+
+                    <button>
+                        EXCEL <i class="fa-regular fa-file-excel"></i>
+                    </button>
+                </div>
+
+                <!--TABLA CABECERA BUSCAR-->
+                <div class="tabla_cabecera_buscar">
+                    <form action="">
+                        <input type="text" id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </form>
+                </div>
+            </div>
+
+            <!--TABLA CONTENIDO-->
+            <div class="tabla_contenido">
+                <div class="contenedor_tabla">
+                    <!--TABLA-->
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                @if ($tipo_variacion == 'talla-color')
+                                    <th>Talla</th>
+                                    <th>Color</th>
+                                @elseif ($tipo_variacion == 'talla')
+                                    <th>Talla</th>
+                                @elseif ($tipo_variacion == 'color')
+                                    <th>Color</th>
+                                @else
+                                @endif
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $index = 1; @endphp
+
+                            @if ($tipo_variacion == 'talla-color')
+                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
+                                    @foreach (collect($variacionesPorTalla) as $variacion)
+                                        <tr>
+                                            <td class="g_inferior"> {{ $index++ }}</td>
+                                            <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
+                                            <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
+                                            <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                            @elseif ($tipo_variacion == 'talla')
+                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
+                                    @php
+                                        $variacionesPorTalla = collect($variacionesPorTalla);
+                                    @endphp
+                                    <tr>
+                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
+                                        <td class="g_inferior">{{ $variacionesPorTalla->first()['talla']['nombre'] }}
+                                        </td>
+                                        <td class="g_resaltar">
+                                            {{ $variacionesPorTalla->first()['inventario']['stock'] }}</td>
+                                    </tr>
+                                @endforeach
+                            @elseif ($tipo_variacion == 'color')
+                                @foreach ($variaciones as $colorId => $variacionesPorColor)
+                                    @php
+                                        $variacionesPorColor = collect($variacionesPorColor);
+                                    @endphp
+                                    <tr>
+                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
+                                        <td class="g_inferior">{{ $variacionesPorColor->first()['color']['nombre'] }}
+                                        </td>
+                                        <td class="g_resaltar">
+                                            {{ $variacionesPorColor->first()['inventario']['stock'] }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                @foreach ($variaciones as $variacion)
+                                    <tr>
+                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
+                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @else
+            <div class="g_vacio">
+                <p>No hay elementos.</p>
+                <i class="fa-regular fa-face-grin-wink"></i>
+            </div>
+        @endif
+    </div>
+</div>
