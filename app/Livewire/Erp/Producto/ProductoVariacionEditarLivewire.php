@@ -44,19 +44,14 @@ class ProductoVariacionEditarLivewire extends Component
                         ['producto_id' => $this->producto->id, 'talla_id' => $variacion['talla_id'], 'color_id' => $variacion['color_id']]
                     );
                 }
+            } else {
+                $this->producto->variaciones()->delete();
             }
-        } else {
-            $this->producto->variaciones()->delete();
-
-            $this->producto->variaciones()->create([
-                'talla_id' => null,
-                'color_id' => null,
-            ]);
         }
 
-        $this->dispatch('alertaLivewire', "Creado");
+        $this->dispatch('alertaLivewire', "Actualizado");
 
-        //return redirect()->route('erp.producto.vista.todas');
+        return redirect()->route('erp.producto.vista.todas');
     }
 
     public function agregarVariacion()
