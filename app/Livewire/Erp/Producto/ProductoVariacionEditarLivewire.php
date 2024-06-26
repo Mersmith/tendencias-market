@@ -5,6 +5,7 @@ namespace App\Livewire\Erp\Producto;
 use App\Models\Color;
 use App\Models\Producto;
 use App\Models\Talla;
+use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -15,47 +16,28 @@ class ProductoVariacionEditarLivewire extends Component
     public bool $variacion_talla;
     public bool $variacion_color;
 
-    public $talla_id = "";
-    public $color_id = "";
+    public $talla_id = null;
+    public $color_id = null;
 
     public $tallas = [];
     public $colores = [];
-    //public $variaciones = [];
-
-    public $variaciones = [
-        [
-            "talla_id" => "8",
-            "color_id" => "3"
-        ],
-        [
-            "talla_id" => "2",
-            "color_id" => "3"
-        ],
-        [
-            "talla_id" => "6",
-            "color_id" => "4"
-        ]
-    ];
-
+    public $variaciones = [];
 
     public function mount(Producto $item)
     {
         $this->producto = $item;
-        //$this->variacion_talla = $item->variacion_talla == 1;
-        //$this->variacion_color = $item->variacion_color == 1;
+        $this->variacion_talla = $item->variacion_talla == 1;
+        $this->variacion_color = $item->variacion_color == 1;
 
-        $this->variacion_talla = true;
-        $this->variacion_color = true;
+        $this->variaciones = $item->variaciones()->with(['talla', 'color'])->get()->toArray();
 
         $this->tallas = Talla::all();
         $this->colores = Color::all();
-
     }
 
     public function guardar()
     {
-        dd($this->variaciones);
-        /*$this->validate([
+        $this->validate([
             'variacion_talla' => 'boolean',
             'variacion_color' => 'boolean',
         ]);
@@ -65,9 +47,42 @@ class ProductoVariacionEditarLivewire extends Component
             'variacion_color' => $this->variacion_color ? 1 : 0,
         ]);
 
-        $this->dispatch('alertaLivewire', "Creado");*/
+        if ($this->variacion_talla || $this->variacion_color) {
+            if (!empty($this->variaciones)) {
+
+                $this->producto->variaciones()->whereNotIn('id', array_column($this->variaciones, 'id'))->delete();
+
+                foreach ($this->variaciones as $variacion) {
+                    Variacion::updateOrCreate(
+                        ['producto_id' => $this->producto->id, 'talla_id' => $variacion['talla_id'], 'color_id' => $variacion['color_id']],
+                        ['producto_id' => $this->producto->id, 'talla_id' => $variacion['talla_id'], 'color_id' => $variacion['color_id']]
+                    );
+                }
+            }
+        } else {
+            $this->producto->variaciones()->delete();
+
+            $this->producto->variaciones()->create([
+                'talla_id' => null,
+                'color_id' => null,
+            ]);
+        }
+
+        $this->dispatch('alertaLivewire', "Creado");
 
         //return redirect()->route('erp.producto.vista.todas');
+    }
+
+    public function updatedVariacionTalla($value)
+    {
+        $this->variaciones = [];
+        $this->resetVariacionInputs();
+    }
+
+    public function updatedVariacionColor($value)
+    {
+        $this->variaciones = [];
+        $this->resetVariacionInputs();
     }
 
     public function agregarVariacion()
@@ -77,10 +92,12 @@ class ProductoVariacionEditarLivewire extends Component
 
             if ($this->variacion_talla) {
                 $variacion['talla_id'] = $this->talla_id;
+                $variacion['color_id'] = $this->color_id;
             }
 
             if ($this->variacion_color) {
                 $variacion['color_id'] = $this->color_id;
+                $variacion['talla_id'] = $this->talla_id;
             }
 
             if (!$this->existeVariacion($variacion)) {
@@ -88,7 +105,6 @@ class ProductoVariacionEditarLivewire extends Component
                 $this->variaciones[] = $variacion;
 
                 $this->resetVariacionInputs();
-                //$this->dispatch('alertaLivewire', "Creado");
             }
         } else {
             $this->dispatch('alertaLivewire', "Error");
@@ -127,8 +143,8 @@ class ProductoVariacionEditarLivewire extends Component
 
     public function resetVariacionInputs()
     {
-        $this->talla_id = '';
-        $this->color_id = '';
+        $this->talla_id = null;
+        $this->color_id = null;
     }
 
     public function render()

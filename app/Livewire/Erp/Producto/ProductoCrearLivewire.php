@@ -8,6 +8,7 @@ use App\Models\Marca;
 use App\Models\Producto;
 use App\Models\Subcategoria;
 use App\Models\Talla;
+use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Str;
@@ -41,16 +42,19 @@ class ProductoCrearLivewire extends Component
     {
         $data = $this->validate((new ProductoRequest())->rules(), (new ProductoRequest())->messages(), (new ProductoRequest())->attributes());
 
-        Producto::create([
-            'subcategoria_id' => $data['subcategoria_id'],
-            'marca_id' => $data['marca_id'],
-            'nombre' => $data['nombre'],
-            'slug' => $data['slug'],
-            'descripcion' => $data['descripcion'],
-            'activo' => $data['activo'],
-            'variacion_talla' => $this->variacion_talla,
-            'variacion_color' => $this->variacion_color,
-        ]);
+        $producto_nuevo = new Producto();
+        $producto_nuevo->subcategoria_id = $data['subcategoria_id'];
+        $producto_nuevo->marca_id = $data['marca_id'];
+        $producto_nuevo->nombre = $data['nombre'];
+        $producto_nuevo->slug = $data['slug'];
+        $producto_nuevo->descripcion = $data['descripcion'];
+        $producto_nuevo->variacion_talla = $this->variacion_talla;
+        $producto_nuevo->variacion_color = $this->variacion_color;
+        $producto_nuevo->save();
+
+        $variacion_nuevo = new Variacion();
+        $variacion_nuevo->producto_id = $producto_nuevo->id;
+        $variacion_nuevo->save();
 
         $this->dispatch('alertaLivewire', "Creado");
 

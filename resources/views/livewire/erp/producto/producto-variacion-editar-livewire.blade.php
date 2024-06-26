@@ -36,7 +36,7 @@
                         <div class="g_columna_6">
                             <div class="g_margin_bottom_20">
                                 <div class="boton_checkbox">
-                                    <label for="variacion_talla">¿Tiene talla? {{ $producto->variacion_talla }}</label>
+                                    <label for="variacion_talla">¿Tiene talla?</label>
                                     <input type="checkbox" id="variacion_talla" name="variacion_talla"
                                         wire:model.live="variacion_talla">
                                 </div>
@@ -49,7 +49,7 @@
                         <div class="g_columna_6">
                             <div class="">
                                 <div class="boton_checkbox">
-                                    <label for="variacion_color">¿Tiene color? {{ $producto->variacion_color }}</label>
+                                    <label for="variacion_color">¿Tiene color?</label>
                                     <input type="checkbox" id="variacion_color" name="variacion_color"
                                         wire:model.live="variacion_color">
                                 </div>
@@ -61,8 +61,8 @@
                     </div>
                 </div>
 
-                <div class="g_panel">
-                    @if ($variacion_talla || $variacion_color)
+                @if ($variacion_talla || $variacion_color)
+                    <div class="g_panel">
                         <div class="g_fila">
                             <!--VARIACION TALLA-->
                             @if ($variacion_talla)
@@ -71,7 +71,7 @@
                                         <label for="talla_id">Talla <span class="obligatorio"><i
                                                     class="fa-solid fa-asterisk"></i></span></label>
                                         <select id="talla_id" name="talla_id" wire:model="talla_id">
-                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="null" selected disabled>Seleccione</option>
                                             @if ($tallas)
                                                 @foreach ($tallas as $talla)
                                                     <option value="{{ $talla->id }}">{{ $talla->nombre }}</option>
@@ -89,7 +89,7 @@
                                         <label for="color_id">Color <span class="obligatorio"><i
                                                     class="fa-solid fa-asterisk"></i></span></label>
                                         <select id="color_id" name="color_id" wire:model="color_id">
-                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="null" selected disabled>Seleccione</option>
                                             @if ($colores)
                                                 @foreach ($colores as $color)
                                                     <option value="{{ $color->id }}">{{ $color->nombre }}</option>
@@ -108,73 +108,78 @@
                                 </button>
                             </div>
                         </div>
-                    @endif
 
-                    <!--TABLA-->
-                    <div>
-                        @if (count($variaciones) > 0)
-                            <table class="tabla_eliminar">
-                                <thead>
-                                    <tr>
-                                        @if ($variacion_talla)
-                                            <th>Talla</th>
-                                        @endif
-
-                                        @if ($variacion_color)
-                                            <th>Color</th>
-                                        @endif
-
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($variaciones as $index => $variacion)
+                        <!--TABLA-->
+                        <div>
+                            @if (count($variaciones) > 0)
+                                <table class="tabla_eliminar">
+                                    <thead>
                                         <tr>
                                             @if ($variacion_talla)
-                                                <td>
-                                                    @if ($variacion_talla)
-                                                        <select wire:model="variaciones.{{ $index }}.talla_id">
-                                                            <option value="" selected disabled>Seleccione
-                                                            </option>
-                                                            @foreach ($tallas as $t)
-                                                                <option value="{{ $t->id }}">
-                                                                    {{ $t->nombre }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    @endif
-                                                </td>
+                                                <th>Talla</th>
                                             @endif
 
                                             @if ($variacion_color)
-                                                <td>
-                                                    @if ($variacion_color)
-                                                        <select wire:model="variaciones.{{ $index }}.color_id">
-                                                            <option value="" selected disabled>Seleccione
-                                                            </option>
-                                                            @foreach ($colores as $c)
-                                                                <option value="{{ $c->id }}">
-                                                                    {{ $c->nombre }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    @endif
-                                                </td>
+                                                <th>Color</th>
                                             @endif
 
-                                            <td>
-                                                <button  class="boton_eliminar" wire:click="eliminarVariacion({{ $index }})"><i
-                                                        class="fa-solid fa-xmark"></i></button>
-                                            </td>
+                                            <th></th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($variaciones as $index => $variacion)
+                                            <tr>
+                                                @if ($variacion_talla)
+                                                    <td>
+                                                        @if ($variacion_talla)
+                                                            <select
+                                                                wire:model="variaciones.{{ $index }}.talla_id"
+                                                                disabled>
+                                                                <option value="null" selected disabled>Seleccione
+                                                                </option>
+                                                                @foreach ($tallas as $t)
+                                                                    <option value="{{ $t->id }}">
+                                                                        {{ $t->nombre }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        @endif
+                                                    </td>
+                                                @endif
 
-                            </table>
-                        @endif
+                                                @if ($variacion_color)
+                                                    <td>
+                                                        @if ($variacion_color)
+                                                            <select
+                                                                wire:model="variaciones.{{ $index }}.color_id"
+                                                                disabled>
+                                                                <option value="null" selected disabled>Seleccione
+                                                                </option>
+                                                                @foreach ($colores as $c)
+                                                                    <option value="{{ $c->id }}">
+                                                                        {{ $c->nombre }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        @endif
+                                                    </td>
+                                                @endif
 
+                                                <td>
+                                                    <button class="boton_eliminar"
+                                                        wire:click="eliminarVariacion({{ $index }})"><i
+                                                            class="fa-solid fa-xmark"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+                            @endif
+
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
 

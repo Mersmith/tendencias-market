@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <div class="g_panel">
+                {{-- <!--<div class="g_panel">
                     <h4 class="g_panel_titulo">Variación</h4>
                     <div class="g_fila">
                         <div class="g_columna_6">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="g_columna_4">

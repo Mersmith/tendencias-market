@@ -13,6 +13,11 @@ class Producto extends Model
     const ACTIVADO = 1;
     const DESACTIVADO = 2;
 
+    public function variaciones()
+    {
+        return $this->hasMany(Variacion::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {
