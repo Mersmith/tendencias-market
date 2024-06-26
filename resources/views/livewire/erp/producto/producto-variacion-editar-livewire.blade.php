@@ -158,7 +158,7 @@
                     <h4 class="g_panel_titulo">Variación</h4>
 
                     <div class="g_margin_bottom_20">
-                        <div class="boton_checkbox">
+                        <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_talla">Tiene talla</label>
                             <input type="checkbox" id="variacion_talla" name="variacion_talla"
                                 @if ($producto->variacion_talla) checked @endif onclick="return false;">
@@ -167,7 +167,7 @@
                     </div>
 
                     <div class="">
-                        <div class="boton_checkbox">
+                        <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_color">Tiene color</label>
                             <input type="checkbox" id="variacion_color" name="variacion_color"
                                 @if ($producto->variacion_color) checked @endif onclick="return false;">

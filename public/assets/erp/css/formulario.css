@@ -127,6 +127,10 @@
     padding: 10px 0px;
 }
 
+.boton_checkbox_deshabilitado {
+    background-color: #f6f6f6;
+}
+
 .boton_checkbox input {
     margin-top: 3px;
 }
