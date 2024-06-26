@@ -52,9 +52,11 @@ class ProductoCrearLivewire extends Component
         $producto_nuevo->variacion_color = $this->variacion_color;
         $producto_nuevo->save();
 
-        $variacion_nuevo = new Variacion();
-        $variacion_nuevo->producto_id = $producto_nuevo->id;
-        $variacion_nuevo->save();
+        if (!$this->variacion_talla && !$this->variacion_color) {
+            $variacion_nuevo = new Variacion();
+            $variacion_nuevo->producto_id = $producto_nuevo->id;
+            $variacion_nuevo->save();
+        }
 
         $this->dispatch('alertaLivewire', "Creado");
 

@@ -13,8 +13,6 @@ use Livewire\Attributes\Layout;
 class ProductoVariacionEditarLivewire extends Component
 {
     public $producto;
-    public bool $variacion_talla;
-    public bool $variacion_color;
 
     public $talla_id = null;
     public $color_id = null;
@@ -26,8 +24,6 @@ class ProductoVariacionEditarLivewire extends Component
     public function mount(Producto $item)
     {
         $this->producto = $item;
-        $this->variacion_talla = $item->variacion_talla == 1;
-        $this->variacion_color = $item->variacion_color == 1;
 
         $this->variaciones = $item->variaciones()->with(['talla', 'color'])->get()->toArray();
 
@@ -37,17 +33,7 @@ class ProductoVariacionEditarLivewire extends Component
 
     public function guardar()
     {
-        $this->validate([
-            'variacion_talla' => 'boolean',
-            'variacion_color' => 'boolean',
-        ]);
-
-        $this->producto->update([
-            'variacion_talla' => $this->variacion_talla ? 1 : 0,
-            'variacion_color' => $this->variacion_color ? 1 : 0,
-        ]);
-
-        if ($this->variacion_talla || $this->variacion_color) {
+        if ($this->producto->variacion_talla || $this->producto->variacion_color) {
             if (!empty($this->variaciones)) {
 
                 $this->producto->variaciones()->whereNotIn('id', array_column($this->variaciones, 'id'))->delete();
@@ -73,32 +59,13 @@ class ProductoVariacionEditarLivewire extends Component
         //return redirect()->route('erp.producto.vista.todas');
     }
 
-    public function updatedVariacionTalla($value)
-    {
-        $this->variaciones = [];
-        $this->resetVariacionInputs();
-    }
-
-    public function updatedVariacionColor($value)
-    {
-        $this->variaciones = [];
-        $this->resetVariacionInputs();
-    }
-
     public function agregarVariacion()
     {
         if ($this->talla_id || $this->color_id) {
             $variacion = [];
 
-            if ($this->variacion_talla) {
-                $variacion['talla_id'] = $this->talla_id;
-                $variacion['color_id'] = $this->color_id;
-            }
-
-            if ($this->variacion_color) {
-                $variacion['color_id'] = $this->color_id;
-                $variacion['talla_id'] = $this->talla_id;
-            }
+            $variacion['color_id'] = $this->color_id;
+            $variacion['talla_id'] = $this->talla_id;
 
             if (!$this->existeVariacion($variacion)) {
 
@@ -119,19 +86,19 @@ class ProductoVariacionEditarLivewire extends Component
 
     protected function existeVariacion($variacion)
     {
-        if ($this->variacion_talla && !$this->variacion_color) {
+        if ($this->producto->variacion_talla && !$this->producto->variacion_color) {
             foreach ($this->variaciones as $v) {
                 if ($v['talla_id'] == $variacion['talla_id']) {
                     return true;
                 }
             }
-        } elseif (!$this->variacion_talla && $this->variacion_color) {
+        } elseif (!$this->producto->variacion_talla && $this->producto->variacion_color) {
             foreach ($this->variaciones as $v) {
                 if ($v['color_id'] == $variacion['color_id']) {
                     return true;
                 }
             }
-        } elseif ($this->variacion_talla && $this->variacion_color) {
+        } elseif ($this->producto->variacion_talla && $this->producto->variacion_color) {
             foreach ($this->variaciones as $v) {
                 if ($v['talla_id'] == $variacion['talla_id'] && $v['color_id'] == $variacion['color_id']) {
                     return true;
