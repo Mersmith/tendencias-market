@@ -85,3 +85,12 @@
 .tabla_eliminar .boton_eliminar:hover {
     filter: brightness(1.1);
 }
+
+.tabla_eliminar select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background-image: none;
+    padding-right: 0;
+}

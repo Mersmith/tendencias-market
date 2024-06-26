@@ -32,7 +32,7 @@
 }
 
 .formulario *:disabled {
-    background-color: #e9ecef !important;
+    background-color: #f6f6f6 !important;
     opacity: 1;
 }
 

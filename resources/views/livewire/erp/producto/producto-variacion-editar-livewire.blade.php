@@ -124,7 +124,8 @@
                                                 <tr>
                                                     @if ($producto->variacion_talla)
                                                         <td>
-                                                            <select
+                                                            <select id="variaciones.{{ $index }}.talla_id"
+                                                                name="variaciones.{{ $index }}.talla_id"
                                                                 wire:model="variaciones.{{ $index }}.talla_id"
                                                                 disabled>
                                                                 <option value="null" selected disabled>
@@ -141,7 +142,8 @@
 
                                                     @if ($producto->variacion_color)
                                                         <td>
-                                                            <select
+                                                            <select id="variaciones.{{ $index }}.color_id"
+                                                                name="variaciones.{{ $index }}.color_id"
                                                                 wire:model="variaciones.{{ $index }}.color_id"
                                                                 disabled>
                                                                 <option value="null" selected disabled>

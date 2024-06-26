@@ -47,6 +47,7 @@ class ProductoVariacionEditarLivewire extends Component
             } else {
                 $this->producto->variaciones()->delete();
             }
+            $this->variaciones = $this->producto->variaciones()->with(['talla', 'color'])->get()->toArray();
         }
 
         $this->dispatch('alertaLivewire', "Actualizado");
@@ -56,20 +57,21 @@ class ProductoVariacionEditarLivewire extends Component
 
     public function agregarVariacion()
     {
-        if ($this->talla_id || $this->color_id) {
-            $variacion = [];
+        $variacion = [];
 
-            $variacion['color_id'] = $this->color_id;
-            $variacion['talla_id'] = $this->talla_id;
+        $variacion['color_id'] = $this->color_id;
+        $variacion['talla_id'] = $this->talla_id;
 
-            if (!$this->existeVariacion($variacion)) {
-
+        if (!$this->existeVariacion($variacion)) {
+            if ($this->producto->variacion_talla && $this->producto->variacion_color) {
+                if ($this->talla_id && $this->color_id) {
+                    $this->variaciones[] = $variacion;
+                    $this->resetVariacionInputs();
+                }
+            } else if ($this->talla_id || $this->color_id) {
                 $this->variaciones[] = $variacion;
-
                 $this->resetVariacionInputs();
             }
-        } else {
-            $this->dispatch('alertaLivewire', "Error");
         }
     }
 
