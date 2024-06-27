@@ -188,14 +188,16 @@
                 </div>
             </div>
         </div>
+        
+        @if ($producto->variacion_talla || $producto->variacion_color)
+            <div>
+                <div class="formulario_botones">
+                    <button wire:click="guardar" class="guardar">Guardar</button>
 
-        <div>
-            <div class="formulario_botones">
-                <button wire:click="guardar" class="guardar">Guardar</button>
-
-                <a href="{{ route('erp.producto.vista.todas') }}" class="cancelar">Cancelar</a>
+                    <a href="{{ route('erp.producto.vista.todas') }}" class="cancelar">Cancelar</a>
+                </div>
             </div>
-        </div>
+        @endif
 
     </div>
 </div>

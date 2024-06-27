@@ -58,9 +58,9 @@ class ProductoCrearLivewire extends Component
             $variacion_nuevo->producto_id = $producto_nuevo->id;
             $variacion_nuevo->save();
 
-            $inventario_nuevo = new Inventario();
-            $inventario_nuevo->variacion_id = $variacion_nuevo->id;
-            $inventario_nuevo->save();
+            //$inventario_nuevo = new Inventario();
+            //$inventario_nuevo->variacion_id = $variacion_nuevo->id;
+            //$inventario_nuevo->save();
         }
 
         $this->dispatch('alertaLivewire', "Creado");
