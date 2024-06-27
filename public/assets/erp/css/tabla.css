@@ -82,7 +82,18 @@
     color: #FF6692;
 }
 
-.tabla_eliminar .boton_eliminar:hover {
+.tabla_eliminar .boton_activo {
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7ff5c0;
+    color: #19c678;
+}
+
+
+.tabla_eliminar .boton_eliminar:hover,
+.tabla_eliminar .boton_activo:hover {
     filter: brightness(1.1);
 }
 

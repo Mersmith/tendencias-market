@@ -15,12 +15,12 @@
             <a href="{{ route('erp.producto.vista.crear') }}" class="g_boton g_boton_primary">
                 Crear <i class="fa-solid fa-square-plus"></i></a>
 
+            <a href="{{ route('erp.producto.variacion.vista.editar', $producto) }}" class="g_boton g_boton_info">
+                Variación <i class="fa-solid fa-align-center"></i></a>
+
             <a href="{{ route('erp.producto.inventario.vista.ver', ['id' => $producto->id]) }}"
                 class="g_boton g_boton_warning">
                 Inventario <i class="fa-solid fa-list-ol"></i></a>
-
-            <a href="{{ route('erp.producto.variacion.vista.editar', $producto) }}" class="g_boton g_boton_info">
-                Variación <i class="fa-solid fa-align-center"></i></a>
 
             <a href="{{ route('erp.producto.vista.todas') }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar
