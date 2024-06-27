@@ -11,6 +11,14 @@
             <a href="{{ route('erp.producto.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
+            <a href="{{ route('erp.producto.variacion.vista.editar', $producto)  }}"
+                class="g_boton g_boton_info">
+                Variación <i class="fa-solid fa-align-center"></i></a>
+
+            <a href="{{ route('erp.producto.lista.precio.vista.editar', ['id' => $producto->id]) }}"
+                class="g_boton g_boton_success">
+                Lista Precio <i class="fa-solid fa-dollar-sign"></i></a>
+
             <a href="{{ route('erp.producto.vista.todas') }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
@@ -82,8 +90,8 @@
                 </div>
             </div>
 
-              <!-- TABLA CONTENIDO -->
-              <div class="tabla_contenido">
+            <!-- TABLA CONTENIDO -->
+            <div class="tabla_contenido">
                 <div class="contenedor_tabla">
                     <!-- TABLA -->
                     <table class="tabla">
@@ -110,7 +118,9 @@
                                         <td class="g_inferior">{{ $index++ }}</td>
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'talla')
@@ -118,7 +128,8 @@
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
-                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'color')
@@ -126,14 +137,16 @@
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
-                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -143,7 +156,7 @@
             </div>
         @else
             <div class="g_vacio">
-                <p>No hay elementos.</p>
+                <p>No tiene variación.</p>
                 <i class="fa-regular fa-face-grin-wink"></i>
             </div>
         @endif

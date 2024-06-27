@@ -48,6 +48,11 @@ class ProductoVariacionEditarLivewire extends Component
                 $this->producto->variaciones()->delete();
             }
             $this->variaciones = $this->producto->variaciones()->with(['talla', 'color'])->get()->toArray();
+        } else if (!$this->producto->variacion_talla && !$this->producto->variacion_color) {
+            Variacion::updateOrCreate(
+                ['producto_id' => $this->producto->id, 'talla_id' => null, 'color_id' => null],
+                ['producto_id' => $this->producto->id, 'talla_id' => null, 'color_id' => null],
+            );
         }
 
         $this->dispatch('alertaLivewire', "Actualizado");

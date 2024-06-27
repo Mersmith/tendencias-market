@@ -95,7 +95,6 @@
                                     <th>Talla</th>
                                 @elseif ($tipo_variacion == 'color')
                                     <th>Color</th>
-                                @else
                                 @endif
                                 <th>Stock</th>
                                 <th>Lista precios</th>
@@ -105,70 +104,65 @@
                             @php $index = 1; @endphp
 
                             @if ($tipo_variacion == 'talla-color')
-                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
-                                    @foreach ($variacionesPorTalla as $variacion)
-                                        <tr>
-                                            <td class="g_inferior">{{ $index++ }}</td>
-                                            <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
-                                            <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                            <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
-                                            <td class="g_resaltar">
-                                                @foreach ($listasPrecios as $listaPrecio)
-                                                    <div>
-                                                        <h3>{{ $listaPrecio->nombre }}</h3>
-                                                        <input type="number"
-                                                            wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                            value="{{ $precios[$variacion['id']][$listaPrecio->id] ?? 0 }}">
-                                                        <button
-                                                            wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
-                                                    </div>
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach ($variaciones as $variacion)
+                                    <tr>
+                                        <td class="g_inferior">{{ $index++ }}</td>
+                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
+                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                        <td class="g_resaltar">
+                                            @foreach ($listasPrecios as $listaPrecio)
+                                                <div>
+                                                    <h3>{{ $listaPrecio->nombre }}</h3>
+                                                    <input type="number"
+                                                        wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
+                                                        value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0 }}">
+                                                    <button
+                                                        wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                    </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'talla')
-                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
+                                @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
-                                        <td class="g_inferior">{{ $variacionesPorTalla[0]['talla']['nombre'] }}</td>
-                                        <td class="g_resaltar">{{ $variacionesPorTalla[0]['inventario']['stock'] }}
-                                        </td>
+                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_resaltar">
-                                            @foreach ($variacionesPorTalla as $variacion)
-                                                @foreach ($listasPrecios as $listaPrecio)
-                                                    <div>
-                                                        <h3>{{ $listaPrecio->nombre }}</h3>
-                                                        <input type="number"
-                                                            wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                            value="{{ $precios[$variacion['id']][$listaPrecio->id] ?? 0 }}">
-                                                        <button
-                                                            wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
-                                                    </div>
-                                                @endforeach
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                        <td class="g_resaltar">
+                                            @foreach ($listasPrecios as $listaPrecio)
+                                                <div>
+                                                    <h3>{{ $listaPrecio->nombre }}</h3>
+                                                    <input type="number"
+                                                        wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
+                                                        value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0 }}">
+                                                    <button
+                                                        wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
+                                                </div>
                                             @endforeach
                                         </td>
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'color')
-                                @foreach ($variaciones as $colorId => $variacionesPorColor)
+                                @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
-                                        <td class="g_inferior">{{ $variacionesPorColor[0]['color']['nombre'] }}</td>
-                                        <td class="g_resaltar">{{ $variacionesPorColor[0]['inventario']['stock'] }}
-                                        </td>
-                                        <td>
-                                            @foreach ($variacionesPorColor as $variacion)
-                                                @foreach ($listasPrecios as $listaPrecio)
-                                                    <div>
-                                                        <h3>{{ $listaPrecio->nombre }}</h3>
-                                                        <input type="number"
-                                                            wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                            value="{{ $precios[$variacion['id']][$listaPrecio->id] ?? 0 }}">
-                                                        <button
-                                                            wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
-                                                    </div>
-                                                @endforeach
+                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                        <td class="g_resaltar">
+                                            @foreach ($listasPrecios as $listaPrecio)
+                                                <div>
+                                                    <h3>{{ $listaPrecio->nombre }}</h3>
+                                                    <input type="number"
+                                                        wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
+                                                        value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0 }}">
+                                                    <button
+                                                        wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
+                                                </div>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -177,14 +171,15 @@
                                 @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
-                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                        <td class="g_resaltar">
+                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
                                         <td class="g_resaltar">
                                             @foreach ($listasPrecios as $listaPrecio)
                                                 <div>
                                                     <h3>{{ $listaPrecio->nombre }}</h3>
                                                     <input type="number"
                                                         wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                        value="{{ $precios[$variacion['id']][$listaPrecio->id] ?? 0 }}">
+                                                        value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0 }}">
                                                     <button
                                                         wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Guardar</button>
                                                 </div>
@@ -195,13 +190,13 @@
                             @endif
                         </tbody>
                     </table>
-
                     <button wire:click="guardarPrecioMasivamente">Guardar masivamente</button>
+
                 </div>
             </div>
         @else
             <div class="g_vacio">
-                <p>No hay elementos.</p>
+                <p>No tiene variación.</p>
                 <i class="fa-regular fa-face-grin-wink"></i>
             </div>
         @endif

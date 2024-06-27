@@ -27,27 +27,25 @@ class ProductoListaPrecioEditarLivewire extends Component
 
         $this->listasPrecios = ListaPrecio::all();
 
+        $this->variaciones = $this->producto->variaciones->toArray();
+
         if ($this->producto->variacion_talla && $this->producto->variacion_color) {
             $this->tipo_variacion = "talla-color";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('talla_id')->groupBy('talla_id')->map->values()->toArray();
         } elseif ($this->producto->variacion_talla && !$this->producto->variacion_color) {
             $this->tipo_variacion = "talla";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('talla_id')->groupBy('talla_id')->map->values()->toArray();
         } elseif (!$this->producto->variacion_talla && $this->producto->variacion_color) {
             $this->tipo_variacion = "color";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('color_id')->groupBy('color_id')->map->values()->toArray();
         } else {
             $this->tipo_variacion = "sin-variacion";
-            $this->variaciones = $this->producto->variaciones->toArray();
         }
 
-        foreach ($this->variaciones as $variacionesPorGrupo) {
-            foreach ($variacionesPorGrupo as $variacion) {
-                $precios = collect($variacion['precios']);
-                foreach ($this->listasPrecios as $listaPrecio) {
-                    $precio = $precios->firstWhere('pivot.lista_precio_id', $listaPrecio->id);
-                    $this->precios[$variacion['id']][$listaPrecio->id] = $precio ? $precio['pivot']['precio'] : 0;
-                }
+        //dd($this->variaciones);
+
+        foreach ($this->variaciones as $variacion) {
+            $precios = collect($variacion['precios']);
+            foreach ($this->listasPrecios as $listaPrecio) {
+                $precio = $precios->firstWhere('pivot.lista_precio_id', $listaPrecio->id);
+                $this->precios[$variacion['id']][$listaPrecio->id] = $precio ? $precio['pivot']['precio'] : 0;
             }
         }
     }
