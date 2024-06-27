@@ -91,7 +91,6 @@
     color: #19c678;
 }
 
-
 .tabla_eliminar .boton_eliminar:hover,
 .tabla_eliminar .boton_activo:hover {
     filter: brightness(1.1);
@@ -104,4 +103,51 @@
     background-color: transparent;
     background-image: none;
     padding-right: 0;
+}
+
+/*TABLA PARA PRECIOS*/
+.contenedor_lista_precios {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.contenedor_lista_precios input[type="number"] {
+    width: 100%;
+    min-width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.contenedor_lista_precios input:focus,
+.contenedor_lista_precios input:active {
+    outline: none;
+    box-shadow: none;
+    border-color: #635BFF;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.contenedor_lista_precios button {
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7ff5c0;
+    color: #19c678;
+}
+
+.contenedor_lista_precios button:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 900px) {
+
+    /*TABLA PARA PRECIOS*/
+    .contenedor_lista_precios {
+        flex-direction: column;
+    }
 }
