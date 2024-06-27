@@ -82,10 +82,10 @@
                 </div>
             </div>
 
-            <!--TABLA CONTENIDO-->
-            <div class="tabla_contenido">
+              <!-- TABLA CONTENIDO -->
+              <div class="tabla_contenido">
                 <div class="contenedor_tabla">
-                    <!--TABLA-->
+                    <!-- TABLA -->
                     <table class="tabla">
                         <thead>
                             <tr>
@@ -97,7 +97,6 @@
                                     <th>Talla</th>
                                 @elseif ($tipo_variacion == 'color')
                                     <th>Color</th>
-                                @else
                                 @endif
                                 <th>Stock</th>
                             </tr>
@@ -106,46 +105,34 @@
                             @php $index = 1; @endphp
 
                             @if ($tipo_variacion == 'talla-color')
-                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
-                                    @foreach (collect($variacionesPorTalla) as $variacion)
-                                        <tr>
-                                            <td class="g_inferior"> {{ $index++ }}</td>
-                                            <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
-                                            <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                            <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
-                                        </tr>
-                                    @endforeach
+                                @foreach ($variaciones as $variacion)
+                                    <tr>
+                                        <td class="g_inferior">{{ $index++ }}</td>
+                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
+                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
+                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
+                                    </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'talla')
-                                @foreach ($variaciones as $tallaId => $variacionesPorTalla)
-                                    @php
-                                        $variacionesPorTalla = collect($variacionesPorTalla);
-                                    @endphp
+                                @foreach ($variaciones as $variacion)
                                     <tr>
-                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
-                                        <td class="g_inferior">{{ $variacionesPorTalla->first()['talla']['nombre'] }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $variacionesPorTalla->first()['inventario']['stock'] }}</td>
+                                        <td class="g_inferior">{{ $loop->iteration }}</td>
+                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
+                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'color')
-                                @foreach ($variaciones as $colorId => $variacionesPorColor)
-                                    @php
-                                        $variacionesPorColor = collect($variacionesPorColor);
-                                    @endphp
+                                @foreach ($variaciones as $variacion)
                                     <tr>
-                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
-                                        <td class="g_inferior">{{ $variacionesPorColor->first()['color']['nombre'] }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $variacionesPorColor->first()['inventario']['stock'] }}</td>
+                                        <td class="g_inferior">{{ $loop->iteration }}</td>
+                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
+                                        <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 @foreach ($variaciones as $variacion)
                                     <tr>
-                                        <td class="g_inferior"> {{ $loop->iteration }}</td>
+                                        <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_resaltar">{{ $variacion['inventario']['stock'] }}</td>
                                     </tr>
                                 @endforeach

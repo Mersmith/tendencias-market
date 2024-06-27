@@ -20,19 +20,16 @@ class ProductoInventarioVerLivewire extends Component
         if (!$this->producto) {
             abort(404, 'Producto no encontrado');
         }
+        $this->variaciones = $this->producto->variaciones->toArray();
 
         if ($this->producto->variacion_talla && $this->producto->variacion_color) {
             $this->tipo_variacion = "talla-color";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('talla_id')->groupBy('talla_id')->map->values()->toArray();
         } elseif ($this->producto->variacion_talla && !$this->producto->variacion_color) {
             $this->tipo_variacion = "talla";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('talla_id')->groupBy('talla_id')->map->values()->toArray();
         } elseif (!$this->producto->variacion_talla && $this->producto->variacion_color) {
             $this->tipo_variacion = "color";
-            $this->variaciones = $this->producto->variaciones->whereNotNull('color_id')->groupBy('color_id')->map->values()->toArray();
         } else {
             $this->tipo_variacion = "sin-variacion";
-            $this->variaciones = $this->producto->variaciones->toArray();
         }
     }
 

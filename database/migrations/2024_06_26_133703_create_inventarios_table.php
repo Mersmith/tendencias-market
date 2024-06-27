@@ -15,8 +15,8 @@ return new class extends Migration {
 
             $table->unsignedBigInteger('variacion_id');
 
-            $table->integer('stock');
-            $table->integer('stock_minimo');
+            $table->integer('stock')->default(0);
+            $table->integer('stock_minimo')->default(0);
 
             $table->foreign('variacion_id')->references('id')->on('variacions')->onDelete('cascade');
 

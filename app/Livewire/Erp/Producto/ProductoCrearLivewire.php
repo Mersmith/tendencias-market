@@ -4,6 +4,7 @@ namespace App\Livewire\Erp\Producto;
 
 use App\Http\Requests\ProductoRequest;
 use App\Models\Color;
+use App\Models\Inventario;
 use App\Models\Marca;
 use App\Models\Producto;
 use App\Models\Subcategoria;
@@ -56,6 +57,11 @@ class ProductoCrearLivewire extends Component
             $variacion_nuevo = new Variacion();
             $variacion_nuevo->producto_id = $producto_nuevo->id;
             $variacion_nuevo->save();
+
+            $inventario_nuevo = new Inventario();
+            $inventario_nuevo->variacion_id = $variacion_nuevo->id;
+            $inventario_nuevo->save();
+
         }
 
         $this->dispatch('alertaLivewire', "Creado");
