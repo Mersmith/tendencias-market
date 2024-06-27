@@ -47,9 +47,15 @@ php artisan make:livewire Erp/Producto/ProductoCrearLivewire
 php artisan make:livewire Erp/Producto/ProductoTodasLivewire
 php artisan make:livewire Erp/Producto/ProductoVariacionEditarLivewire
 php artisan make:livewire Erp/Producto/ProductoInventarioVerLivewire
+php artisan make:livewire Erp/Producto/ProductoListaPrecioEditarLivewire
 
 php artisan make:model Variacion -mfsc
 php artisan make:request VariacionRequest
 
 php artisan make:model Inventario -mfsc
 php artisan make:request InventarioRequest
+
+php artisan make:model ListaPrecio -mfsc
+php artisan make:request ListaPrecioRequest
+
+php artisan make:model VariacionListaPrecios -mfsc

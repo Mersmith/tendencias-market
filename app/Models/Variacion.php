@@ -31,4 +31,11 @@ class Variacion extends Model
         return $this->hasOne(Inventario::class, 'variacion_id');
     }
 
+    public function precios()
+    {
+        return $this->belongsToMany(ListaPrecio::class, 'variacion_lista_precios', 'variacion_id', 'lista_precio_id')
+            ->withPivot('precio')
+            ->withTimestamps();
+    }
+
 }

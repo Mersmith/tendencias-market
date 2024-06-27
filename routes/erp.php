@@ -9,6 +9,7 @@ use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
+use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoVariacionEditarLivewire;
 use Illuminate\Support\Facades\Route;
@@ -64,3 +65,4 @@ Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.toda
 Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');
+Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');
