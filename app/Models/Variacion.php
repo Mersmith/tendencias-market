@@ -26,9 +26,9 @@ class Variacion extends Model
         return $this->belongsTo(Producto::class);
     }
 
-    public function inventario()
+    public function inventarios()
     {
-        return $this->hasOne(Inventario::class, 'variacion_id');
+        return $this->hasMany(Inventario::class);
     }
 
     public function precios()

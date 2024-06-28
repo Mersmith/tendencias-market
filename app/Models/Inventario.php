@@ -15,4 +15,9 @@ class Inventario extends Model
     {
         return $this->belongsTo(Variacion::class);
     }
+
+    public function almacen()
+    {
+        return $this->belongsTo(Almacen::class);
+    }
 }

@@ -107,7 +107,6 @@
                                 @elseif ($tipo_variacion == 'color')
                                     <th>Color</th>
                                 @endif
-                                <th>Stock</th>
                                 @foreach ($listasPrecios as $listaPrecio)
                                     <th>{{ $listaPrecio->nombre }}</th>
                                 @endforeach
@@ -127,9 +126,6 @@
                                     @elseif ($tipo_variacion == 'color')
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
                                     @endif
-                                    <td class="g_resaltar">
-                                        {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}
-                                    </td>
                                     @foreach ($listasPrecios as $listaPrecio)
                                         <td>
                                             <div class="contenedor_lista_precios">

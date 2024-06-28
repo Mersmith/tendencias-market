@@ -19,7 +19,7 @@ class ProductoListaPrecioEditarLivewire extends Component
 
     public function mount($id)
     {
-        $this->producto = Producto::with('variaciones.inventario', 'variaciones.talla', 'variaciones.color', 'variaciones.precios')->find($id);
+        $this->producto = Producto::with('variaciones.talla', 'variaciones.color', 'variaciones.precios')->find($id);
 
         if (!$this->producto) {
             abort(404, 'Producto no encontrado');
@@ -38,8 +38,6 @@ class ProductoListaPrecioEditarLivewire extends Component
         } else {
             $this->tipo_variacion = "sin-variacion";
         }
-
-        //dd($this->variaciones);
 
         foreach ($this->variaciones as $variacion) {
             $precios = collect($variacion['precios']);

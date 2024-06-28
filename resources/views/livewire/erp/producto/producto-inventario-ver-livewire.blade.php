@@ -38,6 +38,41 @@
                         <input type="text" id="nombre" name="nombre" value="{{ $producto->nombre }}" disabled>
                     </div>
                 </div>
+
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Almacén</h4>
+
+                    <div class="g_fila">
+                        <div class="g_columna_6">
+                            <div class="g_margin_bottom_20">
+                                <label for="sede_id">Sedes <span class="obligatorio"><i
+                                            class="fa-solid fa-asterisk"></i></span></label>
+                                <select id="sede_id" name="sede_id" wire:model.live="sede_id">
+                                    <option value="null" selected disabled>Seleccione</option>
+                                    @if ($sedes)
+                                        @foreach ($sedes as $sede)
+                                            <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="g_columna_6">
+                            <div>
+                                <label for="almacen_id">Almacén <span class="obligatorio"><i
+                                            class="fa-solid fa-asterisk"></i></span></label>
+                                <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
+                                    <option value="null" selected disabled>Seleccione</option>
+                                    @if ($almacenes)
+                                        @foreach ($almacenes as $almacen)
+                                            <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="g_columna_4">
@@ -121,8 +156,12 @@
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
                                         <td class="g_resaltar">
-                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
-
+                                            @if (isset($variacion['inventarios'][0]))
+                                                {{ $variacion['inventarios'][0]['stock'] ?? 'No tiene stock' }}
+                                            @else
+                                                No tiene stock
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'talla')
@@ -131,7 +170,12 @@
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_resaltar">
-                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                            @if (isset($variacion['inventarios'][0]))
+                                                {{ $variacion['inventarios'][0]['stock'] ?? 'No tiene stock' }}
+                                            @else
+                                                No tiene stock
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             @elseif ($tipo_variacion == 'color')
@@ -140,7 +184,12 @@
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
                                         <td class="g_resaltar">
-                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                            @if (isset($variacion['inventarios'][0]))
+                                                {{ $variacion['inventarios'][0]['stock'] ?? 'No tiene stock' }}
+                                            @else
+                                                No tiene stock
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else
@@ -148,7 +197,12 @@
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
                                         <td class="g_resaltar">
-                                            {{ $variacion['inventario']['stock'] ?? 'No tiene stock' }}</td>
+                                            @if (isset($variacion['inventarios'][0]))
+                                                {{ $variacion['inventarios'][0]['stock'] ?? 'No tiene stock' }}
+                                            @else
+                                                No tiene stock
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

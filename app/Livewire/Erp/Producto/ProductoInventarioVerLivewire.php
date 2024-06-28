@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Erp\Producto;
 
+use App\Models\Almacen;
 use App\Models\Producto;
+use App\Models\Sede;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -13,13 +15,33 @@ class ProductoInventarioVerLivewire extends Component
     public $tipo_variacion;
     public $variaciones = [];
 
+    public $sedes = [], $almacenes = [];
+    public $sede_id = null;
+    public $almacen_id = null;
+
     public function mount($id)
     {
-        $this->producto = Producto::with('variaciones.inventario', 'variaciones.talla', 'variaciones.color')->find($id);
+        $this->sedes = Sede::all();
+
+        $this->loadProductVariations($id);
+    }
+
+    public function loadProductVariations($id)
+    {
+        $id_almacen = $this->almacen_id;
+
+        $this->producto = Producto::with([
+            'variaciones.inventarios' => function ($query) use ($id_almacen) {
+                $query->where('almacen_id', $id_almacen);
+            },
+            'variaciones.talla',
+            'variaciones.color'
+        ])->find($id);
 
         if (!$this->producto) {
             abort(404, 'Producto no encontrado');
         }
+
         $this->variaciones = $this->producto->variaciones->toArray();
 
         if ($this->producto->variacion_talla && $this->producto->variacion_color) {
@@ -31,6 +53,18 @@ class ProductoInventarioVerLivewire extends Component
         } else {
             $this->tipo_variacion = "sin-variacion";
         }
+    }
+
+    public function updatedSedeId($value)
+    {
+        $this->almacenes = Almacen::where('sede_id', $value)->get();
+
+        $this->reset(['almacen_id']);
+    }
+
+    public function updatedAlmacenId($value)
+    {
+        $this->loadProductVariations($this->producto->id);
     }
 
     public function render()
