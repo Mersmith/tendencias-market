@@ -12,7 +12,7 @@ class SubcategoriaController extends Controller
 {
     public function vistaTodas()
     {
-        $subcategorias = Subcategoria::all();
+        $subcategorias = Subcategoria::with('categoria')->orderBy('categoria_id')->get();
         return view('erp.subcategoria.todas', compact('subcategorias'));
     }
 

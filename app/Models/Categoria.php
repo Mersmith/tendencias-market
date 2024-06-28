@@ -13,6 +13,11 @@ class Categoria extends Model
     const ACTIVADO = 1;
     const DESACTIVADO = 2;
 
+    public function subcategorias()
+    {
+        return $this->hasMany(Subcategoria::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

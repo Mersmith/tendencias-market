@@ -1,0 +1,62 @@
+@extends('layouts.erp.layout-erp')
+
+@section('tituloPagina', 'Lista precios')
+
+@section('content')
+    <div>
+        <!--CABECERA TITULO PAGINA-->
+        <div class="g_panel cabecera_titulo_pagina">
+            <!--TITULO-->
+            <h2>Crear lista precio</h2>
+
+            <!--BOTONES-->
+            <div class="cabecera_titulo_botones">
+                <a href="{{ route('erp.lista-precio.vista.todas') }}" class="g_boton g_boton_light">
+                    Inicio <i class="fa-solid fa-house"></i></a>
+
+                <a href="{{ route('erp.lista-precio.vista.todas') }}" class="g_boton g_boton_darkt">
+                    <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+            </div>
+        </div>
+
+        <form action="{{ route('erp.lista-precio.crear') }}" method="POST" class="formulario">
+            @csrf
+            <div class="g_fila">
+                <div class="g_columna_8">
+                    <div class="g_panel">
+                        <h4 class="g_panel_titulo">General</h4>
+                        @csrf
+                        <div class="g_margin_bottom_20">
+                            <label for="nombre">Nombre <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
+                            <p class="leyenda">La lista precio debe tener un nombre único.</p>
+                            @error('nombre')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g_columna_4">
+                    <div class="g_panel">
+                        <h4 class="g_panel_titulo">Activo</h4>
+                        <select id="activo" name="activo">
+                            <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
+                            <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>
+                        </select>
+                        @error('activo')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="formulario_botones">
+                    <button type="submit" class="guardar">Guardar</button>
+
+                    <a href="{{ route('erp.lista-precio.vista.todas') }}" class="cancelar">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+@endsection

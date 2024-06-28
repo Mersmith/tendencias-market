@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\Erp\ErpInicioController;
 use App\Http\Controllers\Erp\MarcaController;
+use App\Http\Controllers\ListaPrecioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
@@ -15,6 +18,24 @@ use App\Livewire\Erp\Producto\ProductoVariacionEditarLivewire;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', ErpInicioController::class)->name('inicio');
+
+Route::controller(SedeController::class)->group(function () {
+    Route::get('sede', 'vistaTodas')->name('sede.vista.todas');
+    Route::get('sede/crear', 'vistaCrear')->name('sede.vista.crear');
+    Route::post('sede/crear', 'crear')->name('sede.crear');
+    Route::get('sede/editar/{id}', 'vistaEditar')->name('sede.vista.editar');
+    Route::put('sede/editar/{id}', 'editar')->name('sede.editar');
+    Route::delete('sede/eliminar/{id}', 'eliminar')->name('sede.eliminar');
+});
+
+Route::controller(AlmacenController::class)->group(function () {
+    Route::get('almacen', 'vistaTodas')->name('almacen.vista.todas');
+    Route::get('almacen/crear', 'vistaCrear')->name('almacen.vista.crear');
+    Route::post('almacen/crear', 'crear')->name('almacen.crear');
+    Route::get('almacen/editar/{id}', 'vistaEditar')->name('almacen.vista.editar');
+    Route::put('almacen/editar/{id}', 'editar')->name('almacen.editar');
+    Route::delete('almacen/eliminar/{id}', 'eliminar')->name('almacen.eliminar');
+});
 
 Route::controller(MarcaController::class)->group(function () {
     Route::get('marca', 'vistaTodas')->name('marca.vista.todas');
@@ -66,3 +87,12 @@ Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vist
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');
 Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');
+
+Route::controller(ListaPrecioController::class)->group(function () {
+    Route::get('lista-precio', 'vistaTodas')->name('lista-precio.vista.todas');
+    Route::get('lista-precio/crear', 'vistaCrear')->name('lista-precio.vista.crear');
+    Route::post('lista-precio/crear', 'crear')->name('lista-precio.crear');
+    Route::get('lista-precio/editar/{id}', 'vistaEditar')->name('lista-precio.vista.editar');
+    Route::put('lista-precio/editar/{id}', 'editar')->name('lista-precio.editar');
+    Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');
+});

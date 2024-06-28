@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ListaPrecioRequest extends FormRequest
+class SedeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,14 @@ class ListaPrecioRequest extends FormRequest
 
         if ($id) {
             return [
-                'nombre' => 'required|min:3|max:255|unique:lista_precios,nombre,' . $id,
+                'nombre' => 'required|min:3|max:255|unique:sedes,nombre,' . $id,
+                'direccion' => 'required|min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         } else {
             return [
-                'nombre' => 'required|min:3|max:255|unique:lista_precios',
+                'nombre' => 'required|min:3|max:255|unique:sedes',
+                'direccion' => 'required|min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         }
@@ -40,6 +42,7 @@ class ListaPrecioRequest extends FormRequest
     {
         return [
             'nombre' => 'nombre',
+            'direccion' => 'direccion',
             'activo' => 'activo',
         ];
     }
@@ -51,6 +54,10 @@ class ListaPrecioRequest extends FormRequest
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',
             'nombre.unique' => 'Este :attribute ya existe',
+
+            'direccion.required' => 'No debe ser vacio.',
+            'direccion.min' => 'Más de :min dígitos.',
+            'direccion.max' => 'Menos de :max dígitos',
 
             'activo.required' => 'No debe ser vacio.',
             'activo.numeric' => 'Debe ser un número.',

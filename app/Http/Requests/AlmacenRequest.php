@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ListaPrecioRequest extends FormRequest
+class AlmacenRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,16 @@ class ListaPrecioRequest extends FormRequest
 
         if ($id) {
             return [
-                'nombre' => 'required|min:3|max:255|unique:lista_precios,nombre,' . $id,
+                'sede_id' => 'required',
+                'nombre' => 'required|min:3|max:255|unique:almacens,nombre,' . $id,
+                'ubicacion' => 'required|min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         } else {
             return [
-                'nombre' => 'required|min:3|max:255|unique:lista_precios',
+                'sede_id' => 'required',
+                'nombre' => 'required|min:3|max:255|unique:almacens',
+                'ubicacion' => 'required|min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         }
@@ -39,7 +43,9 @@ class ListaPrecioRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'sede_id' => 'categoria',
             'nombre' => 'nombre',
+            'ubicacion' => 'ubicación',
             'activo' => 'activo',
         ];
     }
@@ -47,10 +53,16 @@ class ListaPrecioRequest extends FormRequest
     public function messages()
     {
         return [
+            'sede_id' => 'Debe seleccionar.',
+
             'nombre.required' => 'No debe ser vacio.',
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',
             'nombre.unique' => 'Este :attribute ya existe',
+
+            'ubicacion.required' => 'No debe ser vacio.',
+            'ubicacion.min' => 'Más de :min dígitos.',
+            'ubicacion.max' => 'Menos de :max dígitos',
 
             'activo.required' => 'No debe ser vacio.',
             'activo.numeric' => 'Debe ser un número.',

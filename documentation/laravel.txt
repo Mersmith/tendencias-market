@@ -61,4 +61,7 @@ php artisan make:request ListaPrecioRequest
 php artisan make:model VariacionListaPrecios -mfsc
 
 php artisan make:model Sede -mfsc
+php artisan make:request SedeRequest
+
 php artisan make:model Almacen -mfsc
+php artisan make:request AlmacenRequest

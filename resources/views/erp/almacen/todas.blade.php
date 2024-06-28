@@ -1,20 +1,20 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Subcategorias')
+@section('tituloPagina', 'Almacenes')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Subcategorias <span>Total: {{ $subcategorias->count() }}</span></h2>
+            <h2>Almacenes <span>Total: {{ $almacenes->count() }}</span></h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
-                <a href="{{ route('erp.subcategoria.vista.todas') }}" class="g_boton g_boton_light">
+                <a href="{{ route('erp.almacen.vista.todas') }}" class="g_boton g_boton_light">
                     Inicio <i class="fa-solid fa-house"></i></a>
 
-                <a href="{{ route('erp.subcategoria.vista.crear') }}" class="g_boton g_boton_primary">
+                <a href="{{ route('erp.almacen.vista.crear') }}" class="g_boton g_boton_primary">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
         <div class="g_panel">
             <!--TABLA-->
-            @if ($subcategorias->count())
+            @if ($almacenes->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
                     <!--TABLA CABECERA BOTONES-->
@@ -54,15 +54,11 @@
                                 <tr>
                                     <th>
                                         Nº</th>
-                                    <th>Categoria</th>
+                                    <th>Sede</th>
                                     <th>
-                                        Subcategoria</th>
+                                        Almacén</th>
                                     <th>
-                                        Slug</th>
-                                    <th>
-                                        Descripción</th>
-                                    <th>
-                                        Icono</th>
+                                        Ubicación</th>
                                     <th>
                                         Activo</th>
                                     <th>
@@ -70,23 +66,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($subcategorias as $item)
+                                @foreach ($almacenes as $item)
                                     <tr>
                                         <td class="g_resaltar">
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ $item->categoria->nombre }}</td>
+                                        <td>{{ $item->sede->nombre }}</td>
                                         <td class="g_resaltar">
                                             {{ $item->nombre }}
                                         </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->slug }}
-                                        </td>
                                         <td class="g_inferior g_resumir">
-                                            {{ $item->descripcion }}
-                                        </td>
-                                        <td>
-                                            {!! $item->icono !!}
+                                            {{ $item->ubicacion }}
                                         </td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
@@ -98,7 +88,7 @@
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
-                                            <a href="{{ route('erp.subcategoria.vista.editar', $item->id) }}"
+                                            <a href="{{ route('erp.almacen.vista.editar', $item->id) }}"
                                                 class="g_accion_editar">
                                                 <span><i class="fa-solid fa-pencil"></i></span>
                                             </a>

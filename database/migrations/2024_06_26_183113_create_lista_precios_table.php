@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('nombre')->unique();
-            $table->enum('activo', [ListaPrecio::ACTIVADO, ListaPrecio::DESACTIVADO])->default(ListaPrecio::DESACTIVADO);
+            $table->boolean('activo')->default(true)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

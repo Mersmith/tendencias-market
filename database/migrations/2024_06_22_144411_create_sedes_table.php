@@ -15,6 +15,7 @@ return new class extends Migration {
 
             $table->string('nombre');
             $table->string('direccion')->nullable();
+            $table->boolean('activo')->default(true)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });
