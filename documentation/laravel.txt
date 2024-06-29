@@ -68,3 +68,11 @@ php artisan make:request AlmacenRequest
 
 php artisan make:livewire Erp/Inventario/InventarioTodasLivewire
 php artisan make:livewire Erp/ListaPrecio/VariacionListaPrecioTodasLivewire
+
+php artisan make:model GuiaEntradaDirecto -mfsc
+php artisan make:request GuiaEntradaDirectoRequest
+
+php artisan make:model GuiaEntradaDirectoDetalle -mfsc
+php artisan make:request GuiaEntradaDirectoDetalleRequest
+
+php artisan make:livewire Erp/GuiaEntradaDirecto/GuiaEntradaDirectoCrearLivewire
