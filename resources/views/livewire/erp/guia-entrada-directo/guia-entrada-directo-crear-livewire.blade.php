@@ -8,6 +8,137 @@
         <h2>Crear guia de entrada directo</h2>
     </div>
 
+    <div class="formulario">
+        <div class="g_fila">
+            <div class="g_columna_8">
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">General</h4>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Descripción <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="descripcion" name="descripcion" wire:model="descripcion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('descripcion')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="observacion">Observación <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="observacion" name="observacion" wire:model="observacion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('observacion')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="fecha_entrada">Fecha entrada <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="date" id="fecha_entrada" name="fecha_entrada" wire:model.live="fecha_entrada">
+                        @error('fecha_entrada')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Detalle</h4>
+                    <div class="tabla_contenido">
+                        <div class="contenedor_tabla">
+                            <table class="tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Nº</th>
+                                        <th>Producto</th>
+                                        <th>Color</th>
+                                        <th>Talla</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($detalles as $index => $detalle)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $detalle['producto_nombre'] }}</td>
+                                            <td>{{ $detalle['color_nombre'] }}</td>
+                                            <td>{{ $detalle['talla_nombre'] }}</td>
+                                            <td>
+                                                <button wire:click="quitar({{ $index }})">Quitar</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @error('detalles')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="g_columna_4">
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Estado</h4>
+
+                    <select id="estado" name="estado" wire:model="estado">
+                        <option value="null" disabled>Seleccione</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Rechazado">Rechazado</option>
+                        <option value="Observado">Observado</option>
+                        <option value="Eliminado">Eliminado</option>
+                    </select>
+                    @error('estado')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Detalle</h4>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="sede_id">Sedes <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="sede_id" name="sede_id" wire:model.live="sede_id">
+                            <option value="null" selected disabled>Seleccione</option>
+                            @foreach ($sedes as $sede)
+                                <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('sede_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="almacen_id">Almacén <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
+                            <option value="null" selected disabled>Seleccione</option>
+                            @foreach ($almacenes as $almacen)
+                                <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('almacen_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <div class="formulario_botones">
+                <button wire:click="guardar" class="guardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- CONTENEDOR PÁGINA ADMINISTRADOR -->
     <div class="g_panel">
         <!-- TABLA -->

@@ -14,7 +14,7 @@ class GuiaEntradaDirecto extends Model
     const ESTADO_OBSERVADO = 3;
     const ESTADO_ELIMINADO = 0;
 
-    protected $table = 'guia_entrada_directo';
+    protected $table = 'guia_entrada_directos';
 
     protected $fillable = [
         'sede_id',
