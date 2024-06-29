@@ -16,4 +16,14 @@ class VariacionListaPrecios extends Model
         'lista_precio_id',
         'precio',
     ];
+
+    public function listaPrecio()
+    {
+        return $this->belongsTo(ListaPrecio::class);
+    }
+
+    public function variacion()
+    {
+        return $this->belongsTo(Variacion::class);
+    }
 }

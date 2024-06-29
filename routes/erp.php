@@ -11,6 +11,7 @@ use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
+use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
@@ -99,3 +100,5 @@ Route::controller(ListaPrecioController::class)->group(function () {
 });
 
 Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');
+
+Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');

@@ -67,3 +67,4 @@ php artisan make:model Almacen -mfsc
 php artisan make:request AlmacenRequest
 
 php artisan make:livewire Erp/Inventario/InventarioTodasLivewire
+php artisan make:livewire Erp/ListaPrecio/VariacionListaPrecioTodasLivewire
