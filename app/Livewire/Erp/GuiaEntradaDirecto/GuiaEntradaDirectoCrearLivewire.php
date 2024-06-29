@@ -53,6 +53,8 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'sede_id' => 'required',
             'almacen_id' => 'required',
             'detalles' => 'required|array|min:1',
+            'detalles.*.stock' => 'required|integer|min:1',
+            'detalles.*.stock_minimo' => 'required|integer|min:1',
         ]);
 
         $guiaEntradaDirecto = GuiaEntradaDirecto::create([
@@ -68,8 +70,8 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             GuiaEntradaDirectoDetalle::create([
                 'guia_entrada_directo_id' => $guiaEntradaDirecto->id,
                 'variacion_id' => $detalle['variacion_id'],
-                'stock' => 0,
-                'stock_minimo' => 0,
+                'stock' => $detalle['stock'],
+                'stock_minimo' => $detalle['stock_minimo'],
             ]);
         }
 
@@ -120,6 +122,8 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'producto_nombre' => $variacion->producto->nombre ?? '-',
             'color_nombre' => $variacion->color->nombre ?? '-',
             'talla_nombre' => $variacion->talla->nombre ?? '-',
+            'stock' => 0,
+            'stock_minimo' => 0,
         ];
     }
 

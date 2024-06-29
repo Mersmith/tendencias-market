@@ -55,6 +55,8 @@
                                         <th>Producto</th>
                                         <th>Color</th>
                                         <th>Talla</th>
+                                        <th>Stock</th>
+                                        <th>Stock mínimo</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -65,6 +67,18 @@
                                             <td>{{ $detalle['producto_nombre'] }}</td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
+                                            <td>
+                                                <input type="number" min="1" 
+                                                       x-data 
+                                                       @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                       wire:model="detalles.{{ $index }}.stock">
+                                            </td>
+                                            <td>
+                                                <input type="number" min="1" 
+                                                       x-data 
+                                                       @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                       wire:model="detalles.{{ $index }}.stock_minimo">
+                                            </td>
                                             <td>
                                                 <button wire:click="quitar({{ $index }})">Quitar</button>
                                             </td>
@@ -181,7 +195,8 @@
                         </thead>
                         <tbody>
                             @foreach ($variaciones as $variacion)
-                                <tr wire:click="seleccionarIdVariacion({{ $variacion->id }})" style="cursor: pointer;">
+                                <tr wire:click="seleccionarIdVariacion({{ $variacion->id }})"
+                                    style="cursor: pointer;">
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $variacion->producto->nombre ?? '-' }}</td>
                                     <td class="g_resaltar">{{ $variacion->color->nombre ?? '-' }}</td>
