@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
+use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
@@ -96,3 +97,5 @@ Route::controller(ListaPrecioController::class)->group(function () {
     Route::put('lista-precio/editar/{id}', 'editar')->name('lista-precio.editar');
     Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');
 });
+
+Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');
