@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->text('observacion')->nullable();
             $table->text('descripcion')->nullable();
             $table->date('fecha_entrada');
+            $table->boolean('completado')->default(false);
 
             $table->timestamps();
         });

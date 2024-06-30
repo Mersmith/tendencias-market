@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Almacen;
+use App\Models\Sede;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,13 @@ class GuiaEntradaDirectoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'sede_id' => Sede::inRandomOrder()->first()->id,
+            'almacen_id' => Almacen::inRandomOrder()->first()->id,
+            //'estado' => $this->faker->randomElement(['Aprobado', 'Rechazado', 'Observado', 'Eliminado']),
+            'estado' => 'Aprobado',
+            'observacion' => $this->faker->sentence,
+            'descripcion' => $this->faker->sentence,
+            'fecha_entrada' => $this->faker->date,
         ];
     }
 }

@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
-        $this->call(SubcategoriaSeeder::class);     
+        $this->call(SubcategoriaSeeder::class);
         $this->call(ProductoSeeder::class);
         $this->call(VariacionSeeder::class);
-        $this->call(InventarioSeeder::class);
-        $this->call(ListaPrecioSeeder::class);
-        $this->call(VariacionListaPreciosSeeder::class);
+        //$this->call(InventarioSeeder::class);//Ahora se agrega stock con GuiaEntradaDirectoSeeder
+        //$this->call(ListaPrecioSeeder::class);
+        //$this->call(VariacionListaPreciosSeeder::class);
+        $this->call(GuiaEntradaDirectoSeeder::class);
     }
 }
