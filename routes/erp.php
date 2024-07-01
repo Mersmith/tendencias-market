@@ -8,6 +8,7 @@ use App\Http\Controllers\Erp\MarcaController;
 use App\Http\Controllers\ListaPrecioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SedeController;
+use App\Http\Controllers\SerieController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Http\Controllers\TipoDocumentoController;
@@ -118,4 +119,13 @@ Route::controller(TipoDocumentoController::class)->group(function () {
     Route::get('tipo-documento/editar/{id}', 'vistaEditar')->name('tipo-documento.vista.editar');
     Route::put('tipo-documento/editar/{id}', 'editar')->name('tipo-documento.editar');
     Route::delete('tipo-documento/eliminar/{id}', 'eliminar')->name('tipo-documento.eliminar');
+});
+
+Route::controller(SerieController::class)->group(function () {
+    Route::get('serie', 'vistaTodas')->name('serie.vista.todas');
+    Route::get('serie/crear', 'vistaCrear')->name('serie.vista.crear');
+    Route::post('serie/crear', 'crear')->name('serie.crear');
+    Route::get('serie/editar/{id}', 'vistaEditar')->name('serie.vista.editar');
+    Route::put('serie/editar/{id}', 'editar')->name('serie.editar');
+    Route::delete('serie/eliminar/{id}', 'eliminar')->name('serie.eliminar');
 });

@@ -84,3 +84,4 @@ php artisan make:model TipoDocumento -mfsc
 php artisan make:request TipoDocumentoRequest
 
 php artisan make:model Serie -mfsc
+php artisan make:request SerieRequest
