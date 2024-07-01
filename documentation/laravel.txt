@@ -79,3 +79,8 @@ php artisan make:livewire Erp/GuiaEntradaDirecto/GuiaEntradaDirectoCrearLivewire
 php artisan make:livewire Erp/GuiaEntradaDirecto/GuiaEntradaDirectoTodasLivewire
 
 php artisan make:livewire Erp/GuiaEntradaDirectoDetalle/GuiaEntradaDirectoDetalleVerLivewire
+
+php artisan make:model TipoDocumento -mfsc
+php artisan make:request TipoDocumentoRequest
+
+php artisan make:model Serie -mfsc

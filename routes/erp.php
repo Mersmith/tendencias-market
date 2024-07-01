@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
+use App\Http\Controllers\TipoDocumentoController;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivewire;
@@ -109,3 +110,12 @@ Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)-
 Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');
 Route::get('/guia-entrada-directo/{id}/detalle', GuiaEntradaDirectoDetalleVerLivewire::class)->name('guia-entrada-directo-detalle.vista.ver');
+
+Route::controller(TipoDocumentoController::class)->group(function () {
+    Route::get('tipo-documento', 'vistaTodas')->name('tipo-documento.vista.todas');
+    Route::get('tipo-documento/crear', 'vistaCrear')->name('tipo-documento.vista.crear');
+    Route::post('tipo-documento/crear', 'crear')->name('tipo-documento.crear');
+    Route::get('tipo-documento/editar/{id}', 'vistaEditar')->name('tipo-documento.vista.editar');
+    Route::put('tipo-documento/editar/{id}', 'editar')->name('tipo-documento.editar');
+    Route::delete('tipo-documento/eliminar/{id}', 'eliminar')->name('tipo-documento.eliminar');
+});
