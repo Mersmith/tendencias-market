@@ -11,6 +11,8 @@ use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\TallaController;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
+use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
+use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivewire;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
@@ -104,4 +106,6 @@ Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vist
 
 Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');
 
+Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');
+Route::get('/guia-entrada-directo/{id}/detalle', GuiaEntradaDirectoDetalleVerLivewire::class)->name('guia-entrada-directo-detalle.vista.ver');
