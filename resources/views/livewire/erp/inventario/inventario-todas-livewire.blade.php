@@ -54,28 +54,27 @@
     <div class="g_panel">
         <!--TABLA-->
         @if ($inventario->count())
-            <!--TABLA CABECERA-->
             <div class="tabla_cabecera">
-                <!--TABLA CABECERA BOTONES-->
+                <!-- TABLA CABECERA BOTONES -->
                 <div class="tabla_cabecera_botones">
                     <button>PDF <i class="fa-solid fa-file-pdf"></i></button>
                     <button>EXCEL <i class="fa-regular fa-file-excel"></i></button>
                 </div>
 
-                <!--TABLA CABECERA BUSCAR-->
+                <!-- TABLA CABECERA BUSCAR -->
                 <div class="tabla_cabecera_buscar">
                     <form action="">
-                        <input type="text" wire:model.live.debounce.1300ms="buscarProducto" id="buscarProducto"
+                        <input type="text" wire:model.debounce.1300ms="buscarProducto" id="buscarProducto"
                             name="buscarProducto" placeholder="Buscar...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                 </div>
             </div>
 
-            <!--TABLA CONTENIDO-->
+            <!-- TABLA CONTENIDO -->
             <div class="tabla_contenido">
                 <div class="contenedor_tabla">
-                    <!--TABLA-->
+                    <!-- TABLA -->
                     <table class="tabla">
                         <thead>
                             <tr>
@@ -113,7 +112,8 @@
 
             @if ($inventario->hasPages())
                 <div>
-                    {{ $inventario->links('pagination::tailwind') }}
+                    {{ $inventario->links() }}
+                    <!-- Aquí se usa el helper de Livewire para mostrar los enlaces de paginación -->
                 </div>
             @endif
         @else

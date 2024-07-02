@@ -16,9 +16,8 @@ class InventarioTodasLivewire extends Component
     use WithPagination;
 
     public $buscarProducto;
-    protected $paginate = 20;
-
-    public $sedes = [], $almacenes = [];
+    public $sedes = [];
+    public $almacenes = [];
     public $sede_id = null;
     public $almacen_id = null;
 
@@ -35,7 +34,6 @@ class InventarioTodasLivewire extends Component
     public function updatedSedeId($value)
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
-
         $this->reset(['almacen_id']);
     }
 
@@ -55,12 +53,7 @@ class InventarioTodasLivewire extends Component
             });
         }
 
-        //$inventario = $inventarioQuery->paginate(20);
-        $inventario = $inventarioQuery
-            ->join('variacions', 'inventarios.variacion_id', '=', 'variacions.id')
-            ->orderBy('variacions.producto_id')
-            ->select('inventarios.*')
-            ->paginate(20);
+        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(5); // Ajusta el número de elementos por página según sea necesario
 
         return view('livewire.erp.inventario.inventario-todas-livewire', [
             'inventario' => $inventario,
