@@ -16,14 +16,7 @@ class GuiaEntradaDirecto extends Model
 
     protected $table = 'guia_entrada_directos';
 
-    protected $fillable = [
-        'sede_id',
-        'almacen_id',
-        'estado',
-        'observacion',
-        'descripcion',
-        'fecha_entrada',
-    ];
+    protected $guarded = ['id', 'created_at', 'update_at'];
 
     public function almacen()
     {

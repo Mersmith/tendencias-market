@@ -8,10 +8,12 @@ use App\Models\GuiaEntradaDirectoDetalle;
 use App\Models\Inventario;
 use App\Models\ListaPrecio;
 use App\Models\Sede;
+use App\Models\Serie;
 use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
+use DB;
 
 #[Layout('layouts.erp.layout-erp')]
 class GuiaEntradaDirectoCrearLivewire extends Component
@@ -25,7 +27,7 @@ class GuiaEntradaDirectoCrearLivewire extends Component
 
     public $variacion_id = null;
     public $inventarios = [];
-    public $sedes = [], $almacenes = [];
+    public $sedes = [], $almacenes = [], $series = [];
 
     public $detalles = [];
 
@@ -36,6 +38,7 @@ class GuiaEntradaDirectoCrearLivewire extends Component
 
     public $sede_id = null;
     public $almacen_id = null;
+    public $serie_id = null;
 
     public function mount()
     {
@@ -52,28 +55,59 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'estado' => 'required|in:Aprobado,Rechazado,Observado,Eliminado',
             'sede_id' => 'required',
             'almacen_id' => 'required',
+            'serie_id' => 'required',
             'detalles' => 'required|array|min:1',
             'detalles.*.stock' => 'required|integer|min:1',
             'detalles.*.stock_minimo' => 'required|integer|min:1',
         ]);
 
-        $guiaEntradaDirecto = GuiaEntradaDirecto::create([
-            'descripcion' => $this->descripcion,
-            'observacion' => $this->observacion,
-            'fecha_entrada' => $this->fecha_entrada,
-            'estado' => $this->estado,
-            'sede_id' => $this->sede_id,
-            'almacen_id' => $this->almacen_id,
-        ]);
+        DB::transaction(function () {
+            // Bloquear la fila de la serie seleccionada para evitar problemas de concurrencia
+            $serie = Serie::where('id', $this->serie_id)->lockForUpdate()->first();
 
-        foreach ($this->detalles as $detalle) {
-            GuiaEntradaDirectoDetalle::create([
-                'guia_entrada_directo_id' => $guiaEntradaDirecto->id,
-                'variacion_id' => $detalle['variacion_id'],
-                'stock' => $detalle['stock'],
-                'stock_minimo' => $detalle['stock_minimo'],
+            // Aumentar el correlativo
+            $correlativoActualizado = $serie->correlativo + 1;
+            $serie->update(['correlativo' => $correlativoActualizado]);
+
+            // Crear la guia de entrada directo con el nuevo correlativo
+            $guiaEntradaDirecto = GuiaEntradaDirecto::create([
+                'almacen_id' => $this->almacen_id,
+                'sede_id' => $this->sede_id,
+                'estado' => $this->estado,
+                'observacion' => $this->observacion,
+                'descripcion' => $this->descripcion,
+                'fecha_entrada' => $this->fecha_entrada,
+                'serie' => $serie->nombre,
+                'correlativo' => $correlativoActualizado,
             ]);
-        }
+
+            foreach ($this->detalles as $detalle) {
+                GuiaEntradaDirectoDetalle::create([
+                    'guia_entrada_directo_id' => $guiaEntradaDirecto->id,
+                    'variacion_id' => $detalle['variacion_id'],
+                    'stock' => $detalle['stock'],
+                    'stock_minimo' => $detalle['stock_minimo'],
+                ]);
+            }
+
+            if ($this->estado == 'Aprobado') {
+                foreach ($this->detalles as $detalle) {
+                    $inventario = Inventario::updateOrCreate(
+                        [
+                            'almacen_id' => $this->almacen_id,
+                            'variacion_id' => $detalle['variacion_id'],
+                        ],
+                        [
+                            'stock' => DB::raw('stock + ' . $detalle['stock']),
+                            'stock_minimo' => DB::raw('stock_minimo + ' . $detalle['stock_minimo']),
+                        ]
+                    );
+                }
+
+                // Marcar la guía como completada
+                $guiaEntradaDirecto->update(['completado' => true]);
+            }
+        });
 
         $this->reset([
             'descripcion',
@@ -82,6 +116,7 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'estado',
             'sede_id',
             'almacen_id',
+            'serie_id',
             'detalles',
             'inventarios'
         ]);
@@ -92,14 +127,17 @@ class GuiaEntradaDirectoCrearLivewire extends Component
     public function updatedSedeId($value)
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
+        $this->series = Serie::where('sede_id', $value)
+            ->where('tipo_documento_id', 3)
+            ->get();
 
-        $this->reset(['almacen_id']);
+        $this->reset(['almacen_id', 'serie_id']);
     }
 
-    public function updatedAlmacenId($value)
+    /*public function updatedAlmacenId($value)
     {
         $this->almacen_id = $value;
-    }
+    }*/
 
     public function updatingBuscarProducto()
     {

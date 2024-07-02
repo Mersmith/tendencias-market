@@ -68,16 +68,14 @@
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
                                             <td>
-                                                <input type="number" min="1" 
-                                                       x-data 
-                                                       @input="if ($event.target.value < 1) $event.target.value = 1"
-                                                       wire:model="detalles.{{ $index }}.stock">
+                                                <input type="number" min="1" x-data
+                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                    wire:model="detalles.{{ $index }}.stock">
                                             </td>
                                             <td>
-                                                <input type="number" min="1" 
-                                                       x-data 
-                                                       @input="if ($event.target.value < 1) $event.target.value = 1"
-                                                       wire:model="detalles.{{ $index }}.stock_minimo">
+                                                <input type="number" min="1" x-data
+                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                    wire:model="detalles.{{ $index }}.stock_minimo">
                                             </td>
                                             <td>
                                                 <button wire:click="quitar({{ $index }})">Quitar</button>
@@ -128,7 +126,7 @@
                         @enderror
                     </div>
 
-                    <div>
+                    <div class="g_margin_bottom_20">
                         <label for="almacen_id">Almacén <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
                         <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
@@ -138,6 +136,20 @@
                             @endforeach
                         </select>
                         @error('almacen_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="serie_id">Serie <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="serie_id" name="serie_id" wire:model.live="serie_id">
+                            <option value="null" selected disabled>Seleccione</option>
+                            @foreach ($series as $serie)
+                                <option value="{{ $serie->id }}">{{ $serie->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('serie_id')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
