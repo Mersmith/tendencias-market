@@ -14,13 +14,6 @@ class SedeSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
-        foreach (range(1, 3) as $index) {
-            Sede::create([
-                'nombre' => $faker->company,
-                'direccion' => $faker->address,
-            ]);
-        }
+        Sede::factory(10)->create();
     }
 }

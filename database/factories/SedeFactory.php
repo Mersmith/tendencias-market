@@ -17,7 +17,9 @@ class SedeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => $this->faker->company,
+            'direccion' => $this->faker->address,
+            'activo' => true,
         ];
     }
 }

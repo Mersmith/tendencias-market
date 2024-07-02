@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\GuiaEntradaDirecto;
 use App\Models\GuiaEntradaDirectoDetalle;
 use App\Models\Inventario;
+use App\Models\Serie;
 use App\Models\Variacion;
 use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -46,10 +47,21 @@ class GuiaEntradaDirectoSeeder extends Seeder
                 }
             }
 
-            // Actualizar el estado de completado en la guía de entrada directo
             if ($guiaEntradaDirecto->estado == 'Aprobado') {
-                $guiaEntradaDirecto->completado = true;
-                $guiaEntradaDirecto->save();
+                // Obtener la serie con id 3
+                $serie = Serie::find(3);
+
+                // Aumentar el correlativo
+                $correlativoActualizado = $serie->correlativo + 1;
+                $serie->update(['correlativo' => $correlativoActualizado]);
+
+                // Asignar serie y correlativo a la guia_entrada_directo
+                $guiaEntradaDirecto->update([
+                    'serie' => $serie->nombre,
+                    'correlativo' => $correlativoActualizado,
+                    'completado' => true,
+                ]);
+
             }
         });
     }
