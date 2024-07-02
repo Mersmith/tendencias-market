@@ -85,3 +85,9 @@ php artisan make:request TipoDocumentoRequest
 
 php artisan make:model Serie -mfsc
 php artisan make:request SerieRequest
+
+php artisan make:model TransferenciaAlmacen -mfsc
+php artisan make:request TransferenciaAlmacenRequest
+
+php artisan make:model TransferenciaAlmacenDetalle -mfsc
+php artisan make:request TransferenciaAlmacenDetalleRequest
