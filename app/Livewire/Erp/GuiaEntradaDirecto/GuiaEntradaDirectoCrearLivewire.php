@@ -6,7 +6,6 @@ use App\Models\Almacen;
 use App\Models\GuiaEntradaDirecto;
 use App\Models\GuiaEntradaDirectoDetalle;
 use App\Models\Inventario;
-use App\Models\ListaPrecio;
 use App\Models\Sede;
 use App\Models\Serie;
 use App\Models\Variacion;
@@ -22,8 +21,6 @@ class GuiaEntradaDirectoCrearLivewire extends Component
 
     public $buscarProducto;
     protected $paginate = 20;
-
-    public $listasPrecios;
 
     public $variacion_id = null;
     public $inventarios = [];
@@ -42,7 +39,6 @@ class GuiaEntradaDirectoCrearLivewire extends Component
 
     public function mount()
     {
-        $this->listasPrecios = ListaPrecio::all();
         $this->sedes = Sede::where('activo', true)->get();
     }
 
