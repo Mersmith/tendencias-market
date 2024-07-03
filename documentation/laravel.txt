@@ -93,3 +93,6 @@ php artisan make:model TransferenciaAlmacenDetalle -mfsc
 php artisan make:request TransferenciaAlmacenDetalleRequest
 
 php artisan make:livewire Erp/TransferenciaAlmacen/TransferenciaAlmacenCrearLivewire
+php artisan make:livewire Erp/TransferenciaAlmacen/TransferenciaAlmacenTodasLivewire
+
+php artisan make:livewire Erp/TransferenciaAlmacenDetalle/TransferenciaAlmacenDetalleVerLivewire

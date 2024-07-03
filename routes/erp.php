@@ -23,6 +23,8 @@ use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoVariacionEditarLivewire;
 use App\Livewire\Erp\TransferenciaAlmacen\TransferenciaAlmacenCrearLivewire;
+use App\Livewire\Erp\TransferenciaAlmacen\TransferenciaAlmacenTodasLivewire;
+use App\Livewire\Erp\TransferenciaAlmacenDetalle\TransferenciaAlmacenDetalleVerLivewire;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', ErpInicioController::class)->name('inicio');
@@ -131,4 +133,6 @@ Route::controller(SerieController::class)->group(function () {
     Route::delete('serie/eliminar/{id}', 'eliminar')->name('serie.eliminar');
 });
 
+Route::get('/transferencia-almacen', TransferenciaAlmacenTodasLivewire::class)->name('transferencia-almacen.vista.todas');
 Route::get('/transferencia-almacen/crear', TransferenciaAlmacenCrearLivewire::class)->name('transferencia-almacen.vista.crear');
+Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVerLivewire::class)->name('transferencia-almacen-detalle.vista.ver');
