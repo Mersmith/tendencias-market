@@ -6,6 +6,7 @@ use App\Models\Almacen;
 use App\Models\Inventario;
 use App\Models\Sede;
 use App\Models\Serie;
+use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
@@ -23,11 +24,48 @@ class TransferenciaAlmacenCrearLivewire extends Component
     public $sedes_destino = [], $almacenes_destino = [], $series_destino = [];
     public $sede_destino_id = null, $almacen_destino_id = null, $serie_destino_id = null;
 
+    public $variacion_id = null;
+    public $detalles = [];
+
     public function mount()
     {
         $sedes = Sede::where('activo', true)->get();
         $this->sedes_origen = $sedes;
         $this->sedes_destino = $sedes;
+    }
+
+    public function agregarVariacionDetalle($id)
+    {
+        $existingIndex = $this->findVariacionIndex($id);
+        if ($existingIndex !== null) {
+            return;
+        }
+
+        $this->variacion_id = $id;
+
+        $inventario = Inventario::with('variacion.producto', 'variacion.color', 'variacion.talla')
+            ->where('almacen_id', $this->almacen_origen_id)
+            ->where('variacion_id', $id)
+            ->first();
+
+        $this->detalles[] = [
+            'variacion_id' => $this->variacion_id,
+            'producto_nombre' => $inventario->variacion->producto->nombre ?? '-',
+            'color_nombre' => $inventario->variacion->color->nombre ?? '-',
+            'talla_nombre' => $inventario->variacion->talla->nombre ?? '-',
+            'stock_actual' => $inventario->stock,
+            'cantidad' => 0,
+        ];
+    }
+
+    private function findVariacionIndex($id)
+    {
+        foreach ($this->detalles as $index => $detalle) {
+            if ($detalle['variacion_id'] === $id) {
+                return $index;
+            }
+        }
+        return null;
     }
 
     public function updatedSedeOrigenId($value)

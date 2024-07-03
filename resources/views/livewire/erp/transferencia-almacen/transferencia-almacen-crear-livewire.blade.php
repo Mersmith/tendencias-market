@@ -18,6 +18,45 @@
 
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Detalle</h4>
+                    <div class="tabla_contenido">
+                        <div class="contenedor_tabla">
+                            <table class="tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Nº</th>
+                                        <th>Producto</th>
+                                        <th>Color</th>
+                                        <th>Talla</th>
+                                        <th>Stock actual</th>
+                                        <th>Cantidad transferir</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($detalles as $index => $detalle)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $detalle['producto_nombre'] }}</td>
+                                            <td>{{ $detalle['color_nombre'] }}</td>
+                                            <td>{{ $detalle['talla_nombre'] }}</td>
+                                            <td>{{ $detalle['stock_actual'] }}</td>
+                                            <td>
+                                                <input type="number" min="1" x-data
+                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                    wire:model="detalles.{{ $index }}.cantidad">
+                                            </td>
+                                            <td>
+                                                <button wire:click="quitar({{ $index }})">Quitar</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @error('detalles')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -157,7 +196,8 @@
                         </thead>
                         <tbody>
                             @foreach ($inventario as $item)
-                                <tr>
+                                <tr wire:click="agregarVariacionDetalle({{ $item->variacion->id }})"
+                                    style="cursor: pointer;">
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->producto->nombre ?? '-' }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
