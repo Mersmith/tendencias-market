@@ -121,8 +121,7 @@
     <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
     <div class="g_panel">
         <!--TABLA-->
-        @if ($inventarios_origen)
-            <!--TABLA CABECERA-->
+        @if ($inventario->count()) <!--TABLA CABECERA-->
             <div class="tabla_cabecera">
                 <!--TABLA CABECERA BOTONES-->
                 <div class="tabla_cabecera_botones">
@@ -133,7 +132,8 @@
                 <!--TABLA CABECERA BUSCAR-->
                 <div class="tabla_cabecera_buscar">
                     <form action="">
-                        <input type="text" id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
+                        <input type="text" wire:model.debounce.1300ms="buscarProducto" id="buscarProducto"
+                            name="buscarProducto" placeholder="Buscar...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                 </div>
@@ -156,7 +156,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($inventarios_origen as $item)
+                            @foreach ($inventario as $item)
                                 <tr>
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->producto->nombre ?? '-' }}</td>
@@ -177,6 +177,12 @@
                     </table>
                 </div>
             </div>
+            @if ($inventario->hasPages())
+                <div>
+                    {{ $inventario->links() }}
+                    <!-- Aquí se usa el helper de Livewire para mostrar los enlaces de paginación -->
+                </div>
+            @endif
         @else
             <div class="g_vacio">
                 <p>No hay elementos.</p>
