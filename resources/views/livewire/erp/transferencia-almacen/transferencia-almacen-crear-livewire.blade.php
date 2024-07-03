@@ -14,6 +14,34 @@
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">General</h4>
 
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Descripción <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="descripcion" name="descripcion" wire:model="descripcion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('descripcion')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="observacion">Observación <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="observacion" name="observacion" wire:model="observacion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('observacion')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="g_margin_bottom_20">
+                        <label for="fecha_transferencia">Fecha transferencia <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="date" id="fecha_transferencia" name="fecha_transferencia" wire:model.live="fecha_transferencia">
+                        @error('fecha_transferencia')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="g_panel">
@@ -61,6 +89,21 @@
             </div>
 
             <div class="g_columna_4">
+                <div class="g_panel">
+                    <h4 class="g_panel_titulo">Estado</h4>
+
+                    <select id="estado" name="estado" wire:model="estado">
+                        <option value="null" disabled>Seleccione</option>
+                        <option value="Aprobado">Aprobado</option>
+                        <option value="Rechazado">Rechazado</option>
+                        <option value="Observado">Observado</option>
+                        <option value="Eliminado">Eliminado</option>
+                    </select>
+                    @error('estado')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Origen</h4>
 
@@ -154,6 +197,12 @@
                 </div>
             </div>
 
+        </div>
+
+        <div>
+            <div class="formulario_botones">
+                <button wire:click="guardar" class="guardar">Guardar</button>
+            </div>
         </div>
     </div>
 

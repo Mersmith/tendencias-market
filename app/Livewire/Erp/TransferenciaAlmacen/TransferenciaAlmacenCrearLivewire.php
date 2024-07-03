@@ -6,10 +6,13 @@ use App\Models\Almacen;
 use App\Models\Inventario;
 use App\Models\Sede;
 use App\Models\Serie;
+use App\Models\TransferenciaAlmacen;
+use App\Models\TransferenciaAlmacenDetalle;
 use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
+use DB;
 
 #[Layout('layouts.erp.layout-erp')]
 class TransferenciaAlmacenCrearLivewire extends Component
@@ -27,11 +30,106 @@ class TransferenciaAlmacenCrearLivewire extends Component
     public $variacion_id = null;
     public $detalles = [];
 
+    public $estado = null;
+    public $observacion = null;
+    public $descripcion = null;
+    public $fecha_transferencia = null;
+
     public function mount()
     {
         $sedes = Sede::where('activo', true)->get();
         $this->sedes_origen = $sedes;
         $this->sedes_destino = $sedes;
+    }
+
+    public function guardar()
+    {
+        $this->validate([
+            'sede_origen_id' => 'required',
+            'almacen_origen_id' => 'required',
+            'sede_destino_id' => 'required',
+            'almacen_destino_id' => 'required',
+            'estado' => 'required|in:Pendiente,Aprobado,Rechazado,Observado,Eliminado',
+            'observacion' => 'nullable|string',
+            'descripcion' => 'required|string',
+            'fecha_transferencia' => 'required|date',
+            'serie_origen_id' => 'required',
+            'serie_destino_id' => 'required',
+            'detalles' => 'required|array|min:1',
+            'detalles.*.cantidad' => 'required|integer|min:1',
+        ]);
+
+        DB::transaction(function () {
+            // Bloquear la fila de la serie seleccionada para evitar problemas de concurrencia
+            $serie_origen = Serie::where('id', $this->serie_origen_id)->lockForUpdate()->first();
+            $serie_destino = Serie::where('id', $this->serie_destino_id)->lockForUpdate()->first();
+
+            // Aumentar el correlativo
+            $correlativoActualizadoOrigen = $serie_origen->correlativo + 1;
+            $correlativoActualizadoDestino = $serie_destino->correlativo + 1;
+
+            $serie_origen->update(['correlativo' => $correlativoActualizadoOrigen]);
+            $serie_destino->update(['correlativo' => $correlativoActualizadoDestino]);
+
+            // Crear la guia de entrada directo con el nuevo correlativo
+            $transferenciaAlmacen = TransferenciaAlmacen::create([
+                'sede_origen_id' => $this->sede_origen_id,
+                'almacen_origen_id' => $this->almacen_origen_id,
+                'sede_destino_id' => $this->sede_destino_id,
+                'almacen_destino_id' => $this->almacen_destino_id,
+                'estado' => $this->estado,
+                'observacion' => $this->observacion,
+                'descripcion' => $this->descripcion,
+                'fecha_transferencia' => $this->fecha_transferencia,
+                'serie_origen' => $serie_origen->nombre,
+                'correlativo_origen' => $correlativoActualizadoOrigen,
+                'serie_destino' => $serie_destino->nombre,
+                'correlativo_destino' => $correlativoActualizadoDestino,
+            ]);
+
+            foreach ($this->detalles as $detalle) {
+                TransferenciaAlmacenDetalle::create([
+                    'transferencia_almacen_id' => $transferenciaAlmacen->id,
+                    'variacion_id' => $detalle['variacion_id'],
+                    'cantidad' => $detalle['cantidad'],
+                ]);
+
+                // Decrementar stock en el almacén de origen
+                Inventario::where('almacen_id', $this->almacen_origen_id)
+                    ->where('variacion_id', $detalle['variacion_id'])
+                    ->decrement('stock', $detalle['cantidad']);
+
+                // Incrementar stock en el almacén de destino
+                Inventario::updateOrCreate(
+                    [
+                        'almacen_id' => $this->almacen_destino_id,
+                        'variacion_id' => $detalle['variacion_id'],
+                    ],
+                    [
+                        'stock' => DB::raw('stock + ' . $detalle['cantidad']),
+                    ]
+                );
+            }
+
+            // Marcar la guía como completada
+            $transferenciaAlmacen->update(['completado' => true]);
+        });
+
+        $this->reset([
+            'sede_origen_id',
+            'almacen_origen_id',
+            'sede_destino_id',
+            'almacen_destino_id',
+            'estado',
+            'observacion',
+            'descripcion',
+            'fecha_transferencia',
+            'serie_origen_id',
+            'serie_destino_id',
+            'detalles',
+        ]);
+
+        session()->flash('message', 'Transferencia de almacén guardada exitosamente.');
     }
 
     public function agregarVariacionDetalle($id)
