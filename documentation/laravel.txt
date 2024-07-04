@@ -96,3 +96,14 @@ php artisan make:livewire Erp/TransferenciaAlmacen/TransferenciaAlmacenCrearLive
 php artisan make:livewire Erp/TransferenciaAlmacen/TransferenciaAlmacenTodasLivewire
 
 php artisan make:livewire Erp/TransferenciaAlmacenDetalle/TransferenciaAlmacenDetalleVerLivewire
+
+php artisan make:model GuiaSalidaDirecto -mfsc
+php artisan make:request GuiaSalidaDirectoRequest
+
+php artisan make:model GuiaSalidaDirectoDetalle -mfsc
+php artisan make:request GuiaSalidaDirectoDetalleRequest
+
+php artisan make:livewire Erp/GuiaSalidaDirecto/GuiaSalidaDirectoCrearLivewire
+php artisan make:livewire Erp/GuiaSalidaDirecto/GuiaSalidaDirectoTodasLivewire
+
+php artisan make:livewire Erp/GuiaSalidaDirectoDetalle/GuiaSalidaDirectoDetalleVerLivewire

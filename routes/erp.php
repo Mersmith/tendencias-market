@@ -15,6 +15,9 @@ use App\Http\Controllers\TipoDocumentoController;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivewire;
+use App\Livewire\Erp\GuiaSalidaDirecto\GuiaSalidaDirectoCrearLivewire;
+use App\Livewire\Erp\GuiaSalidaDirecto\GuiaSalidaDirectoTodasLivewire;
+use App\Livewire\Erp\GuiaSalidaDirectoDetalle\GuiaSalidaDirectoDetalleVerLivewire;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
@@ -136,3 +139,7 @@ Route::controller(SerieController::class)->group(function () {
 Route::get('/transferencia-almacen', TransferenciaAlmacenTodasLivewire::class)->name('transferencia-almacen.vista.todas');
 Route::get('/transferencia-almacen/crear', TransferenciaAlmacenCrearLivewire::class)->name('transferencia-almacen.vista.crear');
 Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVerLivewire::class)->name('transferencia-almacen-detalle.vista.ver');
+
+Route::get('/guia-salida-directo', GuiaSalidaDirectoTodasLivewire::class)->name('guia-salida-directo.vista.todas');
+Route::get('/guia-salida-directo/crear', GuiaSalidaDirectoCrearLivewire::class)->name('guia-salida-directo.vista.crear');
+Route::get('/guia-salida-directo/{id}/detalle', GuiaSalidaDirectoDetalleVerLivewire::class)->name('guia-salida-directo-detalle.vista.ver');
