@@ -9,7 +9,7 @@ class GuiaSalidaDirectoDetalle extends Model
 {
     use HasFactory;
 
-    protected $table = 'guia_entrada_directo_detalles';
+    protected $table = 'guia_salida_directo_detalles';
 
     protected $fillable = [
         'guia_salida_directo_id',

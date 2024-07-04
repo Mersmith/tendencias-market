@@ -38,7 +38,6 @@ class GuiaSalidaDirectoCrearLivewire extends Component
     {
         $data = $this->validate((new GuiaSalidaDirectoRequest())->rules(), (new GuiaSalidaDirectoRequest())->messages(), (new GuiaSalidaDirectoRequest())->attributes());
 
-
         // Validar si cuenta con stock
         $errores = [];
         foreach ($this->detalles as $detalle) {
@@ -46,7 +45,7 @@ class GuiaSalidaDirectoCrearLivewire extends Component
                 ->where('variacion_id', $detalle['variacion_id'])
                 ->first();
 
-            if (!$inventario || $inventario->stock < $detalle['cantidad']) {
+            if (!$inventario || $inventario->stock <= $detalle['cantidad']) {
                 $errores[] = "Stock insuficiente para la variación ID: {$detalle['variacion_id']}";
             }
         }
@@ -113,13 +112,18 @@ class GuiaSalidaDirectoCrearLivewire extends Component
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
         $this->series = Serie::where('sede_id', $value)
-            ->where('tipo_documento_id', 2)
+            ->where('tipo_documento_id', 4)
             ->get();
 
         $this->reset(['almacen_id', 'serie_id']);
     }
 
     public function updatingBuscarProducto()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedAlmacenId($value)
     {
         $this->resetPage();
     }
@@ -132,16 +136,22 @@ class GuiaSalidaDirectoCrearLivewire extends Component
         }
 
         $this->variacion_id = $id;
-        $this->obtenerInventarios();
 
-        $variacion = Variacion::with(['producto', 'color', 'talla'])->findOrFail($id);
+        $inventario = Inventario::with('variacion.producto', 'variacion.color', 'variacion.talla')
+            ->where('almacen_id', $this->almacen_id)
+            ->where('variacion_id', $id)
+            ->first();
+
         $this->detalles[] = [
-            'variacion_id' => $variacion->id,
-            'producto_nombre' => $variacion->producto->nombre ?? '-',
-            'color_nombre' => $variacion->color->nombre ?? '-',
-            'talla_nombre' => $variacion->talla->nombre ?? '-',
+            'variacion_id' => $this->variacion_id,
+            'producto_nombre' => $inventario->variacion->producto->nombre ?? '-',
+            'color_nombre' => $inventario->variacion->color->nombre ?? '-',
+            'talla_nombre' => $inventario->variacion->talla->nombre ?? '-',
+            'stock_actual' => $inventario->stock,
             'cantidad' => 0,
         ];
+
+        $this->obtenerInventarios();
     }
 
     private function findVariacionIndex($id)
@@ -173,18 +183,18 @@ class GuiaSalidaDirectoCrearLivewire extends Component
 
     public function render()
     {
-        $variacionesQuery = Variacion::with(['producto', 'color', 'talla']);
+        $variacionesInventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla'])->where('almacen_id', $this->almacen_id);
 
         if ($this->buscarProducto) {
-            $variacionesQuery->whereHas('producto', function ($query) {
+            $variacionesInventarioQuery->whereHas('variacion.producto', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->buscarProducto . '%');
             });
         }
 
-        $variaciones = $variacionesQuery->paginate(20);
+        $variacionesIventario = $variacionesInventarioQuery->orderBy('id', 'desc')->paginate(5);
 
         return view('livewire.erp.guia-salida-directo.guia-salida-directo-crear-livewire', [
-            'variaciones' => $variaciones,
+            'variacionesIventario' => $variacionesIventario,
         ]);
     }
 }

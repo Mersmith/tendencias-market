@@ -40,9 +40,9 @@
                         @enderror
                     </div>
 
-                    <!--FECHA ENTRADA-->
+                    <!--FECHA SALIDA-->
                     <div class="g_margin_bottom_20">
-                        <label for="fecha_salida">Fecha entrada <span class="obligatorio"><i
+                        <label for="fecha_salida">Fecha salida <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
                         <input type="date" id="fecha_salida" name="fecha_salida" wire:model.live="fecha_salida">
                         @error('fecha_salida')
@@ -63,7 +63,8 @@
                                         <th>Producto</th>
                                         <th>Color</th>
                                         <th>Talla</th>
-                                        <th>Cantidad</th>
+                                        <th>Stock actual</th>
+                                        <th>Cantidad quitar</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -74,9 +75,13 @@
                                             <td>{{ $detalle['producto_nombre'] }}</td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
+                                            <td>{{ $detalle['stock_actual'] }}</td>
                                             <td>
-                                                <input type="number" min="1" x-data
-                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                <input type="number" min="1" x-data="{ maxStock: {{ $detalle['stock_actual'] }} }"
+                                                    @input="
+                                                        if ($event.target.value < 1) $event.target.value = 1;
+                                                        if ($event.target.value > maxStock) $event.target.value = maxStock;
+                                                    "
                                                     wire:model="detalles.{{ $index }}.cantidad">
                                             </td>
                                             <td>
@@ -168,10 +173,10 @@
         </div>
     </div>
 
-    <!--TABLA PAGINACION VARIACIONES-->
+    <!--TABLA PAGINACION VARIACIONES INVENTARIO-->
     <div class="g_panel">
         <!-- TABLA -->
-        @if ($variaciones->count())
+        @if ($variacionesIventario->count())
             <!-- TABLA CABECERA -->
             <div class="tabla_cabecera">
                 <!-- TABLA CABECERA BOTONES -->
@@ -203,28 +208,40 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>Nombre Producto</th>
-                                <th>Nombre Color</th>
-                                <th>Nombre Talla</th>
+                                <th>Nombre producto</th>
+                                <th>Nombre color</th>
+                                <th>Nombre talla</th>
+                                <th>Stock</th>
+                                <th>Stock mínimo</th>
+                                <th>Variación Activo</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($variaciones as $variacion)
-                                <tr wire:click="seleccionarIdVariacion({{ $variacion->id }})"
+                            @foreach ($variacionesIventario as $item)
+                                <tr wire:click="seleccionarIdVariacion({{ $item->variacion->id }})"
                                     style="cursor: pointer;">
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
-                                    <td class="g_resaltar">{{ $variacion->producto->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $variacion->color->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $variacion->talla->nombre ?? '-' }}</td>
+                                    <td class="g_resaltar">{{ $item->variacion->producto->nombre ?? '-' }}</td>
+                                    <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
+                                    <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
+                                    <td class="g_inferior g_resumir">{{ $item->stock }}</td>
+                                    <td class="g_inferior g_resumir">{{ $item->stock_minimo }}</td>
+                                    <td class="g_inferior">
+                                        <span
+                                            class="estado {{ $item->variacion->activo == 1 ? 'g_activo' : 'g_desactivado' }}">
+                                            <i class="fa-solid fa-circle"></i>
+                                        </span>
+                                        {{ $item->variacion->activo == 1 ? 'Activo' : 'Desactivo' }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-            @if ($variaciones->hasPages())
+            @if ($variacionesIventario->hasPages())
                 <div>
-                    {{ $variaciones->links('pagination::tailwind') }}
+                    {{ $variacionesIventario->links('pagination::tailwind') }}
                 </div>
             @endif
         @else
