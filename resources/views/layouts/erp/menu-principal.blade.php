@@ -1,15 +1,61 @@
+@php
+    $json_menu = file_get_contents('erp-menu-principal.json');
+    $menuPrincipal = collect(json_decode($json_menu, true));
+
+    $currentRoute = parse_url(url()->current(), PHP_URL_PATH);
+
+    $seleccionadoNivel_1 = null;
+    $seleccionadoNivel_2 = null;
+    $seleccionadoNivel_3 = null;
+    $seleccionadoNivel_4 = null;
+
+    foreach ($menuPrincipal as $dataNivel_1) {
+        if ($dataNivel_1['url'] === $currentRoute) {
+            $seleccionadoNivel_1 = $dataNivel_1['id'];
+        }
+        
+        foreach ($dataNivel_1['submenus'] as $dataNivel_2) {
+            if ($dataNivel_2['url'] === $currentRoute) {
+                $seleccionadoNivel_1 = $dataNivel_1['id'];
+                $seleccionadoNivel_2 = $dataNivel_2['id'];
+            }
+
+            foreach ($dataNivel_2['submenus'] as $dataNivel_3) {
+                if ($dataNivel_3['url'] === $currentRoute) {
+                    $seleccionadoNivel_1 = $dataNivel_1['id'];
+                    $seleccionadoNivel_2 = $dataNivel_2['id'];
+                    $seleccionadoNivel_3 = $dataNivel_3['id'];
+                }
+
+                foreach ($dataNivel_3['submenus'] as $dataNivel_4) {
+                if ($dataNivel_4['url'] === $currentRoute) {
+                    $seleccionadoNivel_1 = $dataNivel_1['id'];
+                    $seleccionadoNivel_2 = $dataNivel_2['id'];
+                    $seleccionadoNivel_3 = $dataNivel_3['id'];
+                    $seleccionadoNivel_4 = $dataNivel_4['id'];
+                }
+            }
+            }
+        }
+    }
+@endphp
+
 <!--CONTENEDOR ASIDE-->
-<aside class="contenedor_aside" :class="{ 'estilo_abierto_contenedor_aside': estadoAsideAbierto }">
+<aside  x-data="erpMenuPrincipal()" x-cloak class="contenedor_aside" :class="{ 'estilo_abierto_contenedor_aside': estadoAsideAbierto }">
     <!--CONTENEDOR NAV ICONOS-->
     <div class="contenedor_nav_iconos">
         <span x-on:click="toggleContenedorNavLinks" class="contenedor_menu_hamburguesa"><i
                 class="fa-solid fa-bars"></i></span>
+        <!--NIVEL 1--> 
         <ul>
-            <template x-for="dataMenu in dataMenuPrincipal" :key="dataMenu.id">
-                <li>
-                    <span @click.prevent="toggleSubmenuPrincipal(dataMenu)"><i :class="dataMenu.icono"></i></span>
+            @foreach ($menuPrincipal as $dataNivel_1)
+                <li :class="{ 'nav_icono_seleccionado': seleccionadoNivel_1 === {{ $dataNivel_1['id'] }} }">
+                    <a @click="toogleNivel_1($event, {{ $dataNivel_1['id'] }})" 
+                        @if (!count($dataNivel_1['submenus']) > 0) href="{{ route($dataNivel_1['ruta']) }}" @endif>
+                        <i class="{{ $dataNivel_1['icono'] }}"></i>
+                    </a>
                 </li>
-            </template>
+            @endforeach
         </ul>
     </div>
 
@@ -22,99 +68,115 @@
             </a>
         </div>
 
+        <!--SIDEBAR NAV-->
         <nav class="sidebar_nav">
             <div class="sidebar_scroll">
-                <ul>
-                    <template x-for="dataMenu in dataSubMenuPrincipal" :key="dataMenu.id">
-                        <li>
-                            <a :href="dataMenu.submenu.length ? '#' : dataMenu.url"
-                                @click.prevent="toggleSubmenu(dataMenu)"
-                                :class="{ 'has-children': dataMenu.submenu.length > 0 }" class="menu-item">
-                                <i class="fa-solid fa-user-gear"></i>
-                                <span x-text="dataMenu.title"></span>
-                                <i class="fa-solid fa-sort-down" x-show="dataMenu.submenu.length > 0"></i>
-                            </a>
-                            <!-- SUBMENU 1 -->
-                            <ul class="submenu1" x-show="dataMenu.open && dataMenu.submenu.length > 0">
-                                <template x-for="dataSubmenu1 in dataMenu.submenu" :key="dataSubmenu1.id">
-                                    <li>
-                                        <a :href="dataSubmenu1.submenu.length ? '#' : dataSubmenu1.url"
-                                            @click.prevent="toggleSubmenu(dataSubmenu1)"
-                                            :class="{ 'has-children': dataSubmenu1.submenu.length > 0 }">
-                                            <i class="fa-solid fa-user-gear"></i>
-                                            <span x-text="dataSubmenu1.title"></span>
-                                            <i class="fa-solid fa-sort-down"
-                                                x-show="dataSubmenu1.submenu.length > 0"></i>
-                                        </a>
-                                        <!-- SUBMENU 2 -->
-                                        <ul class="submenu2"
-                                            x-show="dataSubmenu1.open && dataSubmenu1.submenu.length > 0">
-                                            <template x-for="dataSubMenu2 in dataSubmenu1.submenu"
-                                                :key="dataSubMenu2.id">
-                                                <li>
-                                                    <a :href="dataSubMenu2.submenu.length ? '#' : dataSubMenu2.url"
-                                                        @click.prevent="toggleSubmenu(dataSubMenu2)"
-                                                        :class="{ 'has-children': dataSubMenu2.submenu.length > 0 }">
-                                                        <i class="fa-solid fa-user-gear"></i>
-                                                        <span x-text="dataSubMenu2.title"></span>
-                                                        <i class="fa-solid fa-sort-down"
-                                                            x-show="dataSubMenu2.submenu.length > 0"></i>
-                                                    </a>
-                                                    <!-- SUBMENU 3 -->
-                                                    <ul class="submenu3"
-                                                        x-show="dataSubMenu2.open && dataSubMenu2.submenu.length">
-                                                        <template x-for="dataSubmenu3 in dataSubMenu2.submenu"
-                                                            :key="dataSubmenu3.id">
-                                                            <li>
-                                                                <a :href="dataSubmenu3.submenu.length ? '#' : dataSubmenu3
-                                                                    .url"
-                                                                    @click.prevent="toggleSubmenu(dataSubmenu3)"
-                                                                    :class="{
-                                                                        'has-children': dataSubmenu3.submenu
-                                                                            .length > 0
-                                                                    }">
-                                                                    <i class="fa-solid fa-user-gear"></i>
-                                                                    <span x-text="dataSubmenu3.title"></span>
-                                                                    <i class="fa-solid fa-sort-down"
-                                                                        x-show="dataSubmenu3.submenu.length > 0"></i>
-                                                                </a>
-                                                                <!-- SUBMENU 4 -->
-                                                                <ul class="submenu4"
-                                                                    x-show="dataSubmenu3.open && dataSubmenu3.submenu.length">
-                                                                    <template
-                                                                        x-for="dataSubmenu4 in dataSubmenu3.submenu"
-                                                                        :key="dataSubmenu4.id">
+                <!--NIVEL 1-->
+                <ul class="nivel_1">
+                    @foreach ($menuPrincipal as $dataNivel_1)
+                        @if (count($dataNivel_1['submenus']) > 0)
+                            <!--NIVEL 2-->
+                            <ul class="submenu1" :class="{ 'ocultar_nivel': seleccionadoNivel_1 !== {{ $dataNivel_1['id'] }} }">
+                                @foreach ($dataNivel_1['submenus'] as $dataNivel_2)
+                                        <li>
+                                            <a @click.stop="toogleNivel_2($event, {{ $dataNivel_2['id'] }})"
+                                                :class="{ 'sidebar_nav_seleccionado': seleccionadoNivel_2 === {{ $dataNivel_2['id'] }} }"
+                                                @if (!count($dataNivel_2['submenus']) > 0) href="{{ route($dataNivel_2['ruta']) }}" @endif>
+                                                <i class="{{ $dataNivel_2['icono'] }}"></i>
+                                                {{ $dataNivel_2['nombre'] }}
+                                                @if (count($dataNivel_2['submenus']) > 0) <i class="fa-solid fa-sort-down"></i> @endif 
+                                            </a>
+
+                                            @if (count($dataNivel_2['submenus']) > 0)
+                                                <!--NIVEL 3-->
+                                                <ul class="nivel_2" :class="{ 'ocultar_nivel': seleccionadoNivel_2 !== {{ $dataNivel_2['id'] }} }">
+                                                    @foreach ($dataNivel_2['submenus'] as $dataNivel_3)
+                                                        <li>
+                                                            <a @click.stop="toogleNivel_3($event, {{ $dataNivel_3['id'] }})"
+                                                                :class="{ 'sidebar_item_seleccionado': seleccionadoNivel_3 === {{ $dataNivel_3['id'] }} }"
+                                                                @if (!count($dataNivel_3['submenus']) > 0) href="{{ route($dataNivel_3['ruta']) }}" @endif>
+                                                                {{ $dataNivel_3['nombre'] }}
+                                                                @if (count($dataNivel_3['submenus']) > 0) <i class="fa-solid fa-sort-down"></i> @endif 
+                                                            </a>
+
+                                                            @if (count($dataNivel_3['submenus']) > 0)
+                                                                <!--NIVEL 4-->
+                                                                <ul class="submenu3" :class="{ 'ocultar_nivel': seleccionadoNivel_3 !== {{ $dataNivel_3['id'] }} }">
+                                                                    @foreach ($dataNivel_3['submenus'] as $dataNivel_4)
                                                                         <li>
-                                                                            <a :href="dataSubmenu4.submenu.length ? '#' :
-                                                                                dataSubmenu4.url"
-                                                                                @click.prevent="toggleSubmenu(dataSubmenu4)"
-                                                                                :class="{
-                                                                                    'has-children': dataSubmenu4
-                                                                                        .submenu.length > 0
-                                                                                }">
-                                                                                <i class="fa-solid fa-user-gear"></i>
-                                                                                <span
-                                                                                    x-text="dataSubmenu4.title"></span>
-                                                                                <i class="fa-solid fa-sort-down"
-                                                                                    x-show="dataSubmenu4.submenu.length > 0"></i>
+                                                                            <a @click.stop="toogleNivel_4($event, {{ $dataNivel_4['id'] }})"
+                                                                                :class="{ 'sidebar_item_seleccionado': seleccionadoNivel_4 === {{ $dataNivel_4['id'] }} }"
+                                                                                @if (!count($dataNivel_4['submenus']) > 0) href="{{ route($dataNivel_4['ruta']) }}" @endif>
+                                                                                {{ $dataNivel_4['nombre'] }}
+                                                                                @if (count($dataNivel_4['submenus']) > 0) <i class="fa-solid fa-sort-down"></i> @endif                                                                
                                                                             </a>
-                                                                            <!-- SUBMENU 5 -->
+
+                                                                            <!--NIVEL 5-->
                                                                         </li>
-                                                                    </template>
+                                                                    @endforeach
                                                                 </ul>
-                                                            </li>
-                                                        </template>
-                                                    </ul>
-                                                </li>
-                                            </template>
-                                        </ul>
-                                    </li>
-                                </template>
+                                                            @endif
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                @endforeach
                             </ul>
-                        </li>
-                    </template>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </nav>
     </div>
 </aside>
+<script>
+    function erpMenuPrincipal() {
+        return {
+            seleccionadoNivel_1: {{ json_encode($seleccionadoNivel_1) }},
+            seleccionadoNivel_2: {{ json_encode($seleccionadoNivel_2) }},
+            seleccionadoNivel_3: {{ json_encode($seleccionadoNivel_3) }},
+            seleccionadoNivel_4: {{ json_encode($seleccionadoNivel_4) }},
+
+            toogleNivel_1(event, id) {
+                if (this.seleccionadoNivel_1 !== id) {
+                    this.seleccionadoNivel_1 = id;
+                    this.seleccionadoNivel_2 = null;
+                    this.seleccionadoNivel_3 = null;
+                    this.seleccionadoNivel_4 = null;                
+                }
+                
+            },
+            toogleNivel_2(event, id) {
+                if (this.seleccionadoNivel_2 === id) {
+                    this.seleccionadoNivel_2 = null;
+                } else {
+                    this.seleccionadoNivel_2 = id;
+                }
+                this.seleccionadoNivel_3 = null;
+                this.seleccionadoNivel_4 = null;
+            },
+            toogleNivel_3(event, id) {
+                if (this.seleccionadoNivel_3 === id) {
+                    this.seleccionadoNivel_3 = null;
+                } else {
+                    this.seleccionadoNivel_3 = id;
+                }
+                this.seleccionadoNivel_4 = null;
+            },
+            toogleNivel_4(event, id) {
+                if (this.seleccionadoNivel_4 === id) {
+                    this.seleccionadoNivel_4 = null;
+                } else {
+                    this.seleccionadoNivel_4 = id;
+                }
+            },
+            resetMenu() {
+                this.seleccionadoNivel_1 = null;
+                this.seleccionadoNivel_2 = null;
+                this.seleccionadoNivel_3 = null;
+                this.seleccionadoNivel_4 = null;
+            }
+        };
+    }
+</script>

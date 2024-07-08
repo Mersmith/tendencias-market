@@ -1,0 +1,440 @@
+[
+    {
+        "id": 1,
+        "nombre": "1",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-comment",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 11,
+                "nombre": "Empresa",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Sede",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1111,
+                                "nombre": "Todo",
+                                "ruta": "erp.sede.vista.todas",
+                                "url": "/erp/sede",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1112,
+                                "nombre": "Crear",
+                                "ruta": "erp.sede.vista.crear",
+                                "url": "/erp/sede/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Serie",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1121,
+                                "nombre": "Todo",
+                                "ruta": "erp.serie.vista.todas",
+                                "url": "/erp/serie",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1122,
+                                "nombre": "Crear",
+                                "ruta": "erp.serie.vista.crear",
+                                "url": "/erp/serie/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 113,
+                        "nombre": "Tipo documento",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1131,
+                                "nombre": "Todo",
+                                "ruta": "erp.tipo-documento.vista.todas",
+                                "url": "/erp/serie",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1132,
+                                "nombre": "Crear",
+                                "ruta": "erp.tipo-documento.vista.crear",
+                                "url": "/erp/serie/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "2",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-menorah",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 21,
+                "nombre": "Ecommerce",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 211,
+                        "nombre": "Marca",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1111,
+                                "nombre": "Todo",
+                                "ruta": "erp.marca.vista.todas",
+                                "url": "/erp/marca",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1112,
+                                "nombre": "Crear",
+                                "ruta": "erp.marca.vista.crear",
+                                "url": "/erp/marca/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 212,
+                        "nombre": "Categoria",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 2121,
+                                "nombre": "Todo",
+                                "ruta": "erp.categoria.vista.todas",
+                                "url": "/erp/categoria",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 2122,
+                                "nombre": "Crear",
+                                "ruta": "erp.categoria.vista.crear",
+                                "url": "/erp/categoria/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 213,
+                        "nombre": "Talla",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 2131,
+                                "nombre": "Todo",
+                                "ruta": "erp.talla.vista.todas",
+                                "url": "/erp/talla",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 2132,
+                                "nombre": "Crear",
+                                "ruta": "erp.talla.vista.crear",
+                                "url": "/erp/talla/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 214,
+                        "nombre": "Color",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 2141,
+                                "nombre": "Todo",
+                                "ruta": "erp.color.vista.todas",
+                                "url": "/erp/color",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 2142,
+                                "nombre": "Crear",
+                                "ruta": "erp.color.vista.crear",
+                                "url": "/erp/color/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 215,
+                        "nombre": "Subcategoria",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 2151,
+                                "nombre": "Todo",
+                                "ruta": "erp.subcategoria.vista.todas",
+                                "url": "/erp/subcategoria",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 2152,
+                                "nombre": "Crear",
+                                "ruta": "erp.subcategoria.vista.crear",
+                                "url": "/erp/subcategoria/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 216,
+                        "nombre": "Producto",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 2161,
+                                "nombre": "Todo",
+                                "ruta": "erp.producto.vista.todas",
+                                "url": "/erp/producto",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 2162,
+                                "nombre": "Crear",
+                                "ruta": "erp.producto.vista.crear",
+                                "url": "/erp/producto/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 22,
+                "nombre": "Precio",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 211,
+                        "nombre": "Lista precio",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1111,
+                                "nombre": "Todo",
+                                "ruta": "erp.lista-precio.vista.todas",
+                                "url": "/erp/lista-precio",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1112,
+                                "nombre": "Crear",
+                                "ruta": "erp.lista-precio.vista.crear",
+                                "url": "/erp/lista-precio/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 212,
+                        "nombre": "Variacion lista precio",
+                        "ruta": "erp.variacion-lista-precio.vista.todas",
+                        "url": "/erp/variacion-lista-precio",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "3",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-menorah",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 31,
+                "nombre": "Almacen",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 311,
+                        "nombre": "Todo",
+                        "ruta": "erp.almacen.vista.todas",
+                        "url": "/erp/almacen",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 312,
+                        "nombre": "Crear",
+                        "ruta": "erp.almacen.vista.crear",
+                        "url": "/erp/almacen/crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 32,
+                "nombre": "Inventario",
+                "ruta": "erp.inventario.vista.todas",
+                "url": "/erp/inventario",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
+                "id": 33,
+                "nombre": "Movimientos",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 331,
+                        "nombre": "Guia entrada directo",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 3311,
+                                "nombre": "Todo",
+                                "ruta": "erp.guia-entrada-directo.vista.todas",
+                                "url": "/erp/guia-entrada-directo",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 3312,
+                                "nombre": "Crear",
+                                "ruta": "erp.guia-entrada-directo.vista.crear",
+                                "url": "/erp/guia-entrada-directo/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 332,
+                        "nombre": "Guia salida directo",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 3321,
+                                "nombre": "Todo",
+                                "ruta": "erp.guia-salida-directo.vista.todas",
+                                "url": "/erp/guia-salida-directo",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 3322,
+                                "nombre": "Crear",
+                                "ruta": "erp.guia-salida-directo.vista.crear",
+                                "url": "/erp/guia-salida-directo/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 333,
+                        "nombre": "Transferencia almacen",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 3331,
+                                "nombre": "Todo",
+                                "ruta": "erp.transferencia-almacen.vista.todas",
+                                "url": "/erp/transferencia-almacen",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 3332,
+                                "nombre": "Crear",
+                                "ruta": "erp.transferencia-almacen.vista.crear",
+                                "url": "/erp/transferencia-almacen/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
