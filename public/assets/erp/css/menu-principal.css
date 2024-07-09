@@ -14,9 +14,6 @@
    cursor: pointer;
 }
 
-.contenedor_aside.estilo_abierto_contenedor_aside {
-    left: 0;
-}
 
 /*CONTENEDOR NAV ICONOS*/
 .contenedor_nav_iconos {
@@ -191,6 +188,14 @@
     display: none !important;
 }
 
+@media (min-width: 900px) {
+
+    .contenedor_aside {
+        left: 0;
+    }
+
+}
+
 @media (max-width: 900px) {
 
     /*CONTENEDOR ASIDE*/
@@ -198,4 +203,7 @@
         left: -320px;
     }
 
+    .contenedor_aside.estilo_abierto_contenedor_aside {
+        left: 0;
+    }
 }

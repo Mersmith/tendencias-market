@@ -21,7 +21,7 @@
 
 <body>
     <!--CONTENEDOR LAYOUT GENERAL-->
-    <div x-data="xDataLayout()" x-init="initLayout" class="contenedor_layout_general">
+    <div x-data="xDataLayout()" x-init="initLayout" x-cloak class="contenedor_layout_general">
         <!--MENU PRINCIPAL-->
         @include('layouts.erp.menu-principal')
 

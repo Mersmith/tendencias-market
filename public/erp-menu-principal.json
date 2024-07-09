@@ -76,7 +76,7 @@
                                 "id": 1131,
                                 "nombre": "Todo",
                                 "ruta": "erp.tipo-documento.vista.todas",
-                                "url": "/erp/serie",
+                                "url": "/erp/tipo-documento",
                                 "nivel": 4,
                                 "submenus": []
                             },
@@ -84,7 +84,7 @@
                                 "id": 1132,
                                 "nombre": "Crear",
                                 "ruta": "erp.tipo-documento.vista.crear",
-                                "url": "/erp/serie/crear",
+                                "url": "/erp/tipo-documento/crear",
                                 "nivel": 4,
                                 "submenus": []
                             }
