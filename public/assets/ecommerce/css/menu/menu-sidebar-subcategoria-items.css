@@ -1,0 +1,113 @@
+/* CONTENEDOR SIDEBAR */
+.contenedor_sidebar_items_subcategoria {
+    position: fixed;
+    width: 300px;
+    max-width: 300px;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: left 0.3s ease-out;
+    z-index: 1001;
+}
+
+/* SIDEBAR CONTENEDOR */
+.sidebar_contenedor_items_subcategoria {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+    z-index: 1;
+}
+
+/* SIDEBAR CONTENIDO */
+.sidebar_contenido_items_subcategoria {
+    position: relative;
+    padding: 16px 0;
+    width: 300px;
+}
+
+/* CONTENEDOR SUBCATEGORIA CABECERA */
+.contenedor_items_subcategoria_cabecera {
+    min-width: 260px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 0 16px;
+    background-color: #fff;
+}
+
+/* CONTENEDOR SUBCATEGORIA TITULO */
+.contenedor_items_subcategoria_titulo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    padding: 19px 49px 14px;
+    background: linear-gradient(91.38deg, #ff8200 -2%, #ff5400 60.38%);
+    border-radius: 80px 0 140px 80px;
+    font-weight: 900;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* CONTENEDOR SUBCATEGORIA CUERPO */
+.contenedor_items_subcategoria_cuerpo {
+    padding: 20px 0px 20px 0px;
+}
+
+.contenedor_items_subcategoria_cuerpo li {
+    padding: 0 16px;
+}
+
+/* SIDEBAR CONTENIDO ELEMENTO */
+.sidebar_cotenido_elemento_items_subcategoria {
+    position: relative;
+    height: 56px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 18px 12.45px 19px 12px !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #0c2941;
+}
+
+.sidebar_cotenido_elemento_items_subcategoria:hover {
+    background-color: #f7f7f7;
+    border-left: 4px solid #ff6200;
+    font-weight: 700;
+}
+
+.sidebar_cotenido_elemento_items_subcategoria a {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar_cotenido_elemento_items_subcategoria blockquote {
+    background-color: #0c2941;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 3px 6px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: .4px;
+    color: #fff;
+}
+
+@media (min-width: 1000px) {
+    .sidebar_cabecera_items_subcategoria {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .contenedor_sidebar_items_subcategoria[x-show="true"] {
+        display: flex;
+    }
+}

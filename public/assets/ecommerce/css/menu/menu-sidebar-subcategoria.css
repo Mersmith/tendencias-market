@@ -1,0 +1,247 @@
+.contenedor_sidebar_subcategorias {
+    position: fixed;
+    width: calc(80% - 300px);
+    display: none;
+    top: 59px;
+    left: 300px;
+    bottom: 0;
+    z-index: 998;
+}
+
+.contenedor_sidebar_subcategorias[x-show="true"] {
+    display: flex;
+}
+
+/* SIDEBAR CONTENEDOR */
+.sidebar_contenedor_subcategorias {
+    border-radius: 0 20px 0 0;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* SIDEBAR CONTENIDO */
+.sidebar_contenido_subcategorias {
+    height: calc(100vh - 59px);
+    overflow-y: scroll;
+}
+
+/* CONTENEDOR SUBCATEGORIA CABECERA */
+.contenedor_subcategoria_cabecera {
+    min-width: 468px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 32px;
+    background-color: #fff;
+}
+
+/* SUBCATEGORIA CABECERA LINK */
+.contenedor_subcategoria_cabecera a {
+    text-decoration: underline !important;
+    text-underline-position: under;
+    font-size: 14px;
+    line-height: 16.8px;
+    color: #68717d;
+}
+
+/* CONTENEDOR SUBCATEGORIA TITULO */
+.contenedor_subcategoria_titulo {
+    position: relative;
+    max-width: 619px;
+    flex: 2 0 auto;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 13px 72px 14px;
+    background: linear-gradient(91.38deg, #ff8200 -2%, #ff5400 60.38%);
+    border-radius: 80px 0 140px 80px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28.8px;
+    color: #fff;
+}
+
+.subcategoria_titulo_icono {
+    position: absolute;
+    width: 56px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(136.95deg, #ff9300 -4.75%, #ff5400 79.15%, #ff5400 113.58%);
+    border-radius: 50%;
+}
+
+.subcategoria_titulo_icono img {
+    width: 100%;
+    height: 100%;
+}
+
+/* CONTENEDOR SUBCATEGORIA CUERPO */
+.contenedor_subcategoria_cuerpo {
+    column-count: 4;
+    column-gap: 20px;
+    padding: 20px 0px 20px 0px;
+}
+
+.contenedor_subcategoria_cuerpo_items {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.contenedor_subcategoria_cuerpo_items ul {
+    width: 100%;
+    margin-bottom: 20px;
+    break-inside: avoid-column;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+/* SIDEBAR CONTENIDO ELEMENTO */
+.sidebar_cotenido_elemento_subcategorias h3 {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22.8px;
+    color: #ff6200;
+}
+
+.sidebar_cotenido_elemento_subcategorias img {
+    display: none;
+}
+
+/* CONTENEDOR ITEM SUBCATEGORIA */
+.contenedor_subcategoria_cuerpo_items ul li {
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #495867;
+    display: flex;
+    align-items: center;
+}
+
+.contenedor_subcategoria_cuerpo_items ul li blockquote {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 3px 6px;
+    background-color: #0c2941;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: .4px;
+    color: #fff;
+}
+
+@media (min-width: 1000px) {
+    .sidebar_cabecera_subcategorias {
+        display: none;
+    }
+}
+
+/* RESPONSIVE LAPTOP */
+@media (max-width: 1300px) {
+
+    .contenedor_subcategoria_cuerpo {
+        column-count: 3;
+    }
+
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+
+    /* CONTENEDOR SIDEBAR */
+    .contenedor_sidebar_subcategorias {
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        z-index: 1000;
+    }
+
+    /* SIDEBAR CONTENEDOR */
+    .sidebar_contenedor_subcategorias {
+        width: 300px;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 0px;
+    }
+
+    /* SIDEBAR CONTENIDO */
+    .sidebar_contenido_subcategorias {
+        height: calc(100vh - 56px);
+        width: 300px;
+    }
+
+    .contenedor_subcategoria_cuerpo {
+        column-count: 1;
+    }
+
+    /* CONTENEDOR SUBCATEGORIA CABECERA */
+    .contenedor_subcategoria_cabecera {
+        min-width: 260px;
+        margin-top: 16px;
+        padding: 0 16px;
+    }
+
+    /* CONTENEDOR SUBCATEGORIA TITULO */
+    .contenedor_subcategoria_titulo {
+        margin-right: 0px;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .contenedor_subcategoria_cuerpo_items ul {
+        margin-bottom: 0px;
+        padding: 0px 16px;
+    }
+
+    /* SIDEBAR CONTENIDO ELEMENTO */
+    .sidebar_cotenido_elemento_subcategorias {
+        position: relative;
+        height: 56px;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 0px 12px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+    .sidebar_cotenido_elemento_subcategorias h3 {
+        margin-bottom: 0px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #0c2941;
+    }
+
+    .sidebar_cotenido_elemento_subcategorias img {
+        display: block;
+    }
+
+    .sidebar_cotenido_elemento_subcategorias:hover {
+        background-color: #f7f7f7;
+        border-left: 4px solid;
+        border-left-color: #ff6200;
+        font-weight: 700;
+    }
+
+    /* CONTENEDOR SUBCATEGORIA CABECERA */
+    .contenedor_subcategoria_cabecera a {
+        display: none;
+    }
+
+    /* CONTENEDOR ITEM SUBCATEGORIA  */
+    .contenedor_item_subcategoria {
+        display: none;
+    }
+
+}
