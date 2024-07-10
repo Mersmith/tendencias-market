@@ -1,0 +1,114 @@
+.centrar_contenedor {
+    max-width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CONTENEDOR SLIDER */
+.contenedor_slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SLIDER */
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* ITEM SLIDER */
+.item_slider {
+    width: 100%;
+    display: none;
+}
+
+/* IMAGENES */
+.item_slider img {
+    width: 100%;
+    height: auto;
+}
+
+.imagen_movil {
+    display: none;
+}
+
+.imagen_activo {
+    display: block;
+}
+
+.imagen_oculto {
+    display: none;
+}
+
+/* CONTROL BOTONES */
+.control_botones {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    z-index: 1;
+}
+
+.contenedor_slider:hover .control_botones{
+    display: block;
+}
+
+.control_botones button {
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, .3);
+    color: white;
+}
+
+.control_botones button:hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.boton_retroceder {
+    left: 10px;
+}
+
+.boton_siguiente {
+    right: 10px;
+}
+
+/* PAGINACION BOTONES */
+.paginacion_botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.boton_paginacion {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: silver;
+    border-radius: 50%;
+    border: none;
+}
+
+.boton_paginacion.imagen_activo {
+    width: 10px;
+    height: 10px;
+    background-color: #8b8b8b;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+
+    .imagen_computadora {
+        display: none;
+    }
+
+    .imagen_movil {
+        display: block;
+    }
+
+}

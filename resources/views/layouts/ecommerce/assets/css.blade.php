@@ -13,3 +13,6 @@
 
 <!--BANNER-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/banner.css') }}">
+
+<!--SLIDER-->
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider-principal.css') }}">
