@@ -1,0 +1,50 @@
+.columna_12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.centrar_contenido_pagina {
+    max-width: 1280px;
+    width: 100%;   
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.contenido_pagina {
+   
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.centrar_contenedor {
+    max-width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.m_10_0 {
+    margin: 10px 0px;
+}
+
+.m_b_10 {
+    margin-bottom: 10px;
+}
+
+.m_40_0 {
+    margin: 40px 0px;
+}
+
+.titulo {
+    margin-bottom: 20px;
+}
+
+.titulo h3 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+}

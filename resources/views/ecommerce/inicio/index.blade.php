@@ -8,5 +8,22 @@
 
         @include('ecommerce.partials.slider-principal', ['sliders' => $sliders])
 
+        <div class="centrar_contenido_pagina">
+            <div class="contenido_pagina">
+
+                <div class="m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Ingresa a nuestras tiendas',
+                        'p_alineacion' => 'center',
+                        'p_color' => '#000000',
+                    ])
+
+                    <div className="columna_12 m_10_0">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

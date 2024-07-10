@@ -1,0 +1,11 @@
+:root {
+
+    /* SLIDE PRODUCTOS */
+    /*6 ELEMENTOS*/
+    --slide-productos-computadora: 16.6%;
+    /*2 ELEMENTOS*/
+    --slide-productos-tablet: 45%;
+    /*1 ELEMENTO*/
+    --slide-productos-movil: 95%;
+
+}

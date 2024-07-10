@@ -1,4 +1,11 @@
-<!----------------------ERP---------------------->
+<!----------------------ESTILOS---------------------->
+<!--GENERAL-->
+<link rel="stylesheet" href="{{ asset('assets/css/general.css') }}">
+
+<!----------------------ECOMMERCE---------------------->
+<!--ESTILOS-->
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/variables.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/estilos.css') }}">
 
 <!--LAYOUT ERP-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/layout.css') }}">
