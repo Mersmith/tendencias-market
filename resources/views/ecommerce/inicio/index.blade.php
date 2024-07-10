@@ -38,6 +38,13 @@
                         ])
                     </div>
                 </div>
+
+                <div className="columna_12 m_40_0">
+                    @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
+                        'dataSliderImagenDosElementosTiempo' => $dataSliderImagenDosElementosTiempo,
+                    ])
+                </div>
+                
             </div>
         </div>
     </div>

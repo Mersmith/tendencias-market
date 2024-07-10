@@ -27,3 +27,6 @@
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-seis-elementos.css') }}">
+
+<!--SLIDER TIEMPO-->
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-dos-elementos-tiempo.css') }}">

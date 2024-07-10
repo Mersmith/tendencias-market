@@ -162,7 +162,27 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
+        $dataSliderImagenDosElementosTiempo = [
+            "data" => [
+                [
+                    "id" => 1,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-01-tablet-201223-af.webp'),
+                    "link" => "www.google.com1"
+                ],
+                [
+                    "id" => 2,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-02-samsung-201223-af.webp'),
+                    "link" => "www.google.com2"
+                ]
+            ],
+            "tiempo_finaliza" => [
+                "hora" => 10,
+                "minuto" => 22,
+                "segundo" => 43,
+            ],
+            "fecha_finaliza" => "2025-07-11"
+        ];
 
-        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas', 'dataGridImagenSeisElementos_2'));
+        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas', 'dataGridImagenSeisElementos_2', 'dataSliderImagenDosElementosTiempo'));
     }
 }
