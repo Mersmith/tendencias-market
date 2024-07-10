@@ -18,7 +18,7 @@
                         'p_color' => '#000000',
                     ])
 
-                    <div className="columna_12 m_10_0">
+                    <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-cuatro-elementos', [
                             'tiendas' => $tiendas,
                         ])
@@ -32,19 +32,24 @@
                         'p_color' => '#4a4a4a',
                     ])
 
-                    <div className="columna_12 m_10_0">
+                    <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
                             'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_2,
                         ])
                     </div>
                 </div>
 
-                <div className="columna_12 m_40_0">
+                <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
                         'dataSliderImagenDosElementosTiempo' => $dataSliderImagenDosElementosTiempo,
                     ])
                 </div>
-                
+
+                <div class="columna_12 m_b_10">
+                    @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
+                        'dataSliderImagenCuatroElementos' => $dataSliderImagenCuatroElementos,
+                    ])
+                </div>
             </div>
         </div>
     </div>

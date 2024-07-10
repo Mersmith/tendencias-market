@@ -183,6 +183,29 @@ class EcommerceInicioController extends Controller
             "fecha_finaliza" => "2025-07-11"
         ];
 
-        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas', 'dataGridImagenSeisElementos_2', 'dataSliderImagenDosElementosTiempo'));
+        $dataSliderImagenCuatroElementos = [
+            [
+                'id' => 1,
+                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-01-DK-MB-audio-JL.webp'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 2,
+                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-02-DK-MB-videojuegos-JL.webp'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 3,
+                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-03-DK-MB-smartwatch-JL.webp'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 4,
+                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-04-DK-MB-tablets-JL.webp'),
+                'link' => 'https://www.google.com1',
+            ]
+        ];
+
+        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas', 'dataGridImagenSeisElementos_2', 'dataSliderImagenDosElementosTiempo', 'dataSliderImagenCuatroElementos'));
     }
 }
