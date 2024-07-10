@@ -107,3 +107,5 @@ php artisan make:livewire Erp/GuiaSalidaDirecto/GuiaSalidaDirectoCrearLivewire
 php artisan make:livewire Erp/GuiaSalidaDirecto/GuiaSalidaDirectoTodasLivewire
 
 php artisan make:livewire Erp/GuiaSalidaDirectoDetalle/GuiaSalidaDirectoDetalleVerLivewire
+
+php artisan make:controller Ecommerce/Inicio/EcommerceInicioController

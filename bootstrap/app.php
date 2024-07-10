@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('erp')
                 ->name('erp.')
                 ->group(base_path('routes/erp.php'));
+            Route::middleware(['web'])
+                ->name('erp.')
+                ->group(base_path('routes/ecommerce.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
