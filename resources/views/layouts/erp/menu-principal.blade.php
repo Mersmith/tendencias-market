@@ -51,7 +51,12 @@
         <!--NIVEL 1-->
         <ul>
             @foreach ($menuPrincipal as $dataNivel_1)
-                <li :class="{ 'nav_icono_seleccionado': seleccionadoNivel_1 == {{ $dataNivel_1['id'] }} }">
+                <li
+                    :class="{
+                        'nav_icono_seleccionado': seleccionadoNivel_1 ==
+                            {{ $dataNivel_1['id'] }},
+                        'no-hover': seleccionadoNivel_1 == {{ $dataNivel_1['id'] }}
+                    }">
                     <a @click="toogleNivel_1($event, {{ $dataNivel_1['id'] }})"
                         @if (!count($dataNivel_1['submenus']) > 0) href="{{ route($dataNivel_1['ruta']) }}" @endif>
                         <i class="{{ $dataNivel_1['icono'] }}"></i>
@@ -82,18 +87,22 @@
                                 :class="{ 'ocultar_nivel': seleccionadoNivel_1 !== {{ $dataNivel_1['id'] }} }">
                                 @foreach ($dataNivel_1['submenus'] as $dataNivel_2)
                                     <li>
-                                        <a @click.stop="toogleNivel_2($event, {{ $dataNivel_2['id'] }})"
+                                        <span class="contenedor_a"
                                             :class="{
                                                 'sidebar_nav_seleccionado': seleccionadoNivel_2 ===
-                                                    {{ $dataNivel_2['id'] }}
-                                            }"
-                                            @if (!count($dataNivel_2['submenus']) > 0) href="{{ route($dataNivel_2['ruta']) }}" @endif>
-                                            <i class="{{ $dataNivel_2['icono'] }}"></i>
-                                            {{ $dataNivel_2['nombre'] }}
+                                                    {{ $dataNivel_2['id'] }},
+                                                'no-hover': seleccionadoNivel_2 == {{ $dataNivel_2['id'] }}
+                                            }">
+                                            <a @click.stop="toogleNivel_2($event, {{ $dataNivel_2['id'] }})"
+                                                @if (!count($dataNivel_2['submenus']) > 0) href="{{ route($dataNivel_2['ruta']) }}" @endif>
+                                                <i class="{{ $dataNivel_2['icono'] }}"></i>
+                                                {{ $dataNivel_2['nombre'] }}
+                                            </a>
                                             @if (count($dataNivel_2['submenus']) > 0)
                                                 <i class="fa-solid fa-sort-down"></i>
                                             @endif
-                                        </a>
+                                        </span>
+
 
                                         @if (count($dataNivel_2['submenus']) > 0)
                                             <!--NIVEL 3-->
@@ -101,17 +110,20 @@
                                                 :class="{ 'ocultar_nivel': seleccionadoNivel_2 !== {{ $dataNivel_2['id'] }} }">
                                                 @foreach ($dataNivel_2['submenus'] as $dataNivel_3)
                                                     <li>
-                                                        <a @click.stop="toogleNivel_3($event, {{ $dataNivel_3['id'] }})"
+                                                        <span class="contenedor_a"
                                                             :class="{
                                                                 'sidebar_item_seleccionado': seleccionadoNivel_3 ===
                                                                     {{ $dataNivel_3['id'] }}
-                                                            }"
-                                                            @if (!count($dataNivel_3['submenus']) > 0) href="{{ route($dataNivel_3['ruta']) }}" @endif>
-                                                            {{ $dataNivel_3['nombre'] }}
+                                                            }">
+                                                            <a @click.stop="toogleNivel_3($event, {{ $dataNivel_3['id'] }})"
+                                                                @if (!count($dataNivel_3['submenus']) > 0) href="{{ route($dataNivel_3['ruta']) }}" @endif>
+                                                                <span class="punto_item"><i class="fa-solid fa-circle"></i></span>
+                                                                {{ $dataNivel_3['nombre'] }}
+                                                            </a>
                                                             @if (count($dataNivel_3['submenus']) > 0)
                                                                 <i class="fa-solid fa-sort-down"></i>
                                                             @endif
-                                                        </a>
+                                                        </span>
 
                                                         @if (count($dataNivel_3['submenus']) > 0)
                                                             <!--NIVEL 4-->
@@ -122,17 +134,20 @@
                                                                 }">
                                                                 @foreach ($dataNivel_3['submenus'] as $dataNivel_4)
                                                                     <li>
-                                                                        <a @click.stop="toogleNivel_4($event, {{ $dataNivel_4['id'] }})"
+                                                                        <span class="contenedor_a"
                                                                             :class="{
                                                                                 'sidebar_item_seleccionado': seleccionadoNivel_4 ===
                                                                                     {{ $dataNivel_4['id'] }}
-                                                                            }"
-                                                                            @if (!count($dataNivel_4['submenus']) > 0) href="{{ route($dataNivel_4['ruta']) }}" @endif>
-                                                                            {{ $dataNivel_4['nombre'] }}
+                                                                            }">
+                                                                            <a @click.stop="toogleNivel_4($event, {{ $dataNivel_4['id'] }})"
+                                                                                @if (!count($dataNivel_4['submenus']) > 0) href="{{ route($dataNivel_4['ruta']) }}" @endif>
+                                                                                <span class="punto_item"><i class="fa-solid fa-circle"></i></span>
+                                                                                {{ $dataNivel_4['nombre'] }}
+                                                                            </a>
                                                                             @if (count($dataNivel_4['submenus']) > 0)
                                                                                 <i class="fa-solid fa-sort-down"></i>
                                                                             @endif
-                                                                        </a>
+                                                                        </span>
 
                                                                         <!--NIVEL 5-->
                                                                     </li>
