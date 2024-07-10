@@ -19,10 +19,24 @@
                     ])
 
                     <div className="columna_12 m_10_0">
-                        @include('ecommerce.partials.grid-imagen-cuatro-elementos', ['tiendas' => $tiendas])
-
+                        @include('ecommerce.partials.grid-imagen-cuatro-elementos', [
+                            'tiendas' => $tiendas,
+                        ])
                     </div>
+                </div>
 
+                <div class="m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Aquí hay de todo',
+                        'p_alineacion' => 'center',
+                        'p_color' => '#4a4a4a',
+                    ])
+
+                    <div className="columna_12 m_10_0">
+                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_2,
+                        ])
+                    </div>
                 </div>
             </div>
         </div>

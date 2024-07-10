@@ -25,4 +25,5 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider-principal.css') }}">
 
 <!--GRID IMAGEN-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid-imagen.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-seis-elementos.css') }}">
