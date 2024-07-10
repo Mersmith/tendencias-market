@@ -24,18 +24,12 @@
     @include('ecommerce.partials.menu-principal')
 
     <!--CONTENEDOR LAYOUT GENERAL-->
-    <div class="contenedor_layout_general">
-        <!--CONTENIDO LAYOUT PAGINA-->
-        <div class="contenido_layout_pagina">
-            <div class="centrar_pagina">
-                <main class="contenido_pagina">
-                    @yield('content')
-                    @if (isset($slot))
-                        {{ $slot }}
-                    @endif
-                </main>
-            </div>
-        </div>
+    <main class="contenedor_layout_pagina">
+        @yield('content')
+        @if (isset($slot))
+            {{ $slot }}
+        @endif
+    </main>
     </div>
 
     <div class="contenedor_superponer" :x-show="estadoAsideAbierto" x-on:click="cerrarSidebars"></div>

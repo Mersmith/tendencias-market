@@ -9,6 +9,12 @@ class EcommerceInicioController extends Controller
 {
     public function __invoke()
     {
-        return view('ecommerce.inicio.index');
+        $imagenBanner_1 = [
+            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),
+            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100-movil.webp'),
+            "link" => "https://www.google.com1"
+        ];
+        
+        return view('ecommerce.inicio.index', compact('imagenBanner_1'));
     }
 }

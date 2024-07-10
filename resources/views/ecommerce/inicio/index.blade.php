@@ -4,6 +4,7 @@
 
 @section('content')
     <div>
-        Inicio ECOMMERCE
+        @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_1])
+
     </div>
 @endsection

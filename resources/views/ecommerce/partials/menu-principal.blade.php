@@ -109,7 +109,8 @@
             <div class="sidebar_cabecera">
                 <div class="saludo">¡Hola!</div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo" x-on:click="toggleContenedorSidebar" />
+                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
+                    x-on:click="toggleContenedorSidebar" />
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
@@ -124,7 +125,8 @@
                                     <span x-text="dataMenu.nombre">
                                     </span>
                                     <blockquote x-show="dataMenu.etiqueta" x-text="dataMenu.etiqueta"></blockquote>
-                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
+                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}"
+                                        alt="Logo" />
                                 </div>
                             </li>
                         </template>
@@ -206,7 +208,8 @@
                 <!-- PIE -->
                 <div class="sidebar_cotenido_item sidebar_pie">
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/imagenes/logo/falabella-orange-logo.svg') }}" alt="Logo" />
+                        <img src="{{ asset('assets/ecommerce/imagenes/logo/falabella-orange-logo.svg') }}"
+                            alt="Logo" />
                     </a>
                 </div>
             </div>
@@ -220,11 +223,13 @@
             <!-- SIDEBAR CABECERA -->
             <div class="sidebar_cabecera sidebar_cabecera_subcategorias">
                 <div class="retroceder">
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo" x-on:click="cerrarSidebarSubcategorias" />
+                    <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo"
+                        x-on:click="cerrarSidebarSubcategorias" />
                     <span>Retroceder</span>
                 </div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo" x-on:click="cerrarSidebars" />
+                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
+                    x-on:click="cerrarSidebars" />
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
@@ -252,7 +257,8 @@
                                 <!-- SIDEBAR CONTENIDO ELEMENTO  -->
                                 <div class="sidebar_cotenido_elemento_subcategorias">
                                     <h3 x-text="dataMenu.titulo"></h3>
-                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
+                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}"
+                                        alt="Logo" />
                                 </div>
 
                                 <!-- CONTENEDOR ITEM SUBCATEGORIA   -->
@@ -285,7 +291,8 @@
                     <span>Retroceder</span>
                 </div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo" x-on:click="cerrarSidebars" />
+                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
+                    x-on:click="cerrarSidebars" />
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
@@ -313,32 +320,4 @@
             </div>
         </div>
     </div>
-
-    <!-- BLOQUE PAGINA -->
-    <div class="contenedor_layout_pagina">
-
-        <div class="contenedor_pagina">
-            <div class="centrar_pagina">
-                <div class="contenido_pagina">
-                    <p>Página 1</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página 5</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página 10</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página</p><br><br><br><br>
-                    <p>Página 15</p><br><br><br><br>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="contenedor_superponer" :x-show="estadoAsideAbierto"></div>
 </div>
