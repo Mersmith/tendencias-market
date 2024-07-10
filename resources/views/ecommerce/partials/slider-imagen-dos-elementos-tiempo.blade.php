@@ -10,11 +10,16 @@
             </div>
 
             <div class="contenedor_hora">
-                <template x-for="digito in [hora, minuto, segundo]">
-                    <div>
-                        <p x-text="padTwoDigits(digito)"></p>
-                        <span x-text="':'" x-show="digito !== segundo"></span>
-                    </div>
+                <template x-for="digito in padTwoDigits(hora)">
+                    <p x-text="digito"></p>
+                </template>
+                <span>:</span>
+                <template x-for="digito in padTwoDigits(minuto)">
+                    <p x-text="digito"></p>
+                </template>
+                <span>:</span>
+                <template x-for="digito in padTwoDigits(segundo)">
+                    <p x-text="digito"></p>
                 </template>
             </div>
         </div>
@@ -42,7 +47,7 @@
             segundo: 0,
 
             padTwoDigits(valor) {
-                return valor.toString().padStart(2, '0');
+                return valor.toString().padStart(2, '0').split('');
             },
 
             intervalo() {
