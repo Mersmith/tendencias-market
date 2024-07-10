@@ -1,0 +1,44 @@
+/* CONTENEDOR GRID */
+.contenedor_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* LINK */
+.contenedor_grid a {
+    display: flex;
+}
+
+/* IMAGENES */
+.contenedor_grid img {
+    width: 100%;
+    height: auto;
+}
+
+.contenedor_grid .imagen_movil {
+    display: none;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+
+    .contenedor_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* RESPONSIVE MOVIL */
+@media (max-width: 700px) {
+
+    /* IMAGENES */
+    .contenedor_grid .imagen_computadora {
+        display: none;
+    }
+
+    .contenedor_grid .imagen_movil {
+        display: block;
+    }
+
+}

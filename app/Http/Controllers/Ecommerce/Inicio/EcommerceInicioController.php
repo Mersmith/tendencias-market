@@ -60,6 +60,33 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
-        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders'));
+        $tiendas = [
+            [
+                'id' => 1,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Retail@140h.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Retail@160h-movil.jpg'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 2,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Sodimac@140h.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Sodimac@160h-movil.jpg'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 3,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Tottus@140h.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Tottus@160h-movil.jpg'),
+                'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 4,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@140h.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@160h-movil.jpg'),
+                'link' => 'https://www.google.com1',
+            ]
+        ];
+
+        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas'));
     }
 }

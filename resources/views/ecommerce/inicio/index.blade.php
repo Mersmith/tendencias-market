@@ -19,6 +19,7 @@
                     ])
 
                     <div className="columna_12 m_10_0">
+                        @include('ecommerce.partials.grid-imagen-cuatro-elementos', ['tiendas' => $tiendas])
 
                     </div>
 
