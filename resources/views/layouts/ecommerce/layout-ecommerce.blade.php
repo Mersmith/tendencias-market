@@ -19,12 +19,12 @@
     @include('layouts.ecommerce.assets.css')
 </head>
 
-<body x-data="xDataLayoutEcommerce()" x-init="initLayout" class="contenedor_layout_general">
+<body x-data="xDataLayoutEcommerce()" x-init="initLayout" class="contenedor_layout_ecommerce">
     <!--MENU PRINCIPAL-->
     @include('ecommerce.partials.menu-principal')
 
     <!--CONTENEDOR LAYOUT GENERAL-->
-    <main class="contenedor_layout_pagina">
+    <main class="contenedor_layout_ecommerce_pagina">
         @yield('content')
         @if (isset($slot))
             {{ $slot }}

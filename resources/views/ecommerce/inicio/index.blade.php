@@ -20,7 +20,7 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-cuatro-elementos', [
-                            'tiendas' => $tiendas,
+                            'p_elementos' => $tiendas,
                         ])
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_2,
+                            'p_elementos' => $dataGridImagenSeisElementos_2,
                         ])
                     </div>
                 </div>
@@ -132,7 +132,7 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_3,
+                            'p_elementos' => $dataGridImagenSeisElementos_3,
                         ])
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                 <div class="m_40_0">
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_2,
+                            'p_elementos' => $dataGridImagenSeisElementos_2,
                         ])
                     </div>
                 </div>

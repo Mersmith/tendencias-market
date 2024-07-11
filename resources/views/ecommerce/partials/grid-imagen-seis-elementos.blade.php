@@ -1,4 +1,4 @@
-<div x-data="gridComponent({{ json_encode($dataGridImagenSeisElementos_2) }})">
+<div x-data="gridComponent({{ json_encode($p_elementos) }})">
     <!-- CONTENEDOR GRID -->
     <div class="contenedor_grid_imagen_seis_elementos">
         <!-- LINK -->
@@ -12,7 +12,7 @@
     </div>
 
     <!-- CONTENEDOR CONTROL -->
-    <div class="contenedor_control_grid_imagen_seis_elementos" x-show="items.length > 6">
+    <div class="contenedor_control_mostrar" x-show="items.length > 6">
         <p @click="toggleMostrarMas" x-show="!mostrarMas">Mostrar más <span class="invertido">^</span></p>
         <p @click="toggleMostrarMas" x-show="mostrarMas">Mostrar menos <span class="normal">^</span></p>
     </div>

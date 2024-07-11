@@ -31,34 +31,6 @@
     border-radius: 50%;
 }
 
-/* CONTENEDOR CONTROL */
-.contenedor_control_grid_imagen_seis_elementos {
-    margin-top: 20px;
-    text-align: end;
-}
-
-.contenedor_control_grid_imagen_seis_elementos p {
-    cursor: pointer;
-    padding-right: 0.875rem;
-    text-decoration: underline;
-    letter-spacing: .1163rem;
-    color: #778089;
-}
-
-.contenedor_control_grid_imagen_seis_elementos span {
-    position: absolute;
-}
-
-.contenedor_control_grid_imagen_seis_elementos .invertido {
-    transform: translateY(-45%) rotate(180deg);
-    margin-top: 10px;
-}
-
-.contenedor_control_grid_imagen_seis_elementos .normal {
-    margin-top: 5px;
-    margin-left: 2px;
-}
-
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 

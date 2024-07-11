@@ -1,5 +1,8 @@
 :root {
 
+    --altura-header-principal-computadora: 120px;
+    --altura-header-principal-movil: 170px;
+    
     /* SLIDE PRODUCTOS */
     /*6 ELEMENTOS*/
     --slide-productos-computadora: 16.6%;
