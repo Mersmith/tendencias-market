@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cuatro-elementos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-productos-seis-elementos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad-controles.css') }}">
 
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">

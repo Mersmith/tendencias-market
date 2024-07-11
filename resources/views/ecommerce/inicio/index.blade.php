@@ -94,6 +94,18 @@
                         'productos' => $productos_1,
                     ])
                 </div>
+
+                <div class="columna_12 m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Novedades que te encantarán',
+                        'p_alineacion' => 'left',
+                        'p_color' => '#000000',
+                    ])
+
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                        'elementos' => $sliderImagenTresElementosPublicidadControles,
+                    ])
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,137 @@
+.slider_imagen_tres_elementos_publicidad_controles {
+    position: relative;
+    width: 100%;
+}
+
+/* SLIDER */
+.slider_imagen_tres_elementos_publicidad_controles .slider {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .slider::-webkit-scrollbar {
+    height: 5px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .slider::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 5px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .reverseSlider {
+    flex-direction: row-reverse;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .slide {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 5px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .item_50 {
+    width: 50%;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .item_25 {
+    width: 25%;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .imagen_movil {
+    display: none;
+}
+
+/* CONTROL BOTONES */
+.slider_imagen_tres_elementos_publicidad_controles .control_botones {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    box-shadow: -0.0625rem 0 0.25rem 0.1875rem rgba(0, 0, 0, 0.03);
+    color: white;
+    z-index: 1;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .control_botones:hover {
+    background-color: #fafafa;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .control_botones:disabled {
+    display: none;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .boton_retroceder {
+    left: 10px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .boton_siguiente {
+    right: 10px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .control_botones img {
+    width: 16px;
+}
+
+/* PAGINACION BOTONES */
+.slider_imagen_tres_elementos_publicidad_controles .paginacion_botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .boton_paginacion {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 50%;
+    border: none;
+    background-color: silver;
+}
+
+.slider_imagen_tres_elementos_publicidad_controles .boton_paginacion.activo {
+    width: 10px;
+    height: 10px;
+    background-color: #8b8b8b;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+    .slider_imagen_tres_elementos_publicidad_controles .slide {
+        width: 45%;
+    }
+
+    .slider_imagen_tres_elementos_publicidad_controles .imagen_movil {
+        display: block;
+    }
+
+    .slider_imagen_tres_elementos_publicidad_controles .imagen_computadora {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .slider_imagen_tres_elementos_publicidad_controles .slide {
+        width: 95%;
+    }
+
+    /* CONTROL BOTONES */
+    .slider_imagen_tres_elementos_publicidad_controles .control_botones {
+        display: none;
+    }
+
+    /* PAGINACION BOTONES */
+    .slider_imagen_tres_elementos_publicidad_controles .paginacion_botones {
+        display: none;
+    }
+}
