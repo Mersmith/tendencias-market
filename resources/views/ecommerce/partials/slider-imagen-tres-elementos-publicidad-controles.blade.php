@@ -1,5 +1,5 @@
 <!-- slider-elementos-seis-elementos.blade.php -->
-<div x-data="sliderPublicidadSeisElementos({{ json_encode($p_elementos) }})" x-init="init()" class="slider_img_tres_ele_publi_contr">
+<div x-data="dataSliderPubliSeisEle({{ json_encode($p_elementos) }})" x-init="init()" class="slider_img_tres_ele_publi_contr">
 
     <!-- SLIDER -->
     <div x-ref="slider" class="contenedor_promociones slider">
@@ -34,7 +34,7 @@
 </div>
 
 <script>
-    function sliderPublicidadSeisElementos(elementos) {
+    function dataSliderPubliSeisEle(elementos) {
         return {
             elementos,
             cantidadElementosComputadora: 3,

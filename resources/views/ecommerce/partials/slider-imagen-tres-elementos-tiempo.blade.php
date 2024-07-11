@@ -1,4 +1,4 @@
-<div x-data="sliderImagenTresElementosTiempo('{{ $p_elementos['fecha_finaliza'] }}')">
+<div x-data="dataSliderImaTreEleTie('{{ $p_elementos['fecha_finaliza'] }}')">
 
     <div class="contenedor_slider_tiempo">
         <div class="contenedor_fecha_hora">
@@ -35,7 +35,7 @@
     </div>
 </div>
 <script>
-    function sliderImagenTresElementosTiempo(fechaFinaliza) {
+    function dataSliderImaTreEleTie(fechaFinaliza) {
         const fechaFinal = new Date(fechaFinaliza);
 
         return {

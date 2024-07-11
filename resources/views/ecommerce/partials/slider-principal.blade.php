@@ -1,5 +1,5 @@
-<div x-data="sliderComponent({{ json_encode($sliders) }})" class="centrar_contenedor">
-    <div class="contenedor_slider">
+<div x-data="dataSliderPrincipal({{ json_encode($sliders) }})" class="centrar_contenedor">
+    <div class="contenedor_slider_principal">
         <div class="slider">
             <template x-for="(slide, index) in sliders" :key="index">
                 <div :class="['item_slider', index === posicionImagenActual ? 'imagen_activo' : 'imagen_oculto']">
@@ -29,7 +29,7 @@
     </div>
 </div>
 <script>
-    function sliderComponent(sliders) {
+    function dataSliderPrincipal(sliders) {
         return {
             sliders: sliders,
             posicionImagenActual: 0,

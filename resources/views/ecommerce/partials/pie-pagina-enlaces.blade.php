@@ -56,7 +56,7 @@
     ]);
 @endphp
 
-<div x-data="enlacesRapidosComponent({{ $dataEnlacesRapido }})">
+<div x-data="dataPiePagEnla({{ $dataEnlacesRapido }})">
     <div class="contenedor_enlaces_rapidos">
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
@@ -91,7 +91,7 @@
 </div>
 
 <script>
-    function enlacesRapidosComponent(dataEnlacesRapido) {
+    function dataPiePagEnla(dataEnlacesRapido) {
         return {
             dataEnlacesRapido: dataEnlacesRapido,
             itemIndex: null,

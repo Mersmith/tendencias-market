@@ -1,4 +1,4 @@
-<div x-data="sliderImagenDosElementosTiempo('{{ $p_elementos['fecha_finaliza'] }}')">
+<div x-data="dataSliderImaDosEleTiem('{{ $p_elementos['fecha_finaliza'] }}')">
 
     <div class="contenedor_slider_tiempo">
         <div class="contenedor_fecha_hora">
@@ -35,7 +35,7 @@
     </div>
 </div>
 <script>
-    function sliderImagenDosElementosTiempo(fechaFinaliza) {
+    function dataSliderImaDosEleTiem(fechaFinaliza) {
         const fechaFinal = new Date(fechaFinaliza);
 
         return {

@@ -1,4 +1,4 @@
-<div x-data="gridComponent({{ json_encode($p_elementos) }})">
+<div x-data="dataGridImaSeisElem({{ json_encode($p_elementos) }})">
     <!-- CONTENEDOR GRID -->
     <div class="contenedor_grid_imagen_seis_elementos">
         <!-- LINK -->
@@ -19,7 +19,7 @@
 </div>
 
 <script>
-    function gridComponent(items) {
+    function dataGridImaSeisElem(items) {
         return {
             items: items,
             mostrarMas: false,

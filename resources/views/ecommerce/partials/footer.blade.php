@@ -1,4 +1,4 @@
-<div x-data="baseComponent()">
+<div x-data="dataFooter()">
     <div class="footer">
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
@@ -32,7 +32,7 @@
 </div>
 
 <script>
-    function baseComponent(items) {
+    function dataFooter(items) {
         return {
             dataRedesSociales: [{
                     id: 1,

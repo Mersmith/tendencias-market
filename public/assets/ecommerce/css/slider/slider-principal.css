@@ -1,48 +1,42 @@
-.centrar_contenedor {
-    max-width: 120rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* CONTENEDOR SLIDER */
-.contenedor_slider {
+.contenedor_slider_principal {
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
 /* SLIDER */
-.contenedor_slider .slider {
+.contenedor_slider_principal .slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
 /* ITEM SLIDER */
-.contenedor_slider .item_slider {
+.contenedor_slider_principal .item_slider {
     width: 100%;
     display: none;
 }
 
 /* IMAGENES */
-.contenedor_slider .item_slider img {
+.contenedor_slider_principal .item_slider img {
     width: 100%;
     height: auto;
 }
 
-.contenedor_slider .imagen_movil {
+.contenedor_slider_principal .imagen_movil {
     display: none;
 }
 
-.contenedor_slider .imagen_activo {
+.contenedor_slider_principal .imagen_activo {
     display: block;
 }
 
-.contenedor_slider .imagen_oculto {
+.contenedor_slider_principal .imagen_oculto {
     display: none;
 }
 
 /* CONTROL BOTONES */
-.contenedor_slider .control_botones {
+.contenedor_slider_principal .control_botones {
     position: absolute;
     width: 100%;
     top: 50%;
@@ -51,11 +45,11 @@
     z-index: 1;
 }
 
-.contenedor_slider:hover .control_botones {
+.contenedor_slider_principal:hover .control_botones {
     display: block;
 }
 
-.contenedor_slider .control_botones button {
+.contenedor_slider_principal .control_botones button {
     position: absolute;
     cursor: pointer;
     padding: 10px;
@@ -64,27 +58,27 @@
     color: white;
 }
 
-.contenedor_slider .control_botones button:hover {
+.contenedor_slider_principal .control_botones button:hover {
     background-color: rgba(0, 0, 0, .5);
 }
 
-.contenedor_slider .boton_retroceder {
+.contenedor_slider_principal .boton_retroceder {
     left: 10px;
 }
 
-.contenedor_slider .boton_siguiente {
+.contenedor_slider_principal .boton_siguiente {
     right: 10px;
 }
 
 /* PAGINACION BOTONES */
-.contenedor_slider .paginacion_botones {
+.contenedor_slider_principal .paginacion_botones {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
-.contenedor_slider .boton_paginacion {
+.contenedor_slider_principal .boton_paginacion {
     width: 8px;
     height: 8px;
     cursor: pointer;
@@ -94,7 +88,7 @@
     border: none;
 }
 
-.contenedor_slider .boton_paginacion.imagen_activo {
+.contenedor_slider_principal .boton_paginacion.imagen_activo {
     width: 10px;
     height: 10px;
     background-color: #8b8b8b;
@@ -103,11 +97,11 @@
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
-    .contenedor_slider .imagen_computadora {
+    .contenedor_slider_principal .imagen_computadora {
         display: none;
     }
 
-    .contenedor_slider .imagen_movil {
+    .contenedor_slider_principal .imagen_movil {
         display: block;
     }
 

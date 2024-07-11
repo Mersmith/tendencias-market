@@ -1,5 +1,5 @@
-<div x-data="categoriaData({{ json_encode($categorias) }})" x-init="init()">
-    <div class="contenedor_base">
+<div x-data="dataPiePagCatego({{ json_encode($p_elementos) }})" x-init="init()">
+    <div class="pie_pagina_categorias">
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
                 <div class="columna_12">
@@ -25,7 +25,7 @@
                     </div>
 
                     {{-- CONTENEDOR MOSTRAR --}}
-                    <div class="contenedor_mostrar" x-show="cantidadElementos == 2">
+                    <div class="contenedor_control_mostrar" x-show="cantidadElementos == 2">
                         <p @click="mostrarMas" x-show="elementosAMostrar.length !== categorias.length">Mostrar más <span
                                 class="invertido">^</span></p>
                         <p @click="mostrarMenos" x-show="elementosAMostrar.length === categorias.length">Mostrar menos
@@ -38,7 +38,7 @@
 </div>
 
 <script>
-    function categoriaData(categorias) {
+    function dataPiePagCatego(categorias) {
         return {
             categorias: categorias,
             cantidadElementos: 4,

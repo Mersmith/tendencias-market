@@ -158,7 +158,7 @@
             </div>
         </div>
 
-        @include('ecommerce.partials.pie-pagina-uno', ['elementos' => $categorias])
+        @include('ecommerce.partials.pie-pagina-categorias', ['p_elementos' => $categorias])
 
         @include('ecommerce.partials.pie-pagina-enlaces')
     </div>
