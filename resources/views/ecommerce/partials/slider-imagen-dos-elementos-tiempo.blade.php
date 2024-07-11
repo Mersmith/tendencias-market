@@ -1,7 +1,7 @@
 <div x-data="sliderImagenDosElementosTiempo('{{ $dataSliderImagenDosElementosTiempo['fecha_finaliza'] }}')">
 
     {{-- FECHA Y HORA --}}
-    <div class="contenedor_fecha_limitada">
+    <div class="slider_imagen_dos_elementos_tiempo">
         <div class="contenedor_fecha_hora">
             <div class="contenedor_fecha">
                 <span> SOLO x HOY</span>

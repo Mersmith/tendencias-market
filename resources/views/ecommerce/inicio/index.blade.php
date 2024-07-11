@@ -83,6 +83,17 @@
                     ])
                 </div>
 
+                <div class="columna_12 m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Lo más TOP en zapatillas',
+                        'p_alineacion' => 'left',
+                        'p_color' => '#000000',
+                    ])
+
+                    @include('ecommerce.partials.slider-productos-seis-elementos', [
+                        'productos' => $productos_1,
+                    ])
+                </div>
             </div>
         </div>
     </div>

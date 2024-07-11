@@ -1,5 +1,5 @@
 /* CONTENEDOR FECHA LIMITADA */
-.contenedor_fecha_limitada {
+.slider_imagen_dos_elementos_tiempo {
     padding: 10px;
     background-color: #484e59;
     border-radius: 1.4rem;
@@ -8,7 +8,7 @@
 }
 
 /* FECHA - HORA*/
-.contenedor_fecha_hora {
+.slider_imagen_dos_elementos_tiempo .contenedor_fecha_hora {
     display: flex;
     align-items: center;
     gap: 25px;
@@ -16,30 +16,30 @@
 }
 
 /* FECHA */
-.contenedor_fecha {
+.slider_imagen_dos_elementos_tiempo .contenedor_fecha {
     display: flex;
     align-items: center;
 }
 
-.contenedor_fecha span {
+.slider_imagen_dos_elementos_tiempo .contenedor_fecha span {
     font-weight: 700;
     font-size: 25px;
     letter-spacing: .125rem;
     color: #ffffff;
 }
 
-.contenedor_fecha img {
+.slider_imagen_dos_elementos_tiempo .contenedor_fecha img {
     width: 37px;
     height: 39px;
 }
 
 /* HORA */
-.contenedor_hora {
+.slider_imagen_dos_elementos_tiempo .contenedor_hora {
     display: flex;
     gap: 2px;
 }
 
-.contenedor_hora p {
+.slider_imagen_dos_elementos_tiempo .contenedor_hora p {
     width: 24px;
     height: 34px;
     display: inline-block;
@@ -54,7 +54,7 @@
     opacity: .95;
 }
 
-.contenedor_hora span {
+.slider_imagen_dos_elementos_tiempo .contenedor_hora span {
     padding: 0px 2px;
     font-weight: 700;
     font-size: 1.3rem;
@@ -62,29 +62,29 @@
 }
 
 /* SLIDER */
-.contenedor_promociones {
+.slider_imagen_dos_elementos_tiempo .contenedor_promociones {
     width: 100%;
     overflow-x: auto;
     display: flex;
 }
 
-.contenedor_promociones::-webkit-scrollbar {
+.slider_imagen_dos_elementos_tiempo .contenedor_promociones::-webkit-scrollbar {
     height: 5px;
 }
 
-.contenedor_promociones::-webkit-scrollbar-thumb {
+.slider_imagen_dos_elementos_tiempo .contenedor_promociones::-webkit-scrollbar-thumb {
     background-color: #b4b4b4;
     border-radius: 5px;
 }
 
-.slide {
+.slider_imagen_dos_elementos_tiempo .slide {
     width: 50%;
     scroll-snap-align: start;
     flex: 0 0 auto;
     padding: 5px;
 }
 
-.slide img {
+.slider_imagen_dos_elementos_tiempo .slide img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -93,15 +93,15 @@
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
-    .slide {
+    .slider_imagen_dos_elementos_tiempo .slide {
         width: 95%;
     }
 
-    .contenedor_fecha span {
+    .slider_imagen_dos_elementos_tiempo .contenedor_fecha span {
         font-size: 20px;
     }
 
-    .contenedor_fecha img {
+    .slider_imagen_dos_elementos_tiempo .contenedor_fecha img {
         width: 24px;
     }
 
