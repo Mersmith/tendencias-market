@@ -714,6 +714,73 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
+        $categorias = [
+            [
+                'id' => 1,
+                'titulo' => 'Productos Populares',
+                'elementos' => [
+                    ['nombre' => 'Muebles', 'link' => 'www.google.com'],
+                    ['nombre' => 'Mancuernas', 'link' => 'www.google.com'],
+                    ['nombre' => 'Refrigeradora side by side', 'link' => 'www.google.com'],
+                    ['nombre' => 'Lavavajillas', 'link' => 'www.google.com'],
+                    ['nombre' => 'Nintendo Switch', 'link' => 'www.google.com'],
+                    ['nombre' => 'Muebles de sala', 'link' => 'www.google.com'],
+                    ['nombre' => 'Plancha', 'link' => 'www.google.com'],
+                    ['nombre' => 'Almohadas', 'link' => 'www.google.com'],
+                    ['nombre' => 'Vestidos', 'link' => 'www.google.com'],
+                    ['nombre' => 'Televisor LED', 'link' => 'www.google.com'],
+                ],
+            ],
+            [
+                'id' => 2,
+                'titulo' => 'Categorías destacadas',
+                'elementos' => [
+                    ['nombre' => 'Zapatillas', 'link' => 'www.google.com'],
+                    ['nombre' => 'Moda mujer', 'link' => 'www.google.com'],
+                    ['nombre' => 'Celulares', 'link' => 'www.google.com'],
+                    ['nombre' => 'Televisores', 'link' => 'www.google.com'],
+                    ['nombre' => 'Electrohogar', 'link' => 'www.google.com'],
+                    ['nombre' => 'Tecnología', 'link' => 'www.google.com'],
+                    ['nombre' => 'Ventiladores', 'link' => 'www.google.com'],
+                    ['nombre' => 'Laptops', 'link' => 'www.google.com'],
+                    ['nombre' => 'Audífonos', 'link' => 'www.google.com'],
+                    ['nombre' => 'Refrigerador', 'link' => 'www.google.com'],
+                ],
+            ],
+            [
+                'id' => 3,
+                'titulo' => 'Marcas favoritas',
+                'elementos' => [
+                    ['nombre' => 'Mango', 'link' => 'www.google.com'],
+                    ['nombre' => 'Cerave', 'link' => 'www.google.com'],
+                    ['nombre' => 'Aldo', 'link' => 'www.google.com'],
+                    ['nombre' => 'Olaplex', 'link' => 'www.google.com'],
+                    ['nombre' => 'Samsung', 'link' => 'www.google.com'],
+                    ['nombre' => 'Apple', 'link' => 'www.google.com'],
+                    ['nombre' => 'Puma', 'link' => 'www.google.com'],
+                    ['nombre' => 'The Ordinary', 'link' => 'www.google.com'],
+                    ['nombre' => 'Sybilla', 'link' => 'www.google.com'],
+                    ['nombre' => 'Adidas', 'link' => 'www.google.com'],
+                ],
+            ],
+            [
+                'id' => 4,
+                'titulo' => 'Destacados',
+                'elementos' => [
+                    ['nombre' => 'Airpods', 'link' => 'www.google.com'],
+                    ['nombre' => 'Xiaomi 12 Pro', 'link' => 'www.google.com'],
+                    ['nombre' => 'Nike Air Force 1', 'link' => 'www.google.com'],
+                    ['nombre' => 'iPhone 14', 'link' => 'www.google.com'],
+                    ['nombre' => 'Laptop gamer', 'link' => 'www.google.com'],
+                    ['nombre' => 'Samsung a53', 'link' => 'www.google.com'],
+                    ['nombre' => 'Alexa', 'link' => 'www.google.com'],
+                    ['nombre' => 'Motorola Moto g22', 'link' => 'www.google.com'],
+                    ['nombre' => 'Samsung Galaxy a54', 'link' => 'www.google.com'],
+                    ['nombre' => 'Cyber Wow', 'link' => 'www.google.com'],
+                ],
+            ],
+        ];
+
         return view(
             'ecommerce.inicio.index',
             compact(
@@ -731,7 +798,8 @@ class EcommerceInicioController extends Controller
                 'imagenesGridPublicidad_2',
                 'productos_1',
                 'sliderImagenTresElementosPublicidadControles',
-                'dataSliderImagenCincoElementos'
+                'dataSliderImagenCincoElementos',
+                'categorias'
             )
         );
     }

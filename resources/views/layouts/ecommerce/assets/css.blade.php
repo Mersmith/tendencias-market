@@ -34,3 +34,6 @@
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-seis-elementos.css') }}">
+
+<!--PIE-->
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-uno.css') }}">

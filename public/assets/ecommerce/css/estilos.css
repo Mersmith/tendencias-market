@@ -48,3 +48,9 @@
     font-size: 28px;
     line-height: 1.2;
 }
+
+.titulo img {
+    width: 20px;
+    margin-right: 10px;
+    display: inline;
+}

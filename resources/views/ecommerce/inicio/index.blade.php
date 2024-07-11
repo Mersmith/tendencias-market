@@ -157,5 +157,8 @@
 
             </div>
         </div>
+
+        @include('ecommerce.partials.pie-pagina-uno', ['elementos' => $categorias])
+
     </div>
 @endsection
