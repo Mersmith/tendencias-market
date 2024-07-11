@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_1])
+        @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
 
         @include('ecommerce.partials.slider-principal', ['sliders' => $sliders])
 
@@ -41,45 +41,45 @@
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
-                        'dataSliderImagenDosElementosTiempo' => $dataSliderImagenDosElementosTiempo,
+                        'p_elementos' => $dataSliderImagenDosElementosTiempo,
                     ])
                 </div>
 
                 <div class="columna_12 m_b_10">
                     @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
-                        'dataSliderImagenCuatroElementos' => $dataSliderImagenCuatroElementos,
+                        'p_elementos' => $dataSliderImagenCuatroElementos,
                     ])
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 
                 <div class="columna_12">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
-                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_1,
+                        'p_elementos' => $imagenesGridPublicidad_1,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
-                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_2,
+                        'p_elementos' => $imagenesGridPublicidad_2,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
-                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_1,
+                        'p_elementos' => $imagenesGridPublicidad_1,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
-                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_2,
+                        'p_elementos' => $imagenesGridPublicidad_2,
                     ])
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_3])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_3])
                 </div>
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
-                        'dataSliderImagenTresElementosTiempo' => $dataSliderImagenTresElementosTiempo,
+                        'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
                 </div>
 
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 
                 <div class="columna_12 m_40_0">
@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 
                 <div class="m_40_0">

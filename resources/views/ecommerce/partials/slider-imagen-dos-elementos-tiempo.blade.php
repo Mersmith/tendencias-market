@@ -1,7 +1,6 @@
-<div x-data="sliderImagenDosElementosTiempo('{{ $dataSliderImagenDosElementosTiempo['fecha_finaliza'] }}')">
+<div x-data="sliderImagenDosElementosTiempo('{{ $p_elementos['fecha_finaliza'] }}')">
 
-    {{-- FECHA Y HORA --}}
-    <div class="slider_imagen_dos_elementos_tiempo">
+    <div class="contenedor_slider_tiempo">
         <div class="contenedor_fecha_hora">
             <div class="contenedor_fecha">
                 <span> SOLO x HOY</span>
@@ -24,12 +23,10 @@
             </div>
         </div>
 
-        {{-- SLIDER --}}
-        <div class="contenedor_promociones slider">
-            @foreach ($dataSliderImagenDosElementosTiempo['data'] as $index => $item)
+        <div class="contenedor_promociones slider_img_dos_ele_ti">
+            @foreach ($p_elementos['data'] as $index => $item)
                 <div class="slide">
                     <a href="{{ $item['link'] }}">
-                        {{-- IMAGENES --}}
                         <img src="{{ $item['imagen'] }}" alt="Promoción {{ $index + 1 }}" />
                     </a>
                 </div>

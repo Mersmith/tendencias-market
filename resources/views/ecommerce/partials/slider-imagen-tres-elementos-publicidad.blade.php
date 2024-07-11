@@ -1,7 +1,7 @@
-<div class="slider_imagen_tres_elementos_publicidad">
-    @foreach ($imagenesGridPublicidad_1 as $item)
+<div class="contenedor_promociones slider_img_tres_ele_publi">
+    @foreach ($p_elementos as $item)
         <div
-            class="item_slider @if ($item['width'] === 50) item_50 @elseif($item['width'] === 25) item_25 @endif">
+            class="slide @if ($item['width'] === 50) width_50_por @elseif($item['width'] === 25) width_25_por @endif">
             <a href="{{ $item['link'] }}">
                 <img src="{{ $item['imagenComputadora'] }}" class="imagen_computadora" />
                 <img src="{{ $item['imagenMovil'] }}" class="imagen_movil" />
