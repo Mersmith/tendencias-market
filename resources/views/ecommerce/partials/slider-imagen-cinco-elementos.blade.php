@@ -1,5 +1,5 @@
-<div class="slider_imagen_cinco_elementos">
-    @foreach ($elementos as $item)
+<div class="contenedor_promociones slider_img_cinco_ele">
+    @foreach ($p_elementos as $item)
         <div class="slide">
             <a href="{{ $item['link'] }}">
                 <img src="{{ $item['imagen'] }}" />

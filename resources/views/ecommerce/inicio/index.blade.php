@@ -91,7 +91,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
-                        'productos' => $productos_1,
+                        'p_elementos' => $productos_1,
                     ])
                 </div>
 
@@ -103,7 +103,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'elementos' => $sliderImagenTresElementosPublicidadControles,
+                        'p_elementos' => $sliderImagenTresElementosPublicidadControles,
                     ])
                 </div>
 
@@ -119,7 +119,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
-                        'productos' => $productos_1,
+                        'p_elementos' => $productos_1,
                     ])
                 </div>
 
@@ -139,11 +139,11 @@
 
                 <div class="columna_12 m_10_0">
                     @include('ecommerce.partials.slider-imagen-cinco-elementos', [
-                        'elementos' => $dataSliderImagenCincoElementos,
+                        'p_elementos' => $dataSliderImagenCincoElementos,
                     ])
                 </div>
 
-                <div class="m_b_10">
+                <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 

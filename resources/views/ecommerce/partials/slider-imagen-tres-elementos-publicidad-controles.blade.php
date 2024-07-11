@@ -1,11 +1,11 @@
 <!-- slider-elementos-seis-elementos.blade.php -->
-<div x-data="sliderPublicidadSeisElementos({{ json_encode($elementos) }})" x-init="init()" class="slider_imagen_tres_elementos_publicidad_controles">
+<div x-data="sliderPublicidadSeisElementos({{ json_encode($p_elementos) }})" x-init="init()" class="slider_img_tres_ele_publi_contr">
 
     <!-- SLIDER -->
-    <div x-ref="slider" class="slider">
+    <div x-ref="slider" class="contenedor_promociones slider">
         <!-- SLIDE -->
         <template x-for="(elemento, index) in elementos" :key="index">
-            <div :class="{'item_50': elemento.width === 50, 'item_25': elemento.width === 25}" class="slide">
+            <div :class="{ 'item_50': elemento.width === 50, 'item_25': elemento.width === 25 }" class="slide">
                 <a :href="elemento.link">
                     <img :src="elemento.imagenComputadora" alt="" class="imagen_computadora" />
                     <img :src="elemento.imagenMovil" alt="" class="imagen_movil" />
@@ -15,19 +15,19 @@
     </div>
 
     <!-- CONTROL BOTONES -->
-    <button @click="handlePrev()" :disabled="currentPage === 1" class="control_botones boton_retroceder">
+    <button @click="handlePrev()" :disabled="currentPage === 1" class="control_slider_botones slider_boton_retroceder">
         <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo">
     </button>
     <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > elementos.length"
-        class="control_botones boton_siguiente">
+        class="control_slider_botones slider_boton_siguiente">
         <img src="{{ asset('assets/ecommerce/iconos/icono_siguiente.svg') }}" alt="Logo">
     </button>
 
     <!-- PAGINACION BOTONES -->
-    <div class="paginacion_botones">
+    <div class="slider_paginacion">
         <template x-for="page in totalPaginas">
             <button @click="setCurrentPage(page)" :class="{ 'activo': currentPage === (page - 1) * itemsPorPagina + 1 }"
-                class="boton_paginacion">
+                class="slider_paginacion_boton">
             </button>
         </template>
     </div>
