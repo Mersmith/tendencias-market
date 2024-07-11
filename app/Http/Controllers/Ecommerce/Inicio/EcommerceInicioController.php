@@ -15,6 +15,18 @@ class EcommerceInicioController extends Controller
             "link" => "https://www.google.com1"
         ];
 
+        $imagenBanner_2 = [
+            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-dos/Huincha-DK-CSI-Apple-Samsung-111223-mdcb.webp'),
+            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-dos/Huincha-MB-CSI-Apple-Samsung-111223-mdcb-movil.webp'),
+            "link" => "https://www.google.com1"
+        ];
+
+        $imagenBanner_3 = [
+            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-tres/Huincha-DK-ventilador-181223-AF.webp'),
+            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-tres/Huincha-DK-ventilador-181223-AF-movil.webp'),
+            "link" => "https://www.google.com1"
+        ];
+
         $sliders = [
             [
                 'id' => 1,
@@ -180,7 +192,33 @@ class EcommerceInicioController extends Controller
                 "minuto" => 22,
                 "segundo" => 43,
             ],
-            "fecha_finaliza" => "2025-07-11"
+            "fecha_finaliza" => "2024-07-12"
+        ];
+
+        $dataSliderImagenTresElementosTiempo = [
+            "data" => [
+                [
+                    "id" => 1,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-01-hisense-tv-121223-mdcb.webp'),
+                    "link" => "www.google.com1"
+                ],
+                [
+                    "id" => 2,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-02v.webp'),
+                    "link" => "www.google.com2"
+                ],
+                [
+                    "id" => 3,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-03-ofertas-111223-mdcb_.webp'),
+                    "link" => "www.google.com2"
+                ]
+            ],
+            "tiempo_finaliza" => [
+                "hora" => 10,
+                "minuto" => 22,
+                "segundo" => 43,
+            ],
+            "fecha_finaliza" => "2024-07-13"
         ];
 
         $dataSliderImagenCuatroElementos = [
@@ -206,6 +244,69 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
-        return view('ecommerce.inicio.index', compact('imagenBanner_1', 'sliders', 'tiendas', 'dataGridImagenSeisElementos_2', 'dataSliderImagenDosElementosTiempo', 'dataSliderImagenCuatroElementos'));
+        $imagenesGridPublicidad_1 = [
+            [
+                'id' => 1,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-1-vestuario-171123-mdcb-50.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-1-vestuario-171123-mdcb-50-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 50,
+            ],
+            [
+                'id' => 2,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-2-belleza-271123-mdcb-25.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-2-belleza-271123-mdcb-25-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 25,
+            ],
+            [
+                'id' => 3,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-3-accesorios-171123-mdcb-25.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-3-accesorios-171123-mdcb-25-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 25,
+            ]
+        ];
+
+        $imagenesGridPublicidad_2 = [
+            [
+                'id' => 1,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 25,
+            ],
+            [
+                'id' => 2,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-2-toallas-171223-mdcb-25.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-2-toallas-171223-mdcb-25-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 25,
+            ],
+            [
+                'id' => 3,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-3-dormitorios-271123-mdcb-50.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-3-dormitorios-271123-mdcb-50-movil.webp'),
+                'link' => 'https://www.google.com1',
+                'width' => 50,
+            ]
+        ];
+
+        return view(
+            'ecommerce.inicio.index',
+            compact(
+                'imagenBanner_1',
+                'imagenBanner_2',
+                'imagenBanner_3',
+                'sliders',
+                'tiendas',
+                'dataGridImagenSeisElementos_2',
+                'dataSliderImagenDosElementosTiempo',
+                'dataSliderImagenTresElementosTiempo',
+                'dataSliderImagenCuatroElementos',
+                'imagenesGridPublicidad_1',
+                'imagenesGridPublicidad_2'
+            )
+        );
     }
 }

@@ -50,6 +50,39 @@
                         'dataSliderImagenCuatroElementos' => $dataSliderImagenCuatroElementos,
                     ])
                 </div>
+
+                <div class="m_b_10">
+                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                </div>
+
+                <div class="columna_12">
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_1,
+                    ])
+
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_2,
+                    ])
+
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_1,
+                    ])
+
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                        'imagenesGridPublicidad_1' => $imagenesGridPublicidad_2,
+                    ])
+                </div>
+
+                <div class="m_b_10">
+                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_3])
+                </div>
+
+                <div class="columna_12 m_40_0">
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
+                        'dataSliderImagenTresElementosTiempo' => $dataSliderImagenTresElementosTiempo,
+                    ])
+                </div>
+
             </div>
         </div>
     </div>

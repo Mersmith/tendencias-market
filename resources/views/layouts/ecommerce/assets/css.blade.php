@@ -24,7 +24,9 @@
 <!--SLIDER-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-principal.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-dos-elementos-tiempo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-tiempo.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cuatro-elementos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad.css') }}">
 
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
