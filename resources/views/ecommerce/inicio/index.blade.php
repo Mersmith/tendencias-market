@@ -106,6 +106,55 @@
                         'elementos' => $sliderImagenTresElementosPublicidadControles,
                     ])
                 </div>
+
+                <div class="m_b_10">
+                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                </div>
+
+                <div class="columna_12 m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Lo más TOP en zapatillas',
+                        'p_alineacion' => 'left',
+                        'p_color' => '#000000',
+                    ])
+
+                    @include('ecommerce.partials.slider-productos-seis-elementos', [
+                        'productos' => $productos_1,
+                    ])
+                </div>
+
+                <div class="m_40_0">
+                    @include('ecommerce.partials.titulo', [
+                        'p_contenido' => 'Grandes marcas',
+                        'p_alineacion' => 'center',
+                        'p_color' => '#000000',
+                    ])
+
+                    <div class="columna_12 m_10_0">
+                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_3,
+                        ])
+                    </div>
+                </div>
+
+                <div class="columna_12 m_10_0">
+                    @include('ecommerce.partials.slider-imagen-cinco-elementos', [
+                        'elementos' => $dataSliderImagenCincoElementos,
+                    ])
+                </div>
+
+                <div class="m_b_10">
+                    @include('ecommerce.partials.banner', ['imagenBanner_1' => $imagenBanner_2])
+                </div>
+
+                <div class="m_40_0">
+                    <div class="columna_12 m_10_0">
+                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                            'dataGridImagenSeisElementos_2' => $dataGridImagenSeisElementos_2,
+                        ])
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

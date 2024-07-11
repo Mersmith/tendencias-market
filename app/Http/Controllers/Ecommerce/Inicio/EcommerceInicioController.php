@@ -174,6 +174,69 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
+        $dataGridImagenSeisElementos_3 = [
+            [
+                "id" => 1,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/12-MarcaDestacada-dk-mb-SAMSUNG.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 2,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/15-MarcaDestacada-dk-mb-LENOVO.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 3,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/18-MarcaDestacada-dk-mb-ADIDAS.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 4,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/20-MarcaDestacada-dk-mb-NIKE.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 5,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/27-MarcaDestacada-dk-mb-DIADORA.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 6,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/MarcaDestacada-dk-mb-mountain_gear-07.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 7,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/05-MarcaDestacada-dk-mb-OSTER.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 8,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/21-MarcaDestacada-dk-mb-MANGO.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 9,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/09-MarcaDestacada-dk-mb-APPLE.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 10,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/28-MarcaDestacada-dk-mb-THENORTHFACE.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 11,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/02-MarcaDestacada-dk-mb-JVC.webp'),
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 12,
+                "imagen" => asset('assets/ecommerce/imagenes/marcas/22-MarcaDestacada-dk-mb-ALDO.webp'),
+                "link" => "www.google.com1"
+            ]
+        ];
+
         $dataSliderImagenDosElementosTiempo = [
             "data" => [
                 [
@@ -618,6 +681,39 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
+        $dataSliderImagenCincoElementos = [
+            [
+                "id" => 1,
+                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/bltfb012eaf82a838ab/655cce634c0b9a0ab3d5244e/01-Ecosistemas-CMR-web-2111-RN.jpg?disable=upscale&format=webp&quality=70&width=1280",
+                "nombre" => "CMR Visa",
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 2,
+                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt99146fea275d653d/6548eebe1607a5040aa270d0/02-Ecosistema-OU-web-0611.jpg?disable=upscale&format=webp&quality=70&width=1280",
+                "nombre" => "Oportunidades Únicas",
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 3,
+                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/bltea505e477b9988b4/6548eebd26f063040a8d6bb5/03-Ecosistemas-W44-CMRpuntos-DK-MB-af.jpg?disable=upscale&format=webp&quality=70&width=1280",
+                "nombre" => "CMR Puntos",
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 4,
+                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt44880c1349ca5e53/6548eebd61070f040a26e8f4/04-Ecosistemas-W44-Tottus-DK-MB-af.jpg?disable=upscale&format=webp&quality=70&width=1280",
+                "nombre" => "Tottus APP",
+                "link" => "www.google.com1"
+            ],
+            [
+                "id" => 5,
+                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt966cad44f739322a/655cc99136b545af00cd52b8/05-Ecosistema-SOAT-web-2111-RN.jpg?disable=upscale&format=webp&quality=70&width=1280",
+                "nombre" => "Seguros Falabella",
+                "link" => "www.google.com1"
+            ]
+        ];
+
         return view(
             'ecommerce.inicio.index',
             compact(
@@ -627,13 +723,15 @@ class EcommerceInicioController extends Controller
                 'sliders',
                 'tiendas',
                 'dataGridImagenSeisElementos_2',
+                'dataGridImagenSeisElementos_3',
                 'dataSliderImagenDosElementosTiempo',
                 'dataSliderImagenTresElementosTiempo',
                 'dataSliderImagenCuatroElementos',
                 'imagenesGridPublicidad_1',
                 'imagenesGridPublicidad_2',
                 'productos_1',
-                'sliderImagenTresElementosPublicidadControles'
+                'sliderImagenTresElementosPublicidadControles',
+                'dataSliderImagenCincoElementos'
             )
         );
     }
