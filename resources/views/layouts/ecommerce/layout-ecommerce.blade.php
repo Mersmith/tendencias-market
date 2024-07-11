@@ -30,7 +30,8 @@
             {{ $slot }}
         @endif
     </main>
-    </div>
+
+    @include('ecommerce.partials.footer')
 
     <div class="contenedor_superponer" :x-show="estadoAsideAbierto" x-on:click="cerrarSidebars"></div>
 

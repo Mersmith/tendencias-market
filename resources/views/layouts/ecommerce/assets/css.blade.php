@@ -37,3 +37,4 @@
 
 <!--PIE-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-uno.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/footer.css') }}">
