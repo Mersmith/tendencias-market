@@ -9,6 +9,7 @@ use App\Models\Subcategoria;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.erp.layout-erp')]
 class ProductoEditarLivewire extends Component
@@ -20,10 +21,15 @@ class ProductoEditarLivewire extends Component
 
     public $nombre, $slug, $descripcion, $activo, $subcategoria_id = "", $marca_id = "";
 
+    public $modal = false;
+
+    public $imagenes_seleccionadas = [];
+
     public function mount($id)
     {
         $this->producto = Producto::with('imagens')->find($id);
-        $this->imagenes_inicial = $this->producto->imagens;
+        $this->imagenes_inicial = $this->producto->imagens->toArray();
+        $this->imagenes_seleccionadas = $this->producto->imagens->toArray();
 
         $this->nombre = $this->producto->nombre;
         $this->slug = $this->producto->slug;
@@ -55,7 +61,30 @@ class ProductoEditarLivewire extends Component
             "activo" => $data['activo'],
         ]);
 
+        if ($this->imagenes_seleccionadas) {
+            $imagenes_ids = array_column($this->imagenes_seleccionadas, 'id');
+            $this->producto->imagens()->sync($imagenes_ids);
+        }
+
         $this->dispatch('alertaLivewire', "Actualizado");
+    }
+
+    #[On('actualizarImagenesSeleccionadas')]
+    public function actualizarImagenesSeleccionadas($imagenes)
+    {
+        foreach ($imagenes as $imagen) {
+            if (!in_array($imagen['id'], array_column($this->imagenes_seleccionadas, 'id'))) {
+                $this->imagenes_seleccionadas[] = $imagen;
+            }
+        }
+        $this->reset('modal');
+    }
+
+    public function eliminarImagen($index)
+    {
+        unset($this->imagenes_seleccionadas[$index]);
+
+        $this->imagenes_seleccionadas = array_values($this->imagenes_seleccionadas);
     }
 
     public function render()

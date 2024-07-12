@@ -108,12 +108,14 @@
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Imagenes</h4>
 
-                    @if ($imagenes_inicial)
+                    <button type="button" wire:click="$set('modal', true)">Agregar</button>
+
+                    @if ($imagenes_seleccionadas)
                         <ul>
-                            @foreach ($imagenes_inicial as $index => $imagen)
+                            @foreach ($imagenes_seleccionadas as $index => $imagen)
                                 <li>
-                                    <img src="{{ $imagen->url }}" style="max-width: 150px; max-height: 150px;">
-                                    <a href="{{ $imagen->url }}" target="_blank">Ver</a>
+                                    <img src="{{ $imagen['url'] }}" style="max-width: 150px; max-height: 150px;">
+                                    <a href="{{ $imagen['url'] }}" target="_blank">Ver</a>
                                     <button wire:click="eliminarImagen({{ $index }})">Eliminar</button>
                                 </li>
                             @endforeach
@@ -131,4 +133,21 @@
             </div>
         </div>
     </div>
+
+    <x-dialog-modal wire:model="modal">
+        <x-slot name="title">
+            <div>
+                <h2 style="font-weight: bold">Imagenes</h2>
+            </div>
+        </x-slot>
+        <x-slot name="content">
+
+            @livewire('erp.imagen.imagen-modal-todas-livewire')
+
+        </x-slot>
+        <x-slot name="footer">
+            <button type="button" wire:click="$set('modal', false)">Cancelar</button>
+        </x-slot>
+    </x-dialog-modal>
+
 </div>
