@@ -4,6 +4,7 @@ namespace App\Livewire\Erp\Producto;
 
 use App\Http\Requests\ProductoRequest;
 use App\Models\Color;
+use App\Models\Imagen;
 use App\Models\Inventario;
 use App\Models\Marca;
 use App\Models\Producto;
@@ -13,6 +14,7 @@ use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.erp.layout-erp')]
 class ProductoCrearLivewire extends Component
@@ -28,6 +30,9 @@ class ProductoCrearLivewire extends Component
     public $variacion_color = false;
     public $activo = "2";
 
+    public $modal = false;
+
+    public $imagenes_seleccionadas = [];
     public function mount()
     {
         $this->subcategorias = Subcategoria::all();
@@ -63,9 +68,42 @@ class ProductoCrearLivewire extends Component
             //$inventario_nuevo->save();
         }
 
+        // Agregar las relaciones en la tabla imagenables
+        if ($this->imagenes_seleccionadas) {
+            foreach ($this->imagenes_seleccionadas as $imagen) {
+                \DB::table('imagenables')->insert([
+                    'imagen_id' => $imagen['id'],
+                    'imagenable_id' => $producto_nuevo->id,
+                    'imagenable_type' => Producto::class,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
+
         $this->dispatch('alertaLivewire', "Creado");
 
         return redirect()->route('erp.producto.vista.todas');
+    }
+
+    #[On('actualizarImagenesSeleccionadas')]
+    public function actualizarImagenesSeleccionadas($imagenes)
+    {
+        foreach ($imagenes as $imagen) {
+            if (!in_array($imagen['id'], array_column($this->imagenes_seleccionadas, 'id'))) {
+                $this->imagenes_seleccionadas[] = $imagen; // Agregar la imagen si no está
+            }
+        }
+        $this->reset('modal');
+    }
+
+    public function eliminarImagen($index)
+    {
+        // Elimina la imagen del arreglo usando el índice
+        unset($this->imagenes_seleccionadas[$index]);
+
+        // Reindexa el arreglo para mantener índices consecutivos
+        $this->imagenes_seleccionadas = array_values($this->imagenes_seleccionadas);
     }
 
     public function render()
