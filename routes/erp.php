@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\AlmacenController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ColorController;
+use App\Http\Controllers\Erp\AlmacenController;
+use App\Http\Controllers\Erp\CategoriaController;
+use App\Http\Controllers\Erp\ColorController;
 use App\Http\Controllers\Erp\ErpInicioController;
 use App\Http\Controllers\Erp\Footer\ErpFooterController;
 use App\Http\Controllers\Erp\MarcaController;
-use App\Http\Controllers\ListaPrecioController;
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\SedeController;
-use App\Http\Controllers\SerieController;
-use App\Http\Controllers\SubcategoriaController;
-use App\Http\Controllers\TallaController;
-use App\Http\Controllers\TipoDocumentoController;
+use App\Http\Controllers\Erp\ListaPrecioController;
+use App\Http\Controllers\Erp\ProductoController;
+use App\Http\Controllers\Erp\SedeController;
+use App\Http\Controllers\Erp\SerieController;
+use App\Http\Controllers\Erp\SubcategoriaController;
+use App\Http\Controllers\Erp\TallaController;
+use App\Http\Controllers\Erp\TipoDocumentoController;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivewire;

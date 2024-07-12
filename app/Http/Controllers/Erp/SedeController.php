@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Erp;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SedeRequest;
 use App\Models\Sede;
 use Illuminate\Http\Request;

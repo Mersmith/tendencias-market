@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Erp;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SubcategoriaRequest;
 use App\Models\Categoria;
 use App\Models\Subcategoria;
