@@ -4,6 +4,7 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\Erp\ErpInicioController;
+use App\Http\Controllers\Erp\Footer\ErpFooterController;
 use App\Http\Controllers\Erp\MarcaController;
 use App\Http\Controllers\ListaPrecioController;
 use App\Http\Controllers\ProductoController;
@@ -20,6 +21,7 @@ use App\Livewire\Erp\GuiaSalidaDirecto\GuiaSalidaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaSalidaDirectoDetalle\GuiaSalidaDirectoDetalleVerLivewire;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
+use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
@@ -143,3 +145,9 @@ Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVer
 Route::get('/guia-salida-directo', GuiaSalidaDirectoTodasLivewire::class)->name('guia-salida-directo.vista.todas');
 Route::get('/guia-salida-directo/crear', GuiaSalidaDirectoCrearLivewire::class)->name('guia-salida-directo.vista.crear');
 Route::get('/guia-salida-directo/{id}/detalle', GuiaSalidaDirectoDetalleVerLivewire::class)->name('guia-salida-directo-detalle.vista.ver');
+
+Route::get('/plantilla/footer', FooterEditarLivewire::class)->name('plantilla.footer.vista.editar');
+Route::controller(ErpFooterController::class)->group(function () {
+    Route::put('plantilla/footer', 'set')->name('plantilla.footer.json.set');
+    Route::get('plantilla/footer/get', 'get')->name('plantilla.footer.json.get');
+});

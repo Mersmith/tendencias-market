@@ -23,7 +23,6 @@ function xDataLayout() {
                 this.estadoAsideAbierto = false
                 this.estadoNavAbierto = false
             } else {
-                console.log("GA");
                 if (this.seleccionadoNivel_1) {
                     this.estadoNavAbierto = true
                 }

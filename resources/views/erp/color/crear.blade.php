@@ -25,7 +25,7 @@
                 <div class="g_columna_8">
                     <div class="g_panel">
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Color <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
