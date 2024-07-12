@@ -13,7 +13,12 @@ class ImagenTodasLivewire extends Component
 {
     use WithFileUploads;
 
-    public $imagenes, $name, $photos = [], $newPhotos = [], $type, $imagenId;
+    public $imagenes;
+
+    public $photos = [], $newPhotos = [];
+
+    public $modal = false, $imagenId, $url, $titulo, $descripcion, $nuevo;
+
     public function mount()
     {
         $this->imagenes = Imagen::all();
@@ -21,7 +26,6 @@ class ImagenTodasLivewire extends Component
 
     public function updatedPhotos($photos)
     {
-        // Agrega las nuevas fotos al arreglo de newPhotos
         foreach ($photos as $photo) {
             $this->newPhotos[] = $photo;
         }
@@ -32,6 +36,11 @@ class ImagenTodasLivewire extends Component
         array_splice($this->newPhotos, $index, 1);
     }
 
+    public function deleteImagenNueva()
+    {
+        $this->nuevo = null;
+    }
+
     public function store()
     {
         foreach ($this->newPhotos as $photo) {
@@ -39,10 +48,10 @@ class ImagenTodasLivewire extends Component
             $url = Storage::url($path);
 
             Imagen::create([
-                'name' => $this->name,
+                'titulo' => $this->titulo,
                 'path' => $path,
                 'url' => $url,
-                'type' => $this->type,
+                'descripcion' => $this->descripcion,
             ]);
         }
 
@@ -54,24 +63,28 @@ class ImagenTodasLivewire extends Component
     {
         $imagen = Imagen::find($id);
         $this->imagenId = $imagen->id;
-        $this->name = $imagen->name;
-        $this->type = $imagen->type;
+        $this->titulo = $imagen->titulo;
+        $this->descripcion = $imagen->descripcion;
+        $this->url = $imagen->url;
+
+
+        $this->modal = true;
     }
 
     public function update()
     {
         $imagen = Imagen::find($this->imagenId);
-        $imagen->name = $this->name;
+        $imagen->titulo = $this->titulo;
 
-        if ($this->photos) {
+        if ($this->nuevo) {
             Storage::delete($imagen->path);
-            $path = $this->photos[0]->store('images', 'public'); // Asumiendo solo actualizas una imagen
+            $path = $this->nuevo->store('images', 'public');
             $url = Storage::url($path);
             $imagen->path = $path;
             $imagen->url = $url;
         }
 
-        $imagen->type = $this->type;
+        $imagen->descripcion = $this->descripcion;
         $imagen->save();
 
         $this->reset();

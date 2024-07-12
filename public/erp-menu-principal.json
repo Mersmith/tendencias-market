@@ -464,5 +464,33 @@
                 ]
             }
         ]
+    },
+    {
+        "id": 5,
+        "nombre": "5",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-comment",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 41,
+                "nombre": "Imagen",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "erp.imagen.vista.todas",
+                        "url": "/erp/imagen",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            }
+        ]
     }
 ]
