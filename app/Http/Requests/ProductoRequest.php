@@ -7,6 +7,13 @@ use Illuminate\Support\Str;
 
 class ProductoRequest extends FormRequest
 {
+    protected $productoId;
+
+    public function __construct($productoId = null)
+    {
+        $this->productoId = $productoId;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -22,7 +29,7 @@ class ProductoRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->id;
+        $id = $this->productoId;
 
         if ($id) {
             return [
