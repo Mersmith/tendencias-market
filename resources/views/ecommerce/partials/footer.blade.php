@@ -8,7 +8,7 @@
                         <!-- CONTENEDOR REDES -->
                         <div class="contenedor_redes">
                             <template x-for="data in dataRedesSociales">
-                                <a :href="data.link" x-text="data.nombre"></a>
+                                <a :href="data.link" x-html="data.nombre"></a>
                             </template>
                         </div>
 

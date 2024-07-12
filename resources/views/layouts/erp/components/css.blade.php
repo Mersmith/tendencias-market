@@ -28,3 +28,6 @@
 
 <!--FORMULARIO-->
 <link rel="stylesheet" href="{{ asset('assets/erp/css/formulario.css') }}">
+
+<!--SORTEABLE-->
+<link rel="stylesheet" href="{{ asset('assets/erp/css/sorteable.css') }}">

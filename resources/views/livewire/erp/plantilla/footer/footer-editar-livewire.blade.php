@@ -38,41 +38,85 @@
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Redes sociales</h4>
 
-                    <div id="redes-sociales" x-sort="handleRedesSociales">
-                        @foreach ($redesSociales as $index => $redSocial)
-                            <div class="red-social" x-sort:item="{{ $redSocial['id'] }}">
-                                <label>Nombre:</label>
-                                <input type="text" wire:model="redesSociales.{{ $index }}.nombre">
-
-                                <label>Link:</label>
-                                <input type="text" wire:model="redesSociales.{{ $index }}.link">
-
-                                <button type="button"
-                                    wire:click="eliminarRedSocial({{ $index }})">Eliminar</button>
-                            </div>
-                        @endforeach
-                        <button type="button" wire:click="agregarRedSocial()">Agregar Red Social</button>
+                    <!--BOTON-->
+                    <div class="formulario_botones g_margin_bottom_20">
+                        <button type="button" wire:click="agregarRedSocial()" class="agregar">
+                            <i class="fa-solid fa-plus"></i>
+                            Agregar
+                        </button>
                     </div>
+
+                    <table class="tabla_eliminar">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nombre</th>
+                                <th>Link</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody x-sort="handleRedesSociales">
+                            @foreach ($redesSociales as $index => $redSocial)
+                                <tr class="sorteable_item" x-sort:item="{{ $redSocial['id'] }}">
+                                    <td><i class="fa-solid fa-up-down-left-right"></i></td>
+                                    <td>
+                                        <input type="text" wire:model="redesSociales.{{ $index }}.nombre">
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="redesSociales.{{ $index }}.link">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="boton_eliminar"
+                                            wire:click="eliminarRedSocial({{ $index }})">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="g_panel">
-                    <h4>Términos y Condiciones</h4>
+                    <h4 class="g_panel_titulo">Términos y Condiciones</h4>
 
-                    <div id="terminos" x-sort="handleTerminos">
-                        @foreach ($terminos as $index => $termino)
-                            <div class="termino" x-sort:item="{{ $termino['id'] }}">
-                                <label>Nombre:</label>
-                                <input type="text" wire:model="terminos.{{ $index }}.nombre">
-
-                                <label>Link:</label>
-                                <input type="text" wire:model="terminos.{{ $index }}.link">
-
-                                <button type="button"
-                                    wire:click="eliminarTermino({{ $index }})">Eliminar</button>
-                            </div>
-                        @endforeach
-                        <button type="button" wire:click="agregarTermino()">Agregar Término</button>
+                    <!--BOTON-->
+                    <div class="formulario_botones g_margin_bottom_20">
+                        <button type="button" wire:click="agregarTermino()" class="agregar">
+                            <i class="fa-solid fa-plus"></i>
+                            Agregar
+                        </button>
                     </div>
+
+                    <table class="tabla_eliminar">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nombre</th>
+                                <th>Link</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody x-sort="handleTerminos">
+                            @foreach ($terminos as $index => $termino)
+                                <tr class="sorteable_item" x-sort:item="{{ $termino['id'] }}">
+                                    <td><i class="fa-solid fa-up-down-left-right"></i></td>
+                                    <td>
+                                        <input type="text" wire:model="terminos.{{ $index }}.nombre">
+                                    </td>
+                                    <td>
+                                        <input type="text" wire:model="terminos.{{ $index }}.link">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="boton_eliminar"
+                                            wire:click="eliminarTermino({{ $index }})">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

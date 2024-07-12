@@ -81,7 +81,7 @@ class FooterEditarLivewire extends Component
     public function eliminarTermino($index)
     {
         unset($this->terminos[$index]);
-        $this->terminos = array_values($this->terminos); // Reindexar el array
+        $this->terminos = array_values($this->terminos);
     }
 
     public function submitForm()
