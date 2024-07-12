@@ -10,4 +10,9 @@ class Imagen extends Model
     use HasFactory;
 
     protected $fillable = ['path', 'url', 'titulo', 'descripcion', 'extension'];
+
+    public function productos()
+    {
+        return $this->morphedByMany(Producto::class, 'imagenable');
+    }
 }

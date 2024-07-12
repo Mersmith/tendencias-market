@@ -89,10 +89,10 @@
                                         @endif
                                     </td>
                                     <td class="centrar_iconos">
-                                        {{-- <a href="{{ route('erp.categoria.vista.editar', $item->id) }}"
+                                        <a href="{{ route('erp.producto.vista.editar', $item->id) }}"
                                             class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
-                                        </a> --}}
+                                        </a>
 
                                         <a href="{{ route('erp.producto.variacion.vista.editar', $item) }}"
                                             class="g_accion_ver">

@@ -18,6 +18,11 @@ class Producto extends Model
         return $this->hasMany(Variacion::class);
     }
 
+    public function imagens()
+    {
+        return $this->morphToMany(Imagen::class, 'imagenable');
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

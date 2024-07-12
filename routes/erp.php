@@ -24,6 +24,7 @@ use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
+use App\Livewire\Erp\Producto\ProductoEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoTodasLivewire;
@@ -100,6 +101,7 @@ Route::controller(SubcategoriaController::class)->group(function () {
 
 Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');
 Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');
+Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');
 Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');
