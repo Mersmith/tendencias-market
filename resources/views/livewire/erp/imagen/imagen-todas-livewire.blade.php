@@ -1,4 +1,3 @@
-
 <div>
     <style>
         .estilo_dropzone {
@@ -9,22 +8,22 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-    
-         .estilo_dropzone:hover {
+
+        .estilo_dropzone:hover {
             background-color: #f1f1f1;
         }
-    
+
         .estilo_dropzone img {
             max-width: 150px;
             max-height: 150px;
             margin: 10px;
         }
-    
-       .estilo_dropzone div {
+
+        .estilo_dropzone div {
             display: inline-block;
             position: relative;
         }
-    
+
         .estilo_dropzone button {
             position: absolute;
             top: 5px;
@@ -38,7 +37,7 @@
             font-size: 14px;
         }
     </style>
-    
+
     <h1>Gestor de Imágenes</h1>
 
     <form wire:submit.prevent="{{ $imagenId ? 'update' : 'store' }}">
@@ -51,10 +50,11 @@
         <div class="estilo_dropzone">
             <label for="photos" style="cursor: pointer;">Subir Imágenes</label>
             <input type="file" id="photos" wire:model="photos" multiple required accept="image/*"
-                style="display: none;">
+                style="display: none;" >
 
-            @if ($photos)
-                @foreach ($photos as $index => $photo)
+
+            @if ($newPhotos)
+                @foreach ($newPhotos as $index => $photo)
                     <div>
                         <img src="{{ $photo->temporaryUrl() }}" style="max-width: 150px; max-height: 150px;">
                         <button type="button" wire:click="removePhoto({{ $index }})">x</button>

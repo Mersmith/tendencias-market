@@ -13,21 +13,28 @@ class ImagenTodasLivewire extends Component
 {
     use WithFileUploads;
 
-    public $imagenes, $name, $photos = [], $type, $imagenId;
-
+    public $imagenes, $name, $photos = [], $newPhotos = [], $type, $imagenId;
     public function mount()
     {
         $this->imagenes = Imagen::all();
     }
 
+    public function updatedPhotos($photos)
+    {
+        // Agrega las nuevas fotos al arreglo de newPhotos
+        foreach ($photos as $photo) {
+            $this->newPhotos[] = $photo;
+        }
+    }
+
     public function removePhoto($index)
     {
-        array_splice($this->photos, $index, 1);
+        array_splice($this->newPhotos, $index, 1);
     }
 
     public function store()
     {
-        foreach ($this->photos as $photo) {
+        foreach ($this->newPhotos as $photo) {
             $path = $photo->store('images', 'public');
             $url = Storage::url($path);
 
