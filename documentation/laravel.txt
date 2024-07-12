@@ -112,3 +112,8 @@ php artisan make:controller Ecommerce/Inicio/EcommerceInicioController
 
 php artisan make:controller Erp/Footer/ErpFooterController
 php artisan make:livewire Erp/Plantilla/Footer/FooterEditarLivewire
+
+php artisan make:model Imagen -mfsc
+php artisan make:livewire Erp/Imagen/ImagenTodasLivewire
+
+php artisan storage:link

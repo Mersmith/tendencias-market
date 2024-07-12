@@ -19,6 +19,7 @@ use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivew
 use App\Livewire\Erp\GuiaSalidaDirecto\GuiaSalidaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaSalidaDirecto\GuiaSalidaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaSalidaDirectoDetalle\GuiaSalidaDirectoDetalleVerLivewire;
+use App\Livewire\Erp\Imagen\ImagenTodasLivewire;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
@@ -151,3 +152,5 @@ Route::controller(ErpFooterController::class)->group(function () {
     Route::put('plantilla/footer', 'set')->name('plantilla.footer.json.set');
     Route::get('plantilla/footer/get', 'get')->name('plantilla.footer.json.get');
 });
+
+Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');
