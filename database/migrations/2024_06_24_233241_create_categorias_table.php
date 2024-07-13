@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('descripcion');
             $table->string('icono')->nullable();
             $table->string('imagen_ruta')->nullable();
-            $table->boolean('activo')->default(true)->comment('1 ACTIVADO, 0 DESACTIVADO');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

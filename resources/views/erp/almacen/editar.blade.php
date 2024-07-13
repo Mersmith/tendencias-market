@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="g_panel">
-                        <!--DETALLE-->
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Detalle</h4>
 
                         <!--SEDE-->

@@ -49,7 +49,6 @@
                 <!--TABLA CONTENIDO-->
                 <div class="tabla_contenido">
                     <div class="contenedor_tabla">
-                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>

@@ -36,7 +36,13 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
-
+5. SUBCATEGORIA
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 
 RESPONSIVE

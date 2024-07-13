@@ -12,7 +12,7 @@ class CategoriaController extends Controller
 {
     public function vistaTodas()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('created_at', 'desc')->get();
         return view('erp.categoria.todas', compact('categorias'));
     }
 

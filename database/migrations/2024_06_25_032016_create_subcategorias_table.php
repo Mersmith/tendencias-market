@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('icono')->nullable();
             $table->string('imagen_ruta')->nullable();
-            $table->enum('activo', [Subcategoria::ACTIVADO, Subcategoria::DESACTIVADO])->default(Subcategoria::DESACTIVADO);
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
 

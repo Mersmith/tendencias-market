@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->integer('correlativo')->default(0);
             $table->text('descripcion')->nullable();
-            $table->boolean('activo')->default(true)->comment('1 ACTIVADO, 0 DESACTIVADO');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Subcategorias')
+@section('tituloPagina', 'Crear subcategoria')
 
 @section('content')
     <div>
@@ -19,13 +19,16 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.subcategoria.crear') }}" method="POST" class="formulario">
             @csrf
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -36,6 +39,7 @@
                             @enderror
                         </div>
 
+                        <!--SLUG-->
                         <div class="g_margin_bottom_20">
                             <label for="slug">Slug <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -46,6 +50,7 @@
                             @enderror
                         </div>
 
+                        <!--DESCRIPCION-->
                         <div>
                             <label for="descripcion">Descripción <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -56,6 +61,7 @@
                             @enderror
                         </div>
 
+                        <!--ICONO-->
                         <div>
                             <label for="icono">Icono</label>
                             <input type="text" id="icono" name="icono" value="{{ old('icono') }}">
@@ -68,10 +74,12 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
-                            <option value="" disabled>Seleccione</option>
-                            <option value="2" {{ old('activo') == '2' ? 'selected' : '' }}>DESACTIVADO</option>
+                            <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
                             <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>
                         </select>
                         @error('activo')
@@ -80,9 +88,11 @@
                     </div>
 
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Detalle</h4>
 
-                        <label for="slug">Categoria <span class="obligatorio"><i
+                        <!--CATEGORIA-->
+                        <label for="categoria_id">Categoria <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
                         <select id="categoria_id" name="categoria_id">
                             <option value="" @if (old('categoria_id') == '') selected @endif disabled>Seleccione

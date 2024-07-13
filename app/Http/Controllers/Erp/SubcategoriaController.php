@@ -13,13 +13,14 @@ class SubcategoriaController extends Controller
 {
     public function vistaTodas()
     {
-        $subcategorias = Subcategoria::with('categoria')->orderBy('categoria_id')->get();
+        $subcategorias = Subcategoria::with('categoria')->orderBy('created_at', 'desc')->get();
         return view('erp.subcategoria.todas', compact('subcategorias'));
     }
 
     public function vistaCrear()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('activo', true)->get();
+
         return view('erp.subcategoria.crear', compact('categorias'));
     }
 
@@ -45,7 +46,7 @@ class SubcategoriaController extends Controller
 
     public function vistaEditar($id)
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('activo', true)->get();
         $subcategoria = Subcategoria::find($id);
         return view('erp.subcategoria.editar', compact('subcategoria', 'categorias'));
     }
