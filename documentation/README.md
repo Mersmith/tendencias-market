@@ -43,6 +43,13 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
+6. MARCA
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 
 RESPONSIVE

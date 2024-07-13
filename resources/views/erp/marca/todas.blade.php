@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
             <!--TABLA-->
             @if ($marcas->count())
@@ -48,34 +48,24 @@
                 <!--TABLA CONTENIDO-->
                 <div class="tabla_contenido">
                     <div class="contenedor_tabla">
-                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Nº</th>
-                                    <th>
-                                        Nombre</th>
-                                    <th>
-                                        Descripción</th>
-                                    <th>
-                                        Activo</th>
-                                    <th>
-                                        Acción</th>
+                                    <th>Nº</th>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Activo</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($marcas as $item)
                                     <tr>
-                                        <td class="g_resaltar">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->nombre }}
-                                        </td>
-                                        <td class="g_inferior g_resumir">
-                                            {{ $item->descripcion }}
-                                        </td>
+                                        <td class="g_resaltar">{{ $loop->iteration }}</td>
+                                        <td class="g_resaltar">{{ $item->id }}</td>
+                                        <td class="g_resaltar"> {{ $item->nombre }} </td>
+                                        <td class="g_inferior g_resumir"> {{ $item->descripcion }}</td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                     class="fa-solid fa-circle"></i></span>

@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Marcas')
+@section('tituloPagina', 'Editar marca')
 
 @section('content')
     <div>
@@ -31,14 +31,17 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.marca.editar', $marca->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -48,6 +51,8 @@
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <!--DESCRIPCION-->
                         <div>
                             <label for="descripcion">Descripción</label>
                             <textarea id="descripcion" name="descripcion">{{ old('descripcion', $marca->descripcion) }}</textarea>
@@ -61,10 +66,12 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
-                            <option value="" disabled>Seleccione</option>
-                            <option value="2" {{ old('activo', $marca->activo) == '2' ? 'selected' : '' }}>DESACTIVADO
+                            <option value="0" {{ old('activo', $marca->activo) == '0' ? 'selected' : '' }}>DESACTIVADO
                             </option>
                             <option value="1" {{ old('activo', $marca->activo) == '1' ? 'selected' : '' }}>ACTIVO
                             </option>
@@ -76,7 +83,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.marca.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

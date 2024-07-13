@@ -16,7 +16,7 @@ return new class extends Migration {
 
             $table->string('nombre')->unique();
             $table->string('descripcion');
-            $table->enum('activo', [Marca::ACTIVADO, Marca::DESACTIVADO])->default(Marca::DESACTIVADO)->comment('1 ACTIVADO, 2 DESACTIVADO');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });
