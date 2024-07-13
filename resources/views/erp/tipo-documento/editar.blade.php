@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Tipo Documento')
+@section('tituloPagina', 'Editar tipo documento')
 
 @section('content')
     <div>
@@ -20,8 +20,8 @@
                 <button class="g_boton g_boton_danger" id="eliminarTipoDocumento">
                     Eliminar <i class="fa-solid fa-trash-can"></i>
                 </button>
-                <form action="{{ route('erp.tipo-documento.eliminar', $tipo_documento->id) }}" method="POST" id="formEliminarTipoDocumento"
-                    style="display: none;">
+                <form action="{{ route('erp.tipo-documento.eliminar', $tipo_documento->id) }}" method="POST"
+                    id="formEliminarTipoDocumento" style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -31,18 +31,22 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.tipo-documento.editar', $tipo_documento->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
-                            <input type="text" id="nombre" name="nombre" value="{{ old('nombre', $tipo_documento->nombre) }}">
+                            <input type="text" id="nombre" name="nombre"
+                                value="{{ old('nombre', $tipo_documento->nombre) }}">
                             <p class="leyenda">La tipo documento debe tener un nombre único.</p>
                             @error('nombre')
                                 <p class="mensaje_error">{{ $message }}</p>
@@ -52,7 +56,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.tipo-documento.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

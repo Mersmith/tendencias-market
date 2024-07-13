@@ -19,7 +19,7 @@ class SerieController extends Controller
 
     public function vistaCrear()
     {
-        $sedes = Sede::all();
+        $sedes = Sede::where('activo', true)->get();
         $tipo_documentos = TipoDocumento::all();
         return view('erp.serie.crear', compact('sedes', 'tipo_documentos'));
     }
@@ -41,7 +41,7 @@ class SerieController extends Controller
     public function vistaEditar($id)
     {
         $serie = Serie::find($id);
-        $sedes = Sede::all();
+        $sedes = Sede::where('activo', true)->get();
         $tipo_documentos = TipoDocumento::all();
         return view('erp.serie.editar', compact('serie', 'sedes', 'tipo_documentos'));
     }

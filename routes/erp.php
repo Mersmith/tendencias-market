@@ -45,6 +45,24 @@ Route::controller(SedeController::class)->group(function () {
     Route::delete('sede/eliminar/{id}', 'eliminar')->name('sede.eliminar');
 });
 
+Route::controller(TipoDocumentoController::class)->group(function () {
+    Route::get('tipo-documento', 'vistaTodas')->name('tipo-documento.vista.todas');
+    Route::get('tipo-documento/crear', 'vistaCrear')->name('tipo-documento.vista.crear');
+    Route::post('tipo-documento/crear', 'crear')->name('tipo-documento.crear');
+    Route::get('tipo-documento/editar/{id}', 'vistaEditar')->name('tipo-documento.vista.editar');
+    Route::put('tipo-documento/editar/{id}', 'editar')->name('tipo-documento.editar');
+    Route::delete('tipo-documento/eliminar/{id}', 'eliminar')->name('tipo-documento.eliminar');
+});
+
+Route::controller(SerieController::class)->group(function () {
+    Route::get('serie', 'vistaTodas')->name('serie.vista.todas');
+    Route::get('serie/crear', 'vistaCrear')->name('serie.vista.crear');
+    Route::post('serie/crear', 'crear')->name('serie.crear');
+    Route::get('serie/editar/{id}', 'vistaEditar')->name('serie.vista.editar');
+    Route::put('serie/editar/{id}', 'editar')->name('serie.editar');
+    Route::delete('serie/eliminar/{id}', 'eliminar')->name('serie.eliminar');
+});
+
 Route::controller(AlmacenController::class)->group(function () {
     Route::get('almacen', 'vistaTodas')->name('almacen.vista.todas');
     Route::get('almacen/crear', 'vistaCrear')->name('almacen.vista.crear');
@@ -122,24 +140,6 @@ Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)-
 Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');
 Route::get('/guia-entrada-directo/{id}/detalle', GuiaEntradaDirectoDetalleVerLivewire::class)->name('guia-entrada-directo-detalle.vista.ver');
-
-Route::controller(TipoDocumentoController::class)->group(function () {
-    Route::get('tipo-documento', 'vistaTodas')->name('tipo-documento.vista.todas');
-    Route::get('tipo-documento/crear', 'vistaCrear')->name('tipo-documento.vista.crear');
-    Route::post('tipo-documento/crear', 'crear')->name('tipo-documento.crear');
-    Route::get('tipo-documento/editar/{id}', 'vistaEditar')->name('tipo-documento.vista.editar');
-    Route::put('tipo-documento/editar/{id}', 'editar')->name('tipo-documento.editar');
-    Route::delete('tipo-documento/eliminar/{id}', 'eliminar')->name('tipo-documento.eliminar');
-});
-
-Route::controller(SerieController::class)->group(function () {
-    Route::get('serie', 'vistaTodas')->name('serie.vista.todas');
-    Route::get('serie/crear', 'vistaCrear')->name('serie.vista.crear');
-    Route::post('serie/crear', 'crear')->name('serie.crear');
-    Route::get('serie/editar/{id}', 'vistaEditar')->name('serie.vista.editar');
-    Route::put('serie/editar/{id}', 'editar')->name('serie.editar');
-    Route::delete('serie/eliminar/{id}', 'eliminar')->name('serie.eliminar');
-});
 
 Route::get('/transferencia-almacen', TransferenciaAlmacenTodasLivewire::class)->name('transferencia-almacen.vista.todas');
 Route::get('/transferencia-almacen/crear', TransferenciaAlmacenCrearLivewire::class)->name('transferencia-almacen.vista.crear');

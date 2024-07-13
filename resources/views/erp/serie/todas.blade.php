@@ -2,12 +2,14 @@
 
 @section('tituloPagina', 'Series')
 
+@section('anchoPantalla', '100%')
+
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Series <span>Total: {{ $series->count() }}</span></h2>
+            <h2>Series</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +21,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($series->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -53,10 +54,13 @@
                             <thead>
                                 <tr>
                                     <th>Nº</th>
-                                    <th>Sede</th>
-                                    <th>Tipo Documento</th>
-                                    <th>Nombre</th>
+                                    <th>ID</th>
+                                    <th>Serie</th>
                                     <th>Correlativo</th>
+                                    <th>ID sede</th>
+                                    <th>Sede</th>
+                                    <th>ID documento</th>
+                                    <th>Documento</th>
                                     <th>Descripción</th>
                                     <th>Activo</th>
                                     <th>Acción</th>
@@ -65,18 +69,15 @@
                             <tbody>
                                 @foreach ($series as $item)
                                     <tr>
-                                        <td class="g_resaltar">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td>{{ $item->sede->nombre }}</td>
-                                        <td>{{ $item->tipoDocumento->nombre }}</td>
+                                        <td class="g_resaltar"> {{ $loop->iteration }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td class="g_resaltar"> {{ $item->nombre }}</td>
-                                        <td class="g_resaltar">
-                                            {{ $item->correlativo }}
-                                        </td>
-                                        <td class="g_inferior g_resumir">
-                                            {{ $item->descripcion }}
-                                        </td>
+                                        <td class="g_resaltar"> {{ $item->correlativo }}</td>
+                                        <td>{{ $item->sede->id }}</td>
+                                        <td>{{ $item->sede->nombre }}</td>
+                                        <td>{{ $item->tipoDocumento->id }}</td>
+                                        <td>{{ $item->tipoDocumento->nombre }}</td>
+                                        <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                     class="fa-solid fa-circle"></i></span>

@@ -8,8 +8,20 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
-
-
+2. TIPO DOCUMENTO
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
+3. SERIE
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 
 

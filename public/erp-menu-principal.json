@@ -52,7 +52,7 @@
                 "submenus": [
                     {
                         "id": 121,
-                        "nombre": "Serie",
+                        "nombre": "Tipo documento",
                         "ruta": "#",
                         "url": "#",
                         "nivel": 3,
@@ -60,38 +60,13 @@
                             {
                                 "id": 1211,
                                 "nombre": "Todo",
-                                "ruta": "erp.serie.vista.todas",
-                                "url": "/erp/serie",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 1212,
-                                "nombre": "Crear",
-                                "ruta": "erp.serie.vista.crear",
-                                "url": "/erp/serie/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
-                    },
-                    {
-                        "id": 122,
-                        "nombre": "Tipo documento",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 1221,
-                                "nombre": "Todo",
                                 "ruta": "erp.tipo-documento.vista.todas",
                                 "url": "/erp/tipo-documento",
                                 "nivel": 4,
                                 "submenus": []
                             },
                             {
-                                "id": 1222,
+                                "id": 1212,
                                 "nombre": "Crear",
                                 "ruta": "erp.tipo-documento.vista.crear",
                                 "url": "/erp/tipo-documento/crear",
@@ -99,7 +74,32 @@
                                 "submenus": []
                             }
                         ]
-                    }
+                    },
+                    {
+                        "id": 122,
+                        "nombre": "Serie",
+                        "ruta": "#",
+                        "url": "#",
+                        "nivel": 3,
+                        "submenus": [
+                            {
+                                "id": 1221,
+                                "nombre": "Todo",
+                                "ruta": "erp.serie.vista.todas",
+                                "url": "/erp/serie",
+                                "nivel": 4,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1222,
+                                "nombre": "Crear",
+                                "ruta": "erp.serie.vista.crear",
+                                "url": "/erp/serie/crear",
+                                "nivel": 4,
+                                "submenus": []
+                            }
+                        ]
+                    }                    
                 ]
             }
         ]

@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Series')
+@section('tituloPagina', 'Crear serie')
 
 @section('content')
     <div>
@@ -19,15 +19,18 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.serie.crear') }}" method="POST" class="formulario">
             @csrf
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
-                            <label for="nombre">Nombre <span class="obligatorio"><i
+                            <label for="nombre">Serie <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
                             <p class="leyenda">La serie debe tener un nombre único.</p>
@@ -36,6 +39,7 @@
                             @enderror
                         </div>
 
+                        <!--CORRELATIVO-->
                         <div class="g_margin_bottom_20">
                             <label for="correlativo">Correlativo <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -46,11 +50,11 @@
                             @enderror
                         </div>
 
+                        <!--DESCRIPCION-->
                         <div>
                             <label for="descripcion">Descripción <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <textarea id="descripcion" name="descripcion">{{ old('descripcion') }}</textarea>
-                            <p class="leyenda">Se mostrará en el SEO.</p>
                             @error('descripcion')
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
@@ -60,7 +64,10 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
                             <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
                             <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>
@@ -71,10 +78,12 @@
                     </div>
 
                     <div class="g_panel">
+                        <!--DETALLE-->
                         <h4 class="g_panel_titulo">Detalle</h4>
 
+                        <!--SEDE-->
                         <div class="g_margin_bottom_20">
-                            <label for="slug">Sede <span class="obligatorio"><i
+                            <label for="sede_id">Sede <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <select id="sede_id" name="sede_id">
                                 <option value="" @if (old('sede_id') == '') selected @endif disabled>Seleccione
@@ -89,8 +98,9 @@
                             @enderror
                         </div>
 
+                        <!--TIPO DOCUMENTO-->
                         <div>
-                            <label for="slug">Tipo documento <span class="obligatorio"><i
+                            <label for="tipo_documento_id">Tipo documento <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <select id="tipo_documento_id" name="tipo_documento_id">
                                 <option value="" @if (old('tipo_documento_id') == '') selected @endif disabled>Seleccione

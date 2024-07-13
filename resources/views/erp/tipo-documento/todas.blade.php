@@ -1,13 +1,13 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Tipos Documento')
+@section('tituloPagina', 'Tipos documento')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Tipos documento <span>Total: {{ $tipo_documentos->count() }}</span></h2>
+            <h2>Tipos documento</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +19,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($tipo_documentos->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -48,14 +47,15 @@
                 <!--TABLA CONTENIDO-->
                 <div class="tabla_contenido">
                     <div class="contenedor_tabla">
-                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>
                                     <th>
                                         Nº</th>
                                     <th>
-                                        Nombre</th>
+                                        ID</th>
+                                    <th>
+                                        Documento</th>
                                     <th>
                                         Acción</th>
                                 </tr>
@@ -65,6 +65,9 @@
                                     <tr>
                                         <td class="g_resaltar">
                                             {{ $loop->iteration }}
+                                        </td>
+                                        <td class="g_resaltar">
+                                            {{ $item->id }}
                                         </td>
                                         <td class="g_resaltar">
                                             {{ $item->nombre }}

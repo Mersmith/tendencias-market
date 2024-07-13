@@ -49,7 +49,7 @@ class SerieRequest extends FormRequest
         return [
             'sede_id' => 'sede',
             'tipo_documento_id' => 'tipo documento',
-            'nombre' => 'nombre',
+            'nombre' => 'serie',
             'correlativo' => 'correlativo',
             'descripcion' => 'descripción',
             'activo' => 'activo',
@@ -66,7 +66,7 @@ class SerieRequest extends FormRequest
             'nombre.required' => 'No debe ser vacio.',
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',
-            'nombre.unique' => 'Este :attribute ya existe',
+            'nombre.unique' => 'Esta :attribute ya existe',
 
             'correlativo.required' => 'No debe ser vacio.',
             'correlativo.integer' => 'Debe ser número entero',
