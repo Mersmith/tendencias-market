@@ -3,12 +3,47 @@
 namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inventario;
 use Illuminate\Http\Request;
 
 class EcommerceInicioController extends Controller
 {
     public function __invoke()
     {
+
+        $producto_almacen_ecommerce = Inventario::with(['variacion', 'variacion.producto.imagens', 'variacion.color', 'variacion.talla', 'variacion.listaPrecios'])
+            ->where('almacen_id', 20)
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($inventario) {
+                $precioEtiqueta = $inventario->variacion->listaPrecios->firstWhere('lista_precio_id', 3);
+                $precio = $precioEtiqueta ? $precioEtiqueta->precio : null;
+
+                $imagenes = $inventario->variacion->producto->imagens->map(function ($imagen) {
+                    return [
+                        'url' => $imagen->url,
+                        'titulo' => $imagen->titulo,
+                        'descripcion' => $imagen->descripcion,
+                    ];
+                })->toArray();
+
+                return [
+                    'inventario_id' => $inventario->id,
+                    'producto_id' => $inventario->variacion->producto->id,
+                    'producto_nombre' => $inventario->variacion->producto->nombre,
+                    'variacion_id' => $inventario->variacion_id,
+                    'color_nombre' => $inventario->variacion->color->nombre ?? null,
+                    'talla_nombre' => $inventario->variacion->talla->nombre ?? null,
+                    'stock' => $inventario->stock,
+                    'stock_minimo' => $inventario->stock_minimo,
+                    'precio_etiqueta' => $precio,
+                    'imagenes' => $imagenes,
+                ];
+            })
+            ->toArray();
+
+        dd($producto_almacen_ecommerce);
+
         $imagenBanner_1 = [
             "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),
             "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100-movil.webp'),
