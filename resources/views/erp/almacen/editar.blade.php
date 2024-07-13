@@ -1,13 +1,13 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Almacenes')
+@section('tituloPagina', 'Editar almacén')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Editar almacen</h2>
+            <h2>Editar almacén</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -31,14 +31,17 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.almacen.editar', $almacen->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -50,11 +53,11 @@
                             @enderror
                         </div>
 
+                        <!--UBICACION-->
                         <div>
                             <label for="ubicacion">Ubicación <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <textarea id="ubicacion" name="ubicacion">{{ old('ubicacion', $almacen->ubicacion) }}</textarea>
-                            <p class="leyenda">Se mostrará en el SEO.</p>
                             @error('ubicacion')
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
@@ -64,7 +67,10 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
                             <option value="0" {{ old('activo', $almacen->activo) == '0' ? 'selected' : '' }}>
                                 DESACTIVADO
@@ -79,9 +85,11 @@
                     </div>
 
                     <div class="g_panel">
+                        <!--DETALLE-->
                         <h4 class="g_panel_titulo">Detalle</h4>
 
-                        <label for="slug">Sede <span class="obligatorio"><i
+                        <!--SEDE-->
+                        <label for="sede_id">Sede <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
                         <select id="sede_id" name="sede_id">
                             <option value="" @if (old('sede_id', $almacen->sede_id) == '') selected @endif disabled>Seleccione
@@ -98,7 +106,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.almacen.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

@@ -22,7 +22,13 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
-
+3. ALMACEN
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 
 

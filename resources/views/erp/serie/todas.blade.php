@@ -54,12 +54,9 @@
                             <thead>
                                 <tr>
                                     <th>Nº</th>
-                                    <th>ID</th>
                                     <th>Serie</th>
                                     <th>Correlativo</th>
-                                    <th>ID sede</th>
                                     <th>Sede</th>
-                                    <th>ID documento</th>
                                     <th>Documento</th>
                                     <th>Descripción</th>
                                     <th>Activo</th>
@@ -70,13 +67,10 @@
                                 @foreach ($series as $item)
                                     <tr>
                                         <td class="g_resaltar"> {{ $loop->iteration }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td class="g_resaltar"> {{ $item->nombre }}</td>
+                                        <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
                                         <td class="g_resaltar"> {{ $item->correlativo }}</td>
-                                        <td>{{ $item->sede->id }}</td>
-                                        <td>{{ $item->sede->nombre }}</td>
-                                        <td>{{ $item->tipoDocumento->id }}</td>
-                                        <td>{{ $item->tipoDocumento->nombre }}</td>
+                                        <td>ID: {{ $item->sede->id }} - {{ $item->sede->nombre }}</td>
+                                        <td>ID: {{ $item->tipoDocumento->id }} - {{ $item->tipoDocumento->nombre }}</td>
                                         <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i

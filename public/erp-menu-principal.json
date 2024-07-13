@@ -39,6 +39,32 @@
                                 "submenus": []
                             }
                         ]
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Almacen",
+                        "ruta": "#",
+                        "url": "#",
+                        "icono": "fa-solid fa-comment",
+                        "nivel": 2,
+                        "submenus": [
+                            {
+                                "id": 1121,
+                                "nombre": "Todo",
+                                "ruta": "erp.almacen.vista.todas",
+                                "url": "/erp/almacen",
+                                "nivel": 3,
+                                "submenus": []
+                            },
+                            {
+                                "id": 1122,
+                                "nombre": "Crear",
+                                "ruta": "erp.almacen.vista.crear",
+                                "url": "/erp/almacen/crear",
+                                "nivel": 3,
+                                "submenus": []
+                            }
+                        ]
                     }
                 ]
             },
@@ -99,7 +125,7 @@
                                 "submenus": []
                             }
                         ]
-                    }                    
+                    }
                 ]
             }
         ]
@@ -325,32 +351,6 @@
         "icono": "fa-solid fa-menorah",
         "nivel": 1,
         "submenus": [
-            {
-                "id": 31,
-                "nombre": "Almacen",
-                "ruta": "#",
-                "url": "#",
-                "icono": "fa-solid fa-comment",
-                "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 311,
-                        "nombre": "Todo",
-                        "ruta": "erp.almacen.vista.todas",
-                        "url": "/erp/almacen",
-                        "nivel": 3,
-                        "submenus": []
-                    },
-                    {
-                        "id": 312,
-                        "nombre": "Crear",
-                        "ruta": "erp.almacen.vista.crear",
-                        "url": "/erp/almacen/crear",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
-            },
             {
                 "id": 32,
                 "nombre": "Inventario",

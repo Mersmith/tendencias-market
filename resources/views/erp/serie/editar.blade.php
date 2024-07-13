@@ -101,7 +101,7 @@
 
                         <!--SEDE-->
                         <div class="g_margin_bottom_20">
-                            <label for="slug">Sede <span class="obligatorio"><i
+                            <label for="sede_id">Sede <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <select id="sede_id" name="sede_id">
                                 <option value="" @if (old('sede_id', $serie->sede_id) == '') selected @endif disabled>Seleccione
@@ -118,7 +118,7 @@
 
                         <!--TIPO DOCUMENTO-->
                         <div>
-                            <label for="slug">Tipo documento <span class="obligatorio"><i
+                            <label for="tipo_documento_id">Tipo documento <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <select id="tipo_documento_id" name="tipo_documento_id">
                                 <option value="" @if (old('tipo_documento_id', $serie->tipo_documento_id) == '') selected @endif disabled>Seleccione

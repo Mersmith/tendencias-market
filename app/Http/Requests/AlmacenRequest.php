@@ -44,7 +44,7 @@ class AlmacenRequest extends FormRequest
     {
         return [
             'sede_id' => 'categoria',
-            'nombre' => 'nombre',
+            'nombre' => 'sede',
             'ubicacion' => 'ubicación',
             'activo' => 'activo',
         ];
@@ -58,7 +58,7 @@ class AlmacenRequest extends FormRequest
             'nombre.required' => 'No debe ser vacio.',
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',
-            'nombre.unique' => 'Este :attribute ya existe',
+            'nombre.unique' => 'Esta :attribute ya existe',
 
             'ubicacion.required' => 'No debe ser vacio.',
             'ubicacion.min' => 'Más de :min dígitos.',

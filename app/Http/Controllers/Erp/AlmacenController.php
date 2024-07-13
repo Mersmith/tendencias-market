@@ -19,7 +19,7 @@ class AlmacenController extends Controller
 
     public function vistaCrear()
     {
-        $sedes = Sede::all();
+        $sedes = Sede::where('activo', true)->get();
         return view('erp.almacen.crear', compact('sedes'));
     }
 
@@ -42,7 +42,7 @@ class AlmacenController extends Controller
     }
     public function vistaEditar($id)
     {
-        $sedes = Sede::all();
+        $sedes = Sede::where('activo', true)->get();
         $almacen = Almacen::find($id);
         return view('erp.almacen.editar', compact('almacen', 'sedes'));
     }
