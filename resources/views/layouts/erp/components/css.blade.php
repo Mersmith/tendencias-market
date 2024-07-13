@@ -31,3 +31,6 @@
 
 <!--SORTEABLE-->
 <link rel="stylesheet" href="{{ asset('assets/erp/css/sorteable.css') }}">
+
+<!--SORTEABLE-->
+<link rel="stylesheet" href="{{ asset('assets/erp/css/dropzone.css') }}">

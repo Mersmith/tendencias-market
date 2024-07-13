@@ -340,11 +340,39 @@
         ]
     },
     {
+        "id": 5,
+        "nombre": "5",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-photo-film",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 41,
+                "nombre": "Imagen",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-regular fa-image",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "erp.imagen.vista.todas",
+                        "url": "/erp/imagen",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": 3,
         "nombre": "3",
         "ruta": "#",
         "url": "#",
-        "icono": "fa-solid fa-menorah",
+        "icono": "fa-solid fa-cart-flatbed",
         "nivel": 1,
         "submenus": [
             {
@@ -448,7 +476,7 @@
         "nombre": "4",
         "ruta": "#",
         "url": "#",
-        "icono": "fa-solid fa-comment",
+        "icono": "fa-solid fa-file-pen",
         "nivel": 1,
         "submenus": [
             {
@@ -464,34 +492,6 @@
                         "nombre": "Footer",
                         "ruta": "erp.plantilla.footer.vista.editar",
                         "url": "/erp/plantilla/footer",
-                        "nivel": 3,
-                        "submenus": []
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "nombre": "5",
-        "ruta": "#",
-        "url": "#",
-        "icono": "fa-solid fa-comment",
-        "nivel": 1,
-        "submenus": [
-            {
-                "id": 41,
-                "nombre": "Imagen",
-                "ruta": "#",
-                "url": "#",
-                "icono": "fa-solid fa-comment",
-                "nivel": 2,
-                "submenus": [
-                    {
-                        "id": 111,
-                        "nombre": "Todo",
-                        "ruta": "erp.imagen.vista.todas",
-                        "url": "/erp/imagen",
                         "nivel": 3,
                         "submenus": []
                     }

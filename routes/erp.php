@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', ErpInicioController::class)->name('inicio');
 
-Route::controller(SedeController::class)->group(function () {
+Route::controller(SedeController::class)->group(function () {//ok
     Route::get('sede', 'vistaTodas')->name('sede.vista.todas');
     Route::get('sede/crear', 'vistaCrear')->name('sede.vista.crear');
     Route::post('sede/crear', 'crear')->name('sede.crear');
@@ -45,7 +45,7 @@ Route::controller(SedeController::class)->group(function () {
     Route::delete('sede/eliminar/{id}', 'eliminar')->name('sede.eliminar');
 });
 
-Route::controller(TipoDocumentoController::class)->group(function () {
+Route::controller(TipoDocumentoController::class)->group(function () {//ok
     Route::get('tipo-documento', 'vistaTodas')->name('tipo-documento.vista.todas');
     Route::get('tipo-documento/crear', 'vistaCrear')->name('tipo-documento.vista.crear');
     Route::post('tipo-documento/crear', 'crear')->name('tipo-documento.crear');
@@ -54,7 +54,7 @@ Route::controller(TipoDocumentoController::class)->group(function () {
     Route::delete('tipo-documento/eliminar/{id}', 'eliminar')->name('tipo-documento.eliminar');
 });
 
-Route::controller(SerieController::class)->group(function () {
+Route::controller(SerieController::class)->group(function () {//ok
     Route::get('serie', 'vistaTodas')->name('serie.vista.todas');
     Route::get('serie/crear', 'vistaCrear')->name('serie.vista.crear');
     Route::post('serie/crear', 'crear')->name('serie.crear');
@@ -63,7 +63,7 @@ Route::controller(SerieController::class)->group(function () {
     Route::delete('serie/eliminar/{id}', 'eliminar')->name('serie.eliminar');
 });
 
-Route::controller(AlmacenController::class)->group(function () {
+Route::controller(AlmacenController::class)->group(function () {//ok
     Route::get('almacen', 'vistaTodas')->name('almacen.vista.todas');
     Route::get('almacen/crear', 'vistaCrear')->name('almacen.vista.crear');
     Route::post('almacen/crear', 'crear')->name('almacen.crear');
@@ -72,7 +72,7 @@ Route::controller(AlmacenController::class)->group(function () {
     Route::delete('almacen/eliminar/{id}', 'eliminar')->name('almacen.eliminar');
 });
 
-Route::controller(CategoriaController::class)->group(function () {
+Route::controller(CategoriaController::class)->group(function () {//ok
     Route::get('categoria', 'vistaTodas')->name('categoria.vista.todas');
     Route::get('categoria/crear', 'vistaCrear')->name('categoria.vista.crear');
     Route::post('categoria/crear', 'crear')->name('categoria.crear');
@@ -81,7 +81,7 @@ Route::controller(CategoriaController::class)->group(function () {
     Route::delete('categoria/eliminar/{id}', 'eliminar')->name('categoria.eliminar');
 });
 
-Route::controller(SubcategoriaController::class)->group(function () {
+Route::controller(SubcategoriaController::class)->group(function () {//ok
     Route::get('subcategoria', 'vistaTodas')->name('subcategoria.vista.todas');
     Route::get('subcategoria/crear', 'vistaCrear')->name('subcategoria.vista.crear');
     Route::post('subcategoria/crear', 'crear')->name('subcategoria.crear');
@@ -90,7 +90,7 @@ Route::controller(SubcategoriaController::class)->group(function () {
     Route::delete('subcategoria/eliminar/{id}', 'eliminar')->name('subcategoria.eliminar');
 });
 
-Route::controller(MarcaController::class)->group(function () {
+Route::controller(MarcaController::class)->group(function () {//ok
     Route::get('marca', 'vistaTodas')->name('marca.vista.todas');
     Route::get('marca/crear', 'vistaCrear')->name('marca.vista.crear');
     Route::post('marca/crear', 'crear')->name('marca.crear');
@@ -99,7 +99,7 @@ Route::controller(MarcaController::class)->group(function () {
     Route::delete('marca/eliminar/{id}', 'eliminar')->name('marca.eliminar');
 });
 
-Route::controller(TallaController::class)->group(function () {
+Route::controller(TallaController::class)->group(function () {//ok
     Route::get('talla', 'vistaTodas')->name('talla.vista.todas');
     Route::get('talla/crear', 'vistaCrear')->name('talla.vista.crear');
     Route::post('talla/crear', 'crear')->name('talla.crear');
@@ -108,7 +108,7 @@ Route::controller(TallaController::class)->group(function () {
     Route::delete('talla/eliminar/{id}', 'eliminar')->name('talla.eliminar');
 });
 
-Route::controller(ColorController::class)->group(function () {
+Route::controller(ColorController::class)->group(function () {//ok
     Route::get('color', 'vistaTodas')->name('color.vista.todas');
     Route::get('color/crear', 'vistaCrear')->name('color.vista.crear');
     Route::post('color/crear', 'crear')->name('color.crear');
@@ -116,6 +116,8 @@ Route::controller(ColorController::class)->group(function () {
     Route::put('color/editar/{id}', 'editar')->name('color.editar');
     Route::delete('color/eliminar/{id}', 'eliminar')->name('color.eliminar');
 });
+
+Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');//
 
 Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');
 Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');
@@ -154,5 +156,3 @@ Route::controller(ErpFooterController::class)->group(function () {
     Route::put('plantilla/footer', 'set')->name('plantilla.footer.json.set');
     Route::get('plantilla/footer/get', 'get')->name('plantilla.footer.json.get');
 });
-
-Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');

@@ -102,6 +102,7 @@
 }
 
 .g_vacio {
+    width: 100%;
     display: flex;
     color: #29343d;
     font-size: 12px;
