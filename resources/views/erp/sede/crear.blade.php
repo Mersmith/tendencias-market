@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Sedes')
+@section('tituloPagina', 'Crear sede')
 
 @section('content')
     <div>
@@ -19,13 +19,16 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.sede.crear') }}" method="POST" class="formulario">
             @csrf
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -35,11 +38,12 @@
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <!--DIRECCION-->
                         <div>
                             <label for="direccion">Dirección <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <textarea id="direccion" name="direccion">{{ old('direccion') }}</textarea>
-                            <p class="leyenda">Se mostrará en el SEO.</p>
                             @error('direccion')
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
@@ -49,7 +53,10 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
                             <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
                             <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>

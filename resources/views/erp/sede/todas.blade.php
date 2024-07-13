@@ -1,13 +1,15 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Marcas')
+@section('tituloPagina', 'Sedes')
+
+@section('anchoPantalla', '100%')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Sedes <span>Total: {{ $sedes->count() }}</span></h2>
+            <h2>Sedes</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +21,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($sedes->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -48,14 +49,15 @@
                 <!--TABLA CONTENIDO-->
                 <div class="tabla_contenido">
                     <div class="contenedor_tabla">
-                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>
                                     <th>
                                         Nº</th>
                                     <th>
-                                        Nombre</th>
+                                        ID</th>
+                                    <th>
+                                        Sede</th>
                                     <th>
                                         Dirección</th>
                                     <th>
@@ -69,6 +71,9 @@
                                     <tr>
                                         <td class="g_resaltar">
                                             {{ $loop->iteration }}
+                                        </td>
+                                        <td class="g_resaltar">
+                                            {{ $item->id }}
                                         </td>
                                         <td class="g_resaltar">
                                             {{ $item->nombre }}

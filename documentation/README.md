@@ -1,3 +1,20 @@
+PASOS:
+
+****************************************************
+1. SEDES
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
+
+
+
+
+
+
+
 RESPONSIVE
 1300 SE OCULTA EL MENU
 900 LAPTOP

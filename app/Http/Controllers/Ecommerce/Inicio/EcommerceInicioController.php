@@ -11,7 +11,7 @@ class EcommerceInicioController extends Controller
     public function __invoke()
     {
 
-        $producto_almacen_ecommerce = Inventario::with(['variacion', 'variacion.producto.imagens', 'variacion.color', 'variacion.talla', 'variacion.listaPrecios'])
+        /*$producto_almacen_ecommerce = Inventario::with(['variacion', 'variacion.producto.imagens', 'variacion.color', 'variacion.talla', 'variacion.listaPrecios'])
             ->where('almacen_id', 20)
             ->orderBy('id', 'desc')
             ->get()
@@ -42,7 +42,7 @@ class EcommerceInicioController extends Controller
             })
             ->toArray();
 
-        dd($producto_almacen_ecommerce);
+        dd($producto_almacen_ecommerce);*/
 
         $imagenBanner_1 = [
             "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),

@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Sedes')
+@section('tituloPagina', 'Editar sede')
 
 @section('content')
     <div>
@@ -31,14 +31,17 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.sede.editar', $sede->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -48,10 +51,11 @@
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <!--DIRECCION-->
                         <div>
                             <label for="direccion">Dirección</label>
                             <textarea id="direccion" name="direccion">{{ old('direccion', $sede->direccion) }}</textarea>
-                            <p class="leyenda">Se mostrará en el SEO.</p>
                             @error('direccion')
                                 <p class="mensaje_error">{{ $message }}</p>
                             @enderror
@@ -61,7 +65,9 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
                         <select id="activo" name="activo">
                             <option value="0" {{ old('activo', $sede->activo) == '0' ? 'selected' : '' }}>DESACTIVADO
                             </option>
@@ -75,7 +81,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.sede.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>
