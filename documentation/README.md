@@ -29,7 +29,13 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
-
+4. CATEGORIA
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 
 

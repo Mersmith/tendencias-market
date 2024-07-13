@@ -7,7 +7,7 @@
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Categorias <span>Total: {{ $categorias->count() }}</span></h2>
+            <h2>Categorias</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +19,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($categorias->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -52,40 +51,23 @@
                         <table class="tabla">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Nº</th>
-                                    <th>
-                                        Nombre</th>
-                                    <th>
-                                        Slug</th>
-                                    <th>
-                                        Descripción</th>
-                                    <th>
-                                        Icono</th>
-                                    <th>
-                                        Activo</th>
-                                    <th>
-                                        Acción</th>
+                                    <th>Nº</th>
+                                    <th>Nombre</th>
+                                    <th>Slug</th>
+                                    <th>Descripción</th>
+                                    <th>Icono</th>
+                                    <th>Activo</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($categorias as $item)
                                     <tr>
-                                        <td class="g_resaltar">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->nombre }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->slug }}
-                                        </td>
-                                        <td class="g_inferior g_resumir">
-                                            {{ $item->descripcion }}
-                                        </td>
-                                        <td>
-                                            {!! $item->icono !!}
-                                        </td>
+                                        <td class="g_resaltar">{{ $loop->iteration }}</td>
+                                        <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
+                                        <td class="g_resaltar">{{ $item->slug }}</td>
+                                        <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
+                                        <td>{!! $item->icono !!}</td>
                                         <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                     class="fa-solid fa-circle"></i></span>

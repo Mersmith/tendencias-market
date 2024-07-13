@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Categorias')
+@section('tituloPagina', 'Editar categoria')
 
 @section('content')
     <div>
@@ -31,14 +31,17 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.categoria.editar', $categoria->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -50,6 +53,7 @@
                             @enderror
                         </div>
 
+                        <!--SLUG-->
                         <div class="g_margin_bottom_20">
                             <label for="slug">Slug <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -60,6 +64,7 @@
                             @enderror
                         </div>
 
+                        <!--DESCRIPCION-->
                         <div>
                             <label for="descripcion">Descripción</label>
                             <textarea id="descripcion" name="descripcion">{{ old('descripcion', $categoria->descripcion) }}</textarea>
@@ -69,6 +74,7 @@
                             @enderror
                         </div>
 
+                        <!--ICONO-->
                         <div>
                             <label for="icono">Icono</label>
                             <input type="text" id="icono" name="icono"
@@ -82,13 +88,16 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
-                            <option value="" disabled>Seleccione</option>
-                            <option value="2" {{ old('activo', $categoria->activo) == '2' ? 'selected' : '' }}>
+                            <option value="0" {{ old('activo', $categoria->activo) == '0' ? 'selected' : '' }}>
                                 DESACTIVADO
                             </option>
-                            <option value="1" {{ old('activo', $categoria->activo) == '1' ? 'selected' : '' }}>ACTIVO
+                            <option value="1" {{ old('activo', $categoria->activo) == '1' ? 'selected' : '' }}>
+                                ACTIVO
                             </option>
                         </select>
                         @error('activo')
@@ -98,7 +107,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.categoria.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

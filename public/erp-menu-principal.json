@@ -135,166 +135,162 @@
         "nombre": "2",
         "ruta": "#",
         "url": "#",
-        "icono": "fa-solid fa-menorah",
+        "icono": "fa-solid fa-shirt",
         "nivel": 1,
         "submenus": [
             {
-                "id": 21,
-                "nombre": "Ecommerce",
+                "id": 212,
+                "nombre": "Categoria",
                 "ruta": "#",
                 "url": "#",
-                "icono": "fa-solid fa-comment",
+                "icono": "fa-solid fa-gifts",
                 "nivel": 2,
                 "submenus": [
                     {
-                        "id": 211,
-                        "nombre": "Marca",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 1111,
-                                "nombre": "Todo",
-                                "ruta": "erp.marca.vista.todas",
-                                "url": "/erp/marca",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 1112,
-                                "nombre": "Crear",
-                                "ruta": "erp.marca.vista.crear",
-                                "url": "/erp/marca/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 2121,
+                        "nombre": "Todo",
+                        "ruta": "erp.categoria.vista.todas",
+                        "url": "/erp/categoria",
+                        "nivel": 4,
+                        "submenus": []
                     },
                     {
-                        "id": 212,
-                        "nombre": "Categoria",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 2121,
-                                "nombre": "Todo",
-                                "ruta": "erp.categoria.vista.todas",
-                                "url": "/erp/categoria",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 2122,
-                                "nombre": "Crear",
-                                "ruta": "erp.categoria.vista.crear",
-                                "url": "/erp/categoria/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 2122,
+                        "nombre": "Crear",
+                        "ruta": "erp.categoria.vista.crear",
+                        "url": "/erp/categoria/crear",
+                        "nivel": 4,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 215,
+                "nombre": "Subcategoria",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-gift",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 2151,
+                        "nombre": "Todo",
+                        "ruta": "erp.subcategoria.vista.todas",
+                        "url": "/erp/subcategoria",
+                        "nivel": 4,
+                        "submenus": []
                     },
                     {
-                        "id": 213,
-                        "nombre": "Talla",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 2131,
-                                "nombre": "Todo",
-                                "ruta": "erp.talla.vista.todas",
-                                "url": "/erp/talla",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 2132,
-                                "nombre": "Crear",
-                                "ruta": "erp.talla.vista.crear",
-                                "url": "/erp/talla/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 2152,
+                        "nombre": "Crear",
+                        "ruta": "erp.subcategoria.vista.crear",
+                        "url": "/erp/subcategoria/crear",
+                        "nivel": 4,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 211,
+                "nombre": "Marca",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-spell-check",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 1111,
+                        "nombre": "Todo",
+                        "ruta": "erp.marca.vista.todas",
+                        "url": "/erp/marca",
+                        "nivel": 4,
+                        "submenus": []
                     },
                     {
-                        "id": 214,
-                        "nombre": "Color",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 2141,
-                                "nombre": "Todo",
-                                "ruta": "erp.color.vista.todas",
-                                "url": "/erp/color",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 2142,
-                                "nombre": "Crear",
-                                "ruta": "erp.color.vista.crear",
-                                "url": "/erp/color/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 1112,
+                        "nombre": "Crear",
+                        "ruta": "erp.marca.vista.crear",
+                        "url": "/erp/marca/crear",
+                        "nivel": 4,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 213,
+                "nombre": "Talla",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-up-right-and-down-left-from-center",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 2131,
+                        "nombre": "Todo",
+                        "ruta": "erp.talla.vista.todas",
+                        "url": "/erp/talla",
+                        "nivel": 4,
+                        "submenus": []
                     },
                     {
-                        "id": 215,
-                        "nombre": "Subcategoria",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 2151,
-                                "nombre": "Todo",
-                                "ruta": "erp.subcategoria.vista.todas",
-                                "url": "/erp/subcategoria",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 2152,
-                                "nombre": "Crear",
-                                "ruta": "erp.subcategoria.vista.crear",
-                                "url": "/erp/subcategoria/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 2132,
+                        "nombre": "Crear",
+                        "ruta": "erp.talla.vista.crear",
+                        "url": "/erp/talla/crear",
+                        "nivel": 4,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 214,
+                "nombre": "Color",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-palette",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 2141,
+                        "nombre": "Todo",
+                        "ruta": "erp.color.vista.todas",
+                        "url": "/erp/color",
+                        "nivel": 4,
+                        "submenus": []
                     },
                     {
-                        "id": 216,
-                        "nombre": "Producto",
-                        "ruta": "#",
-                        "url": "#",
-                        "nivel": 3,
-                        "submenus": [
-                            {
-                                "id": 2161,
-                                "nombre": "Todo",
-                                "ruta": "erp.producto.vista.todas",
-                                "url": "/erp/producto",
-                                "nivel": 4,
-                                "submenus": []
-                            },
-                            {
-                                "id": 2162,
-                                "nombre": "Crear",
-                                "ruta": "erp.producto.vista.crear",
-                                "url": "/erp/producto/crear",
-                                "nivel": 4,
-                                "submenus": []
-                            }
-                        ]
+                        "id": 2142,
+                        "nombre": "Crear",
+                        "ruta": "erp.color.vista.crear",
+                        "url": "/erp/color/crear",
+                        "nivel": 4,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 216,
+                "nombre": "Producto",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-person-booth",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 2161,
+                        "nombre": "Todo",
+                        "ruta": "erp.producto.vista.todas",
+                        "url": "/erp/producto",
+                        "nivel": 4,
+                        "submenus": []
+                    },
+                    {
+                        "id": 2162,
+                        "nombre": "Crear",
+                        "ruta": "erp.producto.vista.crear",
+                        "url": "/erp/producto/crear",
+                        "nivel": 4,
+                        "submenus": []
                     }
                 ]
             },
