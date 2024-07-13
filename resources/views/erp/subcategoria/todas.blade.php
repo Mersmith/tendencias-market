@@ -9,7 +9,7 @@
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Subcategorias <span>Total: {{ $subcategorias->count() }}</span></h2>
+            <h2>Subcategorias</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">

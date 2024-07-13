@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('nombre')->unique();
             $table->string('codigo_color')->unique();
-            $table->enum('activo', [Color::ACTIVADO, Color::DESACTIVADO])->default(Color::DESACTIVADO);
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

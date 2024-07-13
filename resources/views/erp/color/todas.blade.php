@@ -7,7 +7,7 @@
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Colores <span>Total: {{ $colores->count() }}</span></h2>
+            <h2>Colores</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +19,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($colores->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -48,31 +47,23 @@
                 <!--TABLA CONTENIDO-->
                 <div class="tabla_contenido">
                     <div class="contenedor_tabla">
-                        <!--TABLA-->
                         <table class="tabla">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Nº</th>
-                                    <th>
-                                        Color</th>
-                                    <th>
-                                        Código color</th>
-                                    <th>
-                                        Activo</th>
-                                    <th>
-                                        Acción</th>
+                                    <th>Nº</th>
+                                    <th>ID</th>
+                                    <th>Color</th>
+                                    <th>Código color</th>
+                                    <th>Activo</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($colores as $item)
                                     <tr>
-                                        <td class="g_resaltar">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->nombre }}
-                                        </td>
+                                        <td class="g_resaltar">{{ $loop->iteration }} </td>
+                                        <td class="g_resaltar">{{ $item->id }}</td>
+                                        <td class="g_resaltar">{{ $item->nombre }} </td>
                                         <td class="g_resaltar">
                                             <span style="color: {{ $item->codigo_color }}"><i
                                                     class="fa-solid fa-circle"></i></span>

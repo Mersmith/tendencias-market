@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Colores')
+@section('tituloPagina', 'Editar color')
 
 @section('content')
     <div>
@@ -31,14 +31,17 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.color.editar', $color->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--COLOR-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -49,8 +52,9 @@
                             @enderror
                         </div>
 
+                        <!--CODIGO-->
                         <div class="g_margin_bottom_20">
-                            <label for="nombre">Código color <span class="obligatorio"><i
+                            <label for="codigo_color">Código color <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <input type="color" id="codigo_color" name="codigo_color"
                                 value="{{ old('codigo_color', $color->codigo_color) }}">
@@ -64,10 +68,12 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
-                            <option value="" disabled>Seleccione</option>
-                            <option value="2" {{ old('activo', $color->activo) == '2' ? 'selected' : '' }}>DESACTIVADO
+                            <option value="0" {{ old('activo', $color->activo) == '0' ? 'selected' : '' }}>DESACTIVADO
                             </option>
                             <option value="1" {{ old('activo', $color->activo) == '1' ? 'selected' : '' }}>ACTIVO
                             </option>
@@ -79,7 +85,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.color.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

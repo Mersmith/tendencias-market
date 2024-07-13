@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('nombre')->unique();
-            $table->enum('activo', [Talla::ACTIVADO, Talla::DESACTIVADO])->default(Talla::DESACTIVADO);
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

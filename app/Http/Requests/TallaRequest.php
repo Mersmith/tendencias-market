@@ -25,12 +25,12 @@ class TallaRequest extends FormRequest
 
         if ($id) {
             return [
-                'nombre' => 'required|min:3|max:255|unique:tallas,nombre,' . $id,
+                'nombre' => 'required|min:1|max:255|unique:tallas,nombre,' . $id,
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         } else {
             return [
-                'nombre' => 'required|min:3|max:255|unique:tallas',
+                'nombre' => 'required|min:1|max:255|unique:tallas',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
             ];
         }

@@ -50,7 +50,20 @@ ALERTAS: ok
 BUSCAR: 
 PAGINACION:
 ****************************************************
-
+7. TALLA
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
+8. COLOR
+CRUD: ok
+HTML: ok
+ALERTAS: ok
+BUSCAR: 
+PAGINACION:
+****************************************************
 
 RESPONSIVE
 1300 SE OCULTA EL MENU

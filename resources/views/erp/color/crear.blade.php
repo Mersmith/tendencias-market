@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Colores')
+@section('tituloPagina', 'Crear color')
 
 @section('content')
     <div>
@@ -19,13 +19,16 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.color.crear') }}" method="POST" class="formulario">
             @csrf
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
 
+                        <!--COLOR-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Color <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -36,8 +39,9 @@
                             @enderror
                         </div>
 
+                        <!--CODIGO-->
                         <div class="g_margin_bottom_20">
-                            <label for="nombre">Código color <span class="obligatorio"><i
+                            <label for="codigo_color">Código color <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
                             <input type="color" id="codigo_color" name="codigo_color" value="{{ old('codigo_color') }}">
                             <p class="leyenda">La código de color debe ser único.</p>
@@ -50,10 +54,12 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
-                            <option value="" disabled>Seleccione</option>
-                            <option value="2" {{ old('activo') == '2' ? 'selected' : '' }}>DESACTIVADO</option>
+                            <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
                             <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>
                         </select>
                         @error('activo')
