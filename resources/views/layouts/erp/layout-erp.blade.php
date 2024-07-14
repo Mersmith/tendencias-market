@@ -73,6 +73,14 @@
                     showConfirmButton: false,
                     timer: 2500
                 })
+            } else if (mensaje == "Eliminado") {
+                Swal.fire({
+                    icon: 'error',
+                    title: mensaje,
+                    text: mensaje,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
             }
         })
     </script>

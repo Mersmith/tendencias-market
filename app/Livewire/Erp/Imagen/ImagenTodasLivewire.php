@@ -8,6 +8,7 @@ use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.erp.layout-erp')]
 class ImagenTodasLivewire extends Component
@@ -15,12 +16,30 @@ class ImagenTodasLivewire extends Component
     use WithFileUploads;
     use WithPagination;
 
-
     public $imagenes_inicial = [], $imagenes_final = [];
 
     public $modal = false;
 
     public $imagenId, $url, $titulo, $descripcion, $imagen_edit;
+
+    protected $rules = [
+        'titulo' => 'required|string|max:255',
+        'descripcion' => 'required|string',
+        'imagen_edit' => 'nullable|image|max:2048',//JPEG, PNG, BMP, GIF, SVG, o WEBP //2048 kilobytes (2 MB)
+    ];
+
+    protected $validationAttributes = [
+        'titulo' => 'título',
+        'descripcion' => 'descripción',
+        'imagen_edit' => 'imagen',
+    ];
+
+    protected $messages = [
+        'titulo.required' => 'El :attribute es requerido.',
+        'descripcion.required' => 'La :attribute es requerida.',
+        'imagen_edit.image' => 'Debe ser tipo imagen',
+        'imagen_edit.max' => 'La :attribute no debe superar.',
+    ];
 
     public function updatedImagenesInicial($imagenes_inicial)
     {
@@ -70,6 +89,8 @@ class ImagenTodasLivewire extends Component
 
     public function editarFormulario()
     {
+        $this->validate();
+
         $imagen = Imagen::find($this->imagenId);
         $imagen->titulo = $this->titulo;
 
@@ -86,14 +107,19 @@ class ImagenTodasLivewire extends Component
 
         $this->reset();
         $this->imagenes = Imagen::all();
+
+        $this->dispatch('alertaLivewire', "Actualizado");
     }
 
-    public function eliminarImagen($id)
+    #[On('eliminarImagen')]
+    public function eliminarImagen($imagenId)
     {
-        $imagen = Imagen::find($id);
+        $imagen = Imagen::where('id', $imagenId)->first();
         Storage::delete($imagen->path);
         $imagen->delete();
         $this->imagenes = Imagen::all();
+
+        $this->dispatch('alertaLivewire', "Eliminado");
     }
 
     public function render()

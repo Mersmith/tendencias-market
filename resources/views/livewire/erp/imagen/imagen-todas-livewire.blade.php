@@ -117,6 +117,9 @@
                         </div>
                     @endif
                 </div>
+                @error('imagen_edit')
+                    <p class="mensaje_error">{{ $message }}</p>
+                @enderror
             </x-slot>
             <x-slot name="footer">
                 <div class="formulario_botones">
@@ -143,7 +146,8 @@
                                     class="fa-solid fa-eye"></i></a>
                             <button wire:click="seleccionarImagen({{ $imagen->id }})"
                                 class="g_boton g_boton_primary"><i class="fa-solid fa-pencil"></i></button>
-                            <button wire:click="eliminarImagen({{ $imagen->id }})"
+                            <button
+                                wire:click="$dispatch('eliminarImagenAlertaLivewire', { imagenId: {{ $imagen->id }} })"
                                 class="g_boton g_boton_danger"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
@@ -160,6 +164,28 @@
                 <i class="fa-regular fa-face-grin-wink"></i>
             </div>
         @endif
-
     </div>
+
+    @script
+        <script>
+            Livewire.on('eliminarImagenAlertaLivewire', (imagenId) => {
+                Swal.fire({
+                    title: '¿Quieres quitar?',
+                    text: "No podrás recuparlo.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, eliminar!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.dispatch('eliminarImagen', {
+                            imagenId: imagenId
+                        });
+                    }
+                })
+            })
+        </script>
+    @endscript
 </div>
