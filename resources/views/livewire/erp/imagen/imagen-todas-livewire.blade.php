@@ -11,26 +11,26 @@
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
             <a class="g_boton g_boton_primary">
-                <label for="photos" style="cursor: pointer;">Subir <i class="fa-solid fa-square-plus"></i></label>
+                <label for="imagenes_inicial" style="cursor: pointer;">Subir <i class="fa-solid fa-square-plus"></i></label>
             </a>
         </div>
     </div>
 
     <!--FORMULARIO-->
-    <form wire:submit.prevent="store" class="formulario">
+    <form wire:submit.prevent="guardar" class="formulario">
         <div class="g_panel">
             <!--IMAGENES-->
             <div class="g_margin_bottom_20">
-                <input type="file" id="photos" wire:model="photos" multiple required accept="image/*"
+                <input type="file" id="imagenes_inicial" wire:model="imagenes_inicial" multiple required accept="image/*"
                     style="display: none;">
 
                 <div class="contenedor_dropzone">
-                    @if ($newPhotos)
-                        @foreach ($newPhotos as $index => $photo)
+                    @if ($imagenes_final)
+                        @foreach ($imagenes_final as $index => $photo)
                             <div class="dropzone_item">
                                 <img src="{{ $photo->temporaryUrl() }}" class="dropzone_image">
                                 <button type="button" class="remove_button"
-                                    wire:click="removePhoto({{ $index }})"><i
+                                    wire:click="eliminarImagenTemporal({{ $index }})"><i
                                         class="fa-solid fa-xmark"></i></button>
                             </div>
                         @endforeach
@@ -42,7 +42,7 @@
                     @endif
                 </div>
             </div>
-            @if ($newPhotos)
+            @if ($imagenes_final)
                 <div class="formulario_botones">
                     <button type="submit" class="guardar">Guardar</button>
                 </div>
@@ -95,17 +95,17 @@
 
                 <div class="cabecera_titulo_botones g_margin_bottom_20">
                     <a class="g_boton g_boton_primary">
-                        <label for="nuevo" style="cursor: pointer;">Cambiar imagen <i
+                        <label for="imagen_edit" style="cursor: pointer;">Cambiar imagen <i
                                 class="fa-solid fa-square-plus"></i></label>
                     </a>
-                    <input type="file" id="nuevo" wire:model="nuevo" accept="image/*" style="display: none;">
+                    <input type="file" id="imagen_edit" wire:model="imagen_edit" accept="image/*" style="display: none;">
                 </div>
 
                 <div class="contenedor_dropzone">
-                    @if ($nuevo)
+                    @if ($imagen_edit)
                         <div class="dropzone_item">
-                            <img src="{{ $nuevo->temporaryUrl() }}" class="dropzone_image">
-                            <button type="button" wire:click="deleteImagenNueva()" class="remove_button"><i
+                            <img src="{{ $imagen_edit->temporaryUrl() }}" class="dropzone_image">
+                            <button type="button" wire:click="eliminarImagenEditTemporal()" class="remove_button"><i
                                     class="fa-solid fa-xmark"></i></button>
                         </div>
                     @else
@@ -118,7 +118,7 @@
             </x-slot>
             <x-slot name="footer">
                 <div class="formulario_botones">
-                    <button type="button" wire:click="update" class="guardar">Actualizar</button>
+                    <button type="button" wire:click="editarFormulario" class="guardar">Actualizar</button>
 
                     <button type="button" wire:click="$set('modal', false)" class="cancelar">Cancelar</button>
                 </div>
@@ -138,9 +138,9 @@
                     <div class="botones">
                         <a href="{{ $imagen->url }}" target="_blank" class="g_boton g_boton_info"><i
                                 class="fa-solid fa-eye"></i></a>
-                        <button wire:click="edit({{ $imagen->id }})" class="g_boton g_boton_primary"><i
+                        <button wire:click="seleccionarImagen({{ $imagen->id }})" class="g_boton g_boton_primary"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button wire:click="delete({{ $imagen->id }})" class="g_boton g_boton_danger"><i
+                        <button wire:click="eliminarImagen({{ $imagen->id }})" class="g_boton g_boton_danger"><i
                                 class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>

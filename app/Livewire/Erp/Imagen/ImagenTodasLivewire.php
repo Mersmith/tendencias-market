@@ -15,36 +15,38 @@ class ImagenTodasLivewire extends Component
 
     public $imagenes;
 
-    public $photos = [], $newPhotos = [];
+    public $imagenes_inicial = [], $imagenes_final = [];
 
-    public $modal = false, $imagenId, $url, $titulo, $descripcion, $nuevo;
+    public $modal = false;
+
+    public $imagenId, $url, $titulo, $descripcion, $imagen_edit;
 
     public function mount()
     {
         $this->imagenes = Imagen::all();
     }
 
-    public function updatedPhotos($photos)
+    public function updatedImagenesInicial($imagenes_inicial)
     {
-        foreach ($photos as $photo) {
-            $this->newPhotos[] = $photo;
+        foreach ($imagenes_inicial as $imagen) {
+            $this->imagenes_final[] = $imagen;
         }
     }
 
-    public function removePhoto($index)
+    public function eliminarImagenTemporal($index)
     {
-        array_splice($this->newPhotos, $index, 1);
+        array_splice($this->imagenes_final, $index, 1);
     }
 
-    public function deleteImagenNueva()
+    public function eliminarImagenEditTemporal()
     {
-        $this->nuevo = null;
+        $this->imagen_edit = null;
     }
 
-    public function store()
+    public function guardar()
     {
-        foreach ($this->newPhotos as $photo) {
-            $path = $photo->store('images', 'public');
+        foreach ($this->imagenes_final as $imagen) {
+            $path = $imagen->store('images', 'public');
             $url = Storage::url($path);
 
             Imagen::create([
@@ -59,7 +61,7 @@ class ImagenTodasLivewire extends Component
         $this->imagenes = Imagen::all();
     }
 
-    public function edit($id)
+    public function seleccionarImagen($id)
     {
         $imagen = Imagen::find($id);
         $this->imagenId = $imagen->id;
@@ -67,18 +69,17 @@ class ImagenTodasLivewire extends Component
         $this->descripcion = $imagen->descripcion;
         $this->url = $imagen->url;
 
-
         $this->modal = true;
     }
 
-    public function update()
+    public function editarFormulario()
     {
         $imagen = Imagen::find($this->imagenId);
         $imagen->titulo = $this->titulo;
 
-        if ($this->nuevo) {
+        if ($this->imagen_edit) {
             Storage::delete($imagen->path);
-            $path = $this->nuevo->store('images', 'public');
+            $path = $this->imagen_edit->store('images', 'public');
             $url = Storage::url($path);
             $imagen->path = $path;
             $imagen->url = $url;
@@ -88,10 +89,10 @@ class ImagenTodasLivewire extends Component
         $imagen->save();
 
         $this->reset();
-        $this->imagenes = Imagen::all();
+        $this->imagenes = Imagen::all();        
     }
 
-    public function delete($id)
+    public function eliminarImagen($id)
     {
         $imagen = Imagen::find($id);
         Storage::delete($imagen->path);
