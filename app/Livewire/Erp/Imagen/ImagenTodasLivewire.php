@@ -7,24 +7,20 @@ use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 #[Layout('layouts.erp.layout-erp')]
 class ImagenTodasLivewire extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
-    public $imagenes;
 
     public $imagenes_inicial = [], $imagenes_final = [];
 
     public $modal = false;
 
     public $imagenId, $url, $titulo, $descripcion, $imagen_edit;
-
-    public function mount()
-    {
-        $this->imagenes = Imagen::all();
-    }
 
     public function updatedImagenesInicial($imagenes_inicial)
     {
@@ -89,7 +85,7 @@ class ImagenTodasLivewire extends Component
         $imagen->save();
 
         $this->reset();
-        $this->imagenes = Imagen::all();        
+        $this->imagenes = Imagen::all();
     }
 
     public function eliminarImagen($id)
@@ -102,6 +98,10 @@ class ImagenTodasLivewire extends Component
 
     public function render()
     {
-        return view('livewire.erp.imagen.imagen-todas-livewire');
+        $imagenes = Imagen::orderBy('created_at', 'desc')->paginate(24);
+
+        return view('livewire.erp.imagen.imagen-todas-livewire', [
+            'imagenes' => $imagenes,
+        ]);
     }
 }

@@ -11,7 +11,8 @@
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
             <a class="g_boton g_boton_primary">
-                <label for="imagenes_inicial" style="cursor: pointer;">Subir <i class="fa-solid fa-square-plus"></i></label>
+                <label for="imagenes_inicial" style="cursor: pointer;">Subir <i
+                        class="fa-solid fa-square-plus"></i></label>
             </a>
         </div>
     </div>
@@ -21,8 +22,8 @@
         <div class="g_panel">
             <!--IMAGENES-->
             <div class="g_margin_bottom_20">
-                <input type="file" id="imagenes_inicial" wire:model="imagenes_inicial" multiple required accept="image/*"
-                    style="display: none;">
+                <input type="file" id="imagenes_inicial" wire:model="imagenes_inicial" multiple required
+                    accept="image/*" style="display: none;">
 
                 <div class="contenedor_dropzone">
                     @if ($imagenes_final)
@@ -98,7 +99,8 @@
                         <label for="imagen_edit" style="cursor: pointer;">Cambiar imagen <i
                                 class="fa-solid fa-square-plus"></i></label>
                     </a>
-                    <input type="file" id="imagen_edit" wire:model="imagen_edit" accept="image/*" style="display: none;">
+                    <input type="file" id="imagen_edit" wire:model="imagen_edit" accept="image/*"
+                        style="display: none;">
                 </div>
 
                 <div class="contenedor_dropzone">
@@ -128,23 +130,36 @@
 
     <!--TABLA-->
     <div class="g_panel">
-        <div class="grid_instagram">
-            @foreach ($imagenes as $imagen)
-                <div class="item">
-                    <div class="contenedor_imagen">
-                        <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" class="imagen">
-                    </div>
+        @if ($imagenes->count())
+            <div class="grid_instagram">
+                @foreach ($imagenes as $imagen)
+                    <div class="item">
+                        <div class="contenedor_imagen">
+                            <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" class="imagen">
+                        </div>
 
-                    <div class="botones">
-                        <a href="{{ $imagen->url }}" target="_blank" class="g_boton g_boton_info"><i
-                                class="fa-solid fa-eye"></i></a>
-                        <button wire:click="seleccionarImagen({{ $imagen->id }})" class="g_boton g_boton_primary"><i
-                                class="fa-solid fa-pencil"></i></button>
-                        <button wire:click="eliminarImagen({{ $imagen->id }})" class="g_boton g_boton_danger"><i
-                                class="fa-solid fa-trash-can"></i></button>
+                        <div class="botones">
+                            <a href="{{ $imagen->url }}" target="_blank" class="g_boton g_boton_info"><i
+                                    class="fa-solid fa-eye"></i></a>
+                            <button wire:click="seleccionarImagen({{ $imagen->id }})"
+                                class="g_boton g_boton_primary"><i class="fa-solid fa-pencil"></i></button>
+                            <button wire:click="eliminarImagen({{ $imagen->id }})"
+                                class="g_boton g_boton_danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>
+                @endforeach
+            </div>
+            @if ($imagenes->hasPages())
+                <div>
+                    {{ $imagenes->links('pagination::tailwind') }}
                 </div>
-            @endforeach
-        </div>
+            @endif
+        @else
+            <div class="g_vacio">
+                <p>No hay elementos.</p>
+                <i class="fa-regular fa-face-grin-wink"></i>
+            </div>
+        @endif
+
     </div>
 </div>
