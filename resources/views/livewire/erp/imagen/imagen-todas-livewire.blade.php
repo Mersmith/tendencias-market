@@ -23,7 +23,7 @@
             <div class="g_margin_bottom_20">
                 <input type="file" id="photos" wire:model="photos" multiple required accept="image/*"
                     style="display: none;">
-                    
+
                 <div class="contenedor_dropzone">
                     @if ($newPhotos)
                         @foreach ($newPhotos as $index => $photo)
@@ -45,61 +45,106 @@
             @if ($newPhotos)
                 <div class="formulario_botones">
                     <button type="submit" class="guardar">Guardar</button>
-
-
                 </div>
             @endif
         </div>
     </form>
-
-    <!--TABLA-->
-    <div class="g_panel">
-        <h2>Lista de Imágenes</h2>
-        <ul>
-            @foreach ($imagenes as $imagen)
-                <li>
-                    <strong>{{ $imagen->titulo }}</strong>
-                    <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}"
-                        style="max-width: 150px; max-height: 150px;">
-                    <a href="{{ $imagen->url }}" target="_blank">Ver</a>
-                    <button wire:click="edit({{ $imagen->id }})">Editar</button>
-                    <button wire:click="delete({{ $imagen->id }})">Eliminar</button>
-                </li>
-            @endforeach
-        </ul>
-    </div>
 
     <!--MODAL EDITAR-->
     @if ($imagenId)
         <x-dialog-modal wire:model="modal">
             <x-slot name="title">
                 <div>
-                    <h2 style="font-weight: bold">Editar</h2>
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Editar</h4>
                 </div>
             </x-slot>
             <x-slot name="content">
-                <input type="text" wire:model="titulo" placeholder="Nombre">
-                <input type="text" wire:model="descripcion" placeholder="Tipo">
+                <div class="formulario">
+                    <!--TITULO-->
+                    <div class="g_margin_bottom_20">
+                        <label for="titulo">Titulo <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="titulo" name="titulo" wire:model="titulo">
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('titulo')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <img src="{{ $url }}" style="max-width: 150px; max-height: 150px;">
+                    <!--DESCRIPCION-->
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Descripción <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="descripcion" name="descripcion" wire:model="descripcion"> </textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('descripcion')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <div class="estilo_dropzone">
-                    <label for="nuevo" style="cursor: pointer;">Subir imagen</label>
+                    <!--IMAGEN-->
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Imagen</label>
+
+                        <div class="dropzone_item">
+                            <img src="{{ $url }}" class="dropzone_image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cabecera_titulo_botones g_margin_bottom_20">
+                    <a class="g_boton g_boton_primary">
+                        <label for="nuevo" style="cursor: pointer;">Cambiar imagen <i
+                                class="fa-solid fa-square-plus"></i></label>
+                    </a>
                     <input type="file" id="nuevo" wire:model="nuevo" accept="image/*" style="display: none;">
+                </div>
 
+                <div class="contenedor_dropzone">
                     @if ($nuevo)
-                        <div>
-                            <img src="{{ $nuevo->temporaryUrl() }}" style="max-width: 150px; max-height: 150px;">
-                            <button type="button" wire:click="deleteImagenNueva()">x</button>
+                        <div class="dropzone_item">
+                            <img src="{{ $nuevo->temporaryUrl() }}" class="dropzone_image">
+                            <button type="button" wire:click="deleteImagenNueva()" class="remove_button"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    @else
+                        <div class="g_vacio">
+                            <p>No hay imagen.</p>
+                            <i class="fa-regular fa-face-grin-wink"></i>
                         </div>
                     @endif
                 </div>
             </x-slot>
             <x-slot name="footer">
-                <button type="button" wire:click="update">Actualizar</button>
-                <button type="button" wire:click="$set('modal', false)">Cancelar</button>
+                <div class="formulario_botones">
+                    <button type="button" wire:click="update" class="guardar">Actualizar</button>
+
+                    <button type="button" wire:click="$set('modal', false)" class="cancelar">Cancelar</button>
+                </div>
             </x-slot>
         </x-dialog-modal>
     @endif
 
+    <!--TABLA-->
+    <div class="g_panel">
+        <div class="grid_instagram">
+            @foreach ($imagenes as $imagen)
+                <div class="item">
+                    <div class="contenedor_imagen">
+                        <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" class="imagen">
+                    </div>
+
+                    <div class="botones">
+                        <a href="{{ $imagen->url }}" target="_blank" class="g_boton g_boton_info"><i
+                                class="fa-solid fa-eye"></i></a>
+                        <button wire:click="edit({{ $imagen->id }})" class="g_boton g_boton_primary"><i
+                                class="fa-solid fa-pencil"></i></button>
+                        <button wire:click="delete({{ $imagen->id }})" class="g_boton g_boton_danger"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
