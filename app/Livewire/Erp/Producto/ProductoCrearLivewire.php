@@ -30,7 +30,7 @@ class ProductoCrearLivewire extends Component
     public $variacion_color = false;
     public $activo = "0";
 
-    public $modal = true;
+    public $modal = false;
 
     public $imagenes_seleccionadas = [];
     public function mount()
