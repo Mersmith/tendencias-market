@@ -47,7 +47,6 @@
             <!--TABLA CONTENIDO-->
             <div class="tabla_contenido">
                 <div class="contenedor_tabla">
-                    <!--TABLA-->
                     <table class="tabla">
                         <thead>
                             <tr>
@@ -57,6 +56,7 @@
                                 <th>Descripción</th>
                                 <th>Marca</th>
                                 <th>Subcategoria</th>
+                                <th>Variación</th>
                                 <th>Activo</th>
                                 <th>Acción</th>
                             </tr>
@@ -70,6 +70,10 @@
                                     <td class="g_inferior g_resumir"> {{ $item->descripcion }} </td>
                                     <td>ID: {{ $item->marca->id }} - {{ $item->marca->nombre }}</td>
                                     <td>ID: {{ $item->subcategoria->id }} - {{ $item->subcategoria->nombre }}</td>
+                                    <td>
+                                        @if ($item->variacion_talla)Talla @endif
+                                        @if ($item->variacion_color)Color @endif
+                                    </td>
                                     <td class="g_inferior">
                                         <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                 class="fa-solid fa-circle"></i></span>
@@ -109,7 +113,7 @@
 
             @if ($productos->hasPages())
                 <div>
-                    {{ $productos->onEachSide(1)->links()}}
+                    {{ $productos->onEachSide(1)->links() }}
                 </div>
             @endif
         @else

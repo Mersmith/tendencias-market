@@ -28,6 +28,7 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
@@ -92,7 +93,7 @@
             </div>
 
             <!-- TABLA CONTENIDO -->
-            <div class="tabla_contenido g_margin_bottom_20" >
+            <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">
                     <!-- TABLA -->
                     <table class="tabla">
@@ -144,7 +145,7 @@
                 </div>
             </div>
 
-            <div class="formulario_botones" >
+            <div class="formulario_botones">
                 <button wire:click="guardarPrecioMasivamente" class="guardar">Guardar masivamente</button>
             </div>
         @else

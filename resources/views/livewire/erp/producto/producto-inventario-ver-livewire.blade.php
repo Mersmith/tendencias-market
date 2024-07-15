@@ -1,10 +1,10 @@
-@section('tituloPagina', 'Productos')
+@section('tituloPagina', 'Producto inventario')
 
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Producto inventario <span>Total: {{ count($variaciones) }}</span></h2>
+        <h2>Producto inventario</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
@@ -26,27 +26,36 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
 
+                    <!--ID-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nombre">ID</label>
+                        <input type="text" id="nombre" name="nombre" value="{{ $producto->id }}" disabled>
+                    </div>
+
+                    <!--NOMBRE-->
                     <div>
-                        <label for="nombre">Nombre <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" value="{{ $producto->nombre }}" disabled>
                     </div>
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Almacén</h4>
 
                     <div class="g_fila">
                         <div class="g_columna_6">
+                            <!--SEDE-->
                             <div class="g_margin_bottom_20">
-                                <label for="sede_id">Sedes <span class="obligatorio"><i
-                                            class="fa-solid fa-asterisk"></i></span></label>
+                                <label for="sede_id">Sedes</label>
                                 <select id="sede_id" name="sede_id" wire:model.live="sede_id">
                                     <option value="null" selected disabled>Seleccione</option>
                                     @if ($sedes)
@@ -57,10 +66,11 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="g_columna_6">
+                            <!--ALMACEN-->
                             <div>
-                                <label for="almacen_id">Almacén <span class="obligatorio"><i
-                                            class="fa-solid fa-asterisk"></i></span></label>
+                                <label for="almacen_id">Almacén</label>
                                 <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
                                     <option value="null" selected disabled>Seleccione</option>
                                     @if ($almacenes)
@@ -77,8 +87,10 @@
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Variación</h4>
 
+                    <!--TALLA-->
                     <div class="g_margin_bottom_20">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_talla">Tiene talla</label>
@@ -88,6 +100,7 @@
                         <p class="leyenda">No se puede modificar.</p>
                     </div>
 
+                    <!--COLOR-->
                     <div class="">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_color">Tiene color</label>
@@ -101,9 +114,8 @@
         </div>
     </div>
 
-    <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+    <!--TABLA-->
     <div class="g_panel">
-        <!--TABLA-->
         @if (!empty($variaciones))
             <!--TABLA CABECERA-->
             <div class="tabla_cabecera">
@@ -130,7 +142,6 @@
             <!-- TABLA CONTENIDO -->
             <div class="tabla_contenido">
                 <div class="contenedor_tabla">
-                    <!-- TABLA -->
                     <table class="tabla">
                         <thead>
                             <tr>

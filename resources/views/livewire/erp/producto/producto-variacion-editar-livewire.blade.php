@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Productos')
+@section('tituloPagina', 'Producto variación')
 
 <div>
     <!--CABECERA TITULO PAGINA-->
@@ -27,27 +27,37 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
 
+                    <!--ID-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nombre">ID</label>
+                        <input type="text" id="nombre" name="nombre" value="{{ $producto->id }}" disabled>
+                    </div>
+
+                    <!--NOMBRE-->
                     <div>
-                        <label for="nombre">Nombre <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" value="{{ $producto->nombre }}" disabled>
                     </div>
                 </div>
 
                 @if ($producto->variacion_talla || $producto->variacion_color)
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Agregar variación al producto</h4>
 
                         <div class="g_fila">
                             <!--VARIACION TALLA-->
                             @if ($producto->variacion_talla)
                                 <div class="g_columna_6">
+                                    <!--TALLA-->
                                     <div class="g_margin_bottom_20">
                                         <label for="talla_id">Talla <span class="obligatorio"><i
                                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -67,6 +77,7 @@
                             <!--VARIACION COLOR-->
                             @if ($producto->variacion_color)
                                 <div class="g_columna_6">
+                                    <!--COLOR-->
                                     <div class="g_margin_bottom_20">
                                         <label for="color_id">Color <span class="obligatorio"><i
                                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -151,10 +162,8 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
-
                                     </table>
                                 @endif
-
                             </div>
                         </div>
                     </div>
@@ -163,8 +172,10 @@
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Variación</h4>
 
+                    <!--TALLA-->
                     <div class="g_margin_bottom_20">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_talla">Tiene talla</label>
@@ -174,6 +185,7 @@
                         <p class="leyenda">No se puede modificar.</p>
                     </div>
 
+                    <!--COLOR-->
                     <div class="">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_color">Tiene color</label>
@@ -187,14 +199,15 @@
         </div>
 
         @if ($producto->variacion_talla || $producto->variacion_color)
-            <div>
-                <div class="formulario_botones">
-                    <button wire:click="guardar" class="guardar">Guardar</button>
+            @if (count($variaciones) > 0)
+                <div>
+                    <div class="formulario_botones">
+                        <button wire:click="guardar" class="guardar">Guardar</button>
 
-                    <a href="{{ route('erp.producto.vista.todas') }}" class="cancelar">Cancelar</a>
+                        <a href="{{ route('erp.producto.vista.todas') }}" class="cancelar">Cancelar</a>
+                    </div>
                 </div>
-            </div>
+            @endif
         @endif
-
     </div>
 </div>

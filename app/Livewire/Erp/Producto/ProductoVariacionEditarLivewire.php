@@ -13,13 +13,10 @@ use Livewire\Attributes\Layout;
 class ProductoVariacionEditarLivewire extends Component
 {
     public $producto;
+    public $tallas, $colores;
 
-    public $talla_id = null;
-    public $color_id = null;
-
-    public $tallas = [];
-    public $colores = [];
     public $variaciones = [];
+    public $talla_id = null, $color_id = null;
 
     public function mount(Producto $item)
     {
@@ -27,8 +24,8 @@ class ProductoVariacionEditarLivewire extends Component
 
         $this->variaciones = $item->variaciones()->with(['talla', 'color'])->get()->toArray();
 
-        $this->tallas = Talla::all();
-        $this->colores = Color::all();
+        $this->tallas = Talla::where('activo', true)->get();
+        $this->colores = Color::where('activo', true)->get();
     }
 
     public function guardar()
