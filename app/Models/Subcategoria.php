@@ -19,6 +19,11 @@ class Subcategoria extends Model
         return $this->belongsTo(Categoria::class);
     }
 
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

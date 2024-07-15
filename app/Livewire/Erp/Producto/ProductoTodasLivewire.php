@@ -20,9 +20,15 @@ class ProductoTodasLivewire extends Component
         $this->resetPage();
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $productos = Producto::where('nombre', 'like', '%' . $this->buscarProducto . '%')
+            ->orderBy('created_at', 'desc') // Ordenar por fecha de creación
             ->paginate(20);
 
         return view('livewire.erp.producto.producto-todas-livewire', [

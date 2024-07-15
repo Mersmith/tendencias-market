@@ -12,4 +12,9 @@ class Marca extends Model
 
     const ACTIVADO = 1;
     const DESACTIVADO = 2;
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 }

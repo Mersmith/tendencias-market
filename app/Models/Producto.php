@@ -23,6 +23,16 @@ class Producto extends Model
         return $this->morphToMany(Imagen::class, 'imagenable');
     }
 
+    public function marca()
+    {
+        return $this->belongsTo(Marca::class);
+    }
+
+    public function subcategoria()
+    {
+        return $this->belongsTo(Subcategoria::class);
+    }
+    
     //URL AMIGABLE
     public function getRouteKeyName()
     {
