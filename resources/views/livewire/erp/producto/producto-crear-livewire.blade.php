@@ -92,7 +92,7 @@
 
                     <select id="activo" name="activo" wire:model="activo">
                         <option value="" disabled>Seleccione</option>
-                        <option value="2">DESACTIVADO</option>
+                        <option value="0">DESACTIVADO</option>
                         <option value="1">ACTIVO</option>
                     </select>
                     @error('activo')
@@ -139,20 +139,29 @@
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Imagenes</h4>
 
-                    <button type="button" wire:click="$set('modal', true)">Agregar</button>
+                    <div class="formulario_botones g_margin_bottom_20">
+                        <button type="button" wire:click="$set('modal', true)" class="guardar">Subir imagenes</button>
+                    </div>
 
                     @if ($imagenes_seleccionadas)
-                        <ul>
+                        <div class="formulario_grid_imagenes">
                             @foreach ($imagenes_seleccionadas as $index => $imagen)
-                                <li>
-                                    <img src="{{ $imagen['url'] }}" style="max-width: 150px; max-height: 150px;">
-                                    <a href="{{ $imagen['url'] }}" target="_blank">Ver</a>
-                                    <button wire:click="eliminarImagen({{ $index }})">Eliminar</button>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
+                                <div class="item_grid_imagen">
+                                    <div class="grid_contenedor_imagen">
+                                        <img src="{{ $imagen['url'] }}" class="imagen_grid">
+                                    </div>
 
+                                    <div class="grid_botones">
+                                        <a href="{{ $imagen['url'] }}" target="_blank"
+                                            class="g_boton g_boton_info"><i class="fa-solid fa-eye"></i></a>
+                                        <button wire:click="eliminarImagen({{ $index }})"
+                                            class="g_boton g_boton_danger"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -166,19 +175,7 @@
         </div>
     </div>
 
-    <x-dialog-modal wire:model="modal">
-        <x-slot name="title">
-            <div>
-                <h2 style="font-weight: bold">Imagenes</h2>
-            </div>
-        </x-slot>
-        <x-slot name="content">
-
-            @livewire('erp.imagen.imagen-modal-todas-livewire')
-
-        </x-slot>
-        <x-slot name="footer">
-            <button type="button" wire:click="$set('modal', false)">Cancelar</button>
-        </x-slot>
-    </x-dialog-modal>
+    <x-modal wire:model="modal" maxWidth="4xl">
+        @livewire('erp.imagen.imagen-modal-todas-livewire')
+    </x-modal>
 </div>

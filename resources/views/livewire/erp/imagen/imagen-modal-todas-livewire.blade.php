@@ -1,36 +1,39 @@
-<div>
-    <style>
-        .estilo_ga {
-            display: flex;
-            flex-wrap: wrap;
-        }
+<div class="g_padding_20">
+    <h4 class="g_panel_titulo">Activo</h4>
 
-        .imagen-item {
-            margin: 10px;
-            text-align: center;
-            cursor: pointer;
-        }
+    @if ($imagenes->count())
+        <div class="grid_instagram g_margin_bottom_20">
+            @foreach ($imagenes as $imagen)
+                <div
+                    class="item {{ collect($imagenes_seleccionadas)->contains('id', $imagen->id) ? 'imagene_seleccionada' : '' }}">
+                    <div class="contenedor_imagen">
+                        <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" class="imagen">
+                    </div>
 
-        .seleccionada {
-            border: 2px solid green;
-            /* Cambia el estilo como desees */
-        }
-    </style>
+                    <div class="botones">                   
+                        <button wire:click="seleccionarImagen({{ $imagen->id }})" class="g_boton g_boton_danger">
+                            {{ collect($imagenes_seleccionadas)->contains('id', $imagen->id) ? 'Seleccionado' : 'Elegir' }}
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
-    <h2>Todas las imágenes</h2>
+        @if ($imagenes->hasPages())
+            <div class="g_margin_bottom_20">
+                {{ $imagenes->links('pagination::tailwind') }}
+            </div>
+        @endif
+    @else
+        <div class="g_vacio">
+            <p>No hay elementos.</p>
+            <i class="fa-regular fa-face-grin-wink"></i>
+        </div>
+    @endif
 
-    <ul class="estilo_ga">
-        @foreach ($imagenes as $imagen)
-            <li class="imagen-item {{ collect($imagenes_seleccionadas)->contains('id', $imagen->id) ? 'seleccionada' : '' }}">
-                <strong>{{ $imagen->titulo }}</strong>
-                <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" style="max-width: 150px; max-height: 150px;">
-                <a href="{{ $imagen->url }}" target="_blank">Ver</a>
-                <button wire:click="seleccionarImagen({{ $imagen->id }})">
-                    {{ collect($imagenes_seleccionadas)->contains('id', $imagen->id) ? 'Des seleccionar' : 'Seleccionar' }}
-                </button>
-            </li>
-        @endforeach
-    </ul>
-
-    <button type="button" wire:click="enviar">Enviar Imágenes</button>
+    <div>
+        <div class="formulario_botones">
+            <button wire:click="enviar" class="guardar">Enviar imagenes</button>
+        </div>
+    </div>
 </div>

@@ -117,10 +117,10 @@ Route::controller(ColorController::class)->group(function () {//ok
     Route::delete('color/eliminar/{id}', 'eliminar')->name('color.eliminar');
 });
 
-Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');//
+Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');//ok
 
 Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');
-Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');
+Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');//
 Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');

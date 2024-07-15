@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('imagen_ruta')->nullable();
             $table->boolean('variacion_talla')->default(false);
             $table->boolean('variacion_color')->default(false);
-            $table->enum('activo', [Producto::ACTIVADO, Producto::DESACTIVADO])->default(Producto::DESACTIVADO);
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('cascade');

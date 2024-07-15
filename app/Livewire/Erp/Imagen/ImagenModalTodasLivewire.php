@@ -4,16 +4,13 @@ namespace App\Livewire\Erp\Imagen;
 
 use Livewire\Component;
 use App\Models\Imagen;
+use Livewire\WithPagination;
 
 class ImagenModalTodasLivewire extends Component
 {
-    public $imagenes;
-    public $imagenes_seleccionadas = [];
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->imagenes = Imagen::all();
-    }
+    public $imagenes_seleccionadas = [];
 
     public function seleccionarImagen($imagenId)
     {
@@ -41,6 +38,10 @@ class ImagenModalTodasLivewire extends Component
 
     public function render()
     {
-        return view('livewire.erp.imagen.imagen-modal-todas-livewire');
+        $imagenes = Imagen::orderBy('created_at', 'desc')->paginate(24);
+
+        return view('livewire.erp.imagen.imagen-modal-todas-livewire', [
+            'imagenes' => $imagenes,
+        ]);
     }
 }

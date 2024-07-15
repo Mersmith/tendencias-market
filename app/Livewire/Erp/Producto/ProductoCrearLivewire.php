@@ -28,15 +28,15 @@ class ProductoCrearLivewire extends Component
     public $descripcion = null;
     public $variacion_talla = false;
     public $variacion_color = false;
-    public $activo = "2";
+    public $activo = "0";
 
-    public $modal = false;
+    public $modal = true;
 
     public $imagenes_seleccionadas = [];
     public function mount()
     {
-        $this->subcategorias = Subcategoria::all();
-        $this->marcas = Marca::all();
+        $this->subcategorias = Subcategoria::where('activo', true)->get();
+        $this->marcas = Marca::where('activo', true)->get();
     }
 
     public function updatedNombre($value)

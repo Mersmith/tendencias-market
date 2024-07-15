@@ -138,3 +138,41 @@
 .boton_checkbox label {
     margin-bottom: 0px;
 }
+
+/*IMAGENES*/
+.formulario_grid_imagenes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-gap: 8px;
+}
+
+.formulario_grid_imagenes .item_grid_imagen {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e6eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.formulario_grid_imagenes .grid_contenedor_imagen {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.formulario_grid_imagenes .imagen_grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e6eb;
+}
+
+.formulario_grid_imagenes .grid_botones {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}

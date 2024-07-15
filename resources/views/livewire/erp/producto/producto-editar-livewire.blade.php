@@ -108,18 +108,28 @@
                 <div class="g_panel">
                     <h4 class="g_panel_titulo">Imagenes</h4>
 
-                    <button type="button" wire:click="$set('modal', true)">Agregar</button>
+                    <div class="formulario_botones g_margin_bottom_20">
+                        <button wire:click="$set('modal', true)" class="guardar">Subir imagenes</button>
+                    </div>
 
                     @if ($imagenes_seleccionadas)
-                        <ul>
+                        <div class="formulario_grid_imagenes">
                             @foreach ($imagenes_seleccionadas as $index => $imagen)
-                                <li>
-                                    <img src="{{ $imagen['url'] }}" style="max-width: 150px; max-height: 150px;">
-                                    <a href="{{ $imagen['url'] }}" target="_blank">Ver</a>
-                                    <button wire:click="eliminarImagen({{ $index }})">Eliminar</button>
-                                </li>
+                                <div class="item_grid_imagen">
+                                    <div class="grid_contenedor_imagen">
+                                        <img src="{{ $imagen['url'] }}" class="imagen_grid">
+                                    </div>
+                                    
+                                    <div class="grid_botones">
+                                        <a href="{{ $imagen['url'] }}" target="_blank" class="g_boton g_boton_info"><i
+                                                class="fa-solid fa-eye"></i></a>
+                                        <button wire:click="eliminarImagen({{ $index }})"
+                                            class="g_boton g_boton_danger"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
                             @endforeach
-                        </ul>
+                        </div>
                     @endif
                 </div>
             </div>

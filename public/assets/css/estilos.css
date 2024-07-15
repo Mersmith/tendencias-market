@@ -145,6 +145,10 @@
     margin-bottom: 20px;
 }
 
+.g_padding_20 {
+    padding: 20px;
+}
+
 @media (max-width: 900px) {
 
     .g_columna_8 {

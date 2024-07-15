@@ -51,7 +51,7 @@
 /*GRID*/
 .grid_instagram {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-gap: 16px;
 }
 
@@ -84,6 +84,10 @@
     display: flex;
     justify-content: space-around;
     padding: 10px;
+}
+
+.imagene_seleccionada {
+    border: 2px solid #635BFF !important;
 }
 
 @media (max-width: 700px) {
