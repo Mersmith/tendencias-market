@@ -124,7 +124,7 @@ Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vist
 Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');//ok
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');//ok
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');//ok
-Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//
+Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//ok
 
 Route::controller(ListaPrecioController::class)->group(function () {
     Route::get('lista-precio', 'vistaTodas')->name('lista-precio.vista.todas');

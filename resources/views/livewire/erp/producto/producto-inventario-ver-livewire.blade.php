@@ -36,7 +36,7 @@
 
                     <!--ID-->
                     <div class="g_margin_bottom_20">
-                        <label for="nombre">ID</label>
+                        <label for="nombre">ID Producto</label>
                         <input type="text" id="nombre" name="nombre" value="{{ $producto->id }}" disabled>
                     </div>
 

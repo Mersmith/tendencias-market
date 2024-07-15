@@ -12,9 +12,9 @@ use Livewire\Attributes\Layout;
 class ProductoListaPrecioEditarLivewire extends Component
 {
     public $producto;
-    public $tipo_variacion;
+    public $listasPrecios;
     public $variaciones = [];
-    public $listasPrecios = [];
+    public $tipo_variacion;
     public $precios = [];
 
     public function mount($id)
@@ -25,7 +25,7 @@ class ProductoListaPrecioEditarLivewire extends Component
             abort(404, 'Producto no encontrado');
         }
 
-        $this->listasPrecios = ListaPrecio::all();
+        $this->listasPrecios = ListaPrecio::where('activo', true)->get();
 
         $this->variaciones = $this->producto->variaciones->toArray();
 

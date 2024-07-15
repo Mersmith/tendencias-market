@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Productos')
+@section('tituloPagina', 'Producto lista precio')
 
 <div>
     <!-- CABECERA TITULO PAGINA -->
@@ -33,10 +33,18 @@
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
+
+                    <!--ID-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nombre">ID Producto</label>
+                        <input type="text" id="nombre" name="nombre" value="{{ $producto->id }}" disabled>
+                    </div>
+
+                    <!--NOMBRE-->
                     <div>
-                        <label for="nombre">Nombre <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" value="{{ $producto->nombre }}" disabled>
                     </div>
                 </div>
@@ -44,7 +52,10 @@
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Variación</h4>
+
+                    <!--TALLA-->
                     <div class="g_margin_bottom_20">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_talla">Tiene talla</label>
@@ -54,6 +65,7 @@
                         <p class="leyenda">No se puede modificar.</p>
                     </div>
 
+                    <!--COLOR-->
                     <div class="">
                         <div class="boton_checkbox boton_checkbox_deshabilitado">
                             <label for="variacion_color">Tiene color</label>
@@ -67,9 +79,8 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PÁGINA ADMINISTRADOR -->
+    <!--TABLA-->
     <div class="g_panel">
-        <!-- TABLA -->
         @if (!empty($variaciones))
             <!-- TABLA CABECERA -->
             <div class="tabla_cabecera">
@@ -95,11 +106,11 @@
             <!-- TABLA CONTENIDO -->
             <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">
-                    <!-- TABLA -->
                     <table class="tabla">
                         <thead>
                             <tr>
                                 <th>Nº</th>
+                                <th>ID Variación</th>
                                 @if ($tipo_variacion == 'talla-color')
                                     <th>Talla</th>
                                     <th>Color</th>
@@ -119,6 +130,7 @@
                             @foreach ($variaciones as $variacion)
                                 <tr>
                                     <td class="g_inferior">{{ $index++ }}</td>
+                                    <td class="g_inferior">{{ $variacion["id"]}}</td>
                                     @if ($tipo_variacion == 'talla-color')
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
@@ -129,10 +141,12 @@
                                     @endif
                                     @foreach ($listasPrecios as $listaPrecio)
                                         <td>
-                                            <div class="contenedor_lista_precios">
-                                                <input type="number"
+                                            <div class="contenedor_lista_precios" x-data="{ precio: {{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0.1 }} }">
+                                                <input type="number" x-model="precio"
+                                                    @input="if (precio <= 0) precio = 0.1" step="0.01" min="0.1"
                                                     wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                    value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0 }}">
+                                                    value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0.1 }}">
+
                                                 <button
                                                     wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Actualizar</button>
                                             </div>
@@ -145,9 +159,11 @@
                 </div>
             </div>
 
-            <div class="formulario_botones">
-                <button wire:click="guardarPrecioMasivamente" class="guardar">Guardar masivamente</button>
-            </div>
+            @if ($listasPrecios->count())
+                <div class="formulario_botones">
+                    <button wire:click="guardarPrecioMasivamente" class="guardar">Guardar masivamente</button>
+                </div>
+            @endif
         @else
             <div class="g_vacio">
                 <p>No tiene variación.</p>
