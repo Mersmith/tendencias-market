@@ -1,7 +1,6 @@
-@section('tituloPagina', 'Productos')
+@section('tituloPagina', 'Crear producto')
 
 <div>
-
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
@@ -17,12 +16,15 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
 
+                    <!--NOMBRE-->
                     <div class="g_margin_bottom_20">
                         <label for="nombre">Nombre <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -33,6 +35,7 @@
                         @enderror
                     </div>
 
+                    <!--SLUG-->
                     <div class="g_margin_bottom_20">
                         <label for="slug">Slug <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -43,6 +46,7 @@
                         @enderror
                     </div>
 
+                    <!--DESCRIPCION-->
                     <div>
                         <label for="descripcion">Descripción <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -55,7 +59,10 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Variación</h4>
+
+                    <!--TALLA-->
                     <div class="g_fila">
                         <div class="g_columna_6">
                             <div class="g_margin_bottom_20">
@@ -70,6 +77,7 @@
                             </div>
                         </div>
 
+                        <!--COLOR-->
                         <div class="g_columna_6">
                             <div class="">
                                 <div class="boton_checkbox">
@@ -88,11 +96,12 @@
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Activo</h4>
 
+                    <!--ACTIVO-->
                     <select id="activo" name="activo" wire:model="activo">
-                        <option value="" disabled>Seleccione</option>
-                        <option value="0">DESACTIVADO</option>
+                        <option value="0" selected>DESACTIVADO</option>
                         <option value="1">ACTIVO</option>
                     </select>
                     @error('activo')
@@ -101,8 +110,10 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Detalle</h4>
 
+                    <!--SUBCATEGORIA-->
                     <div class="g_margin_bottom_20">
                         <label for="subcategoria_id">Subcategoria <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -119,6 +130,7 @@
                         @enderror
                     </div>
 
+                    <!--MARCA-->
                     <div>
                         <label for="marca_id">Marca <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -137,12 +149,14 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Imagenes</h4>
 
                     <div class="formulario_botones g_margin_bottom_20">
                         <button type="button" wire:click="$set('modal', true)" class="guardar">Subir imagenes</button>
                     </div>
 
+                    <!--IMAGENES-->
                     @if ($imagenes_seleccionadas)
                         <div class="formulario_grid_imagenes">
                             @foreach ($imagenes_seleccionadas as $index => $imagen)
@@ -154,6 +168,7 @@
                                     <div class="grid_botones">
                                         <a href="{{ $imagen['url'] }}" target="_blank"
                                             class="g_boton g_boton_info"><i class="fa-solid fa-eye"></i></a>
+                                            
                                         <button wire:click="eliminarImagen({{ $index }})"
                                             class="g_boton g_boton_danger"><i
                                                 class="fa-solid fa-trash-can"></i></button>

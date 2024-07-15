@@ -3,36 +3,26 @@
 namespace App\Livewire\Erp\Producto;
 
 use App\Http\Requests\ProductoRequest;
-use App\Models\Color;
-use App\Models\Imagen;
-use App\Models\Inventario;
 use App\Models\Marca;
 use App\Models\Producto;
 use App\Models\Subcategoria;
-use App\Models\Talla;
 use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Str;
 use Livewire\Attributes\On;
+use DB;
 
 #[Layout('layouts.erp.layout-erp')]
 class ProductoCrearLivewire extends Component
 {
     public $subcategorias = [], $marcas = [];
 
-    public $subcategoria_id = "";
-    public $marca_id = "";
-    public $nombre = null;
-    public $slug = null;
-    public $descripcion = null;
-    public $variacion_talla = false;
-    public $variacion_color = false;
-    public $activo = "0";
-
-    public $modal = false;
+    public $subcategoria_id = "", $marca_id = "", $nombre, $slug, $descripcion, $variacion_talla = false, $variacion_color = false, $activo = "0";
 
     public $imagenes_seleccionadas = [];
+    public $modal = false;
+
     public function mount()
     {
         $this->subcategorias = Subcategoria::where('activo', true)->get();
@@ -47,31 +37,29 @@ class ProductoCrearLivewire extends Component
     public function guardar()
     {
         $data = $this->validate((new ProductoRequest())->rules(), (new ProductoRequest())->messages(), (new ProductoRequest())->attributes());
+        
 
         $producto_nuevo = new Producto();
-        $producto_nuevo->subcategoria_id = $data['subcategoria_id'];
         $producto_nuevo->marca_id = $data['marca_id'];
+        $producto_nuevo->subcategoria_id = $data['subcategoria_id'];
         $producto_nuevo->nombre = $data['nombre'];
         $producto_nuevo->slug = $data['slug'];
         $producto_nuevo->descripcion = $data['descripcion'];
         $producto_nuevo->variacion_talla = $this->variacion_talla;
         $producto_nuevo->variacion_color = $this->variacion_color;
+        $producto_nuevo->activo = $data['activo'];
         $producto_nuevo->save();
 
         if (!$this->variacion_talla && !$this->variacion_color) {
             $variacion_nuevo = new Variacion();
             $variacion_nuevo->producto_id = $producto_nuevo->id;
             $variacion_nuevo->save();
-
-            //$inventario_nuevo = new Inventario();
-            //$inventario_nuevo->variacion_id = $variacion_nuevo->id;
-            //$inventario_nuevo->save();
         }
 
         // Agregar las relaciones en la tabla imagenables
         if ($this->imagenes_seleccionadas) {
             foreach ($this->imagenes_seleccionadas as $imagen) {
-                \DB::table('imagenables')->insert([
+                DB::table('imagenables')->insert([
                     'imagen_id' => $imagen['id'],
                     'imagenable_id' => $producto_nuevo->id,
                     'imagenable_type' => Producto::class,

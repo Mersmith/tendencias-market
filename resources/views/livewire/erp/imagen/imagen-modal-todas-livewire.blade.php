@@ -1,4 +1,5 @@
 <div class="g_padding_20">
+    <!--TITULO-->
     <h4 class="g_panel_titulo">Imagenes</h4>
 
     @if ($imagenes->count())
