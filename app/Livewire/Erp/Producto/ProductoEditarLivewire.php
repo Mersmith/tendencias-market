@@ -15,15 +15,15 @@ use Livewire\Attributes\On;
 class ProductoEditarLivewire extends Component
 {
     public $producto;
-    public $imagenes_inicial = [];
 
     public $subcategorias, $marcas;
+    public $imagenes_inicial = [];
 
-    public $nombre, $slug, $descripcion, $activo, $subcategoria_id = "", $marca_id = "";
-
-    public $modal = false;
+    public $subcategoria_id = "", $marca_id = "", $nombre, $slug, $descripcion, $activo;
 
     public $imagenes_seleccionadas = [];
+
+    public $modal = false;
 
     public function mount($id)
     {
@@ -38,8 +38,8 @@ class ProductoEditarLivewire extends Component
         $this->marca_id = $this->producto->marca_id;
         $this->subcategoria_id = $this->producto->subcategoria_id;
 
-        $this->subcategorias = Subcategoria::all();
-        $this->marcas = Marca::all();
+        $this->subcategorias = Subcategoria::where('activo', true)->get();
+        $this->marcas = Marca::where('activo', true)->get();
     }
 
     public function updatedNombre($value)
@@ -53,8 +53,8 @@ class ProductoEditarLivewire extends Component
         $data = $this->validate($request->rules(), $request->messages(), $request->attributes());
 
         $this->producto->update([
-            "subcategoria_id" => $data['subcategoria_id'],
             "marca_id" => $data['marca_id'],
+            "subcategoria_id" => $data['subcategoria_id'],
             "nombre" => $data['nombre'],
             "slug" => $data['slug'],
             "descripcion" => $data['descripcion'],

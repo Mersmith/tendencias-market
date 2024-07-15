@@ -17,12 +17,15 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
 
+                    <!--NOMBRE-->
                     <div class="g_margin_bottom_20">
                         <label for="nombre">Nombre <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -33,6 +36,7 @@
                         @enderror
                     </div>
 
+                    <!--SLUG-->
                     <div class="g_margin_bottom_20">
                         <label for="slug">Slug <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -43,6 +47,7 @@
                         @enderror
                     </div>
 
+                    <!--DESCRIPCION-->
                     <div>
                         <label for="descripcion">Descripción <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -53,15 +58,47 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Variación</h4>
+
+                    <div class="g_fila">
+                        <div class="g_columna_6">
+                            <!--TALLA-->
+                            <div class="g_margin_bottom_20">
+                                <div class="boton_checkbox boton_checkbox_deshabilitado">
+                                    <label for="variacion_talla">Tiene talla</label>
+                                    <input type="checkbox" id="variacion_talla" name="variacion_talla"
+                                        @if ($producto->variacion_talla) checked @endif onclick="return false;">
+                                </div>
+                                <p class="leyenda">No se puede modificar.</p>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_6">
+                            <!--COLOR-->
+                            <div class="">
+                                <div class="boton_checkbox boton_checkbox_deshabilitado">
+                                    <label for="variacion_color">Tiene color</label>
+                                    <input type="checkbox" id="variacion_color" name="variacion_color"
+                                        @if ($producto->variacion_color) checked @endif onclick="return false;">
+                                </div>
+                                <p class="leyenda">No se puede modificar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Activo</h4>
 
+                    <!--ACTIVO-->
                     <select id="activo" name="activo" wire:model="activo">
-                        <option value="" disabled>Seleccione</option>
-                        <option value="2">DESACTIVADO</option>
+                        <option value="0" selected>DESACTIVADO</option>
                         <option value="1">ACTIVO</option>
                     </select>
                     @error('activo')
@@ -70,8 +107,10 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Detalle</h4>
 
+                    <!--SUBCATEGORIA-->
                     <div class="g_margin_bottom_20">
                         <label for="subcategoria_id">Subcategoria <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -88,6 +127,7 @@
                         @enderror
                     </div>
 
+                    <!--MARCA-->
                     <div>
                         <label for="marca_id">Marca <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -106,12 +146,14 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Imagenes</h4>
 
                     <div class="formulario_botones g_margin_bottom_20">
                         <button wire:click="$set('modal', true)" class="guardar">Subir imagenes</button>
                     </div>
 
+                    <!--IMAGENES-->
                     @if ($imagenes_seleccionadas)
                         <div class="formulario_grid_imagenes">
                             @foreach ($imagenes_seleccionadas as $index => $imagen)
@@ -119,10 +161,11 @@
                                     <div class="grid_contenedor_imagen">
                                         <img src="{{ $imagen['url'] }}" class="imagen_grid">
                                     </div>
-                                    
+
                                     <div class="grid_botones">
-                                        <a href="{{ $imagen['url'] }}" target="_blank" class="g_boton g_boton_info"><i
-                                                class="fa-solid fa-eye"></i></a>
+                                        <a href="{{ $imagen['url'] }}" target="_blank"
+                                            class="g_boton g_boton_info"><i class="fa-solid fa-eye"></i></a>
+                                            
                                         <button wire:click="eliminarImagen({{ $index }})"
                                             class="g_boton g_boton_danger"><i
                                                 class="fa-solid fa-trash-can"></i></button>
@@ -144,20 +187,8 @@
         </div>
     </div>
 
-    <x-dialog-modal wire:model="modal">
-        <x-slot name="title">
-            <div>
-                <h2 style="font-weight: bold">Imagenes</h2>
-            </div>
-        </x-slot>
-        <x-slot name="content">
-
-            @livewire('erp.imagen.imagen-modal-todas-livewire')
-
-        </x-slot>
-        <x-slot name="footer">
-            <button type="button" wire:click="$set('modal', false)">Cancelar</button>
-        </x-slot>
-    </x-dialog-modal>
-
+    <!--MODAL IMAGEN-->
+    <x-modal wire:model="modal" maxWidth="4xl">
+        @livewire('erp.imagen.imagen-modal-todas-livewire')
+    </x-modal>
 </div>

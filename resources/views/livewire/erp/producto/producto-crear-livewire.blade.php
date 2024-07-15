@@ -62,9 +62,9 @@
                     <!--TITULO-->
                     <h4 class="g_panel_titulo">Variación</h4>
 
-                    <!--TALLA-->
                     <div class="g_fila">
                         <div class="g_columna_6">
+                            <!--TALLA-->
                             <div class="g_margin_bottom_20">
                                 <div class="boton_checkbox">
                                     <label for="variacion_talla">¿Tiene talla?</label>
@@ -77,8 +77,8 @@
                             </div>
                         </div>
 
-                        <!--COLOR-->
                         <div class="g_columna_6">
+                            <!--COLOR-->
                             <div class="">
                                 <div class="boton_checkbox">
                                     <label for="variacion_color">¿Tiene color?</label>
@@ -168,7 +168,7 @@
                                     <div class="grid_botones">
                                         <a href="{{ $imagen['url'] }}" target="_blank"
                                             class="g_boton g_boton_info"><i class="fa-solid fa-eye"></i></a>
-                                            
+
                                         <button wire:click="eliminarImagen({{ $index }})"
                                             class="g_boton g_boton_danger"><i
                                                 class="fa-solid fa-trash-can"></i></button>
@@ -190,6 +190,7 @@
         </div>
     </div>
 
+    <!--MODAL IMAGEN-->
     <x-modal wire:model="modal" maxWidth="4xl">
         @livewire('erp.imagen.imagen-modal-todas-livewire')
     </x-modal>
