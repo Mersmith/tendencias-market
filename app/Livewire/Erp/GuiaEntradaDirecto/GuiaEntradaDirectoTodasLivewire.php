@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Erp\GuiaEntradaDirecto;
 
+use App\Models\Almacen;
 use App\Models\GuiaEntradaDirecto;
+use App\Models\Sede;
+use App\Models\Serie;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
@@ -13,17 +16,82 @@ class GuiaEntradaDirectoTodasLivewire extends Component
     use WithPagination;
     public $buscarGuia;
 
-    protected $paginate = 20;
+    public $sedes = [], $almacenes = [], $series = [];
+    public $sede_id = null, $almacen_id = null, $serie_nombre = null;
+
+    public function mount()
+    {
+        $this->sedes = Sede::all();
+    }
 
     public function updatingBuscarGuia()
     {
         $this->resetPage();
     }
 
+    public function updatedSedeId($value)
+    {
+        if ($value == "null") {
+            $this->reset(['sede_id']);
+        } else {
+            $this->almacenes = Almacen::where('sede_id', $value)->get();
+
+            $this->series = Serie::where('sede_id', $value)
+                //->where('tipo_documento_id', 3)
+                ->get();
+        }
+        $this->reset(['almacen_id', 'serie_nombre']);
+        $this->resetPage();
+    }
+
+    public function updatedAlmacenId($value)
+    {
+        if ($value == "null") {
+            $this->reset(['almacen_id']);
+        } else {
+            $this->almacen_id = $value;
+        }
+
+        $this->resetPage();
+    }
+
+    public function updatedSerieNombre($value)
+    {
+        if ($value == "null") {
+            $this->reset(['serie_nombre']);
+        } else {
+            $this->serie_nombre = $value;
+        }
+
+        $this->resetPage();
+    }
+
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $guias = GuiaEntradaDirecto::where('id', 'like', '%' . $this->buscarGuia . '%')
-            ->paginate(20);
+        $guiasQuery = GuiaEntradaDirecto::query();
+
+        if ($this->buscarGuia) {
+            $guiasQuery->where('correlativo', 'like', '%' . $this->buscarGuia . '%');
+        }
+
+        if ($this->sede_id) {
+            $guiasQuery->where('sede_id', $this->sede_id);
+        }
+
+        if ($this->almacen_id) {
+            $guiasQuery->where('almacen_id', $this->almacen_id);
+        }
+
+        if ($this->serie_nombre) {
+            $guiasQuery->where('serie', 'like', '%' . $this->serie_nombre . '%');
+        }
+
+        $guias = $guiasQuery->paginate(20);
 
         return view('livewire.erp.guia-entrada-directo.guia-entrada-directo-todas-livewire', [
             'guias' => $guias,

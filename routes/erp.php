@@ -137,11 +137,11 @@ Route::controller(ListaPrecioController::class)->group(function () {//ok
 });
 
 Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
-Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//
+Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok
 
 Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');//ok
 
-Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');
+Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');//
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');
 Route::get('/guia-entrada-directo/{id}/detalle', GuiaEntradaDirectoDetalleVerLivewire::class)->name('guia-entrada-directo-detalle.vista.ver');
 
