@@ -382,7 +382,24 @@
                 "url": "/erp/inventario",
                 "icono": "fa-solid fa-comment",
                 "nivel": 2,
-                "submenus": []
+                "submenus": [
+                    {
+                        "id": 321,
+                        "nombre": "Todo",
+                        "ruta": "erp.inventario.vista.todas",
+                        "url": "/erp/inventario",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 322,
+                        "nombre": "Inventario Lista Precio",
+                        "ruta": "erp.inventario.variacion-lista-precio.vista.todas",
+                        "url": "/erp/inventario-variacion-lista-precio",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
             },
             {
                 "id": 33,
