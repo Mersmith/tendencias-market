@@ -60,7 +60,7 @@
                                 <select id="serie_id" name="serie_id" wire:model.live="serie_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($series as $serie)
-                                        <option value="{{ $serie->serie_nombre }}">{{ $serie->nombre }}</option>
+                                        <option value="{{ $serie->nombre }}">{{ $serie->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>

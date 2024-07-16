@@ -24,10 +24,7 @@ class GuiaEntradaDirectoTodasLivewire extends Component
         $this->sedes = Sede::all();
     }
 
-    public function updatingBuscarGuia()
-    {
-        $this->resetPage();
-    }
+   
 
     public function updatedSedeId($value)
     {
@@ -63,6 +60,11 @@ class GuiaEntradaDirectoTodasLivewire extends Component
             $this->serie_nombre = $value;
         }
 
+        $this->resetPage();
+    }
+
+    public function updatingBuscarGuia()
+    {
         $this->resetPage();
     }
 

@@ -18,6 +18,60 @@
         </div>
     </div>
 
+    <!--FORMULARIO-->
+    <div class="formulario">
+        <div class="g_fila">
+            <div class="g_columna_12">
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Almacén</h4>
+
+                    <div class="g_fila">
+                        <div class="g_columna_4">
+                            <!--SEDES ORIGEN-->
+                            <div class="g_margin_bottom_20">
+                                <label for="sede_origen_id">Sedes origen</label>
+                                <select id="sede_origen_id" name="sede_origen_id" wire:model.live="sede_origen_id">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($sedes_origen as $sede)
+                                        <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_4">
+                            <!--ALMACEN-->
+                            <div class="g_margin_bottom_20">
+                                <label for="almacen_origen_id">Almacén origen</label>
+                                <select id="almacen_origen_id" name="almacen_origen_id" wire:model.live="almacen_origen_id">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($almacenes_origen as $almacen)
+                                        <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_4">
+                            <!--SERIE-->
+                            <div>
+                                <label for="serie_origen_nombre">Serie</label>
+                                <select id="serie_origen_nombre" name="serie_origen_nombre" wire:model.live="serie_origen_nombre">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($series_origen as $serie)
+                                        <option value="{{ $serie->nombre }}">{{ $serie->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--TABLA-->
     <div class="g_panel">
         @if ($transferencias->count())
