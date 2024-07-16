@@ -75,8 +75,8 @@
                                             <th>Nº</th>
                                             <th>ID Variación</th>
                                             <th>Producto</th>
-                                            <th>Color</th>
                                             <th>Talla</th>
+                                            <th>Color</th>
                                             <th>Cantidad</th>
                                         </tr>
                                     </thead>
@@ -86,10 +86,8 @@
                                                 <td class="g_resaltar">{{ $loop->iteration }}</td>
                                                 <td class="g_resaltar">{{ $item->variacion->id}}</td>
                                                 <td class="g_resaltar">ID: {{ $item->variacion->producto->id}}- {{ $item->variacion->producto->nombre}}</td>
-                                                <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}
-                                                </td>
-                                                <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}
-                                                </td>
+                                                <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
+                                                <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
                                                 <td class="g_inferior g_resumir">{{ $item->cantidad }}</td>
                                             </tr>
                                         @endforeach
@@ -112,7 +110,7 @@
                     <h4 class="g_panel_titulo">Estado</h4>
 
                     <!--ESTADO-->
-                    <input type="text" id="transferencia_id" name="transferencia_id"
+                    <input type="text" id="estado" name="estado"
                         value="{{ $transferencia->estado }}" disabled>
                 </div>
 

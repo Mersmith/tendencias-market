@@ -151,7 +151,7 @@ Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVer
 
 Route::get('/guia-salida-directo', GuiaSalidaDirectoTodasLivewire::class)->name('guia-salida-directo.vista.todas');//ok
 Route::get('/guia-salida-directo/crear', GuiaSalidaDirectoCrearLivewire::class)->name('guia-salida-directo.vista.crear');//ok
-Route::get('/guia-salida-directo/{id}/detalle', GuiaSalidaDirectoDetalleVerLivewire::class)->name('guia-salida-directo-detalle.vista.ver');
+Route::get('/guia-salida-directo/{id}/detalle', GuiaSalidaDirectoDetalleVerLivewire::class)->name('guia-salida-directo-detalle.vista.ver');//ok
 
 Route::get('/plantilla/footer', FooterEditarLivewire::class)->name('plantilla.footer.vista.editar');
 Route::controller(ErpFooterController::class)->group(function () {
