@@ -18,7 +18,7 @@ class ListaPrecio extends Model
     public function variaciones()
     {
         return $this->belongsToMany(Variacion::class, 'variacion_lista_precios', 'lista_precio_id', 'variacion_id')
-            ->withPivot('precio')
+            ->withPivot('precio', 'precio_antiguo', 'simbolo')
             ->withTimestamps();
     }
 }

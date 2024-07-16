@@ -23,7 +23,8 @@ class VariacionListaPreciosSeeder extends Seeder
                 DB::table('variacion_lista_precios')->insert([
                     'variacion_id' => $variacion->id,
                     'lista_precio_id' => $listaPrecio->id,
-                    'precio' => rand(100, 500)
+                    'precio' => rand(100, 200),
+                    'precio_antiguo' => rand(300, 500),
                 ]);
             }
         }

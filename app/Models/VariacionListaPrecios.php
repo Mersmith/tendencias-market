@@ -15,6 +15,8 @@ class VariacionListaPrecios extends Model
         'variacion_id',
         'lista_precio_id',
         'precio',
+        'precio_antiguo',
+        'simbolo',
     ];
 
     public function listaPrecio()

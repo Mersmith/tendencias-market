@@ -125,3 +125,5 @@ php artisan storage:link
 php artisan make:model imagenables -mfsc
 
 php artisan vendor:publish --tag=laravel-pagination
+
+php artisan make:model Descuento -mfsc

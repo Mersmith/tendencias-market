@@ -10,15 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('variacion_lista_precios', function (Blueprint $table) {
+        Schema::create('descuentos', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('variacion_id');
             $table->unsignedBigInteger('lista_precio_id');
 
-            $table->decimal('precio', 8, 2);
-            $table->decimal('precio_antiguo', 8, 2)->nullable();
-            $table->string('simbolo')->default('S/ ');
+            $table->integer('porcentaje_descuento');
+            $table->timestamp('fecha_fin');
 
             $table->foreign('variacion_id')->references('id')->on('variacions')->onDelete('cascade');
             $table->foreign('lista_precio_id')->references('id')->on('lista_precios')->onDelete('cascade');
@@ -32,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('variacion_lista_precios');
+        Schema::dropIfExists('descuentos');
     }
 };

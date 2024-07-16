@@ -13,7 +13,8 @@ class TallaSeeder extends Seeder
      */
     public function run(): void
     {
-        $tallas = ['2', '4', '6', '8', '10', '12', '14', '16', 'S', 'M', 'L', 'XL'];
+        //$tallas = ['2', '4', '6', '8', '10', '12', '14', '16', 'S', 'M', 'L', 'XL'];
+        $tallas = ['S', 'M', 'L', 'XL'];
 
         foreach ($tallas as $talla) {
             Talla::create([

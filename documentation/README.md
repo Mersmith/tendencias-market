@@ -15,3 +15,6 @@ SEDE PRINCIPAL 1
 ALMACEN PRINCIPAL ECOMMERCE 1
 SERIE PRINCIPAL 1
 NOTA DE ENTRADA 1
+
+//Falta crud descuentos
+//Falta precios antiguos en variacion lista de precios

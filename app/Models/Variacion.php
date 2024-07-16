@@ -43,4 +43,9 @@ class Variacion extends Model
             ->withTimestamps();
     }
 
+    public function descuentos()
+    {
+        return $this->hasMany(Descuento::class);
+    }
+
 }
