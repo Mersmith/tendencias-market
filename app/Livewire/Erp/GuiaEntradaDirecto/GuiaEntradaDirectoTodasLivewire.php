@@ -24,8 +24,6 @@ class GuiaEntradaDirectoTodasLivewire extends Component
         $this->sedes = Sede::all();
     }
 
-   
-
     public function updatedSedeId($value)
     {
         if ($value == "null") {

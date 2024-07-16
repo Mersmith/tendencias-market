@@ -147,9 +147,9 @@ Route::get('/guia-entrada-directo/{id}/detalle', GuiaEntradaDirectoDetalleVerLiv
 
 Route::get('/transferencia-almacen', TransferenciaAlmacenTodasLivewire::class)->name('transferencia-almacen.vista.todas');//ok
 Route::get('/transferencia-almacen/crear', TransferenciaAlmacenCrearLivewire::class)->name('transferencia-almacen.vista.crear');//ok
-Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVerLivewire::class)->name('transferencia-almacen-detalle.vista.ver');
+Route::get('/transferencia-almacen/{id}/detalle', TransferenciaAlmacenDetalleVerLivewire::class)->name('transferencia-almacen-detalle.vista.ver');//ok
 
-Route::get('/guia-salida-directo', GuiaSalidaDirectoTodasLivewire::class)->name('guia-salida-directo.vista.todas');
+Route::get('/guia-salida-directo', GuiaSalidaDirectoTodasLivewire::class)->name('guia-salida-directo.vista.todas');//ok
 Route::get('/guia-salida-directo/crear', GuiaSalidaDirectoCrearLivewire::class)->name('guia-salida-directo.vista.crear');
 Route::get('/guia-salida-directo/{id}/detalle', GuiaSalidaDirectoDetalleVerLivewire::class)->name('guia-salida-directo-detalle.vista.ver');
 

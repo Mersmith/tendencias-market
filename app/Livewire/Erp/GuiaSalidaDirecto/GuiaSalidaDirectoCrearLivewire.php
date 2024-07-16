@@ -112,7 +112,7 @@ class GuiaSalidaDirectoCrearLivewire extends Component
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
         $this->series = Serie::where('sede_id', $value)
-            ->where('tipo_documento_id', 4)
+            //->where('tipo_documento_id', 4)
             ->get();
 
         $this->reset(['almacen_id', 'serie_id']);

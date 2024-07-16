@@ -56,8 +56,8 @@
                         <div class="g_columna_4">
                             <!--SERIE-->
                             <div>
-                                <label for="serie_id">Serie</label>
-                                <select id="serie_id" name="serie_id" wire:model.live="serie_id">
+                                <label for="serie_nombre">Serie</label>
+                                <select id="serie_nombre" name="serie_nombre" wire:model.live="serie_nombre">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($series as $serie)
                                         <option value="{{ $serie->nombre }}">{{ $serie->nombre }}</option>
