@@ -28,12 +28,53 @@ class TransferenciaAlmacenCrearLivewire extends Component
     public $sede_destino_id = null, $almacen_destino_id = null, $serie_destino_id = null;
 
     public $variacion_id = null;
+    
+    public $descripcion = null, $observacion = null, $fecha_transferencia = null, $estado = "Aprobado";
     public $detalles = [];
 
-    public $estado = null;
-    public $observacion = null;
-    public $descripcion = null;
-    public $fecha_transferencia = null;
+    protected $rules = [
+        'sede_origen_id' => 'required',
+        'almacen_origen_id' => 'required',
+        'sede_destino_id' => 'required',
+        'almacen_destino_id' => 'required',
+        'estado' => 'required|in:Pendiente,Aprobado,Rechazado,Observado,Eliminado',
+        'observacion' => 'nullable|string',
+        'descripcion' => 'required|string',
+        'fecha_transferencia' => 'required|date',
+        'serie_origen_id' => 'required',
+        'serie_destino_id' => 'required',
+        'detalles' => 'required|array|min:1',
+        'detalles.*.cantidad' => 'required|integer|min:1',
+    ];
+
+    protected $validationAttributes = [
+        'sede_origen_id' => 'sede origen',
+        'almacen_origen_id' => 'almacén origen',
+        'sede_destino_id' => 'sede destino',
+        'almacen_destino_id' => 'almacén destino',
+        'estado' => 'estado',
+        'observacion' => 'observación',
+        'descripcion' => 'descripción',
+        'fecha_transferencia' => 'fecha',
+        'serie_origen_id' => 'serie origen',
+        'serie_destino_id' => 'serie destino',
+        'detalles' => 'detalle',
+        'detalles.*.cantidad' => 'cantidad',
+    ];
+
+    protected $messages = [
+        'sede_origen_id.required' => 'La :attribute es requerida.',
+        'almacen_origen_id.required' => 'El :attribute es requerido.',
+        'sede_destino_id.required' => 'La :attribute es requerida.',
+        'almacen_destino_id.required' => 'El :attribute es requerido.',
+        'estado.required' => 'El :attribute es requerido.',
+        'descripcion.required' => 'La :attribute es requerida.',
+        'fecha_transferencia.required' => 'La :attribute es requerida.',
+        'serie_origen_id.required' => 'La :attribute es requerida.',
+        'serie_destino_id.required' => 'La :attribute es requerida.',
+        'detalles.required' => 'El :attribute es requerido.',
+        'detalles.*.cantidad.required' => 'El :attribute es requerido.',
+    ];
 
     public function mount()
     {
@@ -44,20 +85,7 @@ class TransferenciaAlmacenCrearLivewire extends Component
 
     public function guardar()
     {
-        $this->validate([
-            'sede_origen_id' => 'required',
-            'almacen_origen_id' => 'required',
-            'sede_destino_id' => 'required',
-            'almacen_destino_id' => 'required',
-            'estado' => 'required|in:Pendiente,Aprobado,Rechazado,Observado,Eliminado',
-            'observacion' => 'nullable|string',
-            'descripcion' => 'required|string',
-            'fecha_transferencia' => 'required|date',
-            'serie_origen_id' => 'required',
-            'serie_destino_id' => 'required',
-            'detalles' => 'required|array|min:1',
-            'detalles.*.cantidad' => 'required|integer|min:1',
-        ]);
+        $this->validate();
 
         DB::transaction(function () {
             // Bloquear la fila de la serie seleccionada para evitar problemas de concurrencia
@@ -129,7 +157,9 @@ class TransferenciaAlmacenCrearLivewire extends Component
             'detalles',
         ]);
 
-        session()->flash('message', 'Transferencia de almacén guardada exitosamente.');
+        $this->dispatch('alertaLivewire', "Creado");
+
+        //session()->flash('message', 'Transferencia de almacén guardada exitosamente.');
     }
 
     public function agregarVariacionDetalle($id)
@@ -152,7 +182,7 @@ class TransferenciaAlmacenCrearLivewire extends Component
             'color_nombre' => $inventario->variacion->color->nombre ?? '-',
             'talla_nombre' => $inventario->variacion->talla->nombre ?? '-',
             'stock_actual' => $inventario->stock,
-            'cantidad' => 0,
+            'cantidad' => 1,
         ];
     }
 
@@ -170,16 +200,13 @@ class TransferenciaAlmacenCrearLivewire extends Component
     {
         $this->almacenes_origen = Almacen::where('sede_id', $value)->get();
         $this->series_origen = Serie::where('sede_id', $value)
-            ->where('tipo_documento_id', 2)
+            //->where('tipo_documento_id', 2)
             ->get();
 
         $this->reset(['almacen_origen_id', 'serie_origen_id']);
-    }
 
-    public function updatingBuscarProducto()
-    {
         $this->resetPage();
-    }
+    }  
 
     public function updatedAlmacenOrigenId($value)
     {
@@ -190,10 +217,20 @@ class TransferenciaAlmacenCrearLivewire extends Component
     {
         $this->almacenes_destino = Almacen::where('sede_id', $value)->get();
         $this->series_destino = Serie::where('sede_id', $value)
-            ->where('tipo_documento_id', 2)
+            //->where('tipo_documento_id', 2)
             ->get();
 
         $this->reset(['almacen_destino_id', 'serie_destino_id']);
+    }
+
+    public function updatingBuscarProducto()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
     }
 
     public function render()
@@ -207,7 +244,7 @@ class TransferenciaAlmacenCrearLivewire extends Component
             });
         }
 
-        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(5);
+        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.erp.transferencia-almacen.transferencia-almacen-crear-livewire', [
             'inventario' => $inventario,

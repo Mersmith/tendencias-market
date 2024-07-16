@@ -7,6 +7,15 @@
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
         <h2>Crear guia de entrada directo</h2>
+
+        <!--BOTONES-->
+        <div class="cabecera_titulo_botones">
+            <a href="{{ route('erp.guia-entrada-directo.vista.todas') }}" class="g_boton g_boton_light">
+                Inicio <i class="fa-solid fa-house"></i></a>
+
+            <a href="{{ route('erp.guia-entrada-directo.vista.todas') }}" class="g_boton g_boton_darkt">
+                <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+        </div>
     </div>
 
     <!--FORMULARIO-->
@@ -70,7 +79,8 @@
                                     @foreach ($detalles as $index => $detalle)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}</td>
+                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}
+                                            </td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
                                             <td>
