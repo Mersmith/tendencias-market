@@ -135,7 +135,9 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'inventarios'
         ]);
 
-        session()->flash('message', 'Guía de entrada directo guardada exitosamente.');
+        $this->dispatch('alertaLivewire', "Creado");
+
+        //session()->flash('message', 'Guía de entrada directo guardada exitosamente.');
     }
 
     public function updatedSedeId($value)
@@ -169,8 +171,8 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             'producto_nombre' => $variacion->producto->nombre ?? '-',
             'color_nombre' => $variacion->color->nombre ?? '-',
             'talla_nombre' => $variacion->talla->nombre ?? '-',
-            'stock' => 0,
-            'stock_minimo' => 0,
+            'stock' => 1,
+            'stock_minimo' => 1,
         ];
     }
 

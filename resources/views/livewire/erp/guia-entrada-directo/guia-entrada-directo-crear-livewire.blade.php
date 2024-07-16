@@ -70,17 +70,22 @@
                                     @foreach ($detalles as $index => $detalle)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $detalle['producto_nombre'] }}</td>
+                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}</td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
                                             <td>
-                                                <input type="number" min="1" x-data
-                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                <input type="number" min="1" x-data="{ stock: @entangle('detalles.' . $index . '.stock') }"
+                                                    x-init="$el.value = stock"
+                                                    @input="if ($event.target.value < 1) $event.target.value = 1; stock = $event.target.value; 
+                                                            if (parseInt(stock) < parseInt($refs['stockMin' + {{ $index }}].value)) $refs['stockMin' + {{ $index }}].value = stock"
                                                     wire:model="detalles.{{ $index }}.stock">
                                             </td>
                                             <td>
-                                                <input type="number" min="1" x-data
-                                                    @input="if ($event.target.value < 1) $event.target.value = 1"
+                                                <input type="number" min="1" x-data="{ minStock: @entangle('detalles.' . $index . '.stock_minimo'), stock: @entangle('detalles.' . $index . '.stock') }"
+                                                    x-ref="stockMin{{ $index }}" x-init="$el.value = minStock"
+                                                    @input="if ($event.target.value < 1) $event.target.value = 1; 
+                                                            minStock = $event.target.value; 
+                                                            if (parseInt(minStock) > parseInt(stock)) minStock = stock; $el.value = minStock"
                                                     wire:model="detalles.{{ $index }}.stock_minimo">
                                             </td>
                                             <td>
@@ -91,10 +96,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        @error('detalles')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('detalles')
-                        <p class="mensaje_error">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <!-- MOSTRAR INVENTARIOS -->

@@ -91,7 +91,7 @@ class GuiaEntradaDirectoTodasLivewire extends Component
             $guiasQuery->where('serie', 'like', '%' . $this->serie_nombre . '%');
         }
 
-        $guias = $guiasQuery->paginate(20);
+        $guias = $guiasQuery->orderBy('fecha_entrada', 'desc')->paginate(20);
 
         return view('livewire.erp.guia-entrada-directo.guia-entrada-directo-todas-livewire', [
             'guias' => $guias,
