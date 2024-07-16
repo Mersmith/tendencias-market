@@ -210,6 +210,17 @@ class TransferenciaAlmacenCrearLivewire extends Component
 
     public function updatedAlmacenOrigenId($value)
     {
+        if($this->almacen_destino_id = $value){
+            $this->reset(['almacen_destino_id']);
+        };
+        $this->resetPage();
+    }
+
+    public function updatedAlmacenDestinoId($value)
+    {
+        if($this->almacen_origen_id = $value){
+            $this->reset(['almacen_origen_id']);
+        };
         $this->resetPage();
     }
 
