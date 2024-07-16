@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Lista precios')
+@section('tituloPagina', 'Crear lista precio')
 
 @section('content')
     <div>
@@ -19,13 +19,16 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.lista-precio.crear') }}" method="POST" class="formulario">
             @csrf
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--COLOR-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
@@ -40,7 +43,10 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+                        
+                        <!--ACTIVO-->
                         <select id="activo" name="activo">
                             <option value="0" {{ old('activo') == '0' ? 'selected' : '' }}>DESACTIVADO</option>
                             <option value="1" {{ old('activo') == '1' ? 'selected' : '' }}>ACTIVO</option>

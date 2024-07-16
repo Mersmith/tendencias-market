@@ -1,13 +1,13 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Lista precio')
+@section('tituloPagina', 'Listas precio')
 
 @section('content')
     <div>
         <!--CABECERA TITULO PAGINA-->
         <div class="g_panel cabecera_titulo_pagina">
             <!--TITULO-->
-            <h2>Lista precio <span>Total: {{ $lista_precios->count() }}</span></h2>
+            <h2>Listas precio</h2>
 
             <!--BOTONES-->
             <div class="cabecera_titulo_botones">
@@ -19,9 +19,8 @@
             </div>
         </div>
 
-        <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+        <!--TABLA-->
         <div class="g_panel">
-            <!--TABLA-->
             @if ($lista_precios->count())
                 <!--TABLA CABECERA-->
                 <div class="tabla_cabecera">
@@ -52,26 +51,19 @@
                         <table class="tabla">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Nº</th>
-                                    <th>
-                                        Nombre</th>
-                                    <th>
-                                        Activo</th>
-                                    <th>
-                                        Acción</th>
+                                    <th>Nº</th>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Activo</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($lista_precios as $item)
                                     <tr>
-                                        <td class="g_resaltar">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="g_resaltar">
-                                            {{ $item->nombre }}
-                                        </td>
-                                        <td class="g_inferior">
+                                        <td class="g_resaltar"> {{ $loop->iteration }} </td>
+                                        <td class="g_resaltar">{{ $item->id }}</td>
+                                        <td class="g_resaltar"> {{ $item->nombre }} </td>                                        <td class="g_inferior">
                                             <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
                                                     class="fa-solid fa-circle"></i></span>
                                             @if ($item->activo == 1)

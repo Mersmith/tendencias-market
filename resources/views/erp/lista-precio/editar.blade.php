@@ -1,6 +1,6 @@
 @extends('layouts.erp.layout-erp')
 
-@section('tituloPagina', 'Lista precio')
+@section('tituloPagina', 'Editar lista precio')
 
 @section('content')
     <div>
@@ -20,8 +20,8 @@
                 <button class="g_boton g_boton_danger" id="eliminarListaPrecio">
                     Eliminar <i class="fa-solid fa-trash-can"></i>
                 </button>
-                <form action="{{ route('erp.lista-precio.eliminar', $lista_precio->id) }}" method="POST" id="formEliminarListaPrecio"
-                    style="display: none;">
+                <form action="{{ route('erp.lista-precio.eliminar', $lista_precio->id) }}" method="POST"
+                    id="formEliminarListaPrecio" style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -31,18 +31,22 @@
             </div>
         </div>
 
+        <!--FORMULARIO-->
         <form action="{{ route('erp.lista-precio.editar', $lista_precio->id) }}" method="POST" class="formulario">
             @csrf
             @method('PUT')
             <div class="g_fila">
                 <div class="g_columna_8">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
-                        @csrf
+
+                        <!--COLOR-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
                                         class="fa-solid fa-asterisk"></i></span></label>
-                            <input type="text" id="nombre" name="nombre" value="{{ old('nombre', $lista_precio->nombre) }}">
+                            <input type="text" id="nombre" name="nombre"
+                                value="{{ old('nombre', $lista_precio->nombre) }}">
                             <p class="leyenda">La lista precio debe tener un nombre único.</p>
                             @error('nombre')
                                 <p class="mensaje_error">{{ $message }}</p>
@@ -53,11 +57,16 @@
 
                 <div class="g_columna_4">
                     <div class="g_panel">
+                        <!--TITULO-->
                         <h4 class="g_panel_titulo">Activo</h4>
+
+                        <!--CODIGO-->
                         <select id="activo" name="activo">
-                            <option value="0" {{ old('activo', $lista_precio->activo) == '0' ? 'selected' : '' }}>DESACTIVADO
+                            <option value="0" {{ old('activo', $lista_precio->activo) == '0' ? 'selected' : '' }}>
+                                DESACTIVADO
                             </option>
-                            <option value="1" {{ old('activo', $lista_precio->activo) == '1' ? 'selected' : '' }}>ACTIVO
+                            <option value="1" {{ old('activo', $lista_precio->activo) == '1' ? 'selected' : '' }}>
+                                ACTIVO
                             </option>
                         </select>
                         @error('activo')
@@ -67,7 +76,7 @@
                 </div>
 
                 <div class="formulario_botones">
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">Actualizar</button>
 
                     <a href="{{ route('erp.lista-precio.vista.todas') }}" class="cancelar">Cancelar</a>
                 </div>

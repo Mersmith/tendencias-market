@@ -18,7 +18,7 @@ class AlmacenSeeder extends Seeder
         $faker = Faker::create();
 
         Sede::all()->each(function ($sede) use ($faker) {
-            $numAlmacenes = $faker->numberBetween(1, 3);
+            $numAlmacenes = $faker->numberBetween(1, 2);
             foreach (range(1, $numAlmacenes) as $index) {
                 Almacen::create([
                     'sede_id' => $sede->id,

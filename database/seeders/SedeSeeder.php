@@ -14,6 +14,6 @@ class SedeSeeder extends Seeder
      */
     public function run(): void
     {
-        Sede::factory(10)->create();
+        Sede::factory(3)->create();
     }
 }
