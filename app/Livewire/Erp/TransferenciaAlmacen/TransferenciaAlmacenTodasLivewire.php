@@ -18,10 +18,21 @@ class TransferenciaAlmacenTodasLivewire extends Component
         $this->resetPage();
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $transferencias = TransferenciaAlmacen::where('id', 'like', '%' . $this->buscarGuia . '%')
-        ->paginate(1);
+
+        $transferenciasQuery = TransferenciaAlmacen::query();
+
+        if ($this->buscarGuia) {
+            $transferenciasQuery->where('correlativo_origen', 'like', '%' . $this->buscarGuia . '%');
+        }
+
+        $transferencias = $transferenciasQuery->orderBy('fecha_transferencia', 'desc')->paginate(20);
 
         return view('livewire.erp.transferencia-almacen.transferencia-almacen-todas-livewire', [
             'transferencias' => $transferencias,

@@ -1,5 +1,7 @@
 @section('tituloPagina', 'Transferencia entre almacen')
 
+@section('anchoPantalla', '100%')
+
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
@@ -16,9 +18,8 @@
         </div>
     </div>
 
-    <!--CONTENEDOR PÁGINA ADMINISTRADOR-->
+    <!--TABLA-->
     <div class="g_panel">
-        <!--TABLA-->
         @if ($transferencias->count())
             <!--TABLA CABECERA-->
             <div class="tabla_cabecera">
@@ -50,60 +51,37 @@
                     <table class="tabla">
                         <thead>
                             <tr>
-                                <th>
-                                    Nº</th>
-                                <th>
-                                    Fecha</th>
-                                <th>
-                                    Sede Origen</th>
-                                <th>
-                                    Almacen Origen</th>
-                                <th>
-                                    Sede Destino</th>
-                                <th>
-                                    Almacen Destino</th>
-                                <th>
-                                    Estado</th>
-                                <th>
-                                    Descripción</th>
-                                <th>
-                                    Observación</th>
-                                <th>
-                                    Completado</th>
-                                <th>
-                                    Acción</th>
+                                <th>Nº</th>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Sede Origen</th>
+                                <th>Almacen Origen</th>
+                                <th>Serie Origen</th>
+                                <th>Sede Destino</th>
+                                <th>Almacen Destino</th>
+                                <th>Serie Destino</th>
+                                <th>Estado</th>
+                                <th>Descripción</th>
+                                <th>Observación</th>
+                                <th>Completado</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($transferencias as $item)
                                 <tr>
-                                    <td class="g_resaltar">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td class="g_resaltar">
-                                        {{ $item->fecha_transferencia }}
-                                    </td>
-                                    <td class="g_resaltar">
-                                        {{ $item->sedeOrigen->nombre }}
-                                    </td>
-                                    <td class="g_resaltar">
-                                        {{ $item->almacenOrigen->nombre }}
-                                    </td>
-                                    <td class="g_resaltar">
-                                        {{ $item->sedeDestino->nombre }}
-                                    </td>
-                                    <td class="g_resaltar">
-                                        {{ $item->almacenDestino->nombre }}
-                                    </td>
-                                    <td class="g_inferior">
-                                        {{ $item->estado }}
-                                    </td>
-                                    <td class="g_inferior g_resumir">
-                                        {{ $item->descripcion }}
-                                    </td>
-                                    <td class="g_inferior g_resumir">
-                                        {{ $item->observacion }}
-                                    </td>
+                                    <td class="g_resaltar">{{ $loop->iteration }}</td>
+                                    <td class="g_resaltar">{{ $item->id }}</td>
+                                    <td class="g_resaltar">{{ $item->fecha_transferencia }}</td>
+                                    <td class="g_resaltar">{{ $item->sedeOrigen->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->almacenOrigen->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->serie_origen }} - {{ $item->correlativo_origen }}</td>
+                                    <td class="g_resaltar">{{ $item->sedeDestino->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->almacenDestino->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->serie_destino }} - {{ $item->correlativo_destino }}</td>
+                                    <td class="g_inferior"> {{ $item->estado }} </td>
+                                    <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
+                                    <td class="g_inferior g_resumir">{{ $item->observacion }}</td>
                                     <td class="g_inferior">
                                         <span
                                             class="estado {{ $item->completado == 1 ? 'g_activo' : 'g_desactivado' }}"><i
@@ -129,7 +107,7 @@
 
             @if ($transferencias->hasPages())
                 <div>
-                    {{ $transferencias->links('pagination::tailwind') }}
+                    {{ $transferencias->onEachSide(1)->links() }}
                 </div>
             @endif
         @else
