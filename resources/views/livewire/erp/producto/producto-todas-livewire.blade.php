@@ -51,7 +51,6 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Slug</th>
                                 <th>Descripción</th>

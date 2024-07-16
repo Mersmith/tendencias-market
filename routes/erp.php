@@ -135,7 +135,7 @@ Route::controller(ListaPrecioController::class)->group(function () {//ok
     Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');
 });
 
-Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//
+Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
 
 Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');
 

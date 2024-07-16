@@ -35,11 +35,16 @@ class InventarioTodasLivewire extends Component
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
         $this->reset(['almacen_id']);
+
+        $this->resetPage();
+
     }
 
     public function updatedAlmacenId($value)
     {
         $this->almacen_id = $value;
+        
+        $this->resetPage();
     }
 
     public function updatingPaginacion()
@@ -58,7 +63,10 @@ class InventarioTodasLivewire extends Component
             });
         }
 
-        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(20); // Ajusta el número de elementos por página según sea necesario
+        $inventario = $inventarioQuery->join('variacions', 'inventarios.variacion_id', '=', 'variacions.id')
+            ->orderBy('variacions.producto_id')
+            ->select('inventarios.*')
+            ->paginate(20);
 
         return view('livewire.erp.inventario.inventario-todas-livewire', [
             'inventario' => $inventario,
