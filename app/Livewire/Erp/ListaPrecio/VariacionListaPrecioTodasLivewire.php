@@ -28,6 +28,11 @@ class VariacionListaPrecioTodasLivewire extends Component
         $this->resetPage();
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $variacionesQuery = Variacion::with(['producto', 'color', 'talla', 'listaPrecios']);
@@ -38,7 +43,7 @@ class VariacionListaPrecioTodasLivewire extends Component
             });
         }
 
-        $variaciones = $variacionesQuery->paginate(20);
+        $variaciones = $variacionesQuery->orderBy('producto_id')->paginate(20);
 
         return view('livewire.erp.lista-precio.variacion-lista-precio-todas-livewire', [
             'variaciones' => $variaciones,

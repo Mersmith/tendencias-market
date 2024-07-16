@@ -1,5 +1,7 @@
 @section('tituloPagina', 'Variaciones con Lista de Precios')
 
+@section('anchoPantalla', '100%')
+
 <div>
     <!-- CABECERA TITULO PAGINA -->
     <div class="g_panel cabecera_titulo_pagina">
@@ -13,9 +15,8 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PÁGINA ADMINISTRADOR -->
+    <!--TABLA-->
     <div class="g_panel">
-        <!-- TABLA -->
         @if ($variaciones->count())
             <!-- TABLA CABECERA -->
             <div class="tabla_cabecera">
@@ -43,14 +44,14 @@
             <!-- TABLA CONTENIDO -->
             <div class="tabla_contenido">
                 <div class="contenedor_tabla">
-                    <!-- TABLA -->
                     <table class="tabla">
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>Nombre Producto</th>
-                                <th>Nombre Color</th>
-                                <th>Nombre Talla</th>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Talla</th>
+                                <th>Color</th>
                                 @foreach ($listasPrecios as $listaPrecio)
                                     <th>{{ $listaPrecio->nombre }}</th>
                                 @endforeach
@@ -60,9 +61,10 @@
                             @foreach ($variaciones as $variacion)
                                 <tr>
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
-                                    <td class="g_resaltar">{{ $variacion->producto->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $variacion->color->nombre ?? '-' }}</td>
+                                    <td class="g_resaltar">{{ $variacion->id }}</td>
+                                    <td class="g_resaltar">ID: {{ $variacion->producto->id }} - {{ $variacion->producto->nombre }}</td>
                                     <td class="g_resaltar">{{ $variacion->talla->nombre ?? '-' }}</td>
+                                    <td class="g_resaltar">{{ $variacion->color->nombre ?? '-' }}</td>
                                     @foreach ($listasPrecios as $listaPrecio)
                                         @php
                                             $precio = $variacion->listaPrecios->firstWhere(
@@ -82,7 +84,7 @@
             </div>
             @if ($variaciones->hasPages())
                 <div>
-                    {{ $variaciones->links('pagination::tailwind') }}
+                    {{ $variaciones->onEachSide(1)->links() }}
                 </div>
             @endif
         @else

@@ -85,9 +85,9 @@
                                 <th>Nº</th>
                                 <th>ID</th>
                                 <th>ID Variación</th>
-                                <th>Nombre producto</th>
-                                <th>Nombre color</th>
-                                <th>Nombre talla</th>
+                                <th>Producto</th>
+                                <th>Talla</th>
+                                <th>Color</th>
                                 <th>Stock</th>
                                 <th>Stock mínimo</th>
                                 <th>Variación Activo</th>
@@ -101,8 +101,8 @@
                                     <td class="g_resaltar">{{ $item->variacion->id }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->id }} -
                                         {{ $item->variacion->producto->nombre }}</td>
+                                        <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
                                     <td class="g_inferior g_resumir">{{ $item->stock }}</td>
                                     <td class="g_inferior g_resumir">{{ $item->stock_minimo }}</td>
                                     <td class="g_inferior">
