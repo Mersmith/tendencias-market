@@ -1,10 +1,10 @@
-@section('tituloPagina', 'Guia Entrada Directo')
+@section('tituloPagina', 'Guia Entrada Directo detalle')
 
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Guia entrada directo</h2>
+        <h2>Guia entrada directo detalle</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
@@ -78,20 +78,20 @@
 
                     <!--SEDE-->
                     <div class="g_margin_bottom_20">
-                        <label for="fecha_entrada">Sede</label>
+                        <label for="sede_id">Sede</label>
                         <input type="text" id="sede_id" name="sede_id" value="{{ $guia->sede->nombre }}" disabled>
                     </div>
 
                     <!--ALMACEN-->
                     <div class="g_margin_bottom_20">
-                        <label for="fecha_entrada">Almacén</label>
+                        <label for="almacen_id">Almacén</label>
                         <input type="text" id="almacen_id" name="almacen_id" value="{{ $guia->almacen->nombre }}"
                             disabled>
                     </div>
 
                     <!--SERIE CORRELATIVO-->
                     <div class="g_margin_bottom_20">
-                        <label for="fecha_entrada">Serie</label>
+                        <label for="serie_id">Serie</label>
                         <input type="text" id="serie_id" name="serie_id" value="{{ $guia->serie }} - {{ $guia->correlativo }}" disabled>
                     </div>
                 </div>
