@@ -20,22 +20,51 @@ class GuiaEntradaDirectoCrearLivewire extends Component
     use WithPagination;
 
     public $buscarProducto;
-    protected $paginate = 20;
 
     public $variacion_id = null;
     public $inventarios = [];
     public $sedes = [], $almacenes = [], $series = [];
 
+    public $descripcion = null, $observacion = null, $fecha_entrada = null, $estado = "Aprobado", $sede_id = null, $almacen_id = null, $serie_id = null;
     public $detalles = [];
 
-    public $estado = null;
-    public $observacion = null;
-    public $descripcion = null;
-    public $fecha_entrada = null;
+    protected $rules = [
+        'sede_id' => 'required',
+        'almacen_id' => 'required',
+        'estado' => 'required|in:Aprobado,Rechazado,Observado,Eliminado',
+        'observacion' => 'nullable|string',
+        'descripcion' => 'required|string',
+        'fecha_entrada' => 'required|date',
+        'serie_id' => 'required',
+        'detalles' => 'required|array|min:1',
+        'detalles.*.stock' => 'required|integer|min:1',
+        'detalles.*.stock_minimo' => 'required|integer|min:1',
+    ];
 
-    public $sede_id = null;
-    public $almacen_id = null;
-    public $serie_id = null;
+    protected $validationAttributes = [
+        'sede_id' => 'sede',
+        'almacen_id' => 'almacén',
+        'estado' => 'estado',
+        'observacion' => 'observación',
+        'descripcion' => 'descripción',
+        'fecha_entrada' => 'fecha',
+        'serie_id' => 'serie',
+        'detalles' => 'detalle',
+        'detalles.*.stock' => 'stock',
+        'detalles.*.stock_minimo' => 'stock mínimo',
+    ];
+
+    protected $messages = [
+        'sede_id.required' => 'La :attribute es requerida.',
+        'almacen_id.required' => 'El :attribute es requerido.',
+        'estado.required' => 'El :attribute es requerido.',
+        'descripcion.required' => 'La :attribute es requerida.',
+        'fecha_entrada.required' => 'La :attribute es requerida.',
+        'serie_id.required' => 'La :attribute es requerida.',
+        'detalles.required' => 'El :attribute es requerido.',
+        'detalles.*.stock.required' => 'El :attribute es requerido.',
+        'detalles.*.stock_minimo.required' => 'El :attribute es requerido.',
+    ];
 
     public function mount()
     {
@@ -44,18 +73,7 @@ class GuiaEntradaDirectoCrearLivewire extends Component
 
     public function guardar()
     {
-        $this->validate([
-            'descripcion' => 'required|string',
-            'observacion' => 'nullable|string',
-            'fecha_entrada' => 'required|date',
-            'estado' => 'required|in:Aprobado,Rechazado,Observado,Eliminado',
-            'sede_id' => 'required',
-            'almacen_id' => 'required',
-            'serie_id' => 'required',
-            'detalles' => 'required|array|min:1',
-            'detalles.*.stock' => 'required|integer|min:1',
-            'detalles.*.stock_minimo' => 'required|integer|min:1',
-        ]);
+        $this->validate();
 
         DB::transaction(function () {
             // Bloquear la fila de la serie seleccionada para evitar problemas de concurrencia
@@ -124,16 +142,11 @@ class GuiaEntradaDirectoCrearLivewire extends Component
     {
         $this->almacenes = Almacen::where('sede_id', $value)->get();
         $this->series = Serie::where('sede_id', $value)
-            ->where('tipo_documento_id', 3)
+            //->where('tipo_documento_id', 3)
             ->get();
 
         $this->reset(['almacen_id', 'serie_id']);
     }
-
-    /*public function updatedAlmacenId($value)
-    {
-        $this->almacen_id = $value;
-    }*/
 
     public function updatingBuscarProducto()
     {
@@ -188,6 +201,11 @@ class GuiaEntradaDirectoCrearLivewire extends Component
         }
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $variacionesQuery = Variacion::with(['producto', 'color', 'talla']);
@@ -198,7 +216,7 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             });
         }
 
-        $variaciones = $variacionesQuery->paginate(20);
+        $variaciones = $variacionesQuery->orderBy('producto_id')->paginate(10);
 
         return view('livewire.erp.guia-entrada-directo.guia-entrada-directo-crear-livewire', [
             'variaciones' => $variaciones,

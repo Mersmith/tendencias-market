@@ -123,3 +123,5 @@ php artisan make:livewire Erp/Imagen/ImagenModalTodasLivewire
 php artisan storage:link
 
 php artisan make:model imagenables -mfsc
+
+php artisan vendor:publish --tag=laravel-pagination
