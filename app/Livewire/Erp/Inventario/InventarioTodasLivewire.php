@@ -42,6 +42,11 @@ class InventarioTodasLivewire extends Component
         $this->almacen_id = $value;
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $inventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla'])
@@ -53,7 +58,7 @@ class InventarioTodasLivewire extends Component
             });
         }
 
-        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(5); // Ajusta el número de elementos por página según sea necesario
+        $inventario = $inventarioQuery->orderBy('id', 'desc')->paginate(20); // Ajusta el número de elementos por página según sea necesario
 
         return view('livewire.erp.inventario.inventario-todas-livewire', [
             'inventario' => $inventario,

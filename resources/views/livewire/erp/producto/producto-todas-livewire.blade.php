@@ -45,12 +45,13 @@
             </div>
 
             <!--TABLA CONTENIDO-->
-            <div class="tabla_contenido">
+            <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">
                     <table class="tabla">
                         <thead>
                             <tr>
                                 <th>Nº</th>
+                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Slug</th>
                                 <th>Descripción</th>

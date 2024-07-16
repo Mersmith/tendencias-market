@@ -134,7 +134,7 @@
     <!--TABLA-->
     <div class="g_panel">
         @if ($imagenes->count())
-            <div class="grid_instagram">
+            <div class="grid_instagram g_margin_bottom_20">
                 @foreach ($imagenes as $imagen)
                     <div class="item">
                         <div class="contenedor_imagen">
@@ -155,7 +155,7 @@
             </div>
             @if ($imagenes->hasPages())
                 <div>
-                    {{ $imagenes->links('pagination::tailwind') }}
+                    {{ $imagenes->onEachSide(1)->links() }}
                 </div>
             @endif
         @else

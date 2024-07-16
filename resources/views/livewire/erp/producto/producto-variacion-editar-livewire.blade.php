@@ -108,6 +108,7 @@
                                     <table class="tabla_eliminar">
                                         <thead>
                                             <tr>
+                                                <th>ID Variación</th>
                                                 @if ($producto->variacion_talla)
                                                     <th>Talla</th>
                                                 @endif
@@ -120,6 +121,7 @@
                                         <tbody>
                                             @foreach ($variaciones as $index => $variacion)
                                                 <tr>
+                                                    <td>{{$variacion['id']}}</td>
                                                     @if ($producto->variacion_talla)
                                                         <td>
                                                             <select id="variaciones.{{ $index }}.talla_id"

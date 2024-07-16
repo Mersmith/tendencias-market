@@ -28,15 +28,23 @@ class ProductoInventarioVerLivewire extends Component
 
     public function loadProductVariations($id)
     {
-        $id_almacen = $this->almacen_id;
+        $id_almacen = $this->almacen_id;       
 
         $this->producto = Producto::with([
-            'variaciones.inventarios' => function ($query) use ($id_almacen) {
-                $query->where('almacen_id', $id_almacen);
+            'variaciones' => function ($query) use ($id_almacen) {
+                $query->with(['inventarios' => function ($query) use ($id_almacen) {
+                    $query->where('almacen_id', $id_almacen);
+                }]);
             },
             'variaciones.talla',
             'variaciones.color'
         ])->find($id);
+        
+        if ($this->producto) {
+            $this->producto->variaciones = $this->producto->variaciones->sortByDesc(function($variacion) use ($id_almacen) {
+                return $variacion->inventarios->firstWhere('almacen_id', $id_almacen)->stock ?? 0;
+            })->values();
+        }
 
         if (!$this->producto) {
             abort(404, 'Producto no encontrado');

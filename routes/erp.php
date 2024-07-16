@@ -126,13 +126,13 @@ Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire:
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');//ok
 Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//ok
 
-Route::controller(ListaPrecioController::class)->group(function () {
-    Route::get('lista-precio', 'vistaTodas')->name('lista-precio.vista.todas');//ok
-    Route::get('lista-precio/crear', 'vistaCrear')->name('lista-precio.vista.crear');//ok
-    Route::post('lista-precio/crear', 'crear')->name('lista-precio.crear');//ok
-    Route::get('lista-precio/editar/{id}', 'vistaEditar')->name('lista-precio.vista.editar');//ok
-    Route::put('lista-precio/editar/{id}', 'editar')->name('lista-precio.editar');//ok
-    Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');//ok
+Route::controller(ListaPrecioController::class)->group(function () {//ok
+    Route::get('lista-precio', 'vistaTodas')->name('lista-precio.vista.todas');
+    Route::get('lista-precio/crear', 'vistaCrear')->name('lista-precio.vista.crear');
+    Route::post('lista-precio/crear', 'crear')->name('lista-precio.crear');
+    Route::get('lista-precio/editar/{id}', 'vistaEditar')->name('lista-precio.vista.editar');
+    Route::put('lista-precio/editar/{id}', 'editar')->name('lista-precio.editar');
+    Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');
 });
 
 Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//

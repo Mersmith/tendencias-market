@@ -112,8 +112,7 @@
 
             @if ($inventario->hasPages())
                 <div>
-                    {{ $inventario->links() }}
-                    <!-- Aquí se usa el helper de Livewire para mostrar los enlaces de paginación -->
+                    {{ $inventario->onEachSide(1)->links() }}
                 </div>
             @endif
         @else

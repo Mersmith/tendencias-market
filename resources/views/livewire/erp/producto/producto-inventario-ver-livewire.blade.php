@@ -146,6 +146,7 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
+                                <th>ID Variación</th>
                                 @if ($tipo_variacion == 'talla-color')
                                     <th>Talla</th>
                                     <th>Color</th>
@@ -164,6 +165,7 @@
                                 @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $index++ }}</td>
+                                        <td>{{ $variacion['id']}}</td>
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
                                         <td class="g_resaltar">
@@ -179,6 +181,7 @@
                                 @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
+                                        <td>{{ $variacion['id']}}</td>
                                         <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
                                         <td class="g_resaltar">
                                             @if (isset($variacion['inventarios'][0]))
@@ -193,6 +196,7 @@
                                 @foreach ($variaciones as $variacion)
                                     <tr>
                                         <td class="g_inferior">{{ $loop->iteration }}</td>
+                                        <td>{{ $variacion['id']}}</td>
                                         <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
                                         <td class="g_resaltar">
                                             @if (isset($variacion['inventarios'][0]))

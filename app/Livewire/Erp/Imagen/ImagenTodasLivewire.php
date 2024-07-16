@@ -122,9 +122,14 @@ class ImagenTodasLivewire extends Component
         $this->dispatch('alertaLivewire', "Eliminado");
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $imagenes = Imagen::orderBy('created_at', 'desc')->paginate(24);
+        $imagenes = Imagen::orderBy('created_at', 'desc')->paginate(30);
 
         return view('livewire.erp.imagen.imagen-todas-livewire', [
             'imagenes' => $imagenes,

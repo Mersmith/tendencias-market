@@ -24,8 +24,8 @@ class ProductoVariacionEditarLivewire extends Component
 
         $this->variaciones = $item->variaciones()->with(['talla', 'color'])->get()->toArray();
 
-        $this->tallas = Talla::where('activo', true)->get();
-        $this->colores = Color::where('activo', true)->get();
+        $this->tallas = Talla::all();
+        $this->colores = Color::all();
     }
 
     public function guardar()
