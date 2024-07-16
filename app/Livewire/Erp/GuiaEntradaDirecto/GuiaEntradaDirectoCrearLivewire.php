@@ -150,11 +150,6 @@ class GuiaEntradaDirectoCrearLivewire extends Component
         $this->reset(['almacen_id', 'serie_id']);
     }
 
-    public function updatingBuscarProducto()
-    {
-        $this->resetPage();
-    }
-
     public function seleccionarIdVariacion($id)
     {
         $existingIndex = $this->findVariacionIndex($id);
@@ -201,6 +196,11 @@ class GuiaEntradaDirectoCrearLivewire extends Component
             unset($this->detalles[$index]);
             $this->detalles = array_values($this->detalles);
         }
+    }
+
+    public function updatingBuscarProducto()
+    {
+        $this->resetPage();
     }
 
     public function updatingPaginacion()

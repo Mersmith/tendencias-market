@@ -56,6 +56,7 @@
                     </div>
                 </div>
 
+                <!--TABLA DETALLE-->
                 <div class="g_panel">
                     <!--TITULO-->
                     <h4 class="g_panel_titulo">Detalle</h4>
@@ -79,8 +80,7 @@
                                     @foreach ($detalles as $index => $detalle)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}
-                                            </td>
+                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}</td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
                                             <td>
@@ -218,9 +218,12 @@
                     </div>
                 </div>
 
-                <!-- TABLA -->
+                <!-- TABLA PAGINACION -->
                 <div class="g_panel">
                     @if ($variaciones->count())
+                        <!--TITULO-->
+                        <h4 class="g_panel_titulo">Variaciones</h4>
+
                         <!-- TABLA CABECERA -->
                         <div class="tabla_cabecera">
                             <!-- TABLA CABECERA BUSCAR -->
@@ -270,7 +273,6 @@
                         </div>
                     @endif
                 </div>
-
             </div>
         </div>
 

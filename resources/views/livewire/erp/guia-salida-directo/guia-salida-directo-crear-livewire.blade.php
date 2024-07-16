@@ -1,21 +1,29 @@
 @section('tituloPagina', 'Guia de Salida Directo')
 
+@section('anchoPantalla', '100%')
+
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
         <h2>Crear Guia de Salida Directo</h2>
+
+        <!--BOTONES-->
+        <div class="cabecera_titulo_botones">
+            <a href="{{ route('erp.guia-salida-directo.vista.todas') }}" class="g_boton g_boton_light">
+                Inicio <i class="fa-solid fa-house"></i></a>
+
+            <a href="{{ route('erp.guia-salida-directo.vista.todas') }}" class="g_boton g_boton_darkt">
+                <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+        </div>
     </div>
 
     <!--FORMULARIO-->
     <div class="formulario">
-
-        <!--FILA-->
         <div class="g_fila">
-            <!--COLUMNA 8-->
             <div class="g_columna_8">
-                <!--CAMPOS-->
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">General</h4>
 
                     <!--DESCRIPCION-->
@@ -23,7 +31,6 @@
                         <label for="descripcion">Descripción <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
                         <textarea id="descripcion" name="descripcion" wire:model="descripcion" rows="3"></textarea>
-                        <p class="leyenda">Se mostrará en el SEO.</p>
                         @error('descripcion')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
@@ -31,10 +38,8 @@
 
                     <!--OBSERVACION-->
                     <div class="g_margin_bottom_20">
-                        <label for="observacion">Observación <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="observacion">Observación</label>
                         <textarea id="observacion" name="observacion" wire:model="observacion" rows="3"></textarea>
-                        <p class="leyenda">Se mostrará en el SEO.</p>
                         @error('observacion')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
@@ -53,7 +58,9 @@
 
                 <!--TABLA DETALLE-->
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Detalle</h4>
+
                     <div class="tabla_contenido">
                         <div class="contenedor_tabla">
                             <table class="tabla">
@@ -72,7 +79,7 @@
                                     @foreach ($detalles as $index => $detalle)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $detalle['producto_nombre'] }}</td>
+                                            <td>IDV: {{ $detalle['variacion_id'] }} - {{ $detalle['producto_nombre'] }}</td>
                                             <td>{{ $detalle['color_nombre'] }}</td>
                                             <td>{{ $detalle['talla_nombre'] }}</td>
                                             <td>{{ $detalle['stock_actual'] }}</td>
@@ -99,14 +106,15 @@
                 </div>
             </div>
 
-            <!--COLUMNA 4-->
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Estado</h4>
 
+                    <!--ESTADO-->
                     <select id="estado" name="estado" wire:model="estado">
                         <option value="null" disabled>Seleccione</option>
-                        <option value="Aprobado">Aprobado</option>
+                        <option value="Aprobado" selected>Aprobado</option>
                         <option value="Rechazado">Rechazado</option>
                         <option value="Observado">Observado</option>
                         <option value="Eliminado">Eliminado</option>
@@ -117,8 +125,10 @@
                 </div>
 
                 <div class="g_panel">
+                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Detalle</h4>
 
+                    <!--SEDE-->
                     <div class="g_margin_bottom_20">
                         <label for="sede_id">Sedes <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -133,6 +143,7 @@
                         @enderror
                     </div>
 
+                    <!--ALMACEN-->
                     <div class="g_margin_bottom_20">
                         <label for="almacen_id">Almacén <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -147,6 +158,7 @@
                         @enderror
                     </div>
 
+                    <!--SERIE-->
                     <div>
                         <label for="serie_id">Serie <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
@@ -166,7 +178,7 @@
         </div>
 
         <!--FORMULARIO BOTONES-->
-        <div>
+        <div class="g_margin_bottom_20">
             <div class="formulario_botones">
                 <button wire:click="guardar" class="guardar">Guardar</button>
             </div>
@@ -174,87 +186,86 @@
     </div>
 
     <!--TABLA PAGINACION VARIACIONES INVENTARIO-->
-    <div class="g_panel">
-        <!-- TABLA -->
-        @if ($variacionesIventario->count())
-            <!-- TABLA CABECERA -->
-            <div class="tabla_cabecera">
-                <!-- TABLA CABECERA BOTONES -->
-                <div class="tabla_cabecera_botones">
-                    <button>
-                        PDF <i class="fa-solid fa-file-pdf"></i>
-                    </button>
+    @if ($almacen_id)
+        <div class="g_panel">
+            @if ($variacionesIventario->count())
+                <!--TITULO-->
+                <h4 class="g_panel_titulo">Inventario</h4>
 
-                    <button>
-                        EXCEL <i class="fa-regular fa-file-excel"></i>
-                    </button>
+                <!-- TABLA CABECERA -->
+                <div class="tabla_cabecera">
+                    <!-- TABLA CABECERA BUSCAR -->
+                    <div class="tabla_cabecera_buscar">
+                        <form action="">
+                            <input type="text" wire:model.live.debounce.1300ms="buscarProducto"
+                                id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </form>
+                    </div>
                 </div>
 
-                <!-- TABLA CABECERA BUSCAR -->
-                <div class="tabla_cabecera_buscar">
-                    <form action="">
-                        <input type="text" wire:model.live.debounce.1300ms="buscarProducto" id="buscarProducto"
-                            name="buscarProducto" placeholder="Buscar...">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </form>
-                </div>
-            </div>
-
-            <!-- TABLA CONTENIDO -->
-            <div class="tabla_contenido">
-                <div class="contenedor_tabla">
-                    <!-- TABLA -->
-                    <table class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Nº</th>
-                                <th>Nombre producto</th>
-                                <th>Nombre color</th>
-                                <th>Nombre talla</th>
-                                <th>Stock</th>
-                                <th>Stock mínimo</th>
-                                <th>Variación Activo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($variacionesIventario as $item)
-                                <tr wire:click="seleccionarIdVariacion({{ $item->variacion->id }})"
-                                    style="cursor: pointer;">
-                                    <td class="g_resaltar">{{ $loop->iteration }}</td>
-                                    <td class="g_resaltar">{{ $item->variacion->producto->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
-                                    <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
-                                    <td class="g_inferior g_resumir">{{ $item->stock }}</td>
-                                    <td class="g_inferior g_resumir">{{ $item->stock_minimo }}</td>
-                                    <td class="g_inferior">
-                                        <span
-                                            class="estado {{ $item->variacion->activo == 1 ? 'g_activo' : 'g_desactivado' }}">
-                                            <i class="fa-solid fa-circle"></i>
-                                        </span>
-                                        {{ $item->variacion->activo == 1 ? 'Activo' : 'Desactivo' }}
-                                    </td>
+                <!-- TABLA CONTENIDO -->
+                <div class="tabla_contenido">
+                    <div class="contenedor_tabla">
+                        <!-- TABLA -->
+                        <table class="tabla">
+                            <thead>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>ID Variación</th>
+                                    <th>Producto</th>
+                                    <th>Talla</th>
+                                    <th>Color</th>
+                                    <th>Stock</th>
+                                    <th>Stock mínimo</th>
+                                    <th>Variación Activo</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($variacionesIventario as $item)
+                                    <tr wire:click="seleccionarIdVariacion({{ $item->variacion->id }})"
+                                        style="cursor: pointer;">
+                                        <td class="g_resaltar">{{ $loop->iteration }}</td>
+                                        <td class="g_resaltar">{{ $item->variacion->id }}</td>
+                                        <td class="g_resaltar">ID: {{ $item->variacion->producto->id }} -
+                                            {{ $item->variacion->producto->nombre }}</td>
+                                        <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
+                                        <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
+                                        <td class="g_inferior g_resumir">{{ $item->stock }}</td>
+                                        <td class="g_inferior g_resumir">{{ $item->stock_minimo }}</td>
+                                        <td class="g_inferior">
+                                            <span
+                                                class="estado {{ $item->variacion->activo == 1 ? 'g_activo' : 'g_desactivado' }}">
+                                                <i class="fa-solid fa-circle"></i>
+                                            </span>
+                                            {{ $item->variacion->activo == 1 ? 'Activo' : 'Desactivo' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            @if ($variacionesIventario->hasPages())
-                <div>
-                    {{ $variacionesIventario->links('pagination::tailwind') }}
+                @if ($variacionesIventario->hasPages())
+                    <div>
+                        {{ $variacionesIventario->onEachSide(1)->links() }}
+                    </div>
+                @endif
+            @else
+                <div class="g_vacio">
+                    <p>No hay elementos.</p>
+                    <i class="fa-regular fa-face-grin-wink"></i>
                 </div>
             @endif
-        @else
-            <div class="g_vacio">
-                <p>No hay elementos.</p>
-                <i class="fa-regular fa-face-grin-wink"></i>
-            </div>
-        @endif
-    </div>
+        </div>
+    @endif
 
     <!--TABLA INVENTARIO-->
     @if ($inventarios)
         <div class="g_panel">
+            <!--TITULO-->
+            <h4 class="g_panel_titulo">Inventario en otros almacenes</h4>
+
             <div class="tabla_contenido">
                 <div class="contenedor_tabla">
                     <table class="tabla">

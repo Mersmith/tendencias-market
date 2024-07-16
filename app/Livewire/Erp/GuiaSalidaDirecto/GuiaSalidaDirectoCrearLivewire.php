@@ -22,12 +22,15 @@ class GuiaSalidaDirectoCrearLivewire extends Component
 
     public $buscarProducto;
 
-    public $variacion_id = null, $inventarios = [], $detalles = [];
+    public $inventarios = [];
 
-    public $observacion = null, $descripcion = null, $fecha_salida = null, $estado = null;
+    public $variacion_id = null;
 
     public $sedes = [], $almacenes = [], $series = [];
-    public $sede_id = null, $almacen_id = null, $serie_id = null;
+
+    public $observacion = null, $descripcion = null, $fecha_salida = null, $estado = "Aprobado", $sede_id = null, $almacen_id = null, $serie_id = null;
+
+    public $detalles = [];
 
     public function mount()
     {
@@ -45,7 +48,7 @@ class GuiaSalidaDirectoCrearLivewire extends Component
                 ->where('variacion_id', $detalle['variacion_id'])
                 ->first();
 
-            if (!$inventario || $inventario->stock <= $detalle['cantidad']) {
+            if (!$inventario || $detalle['cantidad'] > $inventario->stock) {
                 $errores[] = "Stock insuficiente para la variación ID: {$detalle['variacion_id']}";
             }
         }
@@ -105,7 +108,9 @@ class GuiaSalidaDirectoCrearLivewire extends Component
             'inventarios'
         ]);
 
-        session()->flash('message', 'Guía de salida directo guardada exitosamente.');
+        $this->dispatch('alertaLivewire', "Creado");
+
+        //session()->flash('message', 'Guía de salida directo guardada exitosamente.');
     }
 
     public function updatedSedeId($value)
@@ -116,11 +121,6 @@ class GuiaSalidaDirectoCrearLivewire extends Component
             ->get();
 
         $this->reset(['almacen_id', 'serie_id']);
-    }
-
-    public function updatingBuscarProducto()
-    {
-        $this->resetPage();
     }
 
     public function updatedAlmacenId($value)
@@ -142,14 +142,16 @@ class GuiaSalidaDirectoCrearLivewire extends Component
             ->where('variacion_id', $id)
             ->first();
 
-        $this->detalles[] = [
-            'variacion_id' => $this->variacion_id,
-            'producto_nombre' => $inventario->variacion->producto->nombre ?? '-',
-            'color_nombre' => $inventario->variacion->color->nombre ?? '-',
-            'talla_nombre' => $inventario->variacion->talla->nombre ?? '-',
-            'stock_actual' => $inventario->stock,
-            'cantidad' => 0,
-        ];
+        if ($inventario->stock >= 1) {
+            $this->detalles[] = [
+                'variacion_id' => $this->variacion_id,
+                'producto_nombre' => $inventario->variacion->producto->nombre ?? '-',
+                'color_nombre' => $inventario->variacion->color->nombre ?? '-',
+                'talla_nombre' => $inventario->variacion->talla->nombre ?? '-',
+                'stock_actual' => $inventario->stock,
+                'cantidad' => 1,
+            ];
+        }
 
         $this->obtenerInventarios();
     }
@@ -181,6 +183,16 @@ class GuiaSalidaDirectoCrearLivewire extends Component
         }
     }
 
+    public function updatingBuscarProducto()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $variacionesInventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla'])->where('almacen_id', $this->almacen_id);
@@ -191,7 +203,7 @@ class GuiaSalidaDirectoCrearLivewire extends Component
             });
         }
 
-        $variacionesIventario = $variacionesInventarioQuery->orderBy('id', 'desc')->paginate(5);
+        $variacionesIventario = $variacionesInventarioQuery->orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.erp.guia-salida-directo.guia-salida-directo-crear-livewire', [
             'variacionesIventario' => $variacionesIventario,
