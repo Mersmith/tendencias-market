@@ -33,7 +33,7 @@ class ProductoListaPrecioEditarLivewire extends Component
                 'precio_antiguo' => $productoListaPrecio->precio_antiguo ?? 0,
             ];
         }
-    }   
+    }
 
     public function guardarPrecioMasivamente()
     {
@@ -62,6 +62,18 @@ class ProductoListaPrecioEditarLivewire extends Component
                     [
                         'precio' => $precio,
                         'precio_antiguo' => $precio_antiguo,
+                        'simbolo' => 'S/',
+                    ]
+                );
+            } elseif ($precio == 0) {
+                ProductoListaPrecios::updateOrCreate(
+                    [
+                        'producto_id' => $this->producto->id,
+                        'lista_precio_id' => $lista_precio_id,
+                    ],
+                    [
+                        'precio' => 0,
+                        'precio_antiguo' => null,
                         'simbolo' => 'S/',
                     ]
                 );

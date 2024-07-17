@@ -16,4 +16,5 @@ ALMACEN PRINCIPAL ECOMMERCE 1
 SERIE PRINCIPAL 1
 NOTA DE ENTRADA 1
 
-//Falta crud descuentos
+//Que se agregue descuento si tienen lista de precio.
+//Que se ve la lista de precio y cuanto se desconto.

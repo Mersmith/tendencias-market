@@ -29,13 +29,18 @@ class EcommerceInicioController extends Controller
                 $precioEtiqueta = $inventario->variacion->producto->listaPrecios->firstWhere('lista_precio_id', $lista_precio_etiqueta);
                 $precio = $precioEtiqueta ? $precioEtiqueta->precio : null;
                 $precio_antiguo = $precioEtiqueta ? $precioEtiqueta->precio_antiguo : null;
+                $simbolo = $precioEtiqueta ? $precioEtiqueta->simbolo : null;
 
                 // PRECIO OFERTA
                 $descuento = $inventario->variacion->producto->descuentos->firstWhere('lista_precio_id', $lista_precio_etiqueta);
                 $precio_oferta = null;
+                $porcentaje_descuento = null;
+                $fecha_fin = null;
 
-                if ($descuento && $descuento->fecha_fin > now()) {
+                if ($descuento && $descuento->fecha_fin > now() && $descuento->porcentaje_descuento > 0) {
                     $precio_oferta = round($precio - ($precio * $descuento->porcentaje_descuento / 100), 2);
+                    $porcentaje_descuento = $descuento->porcentaje_descuento;
+                    $fecha_fin = $descuento->fecha_fin;
                 }
 
                 // IMAGENES
@@ -51,6 +56,7 @@ class EcommerceInicioController extends Controller
                     'producto_id' => $inventario->variacion->producto->id,
                     'producto_nombre' => $inventario->variacion->producto->nombre,
                     'variacion_id' => $inventario->variacion_id,
+                    'marca' => $inventario->variacion->producto->marca->nombre,
                     'color_nombre' => $inventario->variacion->color->nombre ?? null,
                     'talla_nombre' => $inventario->variacion->talla->nombre ?? null,
                     'stock' => $inventario->stock,
@@ -58,8 +64,14 @@ class EcommerceInicioController extends Controller
                     'precio_venta' => $precio,
                     'precio_oferta' => $precio_oferta,
                     'precio_antiguo' => $precio_antiguo,
+                    'simbolo' => $simbolo,
+                    'descuento' => $porcentaje_descuento,
+                    'fecha_fin' => $fecha_fin,
                     'imagen' => $imagenData,
                 ];
+            })
+            ->filter(function ($producto) {
+                return $producto['precio_venta'] > 0;
             })
             ->unique('producto_id')
             ->values()
