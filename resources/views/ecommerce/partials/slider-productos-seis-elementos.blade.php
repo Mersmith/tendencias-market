@@ -6,37 +6,37 @@
         <!-- SLIDE -->
         <template x-for="(producto, index) in productos" :key="index">
             <div class="slide">
-                <a :href="producto.url">
+                <a :href="producto.producto_url">
                     <div class="contenedor_imagen">
-                        <img :src="producto.image" :alt="'Promoción ' + (index + 1)">
-                        <template x-if="producto.discount">
-                            <span x-text="producto.discount"></span>
+                        <img :src="producto.imagen.url" :alt="'Promoción ' + (index + 1)">
+                        <template x-if="producto.descuento">
+                            <span x-text="producto.descuento"></span>
                         </template>
                     </div>
                 </a>
-                <div class="marca" x-text="producto.brand"></div>
-                <div class="titulo" x-text="producto.displayName"></div>
+                <div class="marca" x-text="producto.marca"></div>
+                <div class="titulo" x-text="producto.producto_nombre"></div>
                 <template x-if="producto.card">
                     <div class="tarjeta">
                         <img src="{{ asset('assets/ecommerce/imagenes/tarjetas/cmrIcon.svg') }}">
                     </div>
                 </template>
-                <template x-if="producto.ofertaPrice">
+                <template x-if="producto.precio_oferta">
                     <div class="precio_oferta">
-                        <span x-text="producto.symbol"></span>
-                        <span x-text="producto.ofertaPrice"></span>
+                        <span x-text="producto.simbolo"></span>
+                        <span x-text="producto.precio_oferta"></span>
                     </div>
                 </template>
-                <template x-if="producto.originalPrice">
+                <template x-if="producto.precio_venta">
                     <div class="precio_real">
-                        <span x-text="producto.symbol"></span>
-                        <span x-text="producto.originalPrice"></span>
+                        <span x-text="producto.simbolo"></span>
+                        <span x-text="producto.precio_venta"></span>
                     </div>
                 </template>
-                <template x-if="producto.oldPrice">
+                <template x-if="producto.precio_antiguo">
                     <div class="precio_antiguo">
-                        <span x-text="producto.symbol"></span>
-                        <span x-text="producto.oldPrice"></span>
+                        <span x-text="producto.simbolo"></span>
+                        <span x-text="producto.precio_antiguo"></span>
                     </div>
                 </template>
             </div>

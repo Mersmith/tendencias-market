@@ -61,6 +61,7 @@ class EcommerceInicioController extends Controller
                     'inventario_id' => $inventario->id,
                     'producto_id' => $inventario->variacion->producto->id,
                     'producto_nombre' => $inventario->variacion->producto->nombre,
+                    'producto_url' => $inventario->variacion->producto->slug,
                     'variacion_id' => $inventario->variacion_id,
                     'marca' => $inventario->variacion->producto->marca->nombre,
                     'color_nombre' => $inventario->variacion->color->nombre ?? null,
@@ -84,7 +85,7 @@ class EcommerceInicioController extends Controller
             ->toArray();
 
 
-        dd($producto_almacen_ecommerce);
+        //dd($producto_almacen_ecommerce);
 
         $imagenBanner_1 = [
             "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),
@@ -874,6 +875,7 @@ class EcommerceInicioController extends Controller
                 'imagenesGridPublicidad_1',
                 'imagenesGridPublicidad_2',
                 'productos_1',
+                'producto_almacen_ecommerce',
                 'sliderImagenTresElementosPublicidadControles',
                 'dataSliderImagenCincoElementos',
                 'categorias'
