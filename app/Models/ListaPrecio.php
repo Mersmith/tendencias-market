@@ -15,10 +15,15 @@ class ListaPrecio extends Model
     const ACTIVADO = 1;
     const DESACTIVADO = 2;
 
-    public function variaciones()
+    public function productosListaPrecios()
+    {
+        return $this->hasMany(ProductoListaPrecios::class);
+    }
+
+    /*public function variaciones()
     {
         return $this->belongsToMany(Variacion::class, 'variacion_lista_precios', 'lista_precio_id', 'variacion_id')
             ->withPivot('precio', 'precio_antiguo', 'simbolo')
             ->withTimestamps();
-    }
+    }*/
 }

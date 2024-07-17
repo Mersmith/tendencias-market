@@ -31,7 +31,7 @@ class Variacion extends Model
         return $this->hasMany(Inventario::class);
     }
 
-    public function listaPrecios()
+    /*public function listaPrecios()
     {
         return $this->hasMany(VariacionListaPrecios::class);
     }
@@ -46,6 +46,6 @@ class Variacion extends Model
     public function descuentos()
     {
         return $this->hasMany(Descuento::class);
-    }
+    }*/
 
 }

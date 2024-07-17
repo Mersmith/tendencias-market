@@ -118,15 +118,6 @@ Route::controller(ColorController::class)->group(function () {//ok
     Route::delete('color/eliminar/{id}', 'eliminar')->name('color.eliminar');
 });
 
-Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');//ok
-
-Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');//ok
-Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');//ok
-Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');//ok
-Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');//ok
-Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');//ok
-Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//ok
-
 Route::controller(ListaPrecioController::class)->group(function () {//ok
     Route::get('lista-precio', 'vistaTodas')->name('lista-precio.vista.todas');
     Route::get('lista-precio/crear', 'vistaCrear')->name('lista-precio.vista.crear');
@@ -136,10 +127,19 @@ Route::controller(ListaPrecioController::class)->group(function () {//ok
     Route::delete('lista-precio/eliminar/{id}', 'eliminar')->name('lista-precio.eliminar');
 });
 
-Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
-Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok
+Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');//ok
 
-Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');//ok
+Route::get('/producto', ProductoTodasLivewire::class)->name('producto.vista.todas');//ok
+Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vista.crear');//ok
+Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');//ok
+Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');//ok
+Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');//ok
+Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//ok :)
+
+Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
+Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok :)
+
+Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');//ok :)
 
 Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');//ok
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');//ok

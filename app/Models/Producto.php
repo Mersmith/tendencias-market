@@ -32,6 +32,23 @@ class Producto extends Model
     {
         return $this->belongsTo(Subcategoria::class);
     }
+
+    public function listaPrecios()
+    {
+        return $this->hasMany(ProductoListaPrecios::class);
+    }
+
+    public function precios()
+    {
+        return $this->belongsToMany(ListaPrecio::class, 'producto_lista_precios', 'producto_id', 'lista_precio_id')
+            ->withPivot('precio')
+            ->withTimestamps();
+    }
+
+    public function productoDescuentos()
+    {
+        return $this->hasMany(ProductoDescuento::class);
+    }
     
     //URL AMIGABLE
     public function getRouteKeyName()

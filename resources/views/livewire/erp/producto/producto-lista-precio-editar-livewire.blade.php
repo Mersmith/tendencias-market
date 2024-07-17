@@ -1,6 +1,6 @@
 @section('tituloPagina', 'Producto lista precio')
 
-<div>
+<div>{{-- - --}}
     <!-- CABECERA TITULO PAGINA -->
     <div class="g_panel cabecera_titulo_pagina">
         <!-- TITULO -->
@@ -81,93 +81,72 @@
 
     <!--TABLA-->
     <div class="g_panel">
-        @if (!empty($variaciones))
-            <!-- TABLA CABECERA -->
-            <div class="tabla_cabecera">
-                <!-- TABLA CABECERA BOTONES -->
-                <div class="tabla_cabecera_botones">
-                    <button>
-                        PDF <i class="fa-solid fa-file-pdf"></i>
-                    </button>
-                    <button>
-                        EXCEL <i class="fa-regular fa-file-excel"></i>
-                    </button>
-                </div>
-
-                <!-- TABLA CABECERA BUSCAR -->
-                <div class="tabla_cabecera_buscar">
-                    <form action="">
-                        <input type="text" id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </form>
-                </div>
+        <!-- TABLA CABECERA -->
+        <div class="tabla_cabecera">
+            <!-- TABLA CABECERA BOTONES -->
+            <div class="tabla_cabecera_botones">
+                <button>
+                    PDF <i class="fa-solid fa-file-pdf"></i>
+                </button>
+                <button>
+                    EXCEL <i class="fa-regular fa-file-excel"></i>
+                </button>
             </div>
 
-            <!-- TABLA CONTENIDO -->
-            <div class="tabla_contenido g_margin_bottom_20">
-                <div class="contenedor_tabla">
-                    <table class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Nº</th>
-                                <th>ID Variación</th>
-                                @if ($tipo_variacion == 'talla-color')
-                                    <th>Talla</th>
-                                    <th>Color</th>
-                                @elseif ($tipo_variacion == 'talla')
-                                    <th>Talla</th>
-                                @elseif ($tipo_variacion == 'color')
-                                    <th>Color</th>
-                                @endif
-                                @foreach ($listasPrecios as $listaPrecio)
-                                    <th>{{ $listaPrecio->nombre }}</th>
-                                @endforeach
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $index = 1; @endphp
+            <!-- TABLA CABECERA BUSCAR -->
+            <div class="tabla_cabecera_buscar">
+                <form action="">
+                    <input type="text" id="buscarProducto" name="buscarProducto" placeholder="Buscar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+            </div>
+        </div>
 
-                            @foreach ($variaciones as $variacion)
-                                <tr>
-                                    <td class="g_inferior">{{ $index++ }}</td>
-                                    <td class="g_inferior">{{ $variacion["id"]}}</td>
-                                    @if ($tipo_variacion == 'talla-color')
-                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
-                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                    @elseif ($tipo_variacion == 'talla')
-                                        <td class="g_inferior">{{ $variacion['talla']['nombre'] }}</td>
-                                    @elseif ($tipo_variacion == 'color')
-                                        <td class="g_inferior">{{ $variacion['color']['nombre'] }}</td>
-                                    @endif
-                                    @foreach ($listasPrecios as $listaPrecio)
-                                        <td>
-                                            <div class="contenedor_lista_precios" x-data="{ precio: {{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0.1 }} }">
-                                                <input type="number" x-model="precio"
-                                                    @input="if (precio <= 0) precio = 0.1" step="0.01" min="0.1"
-                                                    wire:model.lazy="precios.{{ $variacion['id'] }}.{{ $listaPrecio->id }}"
-                                                    value="{{ collect($variacion['precios'])->firstWhere('id', $listaPrecio->id)['pivot']['precio'] ?? 0.1 }}">
-
-                                                <button
-                                                    wire:click="guardarPrecio({{ $variacion['id'] }}, {{ $listaPrecio->id }})">Actualizar</button>
-                                            </div>
-                                        </td>
-                                    @endforeach
-                                </tr>
+        <!-- TABLA CONTENIDO -->
+        <div class="tabla_contenido g_margin_bottom_20">
+            <div class="contenedor_tabla">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Lista de Precio</th>
+                            @foreach ($listasPrecios as $listaPrecio)
+                                <th>{{ $listaPrecio->nombre }}</th>
                             @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Precio Venta</td>
+                            @foreach ($listasPrecios as $listaPrecio)
+                                <td>
+                                    <input type="number" step="0.01"
+                                        wire:model="precios.{{ $listaPrecio->id }}.precio">
+                                    @error('precios.' . $listaPrecio->id . '.precio')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <td>Precio Antiguo</td>
+                            @foreach ($listasPrecios as $listaPrecio)
+                                <td>
+                                    <input type="number" step="0.01"
+                                        wire:model="precios.{{ $listaPrecio->id }}.precio_antiguo">
+                                    @error('precios.' . $listaPrecio->id . '.precio_antiguo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            @if ($listasPrecios->count())
-                <div class="formulario_botones">
-                    <button wire:click="guardarPrecioMasivamente" class="guardar">Guardar masivamente</button>
-                </div>
-            @endif
-        @else
-            <div class="g_vacio">
-                <p>No tiene variación.</p>
-                <i class="fa-regular fa-face-grin-wink"></i>
+        @if ($listasPrecios->count())
+            <div class="formulario_botones">
+                <button wire:click="guardarPrecioMasivamente" class="guardar">Guardar masivamente</button>
             </div>
         @endif
     </div>

@@ -117,13 +117,24 @@
                                     </td>
                                     @foreach ($listasPrecios as $listaPrecio)
                                         @php
-                                            $precio = $item->variacion->listaPrecios->firstWhere(
+                                            $precioData = $item->variacion->producto->listaPrecios->firstWhere(
                                                 'lista_precio_id',
                                                 $listaPrecio->id,
                                             );
                                         @endphp
-                                        <td class="g_inferior g_resumir">
-                                            {{ $precio ? $precio->precio : '-' }}
+                                        <td class="g_resaltar">
+                                            <div>
+                                                @if ($precioData)
+                                                    <strong>Precio Venta:</strong>
+                                                @endif
+                                                {{ $precioData ? $precioData->precio : '-' }}
+                                            </div>
+                                            <div>
+                                                @if ($precioData)
+                                                    <strong>Precio Antiguo:</strong>
+                                                @endif
+                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                            </div>
                                         </td>
                                     @endforeach
                                 </tr>

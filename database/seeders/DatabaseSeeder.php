@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(VariacionSeeder::class);
         //$this->call(InventarioSeeder::class);//Ahora se agrega stock con GuiaEntradaDirectoSeeder
         $this->call(ListaPrecioSeeder::class);
-        $this->call(VariacionListaPreciosSeeder::class);
+        //$this->call(VariacionListaPreciosSeeder::class);
+        $this->call(ProductoListaPreciosSeeder::class);
         $this->call(GuiaEntradaDirectoSeeder::class);
-        $this->call(DescuentoSeeder::class);
+        //$this->call(DescuentoSeeder::class);
+        $this->call(ProductoDescuentoSeeder::class);
     }
 }

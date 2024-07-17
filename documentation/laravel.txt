@@ -60,6 +60,7 @@ php artisan make:model ListaPrecio -mfsc
 php artisan make:request ListaPrecioRequest
 
 php artisan make:model VariacionListaPrecios -mfsc
+php artisan make:model ProductoListaPrecios -mfsc
 
 php artisan make:model Sede -mfsc
 php artisan make:request SedeRequest
@@ -127,3 +128,5 @@ php artisan make:model imagenables -mfsc
 php artisan vendor:publish --tag=laravel-pagination
 
 php artisan make:model Descuento -mfsc
+
+php artisan make:model ProductoDescuento -mfsc

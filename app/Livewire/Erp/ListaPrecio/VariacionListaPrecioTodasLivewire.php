@@ -3,6 +3,7 @@
 namespace App\Livewire\Erp\ListaPrecio;
 
 use App\Models\ListaPrecio;
+use App\Models\Producto;
 use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -35,18 +36,17 @@ class VariacionListaPrecioTodasLivewire extends Component
 
     public function render()
     {
-        $variacionesQuery = Variacion::with(['producto', 'color', 'talla', 'listaPrecios']);
+        $productosQuery = Producto::with('listaPrecios')
+            ->orderByRaw('(SELECT COUNT(*) FROM producto_lista_precios WHERE producto_lista_precios.producto_id = productos.id AND producto_lista_precios.precio > 0) DESC');
 
         if ($this->buscarProducto) {
-            $variacionesQuery->whereHas('producto', function ($query) {
-                $query->where('nombre', 'like', '%' . $this->buscarProducto . '%');
-            });
+            $productosQuery->where('nombre', 'like', '%' . $this->buscarProducto . '%');
         }
 
-        $variaciones = $variacionesQuery->orderBy('producto_id')->paginate(20);
+        $productos = $productosQuery->orderBy('id')->paginate($this->paginate);
 
         return view('livewire.erp.lista-precio.variacion-lista-precio-todas-livewire', [
-            'variaciones' => $variaciones,
+            'productos' => $productos,
         ]);
     }
 }

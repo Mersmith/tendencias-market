@@ -5,27 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VariacionListaPrecios extends Model
+class ProductoListaPrecios extends Model
 {
     use HasFactory;
 
-    protected $table = 'variacion_lista_precios';
+    protected $table = 'producto_lista_precios';
 
     protected $fillable = [
-        'variacion_id',
+        'producto_id',
         'lista_precio_id',
         'precio',
         'precio_antiguo',
         'simbolo',
     ];
 
-    /*public function listaPrecio()
+    public function listaPrecio()
     {
         return $this->belongsTo(ListaPrecio::class);
     }
 
-    public function variacion()
+    public function producto()
     {
-        return $this->belongsTo(Variacion::class);
-    }*/
+        return $this->belongsTo(Producto::class);
+    }
 }
