@@ -112,7 +112,8 @@
     align-items: center;
 }
 
-.contenedor_lista_precios input[type="number"] {
+.contenedor_lista_precios input[type="number"],
+.contenedor_lista_precios input[type="date"] {
     width: 100%;
     min-width: 100px;
     border: 1px solid #ccc;

@@ -99,9 +99,14 @@
                                             <span><i class="fa-solid fa-list-ol"></i></span>
                                         </a>
 
-                                        <a href="{{ route('erp.producto.lista.precio.vista.editar', ['id' => $item->id]) }}"
+                                        <a href="{{ route('erp.producto.lista-precio.vista.editar', ['id' => $item->id]) }}"
                                             class="g_activo">
                                             <span><i class="fa-solid fa-dollar-sign"></i></span>
+                                        </a>
+
+                                        <a href="{{ route('erp.producto.descuento.vista.editar', ['id' => $item->id]) }}"
+                                            class="g_activo">
+                                            <span><i class="fa-solid fa-percent"></i></span>
                                         </a>
                                     </td>
                                 </tr>

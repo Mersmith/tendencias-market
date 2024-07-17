@@ -12,6 +12,7 @@ use App\Http\Controllers\Erp\SerieController;
 use App\Http\Controllers\Erp\SubcategoriaController;
 use App\Http\Controllers\Erp\TallaController;
 use App\Http\Controllers\Erp\TipoDocumentoController;
+use App\Livewire\Erp\Descuento\ProductoDescuentoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirectoDetalle\GuiaEntradaDirectoDetalleVerLivewire;
@@ -24,6 +25,7 @@ use App\Livewire\Erp\Inventario\InventarioVariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\ProductoListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
+use App\Livewire\Erp\Producto\ProductoDescuentoEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoInventarioVerLivewire;
 use App\Livewire\Erp\Producto\ProductoListaPrecioEditarLivewire;
@@ -133,12 +135,15 @@ Route::get('/producto/crear', ProductoCrearLivewire::class)->name('producto.vist
 Route::get('/producto/editar/{id}', ProductoEditarLivewire::class)->name('producto.vista.editar');//ok
 Route::get('/producto/variacion/editar/{item}', ProductoVariacionEditarLivewire::class)->name('producto.variacion.vista.editar');//ok
 Route::get('/producto/inventario/ver/{id}', ProductoInventarioVerLivewire::class)->name('producto.inventario.vista.ver');//ok
-Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista.precio.vista.editar');//ok :)
+Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewire::class)->name('producto.lista-precio.vista.editar');//ok
+Route::get('/producto/descuento/editar/{id}', ProductoDescuentoEditarLivewire::class)->name('producto.descuento.vista.editar');//ok
 
 Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
-Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok :)
+Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok
 
-Route::get('/producto-lista-precio', ProductoListaPrecioTodasLivewire::class)->name('producto-lista-precio.vista.todas');//ok :)
+Route::get('/producto-lista-precio', ProductoListaPrecioTodasLivewire::class)->name('producto-lista-precio.vista.todas');//ok
+
+Route::get('/producto-descuento', ProductoDescuentoTodasLivewire::class)->name('producto-descuento.vista.todas');//ok
 
 Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');//ok
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');//ok

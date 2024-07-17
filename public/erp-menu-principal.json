@@ -336,6 +336,15 @@
                         "submenus": []
                     }
                 ]
+            },
+            {
+                "id": 23,
+                "nombre": "Descuento",
+                "ruta": "erp.producto-descuento.vista.todas",
+                "url": "/erp/producto-descuento",
+                "icono": "fa-solid fa-comment",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     },

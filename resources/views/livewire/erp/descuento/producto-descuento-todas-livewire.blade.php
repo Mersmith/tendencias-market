@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Productos con Lista de Precios')
+@section('tituloPagina', 'Productos con Descuentos')
 
 @section('anchoPantalla', '100%')
 
@@ -6,11 +6,11 @@
     <!-- CABECERA TITULO PAGINA -->
     <div class="g_panel cabecera_titulo_pagina">
         <!-- TITULO -->
-        <h2>Productos con Lista de Precios</h2>
+        <h2>Productos con Descuentos</h2>
 
         <!-- BOTONES -->
         <div class="cabecera_titulo_botones">
-            <a href="{{ route('erp.producto-lista-precio.vista.todas') }}" class="g_boton g_boton_light">
+            <a href="{{ route('erp.producto-descuento.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
         </div>
     </div>
@@ -61,23 +61,21 @@
                                     <td class="g_resaltar">ID: {{ $producto->id }} - {{ $producto->nombre }}</td>
                                     @foreach ($listasPrecios as $listaPrecio)
                                         @php
-                                            $precioData = $producto->listaPrecios->firstWhere(
+                                            $dataDescuento = $producto->descuentos->firstWhere(
                                                 'lista_precio_id',
                                                 $listaPrecio->id,
                                             );
+
+                                            $fechaFinVencida =
+                                                $dataDescuento &&
+                                                \Carbon\Carbon::parse($dataDescuento->fecha_fin)->isPast();
                                         @endphp
                                         <td class="g_resaltar">
                                             <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Venta:</strong>
-                                                @endif
-                                                {{ $precioData ? $precioData->precio : '-' }}
+                                                {{ $dataDescuento ? $dataDescuento->porcentaje_descuento : '-' }}%
                                             </div>
-                                            <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Antiguo:</strong>
-                                                @endif
-                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                            <div style="color: {{ $fechaFinVencida ? 'red' : 'black' }}">
+                                                {{ $dataDescuento ? $dataDescuento->fecha_fin : '-' }}
                                             </div>
                                         </td>
                                     @endforeach

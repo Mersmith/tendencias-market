@@ -17,7 +17,7 @@
             <a href="{{ route('erp.producto.variacion.vista.editar', $producto) }}" class="g_boton g_boton_info">
                 Variación <i class="fa-solid fa-align-center"></i></a>
 
-            <a href="{{ route('erp.producto.lista.precio.vista.editar', ['id' => $producto->id]) }}"
+            <a href="{{ route('erp.producto.lista-precio.vista.editar', ['id' => $producto->id]) }}"
                 class="g_boton g_boton_success">
                 Lista Precio <i class="fa-solid fa-dollar-sign"></i></a>
 

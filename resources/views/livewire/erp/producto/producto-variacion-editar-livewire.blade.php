@@ -18,7 +18,7 @@
                 class="g_boton g_boton_warning">
                 Inventario <i class="fa-solid fa-list-ol"></i></a>
 
-            <a href="{{ route('erp.producto.lista.precio.vista.editar', ['id' => $producto->id]) }}"
+            <a href="{{ route('erp.producto.lista-precio.vista.editar', ['id' => $producto->id]) }}"
                 class="g_boton g_boton_success">
                 Lista Precio <i class="fa-solid fa-dollar-sign"></i></a>
 
