@@ -57,11 +57,14 @@ class EcommerceInicioController extends Controller
                     'descripcion' => $imagen->descripcion,
                 ] : null;
 
+                // Construir URL completa
+                $producto_url = url("product/{$inventario->variacion->producto->id}/{$inventario->variacion->producto->slug}");
+
                 return [
                     'inventario_id' => $inventario->id,
                     'producto_id' => $inventario->variacion->producto->id,
                     'producto_nombre' => $inventario->variacion->producto->nombre,
-                    'producto_url' => $inventario->variacion->producto->slug,
+                    'producto_url' => $producto_url,
                     'variacion_id' => $inventario->variacion_id,
                     'marca' => $inventario->variacion->producto->marca->nombre,
                     'color_nombre' => $inventario->variacion->color->nombre ?? null,

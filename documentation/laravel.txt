@@ -132,3 +132,5 @@ php artisan vendor:publish --tag=laravel-pagination
 php artisan make:model Descuento -mfsc
 
 php artisan make:model ProductoDescuento -mfsc
+
+php artisan make:livewire Ecommerce/Producto/ProductoVerLivewire
