@@ -10,7 +10,7 @@ use Livewire\Attributes\Layout;
 use Livewire\WithPagination;
 
 #[Layout('layouts.erp.layout-erp')]
-class VariacionListaPrecioTodasLivewire extends Component
+class ProductoListaPrecioTodasLivewire extends Component
 {
     use WithPagination;
 
@@ -45,7 +45,7 @@ class VariacionListaPrecioTodasLivewire extends Component
 
         $productos = $productosQuery->orderBy('id')->paginate($this->paginate);
 
-        return view('livewire.erp.lista-precio.variacion-lista-precio-todas-livewire', [
+        return view('livewire.erp.lista-precio.producto-lista-precio-todas-livewire', [
             'productos' => $productos,
         ]);
     }

@@ -329,9 +329,9 @@
                     },
                     {
                         "id": 212,
-                        "nombre": "Variacion lista precio",
-                        "ruta": "erp.variacion-lista-precio.vista.todas",
-                        "url": "/erp/variacion-lista-precio",
+                        "nombre": "Producto lista precio",
+                        "ruta": "erp.producto-lista-precio.vista.todas",
+                        "url": "/erp/producto-lista-precio",
                         "nivel": 3,
                         "submenus": []
                     }

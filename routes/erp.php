@@ -7,7 +7,6 @@ use App\Http\Controllers\Erp\ErpInicioController;
 use App\Http\Controllers\Erp\Footer\ErpFooterController;
 use App\Http\Controllers\Erp\MarcaController;
 use App\Http\Controllers\Erp\ListaPrecioController;
-use App\Http\Controllers\Erp\ProductoController;
 use App\Http\Controllers\Erp\SedeController;
 use App\Http\Controllers\Erp\SerieController;
 use App\Http\Controllers\Erp\SubcategoriaController;
@@ -22,7 +21,7 @@ use App\Livewire\Erp\GuiaSalidaDirectoDetalle\GuiaSalidaDirectoDetalleVerLivewir
 use App\Livewire\Erp\Imagen\ImagenTodasLivewire;
 use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\Inventario\InventarioVariacionListaPrecioTodasLivewire;
-use App\Livewire\Erp\ListaPrecio\VariacionListaPrecioTodasLivewire;
+use App\Livewire\Erp\ListaPrecio\ProductoListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoEditarLivewire;
@@ -139,7 +138,7 @@ Route::get('/producto/lista-precio/editar/{id}', ProductoListaPrecioEditarLivewi
 Route::get('/inventario', InventarioTodasLivewire::class)->name('inventario.vista.todas');//ok
 Route::get('/inventario-variacion-lista-precio', InventarioVariacionListaPrecioTodasLivewire::class)->name('inventario.variacion-lista-precio.vista.todas');//ok :)
 
-Route::get('/variacion-lista-precio', VariacionListaPrecioTodasLivewire::class)->name('variacion-lista-precio.vista.todas');//ok :)
+Route::get('/producto-lista-precio', ProductoListaPrecioTodasLivewire::class)->name('producto-lista-precio.vista.todas');//ok :)
 
 Route::get('/guia-entrada-directo', GuiaEntradaDirectoTodasLivewire::class)->name('guia-entrada-directo.vista.todas');//ok
 Route::get('/guia-entrada-directo/crear', GuiaEntradaDirectoCrearLivewire::class)->name('guia-entrada-directo.vista.crear');//ok

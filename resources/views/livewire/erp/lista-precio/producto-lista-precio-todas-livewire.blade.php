@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Variaciones con Lista de Precios')
+@section('tituloPagina', 'Productos con Lista de Precios')
 
 @section('anchoPantalla', '100%')
 
@@ -6,7 +6,7 @@
     <!-- CABECERA TITULO PAGINA -->
     <div class="g_panel cabecera_titulo_pagina">
         <!-- TITULO -->
-        <h2>Variaciones con Lista de Precios</h2>
+        <h2>Productos con Lista de Precios</h2>
 
         <!-- BOTONES -->
         <div class="cabecera_titulo_botones">
