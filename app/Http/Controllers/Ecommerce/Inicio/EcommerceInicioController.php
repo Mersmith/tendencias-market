@@ -10,22 +10,41 @@ class EcommerceInicioController extends Controller
 {
     public function __invoke()
     {
+        $almacen_ecommerce = 1;
+        $lista_precio_etiqueta = 3;
 
-        /*$producto_almacen_ecommerce = Inventario::with(['variacion', 'variacion.producto.imagens', 'variacion.color', 'variacion.talla', 'variacion.listaPrecios'])
-            ->where('almacen_id', 20)
+        $producto_almacen_ecommerce = Inventario::with([
+            'variacion',
+            'variacion.producto.imagens',
+            'variacion.color',
+            'variacion.talla',
+            'variacion.listaPrecios',
+            'variacion.descuentos'
+        ])
+            ->where('almacen_id', $almacen_ecommerce)
             ->orderBy('id', 'desc')
             ->get()
-            ->map(function ($inventario) {
-                $precioEtiqueta = $inventario->variacion->listaPrecios->firstWhere('lista_precio_id', 3);
+            ->map(function ($inventario) use ($lista_precio_etiqueta) {
+                // PRECIO ETIQUETA
+                $precioEtiqueta = $inventario->variacion->listaPrecios->firstWhere('lista_precio_id', $lista_precio_etiqueta);
                 $precio = $precioEtiqueta ? $precioEtiqueta->precio : null;
+                $precio_antiguo = $precioEtiqueta ? $precioEtiqueta->precio_antiguo : null;
 
-                $imagenes = $inventario->variacion->producto->imagens->map(function ($imagen) {
-                    return [
-                        'url' => $imagen->url,
-                        'titulo' => $imagen->titulo,
-                        'descripcion' => $imagen->descripcion,
-                    ];
-                })->toArray();
+                // PRECIO OFERTA
+                $descuento = $inventario->variacion->descuentos->firstWhere('lista_precio_id', $lista_precio_etiqueta);
+                $precio_oferta = null;
+
+                if ($descuento && $descuento->fecha_fin > now()) {
+                    $precio_oferta = round($precio - ($precio * $descuento->porcentaje_descuento / 100), 2);
+                }
+
+                // IMAGENES
+                $imagen = $inventario->variacion->producto->imagens->first();
+                $imagenData = $imagen ? [
+                    'url' => $imagen->url,
+                    'titulo' => $imagen->titulo,
+                    'descripcion' => $imagen->descripcion,
+                ] : null;
 
                 return [
                     'inventario_id' => $inventario->id,
@@ -36,13 +55,17 @@ class EcommerceInicioController extends Controller
                     'talla_nombre' => $inventario->variacion->talla->nombre ?? null,
                     'stock' => $inventario->stock,
                     'stock_minimo' => $inventario->stock_minimo,
-                    'precio_etiqueta' => $precio,
-                    'imagenes' => $imagenes,
+                    'precio_venta' => $precio,
+                    'precio_oferta' => $precio_oferta,
+                    'precio_antiguo' => $precio_antiguo,
+                    'imagen' => $imagenData,
                 ];
             })
+            ->unique('producto_id')
+            ->values()
             ->toArray();
 
-        dd($producto_almacen_ecommerce);*/
+        //dd($producto_almacen_ecommerce);
 
         $imagenBanner_1 = [
             "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),
