@@ -12,6 +12,7 @@ class EcommerceInicioController extends Controller
     {
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
+        $categoriaId = 2;
 
         $producto_almacen_ecommerce = Inventario::with([
             'variacion',
@@ -19,9 +20,14 @@ class EcommerceInicioController extends Controller
             'variacion.color',
             'variacion.talla',
             'variacion.producto.listaPrecios',
-            'variacion.producto.descuentos'
+            'variacion.producto.descuentos',
+            'variacion.producto.subcategoria.categoria'
         ])
             ->where('almacen_id', $almacen_ecommerce)
+            ->where('stock', '>', 0)
+            ->whereHas('variacion.producto.subcategoria.categoria', function ($query) use ($categoriaId) {
+                $query->where('id', $categoriaId);
+            })
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($inventario) use ($lista_precio_etiqueta) {
@@ -76,6 +82,7 @@ class EcommerceInicioController extends Controller
             ->unique('producto_id')
             ->values()
             ->toArray();
+
 
         dd($producto_almacen_ecommerce);
 
