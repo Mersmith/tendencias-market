@@ -5,7 +5,6 @@ namespace App\Livewire\Erp\Producto;
 use App\Models\ListaPrecio;
 use App\Models\Producto;
 use App\Models\ProductoListaPrecios;
-use App\Models\VariacionListaPrecios;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 

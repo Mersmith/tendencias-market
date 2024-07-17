@@ -18,20 +18,20 @@ class EcommerceInicioController extends Controller
             'variacion.producto.imagens',
             'variacion.color',
             'variacion.talla',
-            'variacion.listaPrecios',
-            'variacion.descuentos'
+            'variacion.producto.listaPrecios',
+            'variacion.producto.descuentos'
         ])
             ->where('almacen_id', $almacen_ecommerce)
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($inventario) use ($lista_precio_etiqueta) {
                 // PRECIO ETIQUETA
-                $precioEtiqueta = $inventario->variacion->listaPrecios->firstWhere('lista_precio_id', $lista_precio_etiqueta);
+                $precioEtiqueta = $inventario->variacion->producto->listaPrecios->firstWhere('lista_precio_id', $lista_precio_etiqueta);
                 $precio = $precioEtiqueta ? $precioEtiqueta->precio : null;
                 $precio_antiguo = $precioEtiqueta ? $precioEtiqueta->precio_antiguo : null;
 
                 // PRECIO OFERTA
-                $descuento = $inventario->variacion->descuentos->firstWhere('lista_precio_id', $lista_precio_etiqueta);
+                $descuento = $inventario->variacion->producto->descuentos->firstWhere('lista_precio_id', $lista_precio_etiqueta);
                 $precio_oferta = null;
 
                 if ($descuento && $descuento->fecha_fin > now()) {
@@ -65,7 +65,7 @@ class EcommerceInicioController extends Controller
             ->values()
             ->toArray();
 
-        //dd($producto_almacen_ecommerce);
+        dd($producto_almacen_ecommerce);
 
         $imagenBanner_1 = [
             "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),

@@ -45,7 +45,7 @@ class Producto extends Model
             ->withTimestamps();
     }
 
-    public function productoDescuentos()
+    public function descuentos()
     {
         return $this->hasMany(ProductoDescuento::class);
     }
