@@ -3,6 +3,7 @@
 namespace App\Livewire\Ecommerce\Categoria;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -11,6 +12,8 @@ class CategoriaVerLivewire extends Component
 {
     public $categoria;
     public $categoriaFamilia;
+
+    public $productosConStock;
     
     public function mount($id, $slug = null)
     {
@@ -24,6 +27,22 @@ class CategoriaVerLivewire extends Component
         }
 
         $this->categoriaFamilia = $this->getCategoriaFamilia($this->categoria);
+
+        $this->productosConStock = $this->getProductosConStock();
+    }
+
+    private function getProductosConStock()
+    {
+        return Producto::where('categoria_id', $this->categoria->id)
+            ->whereHas('variaciones.inventarios', function ($query) {
+                $query->where('almacen_id', 1)
+                      ->where('stock', '>', 0);
+            })
+            ->with(['variaciones.inventarios' => function ($query) {
+                $query->where('almacen_id', 1)
+                      ->where('stock', '>', 0);
+            }])
+            ->get();
     }
 
     private function getCategoriaFamilia($categoria)

@@ -21,8 +21,8 @@ class VariacionSeeder extends Seeder
         //$tallas = Talla::all();
         //$colores = Color::all();
 
-        $tallas = Talla::take(1)->get();
-        $colores = Color::take(1)->get();
+        $tallas = Talla::take(2)->get();
+        $colores = Color::take(2)->get();
 
         foreach ($productos as $producto) {
             // Caso 1: Producto con variaciones en talla y color

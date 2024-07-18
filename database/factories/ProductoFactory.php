@@ -20,13 +20,15 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         $marca = Marca::all()->random();
-        $categoria = Categoria::all()->random();
+        //$categoria = Categoria::all()->random();
+        $categoriaIds = [1, 2, 3, 4, 5];
+        $categoriaId = $categoriaIds[array_rand($categoriaIds)];
 
         $nombre = $this->faker->sentence(2);
 
         return [
             'marca_id' => $marca->id,
-            'categoria_id' => $categoria->id,
+            'categoria_id' => $categoriaId,
             'nombre' => $nombre,
             'slug' => Str::slug($nombre),
             'descripcion' => $this->faker->text(),

@@ -18,7 +18,7 @@ class CategoriaSeeder extends Seeder
         $faker = Faker::create();
 
         // Crear categorías padre
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             $nombrePadre = $faker->word . ' ' . $faker->word;
             $padre = Categoria::create([
                 'nombre' => $nombrePadre,
@@ -30,7 +30,7 @@ class CategoriaSeeder extends Seeder
             ]);
 
             // Crear categorías hijas
-            for ($j = 1; $j <= 3; $j++) {
+            for ($j = 1; $j <= 2; $j++) {
                 $nombreHijo = $faker->word . ' ' . $faker->word;
                 $hijo = Categoria::create([
                     'nombre' => $nombreHijo,
