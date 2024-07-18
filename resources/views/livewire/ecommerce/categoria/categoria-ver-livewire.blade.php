@@ -46,6 +46,10 @@
                             </a>
                         </h2>
 
+                        <p>ID: {{ $producto->nombre }}</p>
+
+                        <p>Marca: {{ $producto->marca->nombre }}</p>
+
                         <!-- Mostrar imágenes del producto -->
                         @if ($producto->imagens->isNotEmpty())
                             <div>
