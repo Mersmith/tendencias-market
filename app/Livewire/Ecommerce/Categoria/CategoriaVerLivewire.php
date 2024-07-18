@@ -25,6 +25,8 @@ class CategoriaVerLivewire extends Component
     public $selectedMarcas = [];
     public $selectedPrecios = [];
 
+    public $preciosAgregados = [];
+
 
     public function mount($id, $slug = null)
     {
@@ -42,19 +44,34 @@ class CategoriaVerLivewire extends Component
         $this->categoriaFamilia = app(CategoriaController::class)->getCategoriaFamiliaVertical($this->categoria);
 
         $this->precios = [
-            'S/ 50 - S/ 100',
-            'S/ 100 - S/ 250',
-            'S/ 250 - S/ 500',
-            'S/ 500 - S/ 1.000',
-            'S/ 1.000 - S/ 2.000',
-            'S/ 2.000 - S/ 5.000',
-            'Desde S/ 5.000'
+            ['id' => 1, 'precio_inicio' => 50, 'precio_fin' => 100],
+            ['id' => 2, 'precio_inicio' => 100, 'precio_fin' => 150],
+            ['id' => 3, 'precio_inicio' => 150, 'precio_fin' => 200],
+            ['id' => 4, 'precio_inicio' => 200, 'precio_fin' => 300],
+            ['id' => 5, 'precio_inicio' => 300, 'precio_fin' => 2000],
+            ['id' => 6, 'precio_inicio' => 2000, 'precio_fin' => 5000],
+            ['id' => 7, 'precio_inicio' => 5000, 'precio_fin' => null],
         ];
+
         $this->productosConStock = $this->getFilteredProductosConStock();
     }
 
     public function updatedSelectedMarcas()
     {
+        $this->productosConStock = $this->getFilteredProductosConStock();
+        $this->resetPage();
+    }
+
+    public function updatedSelectedPrecios($value)
+    {
+        $this->preciosAgregados = [];
+
+        foreach ($this->selectedPrecios as $precioId) {
+            $precioEncontrado = collect($this->precios)->firstWhere('id', $precioId);
+            if ($precioEncontrado && !in_array($precioEncontrado, $this->preciosAgregados)) {
+                $this->preciosAgregados[] = $precioEncontrado;
+            }
+        }
         $this->productosConStock = $this->getFilteredProductosConStock();
         $this->resetPage();
     }
@@ -65,7 +82,7 @@ class CategoriaVerLivewire extends Component
             ->getEcommerceProductosConStockCategoriaAlmacenListaPrecio(
                 $this->categoria->id,
                 $this->selectedMarcas,
-                $this->selectedPrecios,
+                $this->preciosAgregados,
             );
     }
 

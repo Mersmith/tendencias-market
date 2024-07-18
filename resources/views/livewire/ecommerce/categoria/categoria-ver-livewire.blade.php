@@ -53,8 +53,9 @@
                     <div style="display: flex; flex-direction: column;">
                         @foreach ($precios as $precio)
                             <label>
-                                <input type="checkbox" wire:model.live="selectedPrecios" value="{{ $precio }}">
-                                {{ $precio }}
+                                <input type="checkbox" wire:model.live="selectedPrecios" value="{{ $precio['id'] }}">
+                                {{ $precio['precio_inicio'] }} -
+                                {{ $precio['precio_fin'] ? $precio['precio_fin'] : '+' }}
                             </label>
                         @endforeach
                     </div>
@@ -74,13 +75,16 @@
                         </h2>
 
                         <p>ID: {{ $producto->id }}</p>
-                        <strong><p>Marca: {{ $producto->marca->nombre }}</p></strong>
+                        <strong>
+                            <p>Marca: {{ $producto->marca->nombre }}</p>
+                        </strong>
 
                         <!-- Mostrar imágenes del producto -->
                         @if ($producto->imagens->isNotEmpty())
                             <div>
                                 @foreach ($producto->imagens as $imagen)
-                                    <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" style="max-width: 100px;">
+                                    <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}"
+                                        style="max-width: 100px;">
                                 @endforeach
                             </div>
                         @endif
@@ -91,12 +95,17 @@
                                 @foreach ($producto->descuentos as $descuento)
                                     @php
                                         $precioOriginal = $producto->listaPrecios->first()->precio;
-                                        $precioDescuento = $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
+                                        $precioDescuento =
+                                            $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
                                     @endphp
                                     <div>
-                                        <p>Precio original: {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
-                                        <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta {{ $descuento->fecha_fin }}</p>
-                                        <p>Precio con descuento: {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}</p>
+                                        <p>Precio original:
+                                            {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
+                                        <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta
+                                            {{ $descuento->fecha_fin }}</p>
+                                        <p>Precio con descuento:
+                                            {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}
+                                        </p>
                                     </div>
                                 @endforeach
                             </div>
@@ -106,7 +115,9 @@
                         @if ($producto->listaPrecios->isNotEmpty())
                             <div>
                                 @foreach ($producto->listaPrecios as $precio)
-                                   <strong> <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p></strong>
+                                    <strong>
+                                        <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p>
+                                    </strong>
                                     @if ($precio->precio_antiguo)
                                         <p>Precio antiguo: {{ $precio->simbolo }}{{ $precio->precio_antiguo }}</p>
                                     @endif

@@ -39,8 +39,16 @@ class ProductoController extends Controller
         if (!empty($precios)) {
             $query->where(function ($query) use ($precios) {
                 foreach ($precios as $rango) {
-                    [$min, $max] = explode(' - ', str_replace(['S/', 'Desde'], '', $rango));
-                    $query->orWhereBetween('precio', [(int) $min, $max ? (int) $max : PHP_INT_MAX]);
+                    $precio_inicio = $rango['precio_inicio'];
+                    $precio_fin = $rango['precio_fin'];
+
+                    $query->orWhereHas('listaPrecios', function ($query) use ($precio_inicio, $precio_fin) {
+                        if ($precio_fin !== null) {
+                            $query->whereBetween('precio', [$precio_inicio, $precio_fin]);
+                        } else {
+                            $query->where('precio', '>=', $precio_inicio);
+                        }
+                    });
                 }
             });
         }
