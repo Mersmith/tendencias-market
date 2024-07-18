@@ -20,7 +20,7 @@ class Categoria extends Model
         'categoria_padre_id',
         'orden',
     ];
-   
+
     public function subcategorias()
     {
         return $this->hasMany(Categoria::class, 'categoria_padre_id');
@@ -34,6 +34,11 @@ class Categoria extends Model
     public function productos()
     {
         return $this->hasMany(Producto::class);
+    }
+
+    public function marcas()
+    {
+        return $this->belongsToMany(Marca::class, 'categoria_marcas');
     }
 
     //URL AMIGABLE
