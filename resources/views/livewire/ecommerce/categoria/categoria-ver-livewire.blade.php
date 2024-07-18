@@ -40,18 +40,25 @@
             <ul>
                 @foreach ($productosConStock as $producto)
                     <li>
-                        <a href="{{ url('product/' . $producto->id . '/' . $producto->slug) }}">
-                            {{ $producto->nombre }}
-                        </a>
-                        <ul>
-                            @foreach ($producto->variaciones as $variacion)
-                                @foreach ($variacion->inventarios as $inventario)
-                                    @if ($inventario->almacen_id == 1 && $inventario->stock > 0)
-                                        <li>Variación ID: {{ $variacion->id }} - Stock: {{ $inventario->stock }}</li>
-                                    @endif
-                                @endforeach
-                            @endforeach
-                        </ul>
+                        <h2><a href="{{ url('product/' . $producto->id . '/' . $producto->slug) }}">
+                                {{ $producto->nombre }}
+                            </a></h2>
+
+                        @foreach ($producto->variaciones as $variacion)
+                            <ul>
+                                <li>
+                                    <p>Variación ID: {{ $variacion->id }}</p>
+                                    <p>Talla: {{ $variacion->talla->nombre ?? 'N/A' }}</p>
+                                    <p>Color: {{ $variacion->color->nombre ?? 'N/A' }}</p>
+                                    <p>Stock:
+                                        @foreach ($variacion->inventarios as $inventario)
+                                            {{ $inventario->stock }}
+                                        @endforeach
+                                    </p>
+                                </li>
+                            </ul>
+                        @endforeach
+
                         <br>
                     </li>
                 @endforeach

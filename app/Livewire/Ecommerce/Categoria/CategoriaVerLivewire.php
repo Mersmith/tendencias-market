@@ -33,16 +33,23 @@ class CategoriaVerLivewire extends Component
 
     private function getProductosConStock()
     {
-        return Producto::where('categoria_id', $this->categoria->id)
-            ->whereHas('variaciones.inventarios', function ($query) {
-                $query->where('almacen_id', 1)
-                      ->where('stock', '>', 0);
+        return  Producto::where('categoria_id', $this->categoria->id)
+        ->whereHas('variaciones.inventarios', function ($query) {
+            $query->where('almacen_id', 1)
+                  ->where('stock', '>', 0);
+        })
+        ->with(['variaciones' => function ($query) {
+            $query->whereHas('inventarios', function ($subQuery) {
+                $subQuery->where('almacen_id', 1)
+                         ->where('stock', '>', 0);
             })
-            ->with(['variaciones.inventarios' => function ($query) {
-                $query->where('almacen_id', 1)
-                      ->where('stock', '>', 0);
+            ->with(['inventarios' => function ($subQuery) {
+                $subQuery->where('almacen_id', 1)
+                         ->where('stock', '>', 0);
             }])
-            ->get();
+            ->take(1);
+        }])
+        ->get();
     }
 
     private function getCategoriaFamilia($categoria)
