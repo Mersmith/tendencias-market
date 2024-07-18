@@ -77,4 +77,24 @@ class CategoriaController extends Controller
 
         return redirect()->route('erp.categoria.vista.todas')->with('alerta', 'Eliminado');
     }
+
+    public function getCategoriaFamiliaVertical(Categoria $categoria)
+    {
+        $familia = collect();
+
+        // Agregar la categoría actual
+        $familia->push($categoria);
+
+        // Agregar la categoría padre si existe
+        if ($categoria->categoriaPadre) {
+            $familia->prepend($categoria->categoriaPadre);
+        }
+
+        // Agregar las subcategorias
+        foreach ($categoria->subcategorias as $subcategoria) {
+            $familia->push($subcategoria);
+        }
+
+        return $familia;
+    }
 }
