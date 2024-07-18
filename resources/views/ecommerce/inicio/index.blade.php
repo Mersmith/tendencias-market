@@ -11,7 +11,15 @@
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
 
-                {{--<div class="m_40_0">
+                <div>
+                    <ul>
+                        @foreach ($categorias_productos as $categoria)
+                            <li>{{ $categoria->nombre }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                {{-- <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -111,7 +119,7 @@
                     @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 
-                {{--<div class="columna_12 m_40_0">
+                {{-- <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Lo más TOP en zapatillas',
                         'p_alineacion' => 'left',
@@ -121,7 +129,7 @@
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
                         'p_elementos' => $productos_1,
                     ])
-                </div>--}}
+                </div> --}}
 
                 <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [

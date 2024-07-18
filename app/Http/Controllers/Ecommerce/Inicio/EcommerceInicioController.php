@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categoria;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 
@@ -87,6 +88,7 @@ class EcommerceInicioController extends Controller
             ->values()
             ->toArray();
 
+        $categorias_productos = Categoria::whereNull('categoria_padre_id')->has('productos')->get();
 
         //dd($producto_almacen_ecommerce);
 
@@ -881,7 +883,8 @@ class EcommerceInicioController extends Controller
                 'producto_almacen_ecommerce',
                 'sliderImagenTresElementosPublicidadControles',
                 'dataSliderImagenCincoElementos',
-                'categorias'
+                'categorias',
+                'categorias_productos'
             )
         );
     }
