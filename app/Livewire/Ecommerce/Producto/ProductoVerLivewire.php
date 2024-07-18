@@ -9,13 +9,12 @@ use Livewire\Attributes\Layout;
 #[Layout('layouts.ecommerce.layout-ecommerce')]
 class ProductoVerLivewire extends Component
 {
-
     public $producto;
 
     public function mount($id, $slug = null)
     {
-         // Buscar el producto por ID
-         $this->producto = Producto::with([
+        // Buscar el producto por ID
+        $this->producto = Producto::with([
             'variaciones',
             'imagens',
             'marca',

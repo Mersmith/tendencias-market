@@ -14,7 +14,9 @@
                 <div>
                     <ul>
                         @foreach ($categorias_productos as $categoria)
-                            <li>{{ $categoria->nombre }}</li>
+                            <li>
+                                <a href="{{ $categoria['categoria_url'] }}">{{ $categoria['nombre'] }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>

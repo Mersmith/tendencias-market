@@ -88,7 +88,13 @@ class EcommerceInicioController extends Controller
             ->values()
             ->toArray();
 
-        $categorias_productos = Categoria::whereNull('categoria_padre_id')->has('productos')->get();
+        $categorias_productos_data = Categoria::whereNull('categoria_padre_id')->has('productos')->get();
+
+        // Generar URLs para cada categoría y convertir a array
+        $categorias_productos = $categorias_productos_data->map(function ($categoria) {
+            $categoria->categoria_url = url("category/{$categoria->id}/{$categoria->slug}");
+            return $categoria->toArray(); // Convertir el modelo a un array
+        });
 
         //dd($producto_almacen_ecommerce);
 
