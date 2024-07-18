@@ -28,6 +28,17 @@
                         <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
 
+                        <!-- CÓDIGO -->
+                        <div class="g_margin_bottom_20">
+                            <label for="codigo">Código <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <input type="text" id="codigo" name="codigo" value="{{ old('codigo') }}">
+                            <p class="leyenda">El código debe ser único.</p>
+                            @error('codigo')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
@@ -91,20 +102,32 @@
                         <!--TITULO-->
                         <h4 class="g_panel_titulo">Detalle</h4>
 
-                        <!--CATEGORIA-->
-                        <label for="categoria_id">Categoria <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="categoria_id" name="categoria_id">
-                            <option value="" @if (old('categoria_id') == '') selected @endif disabled>Seleccione
-                            </option>
-                            @foreach ($categorias as $categoria)
-                                <option value="{{ $categoria->id }}" @if (old('categoria_id') == $categoria->id) selected @endif>
-                                    {{ $categoria->nombre }}</option>
-                            @endforeach
-                        </select>
-                        @error('categoria_id')
-                            <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
+                        <!--CATEGORIA PADRE-->
+                        <div class="g_margin_bottom_20">
+
+                            <label for="categoria_padre_id">Categoria <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <select id="categoria_padre_id" name="categoria_padre_id">
+                                <option value="" @if (old('categoria_padre_id') == '') selected @endif disabled>Seleccione
+                                </option>
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}" @if (old('categoria_padre_id') == $categoria->id) selected @endif>
+                                        {{ $categoria->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('categoria_padre_id')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- ORDEN -->
+                        <div class="g_margin_bottom_20">
+                            <label for="orden">orden</label>
+                            <input type="number" id="orden" name="orden" value="{{ old('orden', 0) }}">
+                            @error('orden')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 

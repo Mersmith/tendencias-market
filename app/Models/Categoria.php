@@ -8,14 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'slug', 'descripcion', 'icono', 'imagen_ruta', 'estado'];
 
-    const ACTIVADO = 1;
-    const DESACTIVADO = 2;
-
+    protected $fillable = [
+        'nombre',
+        'slug',
+        'codigo',
+        'descripcion',
+        'icono',
+        'imagen_ruta',
+        'activo',
+        'categoria_padre_id',
+        'orden',
+    ];
+   
     public function subcategorias()
     {
-        return $this->hasMany(Subcategoria::class);
+        return $this->hasMany(Categoria::class, 'categoria_padre_id');
+    }
+
+    public function categoriaPadre()
+    {
+        return $this->belongsTo(Categoria::class, 'categoria_padre_id');
+    }
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
     }
 
     //URL AMIGABLE

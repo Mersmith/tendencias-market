@@ -18,17 +18,22 @@ class CategoriaController extends Controller
 
     public function vistaCrear()
     {
+        //$categorias = Categoria::all();
+
         return view('erp.categoria.crear');
     }
 
     public function crear(CategoriaRequest $request)
     {
         $categoria = new Categoria();
+        $categoria->codigo = $request->codigo;
         $categoria->nombre = $request->nombre;
         $categoria->slug = Str::slug($request->slug, '-');
         $categoria->descripcion = $request->descripcion;
         $categoria->icono = $request->icono;
         $categoria->activo = $request->activo;
+        $categoria->categoria_padre_id = $request->categoria_padre_id;
+        $categoria->orden = $request->orden;
         $categoria->save();
 
         return redirect()->route('erp.categoria.vista.todas')->with('alerta', 'Creado');
@@ -43,6 +48,8 @@ class CategoriaController extends Controller
     public function vistaEditar($id)
     {
         $categoria = Categoria::find($id);
+        //$categorias = Categoria::all();
+
         return view('erp.categoria.editar', compact('categoria'));
     }
 
@@ -50,11 +57,14 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::findOrFail($id);
 
+        $categoria->codigo = $request->codigo;
         $categoria->nombre = $request->nombre;
         $categoria->slug = Str::slug($request->slug, '-');
         $categoria->descripcion = $request->descripcion;
         $categoria->icono = $request->icono;
         $categoria->activo = $request->activo;
+        $categoria->categoria_padre_id = $request->categoria_padre_id;
+        $categoria->orden = $request->orden;
         $categoria->save();
 
         return redirect()->route('erp.categoria.vista.todas')->with('alerta', 'Actualizado');

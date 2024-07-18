@@ -26,19 +26,25 @@ class CategoriaRequest extends FormRequest
 
         if ($id) {
             return [
+                'codigo' => 'required|unique:categorias,codigo,' . $id,
                 'nombre' => 'required|min:3|max:255|unique:categorias,nombre,' . $id,
                 'slug' => 'required|min:3|max:255|unique:categorias,slug,' . $id,
                 'descripcion' => 'required|min:3|max:255',
                 //'icono' => 'min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
+                'categoria_padre_id' => 'nullable|exists:categorias,id',
+                'orden' => 'nullable|integer',
             ];
         } else {
             return [
+                'codigo' => 'required|unique:categorias',
                 'nombre' => 'required|min:3|max:255|unique:categorias',
                 'slug' => 'required|min:3|max:255|unique:categorias',
                 'descripcion' => 'required|min:3|max:255',
                 //'icono' => 'min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
+                'categoria_padre_id' => 'nullable|exists:categorias,id',
+                'orden' => 'nullable|integer',    
             ];
         }
     }
@@ -46,6 +52,7 @@ class CategoriaRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'codigo' => 'código',
             'nombre' => 'nombre',
             'slug' => 'url',
             'descripcion' => 'descripción',
@@ -57,6 +64,9 @@ class CategoriaRequest extends FormRequest
     public function messages()
     {
         return [
+            'codigo.required' => 'No debe ser vacio.',
+            'codigo.unique' => 'Este :attribute ya existe',
+
             'nombre.required' => 'No debe ser vacio.',
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',

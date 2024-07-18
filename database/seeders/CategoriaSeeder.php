@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class CategoriaSeeder extends Seeder
 {
@@ -14,83 +15,47 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        $categorias = [
-            [
-                'nombre' => 'Electrohogar',
-                'slug' => Str::slug('Electrohogar'),
-            ],
-            [
-                'nombre' => 'Tecnología',
-                'slug' => Str::slug('Tecnología'),
-            ],
-            [
-                'nombre' => 'Mujer',
-                'slug' => Str::slug('Mujer'),
-            ],
-            [
-                'nombre' => 'Hombre',
-                'slug' => Str::slug('Hombre'),
-            ],
-            [
-                'nombre' => 'Accesorios Moda',
-                'slug' => Str::slug('Accesorios Moda'),
-            ],
-            [
-                'nombre' => 'Muebles y Organización',
-                'slug' => Str::slug('Muebles y Organización'),
-            ],
-            [
-                'nombre' => 'Dormitorio',
-                'slug' => Str::slug('Dormitorio'),
-            ],
-            [
-                'nombre' => 'Niños y juguetes',
-                'slug' => Str::slug('Niños y juguetes'),
-            ],
-            [
-                'nombre' => 'Zapatos',
-                'slug' => Str::slug('Zapatos'),
-            ],
-            [
-                'nombre' => 'Deportes y aire libre',
-                'slug' => Str::slug('Deportes y aire libre'),
-            ],
-            [
-                'nombre' => 'Belleza y salud',
-                'slug' => Str::slug('Belleza y salud'),
-            ],
-            [
-                'nombre' => 'Cocina y menaje',
-                'slug' => Str::slug('Cocina y menaje'),
-            ],
-            [
-                'nombre' => 'Baño',
-                'slug' => Str::slug('Baño'),
-            ],
-            [
-                'nombre' => 'Supermercado',
-                'slug' => Str::slug('Supermercado'),
-            ],
-            [
-                'nombre' => 'Bebés',
-                'slug' => Str::slug('Bebés'),
-            ],
-            [
-                'nombre' => 'Jardín y terraza',
-                'slug' => Str::slug('Jardín y terraza'),
-            ],
-            [
-                'nombre' => 'Decoración e iluminación',
-                'slug' => Str::slug('Decoración e iluminación'),
-            ],
-            [
-                'nombre' => 'Mascotas',
-                'slug' => Str::slug('Mascotas'),
-            ],
-        ];
+        $faker = Faker::create();
 
-        foreach ($categorias as $categoria) {
-            Categoria::factory(1)->create($categoria);
+        // Crear categorías padre
+        for ($i = 1; $i <= 5; $i++) {
+            $nombrePadre = $faker->word . ' ' . $faker->word;
+            $padre = Categoria::create([
+                'nombre' => $nombrePadre,
+                'slug' => Str::slug($nombrePadre),
+                'codigo' => 'CAT' . str_pad($i, 5, '0', STR_PAD_LEFT),
+                'descripcion' => $faker->sentence,
+                'activo' => true,
+                'orden' => $i,
+            ]);
+
+            // Crear categorías hijas
+            for ($j = 1; $j <= 3; $j++) {
+                $nombreHijo = $faker->word . ' ' . $faker->word;
+                $hijo = Categoria::create([
+                    'nombre' => $nombreHijo,
+                    'slug' => Str::slug($nombreHijo),
+                    'codigo' => 'CAT' . str_pad($i * 10 + $j, 5, '0', STR_PAD_LEFT),
+                    'descripcion' => $faker->sentence,
+                    'activo' => true,
+                    'categoria_padre_id' => $padre->id,
+                    'orden' => $j,
+                ]);
+
+                // Crear subcategorías
+                for ($k = 1; $k <= 2; $k++) {
+                    $nombreSubcategoria = $faker->word . ' ' . $faker->word;
+                    Categoria::create([
+                        'nombre' => $nombreSubcategoria,
+                        'slug' => Str::slug($nombreSubcategoria),
+                        'codigo' => 'CAT' . str_pad($i * 100 + $j * 10 + $k, 5, '0', STR_PAD_LEFT),
+                        'descripcion' => $faker->sentence,
+                        'activo' => true,
+                        'categoria_padre_id' => $hijo->id,
+                        'orden' => $k,
+                    ]);
+                }
+            }
         }
     }
 }

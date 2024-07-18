@@ -26,21 +26,25 @@ class SubcategoriaRequest extends FormRequest
 
         if ($id) {
             return [
-                'categoria_id' => 'required',
-                'nombre' => 'required|min:3|max:255|unique:subcategorias,nombre,' . $id,
-                'slug' => 'required|min:3|max:255|unique:subcategorias,slug,' . $id,
+                'codigo' => 'required|unique:categorias,codigo,' . $id,
+                'nombre' => 'required|min:3|max:255|unique:categorias,nombre,' . $id,
+                'slug' => 'required|min:3|max:255|unique:categorias,slug,' . $id,
                 'descripcion' => 'required|min:3|max:255',
                 //'icono' => 'min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
+                'categoria_padre_id' => 'required|exists:categorias,id',
+                'orden' => 'nullable|integer',
             ];
         } else {
             return [
-                'categoria_id' => 'required',
-                'nombre' => 'required|min:3|max:255|unique:subcategorias',
-                'slug' => 'required|min:3|max:255|unique:subcategorias',
+                'codigo' => 'required|unique:categorias',
+                'nombre' => 'required|min:3|max:255|unique:categorias',
+                'slug' => 'required|min:3|max:255|unique:categorias',
                 'descripcion' => 'required|min:3|max:255',
                 //'icono' => 'min:3|max:255',
                 'activo' => 'required|numeric|regex:/^\d{1}$/',
+                'categoria_padre_id' => 'required|exists:categorias,id',
+                'orden' => 'nullable|integer',
             ];
         }
     }
@@ -48,7 +52,8 @@ class SubcategoriaRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'categoria_id' => 'categoria',
+            'codigo' => 'código',
+            'categoria_padre_id' => 'categoria',
             'nombre' => 'nombre',
             'slug' => 'url',
             'descripcion' => 'descripción',
@@ -60,7 +65,11 @@ class SubcategoriaRequest extends FormRequest
     public function messages()
     {
         return [
-            'categoria_id' => 'Debe seleccionar.',
+            'codigo.required' => 'No debe ser vacio.',
+            'codigo.unique' => 'Este :attribute ya existe',
+
+            'categoria_padre_id.required' => 'No debe ser vacio.',
+
             'nombre.required' => 'No debe ser vacio.',
             'nombre.min' => 'Más de :min dígitos.',
             'nombre.max' => 'Menos de :max dígitos',

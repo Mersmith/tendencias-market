@@ -3,6 +3,7 @@
 namespace App\Livewire\Erp\Inventario;
 
 use App\Models\Almacen;
+use App\Models\Categoria;
 use App\Models\Inventario;
 use App\Models\Sede;
 use App\Models\Variacion;
@@ -18,12 +19,15 @@ class InventarioTodasLivewire extends Component
     public $buscarProducto;
     public $sedes = [];
     public $almacenes = [];
+    public $categorias = [];
     public $sede_id = null;
     public $almacen_id = null;
+    public $categoria_id = null;
 
     public function mount()
     {
         $this->sedes = Sede::all();
+        $this->categorias = Categoria::all();
     }
 
     public function updatingBuscarProducto()
@@ -37,13 +41,23 @@ class InventarioTodasLivewire extends Component
         $this->reset(['almacen_id']);
 
         $this->resetPage();
-
     }
 
     public function updatedAlmacenId($value)
     {
         $this->almacen_id = $value;
-        
+
+        $this->resetPage();
+    }
+
+    public function updatedCategoriaId($value)
+    {
+        if ($value == "null") {
+            $this->reset(['categoria_id']);
+        } else {
+            $this->categoria_id = $value;
+        }
+
         $this->resetPage();
     }
 
@@ -60,6 +74,12 @@ class InventarioTodasLivewire extends Component
         if ($this->buscarProducto) {
             $inventarioQuery->whereHas('variacion.producto', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->buscarProducto . '%');
+            });
+        }
+
+        if ($this->categoria_id) {
+            $inventarioQuery->whereHas('variacion.producto', function ($query) {
+                $query->where('categoria_id', $this->categoria_id);
             });
         }
 

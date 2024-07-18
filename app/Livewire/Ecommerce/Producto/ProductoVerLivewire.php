@@ -20,7 +20,7 @@ class ProductoVerLivewire extends Component
             'imagens',
             'marca',
             'descuentos',
-            'subcategoria.categoria'
+            'categoria'
         ])->where('id', $id)->firstOrFail();
 
         // Si el slug no se proporciona o no coincide, redirigir

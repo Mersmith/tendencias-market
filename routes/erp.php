@@ -12,6 +12,7 @@ use App\Http\Controllers\Erp\SerieController;
 use App\Http\Controllers\Erp\SubcategoriaController;
 use App\Http\Controllers\Erp\TallaController;
 use App\Http\Controllers\Erp\TipoDocumentoController;
+use App\Livewire\Erp\Categoria\CategoriaTodasLivewire;
 use App\Livewire\Erp\Descuento\ProductoDescuentoTodasLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoCrearLivewire;
 use App\Livewire\Erp\GuiaEntradaDirecto\GuiaEntradaDirectoTodasLivewire;
@@ -74,8 +75,10 @@ Route::controller(AlmacenController::class)->group(function () {//ok
     Route::delete('almacen/eliminar/{id}', 'eliminar')->name('almacen.eliminar');
 });
 
+Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');//ok
+
 Route::controller(CategoriaController::class)->group(function () {//ok
-    Route::get('categoria', 'vistaTodas')->name('categoria.vista.todas');
+    //Route::get('categoria', 'vistaTodas')->name('categoria.vista.todas');
     Route::get('categoria/crear', 'vistaCrear')->name('categoria.vista.crear');
     Route::post('categoria/crear', 'crear')->name('categoria.crear');
     Route::get('categoria/editar/{id}', 'vistaEditar')->name('categoria.vista.editar');

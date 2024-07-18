@@ -40,7 +40,6 @@ class GuiaSalidaDirectoRequest extends FormRequest
             'descripcion' => 'descripción',
             'observacion' => 'observacion',
             'fecha_salida' => 'fecha salida',
-            'subcategoria_id' => 'subcategoria',
             'estado' => 'estado',
             'sede_id' => 'sede',
             'almacen_id' => 'almacén',

@@ -115,9 +115,9 @@
 
                     <!--SUBCATEGORIA-->
                     <div class="g_margin_bottom_20">
-                        <label for="subcategoria_id">Subcategoria <span class="obligatorio"><i
+                        <label for="categoria_id">Subcategoria <span class="obligatorio"><i
                                     class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="subcategoria_id" name="subcategoria_id" wire:model="subcategoria_id">
+                        <select id="categoria_id" name="categoria_id" wire:model="categoria_id">
                             <option value="" selected disabled>Seleccione</option>
                             @if ($subcategorias)
                                 @foreach ($subcategorias as $subcategoria)
@@ -125,7 +125,7 @@
                                 @endforeach
                             @endif
                         </select>
-                        @error('subcategoria_id')
+                        @error('categoria_id')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>

@@ -41,6 +41,18 @@
                         <!--TITULO-->
                         <h4 class="g_panel_titulo">General</h4>
 
+                        <!--CÓDIGO-->
+                        <div class="g_margin_bottom_20">
+                            <label for="codigo">Código <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <input type="text" id="codigo" name="codigo"
+                                value="{{ old('codigo', $categoria->codigo) }}">
+                            <p class="leyenda">El código debe ser único.</p>
+                            @error('codigo')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <!--NOMBRE-->
                         <div class="g_margin_bottom_20">
                             <label for="nombre">Nombre <span class="obligatorio"><i
@@ -103,6 +115,37 @@
                         @error('activo')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
+                    </div>
+
+                    <div class="g_panel">
+                        <!--TITULO-->
+                        <h4 class="g_panel_titulo">Detalle</h4>
+
+                        <!--CATEGORIA PADRE-->
+                        {{--<div class="g_margin_bottom_20">
+                            <label for="categoria_padre_id">Categoria padre</label>
+                            <select id="categoria_padre_id" name="categoria_padre_id">
+                                <option value="" @if (old('categoria_padre_id', $categoria->categoria_padre_id) == '') selected @endif>Ninguna</option>
+                                @foreach ($categorias as $cat)
+                                    <option value="{{ $cat->id }}" @if (old('categoria_padre_id', $categoria->categoria_padre_id) == $cat->id) selected @endif>
+                                        {{ $cat->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('categoria_padre_id')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>--}}
+
+                        <!--ORDEN-->
+                        <div class="g_margin_bottom_20">
+                            <label for="orden">orden</label>
+                            <input type="text" id="orden" name="orden"
+                                value="{{ old('orden', $categoria->orden) }}">
+                            @error('orden')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 

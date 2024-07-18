@@ -14,12 +14,15 @@ return new class extends Migration {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
 
+            $table->string('codigo')->unique();
             $table->string('nombre')->unique();
             $table->string('slug')->unique();
             $table->string('descripcion');
             $table->string('icono')->nullable();
             $table->string('imagen_ruta')->nullable();
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
+            $table->foreignId('categoria_padre_id')->nullable()->constrained('categorias')->onDelete('cascade');
+            $table->integer('orden')->default(0);
 
             $table->timestamps();
         });

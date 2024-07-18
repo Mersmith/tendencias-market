@@ -11,8 +11,8 @@ class EcommerceInicioController extends Controller
     public function __invoke()
     {
         $almacen_ecommerce = 1;
+        $categoriaId = 6;
         $lista_precio_etiqueta = 3;
-        $categoriaId = 2;
 
         $producto_almacen_ecommerce = Inventario::with([
             'variacion',
@@ -21,11 +21,11 @@ class EcommerceInicioController extends Controller
             'variacion.talla',
             'variacion.producto.listaPrecios',
             'variacion.producto.descuentos',
-            'variacion.producto.subcategoria.categoria'
+            'variacion.producto.categoria'
         ])
             ->where('almacen_id', $almacen_ecommerce)
             ->where('stock', '>', 0)
-            ->whereHas('variacion.producto.subcategoria.categoria', function ($query) use ($categoriaId) {
+            ->whereHas('variacion.producto.categoria', function ($query) use ($categoriaId) {
                 $query->where('id', $categoriaId);
             })
             ->orderBy('id', 'desc')

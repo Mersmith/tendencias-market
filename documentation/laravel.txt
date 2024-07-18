@@ -134,3 +134,5 @@ php artisan make:model Descuento -mfsc
 php artisan make:model ProductoDescuento -mfsc
 
 php artisan make:livewire Ecommerce/Producto/ProductoVerLivewire
+
+php artisan make:livewire Erp/Categoria/CategoriaTodasLivewire

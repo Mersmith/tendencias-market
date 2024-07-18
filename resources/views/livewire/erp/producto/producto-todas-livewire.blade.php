@@ -69,7 +69,7 @@
                                     <td class="g_resaltar"> {{ $item->slug }} </td>
                                     <td class="g_inferior g_resumir"> {{ $item->descripcion }} </td>
                                     <td>ID: {{ $item->marca->id }} - {{ $item->marca->nombre }}</td>
-                                    <td>ID: {{ $item->subcategoria->id }} - {{ $item->subcategoria->nombre }}</td>
+                                    <td>ID: {{ $item->categoria->id }} - {{ $item->categoria->nombre }}</td>
                                     <td>
                                         @if ($item->variacion_talla)Talla @endif
                                         @if ($item->variacion_color)Color @endif

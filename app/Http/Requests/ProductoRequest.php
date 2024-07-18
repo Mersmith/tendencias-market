@@ -33,7 +33,7 @@ class ProductoRequest extends FormRequest
 
         if ($id) {
             return [
-                'subcategoria_id' => 'required',
+                'categoria_id' => 'required',
                 'marca_id' => 'required',
                 'nombre' => 'required|min:3|max:255|unique:productos,nombre,' . $id,
                 'slug' => 'required|min:3|max:255|unique:productos,slug,' . $id,
@@ -42,7 +42,7 @@ class ProductoRequest extends FormRequest
             ];
         } else {
             return [
-                'subcategoria_id' => 'required',
+                'categoria_id' => 'required',
                 'marca_id' => 'required',
                 'nombre' => 'required|min:3|max:255|unique:productos',
                 'slug' => 'required|min:3|max:255|unique:productos',
@@ -55,7 +55,7 @@ class ProductoRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'subcategoria_id' => 'subcategoria',
+            'categoria_id' => 'subcategoria',
             'marca_id' => 'marca',
             'nombre' => 'nombre',
             'slug' => 'url',
@@ -67,7 +67,7 @@ class ProductoRequest extends FormRequest
     public function messages()
     {
         return [
-            'subcategoria_id.required' => 'No debe ser vacio.',
+            'categoria_id.required' => 'No debe ser vacio.',
             'marca_id.required' => 'No debe ser vacio.',
 
             'nombre.required' => 'No debe ser vacio.',

@@ -55,7 +55,7 @@
                                     <th>Nº</th>
                                     <th>Subcategoria</th>
                                     <th>Slug</th>
-                                    <th>Categoria</th>
+                                    <th>Categoria padre</th>
                                     <th>Descripción</th>
                                     <th>Icono</th>
                                     <th>Activo</th>
@@ -68,7 +68,7 @@
                                         <td class="g_resaltar">{{ $loop->iteration }}</td>
                                         <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
                                         <td class="g_resaltar">{{ $item->slug }}</td>
-                                        <td>ID: {{ $item->categoria->id }} - {{ $item->categoria->nombre }}</td>
+                                        <td>ID: {{ $item->categoriaPadre->id }} - {{ $item->categoriaPadre->nombre }}</td>
                                         <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
                                         <td> {!! $item->icono !!}</td>
                                         <td class="g_inferior">

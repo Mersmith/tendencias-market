@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Categoria;
 use App\Models\Marca;
-use App\Models\Subcategoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -20,13 +20,13 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         $marca = Marca::all()->random();
-        $subcategoria = Subcategoria::all()->random();
+        $categoria = Categoria::all()->random();
 
         $nombre = $this->faker->sentence(2);
 
         return [
             'marca_id' => $marca->id,
-            'subcategoria_id' => $subcategoria->id,
+            'categoria_id' => $categoria->id,
             'nombre' => $nombre,
             'slug' => Str::slug($nombre),
             'descripcion' => $this->faker->text(),

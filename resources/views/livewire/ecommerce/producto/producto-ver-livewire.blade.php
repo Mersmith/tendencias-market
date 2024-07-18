@@ -1,6 +1,7 @@
 <div>
     <h1>{{ $producto->nombre }}</h1>
     <p>{{ $producto->descripcion }}</p>
+    <p>Categoria: {{ $producto->categoria->nombre }}</p>
     <p>Marca: {{ $producto->marca->nombre }}</p>
     <p>Precio: {{ $producto->precio }}</p>
     <!-- Muestra otros detalles del producto según tu necesidad -->

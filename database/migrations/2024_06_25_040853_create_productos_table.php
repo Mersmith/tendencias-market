@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
 
             $table->unsignedBigInteger('marca_id');
-            $table->unsignedBigInteger('subcategoria_id');
+            $table->unsignedBigInteger('categoria_id');
 
             $table->string('nombre')->unique();
             $table->string('slug')->unique();
@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
-            $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
 
             $table->timestamps();
         });

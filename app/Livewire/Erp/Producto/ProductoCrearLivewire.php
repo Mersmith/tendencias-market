@@ -3,9 +3,9 @@
 namespace App\Livewire\Erp\Producto;
 
 use App\Http\Requests\ProductoRequest;
+use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Producto;
-use App\Models\Subcategoria;
 use App\Models\Variacion;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -18,14 +18,16 @@ class ProductoCrearLivewire extends Component
 {
     public $subcategorias = [], $marcas = [];
 
-    public $subcategoria_id = "", $marca_id = "", $nombre, $slug, $descripcion, $variacion_talla = false, $variacion_color = false, $activo = "0";
+    public $categoria_id = "", $marca_id = "", $nombre, $slug, $descripcion, $variacion_talla = false, $variacion_color = false, $activo = "0";
 
     public $imagenes_seleccionadas = [];
     public $modal = false;
 
     public function mount()
     {
-        $this->subcategorias = Subcategoria::where('activo', true)->get();
+        $categoriasPadres = Categoria::whereNull('categoria_padre_id')->get();
+        $this->subcategorias = Categoria::whereIn('categoria_padre_id', $categoriasPadres->pluck('id'))->get();
+        
         $this->marcas = Marca::where('activo', true)->get();
     }
 
@@ -41,7 +43,7 @@ class ProductoCrearLivewire extends Component
 
         $producto_nuevo = new Producto();
         $producto_nuevo->marca_id = $data['marca_id'];
-        $producto_nuevo->subcategoria_id = $data['subcategoria_id'];
+        $producto_nuevo->categoria_id = $data['categoria_id'];
         $producto_nuevo->nombre = $data['nombre'];
         $producto_nuevo->slug = $data['slug'];
         $producto_nuevo->descripcion = $data['descripcion'];

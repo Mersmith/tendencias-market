@@ -28,10 +28,10 @@ class Producto extends Model
         return $this->belongsTo(Marca::class);
     }
 
-    public function subcategoria()
+    public function categoria()
     {
-        return $this->belongsTo(Subcategoria::class);
-    }
+        return $this->belongsTo(Categoria::class);
+    } 
 
     public function listaPrecios()
     {
@@ -49,7 +49,7 @@ class Producto extends Model
     {
         return $this->hasMany(ProductoDescuento::class);
     }
-    
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {
