@@ -6,13 +6,12 @@
         }
 
         .dividir_1 {
-            display: 30%;
-            display: flex;
+            width: 30%;
             flex-direction: column;
         }
 
         .dividir_2 {
-            display: 70%;
+            width: 70%;
         }
     </style>
     <div>
@@ -33,11 +32,39 @@
                     @endforeach
                 </ul>
             </div>
+
+            <div>
+                <h2>Filtros</h2>
+                <div>
+                    <h4>Marca</h4>
+                    <div style="display: flex; flex-direction: column;">
+                        @foreach ($marcas as $marca)
+                            <label>
+                                <input type="checkbox" wire:model.live="selectedMarcas" value="{{ $marca->id }}">
+                                {{ $marca->nombre }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Filtros por Precio -->
+                <div>
+                    <h4>Precio</h4>
+                    <div style="display: flex; flex-direction: column;">
+                        @foreach ($precios as $precio)
+                            <label>
+                                <input type="checkbox" wire:model.live="selectedPrecios" value="{{ $precio }}">
+                                {{ $precio }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="dividir_2">
             <h2>Productos</h2>
 
-            <ul>
+            <ul style="display: flex; flex-wrap: wrap; gap: 20px;">
                 @foreach ($productosConStock as $producto)
                     <li>
                         <h2>
@@ -46,9 +73,8 @@
                             </a>
                         </h2>
 
-                        <p>ID: {{ $producto->nombre }}</p>
-
-                        <p>Marca: {{ $producto->marca->nombre }}</p>
+                        <p>ID: {{ $producto->id }}</p>
+                        <strong><p>Marca: {{ $producto->marca->nombre }}</p></strong>
 
                         <!-- Mostrar imágenes del producto -->
                         @if ($producto->imagens->isNotEmpty())
@@ -63,17 +89,15 @@
                         @if ($producto->descuentos->isNotEmpty())
                             <div>
                                 @foreach ($producto->descuentos as $descuento)
-                                @if ($producto->listaPrecios->isNotEmpty())
-                                @php
-                                    $precioOriginal = $producto->listaPrecios->first()->precio;
-                                    $precioDescuento = $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
-                                @endphp
-                                <div>
-                                    <p>Precio original: {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
-                                    <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta {{ $descuento->fecha_fin }}</p>
-                                    <p>Precio con descuento: {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}</p>
-                                </div>
-                            @endif
+                                    @php
+                                        $precioOriginal = $producto->listaPrecios->first()->precio;
+                                        $precioDescuento = $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
+                                    @endphp
+                                    <div>
+                                        <p>Precio original: {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
+                                        <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta {{ $descuento->fecha_fin }}</p>
+                                        <p>Precio con descuento: {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}</p>
+                                    </div>
                                 @endforeach
                             </div>
                         @endif
@@ -82,7 +106,7 @@
                         @if ($producto->listaPrecios->isNotEmpty())
                             <div>
                                 @foreach ($producto->listaPrecios as $precio)
-                                    <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p>
+                                   <strong> <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p></strong>
                                     @if ($precio->precio_antiguo)
                                         <p>Precio antiguo: {{ $precio->simbolo }}{{ $precio->precio_antiguo }}</p>
                                     @endif
@@ -97,21 +121,13 @@
                                     <p>Variación ID: {{ $variacion->id }}</p>
                                     <p>Talla: {{ $variacion->talla->nombre ?? 'N/A' }}</p>
                                     <p>Color: {{ $variacion->color->nombre ?? 'N/A' }}</p>
-                                    <p>Stock:
-                                        @foreach ($variacion->inventarios as $inventario)
-                                            {{ $inventario->stock }}
-                                        @endforeach
-                                    </p>
+                                    <p>Stock: {{ $variacion->inventarios->sum('stock') }}</p>
                                 </li>
                             </ul>
                         @endforeach
-
-                        <br>
                     </li>
                 @endforeach
             </ul>
         </div>
-
     </div>
-
 </div>

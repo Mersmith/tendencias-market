@@ -8,14 +8,23 @@ use App\Models\Categoria;
 use App\Models\Producto;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\WithPagination;
 
 #[Layout('layouts.ecommerce.layout-ecommerce')]
 class CategoriaVerLivewire extends Component
 {
+    use WithPagination;
+
     public $categoria;
     public $categoriaFamilia;
 
     public $productosConStock;
+
+    public $marcas;
+    public $precios;
+    public $selectedMarcas = [];
+    public $selectedPrecios = [];
+
 
     public function mount($id, $slug = null)
     {
@@ -28,12 +37,42 @@ class CategoriaVerLivewire extends Component
             ]);
         }
 
+        $this->marcas = $this->categoria->marcas;
+
         $this->categoriaFamilia = app(CategoriaController::class)->getCategoriaFamiliaVertical($this->categoria);
-        $this->productosConStock = app(ProductoController::class)->getEcommerceProductosConStockCategoriaAlmacenListaPrecio($this->categoria->id);
+
+        $this->precios = [
+            'S/ 50 - S/ 100',
+            'S/ 100 - S/ 250',
+            'S/ 250 - S/ 500',
+            'S/ 500 - S/ 1.000',
+            'S/ 1.000 - S/ 2.000',
+            'S/ 2.000 - S/ 5.000',
+            'Desde S/ 5.000'
+        ];
+        $this->productosConStock = $this->getFilteredProductosConStock();
+    }
+
+    public function updatedSelectedMarcas()
+    {
+        $this->productosConStock = $this->getFilteredProductosConStock();
+        $this->resetPage();
+    }
+
+    public function getFilteredProductosConStock()
+    {
+        return app(ProductoController::class)
+            ->getEcommerceProductosConStockCategoriaAlmacenListaPrecio(
+                $this->categoria->id,
+                $this->selectedMarcas,
+                $this->selectedPrecios,
+            );
     }
 
     public function render()
     {
-        return view('livewire.ecommerce.categoria.categoria-ver-livewire');
+        return view('livewire.ecommerce.categoria.categoria-ver-livewire', [
+            'productosConStock' => $this->productosConStock
+        ]);
     }
 }
