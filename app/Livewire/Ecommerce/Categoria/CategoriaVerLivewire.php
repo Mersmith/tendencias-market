@@ -14,7 +14,7 @@ class CategoriaVerLivewire extends Component
     public $categoriaFamilia;
 
     public $productosConStock;
-    
+
     public function mount($id, $slug = null)
     {
         $this->categoria = Categoria::where('id', $id)->firstOrFail();
@@ -33,23 +33,34 @@ class CategoriaVerLivewire extends Component
 
     private function getProductosConStock()
     {
-        return  Producto::where('categoria_id', $this->categoria->id)
-        ->whereHas('variaciones.inventarios', function ($query) {
-            $query->where('almacen_id', 1)
-                  ->where('stock', '>', 0);
-        })
-        ->with(['variaciones' => function ($query) {
-            $query->whereHas('inventarios', function ($subQuery) {
-                $subQuery->where('almacen_id', 1)
-                         ->where('stock', '>', 0);
+        return Producto::where('categoria_id', $this->categoria->id)
+            ->whereHas('variaciones.inventarios', function ($query) {
+                $query->where('almacen_id', 1)
+                    ->where('stock', '>', 0);
             })
-            ->with(['inventarios' => function ($subQuery) {
-                $subQuery->where('almacen_id', 1)
-                         ->where('stock', '>', 0);
-            }])
-            ->take(1);
-        }])
-        ->get();
+            ->with([
+                'variaciones' => function ($query) {
+                    $query->whereHas('inventarios', function ($subQuery) {
+                        $subQuery->where('almacen_id', 1)
+                            ->where('stock', '>', 0);
+                    })
+                        ->with([
+                            'inventarios' => function ($subQuery) {
+                                $subQuery->where('almacen_id', 1)
+                                    ->where('stock', '>', 0);
+                            }
+                        ])
+                        ->take(1);
+                },
+                'imagens',
+                'descuentos' => function ($query) {
+                    $query->where('lista_precio_id', 3);
+                },
+                'listaPrecios' => function ($query) {
+                    $query->where('lista_precio_id', 3);
+                }
+            ])
+            ->get();
     }
 
     private function getCategoriaFamilia($categoria)

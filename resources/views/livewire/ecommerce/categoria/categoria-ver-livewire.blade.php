@@ -40,10 +40,53 @@
             <ul>
                 @foreach ($productosConStock as $producto)
                     <li>
-                        <h2><a href="{{ url('product/' . $producto->id . '/' . $producto->slug) }}">
+                        <h2>
+                            <a href="{{ url('product/' . $producto->id . '/' . $producto->slug) }}">
                                 {{ $producto->nombre }}
-                            </a></h2>
+                            </a>
+                        </h2>
 
+                        <!-- Mostrar imágenes del producto -->
+                        @if ($producto->imagens->isNotEmpty())
+                            <div>
+                                @foreach ($producto->imagens as $imagen)
+                                    <img src="{{ $imagen->url }}" alt="{{ $imagen->titulo }}" style="max-width: 100px;">
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <!-- Mostrar descuentos del producto -->
+                        @if ($producto->descuentos->isNotEmpty())
+                            <div>
+                                @foreach ($producto->descuentos as $descuento)
+                                @if ($producto->listaPrecios->isNotEmpty())
+                                @php
+                                    $precioOriginal = $producto->listaPrecios->first()->precio;
+                                    $precioDescuento = $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
+                                @endphp
+                                <div>
+                                    <p>Precio original: {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
+                                    <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta {{ $descuento->fecha_fin }}</p>
+                                    <p>Precio con descuento: {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}</p>
+                                </div>
+                            @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <!-- Mostrar lista de precios del producto -->
+                        @if ($producto->listaPrecios->isNotEmpty())
+                            <div>
+                                @foreach ($producto->listaPrecios as $precio)
+                                    <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p>
+                                    @if ($precio->precio_antiguo)
+                                        <p>Precio antiguo: {{ $precio->simbolo }}{{ $precio->precio_antiguo }}</p>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <!-- Mostrar variaciones del producto -->
                         @foreach ($producto->variaciones as $variacion)
                             <ul>
                                 <li>
@@ -64,6 +107,7 @@
                 @endforeach
             </ul>
         </div>
+
     </div>
 
 </div>
