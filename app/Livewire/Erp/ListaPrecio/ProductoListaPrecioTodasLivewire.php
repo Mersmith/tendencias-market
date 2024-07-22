@@ -36,7 +36,7 @@ class ProductoListaPrecioTodasLivewire extends Component
 
     public function render()
     {
-        $productosQuery = Producto::with('listaPrecios')
+        $productosQuery = Producto::with('listaPrecios', 'descuentos')
             ->orderByRaw('(SELECT COUNT(*) FROM producto_lista_precios WHERE producto_lista_precios.producto_id = productos.id AND producto_lista_precios.precio > 0) DESC');
 
         if ($this->buscarProducto) {

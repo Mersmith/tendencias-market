@@ -65,19 +65,36 @@
                                                 'lista_precio_id',
                                                 $listaPrecio->id,
                                             );
+
+                                            $descuentoData = $producto->descuentos->firstWhere(
+                                                'lista_precio_id',
+                                                $listaPrecio->id,
+                                            );
+
+                                            $fechaFinVencida =
+                                                $descuentoData &&
+                                                \Carbon\Carbon::parse($descuentoData->fecha_fin)->isPast();
                                         @endphp
                                         <td class="g_resaltar">
                                             <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Venta:</strong>
-                                                @endif
+                                                <strong>Precio Antiguo:</strong>
+                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                            </div>
+                                            <div>
+                                                <strong>Precio Venta:</strong>
                                                 {{ $precioData ? $precioData->precio : '-' }}
                                             </div>
                                             <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Antiguo:</strong>
-                                                @endif
-                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                                <strong>Descuento:</strong>
+                                                {{ $descuentoData ? $descuentoData->porcentaje_descuento : '-' }}%
+                                            </div>
+                                            <div style="color: {{ $fechaFinVencida ? 'red' : 'black' }}">
+                                                <strong>Fin:</strong>
+                                                {{ $descuentoData ? $descuentoData->fecha_fin : '-' }}
+                                            </div>
+                                            <div>
+                                                <strong>Precio Oferta:</strong>
+                                                {{ $descuentoData ? $precioData->precio * ((100 - $descuentoData->porcentaje_descuento) / 100) : '-' }}
                                             </div>
                                         </td>
                                     @endforeach

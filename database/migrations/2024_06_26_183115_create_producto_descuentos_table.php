@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('producto_id');
             $table->unsignedBigInteger('lista_precio_id');
 
-            $table->integer('porcentaje_descuento');
-            $table->timestamp('fecha_fin');
+            $table->integer('porcentaje_descuento')->nullable();
+            $table->timestamp('fecha_fin')->nullable();
 
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
             $table->foreign('lista_precio_id')->references('id')->on('lista_precios')->onDelete('cascade');
