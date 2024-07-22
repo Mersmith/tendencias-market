@@ -19,7 +19,6 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
     public $buscarProducto;
     public $sedes = [];
     public $almacenes = [];
-
     public $categorias = [];
     public $sede_id = null;
     public $almacen_id = null;
@@ -41,15 +40,23 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
 
     public function updatedSedeId($value)
     {
-        $this->almacenes = Almacen::where('sede_id', $value)->get();
-        $this->reset(['almacen_id']);
+        if ($value == "null") {
+            $this->reset(['sede_id']);
+        } else {
+            $this->almacenes = Almacen::where('sede_id', $value)->get();
+            $this->reset(['almacen_id']);
+        }
 
         $this->resetPage();
     }
 
     public function updatedAlmacenId($value)
     {
-        $this->almacen_id = $value;
+        if ($value == "null") {
+            $this->reset(['almacen_id']);
+        } else {
+            $this->almacen_id = $value;
+        }
 
         $this->resetPage();
     }
@@ -72,8 +79,14 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
 
     public function render()
     {
-        $inventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla', 'variacion.producto.listaPrecios'])
-            ->where('almacen_id', $this->almacen_id);
+        $inventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla', 'variacion.producto.listaPrecios']);
+
+        if ($this->almacen_id) {
+            $inventarioQuery->where('almacen_id', $this->almacen_id);
+        } elseif ($this->sede_id) {
+            $almacenesIds = Almacen::where('sede_id', $this->sede_id)->pluck('id')->toArray();
+            $inventarioQuery->whereIn('almacen_id', $almacenesIds);
+        }
 
         if ($this->buscarProducto) {
             $inventarioQuery->whereHas('variacion.producto', function ($query) {

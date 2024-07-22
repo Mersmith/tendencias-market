@@ -29,7 +29,7 @@
                             <div class="g_margin_bottom_20">
                                 <label for="sede_id">Sedes</label>
                                 <select id="sede_id" name="sede_id" wire:model.live="sede_id">
-                                    <option value="null" selected disabled>Seleccione</option>
+                                    <option value="null" selected>Todos</option>
                                     @foreach ($sedes as $sede)
                                         <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
                                     @endforeach
@@ -42,7 +42,7 @@
                             <div>
                                 <label for="almacen_id">Almacén</label>
                                 <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
-                                    <option value="null" selected disabled>Seleccione</option>
+                                    <option value="null" selected>Todos</option>
                                     @foreach ($almacenes as $almacen)
                                         <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
                                     @endforeach
