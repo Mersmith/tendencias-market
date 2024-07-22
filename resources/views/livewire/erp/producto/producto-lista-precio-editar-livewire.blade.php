@@ -142,6 +142,7 @@
                     </tbody>
                 </table>
             </div>
+            <p class="leyenda">Al poner 0 se borran su Lista de Precio.</p>
         </div>
 
         @if ($listasPrecios->count())

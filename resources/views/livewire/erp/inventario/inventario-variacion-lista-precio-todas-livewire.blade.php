@@ -24,7 +24,7 @@
                     <h4 class="g_panel_titulo">Almacén</h4>
 
                     <div class="g_fila">
-                        <div class="g_columna_6">
+                        <div class="g_columna_4">
                             <!--SEDES-->
                             <div class="g_margin_bottom_20">
                                 <label for="sede_id">Sedes</label>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="g_columna_6">
+                        <div class="g_columna_4">
                             <!--ALMACEN-->
                             <div>
                                 <label for="almacen_id">Almacén</label>
@@ -45,6 +45,20 @@
                                     <option value="null" selected disabled>Seleccione</option>
                                     @foreach ($almacenes as $almacen)
                                         <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="g_columna_4">
+                            <!--CATEGORIAS-->
+                            <div class="g_margin_bottom_20">
+                                <label for="categoria_id">Categorias</label>
+                                <select id="categoria_id" name="categoria_id" wire:model.live="categoria_id">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->id }} -
+                                            {{ $categoria->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -85,6 +99,8 @@
                                 <th>Nº</th>
                                 <th>ID</th>
                                 <th>ID Variación</th>
+                                <th>Categoria</th>
+                                <th>Marca</th>
                                 <th>Producto</th>
                                 <th>Talla</th>
                                 <th>Color</th>
@@ -102,6 +118,10 @@
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->id }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->id }}</td>
+                                    <td class="g_resaltar">ID: {{ $item->variacion->producto->categoria->id }} -
+                                        {{ $item->variacion->producto->categoria->nombre }}</td>
+                                    <td class="g_resaltar">ID: {{ $item->variacion->producto->marca->id }} -
+                                        {{ $item->variacion->producto->marca->nombre }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->id }} -
                                         {{ $item->variacion->producto->nombre }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>

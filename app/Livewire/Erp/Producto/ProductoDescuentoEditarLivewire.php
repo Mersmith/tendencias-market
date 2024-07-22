@@ -53,15 +53,15 @@ class ProductoDescuentoEditarLivewire extends Component
                         'fecha_fin' => $fecha_fin,
                     ]
                 );
-            } elseif ($porcentaje_descuento == 0) {
+            } elseif ($porcentaje_descuento == 0 || !$fecha_fin) {
                 ProductoDescuento::updateOrCreate(
                     [
                         'producto_id' => $this->producto->id,
                         'lista_precio_id' => $lista_precio_id,
                     ],
                     [
-                        'porcentaje_descuento' => 0,
-                        'fecha_fin' => $fecha_fin,
+                        'porcentaje_descuento' => null,
+                        'fecha_fin' => null,
                     ]
                 );
             }

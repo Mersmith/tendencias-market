@@ -88,13 +88,14 @@
                                                 <strong>Descuento:</strong>
                                                 {{ $descuentoData ? $descuentoData->porcentaje_descuento : '-' }}%
                                             </div>
-                                            <div style="color: {{ $fechaFinVencida ? 'red' : 'black' }}">
+                                            <div
+                                                style="color: {{ $fechaFinVencida && $descuentoData->porcentaje_descuento ? 'red' : 'black' }}">
                                                 <strong>Fin:</strong>
                                                 {{ $descuentoData ? $descuentoData->fecha_fin : '-' }}
                                             </div>
                                             <div>
                                                 <strong>Precio Oferta:</strong>
-                                                {{ $descuentoData ? $precioData->precio * ((100 - $descuentoData->porcentaje_descuento) / 100) : '-' }}
+                                                {{ $descuentoData && $descuentoData->porcentaje_descuento ? $precioData->precio * ((100 - $descuentoData->porcentaje_descuento) / 100) : '-' }}
                                             </div>
                                         </td>
                                     @endforeach

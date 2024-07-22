@@ -72,9 +72,12 @@
                                         @endphp
                                         <td class="g_resaltar">
                                             <div>
+                                                <strong>Descuento:</strong>
                                                 {{ $dataDescuento ? $dataDescuento->porcentaje_descuento : '-' }}%
                                             </div>
-                                            <div style="color: {{ $fechaFinVencida ? 'red' : 'black' }}">
+                                            <div
+                                                style="color: {{ $fechaFinVencida && $dataDescuento->porcentaje_descuento ? 'red' : 'black' }}">
+                                                <strong>Fin:</strong>
                                                 {{ $dataDescuento ? $dataDescuento->fecha_fin : '-' }}
                                             </div>
                                         </td>

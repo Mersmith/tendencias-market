@@ -72,14 +72,14 @@ class ProductoListaPrecioEditarLivewire extends Component
                         'lista_precio_id' => $lista_precio_id,
                     ],
                     [
-                        'precio' => 0,
+                        'precio' => null,
                         'precio_antiguo' => null,
                         'simbolo' => 'S/',
                     ]
                 );
-            } elseif ($precio > 0 && $precio_antiguo === null) {
+            } /*elseif ($precio > 0 && $precio_antiguo === null) {
                 continue;
-            }
+            }*/
         }
 
         $this->dispatch('alertaLivewire', "Actualizado");
