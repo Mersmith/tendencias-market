@@ -64,6 +64,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="g_fila">
+                        <div class="g_columna_4">
+                            <!--MARCAS-->
+                            <div class="g_margin_bottom_20">
+                                <label for="marca_id">Marcas</label>
+                                <select id="marca_id" name="marca_id" wire:model.live="marca_id">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($marcas as $marca)
+                                        <option value="{{ $marca->id }}">{{ $marca->id }} -
+                                            {{ $marca->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use App\Models\Almacen;
 use App\Models\Categoria;
 use App\Models\Inventario;
 use App\Models\ListaPrecio;
+use App\Models\Marca;
 use App\Models\Sede;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -20,10 +21,11 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
     public $sedes = [];
     public $almacenes = [];
     public $categorias = [];
+    public $marcas = [];
     public $sede_id = null;
     public $almacen_id = null;
     public $categoria_id = null;
-
+    public $marca_id = null;
     public $listasPrecios;
 
     public function mount()
@@ -31,6 +33,7 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
         $this->sedes = Sede::all();
         $this->listasPrecios = ListaPrecio::all();
         $this->categorias = Categoria::all();
+        $this->marcas = Marca::all();
     }
 
     public function updatingBuscarProducto()
@@ -44,7 +47,7 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
             $this->reset(['sede_id']);
         } else {
             $this->almacenes = Almacen::where('sede_id', $value)->get();
-            $this->reset(['almacen_id']);
+            $this->reset(['almacen_id', 'categoria_id', 'marca_id']);
         }
 
         $this->resetPage();
@@ -67,6 +70,17 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
             $this->reset(['categoria_id']);
         } else {
             $this->categoria_id = $value;
+        }
+
+        $this->resetPage();
+    }
+
+    public function updatedMarcaId($value)
+    {
+        if ($value == "null") {
+            $this->reset(['marca_id']);
+        } else {
+            $this->marca_id = $value;
         }
 
         $this->resetPage();
@@ -97,6 +111,12 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
         if ($this->categoria_id) {
             $inventarioQuery->whereHas('variacion.producto', function ($query) {
                 $query->where('categoria_id', $this->categoria_id);
+            });
+        }
+
+        if ($this->marca_id) {
+            $inventarioQuery->whereHas('variacion.producto', function ($query) {
+                $query->where('marca_id', $this->marca_id);
             });
         }
 
