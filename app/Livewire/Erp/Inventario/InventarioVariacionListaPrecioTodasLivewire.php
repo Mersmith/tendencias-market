@@ -93,7 +93,7 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
 
     public function render()
     {
-        $inventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla', 'variacion.producto.listaPrecios']);
+        $inventarioQuery = Inventario::with(['variacion', 'variacion.producto', 'variacion.color', 'variacion.talla', 'variacion.producto.listaPrecios', 'variacion.producto.descuentos']);
 
         if ($this->almacen_id) {
             $inventarioQuery->where('almacen_id', $this->almacen_id);

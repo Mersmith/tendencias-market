@@ -113,16 +113,14 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>ID</th>
-                                <th>ID Variación</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
                                 <th>Producto</th>
                                 <th>Talla</th>
                                 <th>Color</th>
                                 <th>Stock</th>
-                                <th>Stock mínimo</th>
-                                <th>Variación Activo</th>
+                                <th>Stock mín.</th>
+                                <th>Activo</th>
                                 @foreach ($listasPrecios as $listaPrecio)
                                     <th>{{ $listaPrecio->nombre }}</th>
                                 @endforeach
@@ -132,13 +130,12 @@
                             @foreach ($inventario as $item)
                                 <tr>
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
-                                    <td class="g_resaltar">{{ $item->id }}</td>
-                                    <td class="g_resaltar">{{ $item->variacion->id }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->categoria->id }} -
                                         {{ $item->variacion->producto->categoria->nombre }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->marca->id }} -
                                         {{ $item->variacion->producto->marca->nombre }}</td>
-                                    <td class="g_resaltar">ID: {{ $item->variacion->producto->id }} -
+                                    <td class="g_resaltar">IDI: {{ $item->id }}, IDV: {{ $item->variacion->id }},
+                                        ID: {{ $item->variacion->producto->id }} -
                                         {{ $item->variacion->producto->nombre }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->talla->nombre ?? '-' }}</td>
                                     <td class="g_resaltar">{{ $item->variacion->color->nombre ?? '-' }}</td>
@@ -157,19 +154,37 @@
                                                 'lista_precio_id',
                                                 $listaPrecio->id,
                                             );
+
+                                            $descuentoData = $item->variacion->producto->descuentos->firstWhere(
+                                                'lista_precio_id',
+                                                $listaPrecio->id,
+                                            );
+
+                                            $fechaFinVencida =
+                                                $descuentoData &&
+                                                \Carbon\Carbon::parse($descuentoData->fecha_fin)->isPast();
                                         @endphp
                                         <td class="g_resaltar">
                                             <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Venta:</strong>
-                                                @endif
+                                                <strong>Precio Antiguo:</strong>
+                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                            </div>
+                                            <div>
+                                                <strong>Precio Venta:</strong>
                                                 {{ $precioData ? $precioData->precio : '-' }}
                                             </div>
                                             <div>
-                                                @if ($precioData)
-                                                    <strong>Precio Antiguo:</strong>
-                                                @endif
-                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
+                                                <strong>Descuento:</strong>
+                                                {{ $descuentoData ? $descuentoData->porcentaje_descuento : '-' }}%
+                                            </div>
+                                            <div
+                                                style="color: {{ $fechaFinVencida && $descuentoData->porcentaje_descuento ? 'red' : 'black' }}">
+                                                <strong>Fin:</strong>
+                                                {{ $descuentoData ? $descuentoData->fecha_fin : '-' }}
+                                            </div>
+                                            <div>
+                                                <strong>Precio Oferta:</strong>
+                                                {{ $descuentoData && $descuentoData->porcentaje_descuento ? $precioData->precio * ((100 - $descuentoData->porcentaje_descuento) / 100) : '-' }}
                                             </div>
                                         </td>
                                     @endforeach
