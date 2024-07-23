@@ -25,20 +25,28 @@ class ProductoVerLivewire extends Component
                     ->where('precio', '>', 0);
             })
             ->with([
-                'marca',
-                'variaciones.inventarios' => function ($query) use ($almacenId) {
-                    $query->where('almacen_id', $almacenId)
-                        ->where('stock', '>', 0);
-                },
-                'imagens',
-                'descuentos' => function ($query) use ($listaPrecioId) {
-                    $query->where('lista_precio_id', $listaPrecioId)
-                        ->where('fecha_fin', '>', now());
+                'variaciones' => function ($query) use ($almacenId) {
+                    $query->whereHas('inventarios', function ($query) use ($almacenId) {
+                        $query->where('almacen_id', $almacenId)
+                            ->where('stock', '>', 0);
+                    })
+                        ->with([
+                            'inventarios' => function ($query) use ($almacenId) {
+                                $query->where('almacen_id', $almacenId)
+                                    ->where('stock', '>', 0);
+                            }
+                        ]);
                 },
                 'listaPrecios' => function ($query) use ($listaPrecioId) {
                     $query->where('lista_precio_id', $listaPrecioId)
                         ->where('precio', '>', 0);
-                }
+                },
+                'descuentos' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('fecha_fin', '>', now());
+                },
+                'marca',
+                'imagens'
             ])
             ->firstOrFail();
 
