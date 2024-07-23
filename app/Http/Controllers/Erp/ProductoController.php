@@ -27,7 +27,7 @@ class ProductoController extends Controller
                 },
                 'imagens',
                 'descuentos' => function ($query) use ($listaPrecioId) {
-                    $query->where('lista_precio_id', $listaPrecioId);
+                    $query->where('lista_precio_id', $listaPrecioId)->where('fecha_fin', '>', now());
                 },
                 'listaPrecios' => function ($query) use ($listaPrecioId) {
                     $query->where('lista_precio_id', $listaPrecioId)
