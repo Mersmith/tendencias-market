@@ -29,6 +29,9 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
     public $lista_precio_id = null;
     public $listasPrecios;
 
+    public $precioInicio = null;
+    public $precioFin = null;
+
     public function mount()
     {
         $this->sedes = Sede::all();
@@ -98,6 +101,26 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
         $this->resetPage();
     }
 
+    public function updatedPrecioInicio($value)
+    {
+        if ($value) {
+            $this->precioInicio = $value;
+        } else {
+            $this->reset(['precioInicio']);
+        }
+        $this->resetPage();
+    }
+
+    public function updatedPrecioFin($value)
+    {
+        if ($value) {
+            $this->precioFin = $value;
+        } else {
+            $this->reset(['precioFin']);
+        }
+        $this->resetPage();
+    }
+
     public function updatingPaginacion()
     {
         $this->resetPage();
@@ -136,6 +159,13 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
             $inventarioQuery->whereHas('variacion.producto.listaPrecios', function ($query) {
                 $query->where('lista_precio_id', $this->lista_precio_id)
                     ->where('precio', '>', 0);
+
+                if ($this->precioInicio !== null && $this->precioFin !== null) {
+                    $query->where('precio', '>=', $this->precioInicio)
+                        ->where('precio', '<=', $this->precioFin);
+                } elseif ($this->precioInicio !== null) {
+                    $query->where('precio', '>=', $this->precioInicio);
+                }
             });
         }
 

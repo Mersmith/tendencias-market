@@ -3,6 +3,101 @@
 @section('anchoPantalla', '100%')
 
 <div>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 13.8px 0;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: #ddd;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            border: 1px solid #000000;
+            height: 36px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -14px;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #ccc;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: #ddd;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            border: 1px solid #000000;
+            height: 36px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type=range]::-ms-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: transparent;
+            border-color: transparent;
+            border-width: 16px 0;
+            color: transparent;
+        }
+
+        input[type=range]::-ms-fill-lower {
+            background: #777;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
+
+        input[type=range]::-ms-fill-upper {
+            background: #ddd;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
+
+        input[type=range]::-ms-thumb {
+            border: 1px solid #000000;
+            height: 36px;
+            width: 16px;
+            border-radius: 3px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type=range]:focus::-ms-fill-lower {
+            background: #888;
+        }
+
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ccc;
+        }
+    </style>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
@@ -92,6 +187,37 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="g_columna_4">
+                            <div class="g_fila">
+                                <div class="g_columna_6">
+                                    <!--RANGO DE PRECIOS-->
+                                    <div class="g_margin_bottom_20">
+                                        <label for="precioInicio">Precio inicio</label>
+                                        <input type="number" id="precioInicio" name="precioInicio"
+                                            @if (!$lista_precio_id) disabled @endif
+                                            wire:model.live.debounce.1300ms="precioInicio"
+                                            placeholder="Digite un número">
+                                        @error('precioInicio')
+                                            <p class="mensaje_error">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="g_columna_6">
+                                    <!--RANGO DE PRECIOS-->
+                                    <div class="g_margin_bottom_20">
+                                        <label for="precioFin">Precio fin</label>
+                                        <input type="number" id="precioFin" name="precioFin"
+                                            @if (!$lista_precio_id) disabled @endif
+                                            wire:model.live.debounce.1300ms="precioFin" placeholder="Digite un número">
+                                        @error('precioFin')
+                                            <p class="mensaje_error">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,12 +305,12 @@
                                         @endphp
                                         <td class="g_resaltar">
                                             <div>
-                                                <strong>Precio Antiguo:</strong>
-                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
-                                            </div>
-                                            <div>
                                                 <strong>Precio Venta:</strong>
                                                 {{ $precioData ? $precioData->precio : '-' }}
+                                            </div>
+                                            <div>
+                                                <strong>Precio Antiguo:</strong>
+                                                {{ $precioData ? $precioData->precio_antiguo : '-' }}
                                             </div>
                                             <div>
                                                 <strong>Descuento:</strong>
