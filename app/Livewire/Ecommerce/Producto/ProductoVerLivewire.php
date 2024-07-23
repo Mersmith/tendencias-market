@@ -13,16 +13,35 @@ class ProductoVerLivewire extends Component
 
     public function mount($id, $slug = null)
     {
-        // Buscar el producto por ID
-        $this->producto = Producto::with([
-            'variaciones',
-            'imagens',
-            'marca',
-            'descuentos',
-            'categoria'
-        ])->where('id', $id)->firstOrFail();
+        $almacenId = 1;
+        $listaPrecioId = 3;
+        $this->producto = Producto::where('id', $id)
+            ->whereHas('variaciones.inventarios', function ($query) use ($almacenId) {
+                $query->where('almacen_id', $almacenId)
+                    ->where('stock', '>', 0);
+            })
+            ->whereHas('listaPrecios', function ($query) use ($listaPrecioId) {
+                $query->where('lista_precio_id', $listaPrecioId)
+                    ->where('precio', '>', 0);
+            })
+            ->with([
+                'marca',
+                'variaciones.inventarios' => function ($query) use ($almacenId) {
+                    $query->where('almacen_id', $almacenId)
+                        ->where('stock', '>', 0);
+                },
+                'imagens',
+                'descuentos' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('fecha_fin', '>', now());
+                },
+                'listaPrecios' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('precio', '>', 0);
+                }
+            ])
+            ->firstOrFail();
 
-        // Si el slug no se proporciona o no coincide, redirigir
         if (!$slug || $slug !== $this->producto->slug) {
             return redirect()->route('ecommerce.producto.vista.ver', [
                 'id' => $this->producto->id,
@@ -30,7 +49,6 @@ class ProductoVerLivewire extends Component
             ]);
         }
     }
-
 
     public function render()
     {
