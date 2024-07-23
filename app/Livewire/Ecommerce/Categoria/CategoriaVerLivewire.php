@@ -35,7 +35,6 @@ class CategoriaVerLivewire extends Component
 
     public $preciosAgregados = [];
 
-
     public function mount($id, $slug = null)
     {
         $this->categoria = Categoria::where('id', $id)->firstOrFail();
@@ -78,9 +77,9 @@ class CategoriaVerLivewire extends Component
     {
         return app(ProductoController::class)
             ->getEcommerceProductosConStockCategoriaAlmacenListaPrecio(
-                1,
-                3,
-                $this->categoria->id,
+                1,//Almacen // sede 1
+                3,//Lista precio
+                $this->categoria->id,//categoria 1
                 $this->selectedMarcas,
                 $this->preciosAgregados,
             );

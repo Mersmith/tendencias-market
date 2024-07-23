@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaMarcaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
-        /*$this->call(ProductoSeeder::class);
+        $this->call(ProductoSeeder::class);
         $this->call(VariacionSeeder::class);
         //$this->call(InventarioSeeder::class);//Ahora se agrega stock con GuiaEntradaDirectoSeeder
         $this->call(ListaPrecioSeeder::class);
         $this->call(ProductoListaPreciosSeeder::class);
         $this->call(ProductoDescuentoSeeder::class);
-        $this->call(GuiaEntradaDirectoSeeder::class);*/
+        $this->call(GuiaEntradaDirectoSeeder::class);
     }
 }

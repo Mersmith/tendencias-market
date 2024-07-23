@@ -31,6 +31,7 @@ class ColorSeeder extends Seeder
             Color::create([
                 'nombre' => $color['nombre'],
                 'codigo_color' => $color['codigo_color'],
+                'activo' => 1,
             ]);
         }
     }

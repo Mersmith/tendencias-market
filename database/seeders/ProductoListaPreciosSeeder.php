@@ -24,8 +24,8 @@ class ProductoListaPreciosSeeder extends Seeder
                 DB::table('producto_lista_precios')->insert([
                     'producto_id' => $producto->id,
                     'lista_precio_id' => $listaPrecio->id,
-                    'precio' => rand(100, 200),
-                    'precio_antiguo' => rand(300, 500),
+                    'precio' => rand(1, 6000),
+                    'precio_antiguo' => rand(1, 6000),
                 ]);
             }
         }

@@ -13,7 +13,7 @@ class ListaPrecioSeeder extends Seeder
      */
     public function run(): void
     {
-        $lista_precios = ['Mayorista', 'Minorista', 'Etiqueta'];
+        $lista_precios = ['Mayorista', 'Horizontal', 'Etiqueta'];
 
         foreach ($lista_precios as $l_p) {
             ListaPrecio::create([

@@ -19,6 +19,7 @@ class MarcaFactory extends Factory
         return [
             //'nombre' => $this->faker->word(),
             'descripcion' => $this->faker->text(),
+            'activo' => 1,
         ];
     }
 }

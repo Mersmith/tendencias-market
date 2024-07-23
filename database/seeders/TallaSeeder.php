@@ -18,7 +18,8 @@ class TallaSeeder extends Seeder
 
         foreach ($tallas as $talla) {
             Talla::create([
-                'nombre' => $talla
+                'nombre' => $talla,
+                'activo' => 1,
             ]);
         }
     }
