@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'codigo_color', 'estado'];
+    protected $fillable = ['nombre', 'codigo_color', 'activo'];
 
     const ACTIVADO = 1;
     const DESACTIVADO = 2;

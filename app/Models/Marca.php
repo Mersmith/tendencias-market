@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'descripcion', 'estado'];
+    protected $fillable = ['nombre', 'slug', 'descripcion', 'activo'];
 
     const ACTIVADO = 1;
     const DESACTIVADO = 2;
@@ -21,5 +21,11 @@ class Marca extends Model
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class, 'categoria_marcas');
+    }
+
+    //URL AMIGABLE
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

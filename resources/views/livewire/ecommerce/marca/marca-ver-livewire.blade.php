@@ -15,33 +15,20 @@
         }
     </style>
     <div>
-        <h1>{{ $categoria->nombre }}</h1>
+        <h1>{{ $marca->nombre }}</h1>
     </div>
 
     <div class="dividir">
-        <div class="dividir_1">
-            <div>
-                <h2>Categorias</h2>
-                <ul>
-                    @foreach ($categoriaFamilia as $categoria)
-                        <li>
-                            <a href="{{ url('category/' . $categoria->id . '/' . $categoria->slug) }}">
-                                {{ $categoria->nombre }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
+        <div class="dividir_1">      
             <div>
                 <h2>Filtros</h2>
                 <div>
-                    <h4>Marca</h4>
+                    <h4>Categoria</h4>
                     <div style="display: flex; flex-direction: column;">
-                        @foreach ($marcas as $marca)
+                        @foreach ($categorias as $categoria)
                             <label>
-                                <input type="checkbox" wire:model.live="selectedMarcas" value="{{ $marca->id }}">
-                                {{ $marca->nombre }}
+                                <input type="checkbox" wire:model.live="selectedCategorias" value="{{ $categoria->id }}">
+                                {{ $categoria->nombre }}
                             </label>
                         @endforeach
                     </div>

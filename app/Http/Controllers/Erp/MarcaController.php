@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Erp;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MarcaRequest;
 use App\Models\Marca;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class MarcaController extends Controller
@@ -54,5 +55,57 @@ class MarcaController extends Controller
         $marca->delete();
 
         return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Eliminado');
+    }
+
+    public function getEcommerceProductosConStockMarcaAlmacenListaPrecio($almacenId, $listaPrecioId, $marcaId, $categorias = [], $precios = [])
+    {
+        $minPrecio = !empty($precios) ? min(array_column($precios, 'precio_inicio')) : null;
+        $maxPrecio = !empty($precios) ? max(array_column($precios, 'precio_fin')) : null;
+
+        $query = Producto::where('marca_id', $marcaId)
+            ->whereHas('variaciones.inventarios', function ($query) use ($almacenId) {
+                $query->where('almacen_id', $almacenId)
+                    ->where('stock', '>', 0);
+            })
+            ->whereHas('listaPrecios', function ($query) use ($listaPrecioId, $minPrecio, $maxPrecio) {
+                $query->where('lista_precio_id', $listaPrecioId)
+                    ->where('precio', '>', 0);
+
+                if ($minPrecio !== null) {
+                    $query->where('precio', '>=', $minPrecio);
+                }
+                if ($maxPrecio !== null) {
+                    $query->where('precio', '<=', $maxPrecio);
+                }
+            })
+            ->with([
+                'marca',
+                'variaciones.inventarios' => function ($query) use ($almacenId) {
+                    $query->where('almacen_id', $almacenId)
+                        ->where('stock', '>', 0);
+                },
+                'imagens',
+                'descuentos' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('fecha_fin', '>', now());
+                },
+                'listaPrecios' => function ($query) use ($listaPrecioId, $minPrecio, $maxPrecio) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('precio', '>', 0);
+
+                    if ($minPrecio !== null) {
+                        $query->where('precio', '>=', $minPrecio);
+                    }
+                    if ($maxPrecio !== null) {
+                        $query->where('precio', '<=', $maxPrecio);
+                    }
+                }
+            ]);
+
+        if (!empty($categorias)) {
+            $query->whereIn('categoria_id', $categorias);
+        }
+
+        return $query->paginate(10);
     }
 }

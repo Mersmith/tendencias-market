@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Talla extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'estado'];
+    protected $fillable = ['nombre', 'activo'];
 
     const ACTIVADO = 1;
     const DESACTIVADO = 2;

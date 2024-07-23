@@ -140,3 +140,5 @@ php artisan make:livewire Erp/Categoria/CategoriaTodasLivewire
 php artisan make:livewire Ecommerce/Categoria/CategoriaVerLivewire
 
 php artisan make:model CategoriaMarca -mfsc
+
+php artisan make:livewire Ecommerce/Marca/MarcaVerLivewire

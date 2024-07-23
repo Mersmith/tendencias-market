@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('nombre')->unique();
+            $table->string('slug')->unique();
             $table->string('descripcion');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 

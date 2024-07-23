@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Marca;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class MarcaSeeder extends Seeder
 {
@@ -27,7 +28,10 @@ class MarcaSeeder extends Seeder
         ];
 
         foreach ($marcas as $marca) {
-            Marca::factory(1)->create($marca);
+            Marca::factory(1)->create([
+                'nombre' => $marca['nombre'],
+                'slug' => Str::slug($marca['nombre']),
+            ]);
         }
     }
 }
