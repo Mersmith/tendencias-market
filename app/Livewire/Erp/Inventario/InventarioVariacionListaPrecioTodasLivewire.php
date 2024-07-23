@@ -26,6 +26,7 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
     public $almacen_id = null;
     public $categoria_id = null;
     public $marca_id = null;
+    public $lista_precio_id = null;
     public $listasPrecios;
 
     public function mount()
@@ -86,6 +87,17 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
         $this->resetPage();
     }
 
+    public function updatedListaPrecioId($value)
+    {
+        if ($value == "null") {
+            $this->reset(['lista_precio_id']);
+        } else {
+            $this->lista_precio_id = $value;
+        }
+
+        $this->resetPage();
+    }
+
     public function updatingPaginacion()
     {
         $this->resetPage();
@@ -117,6 +129,13 @@ class InventarioVariacionListaPrecioTodasLivewire extends Component
         if ($this->marca_id) {
             $inventarioQuery->whereHas('variacion.producto', function ($query) {
                 $query->where('marca_id', $this->marca_id);
+            });
+        }
+
+        if ($this->lista_precio_id) {
+            $inventarioQuery->whereHas('variacion.producto.listaPrecios', function ($query) {
+                $query->where('lista_precio_id', $this->lista_precio_id)
+                    ->where('precio', '>', 0);
             });
         }
 

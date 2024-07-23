@@ -79,6 +79,19 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="g_columna_4">
+                            <!--LISTA DE PRECIOS-->
+                            <div class="g_margin_bottom_20">
+                                <label for="lista_precio_id">Lista de Precios</label>
+                                <select id="lista_precio_id" name="lista_precio_id" wire:model.live="lista_precio_id">
+                                    <option value="null" selected>Todos</option>
+                                    @foreach ($listasPrecios as $listaPrecio)
+                                        <option value="{{ $listaPrecio->id }}">{{ $listaPrecio->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
