@@ -89,40 +89,35 @@
                             </div>
                         @endif
 
-                        <!-- Mostrar descuentos del producto -->
-                        @if ($producto->descuentos->isNotEmpty())
-                            <div>
-                                @foreach ($producto->descuentos as $descuento)
+                        @if ($producto->listaPrecios->isNotEmpty())
+                            @php
+                                $precioOriginal = $producto->listaPrecios->first()->precio;
+                            @endphp
+                            <strong>
+                                <p>Precio original:
+                                    S/.{{ $precioOriginal }}
+                                </p>
+                            </strong>
+                            @if ($producto->listaPrecios->first()->precio_antiguo)
+                                <p>Precio antiguo:
+                                    S/.{{ $producto->listaPrecios->first()->precio_antiguo }}
+                                </p>
+                            @endif
+
+                            @if ($producto->descuentos->isNotEmpty())
+                                <div>
                                     @php
-                                        $precioOriginal = $producto->listaPrecios->first()->precio;
-                                        $precioDescuento =
-                                            $precioOriginal * ((100 - $descuento->porcentaje_descuento) / 100);
+                                        $porcentajeDescuento = $producto->descuentos->first()->porcentaje_descuento;
+                                        $precioDescuento = $precioOriginal * ((100 - $porcentajeDescuento) / 100);
                                     @endphp
                                     <div>
-                                        <p>Precio original:
-                                            {{ $producto->listaPrecios->first()->simbolo }}{{ $precioOriginal }}</p>
-                                        <p>Descuento: {{ $descuento->porcentaje_descuento }}% hasta
-                                            {{ $descuento->fecha_fin }}</p>
+                                        <p>{{ $porcentajeDescuento }}%</p>
                                         <p>Precio con descuento:
-                                            {{ $producto->listaPrecios->first()->simbolo }}{{ number_format($precioDescuento, 2) }}
+                                            S/.{{ number_format($precioDescuento, 2) }}
                                         </p>
                                     </div>
-                                @endforeach
-                            </div>
-                        @endif
-
-                        <!-- Mostrar lista de precios del producto -->
-                        @if ($producto->listaPrecios->isNotEmpty())
-                            <div>
-                                @foreach ($producto->listaPrecios as $precio)
-                                    <strong>
-                                        <p>Precio: {{ $precio->simbolo }}{{ $precio->precio }}</p>
-                                    </strong>
-                                    @if ($precio->precio_antiguo)
-                                        <p>Precio antiguo: {{ $precio->simbolo }}{{ $precio->precio_antiguo }}</p>
-                                    @endif
-                                @endforeach
-                            </div>
+                                </div>
+                            @endif
                         @endif
 
                         <!-- Mostrar variaciones del producto -->

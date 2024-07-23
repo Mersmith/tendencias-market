@@ -3,101 +3,6 @@
 @section('anchoPantalla', '100%')
 
 <div>
-    <style>
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            margin: 13.8px 0;
-        }
-
-        input[type=range]:focus {
-            outline: none;
-        }
-
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 8.4px;
-            cursor: pointer;
-            animate: 0.2s;
-            background: #ddd;
-            border-radius: 1.3px;
-            border: 0.2px solid #010101;
-        }
-
-        input[type=range]::-webkit-slider-thumb {
-            border: 1px solid #000000;
-            height: 36px;
-            width: 16px;
-            border-radius: 3px;
-            background: #ffffff;
-            cursor: pointer;
-            -webkit-appearance: none;
-            margin-top: -14px;
-        }
-
-        input[type=range]:focus::-webkit-slider-runnable-track {
-            background: #ccc;
-        }
-
-        input[type=range]::-moz-range-track {
-            width: 100%;
-            height: 8.4px;
-            cursor: pointer;
-            animate: 0.2s;
-            background: #ddd;
-            border-radius: 1.3px;
-            border: 0.2px solid #010101;
-        }
-
-        input[type=range]::-moz-range-thumb {
-            border: 1px solid #000000;
-            height: 36px;
-            width: 16px;
-            border-radius: 3px;
-            background: #ffffff;
-            cursor: pointer;
-        }
-
-        input[type=range]::-ms-track {
-            width: 100%;
-            height: 8.4px;
-            cursor: pointer;
-            animate: 0.2s;
-            background: transparent;
-            border-color: transparent;
-            border-width: 16px 0;
-            color: transparent;
-        }
-
-        input[type=range]::-ms-fill-lower {
-            background: #777;
-            border: 0.2px solid #010101;
-            border-radius: 2.6px;
-        }
-
-        input[type=range]::-ms-fill-upper {
-            background: #ddd;
-            border: 0.2px solid #010101;
-            border-radius: 2.6px;
-        }
-
-        input[type=range]::-ms-thumb {
-            border: 1px solid #000000;
-            height: 36px;
-            width: 16px;
-            border-radius: 3px;
-            background: #ffffff;
-            cursor: pointer;
-        }
-
-        input[type=range]:focus::-ms-fill-lower {
-            background: #888;
-        }
-
-        input[type=range]:focus::-ms-fill-upper {
-            background: #ccc;
-        }
-    </style>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
@@ -126,7 +31,8 @@
                                 <select id="sede_id" name="sede_id" wire:model.live="sede_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($sedes as $sede)
-                                        <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                                        <option value="{{ $sede->id }}">{{ $sede->id }} - {{ $sede->nombre }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -139,7 +45,8 @@
                                 <select id="almacen_id" name="almacen_id" wire:model.live="almacen_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($almacenes as $almacen)
-                                        <option value="{{ $almacen->id }}">{{ $almacen->nombre }}</option>
+                                        <option value="{{ $almacen->id }}">{{ $almacen->id }} - {{ $almacen->nombre }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -152,8 +59,8 @@
                                 <select id="categoria_id" name="categoria_id" wire:model.live="categoria_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($categorias as $categoria)
-                                        <option value="{{ $categoria->id }}">{{ $categoria->id }} -
-                                            {{ $categoria->nombre }}</option>
+                                        <option value="{{ $categoria->id }}">
+                                            {{ $categoria->id }} - {{ $categoria->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -168,8 +75,8 @@
                                 <select id="marca_id" name="marca_id" wire:model.live="marca_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($marcas as $marca)
-                                        <option value="{{ $marca->id }}">{{ $marca->id }} -
-                                            {{ $marca->nombre }}</option>
+                                        <option value="{{ $marca->id }}">
+                                            {{ $marca->id }} - {{ $marca->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -182,7 +89,8 @@
                                 <select id="lista_precio_id" name="lista_precio_id" wire:model.live="lista_precio_id">
                                     <option value="null" selected>Todos</option>
                                     @foreach ($listasPrecios as $listaPrecio)
-                                        <option value="{{ $listaPrecio->id }}">{{ $listaPrecio->nombre }}</option>
+                                        <option value="{{ $listaPrecio->id }}">{{ $listaPrecio->id }} -
+                                            {{ $listaPrecio->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>

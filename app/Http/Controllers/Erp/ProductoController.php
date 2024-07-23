@@ -8,27 +8,30 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    public function getEcommerceProductosConStockCategoriaAlmacenListaPrecio($categoriaId, $marcas = [], $precios = [])
+    public function getEcommerceProductosConStockCategoriaAlmacenListaPrecio($almacenId, $listaPrecioId, $categoriaId, $marcas = [], $precios = [])
     {
         $query = Producto::where('categoria_id', $categoriaId)
-            ->whereHas('variaciones.inventarios', function ($query) {
-                $query->where('almacen_id', 1)
+            ->whereHas('variaciones.inventarios', function ($query) use ($almacenId) {
+                $query->where('almacen_id', $almacenId)
                     ->where('stock', '>', 0);
+            })
+            ->whereHas('listaPrecios', function ($query) use ($listaPrecioId) {
+                $query->where('lista_precio_id', $listaPrecioId)
+                    ->where('precio', '>', 0);
             })
             ->with([
                 'marca',
-                'variaciones' => function ($query) {
-                    $query->whereHas('inventarios', function ($subQuery) {
-                        $subQuery->where('almacen_id', 1)
-                            ->where('stock', '>', 0);
-                    });
+                'variaciones.inventarios' => function ($query) use ($almacenId) {
+                    $query->where('almacen_id', $almacenId)
+                        ->where('stock', '>', 0);
                 },
                 'imagens',
-                'descuentos' => function ($query) {
-                    $query->where('lista_precio_id', 3);
+                'descuentos' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId);
                 },
-                'listaPrecios' => function ($query) {
-                    $query->where('lista_precio_id', 3);
+                'listaPrecios' => function ($query) use ($listaPrecioId) {
+                    $query->where('lista_precio_id', $listaPrecioId)
+                        ->where('precio', '>', 0);
                 }
             ]);
 
@@ -39,14 +42,14 @@ class ProductoController extends Controller
         if (!empty($precios)) {
             $query->where(function ($query) use ($precios) {
                 foreach ($precios as $rango) {
-                    $precio_inicio = $rango['precio_inicio'];
-                    $precio_fin = $rango['precio_fin'];
+                    $precioInicio = $rango['precio_inicio'];
+                    $precioFin = $rango['precio_fin'];
 
-                    $query->orWhereHas('listaPrecios', function ($query) use ($precio_inicio, $precio_fin) {
-                        if ($precio_fin !== null) {
-                            $query->whereBetween('precio', [$precio_inicio, $precio_fin]);
+                    $query->orWhereHas('listaPrecios', function ($query) use ($precioInicio, $precioFin) {
+                        if ($precioFin !== null) {
+                            $query->whereBetween('precio', [$precioInicio, $precioFin]);
                         } else {
-                            $query->where('precio', '>=', $precio_inicio);
+                            $query->where('precio', '>=', $precioInicio);
                         }
                     });
                 }

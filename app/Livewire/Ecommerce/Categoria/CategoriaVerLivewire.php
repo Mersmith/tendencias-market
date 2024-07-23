@@ -21,7 +21,15 @@ class CategoriaVerLivewire extends Component
     public $productosConStock;
 
     public $marcas;
-    public $precios;
+    public $precios = [
+        ['id' => 1, 'precio_inicio' => 50, 'precio_fin' => 100],
+        ['id' => 2, 'precio_inicio' => 100, 'precio_fin' => 150],
+        ['id' => 3, 'precio_inicio' => 150, 'precio_fin' => 200],
+        ['id' => 4, 'precio_inicio' => 200, 'precio_fin' => 300],
+        ['id' => 5, 'precio_inicio' => 300, 'precio_fin' => 2000],
+        ['id' => 6, 'precio_inicio' => 2000, 'precio_fin' => 5000],
+        ['id' => 7, 'precio_inicio' => 5000, 'precio_fin' => null],
+    ];
     public $selectedMarcas = [];
     public $selectedPrecios = [];
 
@@ -42,16 +50,6 @@ class CategoriaVerLivewire extends Component
         $this->marcas = $this->categoria->marcas;
 
         $this->categoriaFamilia = app(CategoriaController::class)->getCategoriaFamiliaVertical($this->categoria);
-
-        $this->precios = [
-            ['id' => 1, 'precio_inicio' => 50, 'precio_fin' => 100],
-            ['id' => 2, 'precio_inicio' => 100, 'precio_fin' => 150],
-            ['id' => 3, 'precio_inicio' => 150, 'precio_fin' => 200],
-            ['id' => 4, 'precio_inicio' => 200, 'precio_fin' => 300],
-            ['id' => 5, 'precio_inicio' => 300, 'precio_fin' => 2000],
-            ['id' => 6, 'precio_inicio' => 2000, 'precio_fin' => 5000],
-            ['id' => 7, 'precio_inicio' => 5000, 'precio_fin' => null],
-        ];
 
         $this->productosConStock = $this->getFilteredProductosConStock();
     }
@@ -80,6 +78,8 @@ class CategoriaVerLivewire extends Component
     {
         return app(ProductoController::class)
             ->getEcommerceProductosConStockCategoriaAlmacenListaPrecio(
+                1,
+                3,
                 $this->categoria->id,
                 $this->selectedMarcas,
                 $this->preciosAgregados,
