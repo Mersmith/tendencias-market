@@ -134,6 +134,12 @@
                     </li>
                 @endforeach
             </ul>
+
+            @if ($productosConStock ->hasPages())
+                <div>
+                    {{ $productosConStock ->onEachSide(1)->links() }}
+                </div>
+            @endif
         </div>
     </div>
 </div>

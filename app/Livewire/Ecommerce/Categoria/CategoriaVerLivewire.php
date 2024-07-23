@@ -18,8 +18,6 @@ class CategoriaVerLivewire extends Component
     public $categoria;
     public $categoriaFamilia;
 
-    public $productosConStock;
-
     public $marcas;
     public $precios = [
         ['id' => 1, 'precio_inicio' => 50, 'precio_fin' => 100],
@@ -49,13 +47,10 @@ class CategoriaVerLivewire extends Component
         $this->marcas = $this->categoria->marcas;
 
         $this->categoriaFamilia = app(CategoriaController::class)->getCategoriaFamiliaVertical($this->categoria);
-
-        $this->productosConStock = $this->getFilteredProductosConStock();
     }
 
     public function updatedSelectedMarcas()
     {
-        $this->productosConStock = $this->getFilteredProductosConStock();
         $this->resetPage();
     }
 
@@ -69,7 +64,6 @@ class CategoriaVerLivewire extends Component
                 $this->preciosAgregados[] = $precioEncontrado;
             }
         }
-        $this->productosConStock = $this->getFilteredProductosConStock();
         $this->resetPage();
     }
 
@@ -85,10 +79,15 @@ class CategoriaVerLivewire extends Component
             );
     }
 
+    public function updatingPaginacion()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.ecommerce.categoria.categoria-ver-livewire', [
-            'productosConStock' => $this->productosConStock
+            'productosConStock' => $this->getFilteredProductosConStock()
         ]);
     }
 }

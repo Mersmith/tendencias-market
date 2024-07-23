@@ -57,6 +57,7 @@ class ProductoController extends Controller
             $query->whereIn('marca_id', $marcas);
         }
 
-        return $query->get();
+        //return $query->get();
+        return $query->paginate(10);
     }
 }
