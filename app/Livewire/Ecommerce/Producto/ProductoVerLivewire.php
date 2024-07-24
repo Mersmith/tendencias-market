@@ -95,6 +95,9 @@ class ProductoVerLivewire extends Component
     {
         if ($this->selectedColor && $this->selectedSize) {
             $this->selectVariation($this->selectedColor, $this->selectedSize);
+        } else {
+            $this->selectedColor = null;
+            $this->selectedVariation = null;
         }
     }
 
@@ -135,7 +138,33 @@ class ProductoVerLivewire extends Component
             } else {
                 session()->flash('error', 'Por favor selecciona un color válido');
             }
-        } elseif ($this->tipo_variacion == 'VARIA-COLOR-TALLA' && $this->selectedVariation) {
+        } elseif ($this->tipo_variacion == 'VARIA-TALLA') {
+            if ($this->selectedSize) {
+                // Obtener el primer item de la talla seleccionada
+                $sizeItems = $this->variacionesData[$this->selectedSize];
+                $item = $sizeItems->first(); // Seleccionar el primer item para agregar al carrito
+
+                // Verificar si el item ya está en el carrito
+                $exists = false;
+                foreach ($this->carrito as &$cartItem) {
+                    if ($cartItem->variacion_id == $item->variacion_id) {
+                        $cartItem->cantidad += $this->quantity;
+                        $exists = true;
+                        break;
+                    }
+                }
+
+                if (!$exists) {
+                    $item->cantidad = $this->quantity;
+                    $this->carrito[] = $item;
+                }
+
+                session()->flash('message', 'Producto agregado al carrito');
+                $this->reset(['selectedSize', 'quantity']);
+            } else {
+                session()->flash('error', 'Por favor selecciona una talla válida');
+            }
+        } elseif ($this->tipo_variacion == 'VARIA-COLOR-TALLA') {
             // Para productos que varían en color y talla
             $exists = false;
             foreach ($this->carrito as &$cartItem) {
@@ -153,6 +182,27 @@ class ProductoVerLivewire extends Component
 
             session()->flash('message', 'Producto agregado al carrito');
             $this->reset(['selectedVariation', 'quantity']);
+        } elseif ($this->tipo_variacion == 'SIN-VARIACION') {
+
+            $item = $this->variacionesData->first(); // Obtener el primer item del producto
+
+            $exists = false;
+            foreach ($this->carrito as &$cartItem) {
+                if ($cartItem->id == $item->id) {
+                    $cartItem->cantidad += $this->quantity;
+                    $exists = true;
+                    break;
+                }
+            }
+
+            if (!$exists) {
+                $item->cantidad = $this->quantity;
+                $this->carrito[] = $item;
+            }
+
+            session()->flash('message', 'Producto agregado al carrito');
+            $this->reset(['quantity']);
+
         } else {
             session()->flash('error', 'Por favor selecciona una variación válida');
         }

@@ -110,11 +110,31 @@
                         @endforeach
                     </select>
                 </div>
+
+                <!-- Campo para cantidad -->
+                @if ($selectedSize)
+                    <div>
+                        <label for="quantity">Cantidad:</label>
+                        <input type="number" id="quantity" wire:model.live="quantity" min="1"
+                            max="{{ $variacionesData[$selectedSize]->sum('stock') }}">
+                    </div>
+
+                    <!-- Botón para agregar al carrito -->
+                    <button wire:click="addToCart">Agregar al carrito</button>
+                @endif
             @else
                 <div>
                     <p>Stock disponible: {{ $variacionesData->first()->stock }}</p>
                     <p>Precio: {{ $variacionesData->first()->precio }}</p>
                 </div>
+
+                <div>
+                    <label for="quantity">Cantidad:</label>
+                    <input type="number" id="quantity" wire:model.live="quantity" min="1"
+                        max="{{ $variacionesData->first()->stock }}">
+                </div>
+
+                <button wire:click="addToCart">Agregar al carrito</button>
             @endif
         </div>
 
