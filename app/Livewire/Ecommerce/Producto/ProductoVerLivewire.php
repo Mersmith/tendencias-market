@@ -12,7 +12,6 @@ class ProductoVerLivewire extends Component
 {
     public $variacionesData;
     public $producto;
-    public $variaciones;
     public $selectedColor;
     public $selectedSize;
     public $almacenId = 1;
@@ -35,6 +34,8 @@ class ProductoVerLivewire extends Component
                     ->where('producto_descuentos.lista_precio_id', 3)
                     ->where('producto_descuentos.fecha_fin', '>', now());
             })
+            ->leftJoin('colors', 'variacions.color_id', '=', 'colors.id')
+            ->leftJoin('tallas', 'variacions.talla_id', '=', 'tallas.id')
             ->select(
                 'productos.*',
                 'variacions.id as variacion_id',
@@ -48,7 +49,9 @@ class ProductoVerLivewire extends Component
                 'producto_lista_precios.precio_antiguo',
                 'producto_lista_precios.simbolo',
                 'producto_descuentos.porcentaje_descuento',
-                'producto_descuentos.fecha_fin as descuento_fecha_fin'
+                'producto_descuentos.fecha_fin as descuento_fecha_fin',
+                'colors.nombre as color_nombre',
+                'tallas.nombre as talla_nombre'
             )
             ->where('productos.id', $id)
             ->where('inventarios.almacen_id', 1)
@@ -57,7 +60,6 @@ class ProductoVerLivewire extends Component
 
         if ($variacionesData->isNotEmpty()) {
             $this->producto = $variacionesData->first();
-            $this->variaciones = $variacionesData;
 
             $variacionColor = $this->producto->variacion_color;
             $variacionTalla = $this->producto->variacion_talla;
@@ -72,7 +74,7 @@ class ProductoVerLivewire extends Component
                 $this->tipo_variacion = "VARIA-TALLA";
                 $this->variacionesData = $variacionesData->groupBy('talla_id');
             } else {
-                $this->tipo_variacion = "SIN VARIACION";
+                $this->tipo_variacion = "SIN-VARIACION";
                 $this->variacionesData = $variacionesData;
             }
         }

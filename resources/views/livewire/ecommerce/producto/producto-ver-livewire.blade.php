@@ -21,6 +21,7 @@
 
     <div class="dividir">
         <div class="dividir_1">
+            <h1>{{ $this->tipo_variacion }} </h1>
             <h2>{{ $producto->nombre }}</h2>
             <p>{{ $producto->descripcion }}</p>
             <p><strong>Precio:</strong>
@@ -38,7 +39,7 @@
                     <select id="color" wire:model.live="selectedColor">
                         <option value="">Selecciona un color</option>
                         @foreach ($variacionesData as $colorId => $items)
-                            <option value="{{ $colorId }}">Color {{ $colorId }}</option>
+                            <option value="{{ $colorId }}">Color {{ $items->first()->color_nombre }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -50,7 +51,7 @@
                         <select id="size" wire:model.live="selectedSize">
                             <option value="">Selecciona una talla</option>
                             @foreach ($variacionesData[$selectedColor] as $item)
-                                <option value="{{ $item->talla_id }}">Talla {{ $item->talla_id }} - Stock:
+                                <option value="{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
                                     {{ $item->stock }}</option>
                             @endforeach
                         </select>
@@ -66,7 +67,7 @@
                                 // Calcular el stock total para el color
                                 $totalStock = $items->sum('stock');
                             @endphp
-                            <option value="{{ $colorId }}">Color {{ $colorId }} - Stock:
+                            <option value="{{ $colorId }}">Color {{ $items->first()->color_nombre }} - Stock:
                                 {{ $totalStock }}</option>
                         @endforeach
                     </select>
@@ -81,7 +82,7 @@
                                 // Calcular el stock total para la talla
                                 $totalStock = $items->sum('stock');
                             @endphp
-                            <option value="{{ $tallaId }}">Talla {{ $tallaId }} - Stock:
+                            <option value="{{ $tallaId }}">Talla {{ $items->first()->talla_nombre }} - Stock:
                                 {{ $totalStock }}</option>
                         @endforeach
                     </select>
@@ -96,23 +97,7 @@
 
         <div class="dividir_2">
 
-            <div>
-                @foreach ($variaciones as $item)
-                    <div class="variacionesData-item">
-                        <h2>{{ $item->nombre }}</h2>
-                        <p>{{ $item->descripcion }}</p>
-                        <p><strong>Precio:</strong> {{ $item->simbolo }}{{ $item->precio }}</p>
-                        @if ($item->porcentaje_descuento)
-                            <p><strong>Descuento:</strong> {{ $item->porcentaje_descuento }}% hasta
-                                {{ \Carbon\Carbon::parse($item->descuento_fecha_fin)->format('d/m/Y H:i') }}</p>
-                        @endif
-                        <p><strong>Stock:</strong> {{ $item->stock }}</p>
-                        <p><strong>Color ID:</strong> {{ $item->color_id }}</p>
-                        <p><strong>Talla ID:</strong> {{ $item->talla_id }}</p>
-                        <br>
-                    </div>
-                @endforeach
-            </div>
+
         </div>
     </div>
 </div>
