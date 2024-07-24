@@ -10,15 +10,21 @@ use Livewire\Attributes\Layout;
 class ProductoVerLivewire extends Component
 {
     public $producto;
-
+    public $selectedColor;
+    public $selectedSize;
+    public $almacenId = 1;
+    public $listaPrecioId = 3;
     public function mount($id, $slug = null)
     {
         $almacenId = 1;
         $listaPrecioId = 3;
+
         $this->producto = Producto::where('id', $id)
-            ->whereHas('variaciones.inventarios', function ($query) use ($almacenId) {
-                $query->where('almacen_id', $almacenId)
-                    ->where('stock', '>', 0);
+            ->whereHas('variaciones', function ($query) use ($almacenId) {
+                $query->whereHas('inventarios', function ($query) use ($almacenId) {
+                    $query->where('almacen_id', $almacenId)
+                        ->where('stock', '>', 0);
+                });
             })
             ->whereHas('listaPrecios', function ($query) use ($listaPrecioId) {
                 $query->where('lista_precio_id', $listaPrecioId)
@@ -29,14 +35,15 @@ class ProductoVerLivewire extends Component
                     $query->whereHas('inventarios', function ($query) use ($almacenId) {
                         $query->where('almacen_id', $almacenId)
                             ->where('stock', '>', 0);
-                    })
-                        ->with([
-                            'inventarios' => function ($query) use ($almacenId) {
-                                $query->where('almacen_id', $almacenId)
-                                    ->where('stock', '>', 0);
-                            }
-                        ]);
+                    })->with([
+                                'inventarios' => function ($query) use ($almacenId) {
+                                    $query->where('almacen_id', $almacenId)
+                                        ->where('stock', '>', 0);
+                                }
+                            ]);
                 },
+                'variaciones.color',
+                'variaciones.talla',
                 'listaPrecios' => function ($query) use ($listaPrecioId) {
                     $query->where('lista_precio_id', $listaPrecioId)
                         ->where('precio', '>', 0);
@@ -56,6 +63,12 @@ class ProductoVerLivewire extends Component
                 'slug' => $this->producto->slug
             ]);
         }
+
+    }
+
+    public function updatedSelectedColor()
+    {
+        $this->selectedSize = null;
     }
 
     public function render()

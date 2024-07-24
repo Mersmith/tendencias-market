@@ -72,6 +72,60 @@
                     <br>
                 @endforeach
             @endif
+
+            <br>
+
+            <h3>OTRO</h3>
+            @if ($producto->variaciones->isNotEmpty())
+                <div>
+                    <p>Selecciona un color:</p>
+                    @foreach ($producto->variaciones->filter(function ($variacion) use ($almacenId) {
+            return $variacion->inventarios->contains('almacen_id', $almacenId);
+        })->groupBy('color.id') as $colorId => $variaciones)
+                        <label>
+                            <input type="radio" wire:model.live="selectedColor" value="{{ $colorId }}">
+                            {{ $variaciones->first()->color->nombre }}
+                        </label>
+                    @endforeach
+                </div>
+
+                @if ($selectedColor)
+                    <div>
+                        <p>Selecciona una talla:</p>
+                        @foreach ($producto->variaciones->filter(function ($variacion) use ($selectedColor, $almacenId) {
+            return $variacion->color->id == $selectedColor && $variacion->inventarios->contains('almacen_id', $almacenId);
+        })->groupBy('talla.id') as $tallaId => $variaciones)
+                            <label>
+                                <input type="radio" wire:model.live="selectedSize" value="{{ $tallaId }}">
+                                {{ $variaciones->first()->talla->nombre }}
+                            </label>
+                        @endforeach
+                    </div>
+                @endif
+
+                <br>
+
+                @if ($selectedColor && $selectedSize)
+                    @php
+                        $selectedVariacion = $producto->variaciones
+                            ->filter(function ($variacion) use ($selectedColor, $selectedSize, $almacenId) {
+                                return $variacion->color->id == $selectedColor &&
+                                    $variacion->talla->id == $selectedSize &&
+                                    $variacion->inventarios->contains('almacen_id', $almacenId);
+                            })
+                            ->first();
+                    @endphp
+                    @if ($selectedVariacion)
+                        <h2>Variación: {{ $selectedVariacion->id }}</h2>
+                        <p>Color: {{ $selectedVariacion->color->nombre }}</p>
+                        <p>Talla: {{ $selectedVariacion->talla->nombre }}</p>
+                        <p>Stock: {{ $selectedVariacion->inventarios->first()->stock }}</p>
+                    @endif
+                    <br>
+                @endif
+            @endif
+
+
         </div>
     </div>
 </div>

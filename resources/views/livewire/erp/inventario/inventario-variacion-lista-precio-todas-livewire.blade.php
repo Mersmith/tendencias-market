@@ -160,6 +160,7 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
+                                <th>Almacén</th>
                                 <th>Categoria</th>
                                 <th>Marca</th>
                                 <th>Producto</th>
@@ -177,6 +178,8 @@
                             @foreach ($inventario as $item)
                                 <tr>
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
+                                    <td class="g_resaltar">ID: {{ $item->almacen->id }} -
+                                        {{ $item->almacen->nombre }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->categoria->id }} -
                                         {{ $item->variacion->producto->categoria->nombre }}</td>
                                     <td class="g_resaltar">ID: {{ $item->variacion->producto->marca->id }} -
