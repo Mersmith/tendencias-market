@@ -33,7 +33,6 @@
             @endif
 
             @if ($tipo_variacion == 'VARIA-COLOR-TALLA')
-                <!-- Selección de color -->
                 <div>
                     <label for="color">Selecciona un color:</label>
                     <select id="color" wire:model.live="selectedColor">
@@ -48,7 +47,8 @@
                 @if ($selectedColor)
                     <div>
                         <label for="size">Selecciona una talla:</label>
-                        <select id="size" wire:model.live="selectedSize">
+                        <select id="size" wire:model.live="selectedSize"
+                            wire:change="selectVariation(selectedColor, selectedSize)">
                             <option value="">Selecciona una talla</option>
                             @foreach ($variacionesData[$selectedColor] as $item)
                                 <option value="{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
@@ -56,6 +56,17 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div>
+                        <label for="quantity">Cantidad:</label>
+                        <input type="number" id="quantity" wire:model.live="quantity" min="1"
+                            max="{{ $selectedVariation ? $selectedVariation->stock : 1 }}">
+                    </div>
+                @endif
+
+                <!-- Botón para agregar al carrito -->
+                @if ($selectedVariation)
+                    <button wire:click="addToCart">Agregar al carrito</button>
                 @endif
             @elseif ($tipo_variacion == 'VARIA-COLOR')
                 <div>
@@ -96,8 +107,20 @@
         </div>
 
         <div class="dividir_2">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
 
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
         </div>
     </div>
+
+    <button wire:click="enviar()">Enviar</button>
 </div>

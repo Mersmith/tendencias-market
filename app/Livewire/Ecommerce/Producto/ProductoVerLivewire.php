@@ -19,6 +19,9 @@ class ProductoVerLivewire extends Component
 
     public $tipo_variacion;
 
+    public $carrito = [];
+    public $selectedVariation;
+    public $quantity = 1;
     public function mount($id, $slug = null)
     {
         $variacionesData = DB::table('productos')
@@ -83,6 +86,52 @@ class ProductoVerLivewire extends Component
     public function updatedSelectedColor()
     {
         $this->selectedSize = null;
+        $this->selectedVariation = null;
+    }
+
+    public function updatedSelectedSize()
+    {
+        if ($this->selectedColor && $this->selectedSize) {
+            $this->selectVariation($this->selectedColor, $this->selectedSize);
+        }
+    }
+
+    public function selectVariation($colorId, $sizeId)
+    {
+        $variation = $this->variacionesData[$colorId]->firstWhere('talla_id', $sizeId);
+        if ($variation) {
+            $this->selectedVariation = $variation;
+        }
+    }
+
+    public function addToCart()
+    {
+        if ($this->selectedVariation) {
+            $exists = false;
+            foreach ($this->carrito as &$item) {
+                if ($item->variacion_id == $this->selectedVariation->variacion_id) {
+                    $item->cantidad += $this->quantity;
+                    $exists = true;
+                    break;
+                }
+            }
+
+            if (!$exists) {
+                $this->selectedVariation->cantidad = $this->quantity;
+                $this->carrito[] = $this->selectedVariation;
+            }
+
+            session()->flash('message', 'Producto agregado al carrito');
+
+            $this->reset(['selectedVariation', 'quantity']);
+        } else {
+            session()->flash('error', 'Por favor selecciona una variación válida');
+        }
+    }
+
+    public function enviar()
+    {
+        dd($this->carrito);
     }
 
     public function render()
