@@ -61,6 +61,8 @@ class ProductoVerLivewire extends Component
             ->where('inventarios.stock', '>', 0)
             ->get();
 
+        //dd($variacionesData);
+
         if ($variacionesData->isNotEmpty()) {
             $this->producto = $variacionesData->first();
 
@@ -106,11 +108,39 @@ class ProductoVerLivewire extends Component
 
     public function addToCart()
     {
-        if ($this->selectedVariation) {
+        if ($this->tipo_variacion == 'VARIA-COLOR') {
+            // Para productos que solo varían en color
+            if ($this->selectedColor) {
+                // Obtener el primer item del color seleccionado
+                $colorItems = $this->variacionesData[$this->selectedColor];
+                $item = $colorItems->first(); // Seleccionar el primer item para agregar al carrito
+
+                // Verificar si el item ya está en el carrito
+                $exists = false;
+                foreach ($this->carrito as &$cartItem) {
+                    if ($cartItem->variacion_id == $item->variacion_id) {
+                        $cartItem->cantidad += $this->quantity;
+                        $exists = true;
+                        break;
+                    }
+                }
+
+                if (!$exists) {
+                    $item->cantidad = $this->quantity;
+                    $this->carrito[] = $item;
+                }
+
+                session()->flash('message', 'Producto agregado al carrito');
+                $this->reset(['selectedColor', 'quantity']);
+            } else {
+                session()->flash('error', 'Por favor selecciona un color válido');
+            }
+        } elseif ($this->tipo_variacion == 'VARIA-COLOR-TALLA' && $this->selectedVariation) {
+            // Para productos que varían en color y talla
             $exists = false;
-            foreach ($this->carrito as &$item) {
-                if ($item->variacion_id == $this->selectedVariation->variacion_id) {
-                    $item->cantidad += $this->quantity;
+            foreach ($this->carrito as &$cartItem) {
+                if ($cartItem->variacion_id == $this->selectedVariation->variacion_id) {
+                    $cartItem->cantidad += $this->quantity;
                     $exists = true;
                     break;
                 }
@@ -122,12 +152,12 @@ class ProductoVerLivewire extends Component
             }
 
             session()->flash('message', 'Producto agregado al carrito');
-
             $this->reset(['selectedVariation', 'quantity']);
         } else {
             session()->flash('error', 'Por favor selecciona una variación válida');
         }
     }
+
 
     public function enviar()
     {

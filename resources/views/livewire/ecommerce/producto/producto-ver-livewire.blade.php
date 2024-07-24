@@ -83,6 +83,18 @@
                         @endforeach
                     </select>
                 </div>
+
+                <!-- Campo para cantidad -->
+                @if ($selectedColor)
+                    <div>
+                        <label for="quantity">Cantidad:</label>
+                        <input type="number" id="quantity" wire:model.live="quantity" min="1"
+                            max="{{ $variacionesData[$selectedColor]->sum('stock') }}">
+                    </div>
+
+                    <!-- Botón para agregar al carrito -->
+                    <button wire:click="addToCart">Agregar al carrito</button>
+                @endif
             @elseif ($tipo_variacion == 'VARIA-TALLA')
                 <div>
                     <label for="size">Selecciona una talla:</label>
