@@ -72,12 +72,19 @@ class ProductoVerLivewire extends Component
             if ($variacionColor && $variacionTalla) {
                 $this->tipo_variacion = "VARIA-COLOR-TALLA";
                 $this->variacionesData = $variacionesData->groupBy('color_id');
+                $this->colorSeleccionado = $this->variacionesData->keys()->first();
+                $this->tallaSeleccionado = $this->variacionesData[$this->colorSeleccionado]->first()->talla_id;
+                $this->seleccionarVariacionColorTalla($this->colorSeleccionado, $this->tallaSeleccionado);
             } elseif ($variacionColor) {
                 $this->tipo_variacion = "VARIA-COLOR";
                 $this->variacionesData = $variacionesData->groupBy('color_id');
+                $this->colorSeleccionado = $this->variacionesData->keys()->first();
+                $this->seleccionarVariacionColor();
             } elseif ($variacionTalla) {
                 $this->tipo_variacion = "VARIA-TALLA";
                 $this->variacionesData = $variacionesData->groupBy('talla_id');
+                $this->tallaSeleccionado = $this->variacionesData->keys()->first();
+                $this->seleccionarVariacionTalla();
             } else {
                 $this->tipo_variacion = "SIN-VARIACION";
                 $this->variacionesData = $variacionesData;
@@ -90,6 +97,8 @@ class ProductoVerLivewire extends Component
                     'slug' => $this->producto->slug
                 ]);
             }
+        } else {
+            abort(404, 'Producto no encontrado');
         }
     }
 
@@ -99,10 +108,7 @@ class ProductoVerLivewire extends Component
         $this->variacionSeleccionada = null;
 
         if ($this->tipo_variacion == "VARIA-COLOR") {
-            $variacionIdentica = $this->variacionesData[$this->colorSeleccionado]->first();
-            if ($variacionIdentica) {
-                $this->variacionSeleccionada = $variacionIdentica;
-            }
+            $this->seleccionarVariacionColor();
         }
     }
 
@@ -110,21 +116,34 @@ class ProductoVerLivewire extends Component
     {
         //VARIA COLOR Y TALLA
         if ($this->colorSeleccionado && $this->tallaSeleccionado) {
-            $this->colorTallaSeleccionado($this->colorSeleccionado, $this->tallaSeleccionado);
+            $this->seleccionarVariacionColorTalla($this->colorSeleccionado, $this->tallaSeleccionado);
         } else {
             $this->colorSeleccionado = null;
             $this->variacionSeleccionada = null;
 
             if ($this->tipo_variacion == "VARIA-TALLA") {
-                $variacionIdentica = $this->variacionesData[$this->tallaSeleccionado]->first();
-                if ($variacionIdentica) {
-                    $this->variacionSeleccionada = $variacionIdentica;
-                }
+                $this->seleccionarVariacionTalla();
             }
         }
     }
 
-    public function colorTallaSeleccionado($colorId, $tallaId)
+    public function seleccionarVariacionColor()
+    {
+        $variacionIdentica = $this->variacionesData[$this->colorSeleccionado]->first();
+        if ($variacionIdentica) {
+            $this->variacionSeleccionada = $variacionIdentica;
+        }
+    }
+
+    public function seleccionarVariacionTalla()
+    {
+        $variacionIdentica = $this->variacionesData[$this->tallaSeleccionado]->first();
+        if ($variacionIdentica) {
+            $this->variacionSeleccionada = $variacionIdentica;
+        }
+    }
+
+    public function seleccionarVariacionColorTalla($colorId, $tallaId)
     {
         //VARIA COLOR Y TALLA
         $variacionIdentica = $this->variacionesData[$colorId]->firstWhere('talla_id', $tallaId);

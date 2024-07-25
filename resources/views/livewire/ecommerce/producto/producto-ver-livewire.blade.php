@@ -48,7 +48,7 @@
                     <div>
                         <label for="size">Selecciona una talla:</label>
                         <select id="size" wire:model.live="tallaSeleccionado"
-                            wire:change="colorTallaSeleccionado(colorSeleccionado, tallaSeleccionado)">
+                            wire:change="seleccionarVariacionColorTalla(colorSeleccionado, tallaSeleccionado)">
                             <option value="">Selecciona una talla</option>
                             @foreach ($variacionesData[$colorSeleccionado] as $item)
                                 <option value="{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
