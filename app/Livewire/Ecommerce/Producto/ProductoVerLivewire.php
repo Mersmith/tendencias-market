@@ -12,16 +12,16 @@ class ProductoVerLivewire extends Component
 {
     public $variacionesData;
     public $producto;
-    public $selectedColor;
-    public $selectedSize;
+    public $colorSeleccionado;
+    public $tallaSeleccionado;
     public $almacenId = 1;
     public $listaPrecioId = 3;
 
     public $tipo_variacion;
 
     public $carrito = [];
-    public $selectedVariation;
-    public $quantity = 1;
+    public $variacionSeleccionada;
+    public $cantidad = 1;
     public function mount($id, $slug = null)
     {
         $variacionesData = DB::table('productos')
@@ -81,130 +81,79 @@ class ProductoVerLivewire extends Component
             } else {
                 $this->tipo_variacion = "SIN-VARIACION";
                 $this->variacionesData = $variacionesData;
+                $this->variacionSeleccionada = $variacionesData->first();
+            }
+
+            if (!$slug || $slug !== $this->producto->slug) {
+                return redirect()->route('ecommerce.producto.vista.ver', [
+                    'id' => $this->producto->id,
+                    'slug' => $this->producto->slug
+                ]);
             }
         }
     }
 
-    public function updatedSelectedColor()
+    public function updatedColorSeleccionado()
     {
-        $this->selectedSize = null;
-        $this->selectedVariation = null;
+        $this->tallaSeleccionado = null;
+        $this->variacionSeleccionada = null;
+
+        if ($this->tipo_variacion == "VARIA-COLOR") {
+            $variacionIdentica = $this->variacionesData[$this->colorSeleccionado]->first();
+            if ($variacionIdentica) {
+                $this->variacionSeleccionada = $variacionIdentica;
+            }
+        }
     }
 
-    public function updatedSelectedSize()
+    public function updatedTallaSeleccionado()
     {
-        if ($this->selectedColor && $this->selectedSize) {
-            $this->selectVariation($this->selectedColor, $this->selectedSize);
+        //VARIA COLOR Y TALLA
+        if ($this->colorSeleccionado && $this->tallaSeleccionado) {
+            $this->colorTallaSeleccionado($this->colorSeleccionado, $this->tallaSeleccionado);
         } else {
-            $this->selectedColor = null;
-            $this->selectedVariation = null;
+            $this->colorSeleccionado = null;
+            $this->variacionSeleccionada = null;
+
+            if ($this->tipo_variacion == "VARIA-TALLA") {
+                $variacionIdentica = $this->variacionesData[$this->tallaSeleccionado]->first();
+                if ($variacionIdentica) {
+                    $this->variacionSeleccionada = $variacionIdentica;
+                }
+            }
         }
     }
 
-    public function selectVariation($colorId, $sizeId)
+    public function colorTallaSeleccionado($colorId, $tallaId)
     {
-        $variation = $this->variacionesData[$colorId]->firstWhere('talla_id', $sizeId);
-        if ($variation) {
-            $this->selectedVariation = $variation;
+        //VARIA COLOR Y TALLA
+        $variacionIdentica = $this->variacionesData[$colorId]->firstWhere('talla_id', $tallaId);
+        if ($variacionIdentica) {
+            $this->variacionSeleccionada = $variacionIdentica;
         }
     }
 
-    public function addToCart()
+    public function agregarCarrito()
     {
-        if ($this->tipo_variacion == 'VARIA-COLOR') {
-            // Para productos que solo varían en color
-            if ($this->selectedColor) {
-                // Obtener el primer item del color seleccionado
-                $colorItems = $this->variacionesData[$this->selectedColor];
-                $item = $colorItems->first(); // Seleccionar el primer item para agregar al carrito
-
-                // Verificar si el item ya está en el carrito
-                $exists = false;
-                foreach ($this->carrito as &$cartItem) {
-                    if ($cartItem->variacion_id == $item->variacion_id) {
-                        $cartItem->cantidad += $this->quantity;
-                        $exists = true;
-                        break;
-                    }
-                }
-
-                if (!$exists) {
-                    $item->cantidad = $this->quantity;
-                    $this->carrito[] = $item;
-                }
-
-                session()->flash('message', 'Producto agregado al carrito');
-                $this->reset(['selectedColor', 'quantity']);
-            } else {
-                session()->flash('error', 'Por favor selecciona un color válido');
-            }
-        } elseif ($this->tipo_variacion == 'VARIA-TALLA') {
-            if ($this->selectedSize) {
-                // Obtener el primer item de la talla seleccionada
-                $sizeItems = $this->variacionesData[$this->selectedSize];
-                $item = $sizeItems->first(); // Seleccionar el primer item para agregar al carrito
-
-                // Verificar si el item ya está en el carrito
-                $exists = false;
-                foreach ($this->carrito as &$cartItem) {
-                    if ($cartItem->variacion_id == $item->variacion_id) {
-                        $cartItem->cantidad += $this->quantity;
-                        $exists = true;
-                        break;
-                    }
-                }
-
-                if (!$exists) {
-                    $item->cantidad = $this->quantity;
-                    $this->carrito[] = $item;
-                }
-
-                session()->flash('message', 'Producto agregado al carrito');
-                $this->reset(['selectedSize', 'quantity']);
-            } else {
-                session()->flash('error', 'Por favor selecciona una talla válida');
-            }
-        } elseif ($this->tipo_variacion == 'VARIA-COLOR-TALLA') {
-            // Para productos que varían en color y talla
+        if ($this->variacionSeleccionada) {
             $exists = false;
             foreach ($this->carrito as &$cartItem) {
-                if ($cartItem->variacion_id == $this->selectedVariation->variacion_id) {
-                    $cartItem->cantidad += $this->quantity;
+                if ($cartItem->variacion_id == $this->variacionSeleccionada->variacion_id) {
+                    $cartItem->cantidad += $this->cantidad;
                     $exists = true;
                     break;
                 }
             }
 
             if (!$exists) {
-                $this->selectedVariation->cantidad = $this->quantity;
-                $this->carrito[] = $this->selectedVariation;
+                $this->variacionSeleccionada->cantidad = $this->cantidad;
+                $this->carrito[] = $this->variacionSeleccionada;
             }
 
             session()->flash('message', 'Producto agregado al carrito');
-            $this->reset(['selectedVariation', 'quantity']);
-        } elseif ($this->tipo_variacion == 'SIN-VARIACION') {
-
-            $item = $this->variacionesData->first(); // Obtener el primer item del producto
-
-            $exists = false;
-            foreach ($this->carrito as &$cartItem) {
-                if ($cartItem->id == $item->id) {
-                    $cartItem->cantidad += $this->quantity;
-                    $exists = true;
-                    break;
-                }
-            }
-
-            if (!$exists) {
-                $item->cantidad = $this->quantity;
-                $this->carrito[] = $item;
-            }
-
-            session()->flash('message', 'Producto agregado al carrito');
-            $this->reset(['quantity']);
-
+            $this->reset(['cantidad']);
         } else {
-            session()->flash('error', 'Por favor selecciona una variación válida');
+            session()->flash('message', 'ERROR');
         }
     }
 
