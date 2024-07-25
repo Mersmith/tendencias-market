@@ -34,61 +34,62 @@
 
             @if ($tipo_variacion == 'VARIA-COLOR-TALLA')
                 <div>
-                    <label for="color">Selecciona un color:</label>
-                    <select id="color" wire:model.live="colorSeleccionado">
-                        <option value="">Selecciona un color</option>
-                        @foreach ($variacionesData as $colorId => $items)
-                            <option value="{{ $colorId }}">Color {{ $items->first()->color_nombre }}</option>
-                        @endforeach
-                    </select>
+                    <label>Selecciona un color:</label>
+                    @foreach ($variacionesData as $colorId => $items)
+                        <div class="color-option">
+                            <input type="radio" id="color_{{ $colorId }}" name="color" value="{{ $colorId }}"
+                                wire:model.live="colorSeleccionado">
+                            <label for="color_{{ $colorId }}">Color {{ $items->first()->color_nombre }}</label>
+                        </div>
+                    @endforeach
                 </div>
 
                 <!-- Mostrar tallas según el color seleccionado -->
                 @if ($colorSeleccionado)
                     <div>
-                        <label for="size">Selecciona una talla:</label>
-                        <select id="size" wire:model.live="tallaSeleccionado"
-                            wire:change="seleccionarVariacionColorTalla(colorSeleccionado, tallaSeleccionado)">
-                            <option value="">Selecciona una talla</option>
-                            @foreach ($variacionesData[$colorSeleccionado] as $item)
-                                <option value="{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
-                                    {{ $item->stock }}</option>
-                            @endforeach
-                        </select>
+                        <label>Selecciona una talla:</label>
+                        @foreach ($variacionesData[$colorSeleccionado] as $item)
+                            <div class="talla-option">
+                                <input type="radio" id="talla_{{ $item->talla_id }}" name="talla"
+                                    value="{{ $item->talla_id }}" wire:model.live="tallaSeleccionado">
+                                <label for="talla_{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
+                                    {{ $item->stock }}</label>
+                            </div>
+                        @endforeach
                     </div>
                 @endif
-
-
                 <!-- Botón para agregar al carrito -->
             @elseif ($tipo_variacion == 'VARIA-COLOR')
                 <div>
-                    <label for="color">Selecciona un color:</label>
-                    <select id="color" wire:model.live="colorSeleccionado">
-                        <option value="">Selecciona un color</option>
-                        @foreach ($variacionesData as $colorId => $items)
-                            @php
-                                // Calcular el stock total para el color
-                                $totalStock = $items->sum('stock');
-                            @endphp
-                            <option value="{{ $colorId }}">Color {{ $items->first()->color_nombre }} - Stock:
-                                {{ $totalStock }}</option>
-                        @endforeach
-                    </select>
+                    <label>Selecciona un color:</label>
+                    @foreach ($variacionesData as $colorId => $items)
+                        @php
+                            // Calcular el stock total para el color
+                            $totalStock = $items->sum('stock');
+                        @endphp
+                        <div class="color-option">
+                            <input type="radio" id="color_{{ $colorId }}" name="color"
+                                value="{{ $colorId }}" wire:model.live="colorSeleccionado">
+                            <label for="color_{{ $colorId }}">Color {{ $items->first()->color_nombre }} - Stock:
+                                {{ $totalStock }}</label>
+                        </div>
+                    @endforeach
                 </div>
             @elseif ($tipo_variacion == 'VARIA-TALLA')
                 <div>
-                    <label for="size">Selecciona una talla:</label>
-                    <select id="size" wire:model.live="tallaSeleccionado">
-                        <option value="">Selecciona una talla</option>
-                        @foreach ($variacionesData as $tallaId => $items)
-                            @php
-                                // Calcular el stock total para la talla
-                                $totalStock = $items->sum('stock');
-                            @endphp
-                            <option value="{{ $tallaId }}">Talla {{ $items->first()->talla_nombre }} - Stock:
-                                {{ $totalStock }}</option>
-                        @endforeach
-                    </select>
+                    <label>Selecciona una talla:</label>
+                    @foreach ($variacionesData as $tallaId => $items)
+                        @php
+                            // Calcular el stock total para la talla
+                            $totalStock = $items->sum('stock');
+                        @endphp
+                        <div class="talla-option">
+                            <input type="radio" id="talla_{{ $tallaId }}" name="talla"
+                                value="{{ $tallaId }}" wire:model.live="tallaSeleccionado">
+                            <label for="talla_{{ $tallaId }}">Talla {{ $items->first()->talla_nombre }} - Stock:
+                                {{ $totalStock }}</label>
+                        </div>
+                    @endforeach
                 </div>
             @else
                 <div>
@@ -99,8 +100,12 @@
 
             <div>
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" wire:model.live="cantidad" min="1"
-                    max="{{ $variacionSeleccionada ? $variacionSeleccionada->stock : 1 }}">
+                <div>
+                    <button type="button" wire:click="decrementarCantidad">−</button>
+                    <span>{{ $cantidad }} </span>
+                    <button type="button" wire:click="incrementarCantidad">+</button>
+                </div>
+                <p>Máximo {{ $variacionSeleccionada ? $variacionSeleccionada->stock : '' }} unidades.</p>
                 <button wire:click="agregarCarrito">Agregar al carrito</button>
             </div>
         </div>

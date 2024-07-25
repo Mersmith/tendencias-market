@@ -75,6 +75,7 @@ class ProductoVerLivewire extends Component
                 $this->colorSeleccionado = $this->variacionesData->keys()->first();
                 $this->tallaSeleccionado = $this->variacionesData[$this->colorSeleccionado]->first()->talla_id;
                 $this->seleccionarVariacionColorTalla($this->colorSeleccionado, $this->tallaSeleccionado);
+                //dd($this->variacionSeleccionada);
             } elseif ($variacionColor) {
                 $this->tipo_variacion = "VARIA-COLOR";
                 $this->variacionesData = $variacionesData->groupBy('color_id');
@@ -109,6 +110,9 @@ class ProductoVerLivewire extends Component
 
         if ($this->tipo_variacion == "VARIA-COLOR") {
             $this->seleccionarVariacionColor();
+        } elseif ($this->tipo_variacion == "VARIA-COLOR-TALLA") {
+            $this->tallaSeleccionado = $this->variacionesData[$this->colorSeleccionado]->first()->talla_id;
+            $this->seleccionarVariacionColorTalla($this->colorSeleccionado, $this->tallaSeleccionado);
         }
     }
 
@@ -173,6 +177,22 @@ class ProductoVerLivewire extends Component
             $this->reset(['cantidad']);
         } else {
             session()->flash('message', 'ERROR');
+        }
+    }
+
+    public function incrementarCantidad()
+    {
+        if ($this->variacionSeleccionada) {
+            if ($this->cantidad < $this->variacionSeleccionada->stock) {
+                $this->cantidad++;
+            }
+        }
+    }
+
+    public function decrementarCantidad()
+    {
+        if ($this->cantidad > 1) {
+            $this->cantidad--;
         }
     }
 
