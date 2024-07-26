@@ -36,6 +36,16 @@
     width: 265px;
 }
 
+/* MENU HAMBURGUESA MOVIL */
+.ecommerce_menu_principal .menu_hamburguesa_movil {
+    display: none;
+    cursor: pointer;
+}
+
+.ecommerce_menu_principal .imagen_icono_hamburguesa {
+    width: 40px;
+}
+
 /* FIN LOGO COMPUTADORA */
 
 /* BUSCADOR PRINCIPAL */
@@ -78,7 +88,7 @@
     box-shadow: none;
 }
 
-.buscador_principal button {
+.ecommerce_menu_principal .buscador_principal button {
     position: absolute;
     width: 46px;
     height: 46px;
@@ -97,34 +107,27 @@
 /* FIN BUSCADOR PRINCIPAL */
 
 /* MENU HAMBURGUESA COMPUTADORA */
-.menu_hamburguesa_computadora {
+.ecommerce_menu_principal .menu_hamburguesa_computadora {
     grid-area: menu_hamburguesa_computadora;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     padding: 0px 15px;
 }
 
-.imagen_icono_hamburguesa {
-    width: 30px;
-}
-
-.menu_hamburguesa_computadora span {
+.ecommerce_menu_principal .menu_hamburguesa_computadora span {
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    color: #F10A0F;
+    font-size: 15px;
+    color: var(--color-texto-secundario);
 }
 
-/* MENU HAMBURGUESA MOVIL */
-.menu_hamburguesa_movil {
-    display: none;
-    cursor: pointer;
-}
+/*FIN MENU HAMBURGUESA COMPUTADORA */
 
 /* MENU PRINCIPAL USUARIOS */
-.menu_principal_usuarios {
+.ecommerce_menu_principal .menu_principal_usuarios {
     grid-area: menu_principal_usuarios;
     display: flex;
     justify-content: space-between;
@@ -132,68 +135,27 @@
 }
 
 /* ITEMS MENU*/
-.menu_principal_usuarios li {
+.ecommerce_menu_principal .menu_principal_usuarios li {
     height: 50px;
     display: flex;
     justify-content: center;
     padding: 0px 15px;
 }
 
-.menu_principal_usuarios li:not(:last-child) {
+.ecommerce_menu_principal .menu_principal_usuarios li:not(:last-child) {
     border-right: 1px solid;
-    border-right-color: #CAD1D9;
+    border-right-color: var(--color-borde-secundario);
 }
 
-/* ITEM SESION */
-.contenedor_menu_sesion {
+.ecommerce_menu_principal .menu_principal_usuarios li a {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    cursor: pointer;
-}
-
-.contenedor_menu_sesion span {
-    display: flex;
     align-items: center;
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 20px;
-    color: #495867;
+    color: var(--color-texto-primario);
+    font-size: 15px;
 }
 
-/* ITEM COMPRAS  */
-.menu_compras a {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.menu_compras a span {
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 20px;
-    color: #495867;
-}
-
-/* ITEM FAVORITOS  */
-.menu_favoritos a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-decoration: none;
-}
-
-/* ITEM CARRITO  */
-.menu_carrito a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-decoration: none;
-}
+/* FIN MENU PRINCIPAL USUARIOS */
 
 /* RESPONSIVE LAPTOP*/
 @media (max-width: 1300px) {

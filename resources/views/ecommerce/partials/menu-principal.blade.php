@@ -14,8 +14,8 @@
                     class="imagen_icono_hamburguesa menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar" />
 
                 <a href="#">
-                    <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}" alt="Logo"
-                        class="imagen_logo_computadora" />
+                    <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
+                        alt="Logo" class="imagen_logo_computadora" />
                 </a>
             </div>
 
@@ -35,38 +35,40 @@
                 <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
                     class="imagen_icono_hamburguesa" />
 
-                <span>Menú</span>
+                <span>Categorias</span>
             </div>
 
             <!-- MENU PRINCIPAL USUARIOS -->
             <ul class="menu_principal_usuarios">
-                <!-- ITEM SESION  -->
-                <li class="contenedor_menu_sesion">
-                    <span>Hola,</span>
-                    <span>Inicia sesión
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_abajo.svg') }}" alt="Logo" />
-                    </span>
-                </li>
-
-                <!-- ITEM MIS COMPRAS  -->
-                <li class="menu_compras">
+                <!-- ITEM CUENTA  -->
+                <li>
                     <a href="#">
-                        <span>Mis</span>
-                        <span>compras</span>
+                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <span>Cuenta</span>
                     </a>
                 </li>
 
-                <!-- ITEM FAVORITOS  -->
-                <li class="menu_favoritos">
+                <!-- ITEM FAVORITOS -->
+                <li>
                     <a href="#">
                         <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <span>Favoritos</span>
+                    </a>
+                </li>
+
+                <!-- ITEM PUNTOS  -->
+                <li>
+                    <a href="#">
+                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <span>Puntos</span>
                     </a>
                 </li>
 
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_carrito.svg') }}" alt="Logo" />
+                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <span>Carrito</span>
                     </a>
                 </li>
             </ul>
