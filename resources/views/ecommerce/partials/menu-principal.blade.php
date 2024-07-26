@@ -5,10 +5,9 @@
 
 <div>
     <!-- MENU PRINCIPAL -->
-    <header class="menu_principal">
+    <header class="ecommerce_menu_principal">
         <!-- MENU ARRIBA -->
         <div class="menu_principal_arriba">
-
             <!-- LOGO COMPUTADORA -->
             <div class="logo_computadora">
                 <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
@@ -20,23 +19,23 @@
                 </a>
             </div>
 
+            <!-- BUSCADOR PRINCIPAL -->
+            <div class="buscador_principal">
+                <div class="contenedor_input_buscador_principal">
+                    <input type="text" placeholder="Busca las mejores Tendencias" />
+                </div>
+
+                <button>
+                    <img src="{{ asset('assets/ecommerce/iconos/icono_buscar.svg') }}" alt="Logo" />
+                </button>
+            </div>
+
             <!-- MENU HAMBURGUESA COMPUTADORA -->
             <div class="menu_hamburguesa_computadora" x-on:click="toggleContenedorSidebar">
                 <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
                     class="imagen_icono_hamburguesa" />
 
                 <span>Menú</span>
-            </div>
-
-            <!-- BUSCADOR PRINCIPAL -->
-            <div class="buscador_principal">
-                <div class="contenedor_input_buscador_principal">
-                    <input type="text" placeholder="Buscar en falabella.com" />
-                </div>
-
-                <button>
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_buscar.svg') }}" alt="Logo" />
-                </button>
             </div>
 
             <!-- MENU PRINCIPAL USUARIOS -->

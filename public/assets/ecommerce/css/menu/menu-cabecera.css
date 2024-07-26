@@ -1,10 +1,9 @@
 /* MENU PRINCIPAL */
-.menu_principal {
+.ecommerce_menu_principal {
     width: 100%;
-    height: 120px;
+    height: var(--altura-header-principal-computadora);
     display: flex;
     flex-direction: column;
-    /*background-color: red;*/
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -13,25 +12,89 @@
 }
 
 /* MENU ARRIBA */
-.menu_principal_arriba {
+.ecommerce_menu_principal .menu_principal_arriba {
     padding: 0px 50px;
     width: 100%;
-    height: 70px;
+    height: var(--altura-menu-principal-arriba);
     display: grid;
-    grid-template-areas: "logo_computadora menu_hamburguesa_computadora buscador_principal menu_principal_usuarios";
-    grid-template-columns: auto auto 1fr auto;
-    background-color: #FAFAFA;
+    grid-template-areas: "logo_computadora buscador_principal menu_hamburguesa_computadora menu_principal_usuarios";
+    grid-template-columns: auto 1fr auto auto;
+    background-color: var(--color-fondo-primario);
     grid-gap: 40px;
 }
 
 /* LOGO COMPUTADORA */
-.logo_computadora {
+.ecommerce_menu_principal .logo_computadora {
     grid-area: logo_computadora;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
+
+.ecommerce_menu_principal .logo_computadora .imagen_logo_computadora {
+    width: 265px;
+}
+
+/* FIN LOGO COMPUTADORA */
+
+/* BUSCADOR PRINCIPAL */
+.ecommerce_menu_principal .buscador_principal {
+    position: relative;
+    grid-area: buscador_principal;
+    display: flex;
+    align-self: center;
+}
+
+.ecommerce_menu_principal .contenedor_input_buscador_principal {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 35px;
+    border: 0.5px solid var(--color-borde-primario);
+}
+
+.ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"] {
+    width: 100%;
+    height: 100%;
+    background: var(--color-fondo-primario);
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: .2px;
+    color: var(--color-texto-primario);
+    box-shadow: none;
+    border-radius: 35px;
+}
+
+.ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"]:focus,
+.ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"]:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.buscador_principal button {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--color-fondo-terciario);
+    border-radius: 35px;
+    border: 1px solid var(--color-borde-primario);
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+/* FIN BUSCADOR PRINCIPAL */
 
 /* MENU HAMBURGUESA COMPUTADORA */
 .menu_hamburguesa_computadora {
@@ -58,56 +121,6 @@
 .menu_hamburguesa_movil {
     display: none;
     cursor: pointer;
-}
-
-/* BUSCADOR PRINCIPAL */
-.buscador_principal {
-    position: relative;
-    grid-area: buscador_principal;
-    display: flex;
-    align-self: center;
-}
-
-.contenedor_input_buscador_principal {
-    width: 100%;
-    height: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 24px;
-    background-color: #fff;
-    border-radius: 35px;
-    border: 0.5px solid;
-    border-color: #495867;
-}
-
-.contenedor_input_buscador_principal input[type="text"] {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-weight: 400;
-    font-size: 18px;
-    letter-spacing: .2px;
-    color: #ce2424;
-}
-
-.buscador_principal button {
-    position: absolute;
-    width: 47px;
-    height: 47px;
-    right: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    background-color: #495867;
-    border-radius: 35px;
-    border: 1px solid;
-    border-color: #495867;
-    box-sizing: border-box;
-    z-index: 10;
 }
 
 /* MENU PRINCIPAL USUARIOS */
@@ -200,7 +213,7 @@
 @media (max-width: 1000px) {
 
     /* MENU PRINCIPAL */
-    .menu_principal {
+    .ecommerce_menu_principal {
         height: 170px;
     }
 
