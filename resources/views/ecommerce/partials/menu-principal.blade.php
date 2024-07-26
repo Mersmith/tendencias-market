@@ -10,12 +10,12 @@
         <div class="menu_principal_arriba">
             <!-- LOGO COMPUTADORA -->
             <div class="logo_computadora">
-                <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
-                    class="imagen_icono_hamburguesa menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar" />
+                <span class="menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar"><i
+                        class="fa-solid fa-arrow-left"></i></span>
 
-                <a href="#">
+                <a href="{{ url('/') }}">
                     <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
-                        alt="Logo" class="imagen_logo_computadora" />
+                        alt="Tendencias Market" class="imagen_logo_computadora" />
                 </a>
             </div>
 
@@ -26,16 +26,17 @@
                 </div>
 
                 <button>
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_buscar.svg') }}" alt="Logo" />
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
 
             <!-- MENU HAMBURGUESA COMPUTADORA -->
             <div class="menu_hamburguesa_computadora" x-on:click="toggleContenedorSidebar">
-                <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
-                    class="imagen_icono_hamburguesa" />
+                <span>
+                    <i class="fa-solid fa-bars"></i>
+                </span>
 
-                <span>Categorias</span>
+                <p>Categorias</p>
             </div>
 
             <!-- MENU PRINCIPAL USUARIOS -->
@@ -43,7 +44,7 @@
                 <!-- ITEM CUENTA  -->
                 <li>
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <i class="fa-regular fa-user"></i>
                         <span>Cuenta</span>
                     </a>
                 </li>
@@ -51,7 +52,7 @@
                 <!-- ITEM FAVORITOS -->
                 <li>
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <i class="fa-regular fa-heart"></i>
                         <span>Favoritos</span>
                     </a>
                 </li>
@@ -59,7 +60,7 @@
                 <!-- ITEM PUNTOS  -->
                 <li>
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <i class="fa-regular fa-circle-dot"></i>
                         <span>Puntos</span>
                     </a>
                 </li>
@@ -67,8 +68,11 @@
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/iconos/icono_corazon.svg') }}" alt="Logo" />
+                        <i class="fa-solid fa-cart-shopping"></i>
                         <span>Carrito</span>
+                        <div class="carrito_numero">
+                            <p>0</p>
+                        </div>
                     </a>
                 </li>
             </ul>

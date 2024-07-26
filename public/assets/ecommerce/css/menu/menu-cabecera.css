@@ -13,7 +13,7 @@
 
 /* MENU ARRIBA */
 .ecommerce_menu_principal .menu_principal_arriba {
-    padding: 0px 50px;
+    padding: 0px var(--ancho-espacio-pagina-computadora);
     width: 100%;
     height: var(--altura-menu-principal-arriba);
     display: grid;
@@ -33,17 +33,13 @@
 }
 
 .ecommerce_menu_principal .logo_computadora .imagen_logo_computadora {
-    width: 265px;
+    width: 230px;
 }
 
 /* MENU HAMBURGUESA MOVIL */
 .ecommerce_menu_principal .menu_hamburguesa_movil {
     display: none;
     cursor: pointer;
-}
-
-.ecommerce_menu_principal .imagen_icono_hamburguesa {
-    width: 40px;
 }
 
 /* FIN LOGO COMPUTADORA */
@@ -104,6 +100,11 @@
     z-index: 10;
 }
 
+.ecommerce_menu_principal .buscador_principal button i {
+    color: var(--color-texto-terciario);
+    font-size: 25px;
+}
+
 /* FIN BUSCADOR PRINCIPAL */
 
 /* MENU HAMBURGUESA COMPUTADORA */
@@ -117,10 +118,15 @@
     padding: 0px 15px;
 }
 
-.ecommerce_menu_principal .menu_hamburguesa_computadora span {
+.ecommerce_menu_principal .menu_hamburguesa_computadora i {
+    color: var(--color-texto-secundario);
+    font-size: 30px;
+}
+
+.ecommerce_menu_principal .menu_hamburguesa_computadora p {
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-texto-secundario);
 }
 
@@ -136,15 +142,10 @@
 
 /* ITEMS MENU*/
 .ecommerce_menu_principal .menu_principal_usuarios li {
-    height: 50px;
     display: flex;
     justify-content: center;
     padding: 0px 15px;
-}
-
-.ecommerce_menu_principal .menu_principal_usuarios li:not(:last-child) {
-    border-right: 1px solid;
-    border-right-color: var(--color-borde-secundario);
+    align-items: center;
 }
 
 .ecommerce_menu_principal .menu_principal_usuarios li a {
@@ -153,6 +154,44 @@
     align-items: center;
     color: var(--color-texto-primario);
     font-size: 15px;
+    font-weight: 600;
+}
+
+.ecommerce_menu_principal .menu_principal_usuarios li a i {
+    color: var(--color-texto-secundario);
+    font-size: 20px;
+}
+
+.menu_carrito {
+    position: relative;
+    display: inline-block;
+}
+
+.menu_carrito a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.menu_carrito i {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.menu_carrito .carrito_numero {
+    position: absolute;
+    top: -15px;
+    right: -2px;
+    background-color: var(--color-fondo-cuaternario);
+    color: var(--color-texto-terciario);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.menu_carrito .carrito_numero p {
+    margin: 0;
 }
 
 /* FIN MENU PRINCIPAL USUARIOS */
