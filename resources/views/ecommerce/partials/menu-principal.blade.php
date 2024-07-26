@@ -10,12 +10,16 @@
         <div class="menu_principal_arriba">
             <!-- LOGO COMPUTADORA -->
             <div class="logo_computadora">
-                <span class="menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar"><i
-                        class="fa-solid fa-arrow-left"></i></span>
+                <span class="menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
 
                 <a href="{{ url('/') }}">
                     <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
                         alt="Tendencias Market" class="imagen_logo_computadora" />
+
+                    <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-movil.svg') }}"
+                        alt="Tendencias Market" class="imagen_logo_movil" />
                 </a>
             </div>
 
@@ -82,27 +86,38 @@
         <nav class="menu_principal_abajo">
             <!-- UBICACION -->
             <div class="contenedor_menu_ubicacion">
-                <img src="{{ asset('assets/ecommerce/iconos/icono_ubicacion.svg') }}" alt="Logo" />
+                <i class="fa-solid fa-location-dot"></i>
                 <span>Ingresa tu ubicación</span>
             </div>
 
-            <!-- MARCAS - INFORMACION -->
-            <div class="contenedor_marcas_informacion">
-                <!-- INFORMACION -->
-                <ul class="contenedor_informacion">
-                    <li>
-                        <a href="#">
-                            Vende en falabella.com
-                        </a>
-                    </li>
-                    <li>Tarjeta CMR <img src="{{ asset('assets/ecommerce/iconos/icono_abajo.svg') }}" alt="Logo" />
-                    </li>
-                    <li>Venta telefónica <img src="{{ asset('assets/ecommerce/iconos/icono_abajo.svg') }}"
-                            alt="Logo" /></li>
-                    <li>Promos y cupones</li>
-                    <li>Ayuda <img src="{{ asset('assets/ecommerce/iconos/icono_abajo.svg') }}" alt="Logo" /></li>
-                </ul>
-            </div>
+            <!-- INFORMACION -->
+            <ul class="contenedor_informacion">
+                <li>
+                    <a href="#">
+                        Vende en Tendendecias
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Acumula puntos
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Venta telefónica
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Cupones
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Asesor <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 

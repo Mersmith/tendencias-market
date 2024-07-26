@@ -15,7 +15,7 @@
 .ecommerce_menu_principal .menu_principal_arriba {
     padding: 0px var(--ancho-espacio-pagina-computadora);
     width: 100%;
-    height: var(--altura-menu-principal-arriba);
+    height: var(--altura-menu-principal-arriba-computadora);
     display: grid;
     grid-template-areas: "logo_computadora buscador_principal menu_hamburguesa_computadora menu_principal_usuarios";
     grid-template-columns: auto 1fr auto auto;
@@ -36,10 +36,20 @@
     width: 230px;
 }
 
+.ecommerce_menu_principal .logo_computadora .imagen_logo_movil {
+    display: none;
+    width: 110px;
+}
+
 /* MENU HAMBURGUESA MOVIL */
 .ecommerce_menu_principal .menu_hamburguesa_movil {
     display: none;
     cursor: pointer;
+}
+
+.ecommerce_menu_principal .menu_hamburguesa_movil i {
+    color: var(--color-texto-secundario);
+    font-size: 25px;
 }
 
 /* FIN LOGO COMPUTADORA */
@@ -60,7 +70,7 @@
     align-items: center;
     padding-left: 20px;
     border-radius: 35px;
-    border: 0.5px solid var(--color-borde-primario);
+    border: 1px solid var(--color-borde-primario);
 }
 
 .ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"] {
@@ -195,16 +205,74 @@
 }
 
 /* FIN MENU PRINCIPAL USUARIOS */
+/* FIN MENU ARRIBA */
+
+/* MENU ABAJO */
+.ecommerce_menu_principal .menu_principal_abajo {
+    height: var(--altura-menu-principal-abajo-computadora);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px var(--ancho-espacio-pagina-computadora);
+    background-color: var(--color-fondo-secundario);
+    border-top: 1px solid var(--color-borde-secundario);
+    border-bottom: 1px solid var(--color-borde-secundario);
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion span {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-texto-primario);
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion i {
+    color: var(--color-texto-primario);
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion {
+    display: flex;
+    align-items: center;
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion li {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+    padding: 0px 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--color-texto-primario);
+}
+
+.ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion li a i {
+    color: var(--color-texto-primario);
+}
+
+/* FIN MENU ABAJO */
 
 /* RESPONSIVE LAPTOP*/
 @media (max-width: 1300px) {
 
     /* LOGO COMPUTADORA */
-    .logo_computadora .imagen_logo_computadora {
-        width: 140px;
+    .ecommerce_menu_principal .logo_computadora .imagen_logo_computadora {
+        display: none;
     }
 
-    .menu_principal_arriba {
+    .ecommerce_menu_principal .logo_computadora .imagen_logo_movil {
+        display: block;
+    }
+
+    .ecommerce_menu_principal .menu_principal_arriba {
         grid-gap: 10px;
     }
 
@@ -215,61 +283,81 @@
 
     /* MENU PRINCIPAL */
     .ecommerce_menu_principal {
-        height: 170px;
+        height: var(--altura-header-principal-movil);
     }
 
-    .menu_principal_arriba {
-        padding: 0px 10px;
-
-        height: 120px;
+    .ecommerce_menu_principal .menu_principal_arriba {
+        padding: 0px var(--ancho-espacio-pagina-movil);
+        height: var(--altura-menu-principal-arriba-movil);
         grid-template-areas: "logo_computadora menu_principal_usuarios"
             "buscador_principal buscador_principal";
-        grid-template-columns: auto auto;
+        grid-template-columns: 120px auto;
+        grid-gap: 0px;
     }
 
     /* MENU PRINCIPAL USUARIOS */
-    .menu_principal_usuarios {
+    .ecommerce_menu_principal .menu_principal_usuarios {
         justify-content: flex-end;
-        gap: 10px;
     }
 
-    /* ITEMS MENU*/
-    .menu_principal_usuarios li {
-        padding: 0px 0px;
+    .ecommerce_menu_principal .menu_principal_usuarios li a span {
+        display: none;
     }
 
-    .menu_principal_usuarios li:not(:last-child) {
-        border-right: none;
+    .ecommerce_menu_principal .menu_principal_usuarios li a i {
+        font-size: 22px;
     }
 
     /* MENU HAMBURGUESA COMPUTADORA */
-    .menu_hamburguesa_computadora {
+    .ecommerce_menu_principal .menu_hamburguesa_computadora {
         display: none;
     }
 
     /* MENU HAMBURGUESA MOVIL */
-    .menu_hamburguesa_movil {
+    .ecommerce_menu_principal .menu_hamburguesa_movil {
         display: block;
     }
 
-    /* ITEM MIS COMPRAS */
-    .menu_compras {
-        display: none !important;
+    .ecommerce_menu_principal .logo_computadora .imagen_logo_movil {
+        width: 80px;
     }
 
-    /* ITEM FAVORITOS */
-    .menu_favoritos {
-        display: none !important;
+    .ecommerce_menu_principal .menu_principal_abajo {
+        padding: 0px var(--ancho-espacio-pagina-movil);
     }
 
-    /* ITEM SESION */
-    .contenedor_menu_sesion span {
-        font-size: 14px;
-        line-height: 14px;
-    }
-
-    .contenedor_menu_sesion span:first-child {
+    .ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion {
         display: none;
     }
 
+    /* BUSCADOR PRINCIPAL */
+    .ecommerce_menu_principal .buscador_principal {
+        position: relative;
+        grid-area: buscador_principal;
+        display: flex;
+        align-self: center;
+    }
+
+    .ecommerce_menu_principal .contenedor_input_buscador_principal {
+        height: 40px;
+    }
+
+    .ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"] {
+        font-size: 15px;
+    }
+
+    .ecommerce_menu_principal .buscador_principal button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ecommerce_menu_principal .buscador_principal button i {
+        font-size: 18px;
+    }
+
+    /* FIN BUSCADOR PRINCIPAL */
+
+    .ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion span {
+        font-size: 14px;
+    }
 }

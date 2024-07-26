@@ -1,8 +1,15 @@
 :root {
 
     --altura-header-principal-computadora: 140px;
-    --altura-menu-principal-arriba: 100px;
+    --altura-menu-principal-arriba-computadora: 90px;
+    --altura-menu-principal-abajo-computadora: 50px;
+
     --altura-header-principal-movil: 170px;
+    --altura-menu-principal-arriba-movil: 120px;
+    --altura-menu-principal-abajo-movil: 50px;
+
+    --ancho-espacio-pagina-computadora: 50px;
+    --ancho-espacio-pagina-movil: 10px;
 
     --color-fondo-primario: #fafafa;
     --color-fondo-secundario: #fff;
@@ -16,7 +23,7 @@
     --color-texto-secundario: #f10a0f;
     --color-texto-terciario: #fff;
 
-    --ancho-espacio-pagina-computadora: 50px;
+
 
     /* SLIDE PRODUCTOS */
     /*6 ELEMENTOS*/
