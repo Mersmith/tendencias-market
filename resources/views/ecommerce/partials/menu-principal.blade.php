@@ -11,18 +11,18 @@
 
             <!-- LOGO COMPUTADORA -->
             <div class="logo_computadora">
-                <img src="{{ asset('assets/ecommerce/iconos/icono_hamburguesa.svg') }}" alt="Logo"
+                <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
                     class="imagen_icono_hamburguesa menu_hamburguesa_movil" x-on:click="toggleContenedorSidebar" />
 
                 <a href="#">
-                    <img src="{{ asset('assets/ecommerce/imagenes/logo/falabella-orange-logo.svg') }}" alt="Logo"
+                    <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}" alt="Logo"
                         class="imagen_logo_computadora" />
                 </a>
             </div>
 
             <!-- MENU HAMBURGUESA COMPUTADORA -->
             <div class="menu_hamburguesa_computadora" x-on:click="toggleContenedorSidebar">
-                <img src="{{ asset('assets/ecommerce/iconos/icono_hamburguesa.svg') }}" alt="Logo"
+                <img src="{{ asset('assets/ecommerce/iconos/icono-hamburguesa.svg') }}" alt="Logo"
                     class="imagen_icono_hamburguesa" />
 
                 <span>Menú</span>
