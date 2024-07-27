@@ -122,15 +122,16 @@
     </header>
 
     <!-- CONTENEDOR SIDEBAR -->
-    <aside class="contenedor_sidebar" :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
+    <aside class="ecommerce_sidebar_categorias" :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
         <!-- SIDEBAR CONTENEDOR -->
         <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
             <div class="sidebar_cabecera">
-                <div class="saludo">¡Hola!</div>
+                <div class="saludo">¡Buen día!</div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
-                    x-on:click="toggleContenedorSidebar" />
+                <span x-on:click="toggleContenedorSidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
@@ -144,9 +145,7 @@
                                 <div class="sidebar_cotenido_elemento">
                                     <span x-text="dataMenu.nombre">
                                     </span>
-                                    <blockquote x-show="dataMenu.etiqueta" x-text="dataMenu.etiqueta"></blockquote>
-                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}"
-                                        alt="Logo" />
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </div>
                             </li>
                         </template>

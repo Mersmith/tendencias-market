@@ -16,6 +16,8 @@
     --color-fondo-terciario: #f10a0f;
     --color-fondo-cuaternario: #495867;
 
+    --hover-color-fondo-primario: #fafafa;
+
     --color-borde-primario: #f10a0f;
     --color-borde-secundario: #CAD1D9;
 
@@ -23,6 +25,10 @@
     --color-texto-secundario: #f10a0f;
     --color-texto-terciario: #fff;
 
+    --ancho-sidebar-categoria: 300px;
+    --altura-sidebar-cabecara: 56px;
+
+    --sombra: 0 5px 20px rgba(0, 0, 0, .2);
 
 
     /* SLIDE PRODUCTOS */

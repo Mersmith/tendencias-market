@@ -7685,7 +7685,7 @@ function xDataLayoutEcommerce() {
         ],
         dataSubMenu1: [],
         dataSubMenu2: [],
-        estadoAsideAbierto: false,
+        estadoAsideAbierto: true,
         estadoNavSubcategoriasAbierto: false,
         estadoNavItemsSubcategoriaAbierto: false,
         initLayout() {
