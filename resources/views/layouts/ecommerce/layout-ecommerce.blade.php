@@ -19,9 +19,10 @@
     @include('layouts.ecommerce.assets.css')
 </head>
 
-<body x-data="xDataLayoutEcommerce()" x-init="initLayout" class="contenedor_layout_ecommerce">
+<body x-data="xDataLayoutEcommerce()" x-init="initLayoutEcommerce" class="contenedor_layout_ecommerce">
     <!--MENU PRINCIPAL-->
-    @include('ecommerce.partials.menu-principal')
+    {{-- @include('ecommerce.partials.menu-principal') --}}
+    @livewire('ecommerce.menu.sidebar-principal-livewire')
 
     <!--CONTENEDOR LAYOUT GENERAL-->
     <main class="contenedor_layout_ecommerce_pagina">
@@ -33,7 +34,7 @@
 
     @include('ecommerce.partials.footer')
 
-    <div class="contenedor_superponer" :x-show="estadoAsideAbierto" x-on:click="cerrarSidebars"></div>
+    <div class="contenedor_superponer" :x-show="estadoSuperponer" x-on:click="cerrarTodo"></div>
 
     <!--SCRIPTS-->
     @include('layouts.ecommerce.assets.js')

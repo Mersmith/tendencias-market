@@ -78,6 +78,33 @@ class CategoriaController extends Controller
         return redirect()->route('erp.categoria.vista.todas')->with('alerta', 'Eliminado');
     }
 
+    public function getEcommerceCategoriaAnidadas()
+    {
+        $categoriasNivel1 = Categoria::whereNull('categoria_padre_id')->where('activo', 1)->orderBy('orden')->get();
+
+        return $categoriasNivel1->map(function ($categoria) {
+            return $this->formatearCategoria($categoria);
+        });
+    }
+
+    private function formatearCategoria($categoria)
+    {
+        $subcategorias = $categoria->subcategorias->map(function ($subcategoria) {
+            return $this->formatearCategoria($subcategoria);
+        });
+
+        return [
+            'id' => $categoria->id,
+            'nombre' => $categoria->nombre,
+            'slug' => $categoria->slug,
+            'descripcion' => $categoria->descripcion,
+            'icono' => $categoria->icono,
+            'imagen_ruta' => $categoria->imagen_ruta,
+            'subcategorias' => $subcategorias,
+        ];
+    }
+
+
     public function getCategoriaFamiliaVertical(Categoria $categoria)
     {
         $familia = collect();
