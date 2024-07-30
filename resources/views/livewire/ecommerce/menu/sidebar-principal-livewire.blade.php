@@ -133,6 +133,7 @@
                 <!-- CATEGORIAS -->
                 <div class="sidebar_cotenido_item">
                     <ul class="sidebar_cotenido_item_ul">
+                        <h5>Categorias</h5>
                         <template x-for="dataMenu in dataMenuPrincipal" :key="dataMenu.id">
                             <li x-on:click="toggleContenedorSidebarSubcategorias(dataMenu)">
                                 <!-- SIDEBAR CONTENIDO ELEMENTO -->
@@ -147,82 +148,67 @@
                 </div>
 
                 <!-- TIENDAS -->
-                <div class="sidebar_cotenido_item">
-                    <ul class="sidebar_cotenido_item_ul">
-                        <h5>NUESTRAS TIENDAS</h5>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Falabella</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Sodimac</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Tottus</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Linio</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                @if (isset($tiendas['titulo']) && isset($tiendas['items']) && count($tiendas['items']) > 0)
+                    <div class="sidebar_cotenido_item">
+                        <ul class="sidebar_cotenido_item_ul">
+                            <h5>{{ $tiendas['titulo'] }}</h5>
+                            @foreach ($tiendas['items'] as $tienda)
+                                <li>
+                                    <a href="{{ $tienda['url'] }}">
+                                        <div class="sidebar_cotenido_elemento">
+                                            <span>{{ $tienda['nombre'] }}</span>
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                <!-- VENDE -->
-                <div class="sidebar_cotenido_item">
-                    <ul class="sidebar_cotenido_item_ul">
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Vende en Tendencias</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <!-- OPORTUNIDADES -->
+                @if (isset($oportunidades['titulo']) && isset($oportunidades['items']) && count($oportunidades['items']) > 0)
+                    <div class="sidebar_cotenido_item">
+                        <ul class="sidebar_cotenido_item_ul">
+                            <h5>{{ $oportunidades['titulo'] }}</h5>
+                            @foreach ($oportunidades['items'] as $oportunidad)
+                                <li>
+                                    <a href="{{ $oportunidad['url'] }}">
+                                        <div class="sidebar_cotenido_elemento">
+                                            <span>{{ $oportunidad['nombre'] }}</span>
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                <!-- INFORMACION -->
-                <div class="sidebar_cotenido_item">
-                    <ul class="sidebar_cotenido_item_ul">
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Guías de compra</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Centro de ayuda</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>GHorario de tiendas</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                        <li>
-                            <div class="sidebar_cotenido_elemento">
-                                <span>Seguros</span>
-                                <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}" alt="Logo" />
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <!-- AYUDAS -->
+                @if (isset($ayudas['titulo']) && isset($ayudas['items']) && count($ayudas['items']) > 0)
+                    <div class="sidebar_cotenido_item">
+                        <ul class="sidebar_cotenido_item_ul">
+                            <h5>{{ $ayudas['titulo'] }}</h5>
+                            @foreach ($ayudas['items'] as $ayuda)
+                                <li>
+                                    <a href="{{ $ayuda['url'] }}">
+                                        <div class="sidebar_cotenido_elemento">
+                                            <span>{{ $ayuda['nombre'] }}</span>
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <!-- PIE -->
                 <div class="sidebar_cotenido_item sidebar_pie">
                     <a href="#">
-                        <img src="{{ asset('assets/ecommerce/imagenes/logo/falabella-orange-logo.svg') }}"
-                            alt="Logo" />
+                        <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
+                            alt="Tendencias Market" />
                     </a>
                 </div>
             </div>
@@ -232,7 +218,7 @@
     <!-- CONTENEDOR SUBCATEGORIAS -->
     <nav class="contenedor_sidebar_subcategorias" :x-show="estadoNavSubcategoriasAbierto">
         <!-- SIDEBAR CONTENEDOR -->
-        <div class="sidebar_contenedor_subcategorias">
+        <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
             <div class="sidebar_cabecera sidebar_cabecera_subcategorias">
                 <div class="retroceder">
@@ -249,17 +235,9 @@
             <div class="sidebar_contenido_subcategorias">
                 <!-- CONTENEDOR SUBCATEGORIA CABECERA  -->
                 <div class="contenedor_subcategoria_cabecera">
-                    <!-- CONTENEDOR SUBCATEGORIA TITULO  -->
-                    <div class="contenedor_subcategoria_titulo">
-                        <div class="subcategoria_titulo_icono">
-                            <img src="{{ asset('assets/ecommerce/iconos/icono_navidad.svg') }}" alt="Logo" />
-                        </div>
-
-                        <p x-text="dataSubMenu1.nombre"></p>
-                    </div>
-
-                    <!-- SUBCATEGORIA CABECERA LINK  -->
-                    <a href="#">Ver todo</a>
+                    <a x-text="dataSubMenu1.nombre">
+                    </a>
+                    <i class="fa-solid fa-angle-right"></i>
                 </div>
 
                 <!-- CONTENEDOR SUBCATEGORIA CUERPO  -->
@@ -279,8 +257,6 @@
                                     <template x-for="items in dataMenu.subcategorias" :key="items.id">
                                         <li>
                                             <a href="#" x-text="items.nombre"> </a>
-                                            <blockquote x-show="items.etiqueta" x-text="items.etiqueta">
-                                            </blockquote>
                                         </li>
                                     </template>
                                 </div>
@@ -314,14 +290,14 @@
                 <div class="contenedor_items_subcategoria_cabecera">
                     <!-- CONTENEDOR ITEMS SUBCATEGORIA TITULO  -->
                     <div class="contenedor_items_subcategoria_titulo">
-                        <p x-text="dataSubMenu2.titulo"></p>
+                        <p x-text="dataSubMenu2.nombre"></p>
                     </div>
                 </div>
 
                 <!-- CONTENEDOR ITEMS SUBCATEGORIA CUERPO  -->
                 <ul class="contenedor_items_subcategoria_cuerpo">
                     <!-- CONTENEDOR ITEMS SUBCATEGORIA CABECERA  -->
-                    <template x-for="items in dataSubMenu2.items" :key="items.id">
+                    <template x-for="items in dataSubMenu2.subcategorias" :key="items.id">
                         <li>
                             <div class="sidebar_cotenido_elemento_items_subcategoria">
                                 <a href="#" x-text="items.nombre"></a>
