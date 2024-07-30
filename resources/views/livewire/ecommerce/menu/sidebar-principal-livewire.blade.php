@@ -221,20 +221,21 @@
         <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
             <div class="sidebar_cabecera sidebar_cabecera_subcategorias">
-                <div class="retroceder">
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo"
-                        x-on:click="cerrarSidebarSubcategorias" />
+                <div class="retroceder" x-on:click="cerrarSidebarSubcategorias">
+                    <i class="fa-solid fa-angle-left"></i>
+
                     <span>Retroceder</span>
                 </div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
-                    x-on:click="cerrarSidebars" />
+                <span x-on:click="cerrarSidebars">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido_subcategorias">
+            <div class="sidebar_contenido">
                 <!-- CONTENEDOR SUBCATEGORIA CABECERA  -->
-                <div class="contenedor_subcategoria_cabecera">
+                <div class="sidebar_contenido_cabecera">
                     <a x-text="dataSubMenu1.nombre">
                     </a>
                     <i class="fa-solid fa-angle-right"></i>

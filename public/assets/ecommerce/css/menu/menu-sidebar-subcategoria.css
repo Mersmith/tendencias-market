@@ -1,3 +1,4 @@
+/* CONTENEDOR SIDEBAR */
 .contenedor_sidebar_subcategorias {
     position: fixed;
     width: var(--ancho-sidebar-subcategoria);
@@ -19,25 +20,52 @@
     box-shadow: var(--sombra);
 }
 
+/*SIDEBAR CABECERA*/
+.contenedor_sidebar_subcategorias .sidebar_cabecera {
+    height: var(--altura-sidebar-cabecara);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 42px 0px 24px;
+    box-sizing: border-box;
+    color: var(--color-texto-primario);
+}
+
+.contenedor_sidebar_subcategorias .sidebar_cabecera span {
+    cursor: pointer;
+}
+
+.contenedor_sidebar_subcategorias .sidebar_cabecera .retroceder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+/*FIN SIDEBAR CABECERA*/
+
 /* SIDEBAR CONTENIDO */
-.sidebar_contenido_subcategorias {
+.contenedor_sidebar_subcategorias .sidebar_contenido {
     height: calc(100vh - 59px);
     overflow-y: scroll;
 }
 
-/* CONTENEDOR SUBCATEGORIA CABECERA */
-.contenedor_subcategoria_cabecera {
+/* SIDEBAR CONTENIDO CABECERA */
+.contenedor_sidebar_subcategorias .sidebar_contenido_cabecera {
     display: flex;
     align-items: center;
     gap: 10px;
     color: var(--color-texto-secundario);
 }
 
-/* SUBCATEGORIA CABECERA LINK */
-.contenedor_subcategoria_cabecera a {
+.contenedor_sidebar_subcategorias .sidebar_contenido_cabecera a {
     font-size: 16px;
     font-weight: 600;
 }
+
+/* FIN SIDEBAR CONTENIDO CABECERA */
 
 /* CONTENEDOR SUBCATEGORIA CUERPO */
 .contenedor_subcategoria_cuerpo {
@@ -97,19 +125,7 @@
     color: #fff;
 }
 
-.ecommerce_sidebar_categorias .sidebar_cabecera .retroceder {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17px;
-    color: #333;
-}
 
-.ecommerce_sidebar_categorias .sidebar_cabecera .retroceder img {
-    width: 16px;
-}
 
 @media (min-width: 1000px) {
     .sidebar_cabecera_subcategorias {
@@ -146,7 +162,7 @@
     }
 
     /* SIDEBAR CONTENIDO */
-    .sidebar_contenido_subcategorias {
+    .sidebar_contenido {
         height: calc(100vh - 56px);
         width: 300px;
     }
@@ -156,7 +172,7 @@
     }
 
     /* CONTENEDOR SUBCATEGORIA CABECERA */
-    .contenedor_subcategoria_cabecera {
+    .sidebar_contenido_cabecera {
         min-width: 260px;
         margin-top: 16px;
         padding: 0 16px;
@@ -208,7 +224,7 @@
     }
 
     /* CONTENEDOR SUBCATEGORIA CABECERA */
-    .contenedor_subcategoria_cabecera a {
+    .sidebar_contenido_cabecera a {
         display: none;
     }
 
