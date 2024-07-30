@@ -1,6 +1,6 @@
 .contenedor_sidebar_subcategorias {
     position: fixed;
-    width: calc(80% - 300px);
+    width: var(--ancho-sidebar-subcategoria);
     display: none;
     top: 59px;
     left: 300px;
@@ -13,10 +13,10 @@
 }
 
 /* SIDEBAR CONTENEDOR */
-.sidebar_contenedor_subcategorias {
-    border-radius: 0 20px 0 0;
+.contenedor_sidebar_subcategorias .sidebar_contenedor {
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--color-fondo-secundario);
+    box-shadow: var(--sombra);
 }
 
 /* SIDEBAR CONTENIDO */
@@ -27,57 +27,16 @@
 
 /* CONTENEDOR SUBCATEGORIA CABECERA */
 .contenedor_subcategoria_cabecera {
-    min-width: 468px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-right: 32px;
-    background-color: #fff;
+    gap: 10px;
+    color: var(--color-texto-secundario);
 }
 
 /* SUBCATEGORIA CABECERA LINK */
 .contenedor_subcategoria_cabecera a {
-    text-decoration: underline !important;
-    text-underline-position: under;
-    font-size: 14px;
-    line-height: 16.8px;
-    color: #68717d;
-}
-
-/* CONTENEDOR SUBCATEGORIA TITULO */
-.contenedor_subcategoria_titulo {
-    position: relative;
-    max-width: 619px;
-    flex: 2 0 auto;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    padding: 13px 72px 14px;
-    background: linear-gradient(91.38deg, #ff8200 -2%, #ff5400 60.38%);
-    border-radius: 80px 0 140px 80px;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 28.8px;
-    color: #fff;
-}
-
-.subcategoria_titulo_icono {
-    position: absolute;
-    width: 56px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(136.95deg, #ff9300 -4.75%, #ff5400 79.15%, #ff5400 113.58%);
-    border-radius: 50%;
-}
-
-.subcategoria_titulo_icono img {
-    width: 100%;
-    height: 100%;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 /* CONTENEDOR SUBCATEGORIA CUERPO */
@@ -138,6 +97,20 @@
     color: #fff;
 }
 
+.ecommerce_sidebar_categorias .sidebar_cabecera .retroceder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333;
+}
+
+.ecommerce_sidebar_categorias .sidebar_cabecera .retroceder img {
+    width: 16px;
+}
+
 @media (min-width: 1000px) {
     .sidebar_cabecera_subcategorias {
         display: none;
@@ -165,7 +138,7 @@
     }
 
     /* SIDEBAR CONTENEDOR */
-    .sidebar_contenedor_subcategorias {
+    .sidebar_contenedor {
         width: 300px;
         margin: 0px;
         padding: 0px;

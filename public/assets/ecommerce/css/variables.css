@@ -19,13 +19,14 @@
     --hover-color-fondo-primario: #fafafa;
 
     --color-borde-primario: #f10a0f;
-    --color-borde-secundario: #CAD1D9;
+    --color-borde-secundario: #e9e9e9;
 
     --color-texto-primario: #495867;
     --color-texto-secundario: #f10a0f;
     --color-texto-terciario: #fff;
 
     --ancho-sidebar-categoria: 300px;
+    --ancho-sidebar-subcategoria: calc(80% - 300px);
     --altura-sidebar-cabecara: 56px;
 
     --sombra: 0 5px 20px rgba(0, 0, 0, .2);
