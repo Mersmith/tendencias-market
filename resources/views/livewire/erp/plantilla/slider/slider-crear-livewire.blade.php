@@ -2,6 +2,7 @@
 
 @section('anchoPantalla', '100%')
 
+<!-- resources/views/livewire/erp/plantilla/slider/slider-crear-livewire.blade.php -->
 <div x-data="dataSlider">
 
     <!--CABECERA TITULO PAGINA-->
@@ -29,7 +30,6 @@
                         @enderror
                     </div>
 
-
                 </div>
 
                 <div class="g_panel">
@@ -56,11 +56,11 @@
                         </thead>
                         <tbody x-sort="handleSlider">
                             @foreach ($imagenes as $index => $imagen)
-                                <tr class="sorteable_item" x-sort:item="{{ $index }}">
+                                <tr class="sorteable_item" x-sort:item="{{ $imagen['id']  }}">
                                     <td><i class="fa-solid fa-up-down-left-right"></i></td>
                                     <td>
                                         <input type="number" wire:model="imagenes.{{ $index }}.id"
-                                            class="form-control">
+                                            class="form-control" value="{{ $imagen['id'] }}" readonly>
                                         @error("imagenes.$index.id")
                                             <p class="mensaje_error">{{ $message }}</p>
                                         @enderror
@@ -117,7 +117,6 @@
             </div>
         </div>
 
-
         <div>
             <div class="formulario_botones">
                 <button type="submit" class="guardar">Guardar</button>
@@ -130,6 +129,10 @@
             return {
                 handleSlider(item, position) {
                     console.log(item, position);
+                    Livewire.dispatch('handleSliderOn', {
+                        item: item,
+                        position: position,
+                    });
                 },
             }
         }

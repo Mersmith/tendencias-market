@@ -5,6 +5,7 @@ namespace App\Livewire\Erp\Plantilla\Slider;
 use App\Models\Slider;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.erp.layout-erp')]
 class SliderCrearLivewire extends Component
@@ -13,12 +14,11 @@ class SliderCrearLivewire extends Component
     public $imagenes = [];
     public $activo = false;
 
-    // Initialize with one empty image
     public function mount()
     {
         $this->imagenes = [
             [
-                'id' => '',
+                'id' => 1,
                 'imagenComputadora' => '',
                 'imagenMovil' => '',
                 'link' => '',
@@ -28,8 +28,9 @@ class SliderCrearLivewire extends Component
 
     public function addImage()
     {
+        $nextId = count($this->imagenes) + 1;
         $this->imagenes[] = [
-            'id' => '',
+            'id' => $nextId,
             'imagenComputadora' => '',
             'imagenMovil' => '',
             'link' => '',
@@ -39,11 +40,16 @@ class SliderCrearLivewire extends Component
     public function removeImage($index)
     {
         array_splice($this->imagenes, $index, 1);
+
+        // Reindex the IDs after removing an image
+        foreach ($this->imagenes as $i => $imagen) {
+            $this->imagenes[$i]['id'] = $i + 1;
+        }
     }
 
     public function store()
     {
-        // Validate the data
+        dd($this->imagenes);
         $this->validate([
             'nombre' => 'required|string|max:255',
             'imagenes.*.id' => 'required|integer',
@@ -53,19 +59,28 @@ class SliderCrearLivewire extends Component
             'activo' => 'boolean',
         ]);
 
-        // Convert `imagenes` to JSON
         $imagenesJson = json_encode($this->imagenes);
 
-        // Create the new slider
         Slider::create([
             'nombre' => $this->nombre,
             'imagenes' => $imagenesJson,
             'activo' => $this->activo,
         ]);
 
-        // Clear the form after saving
         $this->reset(['nombre', 'imagenes', 'activo']);
     }
+
+    #[On('handleSliderOn')]
+    public function handleSliderOn($item, $position)
+    {
+        $index = array_search($item, array_column($this->imagenes, 'id'));
+
+        if ($index !== false) {
+            $element = array_splice($this->imagenes, $index, 1)[0];
+            array_splice($this->imagenes, $position, 0, [$element]);
+        }
+    }
+
     public function render()
     {
         return view('livewire.erp.plantilla.slider.slider-crear-livewire');
