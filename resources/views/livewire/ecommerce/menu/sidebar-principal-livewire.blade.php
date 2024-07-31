@@ -233,7 +233,7 @@
             </div>
 
             <div class="sidebar_cabecera_categoria">
-                <a x-text="dataSubMenu1.nombre">
+                <a :href="dataSubMenu1.url" x-text="dataSubMenu1.nombre">
                 </a>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
@@ -246,13 +246,13 @@
                             <li x-on:click="toggleContenedorSidebarItemsSubcategoria(dataMenu)">
                                 <!-- SIDEBAR CONTENIDO ELEMENTO  -->
                                 <div class="sidebar_cotenido_elemento">
-                                    <div class="sidebar_cotenido_elemento_imagen">
+                                    <a :href="dataMenu.url" class="sidebar_cotenido_elemento_imagen">
                                         <div class="sidebar_contenedor_imagen">
                                             <img src="{{ asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25-movil.webp') }}"
                                                 alt="">
                                         </div>
                                         <span x-text="dataMenu.nombre"></span>
-                                    </div>
+                                    </a>
                                     <i class="fa-solid fa-angle-right"></i>
                                 </div>
                             </li>

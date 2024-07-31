@@ -100,6 +100,7 @@ class CategoriaController extends Controller
             'descripcion' => $categoria->descripcion,
             'icono' => $categoria->icono,
             'imagen_ruta' => $categoria->imagen_ruta,
+            'url' => url("category/{$categoria->id}/{$categoria->slug}"),
             'subcategorias' => $subcategorias,
         ];
     }
