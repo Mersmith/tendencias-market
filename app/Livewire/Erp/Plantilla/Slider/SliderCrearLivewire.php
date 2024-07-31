@@ -28,7 +28,10 @@ class SliderCrearLivewire extends Component
 
     public function addImage()
     {
-        $nextId = count($this->imagenes) + 1;
+        $maxId = collect($this->imagenes)->max('id');
+
+        $nextId = $maxId ? $maxId + 1 : 1;
+
         $this->imagenes[] = [
             'id' => $nextId,
             'imagenComputadora' => '',
@@ -40,11 +43,6 @@ class SliderCrearLivewire extends Component
     public function removeImage($index)
     {
         array_splice($this->imagenes, $index, 1);
-
-        // Reindex the IDs after removing an image
-        foreach ($this->imagenes as $i => $imagen) {
-            $this->imagenes[$i]['id'] = $i + 1;
-        }
     }
 
     public function store()
