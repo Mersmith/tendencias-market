@@ -13,7 +13,7 @@
 
 
 
-                <div class="m_40_0">
+               {{-- <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -83,7 +83,7 @@
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
-                </div>
+                </div>--}}
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [
@@ -121,11 +121,11 @@
                     ])
 
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
-                        'p_elementos' => $productos_1,
+                        'p_elementos' => $producto_almacen_ecommerce,
                     ])
                 </div>
 
-                <div class="m_40_0">
+                {{--<div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Grandes marcas',
                         'p_alineacion' => 'center',
@@ -155,7 +155,7 @@
                             'p_elementos' => $dataGridImagenSeisElementos_2,
                         ])
                     </div>
-                </div>
+                </div>--}}
 
             </div>
         </div>
