@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Erp\InventarioController;
+use App\Models\Banner;
 use App\Models\Categoria;
 use App\Models\Inventario;
 use App\Models\Slider;
@@ -22,23 +23,11 @@ class EcommerceInicioController extends Controller
         $sliders = Slider::find(5);
         $sliders->imagenes = json_decode($sliders->imagenes, true);
 
-        $imagenBanner_1 = [
-            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100.webp'),
-            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-uno/CROSSBANNER-CMRVISA-FCOM-AHORRO_OU-NOV23-DK-3360X100-movil.webp'),
-            "link" => "https://www.google.com1"
-        ];
+        $imagenBanner_1 = Banner::find(3);      
 
-        $imagenBanner_2 = [
-            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-dos/Huincha-DK-CSI-Apple-Samsung-111223-mdcb.webp'),
-            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-dos/Huincha-MB-CSI-Apple-Samsung-111223-mdcb-movil.webp'),
-            "link" => "https://www.google.com1"
-        ];
+        $imagenBanner_2 = $imagenBanner_1;
 
-        $imagenBanner_3 = [
-            "imagenComputadora" => asset('assets/ecommerce/imagenes/banners/banner-tres/Huincha-DK-ventilador-181223-AF.webp'),
-            "imagenMovil" => asset('assets/ecommerce/imagenes/banners/banner-tres/Huincha-DK-ventilador-181223-AF-movil.webp'),
-            "link" => "https://www.google.com1"
-        ];
+        $imagenBanner_3 = $imagenBanner_1;
 
         $tiendas = [
             [

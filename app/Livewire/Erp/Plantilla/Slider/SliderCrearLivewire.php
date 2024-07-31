@@ -47,7 +47,6 @@ class SliderCrearLivewire extends Component
 
     public function store()
     {
-        dd($this->imagenes);
         $this->validate([
             'nombre' => 'required|string|max:255',
             'imagenes.*.id' => 'required|integer',

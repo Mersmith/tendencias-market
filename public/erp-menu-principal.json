@@ -528,6 +528,14 @@
                         "url": "/erp/plantilla/slider/crear",
                         "nivel": 3,
                         "submenus": []
+                    },
+                    {
+                        "id": 113,
+                        "nombre": "Banner",
+                        "ruta": "erp.plantilla.banner.vista.crear",
+                        "url": "/erp/plantilla/banner/crear",
+                        "nivel": 3,
+                        "submenus": []
                     }
                 ]
             }

@@ -10,11 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
 
             $table->string('nombre')->unique();
-            $table->json('imagenes');
+            $table->string('imagen_computadora');
+            $table->string('imagen_movil');
+            $table->string('link');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
@@ -26,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('banners');
     }
 };

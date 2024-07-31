@@ -147,3 +147,6 @@ php artisan make:livewire Ecommerce/Menu/SidebarPrincipalLivewire
 
 php artisan make:model Slider -mfsc
 php artisan make:livewire Erp/Plantilla/Slider/SliderCrearLivewire
+
+php artisan make:model Banner -mfsc
+php artisan make:livewire Erp/Plantilla/Banner/BannerCrearLivewire
