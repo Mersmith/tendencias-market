@@ -41,9 +41,9 @@ function xDataMenuEcommerce(categorias) {
                 document.body.style.overflow = value ? 'hidden' : 'auto';
             });
 
-            window.addEventListener('resize', () => {
+            /*window.addEventListener('resize', () => {
                 this.cerrarSidebars();
-            });
+            });*/
 
             document.addEventListener('cerrar-sidebars-ecommerce', () => {
                 this.cerrarSidebars();

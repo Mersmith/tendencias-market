@@ -220,7 +220,7 @@
         <!-- SIDEBAR CONTENEDOR -->
         <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
-            <div class="sidebar_cabecera sidebar_cabecera_subcategorias">
+            <div class="sidebar_cabecera">
                 <div class="retroceder" x-on:click="cerrarSidebarSubcategorias">
                     <i class="fa-solid fa-angle-left"></i>
 
@@ -232,45 +232,39 @@
                 </span>
             </div>
 
+            <div class="sidebar_cabecera_categoria">
+                <a x-text="dataSubMenu1.nombre">
+                </a>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+
             <!-- SIDEBAR CONTENIDO -->
             <div class="sidebar_contenido">
-                <!-- CONTENEDOR SUBCATEGORIA CABECERA  -->
-                <div class="sidebar_contenido_cabecera">
-                    <a x-text="dataSubMenu1.nombre">
-                    </a>
-                    <i class="fa-solid fa-angle-right"></i>
-                </div>
-
-                <!-- CONTENEDOR SUBCATEGORIA CUERPO  -->
-                <div class="contenedor_subcategoria_cuerpo">
-                    <div class="contenedor_subcategoria_cuerpo_items">
+                <div class="sidebar_cotenido_item">
+                    <ul class="sidebar_cotenido_item_ul">
                         <template x-for="dataMenu in dataSubMenu1.subcategorias" :key="dataMenu.id">
-                            <ul x-on:click="toggleContenedorSidebarItemsSubcategoria(dataMenu)">
+                            <li x-on:click="toggleContenedorSidebarItemsSubcategoria(dataMenu)">
                                 <!-- SIDEBAR CONTENIDO ELEMENTO  -->
-                                <div class="sidebar_cotenido_elemento_subcategorias">
-                                    <h3 x-text="dataMenu.nombre"></h3>
-                                    <img src="{{ asset('assets/ecommerce/iconos/icono_derecha.svg') }}"
-                                        alt="Logo" />
+                                <div class="sidebar_cotenido_elemento">
+                                    <div class="sidebar_cotenido_elemento_imagen">
+                                        <div class="sidebar_contenedor_imagen">
+                                            <img src="{{ asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25-movil.webp') }}"
+                                                alt="">
+                                        </div>
+                                        <span x-text="dataMenu.nombre"></span>
+                                    </div>
+                                    <i class="fa-solid fa-angle-right"></i>
                                 </div>
-
-                                <!-- CONTENEDOR ITEM SUBCATEGORIA   -->
-                                <div class="contenedor_item_subcategoria">
-                                    <template x-for="items in dataMenu.subcategorias" :key="items.id">
-                                        <li>
-                                            <a href="#" x-text="items.nombre"> </a>
-                                        </li>
-                                    </template>
-                                </div>
-                            </ul>
+                            </li>
                         </template>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- CONTENEDOR ITEMS SUBCATEGORIA -->
-    <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
+    {{-- <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
         <!-- SIDEBAR CONTENEDOR -->
         <div class="sidebar_contenedor_items_subcategoria">
             <!-- SIDEBAR CABECERA -->
@@ -309,5 +303,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>

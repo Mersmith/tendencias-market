@@ -33,6 +33,14 @@ class SidebarPrincipalLivewire extends Component
             ['id' => 1, 'nombre' => 'Centro de ayuda', 'url' => '#'],
             ['id' => 1, 'nombre' => 'Horario de tiendas', 'url' => '#'],
             ['id' => 1, 'nombre' => 'Seguros', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Guías de compra', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Centro de ayuda', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Horario de tiendas', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Seguros', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Guías de compra', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Centro de ayuda', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Horario de tiendas', 'url' => '#'],
+            ['id' => 1, 'nombre' => 'Seguros', 'url' => '#'],
         ],
     ];
 
