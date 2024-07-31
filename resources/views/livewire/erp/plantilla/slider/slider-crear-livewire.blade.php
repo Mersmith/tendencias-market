@@ -2,7 +2,7 @@
 
 @section('anchoPantalla', '100%')
 
-<div>
+<div x-data="dataSlider">
 
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
@@ -54,9 +54,9 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody x-sort="handleSlider">
                             @foreach ($imagenes as $index => $imagen)
-                                <tr class="sorteable_item">
+                                <tr class="sorteable_item" x-sort:item="{{ $index }}">
                                     <td><i class="fa-solid fa-up-down-left-right"></i></td>
                                     <td>
                                         <input type="number" wire:model="imagenes.{{ $index }}.id"
@@ -124,4 +124,14 @@
             </div>
         </div>
     </form>
+
+    <script>
+        function dataSlider() {
+            return {
+                handleSlider(item, position) {
+                    console.log(item, position);
+                },
+            }
+        }
+    </script>
 </div>
