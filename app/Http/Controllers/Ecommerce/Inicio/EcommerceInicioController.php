@@ -17,15 +17,7 @@ class EcommerceInicioController extends Controller
         $categoriaId = 2;
 
         $producto_almacen_ecommerce = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoriaId, $lista_precio_etiqueta);
-
-        $categorias_productos_data = Categoria::all();
-
-        // Generar URLs para cada categoría y convertir a array
-        $categorias_productos = $categorias_productos_data->map(function ($categoria) {
-            $categoria->categoria_url = url("category/{$categoria->id}/{$categoria->slug}");
-            return $categoria->toArray(); // Convertir el modelo a un array
-        });
-
+ 
         //dd($producto_almacen_ecommerce);
 
         $imagenBanner_1 = [
@@ -819,8 +811,7 @@ class EcommerceInicioController extends Controller
                 'producto_almacen_ecommerce',
                 'sliderImagenTresElementosPublicidadControles',
                 'dataSliderImagenCincoElementos',
-                'categorias',
-                'categorias_productos'
+                'categorias'
             )
         );
     }

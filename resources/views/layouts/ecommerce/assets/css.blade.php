@@ -31,11 +31,11 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-dos-elementos-tiempo.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-tiempo.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cuatro-elementos.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-productos-seis-elementos.css') }}">
 <link rel="stylesheet"
-    href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad-controles.css') }}">
+href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad-controles.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cinco-elementos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad2.css') }}">
 
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
