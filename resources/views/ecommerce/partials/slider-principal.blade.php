@@ -1,4 +1,4 @@
-<div x-data="dataSliderPrincipal({{ json_encode($sliders) }})" class="centrar_contenedor">
+<div x-data="dataSliderPrincipal({{ json_encode($sliders->imagenes) }})" class="centrar_contenedor">
     <div class="contenedor_slider_principal">
         <div class="slider">
             <template x-for="(slide, index) in sliders" :key="index">
