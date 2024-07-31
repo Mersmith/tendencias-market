@@ -520,6 +520,14 @@
                         "url": "/erp/plantilla/footer",
                         "nivel": 3,
                         "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Slider",
+                        "ruta": "erp.plantilla.slider.vista.crear",
+                        "url": "/erp/plantilla/slider/crear",
+                        "nivel": 3,
+                        "submenus": []
                     }
                 ]
             }

@@ -144,3 +144,6 @@ php artisan make:model CategoriaMarca -mfsc
 php artisan make:livewire Ecommerce/Marca/MarcaVerLivewire
 
 php artisan make:livewire Ecommerce/Menu/SidebarPrincipalLivewire
+
+php artisan make:model Slider -mfsc
+php artisan make:livewire Erp/Plantilla/Slider/SliderCrearLivewire

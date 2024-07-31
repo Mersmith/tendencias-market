@@ -25,6 +25,7 @@ use App\Livewire\Erp\Inventario\InventarioTodasLivewire;
 use App\Livewire\Erp\Inventario\InventarioVariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\ProductoListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
+use App\Livewire\Erp\Plantilla\Slider\SliderCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoDescuentoEditarLivewire;
 use App\Livewire\Erp\Producto\ProductoEditarLivewire;
@@ -165,3 +166,5 @@ Route::controller(ErpFooterController::class)->group(function () {
     Route::put('plantilla/footer', 'set')->name('plantilla.footer.json.set');
     Route::get('plantilla/footer/get', 'get')->name('plantilla.footer.json.get');
 });
+
+Route::get('/plantilla/slider/crear', SliderCrearLivewire::class)->name('plantilla.slider.vista.crear');
