@@ -264,44 +264,45 @@
     </nav>
 
     <!-- CONTENEDOR ITEMS SUBCATEGORIA -->
-    {{-- <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
+    <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
         <!-- SIDEBAR CONTENEDOR -->
-        <div class="sidebar_contenedor_items_subcategoria">
+        <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
-            <div class="sidebar_cabecera sidebar_cabecera_items_subcategoria">
-                <div class="retroceder">
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo"
-                        x-on:click="cerrarSidebarItemsSubcategoria" />
+            <div class="sidebar_cabecera">
+                <div class="retroceder" x-on:click="cerrarSidebarItemsSubcategoria">
+                    <i class="fa-solid fa-angle-left"></i>
+
                     <span>Retroceder</span>
                 </div>
 
-                <img src="{{ asset('assets/ecommerce/iconos/icono_cerrar.svg') }}" alt="Logo"
-                    x-on:click="cerrarSidebars" />
+                <span x-on:click="cerrarSidebars">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </div>
+
+            <div class="sidebar_cabecera_categoria">
+                <a x-text="dataSubMenu2.nombre">
+                </a>
+                <i class="fa-solid fa-angle-right"></i>
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido_items_subcategoria">
-                <!-- CONTENEDOR ITEMS SUBCATEGORIA CABECERA  -->
-                <div class="contenedor_items_subcategoria_cabecera">
-                    <!-- CONTENEDOR ITEMS SUBCATEGORIA TITULO  -->
-                    <div class="contenedor_items_subcategoria_titulo">
-                        <p x-text="dataSubMenu2.nombre"></p>
-                    </div>
-                </div>
+            <div class="sidebar_contenido">
+                <div class="sidebar_cotenido_item">
+                    <ul class="sidebar_cotenido_item_ul">
+                        <template x-for="items in dataSubMenu2.subcategorias" :key="items.id">
+                            <li>
+                                <!-- SIDEBAR CONTENIDO ELEMENTO  -->
+                                <div class="sidebar_cotenido_elemento">
+                                    <span x-text="items.nombre"></span>
 
-                <!-- CONTENEDOR ITEMS SUBCATEGORIA CUERPO  -->
-                <ul class="contenedor_items_subcategoria_cuerpo">
-                    <!-- CONTENEDOR ITEMS SUBCATEGORIA CABECERA  -->
-                    <template x-for="items in dataSubMenu2.subcategorias" :key="items.id">
-                        <li>
-                            <div class="sidebar_cotenido_elemento_items_subcategoria">
-                                <a href="#" x-text="items.nombre"></a>
-                                <blockquote x-show="items.etiqueta" x-text="items.etiqueta"></blockquote>
-                            </div>
-                        </li>
-                    </template>
-                </ul>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>

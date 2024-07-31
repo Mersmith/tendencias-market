@@ -1,6 +1,6 @@
 function xDataLayoutEcommerce() {
     return {
-        estadoSuperponer: true,
+        estadoSuperponer: false,
         toggleSuperponer() {
             this.estadoSuperponer = !this.estadoSuperponer;
         },
@@ -33,7 +33,7 @@ function xDataMenuEcommerce(categorias) {
         dataMenuPrincipal: categorias || [],
         dataSubMenu1: [],
         dataSubMenu2: [],
-        estadoAsideAbierto: true,
+        estadoAsideAbierto: false,
         estadoNavSubcategoriasAbierto: false,
         estadoNavItemsSubcategoriaAbierto: false,
         initMenuEcommerce() {
@@ -41,9 +41,9 @@ function xDataMenuEcommerce(categorias) {
                 document.body.style.overflow = value ? 'hidden' : 'auto';
             });
 
-            /*window.addEventListener('resize', () => {
+            window.addEventListener('resize', () => {
                 this.cerrarSidebars();
-            });*/
+            });
 
             document.addEventListener('cerrar-sidebars-ecommerce', () => {
                 this.cerrarSidebars();
@@ -79,6 +79,7 @@ function xDataMenuEcommerce(categorias) {
             this.estadoNavItemsSubcategoriaAbierto = false
             this.dataSubMenu1 = []
             this.dataSubMenu2 = []
+            this.cerrarSuperponer();
         },
 
         cerrarSidebarSubcategorias() {
