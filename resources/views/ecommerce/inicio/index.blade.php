@@ -13,7 +13,7 @@
 
 
 
-               {{-- <div class="m_40_0">
+               <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -125,7 +125,7 @@
                     ])
                 </div>
 
-                {{--<div class="m_40_0">
+                <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Grandes marcas',
                         'p_alineacion' => 'center',
@@ -155,7 +155,7 @@
                             'p_elementos' => $dataGridImagenSeisElementos_2,
                         ])
                     </div>
-                </div>--}}
+                </div>
 
             </div>
         </div>
