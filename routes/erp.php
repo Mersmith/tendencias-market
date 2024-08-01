@@ -26,6 +26,7 @@ use App\Livewire\Erp\Inventario\InventarioVariacionListaPrecioTodasLivewire;
 use App\Livewire\Erp\ListaPrecio\ProductoListaPrecioTodasLivewire;
 use App\Livewire\Erp\Plantilla\Banner\BannerCrearLivewire;
 use App\Livewire\Erp\Plantilla\Footer\FooterEditarLivewire;
+use App\Livewire\Erp\Plantilla\Grid\GridCrearLivewire;
 use App\Livewire\Erp\Plantilla\Mostrador\MostradorCrearLivewire;
 use App\Livewire\Erp\Plantilla\Slider\SliderCrearLivewire;
 use App\Livewire\Erp\Producto\ProductoCrearLivewire;
@@ -174,3 +175,5 @@ Route::get('/plantilla/slider/crear', SliderCrearLivewire::class)->name('plantil
 Route::get('/plantilla/banner/crear', BannerCrearLivewire::class)->name('plantilla.banner.vista.crear');
 
 Route::get('/plantilla/mostrador/crear', MostradorCrearLivewire::class)->name('plantilla.mostrador.vista.crear');
+
+Route::get('/plantilla/grid/crear', GridCrearLivewire::class)->name('plantilla.grid.vista.crear');

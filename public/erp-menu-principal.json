@@ -544,6 +544,14 @@
                         "url": "/erp/plantilla/mostrador/crear",
                         "nivel": 3,
                         "submenus": []
+                    },
+                    {
+                        "id": 115,
+                        "nombre": "Grid",
+                        "ruta": "erp.plantilla.grid.vista.crear",
+                        "url": "/erp/plantilla/grid/crear",
+                        "nivel": 3,
+                        "submenus": []
                     }
                 ]
             }

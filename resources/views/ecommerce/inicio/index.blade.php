@@ -83,7 +83,7 @@
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
-                </div>--}}
+                </div>
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [
