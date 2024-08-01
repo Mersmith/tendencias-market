@@ -536,6 +536,14 @@
                         "url": "/erp/plantilla/banner/crear",
                         "nivel": 3,
                         "submenus": []
+                    },
+                    {
+                        "id": 114,
+                        "nombre": "Mostrador",
+                        "ruta": "erp.plantilla.mostrador.vista.crear",
+                        "url": "/erp/plantilla/mostrador/crear",
+                        "nivel": 3,
+                        "submenus": []
                     }
                 ]
             }
