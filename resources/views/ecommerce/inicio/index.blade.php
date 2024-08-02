@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
                 </div>
 
                 <div class="columna_12">
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_3])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
                 </div>
 
                 <div class="columna_12 m_40_0">
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
                 </div>
 
                 <div class="columna_12 m_40_0">
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="columna_12 m_40_0">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
                 </div>
 
                 <div class="m_40_0">

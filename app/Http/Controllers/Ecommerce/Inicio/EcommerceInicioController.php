@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Erp\InventarioController;
+use App\Http\Controllers\Erp\SliderController;
 use App\Models\Banner;
 use App\Models\Categoria;
 use App\Models\Inventario;
@@ -20,14 +21,9 @@ class EcommerceInicioController extends Controller
 
         $producto_almacen_ecommerce = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoriaId, $lista_precio_etiqueta);
 
-        $sliders = Slider::find(5);
-        $sliders->imagenes = json_decode($sliders->imagenes, true);
+        $sliders = app(SliderController::class)->getEcommerceSlidersPrincipal();
 
-        $imagenBanner_1 = Banner::find(3);      
-
-        $imagenBanner_2 = $imagenBanner_1;
-
-        $imagenBanner_3 = $imagenBanner_1;
+        $imagenBanner_1 = Banner::find(3);
 
         $tiendas = [
             [
@@ -311,7 +307,7 @@ class EcommerceInicioController extends Controller
                 'width' => 50,
             ]
         ];
-       
+
         $sliderImagenTresElementosPublicidadControles = [
             [
                 'id' => 1,
@@ -461,8 +457,6 @@ class EcommerceInicioController extends Controller
             'ecommerce.inicio.index',
             compact(
                 'imagenBanner_1',
-                'imagenBanner_2',
-                'imagenBanner_3',
                 'sliders',
                 'tiendas',
                 'dataGridImagenSeisElementos_2',
