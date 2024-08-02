@@ -36,7 +36,7 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $dataGridImagenSeisElementos_2,
+                            'p_elementos' => $mostrador_1,
                         ])
                     </div>
                 </div>
@@ -134,7 +134,7 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $dataGridImagenSeisElementos_3,
+                            'p_elementos' => $mostrador_2,
                         ])
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                 <div class="m_40_0">
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $dataGridImagenSeisElementos_2,
+                            'p_elementos' => $mostrador_3,
                         ])
                     </div>
                 </div>

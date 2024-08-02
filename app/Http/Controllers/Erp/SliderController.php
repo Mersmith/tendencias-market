@@ -11,7 +11,7 @@ class SliderController extends Controller
 {
     public function getEcommerceSlidersPrincipal()
     {
-        $sliders = Slider::find(5);
+        $sliders = Slider::find(1);
         if ($sliders) {
             $sliders->imagenes = json_decode($sliders->imagenes, true);
         } else {

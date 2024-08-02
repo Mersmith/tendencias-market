@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Erp\InventarioController;
+use App\Http\Controllers\Erp\MostradorController;
 use App\Http\Controllers\Erp\SliderController;
 use App\Models\Banner;
 use App\Models\Categoria;
 use App\Models\Inventario;
+use App\Models\Mostrador;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,11 @@ class EcommerceInicioController extends Controller
 
         $sliders = app(SliderController::class)->getEcommerceSlidersPrincipal();
 
-        $imagenBanner_1 = Banner::find(3);
+        $imagenBanner_1 = Banner::find(1);
+        $mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
+        $mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
+        $mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
+        //dd($mostrador_1);
 
         $tiendas = [
             [
@@ -52,7 +58,7 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
-        $dataGridImagenSeisElementos_2 = [
+        /*$dataGridImagenSeisElementos_2 = [
             [
                 "id" => 1,
                 "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt28a5f9f365b085f4/6564d1a4ec79942074968838/CAT-01-DK-Navidad-221123-RN.jpg?disable=upscale&format=webp&quality=70&width=1280",
@@ -125,7 +131,7 @@ class EcommerceInicioController extends Controller
                 "nombre" => "Supermercado",
                 "link" => "www.google.com1"
             ]
-        ];
+        ];*/
 
         $dataGridImagenSeisElementos_3 = [
             [
@@ -459,7 +465,9 @@ class EcommerceInicioController extends Controller
                 'imagenBanner_1',
                 'sliders',
                 'tiendas',
-                'dataGridImagenSeisElementos_2',
+                'mostrador_1',
+                'mostrador_2',
+                'mostrador_3',
                 'dataGridImagenSeisElementos_3',
                 'dataSliderImagenDosElementosTiempo',
                 'dataSliderImagenTresElementosTiempo',

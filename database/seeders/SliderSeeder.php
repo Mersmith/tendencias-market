@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Slider;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,35 @@ class SliderSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $sliders = [
+            [
+                'nombre' => 'Slider 1',
+                'imagenes' => json_encode([
+                    [
+                        'id' => 1,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-1.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-movil-1.jpg',
+                        'link' => 'https://example.com/link1'
+                    ],
+                    [
+                        'id' => 2,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-2.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-2.jpg',
+                        'link' => 'https://example.com/link2'
+                    ],
+                    [
+                        'id' => 3,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-3.jpg',
+                        'link' => 'https://example.com/link3'
+                    ]
+                ]),
+                'activo' => true
+            ]
+        ];
+
+        foreach ($sliders as $slider) {
+            Slider::create($slider);
+        }
     }
 }
