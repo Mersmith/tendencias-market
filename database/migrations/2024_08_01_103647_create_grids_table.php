@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->string('nombre')->unique();
             $table->json('imagenes');
-            $table->string('tipo');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
