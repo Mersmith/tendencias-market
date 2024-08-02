@@ -13,7 +13,7 @@
 
 
 
-               <div class="m_40_0">
+                <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -58,19 +58,19 @@
                 </div>
 
                 <div class="columna_12">
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
                         'p_elementos' => $imagenesGridPublicidad_1,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
                         'p_elementos' => $imagenesGridPublicidad_2,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
                         'p_elementos' => $imagenesGridPublicidad_1,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad', [
+                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
                         'p_elementos' => $imagenesGridPublicidad_2,
                     ])
                 </div>
@@ -105,7 +105,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $sliderImagenTresElementosPublicidadControles,
+                        'p_elementos' => $imagenesGridPublicidad_2,
                     ])
                 </div>
 

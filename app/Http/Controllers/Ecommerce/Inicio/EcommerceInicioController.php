@@ -131,51 +131,6 @@ class EcommerceInicioController extends Controller
             ]
         ];
 
-        $sliderImagenTresElementosPublicidadControles = [
-            [
-                'id' => 1,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-3-dormitorios-271123-mdcb-50.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-3-dormitorios-271123-mdcb-50-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 50,
-            ],
-            [
-                'id' => 2,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 25,
-            ],
-            [
-                'id' => 3,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-2-toallas-171223-mdcb-25.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-2-toallas-171223-mdcb-25-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 25,
-            ],
-            [
-                'id' => 4,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-1-vestuario-171123-mdcb-50.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-1-vestuario-171123-mdcb-50-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 50,
-            ],
-            [
-                'id' => 5,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-2-belleza-271123-mdcb-25.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-2-belleza-271123-mdcb-25-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 25,
-            ],
-            [
-                'id' => 6,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-3-accesorios-171123-mdcb-25.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-uno/mc-dk-1-3-accesorios-171123-mdcb-25-movil.webp'),
-                'link' => 'https://www.google.com1',
-                'width' => 25,
-            ]
-        ];
-
         $dataSliderImagenCincoElementos = [
             [
                 "id" => 1,
@@ -285,14 +240,12 @@ class EcommerceInicioController extends Controller
                 'mostrador_1',
                 'mostrador_2',
                 'mostrador_3',
-                'dataGridImagenSeisElementos_3',
                 'dataSliderImagenDosElementosTiempo',
                 'dataSliderImagenTresElementosTiempo',
                 'dataSliderImagenCuatroElementos',
                 'imagenesGridPublicidad_1',
                 'imagenesGridPublicidad_2',
                 'producto_almacen_ecommerce',
-                'sliderImagenTresElementosPublicidadControles',
                 'dataSliderImagenCincoElementos',
                 'categorias'
             )
