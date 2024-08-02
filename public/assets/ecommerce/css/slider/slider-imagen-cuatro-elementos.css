@@ -1,16 +1,20 @@
-/* ITEM SLIDER */
-.slider_img_cuatro_ele .slide {
-    width: 25%;
-    flex: 0 0 auto;
+.slider_img_tres_ele_publi_contr_2 {
+    position: relative;
+    width: 100%;
+}
+
+.slider_img_tres_ele_publi_contr_2 .reverseSlider {
+    flex-direction: row-reverse;
+}
+
+.slider_img_tres_ele_publi_contr_2 .slide {
     scroll-snap-align: start;
-    padding: 0px 5px;
+    flex: 0 0 auto;
+    padding: 5px;
+    width: 25%;
 }
 
-.slider_img_cuatro_ele .slide a {
-    display: flex;
-}
-
-.slider_img_cuatro_ele .slide img {
+.slider_img_tres_ele_publi_contr_2 .slide img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -18,14 +22,16 @@
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
-    .slider_img_cuatro_ele .slide {
+
+    .slider_img_tres_ele_publi_contr_2 .slide {
         width: 45%;
     }
+    
 }
 
-/* RESPONSIVE MOVIL */
 @media (max-width: 700px) {
-    .slider_img_cuatro_ele .slide {
+    .slider_img_tres_ele_publi_contr_2 .slide {
         width: 95%;
     }
+
 }
