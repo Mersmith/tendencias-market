@@ -11,9 +11,7 @@
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
 
-
-
-                <div class="m_40_0">
+                {{--<div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -25,7 +23,7 @@
                             'p_elementos' => $tiendas,
                         ])
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
@@ -41,11 +39,11 @@
                     </div>
                 </div>
 
-                <div class="columna_12 m_40_0">
+                {{--<div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenDosElementosTiempo,
                     ])
-                </div>
+                </div>--}}
 
                 <div class="columna_12 m_b_10">
                     @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
@@ -79,11 +77,11 @@
                     @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                {{--<div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
-                </div>
+                </div>--}}
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [

@@ -63,6 +63,12 @@ class EcommerceInicioController extends Controller
                 'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@140h.webp'),
                 'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@160h-movil.jpg'),
                 'link' => 'https://www.google.com1',
+            ],
+            [
+                'id' => 4,
+                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@140h.webp'),
+                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@160h-movil.jpg'),
+                'link' => 'https://www.google.com1',
             ]
         ];
 
@@ -72,6 +78,11 @@ class EcommerceInicioController extends Controller
                     "id" => 1,
                     "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-01-tablet-201223-af.webp'),
                     "link" => "www.google.com1"
+                ],
+                [
+                    "id" => 2,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-02-samsung-201223-af.webp'),
+                    "link" => "www.google.com2"
                 ],
                 [
                     "id" => 2,
@@ -97,6 +108,11 @@ class EcommerceInicioController extends Controller
                 [
                     "id" => 2,
                     "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-02v.webp'),
+                    "link" => "www.google.com2"
+                ],
+                [
+                    "id" => 3,
+                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-03-ofertas-111223-mdcb_.webp'),
                     "link" => "www.google.com2"
                 ],
                 [
