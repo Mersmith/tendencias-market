@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class SliderController extends Controller
 {
-    public function getEcommerceSlidersPrincipal()
+    public function getEcommerceSlidersPrincipal($id)
     {
-        $sliders = Slider::find(1);
+        $sliders = Slider::find($id);
         if ($sliders) {
             $sliders->imagenes = json_decode($sliders->imagenes, true);
         } else {

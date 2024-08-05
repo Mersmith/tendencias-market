@@ -25,9 +25,10 @@ class EcommerceInicioController extends Controller
 
         $producto_almacen_ecommerce = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoriaId, $lista_precio_etiqueta);
 
-        $sliders = app(SliderController::class)->getEcommerceSlidersPrincipal();
+        $sliders = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
 
         $imagenBanner_1 = Banner::find(1);
+        $imagenBanner_2 = Banner::find(2);
         $mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
         $mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
         $mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
@@ -183,6 +184,7 @@ class EcommerceInicioController extends Controller
             'ecommerce.inicio.index',
             compact(
                 'imagenBanner_1',
+                'imagenBanner_2',
                 'sliders',
                 'tiendas',
                 'mostrador_1',
