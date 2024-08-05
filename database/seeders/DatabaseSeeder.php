@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /*$this->call(SedeSeeder::class);
+        $this->call(SedeSeeder::class);
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
         $this->call(SerieSeeder::class);
@@ -22,15 +22,15 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaMarcaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
-        $this->call(ProductoSeeder::class);
+        /*$this->call(ProductoSeeder::class);
         $this->call(VariacionSeeder::class);
         //$this->call(InventarioSeeder::class);//Ahora se agrega stock con GuiaEntradaDirectoSeeder
         $this->call(ListaPrecioSeeder::class);
         $this->call(ProductoListaPreciosSeeder::class);
         $this->call(ProductoDescuentoSeeder::class);
-        $this->call(GuiaEntradaDirectoSeeder::class);
+        $this->call(GuiaEntradaDirectoSeeder::class);*/
         $this->call(ImagenSeeder::class);
-        $this->call(ImagenablesSeeder::class);*/
+        $this->call(ImagenablesSeeder::class);
         $this->call(SliderSeeder::class);
         $this->call(BannerSeeder::class);
         $this->call(MostradorSeeder::class);
