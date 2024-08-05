@@ -1,5 +1,5 @@
 @if (!empty($p_elementos))
-    <div x-data="dataSliderPubliSeisEle1({{ json_encode($p_elementos) }})" x-init="init()" class="slider_img_tres_ele_publi_contr_2">
+    <div x-data="dataSliderPubliSeisEle1({{ json_encode($p_elementos->imagenes) }})" x-init="init()" class="slider_img_tres_ele_publi_contr_2">
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_promociones slider">

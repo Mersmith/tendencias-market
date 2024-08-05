@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ecommerce\Inicio;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Erp\AvisoController;
 use App\Http\Controllers\Erp\GridController;
 use App\Http\Controllers\Erp\InventarioController;
 use App\Http\Controllers\Erp\MostradorController;
@@ -33,6 +34,9 @@ class EcommerceInicioController extends Controller
 
         $imagenesGridPublicidad_1 = app(GridController::class)->getEcommerceGrid(1);
         $imagenesGridPublicidad_2 = app(GridController::class)->getEcommerceGrid(2);
+
+        $dataSliderImagenCuatroElementos = app(AvisoController::class)->getEcommerceAviso(1);
+        $dataSliderImagenCincoElementos = app(AvisoController::class)->getEcommerceAviso(2);        
 
         $tiendas = [
             [
@@ -106,62 +110,6 @@ class EcommerceInicioController extends Controller
                 "segundo" => 43,
             ],
             "fecha_finaliza" => "2024-07-13"
-        ];
-
-        $dataSliderImagenCuatroElementos = [
-            [
-                'id' => 1,
-                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-01-DK-MB-audio-JL.webp'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 2,
-                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-02-DK-MB-videojuegos-JL.webp'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 3,
-                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-03-DK-MB-smartwatch-JL.webp'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 4,
-                'imagen' => asset('assets/ecommerce/imagenes/promociones/promocion-uno/HotSale-Hardsell-04-DK-MB-tablets-JL.webp'),
-                'link' => 'https://www.google.com1',
-            ]
-        ];
-
-        $dataSliderImagenCincoElementos = [
-            [
-                "id" => 1,
-                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/bltfb012eaf82a838ab/655cce634c0b9a0ab3d5244e/01-Ecosistemas-CMR-web-2111-RN.jpg?disable=upscale&format=webp&quality=70&width=1280",
-                "nombre" => "CMR Visa",
-                "link" => "www.google.com1"
-            ],
-            [
-                "id" => 2,
-                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt99146fea275d653d/6548eebe1607a5040aa270d0/02-Ecosistema-OU-web-0611.jpg?disable=upscale&format=webp&quality=70&width=1280",
-                "nombre" => "Oportunidades Únicas",
-                "link" => "www.google.com1"
-            ],
-            [
-                "id" => 3,
-                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/bltea505e477b9988b4/6548eebd26f063040a8d6bb5/03-Ecosistemas-W44-CMRpuntos-DK-MB-af.jpg?disable=upscale&format=webp&quality=70&width=1280",
-                "nombre" => "CMR Puntos",
-                "link" => "www.google.com1"
-            ],
-            [
-                "id" => 4,
-                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt44880c1349ca5e53/6548eebd61070f040a26e8f4/04-Ecosistemas-W44-Tottus-DK-MB-af.jpg?disable=upscale&format=webp&quality=70&width=1280",
-                "nombre" => "Tottus APP",
-                "link" => "www.google.com1"
-            ],
-            [
-                "id" => 5,
-                "imagen" => "https://images.falabella.com/v3/assets/bltf4ed0b9a176c126e/blt966cad44f739322a/655cc99136b545af00cd52b8/05-Ecosistema-SOAT-web-2111-RN.jpg?disable=upscale&format=webp&quality=70&width=1280",
-                "nombre" => "Seguros Falabella",
-                "link" => "www.google.com1"
-            ]
         ];
 
         $categorias = [

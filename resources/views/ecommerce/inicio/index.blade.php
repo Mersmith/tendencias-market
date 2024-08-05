@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="columna_12 m_10_0">
-                    @include('ecommerce.partials.slider-imagen-cinco-elementos', [
+                    @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
                         'p_elementos' => $dataSliderImagenCincoElementos,
                     ])
                 </div>

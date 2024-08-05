@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BannerSeeder::class);
         $this->call(MostradorSeeder::class);
         $this->call(GridSeeder::class);
+        $this->call(AvisoSeeder::class);
     }
 }
