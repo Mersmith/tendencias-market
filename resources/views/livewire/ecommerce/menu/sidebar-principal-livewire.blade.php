@@ -264,7 +264,7 @@
     </nav>
 
     <!-- CONTENEDOR ITEMS SUBCATEGORIA -->
-    <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
+    {{--<div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
         <!-- SIDEBAR CONTENEDOR -->
         <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
@@ -304,5 +304,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 </div>

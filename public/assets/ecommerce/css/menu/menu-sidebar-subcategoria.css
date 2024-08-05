@@ -160,32 +160,13 @@
         width: var(--ancho-sidebar-categoria);
     }
 
-    /* SIDEBAR CONTENIDO ITEM ELEMENTO */
     .contenedor_sidebar_subcategorias .sidebar_cotenido_item_ul {
-        position: relative;
-        padding: 16px 0;
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
 
     /*SIDEBAR CABECERA*/
     .contenedor_sidebar_subcategorias .sidebar_cabecera {
         display: flex;
-    }
-
-    .contenedor_sidebar_subcategorias .sidebar_cotenido_item_ul li {
-        padding: 0 16px;
-    }
-
-    .contenedor_sidebar_subcategorias .sidebar_cotenido_elemento i {
-        display: block;
-    }
-
-    .contenedor_sidebar_subcategorias .sidebar_cotenido_elemento {
-        height: 46px;
-    }
-
-    .contenedor_sidebar_subcategorias .sidebar_cotenido_elemento .sidebar_contenedor_imagen {
-        display: none;
     }
 }

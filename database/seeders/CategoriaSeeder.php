@@ -30,7 +30,7 @@ class CategoriaSeeder extends Seeder
             ]);
 
             // Crear subcategorías
-            for ($j = 1; $j <= 10; $j++) {
+            for ($j = 1; $j <= 15; $j++) {
                 $nombreHijo = 'SUB ' . $faker->word . ' ' . $faker->word;
                 $hijo = Categoria::create([
                     'nombre' => $nombreHijo,
@@ -41,20 +41,6 @@ class CategoriaSeeder extends Seeder
                     'categoria_padre_id' => $padre->id,
                     'orden' => $j,
                 ]);
-
-                // Crear ítems
-                /*for ($k = 1; $k <= 2; $k++) {
-                    $nombreSubcategoria = 'IT ' . $faker->word . ' ' . $faker->word;
-                    Categoria::create([
-                        'nombre' => $nombreSubcategoria,
-                        'slug' => Str::slug($nombreSubcategoria),
-                        'codigo' => 'CAT' . str_pad($i * 1000 + $j * 10 + $k, 5, '0', STR_PAD_LEFT),
-                        'descripcion' => $faker->sentence,
-                        'activo' => true,
-                        'categoria_padre_id' => $hijo->id,
-                        'orden' => $k,
-                    ]);
-                }*/
             }
         }
     }
