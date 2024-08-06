@@ -1,5 +1,5 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    <div x-data="dataSliderPubliSeisEle1{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="init()" class="contenedor_aviso">
+    <div x-data="dataAviso{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="initAviso()" class="contenedor_aviso">
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_promociones slider">
@@ -37,7 +37,7 @@
     </div>
 
     <script>
-        function dataSliderPubliSeisEle1{{ $p_elementos->id }}(totalImagenes) {
+        function dataAviso{{ $p_elementos->id }}(totalImagenes) {
             return {
                 totalElementos: totalImagenes,
                 cantidadElementosComputadora: 4,
@@ -47,7 +47,7 @@
                 currentPage: 1,
                 totalPaginas: Math.ceil(totalImagenes / 4),
 
-                init() {
+                initAviso() {
                     this.handleResize();
                     window.addEventListener('resize', this.handleResize.bind(this));
                 },

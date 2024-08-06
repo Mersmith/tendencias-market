@@ -11,7 +11,7 @@
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
 
-                {{-- <div class="m_40_0">
+                <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -23,7 +23,7 @@
                             'p_elementos' => $tiendas,
                         ])
                     </div>
-                </div> --}}
+                </div>
 
                 <div class="m_40_0">
                     @include('ecommerce.partials.mostrador', [
@@ -48,19 +48,19 @@
                 </div>
 
                 <div class="columna_12">
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                    @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_1,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                    @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_2,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                    @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_1,
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                    @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_2,
                     ])
                 </div>
@@ -94,7 +94,7 @@
                         'p_color' => '#000000',
                     ])
 
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
+                    @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_2,
                     ])
                 </div>
@@ -142,6 +142,6 @@
             </div>
         </div>
 
-        @include('ecommerce.partials.pie-pagina-categorias', ['p_elementos' => $data_enlaces_rapidos_1])
+        @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1])
     </div>
 @endsection

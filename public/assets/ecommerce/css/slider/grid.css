@@ -1,43 +1,43 @@
-.slider_img_tres_ele_publi_contr {
+.contenedor_grid {
     position: relative;
     width: 100%;
 }
 
-.slider_img_tres_ele_publi_contr .reverseSlider {
+.contenedor_grid .reverseSlider {
     flex-direction: row-reverse;
 }
 
-.slider_img_tres_ele_publi_contr .slide {
+.contenedor_grid .slide {
     scroll-snap-align: start;
     flex: 0 0 auto;
     padding: 5px;
 }
 
-.slider_img_tres_ele_publi_contr .slide img {
+.contenedor_grid .slide img {
     width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.slider_img_tres_ele_publi_contr .item_50 {
+.contenedor_grid .item_50 {
     width: 50%;
 }
 
-.slider_img_tres_ele_publi_contr .item_25 {
+.contenedor_grid .item_25 {
     width: 25%;
 }
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
-    .slider_img_tres_ele_publi_contr .slide {
+    .contenedor_grid .slide {
         width: 45%;
     }
     
 }
 
 @media (max-width: 700px) {
-    .slider_img_tres_ele_publi_contr .slide {
+    .contenedor_grid .slide {
         width: 95%;
     }
 

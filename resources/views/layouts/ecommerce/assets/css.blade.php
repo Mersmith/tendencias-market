@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/aviso.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-productos-seis-elementos.css') }}">
 <link rel="stylesheet"
-href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad-controles.css') }}">
+href="{{ asset('assets/ecommerce/css/slider/grid.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cinco-elementos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad2.css') }}">
 
@@ -42,6 +42,6 @@ href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publici
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/mostrador.css') }}">
 
 <!--PIE-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-categorias.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-enlaces.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/footer.css') }}">

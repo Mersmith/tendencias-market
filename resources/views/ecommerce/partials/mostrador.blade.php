@@ -6,7 +6,7 @@
     ])
 
     <div class="columna_12 m_10_0">
-        <div x-data="dataGridImaSeisElem{{ $p_elementos->id }}()">
+        <div x-data="dataMostrador{{ $p_elementos->id }}()">
             <!-- CONTENEDOR GRID -->
             <div class="contenedor_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
                 @foreach ($p_elementos->imagenes as $index => $item)
@@ -36,7 +36,7 @@
     </div>
 
     <script>
-        function dataGridImaSeisElem{{ $p_elementos->id }}() {
+        function dataMostrador{{ $p_elementos->id }}() {
             return {
                 mostrarTodos: false
             }

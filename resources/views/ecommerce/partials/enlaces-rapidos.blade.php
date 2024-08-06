@@ -1,6 +1,6 @@
 @if (!empty($p_elementos))
-    <div x-data="dataPiePagCatego()" x-init="init()">
-        <div class="pie_pagina_categorias">
+    <div x-data="dataEnlacesRapidos()" x-init="init()">
+        <div class="contendor_enlaces_rapidos">
             <div class="centrar_contenido_pagina">
                 <div class="contenido_pagina">
                     <div class="columna_12">
@@ -38,7 +38,7 @@
     </div>
 
     <script>
-        function dataPiePagCatego() {
+        function dataEnlacesRapidos() {
             return {
                 cantidadElementos: 4,
                 mostrarTodos: false,
