@@ -20,7 +20,7 @@ class EcommerceInicioController extends Controller
         $data_banner_2 = Banner::find(2);
         $data_banner_3 = Banner::find(3);
 
-        $data_slider_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
+        $data_slider_principal_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
 
         $data_mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
         $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
@@ -136,7 +136,7 @@ class EcommerceInicioController extends Controller
                 'data_baner_1',
                 'data_banner_2',
                 'data_banner_3',
-                'data_slider_1',
+                'data_slider_principal_1',
                 'tiendas',
                 'data_mostrador_1',
                 'data_mostrador_2',

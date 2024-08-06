@@ -39,7 +39,7 @@ href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publici
 
 <!--GRID IMAGEN-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-seis-elementos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/mostrador.css') }}">
 
 <!--PIE-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-categorias.css') }}">

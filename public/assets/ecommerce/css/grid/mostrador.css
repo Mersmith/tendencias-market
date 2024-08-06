@@ -1,5 +1,5 @@
 /* CONTENEDOR GRID */
-.contenedor_grid_imagen_seis_elementos {
+.contenedor_mostrador {
     display: grid;
     align-items: start;
     grid-template-columns: repeat(6, 1fr);
@@ -8,14 +8,14 @@
 }
 
 /* LINK */
-.contenedor_grid_imagen_seis_elementos a {
+.contenedor_mostrador a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.contenedor_grid_imagen_seis_elementos p {
+.contenedor_mostrador p {
     width: 140px;
     margin-top: 15px;
     text-align: center;
@@ -25,32 +25,32 @@
 }
 
 /* IMAGENES */
-.contenedor_grid_imagen_seis_elementos img {
+.contenedor_mostrador img {
     width: 120px;
     height: auto;
     border-radius: 50%;
 }
 
 /* Ocultar todos los elementos después del sexto por defecto */
-.contenedor_grid_imagen_seis_elementos .item:nth-child(n+7) {
+.contenedor_mostrador .item:nth-child(n+7) {
     display: none;
 }
 
 /* Mostrar todos los elementos cuando showAll es true */
-.contenedor_grid_imagen_seis_elementos.mostrar_todos .item:nth-child(n+7) {
+.contenedor_mostrador.mostrar_todos .item:nth-child(n+7) {
     display: block;
 }
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
-    .contenedor_grid_imagen_seis_elementos {
+    .contenedor_mostrador {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* RESPONSIVE MOVIL */
 @media (max-width: 700px) {
-    .contenedor_grid_imagen_seis_elementos {
+    .contenedor_mostrador {
         grid-template-columns: repeat(2, 1fr);
     }
 }

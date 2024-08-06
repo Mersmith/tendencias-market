@@ -8,7 +8,7 @@
     <div class="columna_12 m_10_0">
         <div x-data="dataGridImaSeisElem{{ $p_elementos->id }}()">
             <!-- CONTENEDOR GRID -->
-            <div class="contenedor_grid_imagen_seis_elementos" :class="{ 'mostrar_todos': mostrarTodos }">
+            <div class="contenedor_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
                 @foreach ($p_elementos->imagenes as $index => $item)
                     <div class="item">
                         <a href="{{ $item['link'] }}">

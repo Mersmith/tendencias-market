@@ -6,7 +6,7 @@
     <div>
         @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
 
-        @include('ecommerce.partials.slider-principal', ['p_elementos' => $data_slider_1])
+        @include('ecommerce.partials.slider-principal', ['p_elementos' => $data_slider_principal_1])
 
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
@@ -26,7 +26,7 @@
                 </div> --}}
 
                 <div class="m_40_0">
-                    @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                    @include('ecommerce.partials.mostrador', [
                         'p_elementos' => $data_mostrador_1,
                     ])
                 </div>
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="m_40_0">
-                    @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                    @include('ecommerce.partials.mostrador', [
                         'p_elementos' => $data_mostrador_2,
                     ])
                 </div>
@@ -133,7 +133,7 @@
 
                 <div class="m_40_0">
                     <div class="columna_12 m_10_0">
-                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                        @include('ecommerce.partials.mostrador', [
                             'p_elementos' => $data_mostrador_3,
                         ])
                     </div>
