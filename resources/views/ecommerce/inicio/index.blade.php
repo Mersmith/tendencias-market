@@ -38,7 +38,7 @@
                 </div> --}}
 
                 <div class="columna_12 m_b_10">
-                    @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
+                    @include('ecommerce.partials.aviso', [
                         'p_elementos' => $data_aviso_1,
                     ])
                 </div>
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="columna_12 m_10_0">
-                    @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
+                    @include('ecommerce.partials.aviso', [
                         'p_elementos' => $data_aviso_2,
                     ])
                 </div>

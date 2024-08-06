@@ -1,5 +1,5 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    <div x-data="dataSliderPubliSeisEle1{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="init()" class="slider_img_tres_ele_publi_contr_2">
+    <div x-data="dataSliderPubliSeisEle1{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="init()" class="contenedor_aviso">
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_promociones slider">
