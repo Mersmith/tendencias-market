@@ -9,6 +9,7 @@ use App\Http\Controllers\Erp\GridController;
 use App\Http\Controllers\Erp\InventarioController;
 use App\Http\Controllers\Erp\MostradorController;
 use App\Http\Controllers\Erp\SliderController;
+use App\Http\Controllers\Erp\VitrinaController;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 
@@ -40,38 +41,7 @@ class EcommerceInicioController extends Controller
 
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
-        $tiendas = [
-            [
-                'id' => 1,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Retail@140h.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Retail@160h-movil.jpg'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 2,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Sodimac@140h.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Sodimac@160h-movil.jpg'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 3,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Tottus@140h.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Tottus@160h-movil.jpg'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 4,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@140h.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@160h-movil.jpg'),
-                'link' => 'https://www.google.com1',
-            ],
-            [
-                'id' => 4,
-                'imagenComputadora' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@140h.webp'),
-                'imagenMovil' => asset('assets/ecommerce/imagenes/tiendas/botones/Linio@160h-movil.jpg'),
-                'link' => 'https://www.google.com1',
-            ]
-        ];
+        $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
 
         $dataSliderImagenDosElementosTiempo = [
             "data" => [
@@ -137,7 +107,7 @@ class EcommerceInicioController extends Controller
                 'data_banner_2',
                 'data_banner_3',
                 'data_slider_principal_1',
-                'tiendas',
+                'data_vitrina_1',
                 'data_mostrador_1',
                 'data_mostrador_2',
                 'data_mostrador_3',

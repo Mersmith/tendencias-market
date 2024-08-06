@@ -38,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AvisoSeeder::class);
         $this->call(EnlacesRapidosSeeder::class);
         $this->call(EcommerceFooterSeeder::class);
+        $this->call(VitrinaSeeder::class);
     }
 }
