@@ -16,21 +16,22 @@ class EcommerceInicioController extends Controller
 {
     public function __invoke()
     {
+        $data_baner_1 = Banner::find(1);
+        $data_banner_2 = Banner::find(2);
+        $data_banner_3 = Banner::find(3);
+
+        $data_slider_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
+
+        $data_mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
+        //dd($data_mostrador_1);
+        $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
+        $data_mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
+
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
         $categoria_id = 2;
 
         $data_productos = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-
-        $data_slider_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
-
-        $data_baner_1 = Banner::find(1);
-        $data_banner_2 = Banner::find(2);
-        $data_banner_3 = Banner::find(3);
-
-        $data_mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
-        $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
-        $data_mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
 
         $data_grid_1 = app(GridController::class)->getEcommerceGrid(1);
         $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);

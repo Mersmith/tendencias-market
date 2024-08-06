@@ -1,36 +1,35 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    <div x-data="dataGridImaSeisElem({{ json_encode($p_elementos->imagenes) }})">
+    <div x-data="dataGridImaSeisElem{{ $p_elementos->id }}()">
         <!-- CONTENEDOR GRID -->
-        <div class="contenedor_grid_imagen_seis_elementos">
-            <!-- LINK -->
-            <template x-for="(item, index) in visibleItems" :key="item.id">
-                <a :href="item.link">
-                    <!-- IMAGENES -->
-                    <img :src="item.imagen" :alt="item.titulo" />
-                    <p x-text="item.titulo"></p>
-                </a>
-            </template>
+        <div class="contenedor_grid_imagen_seis_elementos" :class="{ 'mostrar_todos': mostrarTodos }">
+            @foreach ($p_elementos->imagenes as $index => $item)
+                <div class="item">
+                    <a href="{{ $item['link'] }}">
+                        <!-- IMAGENES -->
+                        <img src="{{ $item['imagen'] }}" alt="{{ $item['titulo'] }}" />
+                        <p>{{ $item['titulo'] }}</p>
+                    </a>
+                </div>
+            @endforeach
         </div>
 
         <!-- CONTENEDOR CONTROL -->
-        <div class="contenedor_control_mostrar" x-show="items.length > 6">
-            <p @click="toggleMostrarMas" x-show="!mostrarMas">Mostrar más <span class="invertido">^</span></p>
-            <p @click="toggleMostrarMas" x-show="mostrarMas">Mostrar menos <span class="normal">^</span></p>
-        </div>
-    </div>
-
-    <script>
-        function dataGridImaSeisElem(items) {
-            return {
-                items: items,
-                mostrarMas: false,
-                get visibleItems() {
-                    return this.mostrarMas ? this.items : this.items.slice(0, 6);
-                },
-                toggleMostrarMas() {
-                    this.mostrarMas = !this.mostrarMas;
+        @if (count($p_elementos->imagenes) > 6)
+            <div class="contenedor_control_mostrar">
+                <p x-show="!mostrarTodos" @click="mostrarTodos = true" class="mostrar-mas">
+                    Mostrar más <span class="invertido">^</span>
+                </p>
+                <p x-show="mostrarTodos" @click="mostrarTodos = false" class="mostrar-menos">
+                    Mostrar menos <span class="normal">^</span>
+                </p>
+            </div>
+        @endif
+        <script>
+            function dataGridImaSeisElem{{ $p_elementos->id }}() {
+                return {
+                    mostrarTodos: false
                 }
             }
-        }
-    </script>
+        </script>
+    </div>
 @endif
