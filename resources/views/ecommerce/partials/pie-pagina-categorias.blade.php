@@ -1,4 +1,4 @@
-<div x-data="dataPiePagCatego({{ json_encode($p_elementos) }})" x-init="init()">
+<div x-data="dataPiePagCatego({{ json_encode($p_elementos->enlaces) }})" x-init="init()">
     <div class="pie_pagina_categorias">
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">

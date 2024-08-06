@@ -159,3 +159,6 @@ php artisan make:livewire Erp/Plantilla/Grid/GridCrearLivewire
 
 php artisan make:model Aviso -mfsc
 php artisan make:livewire Erp/Plantilla/Aviso/AvisoCrearLivewire
+
+php artisan make:model EnlacesRapidos -mfsc
+php artisan make:livewire Erp/Plantilla/EnlacesRapidos/EnlacesRapidosCrearLivewire
