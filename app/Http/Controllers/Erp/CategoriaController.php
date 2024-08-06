@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Erp;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoriaRequest;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -80,7 +81,7 @@ class CategoriaController extends Controller
 
     public function getEcommerceCategoriaAnidadas()
     {
-        $categoriasNivel1 = Categoria::whereNull('categoria_padre_id')->where('activo', 1)->orderBy('orden')->get();
+        $categoriasNivel1 = Categoria::whereNull('categoria_padre_id')->where('activo', 1)->orderBy('orden')->with(['imagens'])->get();
 
         return $categoriasNivel1->map(function ($categoria) {
             return $this->formatearCategoria($categoria);
@@ -93,6 +94,8 @@ class CategoriaController extends Controller
             return $this->formatearCategoria($subcategoria);
         });
 
+        $imagen = $categoria->imagens->first();
+
         return [
             'id' => $categoria->id,
             'nombre' => $categoria->nombre,
@@ -100,6 +103,7 @@ class CategoriaController extends Controller
             'descripcion' => $categoria->descripcion,
             'icono' => $categoria->icono,
             'imagen_ruta' => $categoria->imagen_ruta,
+            'imagen_url' => $imagen ? $imagen->url : null,
             'url' => url("category/{$categoria->id}/{$categoria->slug}"),
             'subcategorias' => $subcategorias,
         ];

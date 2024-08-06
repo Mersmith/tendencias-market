@@ -48,6 +48,9 @@ class SidebarPrincipalLivewire extends Component
     {
         $categoriaController = new CategoriaController();
         $this->categorias = $categoriaController->getEcommerceCategoriaAnidadas();
+
+        //dd($this->categorias);
+
     }
 
     public function render()

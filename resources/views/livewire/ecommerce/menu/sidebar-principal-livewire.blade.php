@@ -248,7 +248,7 @@
                                 <div class="sidebar_cotenido_elemento">
                                     <a :href="dataMenu.url" class="sidebar_cotenido_elemento_imagen">
                                         <div class="sidebar_contenedor_imagen">
-                                            <img src="{{ asset('assets/ecommerce/imagenes/grid-publicidad/grid-publicidad-dos/mc-dk-2-1-sandalias-271123-mdcb-25-movil.webp') }}"
+                                            <img :src="dataMenu.imagen_url"
                                                 alt="">
                                         </div>
                                         <span x-text="dataMenu.nombre"></span>

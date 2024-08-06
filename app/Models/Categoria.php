@@ -41,6 +41,11 @@ class Categoria extends Model
         return $this->belongsToMany(Marca::class, 'categoria_marcas');
     }
 
+    public function imagens()
+    {
+        return $this->morphToMany(Imagen::class, 'imagenable');
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {
