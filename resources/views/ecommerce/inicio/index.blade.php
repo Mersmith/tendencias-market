@@ -160,6 +160,6 @@
 
         @include('ecommerce.partials.pie-pagina-categorias', ['p_elementos' => $categorias])
 
-        @include('ecommerce.partials.pie-pagina-enlaces')
+        {{--@include('ecommerce.partials.pie-pagina-enlaces')--}}
     </div>
 @endsection
