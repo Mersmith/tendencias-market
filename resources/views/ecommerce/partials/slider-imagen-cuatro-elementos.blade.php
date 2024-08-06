@@ -1,51 +1,51 @@
-@if (!empty($p_elementos))
-    <div x-data="dataSliderPubliSeisEle1({{ json_encode($p_elementos->imagenes) }})" x-init="init()" class="slider_img_tres_ele_publi_contr_2">
+@if (!empty($p_elementos) && !empty($p_elementos->imagenes))
+    <div x-data="dataSliderPubliSeisEle1{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="init()" class="slider_img_tres_ele_publi_contr_2">
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_promociones slider">
             <!-- SLIDE -->
-            <template x-for="(elemento, index) in elementos" :key="index">
+            @foreach ($p_elementos->imagenes as $index => $elemento)
                 <div class="slide">
-                    <a :href="elemento.link">
-                        <img :src="elemento.imagen" alt="" />
+                    <a href="{{ $elemento['link'] }}">
+                        <img src="{{ $elemento['imagen'] }}" alt="" />
                     </a>
                 </div>
-            </template>
+            @endforeach
         </div>
 
         <!-- CONTROL BOTONES -->
         <button @click="handlePrev()" :disabled="currentPage === 1"
             class="control_slider_botones slider_boton_retroceder">
-            <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo">
+            <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > elementos.length"
+        <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > totalElementos"
             class="control_slider_botones slider_boton_siguiente">
-            <img src="{{ asset('assets/ecommerce/iconos/icono_siguiente.svg') }}" alt="Logo">
+            <i class="fa-solid fa-chevron-right"></i>
         </button>
 
         <!-- PAGINACION BOTONES -->
-        <template x-if="elementos.length > 4">
+        @if (count($p_elementos->imagenes) > 4)
             <div class="slider_paginacion">
-                <template x-for="page in totalPaginas" :key="page">
-                    <button @click="setCurrentPage(page)"
-                        :class="{ 'activo': currentPage === (page - 1) * itemsPorPagina + 1 }"
+                @for ($page = 1; $page <= ceil(count($p_elementos->imagenes) / 4); $page++)
+                    <button @click="setCurrentPage({{ $page }})"
+                        :class="{ 'activo': currentPage === ({{ $page }} - 1) * itemsPorPagina + 1 }"
                         class="slider_paginacion_boton">
                     </button>
-                </template>
+                @endfor
             </div>
-        </template>
+        @endif
     </div>
 
     <script>
-        function dataSliderPubliSeisEle1(elementos) {
+        function dataSliderPubliSeisEle1{{ $p_elementos->id }}(totalImagenes) {
             return {
-                elementos,
+                totalElementos: totalImagenes,
                 cantidadElementosComputadora: 4,
                 cantidadElementosTablet: 2,
                 cantidadElementosMovil: 1,
                 itemsPorPagina: 4,
                 currentPage: 1,
-                totalPaginas: Math.ceil(elementos.length / 4),
+                totalPaginas: Math.ceil(totalImagenes / 4),
 
                 init() {
                     this.handleResize();
@@ -61,7 +61,7 @@
                     } else {
                         this.itemsPorPagina = this.cantidadElementosMovil;
                     }
-                    this.totalPaginas = Math.ceil(this.elementos.length / this.itemsPorPagina);
+                    this.totalPaginas = Math.ceil(this.totalElementos / this.itemsPorPagina);
                     this.scrollToCurrentPage();
                 },
 
@@ -71,7 +71,7 @@
                 },
 
                 handleNext() {
-                    this.currentPage = Math.min(this.currentPage + this.itemsPorPagina, this.elementos.length);
+                    this.currentPage = Math.min(this.currentPage + this.itemsPorPagina, this.totalElementos);
                     this.scrollToCurrentPage();
                 },
 

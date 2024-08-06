@@ -26,17 +26,17 @@ class EcommerceInicioController extends Controller
         $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
         $data_mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
 
+        $data_aviso_1 = app(AvisoController::class)->getEcommerceAviso(1);
+        $data_aviso_2 = app(AvisoController::class)->getEcommerceAviso(2);
+
+        $data_grid_1 = app(GridController::class)->getEcommerceGrid(1);
+        $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);
+
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
         $categoria_id = 2;
 
         $data_productos = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-
-        $data_grid_1 = app(GridController::class)->getEcommerceGrid(1);
-        $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);
-
-        $data_aviso_1 = app(AvisoController::class)->getEcommerceAviso(1);
-        $data_aviso_2 = app(AvisoController::class)->getEcommerceAviso(2);
 
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
