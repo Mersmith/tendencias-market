@@ -6,7 +6,7 @@
     <div>
         @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
 
-        @include('ecommerce.partials.slider-principal', ['sliders' => $data_slider_1])
+        @include('ecommerce.partials.slider-principal', ['p_elementos' => $data_slider_1])
 
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">

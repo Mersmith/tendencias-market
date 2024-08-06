@@ -1,15 +1,16 @@
-@if (!empty($sliders))
-    <div x-data="dataSliderPrincipal({{ json_encode($sliders->imagenes) }})" class="centrar_contenedor">
+@if (!empty($p_elementos))
+    <div x-data="dataSliderPrincipal({{ count($p_elementos->imagenes) }})" x-init="initSliderPrincipal" class="centrar_contenedor">
         <div class="contenedor_slider_principal">
             <div class="slider">
-                <template x-for="(slide, index) in sliders" :key="index">
-                    <div :class="['item_slider', index === posicionImagenActual ? 'imagen_activo' : 'imagen_oculto']">
-                        <a :href="slide.link">
-                            <img :src="slide.imagenComputadora" alt="" class="imagen_computadora" />
-                            <img :src="slide.imagenMovil" alt="" class="imagen_movil" />
+                @foreach ($p_elementos->imagenes as $index => $slide)
+                    <div class="item_slider"
+                        x-bind:class="posicionImagenActual === @json($index) ? 'imagen_activo' : 'imagen_oculto'">
+                        <a href="{{ $slide['link'] }}">
+                            <img src="{{ $slide['imagenComputadora'] }}" alt="" class="imagen_computadora" />
+                            <img src="{{ $slide['imagenMovil'] }}" alt="" class="imagen_movil" />
                         </a>
                     </div>
-                </template>
+                @endforeach
             </div>
 
             <div class="control_botones">
@@ -22,32 +23,33 @@
             </div>
 
             <div class="paginacion_botones">
-                <template x-for="(slide, index) in sliders" :key="index">
-                    <button @click="setPosicionImagenActual(index)"
-                        :class="['boton_paginacion', index === posicionImagenActual ? 'imagen_activo' : '']"></button>
-                </template>
+                @foreach ($p_elementos->imagenes as $index => $slide)
+                    <button @click="setPosicionImagenActual(@json($index))" class="boton_paginacion"
+                        :class="posicionImagenActual === @json($index) ? 'imagen_activo' : ''"></button>
+                @endforeach
             </div>
         </div>
     </div>
+
     <script>
-        function dataSliderPrincipal(sliders) {
+        function dataSliderPrincipal(totalImagenes) {
             return {
-                sliders: sliders,
                 posicionImagenActual: 0,
+                totalImagenes: totalImagenes,
                 intervaloId: null,
-                init() {
+                initSliderPrincipal() {
                     this.iniciarIntervalo();
                 },
                 iniciarIntervalo() {
                     this.intervaloId = setInterval(() => {
                         this.botonSiguiente();
-                    }, 10000);
+                    }, 5000);
                 },
                 botonRetroceder() {
-                    this.posicionImagenActual = (this.posicionImagenActual - 1 + this.sliders.length) % this.sliders.length;
+                    this.posicionImagenActual = (this.posicionImagenActual - 1 + this.totalImagenes) % this.totalImagenes;
                 },
                 botonSiguiente() {
-                    this.posicionImagenActual = (this.posicionImagenActual + 1) % this.sliders.length;
+                    this.posicionImagenActual = (this.posicionImagenActual + 1) % this.totalImagenes;
                 },
                 setPosicionImagenActual(index) {
                     this.posicionImagenActual = index;

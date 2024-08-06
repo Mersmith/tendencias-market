@@ -26,13 +26,13 @@ class SliderSeeder extends Seeder
                     [
                         'id' => 2,
                         'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-2.jpg',
-                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-2.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-movil-2.jpg',
                         'link' => 'https://example.com/link2'
                     ],
                     [
                         'id' => 3,
                         'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-3.jpg',
-                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-computadora-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/sliders/sliders-movil-3.jpg',
                         'link' => 'https://example.com/link3'
                     ]
                 ]),
