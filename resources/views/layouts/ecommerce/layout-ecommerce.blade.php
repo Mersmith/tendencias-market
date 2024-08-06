@@ -21,7 +21,6 @@
 
 <body x-data="xDataLayoutEcommerce()" x-init="initLayoutEcommerce" class="contenedor_layout_ecommerce">
     <!--MENU PRINCIPAL-->
-    {{-- @include('ecommerce.partials.menu-principal') --}}
     @livewire('ecommerce.menu.sidebar-principal-livewire')
 
     <!--CONTENEDOR LAYOUT GENERAL-->
@@ -32,7 +31,7 @@
         @endif
     </main>
 
-    @include('ecommerce.partials.footer')
+    @livewire('ecommerce.footer.ecommerce-footer-livewire')
 
     <div class="contenedor_superponer" :x-show="estadoSuperponer" x-on:click="cerrarTodo"></div>
 

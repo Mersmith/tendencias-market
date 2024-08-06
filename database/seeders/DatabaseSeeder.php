@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(SedeSeeder::class);
+        /*$this->call(SedeSeeder::class);
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
         $this->call(SerieSeeder::class);
@@ -32,10 +32,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ImagenSeeder::class);
         $this->call(ImagenablesSeeder::class);
         $this->call(SliderSeeder::class);
-        $this->call(BannerSeeder::class);
+        $this->call(BannerSeeder::class);*/
         $this->call(MostradorSeeder::class);
         $this->call(GridSeeder::class);
         $this->call(AvisoSeeder::class);
         $this->call(EnlacesRapidosSeeder::class);
+        $this->call(EcommerceFooterSeeder::class);
     }
 }

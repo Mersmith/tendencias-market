@@ -162,3 +162,6 @@ php artisan make:livewire Erp/Plantilla/Aviso/AvisoCrearLivewire
 
 php artisan make:model EnlacesRapidos -mfsc
 php artisan make:livewire Erp/Plantilla/EnlacesRapidos/EnlacesRapidosCrearLivewire
+
+php artisan make:livewire Ecommerce/Footer/EcommerceFooterLivewire
+php artisan make:model EcommerceFooter -mfsc
