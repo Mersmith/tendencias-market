@@ -10,7 +10,6 @@ use App\Http\Controllers\Erp\InventarioController;
 use App\Http\Controllers\Erp\MostradorController;
 use App\Http\Controllers\Erp\SliderController;
 use App\Models\Banner;
-use App\Models\EnlacesRapidos;
 use Illuminate\Http\Request;
 
 class EcommerceInicioController extends Controller
@@ -19,26 +18,27 @@ class EcommerceInicioController extends Controller
     {
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
-        $categoriaId = 2;
+        $categoria_id = 2;
 
-        $producto_almacen_ecommerce = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoriaId, $lista_precio_etiqueta);
+        $data_productos = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
 
-        $sliders = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
+        $data_slider_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
 
-        $imagenBanner_1 = Banner::find(1);
-        $imagenBanner_2 = Banner::find(2);
-        $imagenBanner_3 = Banner::find(3);
-        $mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
-        $mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
-        $mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
+        $data_baner_1 = Banner::find(1);
+        $data_banner_2 = Banner::find(2);
+        $data_banner_3 = Banner::find(3);
 
-        $imagenesGridPublicidad_1 = app(GridController::class)->getEcommerceGrid(1);
-        $imagenesGridPublicidad_2 = app(GridController::class)->getEcommerceGrid(2);
+        $data_mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
+        $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
+        $data_mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
 
-        $dataSliderImagenCuatroElementos = app(AvisoController::class)->getEcommerceAviso(1);
-        $dataSliderImagenCincoElementos = app(AvisoController::class)->getEcommerceAviso(2);
+        $data_grid_1 = app(GridController::class)->getEcommerceGrid(1);
+        $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);
 
-        $categorias = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
+        $data_aviso_1 = app(AvisoController::class)->getEcommerceAviso(1);
+        $data_aviso_2 = app(AvisoController::class)->getEcommerceAviso(2);
+
+        $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
         $tiendas = [
             [
@@ -133,22 +133,22 @@ class EcommerceInicioController extends Controller
         return view(
             'ecommerce.inicio.index',
             compact(
-                'imagenBanner_1',
-                'imagenBanner_2',
-                'imagenBanner_3',
-                'sliders',
+                'data_baner_1',
+                'data_banner_2',
+                'data_banner_3',
+                'data_slider_1',
                 'tiendas',
-                'mostrador_1',
-                'mostrador_2',
-                'mostrador_3',
+                'data_mostrador_1',
+                'data_mostrador_2',
+                'data_mostrador_3',
                 'dataSliderImagenDosElementosTiempo',
                 'dataSliderImagenTresElementosTiempo',
-                'dataSliderImagenCuatroElementos',
-                'imagenesGridPublicidad_1',
-                'imagenesGridPublicidad_2',
-                'producto_almacen_ecommerce',
-                'dataSliderImagenCincoElementos',
-                'categorias'
+                'data_aviso_1',
+                'data_grid_1',
+                'data_grid_2',
+                'data_productos',
+                'data_aviso_2',
+                'data_enlaces_rapidos_1'
             )
         );
     }

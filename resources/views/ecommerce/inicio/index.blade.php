@@ -4,14 +4,14 @@
 
 @section('content')
     <div>
-        @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_1])
+        @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
 
-        @include('ecommerce.partials.slider-principal', ['sliders' => $sliders])
+        @include('ecommerce.partials.slider-principal', ['sliders' => $data_slider_1])
 
         <div class="centrar_contenido_pagina">
             <div class="contenido_pagina">
 
-                {{--<div class="m_40_0">
+                {{-- <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Ingresa a nuestras tiendas',
                         'p_alineacion' => 'center',
@@ -23,7 +23,7 @@
                             'p_elementos' => $tiendas,
                         ])
                     </div>
-                </div>--}}
+                </div> --}}
 
                 <div class="m_40_0">
                     @include('ecommerce.partials.titulo', [
@@ -34,54 +34,54 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $mostrador_1,
+                            'p_elementos' => $data_mostrador_1,
                         ])
                     </div>
                 </div>
 
-                {{--<div class="columna_12 m_40_0">
+                {{-- <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenDosElementosTiempo,
                     ])
-                </div>--}}
+                </div> --}}
 
                 <div class="columna_12 m_b_10">
                     @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
-                        'p_elementos' => $dataSliderImagenCuatroElementos,
+                        'p_elementos' => $data_aviso_1,
                     ])
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
                 <div class="columna_12">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $imagenesGridPublicidad_1,
+                        'p_elementos' => $data_grid_1,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $imagenesGridPublicidad_2,
+                        'p_elementos' => $data_grid_2,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $imagenesGridPublicidad_1,
+                        'p_elementos' => $data_grid_1,
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $imagenesGridPublicidad_2,
+                        'p_elementos' => $data_grid_2,
                     ])
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
-                {{--<div class="columna_12 m_40_0">
+                {{-- <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
-                </div>--}}
+                </div> --}}
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [
@@ -91,7 +91,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
-                        'p_elementos' => $producto_almacen_ecommerce,
+                        'p_elementos' => $data_productos,
                     ])
                 </div>
 
@@ -103,12 +103,12 @@
                     ])
 
                     @include('ecommerce.partials.slider-imagen-tres-elementos-publicidad-controles', [
-                        'p_elementos' => $imagenesGridPublicidad_2,
+                        'p_elementos' => $data_grid_2,
                     ])
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_3])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
                 </div>
 
                 <div class="columna_12 m_40_0">
@@ -119,7 +119,7 @@
                     ])
 
                     @include('ecommerce.partials.slider-productos-seis-elementos', [
-                        'p_elementos' => $producto_almacen_ecommerce,
+                        'p_elementos' => $data_productos,
                     ])
                 </div>
 
@@ -132,25 +132,25 @@
 
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $mostrador_2,
+                            'p_elementos' => $data_mostrador_2,
                         ])
                     </div>
                 </div>
 
                 <div class="columna_12 m_10_0">
                     @include('ecommerce.partials.slider-imagen-cuatro-elementos', [
-                        'p_elementos' => $dataSliderImagenCincoElementos,
+                        'p_elementos' => $data_aviso_2,
                     ])
                 </div>
 
                 <div class="columna_12 m_40_0">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
                 <div class="m_40_0">
                     <div class="columna_12 m_10_0">
                         @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $mostrador_3,
+                            'p_elementos' => $data_mostrador_3,
                         ])
                     </div>
                 </div>
@@ -158,8 +158,6 @@
             </div>
         </div>
 
-        @include('ecommerce.partials.pie-pagina-categorias', ['p_elementos' => $categorias])
-
-        {{--@include('ecommerce.partials.pie-pagina-enlaces')--}}
+        @include('ecommerce.partials.pie-pagina-categorias', ['p_elementos' => $data_enlaces_rapidos_1])
     </div>
 @endsection
