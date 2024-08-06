@@ -27,6 +27,13 @@ class BannerSeeder extends Seeder
                 'imagen_movil' => 'http://127.0.0.1:8000/assets/imagenes/banner/banner-tipo-2-movil-1.jpg',
                 'link' => 'https://example.com/link2',
                 'activo' => true
+            ],
+            [
+                'nombre' => 'Banner 3',
+                'imagen_computadora' => 'http://127.0.0.1:8000/assets/imagenes/banner/banner-tipo-3-computadora-1.jpg',
+                'imagen_movil' => 'http://127.0.0.1:8000/assets/imagenes/banner/banner-tipo-3-movil-1.jpg',
+                'link' => 'https://example.com/link3',
+                'activo' => true
             ]
         ];
 

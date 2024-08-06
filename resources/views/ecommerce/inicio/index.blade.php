@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="m_b_10">
-                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_2])
+                    @include('ecommerce.partials.banner', ['p_elemento' => $imagenBanner_3])
                 </div>
 
                 <div class="columna_12 m_40_0">

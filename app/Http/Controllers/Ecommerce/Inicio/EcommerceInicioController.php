@@ -27,6 +27,7 @@ class EcommerceInicioController extends Controller
 
         $imagenBanner_1 = Banner::find(1);
         $imagenBanner_2 = Banner::find(2);
+        $imagenBanner_3 = Banner::find(3);
         $mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
         $mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
         $mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
@@ -134,6 +135,7 @@ class EcommerceInicioController extends Controller
             compact(
                 'imagenBanner_1',
                 'imagenBanner_2',
+                'imagenBanner_3',
                 'sliders',
                 'tiendas',
                 'mostrador_1',
