@@ -26,17 +26,9 @@
                 </div> --}}
 
                 <div class="m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Aquí hay de todo',
-                        'p_alineacion' => 'center',
-                        'p_color' => '#4a4a4a',
+                    @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                        'p_elementos' => $data_mostrador_1,
                     ])
-
-                    <div class="columna_12 m_10_0">
-                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $data_mostrador_1,
-                        ])
-                    </div>
                 </div>
 
                 {{-- <div class="columna_12 m_40_0">
@@ -124,17 +116,9 @@
                 </div>
 
                 <div class="m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Grandes marcas',
-                        'p_alineacion' => 'center',
-                        'p_color' => '#000000',
+                    @include('ecommerce.partials.grid-imagen-seis-elementos', [
+                        'p_elementos' => $data_mostrador_2,
                     ])
-
-                    <div class="columna_12 m_10_0">
-                        @include('ecommerce.partials.grid-imagen-seis-elementos', [
-                            'p_elementos' => $data_mostrador_2,
-                        ])
-                    </div>
                 </div>
 
                 <div class="columna_12 m_10_0">

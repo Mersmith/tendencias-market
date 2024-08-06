@@ -23,7 +23,6 @@ class EcommerceInicioController extends Controller
         $data_slider_1 = app(SliderController::class)->getEcommerceSlidersPrincipal(1);
 
         $data_mostrador_1 = app(MostradorController::class)->getEcommerceMostrador(1);
-        //dd($data_mostrador_1);
         $data_mostrador_2 = app(MostradorController::class)->getEcommerceMostrador(2);
         $data_mostrador_3 = app(MostradorController::class)->getEcommerceMostrador(3);
 
