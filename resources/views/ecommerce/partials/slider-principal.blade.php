@@ -6,8 +6,8 @@
                     <div class="item_slider"
                         x-bind:class="posicionImagenActual === @json($index) ? 'imagen_activo' : 'imagen_oculto'">
                         <a href="{{ $slide['link'] }}">
-                            <img src="{{ $slide['imagenComputadora'] }}" alt="" class="imagen_computadora" />
-                            <img src="{{ $slide['imagenMovil'] }}" alt="" class="imagen_movil" />
+                            <img src="{{ $slide['imagen_computadora'] }}" alt="" class="imagen_computadora" />
+                            <img src="{{ $slide['imagen_movil'] }}" alt="" class="imagen_movil" />
                         </a>
                     </div>
                 @endforeach
@@ -15,10 +15,10 @@
 
             <div class="control_botones">
                 <button @click="botonRetroceder" class="boton_retroceder">
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Retroceder" />
+                    <i class="fa-solid fa-chevron-left"></i>
                 </button>
                 <button @click="botonSiguiente" class="boton_siguiente">
-                    <img src="{{ asset('assets/ecommerce/iconos/icono_siguiente.svg') }}" alt="Siguiente" />
+                    <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </div>
 
