@@ -1,67 +1,70 @@
-<div x-data="dataPiePagCatego({{ json_encode($p_elementos->enlaces) }})" x-init="init()">
-    <div class="pie_pagina_categorias">
-        <div class="centrar_contenido_pagina">
-            <div class="contenido_pagina">
-                <div class="columna_12">
-                    @include('ecommerce.partials.titulo-icono', [
-                        'p_contenido' => 'Encuentra todo en un solo lugar',
-                        'p_alineacion' => 'center',
-                        'p_color' => '#4a4a4a',
-                    ])
+@if (!empty($p_elementos))
+    <div x-data="dataPiePagCatego()" x-init="init()">
+        <div class="pie_pagina_categorias">
+            <div class="centrar_contenido_pagina">
+                <div class="contenido_pagina">
+                    <div class="columna_12">
+                        @include('ecommerce.partials.titulo-icono', [
+                            'p_contenido' => $p_elementos->nombre,
+                            'p_alineacion' => 'center',
+                            'p_color' => '#4a4a4a',
+                        ])
 
-                    {{-- CONTENEDOR DE CATEGORÍAS --}}
-                    <div class="contenedor_marcas">
-                        <template x-for="(categoria, index) in elementosAMostrar" :key="index">
-                            <div>
-                                <p x-text="categoria.titulo"></p>
-                                <ul>
-                                    <template x-for="(elemento, elementoIndex) in categoria.elementos"
-                                        :key="elementoIndex">
-                                        <li><a :href="elemento.link" x-text="elemento.nombre"></a></li>
-                                    </template>
-                                </ul>
-                            </div>
-                        </template>
-                    </div>
+                        {{-- CONTENEDOR DE CATEGORÍAS --}}
+                        <div class="contenedor_marcas">
+                            @foreach ($p_elementos->enlaces as $index => $categoria)
+                                <div x-show="shouldShowElement({{ $index }})">
+                                    <p>{{ $categoria['titulo'] }}</p>
+                                    <ul>
+                                        @foreach ($categoria['elementos'] as $elemento)
+                                            <li><a href="{{ $elemento['link'] }}">{{ $elemento['nombre'] }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
+                        </div>
 
-                    {{-- CONTENEDOR MOSTRAR --}}
-                    <div class="contenedor_control_mostrar" x-show="cantidadElementos == 2">
-                        <p @click="mostrarMas" x-show="elementosAMostrar.length !== categorias.length">Mostrar más <span
-                                class="invertido">^</span></p>
-                        <p @click="mostrarMenos" x-show="elementosAMostrar.length === categorias.length">Mostrar menos
-                            <span class="normal">^</span></p>
+                        {{-- CONTENEDOR MOSTRAR --}}
+                        <div class="contenedor_control_mostrar" x-show="cantidadElementos == 2">
+                            <p @click="mostrarMas" x-show="!mostrarTodos">Mostrar más <span class="invertido">^</span>
+                            </p>
+                            <p @click="mostrarMenos" x-show="mostrarTodos">Mostrar menos <span class="normal">^</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function dataPiePagCatego(categorias) {
-        return {
-            categorias: categorias,
-            cantidadElementos: 4,
-            elementosAMostrar: [],
+    <script>
+        function dataPiePagCatego() {
+            return {
+                cantidadElementos: 4,
+                mostrarTodos: false,
 
-            init() {
-                this.handleResize();
-                window.addEventListener('resize', () => this.handleResize());
-            },
+                init() {
+                    this.handleResize();
+                    window.addEventListener('resize', this.handleResize.bind(this));
+                },
 
-            handleResize() {
-                const windowWidth = window.innerWidth;
-                this.cantidadElementos = windowWidth > 900 ? 4 : 2;
-                this.elementosAMostrar = this.categorias.slice(0, this.cantidadElementos);
-            },
+                handleResize() {
+                    const windowWidth = window.innerWidth;
+                    this.cantidadElementos = windowWidth > 900 ? 4 : 2;
+                },
 
-            mostrarMas() {
-                this.elementosAMostrar = this.categorias;
-            },
+                shouldShowElement(index) {
+                    return this.mostrarTodos || index < this.cantidadElementos;
+                },
 
-            mostrarMenos() {
-                this.elementosAMostrar = this.categorias.slice(0, 2);
-            }
-        };
-    }
-</script>
+                mostrarMas() {
+                    this.mostrarTodos = true;
+                },
+
+                mostrarMenos() {
+                    this.mostrarTodos = false;
+                }
+            };
+        }
+    </script>
+@endif
