@@ -37,10 +37,10 @@ class EcommerceInicioController extends Controller
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
         $categoria_id = 1;
-        $dias_expirar = 0;
+        $dias_expirar = 2;
 
-        $data_productos = app(InventarioController::class)->getEcommerceInicioProductos($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-        $data_productos_2 = app(InventarioController::class)->getEcommerceInicioProductosConDescuentosHoy($almacen_ecommerce, $lista_precio_etiqueta, $dias_expirar);
+        $data_productos = app(InventarioController::class)->getEcommerceProductosCategoria($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
+        $data_productos_descuentos = app(InventarioController::class)->getEcommerceProductosDescuentoDiasExpirar($almacen_ecommerce, $lista_precio_etiqueta, $dias_expirar);
 
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
@@ -121,6 +121,7 @@ class EcommerceInicioController extends Controller
                 'data_grid_2',
                 'data_grid_3',
                 'data_productos',
+                'data_productos_descuentos',
                 'data_aviso_2',
                 'data_enlaces_rapidos_1'
             )
