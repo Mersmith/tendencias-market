@@ -23,11 +23,11 @@
                     ])
                 </div>
 
-                {{-- <div class="columna_12 m_40_0">
+                <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenDosElementosTiempo,
                     ])
-                </div> --}}
+                </div>
 
                 <div class="columna_12 m_b_10">
                     @include('ecommerce.partials.aviso', [
@@ -53,7 +53,7 @@
                     ])
 
                     @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_2,
+                        'p_elementos' => $data_grid_3,
                     ])
                 </div>
 
@@ -61,11 +61,11 @@
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
-                {{-- <div class="columna_12 m_40_0">
+                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
                         'p_elementos' => $dataSliderImagenTresElementosTiempo,
                     ])
-                </div> --}}
+                </div>
 
                 <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [

@@ -32,6 +32,7 @@ class EcommerceInicioController extends Controller
 
         $data_grid_1 = app(GridController::class)->getEcommerceGrid(1);
         $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);
+        $data_grid_3 = app(GridController::class)->getEcommerceGrid(3);
 
         $almacen_ecommerce = 1;
         $lista_precio_etiqueta = 3;
@@ -118,6 +119,7 @@ class EcommerceInicioController extends Controller
                 'data_aviso_1',
                 'data_grid_1',
                 'data_grid_2',
+                'data_grid_3',
                 'data_productos',
                 'data_aviso_2',
                 'data_enlaces_rapidos_1'
