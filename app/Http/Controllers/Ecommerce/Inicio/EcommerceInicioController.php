@@ -9,6 +9,7 @@ use App\Http\Controllers\Erp\GridController;
 use App\Http\Controllers\Erp\InventarioController;
 use App\Http\Controllers\Erp\MostradorController;
 use App\Http\Controllers\Erp\SliderController;
+use App\Http\Controllers\Erp\TemporizadorController;
 use App\Http\Controllers\Erp\VitrinaController;
 use App\Models\Banner;
 use Illuminate\Http\Request;
@@ -46,6 +47,10 @@ class EcommerceInicioController extends Controller
 
         $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
 
+        $dataSliderImagenDosElementosTiempo = app(TemporizadorController::class)->getEcommerceTemporizador(1);
+
+       /* dd($data_temporizador_1);
+
         $dataSliderImagenDosElementosTiempo = [
             "data" => [
                 [
@@ -70,7 +75,7 @@ class EcommerceInicioController extends Controller
                 "segundo" => 43,
             ],
             "fecha_finaliza" => "2024-07-12"
-        ];
+        ];*/
 
         $dataSliderImagenTresElementosTiempo = [
             "data" => [
