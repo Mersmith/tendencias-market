@@ -37,10 +37,7 @@ class EcommerceInicioController extends Controller
         $lista_precio_etiqueta = 3;
         $categoria_id = 1;
 
-        $data_productos = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-        $data_productos2 = app(InventarioController::class)->getEcommerceInicioProductosConStockCategoriaAlmacenListaPrecio2($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-
-        dd($data_productos, $data_productos2);
+        $data_productos = app(InventarioController::class)->getEcommerceInicioProductos($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
 
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
