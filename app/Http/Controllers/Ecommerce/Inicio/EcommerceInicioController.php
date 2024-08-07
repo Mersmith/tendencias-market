@@ -48,65 +48,7 @@ class EcommerceInicioController extends Controller
         $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
 
         $dataSliderImagenDosElementosTiempo = app(TemporizadorController::class)->getEcommerceTemporizador(1);
-
-       /* dd($data_temporizador_1);
-
-        $dataSliderImagenDosElementosTiempo = [
-            "data" => [
-                [
-                    "id" => 1,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-01-tablet-201223-af.webp'),
-                    "link" => "www.google.com1"
-                ],
-                [
-                    "id" => 2,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-02-samsung-201223-af.webp'),
-                    "link" => "www.google.com2"
-                ],
-                [
-                    "id" => 2,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-dos/DD2pods-dk-02-samsung-201223-af.webp'),
-                    "link" => "www.google.com2"
-                ]
-            ],
-            "tiempo_finaliza" => [
-                "hora" => 10,
-                "minuto" => 22,
-                "segundo" => 43,
-            ],
-            "fecha_finaliza" => "2024-07-12"
-        ];*/
-
-        $dataSliderImagenTresElementosTiempo = [
-            "data" => [
-                [
-                    "id" => 1,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-01-hisense-tv-121223-mdcb.webp'),
-                    "link" => "www.google.com1"
-                ],
-                [
-                    "id" => 2,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-02v.webp'),
-                    "link" => "www.google.com2"
-                ],
-                [
-                    "id" => 3,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-03-ofertas-111223-mdcb_.webp'),
-                    "link" => "www.google.com2"
-                ],
-                [
-                    "id" => 3,
-                    "imagen" => asset('assets/ecommerce/imagenes/oferta-limitada/oferta-limitada-uno/DD3pods-dk-03-ofertas-111223-mdcb_.webp'),
-                    "link" => "www.google.com2"
-                ]
-            ],
-            "tiempo_finaliza" => [
-                "hora" => 10,
-                "minuto" => 22,
-                "segundo" => 43,
-            ],
-            "fecha_finaliza" => "2024-07-13"
-        ];
+        $dataSliderImagenTresElementosTiempo = app(TemporizadorController::class)->getEcommerceTemporizador(2);
 
         return view(
             'ecommerce.inicio.index',

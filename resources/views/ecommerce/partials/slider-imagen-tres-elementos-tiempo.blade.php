@@ -1,4 +1,4 @@
-<div x-data="dataSliderImaTreEleTie('{{ $p_elementos['fecha_finaliza'] }}')">
+<div x-data="dataSliderImaTreEleTie('{{ $p_elementos['fecha_fin'] }}')">
 
     <div class="contenedor_slider_tiempo">
         <div class="contenedor_fecha_hora">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="contenedor_promociones slider_img_tres_ele_ti">
-            @foreach ($p_elementos['data'] as $index => $item)
+            @foreach ($p_elementos->imagenes as $index => $item)
                 <div class="slide">
                     <a href="{{ $item['link'] }}">
                         <img src="{{ $item['imagen'] }}" alt="Promoción {{ $index + 1 }}" />
@@ -35,8 +35,8 @@
     </div>
 </div>
 <script>
-    function dataSliderImaTreEleTie(fechaFinaliza) {
-        const fechaFinal = new Date(fechaFinaliza);
+    function dataSliderImaTreEleTie(fecha_fin) {
+        const fechaFinal = new Date(fecha_fin);
 
         return {
             hora: 0,
