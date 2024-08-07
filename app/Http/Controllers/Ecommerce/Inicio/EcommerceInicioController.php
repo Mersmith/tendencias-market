@@ -47,7 +47,7 @@ class EcommerceInicioController extends Controller
 
         $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
 
-        $dataSliderImagenDosElementosTiempo = app(TemporizadorController::class)->getEcommerceTemporizador(1);
+        $data_temporizador_1 = app(TemporizadorController::class)->getEcommerceTemporizador(1);
         $dataSliderImagenTresElementosTiempo = app(TemporizadorController::class)->getEcommerceTemporizador(2);
 
         return view(
@@ -61,7 +61,7 @@ class EcommerceInicioController extends Controller
                 'data_mostrador_1',
                 'data_mostrador_2',
                 'data_mostrador_3',
-                'dataSliderImagenDosElementosTiempo',
+                'data_temporizador_1',
                 'dataSliderImagenTresElementosTiempo',
                 'data_aviso_1',
                 'data_grid_1',

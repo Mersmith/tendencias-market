@@ -13,10 +13,23 @@
     height: auto;
 }
 
+.partials_contenedor_vitrina .imagen_movil {
+    display: none;
+}
+
+/* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
     .partials_contenedor_vitrina {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .partials_contenedor_vitrina .imagen_computadora {
+        display: none;
+    }
+
+    .partials_contenedor_vitrina .imagen_movil {
+        display: block;
     }
 
 }

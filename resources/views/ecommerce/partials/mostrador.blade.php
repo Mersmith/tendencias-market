@@ -8,7 +8,7 @@
     <div class="columna_12 m_10_0">
         <div x-data="dataMostrador{{ $p_elementos->id }}()">
             <!-- CONTENEDOR GRID -->
-            <div class="contenedor_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
+            <div class="partials_contenedor_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
                 @foreach ($p_elementos->imagenes as $index => $item)
                     <div class="item">
                         <a href="{{ $item['link'] }}">
@@ -23,10 +23,10 @@
             <!-- CONTENEDOR CONTROL -->
             @if (count($p_elementos->imagenes) > 6)
                 <div class="contenedor_control_mostrar">
-                    <p x-show="!mostrarTodos" @click="mostrarTodos = true" class="mostrar-mas">
+                    <p x-show="!mostrarTodos" @click="mostrarTodos = true">
                         Mostrar más <span class="invertido">^</span>
                     </p>
-                    <p x-show="mostrarTodos" @click="mostrarTodos = false" class="mostrar-menos">
+                    <p x-show="mostrarTodos" @click="mostrarTodos = false">
                         Mostrar menos <span class="normal">^</span>
                     </p>
                 </div>

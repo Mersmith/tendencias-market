@@ -23,24 +23,6 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/menu/menu-sidebar-subcategoria.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/menu/menu-sidebar-subcategoria-items.css') }}">
 
-<!--BANNER-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/banner.css') }}">
-
-<!--SLIDER-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-principal.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-dos-elementos-tiempo.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-tiempo.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/aviso.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-productos-seis-elementos.css') }}">
-<link rel="stylesheet"
-href="{{ asset('assets/ecommerce/css/slider/grid.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-cinco-elementos.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad2.css') }}">
-
-<!--GRID IMAGEN-->
-
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/mostrador.css') }}">
-
 <!--PIE-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-enlaces.css') }}">
@@ -48,3 +30,10 @@ href="{{ asset('assets/ecommerce/css/slider/grid.css') }}">
 
 <!--PARTIALS-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/vitrina.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-principal.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/temporizador.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/aviso.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/mostrador.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/grid.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/banner.css') }}">

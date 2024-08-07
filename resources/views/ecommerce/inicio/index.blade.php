@@ -24,8 +24,8 @@
                 </div>
 
                 <div class="columna_12 m_40_0">
-                    @include('ecommerce.partials.slider-imagen-dos-elementos-tiempo', [
-                        'p_elementos' => $dataSliderImagenDosElementosTiempo,
+                    @include('ecommerce.partials.temporizador', [
+                        'p_elementos' => $data_temporizador_1,
                     ])
                 </div>
 
@@ -36,7 +36,7 @@
                         'p_color' => '#000000',
                     ])
 
-                    @include('ecommerce.partials.slider-productos-seis-elementos', [
+                    @include('ecommerce.partials.slider-productos', [
                         'p_elementos' => $data_productos_descuentos,
                     ])
                 </div>
@@ -74,19 +74,13 @@
                 </div>
 
                 <div class="columna_12 m_40_0">
-                    @include('ecommerce.partials.slider-imagen-tres-elementos-tiempo', [
-                        'p_elementos' => $dataSliderImagenTresElementosTiempo,
-                    ])
-                </div>
-
-                <div class="columna_12 m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Lo más TOP en zapatillas',
                         'p_alineacion' => 'left',
                         'p_color' => '#000000',
                     ])
 
-                    @include('ecommerce.partials.slider-productos-seis-elementos', [
+                    @include('ecommerce.partials.slider-productos', [
                         'p_elementos' => $data_productos,
                     ])
                 </div>
@@ -114,7 +108,7 @@
                         'p_color' => '#000000',
                     ])
 
-                    @include('ecommerce.partials.slider-productos-seis-elementos', [
+                    @include('ecommerce.partials.slider-productos', [
                         'p_elementos' => $data_productos,
                     ])
                 </div>
