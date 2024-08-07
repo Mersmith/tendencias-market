@@ -38,7 +38,8 @@ class EcommerceInicioController extends Controller
         $categoria_id = 1;
 
         $data_productos = app(InventarioController::class)->getEcommerceInicioProductos($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-
+        $data_productos_2 = app(InventarioController::class)->getEcommerceInicioProductosConDescuentosHoy($almacen_ecommerce, $lista_precio_etiqueta);
+        dd($data_productos_2);
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
         $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
