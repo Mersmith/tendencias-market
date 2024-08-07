@@ -1,6 +1,6 @@
 @if (!empty($p_elementos))
-    <div x-data="dataSliderPrincipal({{ count($p_elementos->imagenes) }})" x-init="initSliderPrincipal" class="centrar_contenedor">
-        <div class="contenedor_slider_principal">
+    <div x-data="dataSliderPrincipal({{ count($p_elementos->imagenes) }})" x-init="initSliderPrincipal" class="g_centrar_contenedor">
+        <div class="componente_contenedor_slider_principal">
             <div class="slider">
                 @foreach ($p_elementos->imagenes as $index => $slide)
                     <div class="item_slider"
@@ -23,10 +23,10 @@
             </div>
 
             <div class="paginacion_botones">
-                @foreach ($p_elementos->imagenes as $index => $slide)
-                    <button @click="setPosicionImagenActual(@json($index))" class="boton_paginacion"
-                        :class="posicionImagenActual === @json($index) ? 'imagen_activo' : ''"></button>
-                @endforeach
+                <template x-for="index in [...Array(totalImagenes).keys()]" :key="index">
+                    <button @click="setPosicionImagenActual(index)"
+                        :class="posicionImagenActual === index ? 'boton_activo' : ''"></button>
+                </template>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                 },
                 setPosicionImagenActual(index) {
                     this.posicionImagenActual = index;
-                    clearInterval(this.intervaloId);
+                    this.limpiarIntervalo();
                     this.iniciarIntervalo();
                 },
                 limpiarIntervalo() {

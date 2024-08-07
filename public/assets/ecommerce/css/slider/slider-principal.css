@@ -1,107 +1,100 @@
 /* CONTENEDOR SLIDER */
-.contenedor_slider_principal {
+.componente_contenedor_slider_principal {
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
 /* SLIDER */
-.contenedor_slider_principal .slider {
+.componente_contenedor_slider_principal .slider {
     display: flex;
-    transition: transform 0.5s ease-in-out;
 }
 
 /* ITEM SLIDER */
-.contenedor_slider_principal .item_slider {
+.componente_contenedor_slider_principal .item_slider {
     width: 100%;
     display: none;
 }
 
 /* IMAGENES */
-.contenedor_slider_principal .item_slider img {
+.componente_contenedor_slider_principal .item_slider img {
     width: 100%;
     height: auto;
 }
 
-.contenedor_slider_principal .imagen_movil {
+.componente_contenedor_slider_principal .imagen_movil {
     display: none;
 }
 
-.contenedor_slider_principal .imagen_activo {
+.componente_contenedor_slider_principal .imagen_activo {
     display: block;
 }
 
-.contenedor_slider_principal .imagen_oculto {
+.componente_contenedor_slider_principal .imagen_oculto {
     display: none;
 }
 
 /* CONTROL BOTONES */
-.contenedor_slider_principal .control_botones {
+.componente_contenedor_slider_principal .control_botones {
     position: absolute;
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
     display: none;
-    z-index: 1;
 }
 
-.contenedor_slider_principal:hover .control_botones {
+.componente_contenedor_slider_principal:hover .control_botones {
     display: block;
 }
 
-.contenedor_slider_principal .control_botones button {
+.componente_contenedor_slider_principal .control_botones button {
     position: absolute;
     cursor: pointer;
     padding: 10px;
     border: none;
-    background-color: rgba(0, 0, 0, .3);
-    color: white;
+    background-color: var(--color-fondo-cuaternario);
+    color: var(--color-texto-terciario);
 }
 
-.contenedor_slider_principal .control_botones button:hover {
-    background-color: rgba(0, 0, 0, .5);
-}
-
-.contenedor_slider_principal .boton_retroceder {
+.componente_contenedor_slider_principal .control_botones .boton_retroceder {
     left: 10px;
 }
 
-.contenedor_slider_principal .boton_siguiente {
+.componente_contenedor_slider_principal .control_botones .boton_siguiente {
     right: 10px;
 }
 
 /* PAGINACION BOTONES */
-.contenedor_slider_principal .paginacion_botones {
+.componente_contenedor_slider_principal .paginacion_botones {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
-.contenedor_slider_principal .boton_paginacion {
+.componente_contenedor_slider_principal .paginacion_botones button {
     width: 8px;
     height: 8px;
     cursor: pointer;
     margin: 0 5px;
-    background-color: silver;
+    background-color: var(--color-fondo-cuaternario);
     border-radius: 50%;
     border: none;
 }
 
-.contenedor_slider_principal .boton_paginacion.imagen_activo {
+.componente_contenedor_slider_principal .paginacion_botones button.boton_activo {
     width: 10px;
     height: 10px;
-    background-color: #8b8b8b;
 }
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
-    .contenedor_slider_principal .imagen_computadora {
+    .componente_contenedor_slider_principal .imagen_computadora {
         display: none;
     }
 
-    .contenedor_slider_principal .imagen_movil {
+    .componente_contenedor_slider_principal .imagen_movil {
         display: block;
     }
 
