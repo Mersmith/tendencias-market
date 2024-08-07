@@ -379,7 +379,7 @@ class InventarioController extends Controller
             $porcentaje_descuento = null;
             $fecha_fin = null;
 
-            if ($item->descuento && $item->fecha_fin == now()->format('Y-m-d') && $item->descuento > 0) {
+            if ($item->descuento && $item->descuento > 0) {
                 $precio_oferta = round($precio - ($precio * $item->descuento / 100), 2);
                 $porcentaje_descuento = $item->descuento;
                 $fecha_fin = $item->fecha_fin;
