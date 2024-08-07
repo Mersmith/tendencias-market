@@ -12,7 +12,7 @@
             <div class="contenido_pagina">
 
                 <div class="m_40_0">
-                    @include('ecommerce.partials.grid-imagen-cuatro-elementos', [
+                    @include('ecommerce.partials.vitrina', [
                         'p_elementos' => $data_vitrina_1,
                     ])
                 </div>

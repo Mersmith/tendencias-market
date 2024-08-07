@@ -38,10 +38,13 @@ href="{{ asset('assets/ecommerce/css/slider/grid.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/slider/slider-imagen-tres-elementos-publicidad2.css') }}">
 
 <!--GRID IMAGEN-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/grid-imagen-cuatro-elementos.css') }}">
+
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/grid/mostrador.css') }}">
 
 <!--PIE-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-enlaces.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/footer.css') }}">
+
+<!--PARTIALS-->
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/vitrina.css') }}">

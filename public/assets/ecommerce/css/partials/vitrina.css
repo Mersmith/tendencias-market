@@ -1,21 +1,21 @@
-.contenedor_grid_imagen_cuatro_elementos {
+.partials_contenedor_vitrina {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.contenedor_grid_imagen_cuatro_elementos a {
+.partials_contenedor_vitrina a {
     display: flex;
 }
 
-.contenedor_grid_imagen_cuatro_elementos img {
+.partials_contenedor_vitrina img {
     width: 100%;
     height: auto;
 }
 
 @media (max-width: 1000px) {
 
-    .contenedor_grid_imagen_cuatro_elementos {
+    .partials_contenedor_vitrina {
         grid-template-columns: repeat(2, 1fr);
     }
 

@@ -7,7 +7,7 @@
     ])
 
     <div class="columna_12 m_10_0">
-        <div class="contenedor_grid_imagen_cuatro_elementos">
+        <div class="partials_contenedor_vitrina">
             @foreach ($p_elementos->imagenes as $item)
                 <a href="{{ $item['link'] }}">
                     <img src="{{ $item['imagen_computadora'] }}" class="imagen_computadora" />
