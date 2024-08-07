@@ -103,6 +103,11 @@ class InventarioController extends Controller
                     ->where('producto_descuentos.lista_precio_id', '=', $lista_precio_etiqueta)
                     ->where('producto_descuentos.fecha_fin', '>', now());
             })
+            ->leftJoin('imagenables', function ($join) {
+                $join->on('productos.id', '=', 'imagenables.imagenable_id')
+                    ->where('imagenables.imagenable_type', '=', 'App\\Models\\Producto');
+            })
+            ->leftJoin('imagens', 'imagenables.imagen_id', '=', 'imagens.id')
             ->where('inventarios.almacen_id', $almacen_ecommerce)
             ->where('inventarios.stock', '>', 0)
             ->where('productos.categoria_id', $categoriaId)
@@ -121,7 +126,10 @@ class InventarioController extends Controller
                 'producto_lista_precios.precio_antiguo as precio_antiguo',
                 'producto_lista_precios.simbolo as simbolo',
                 'producto_descuentos.porcentaje_descuento as descuento',
-                'producto_descuentos.fecha_fin as fecha_fin'
+                'producto_descuentos.fecha_fin as fecha_fin',
+                'imagens.url as imagen_url',
+                'imagens.titulo as imagen_titulo',
+                'imagens.descripcion as imagen_descripcion'
             )
             ->orderBy('inventarios.id', 'desc')
             ->get();
@@ -143,6 +151,12 @@ class InventarioController extends Controller
 
             $producto_url = url("product/{$item->producto_id}/{$item->slug}");
 
+            $imagenData = $item->imagen_url ? [
+                'url' => $item->imagen_url,
+                'titulo' => $item->imagen_titulo,
+                'descripcion' => $item->imagen_descripcion,
+            ] : null;
+
             return [
                 'inventario_id' => $item->inventario_id,
                 'almacen_id' => $item->almacen_id,
@@ -150,6 +164,7 @@ class InventarioController extends Controller
                 'producto_id' => $item->producto_id,
                 'producto_nombre' => $item->producto_nombre,
                 'producto_url' => $producto_url,
+                "marca" => "",
                 'color_nombre' => $item->color_nombre,
                 'talla_nombre' => $item->talla_nombre,
                 'stock' => $item->stock,
@@ -160,6 +175,7 @@ class InventarioController extends Controller
                 'simbolo' => $simbolo,
                 'descuento' => $porcentaje_descuento,
                 'fecha_fin' => $fecha_fin,
+                'imagen' => $imagenData,
             ];
         })
             ->filter(function ($producto) {
@@ -171,6 +187,7 @@ class InventarioController extends Controller
 
         return $productos;
     }
+
 
 
 }
