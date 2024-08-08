@@ -29,11 +29,11 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/footer.css') }}">
 
 <!--PARTIALS-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/vitrina.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/banner.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-principal.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/vitrina.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/mostrador.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/temporizador.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/aviso.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/mostrador.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/grid.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/banner.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/grid.css') }}">--}}

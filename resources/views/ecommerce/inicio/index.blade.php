@@ -23,17 +23,19 @@
                     'p_elementos' => $data_temporizador_1,
                 ])
 
-                {{--@include('ecommerce.partials.slider-productos', [
+                {{-- @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_productos_descuentos,
-                ])--}}
+                ]) --}}
 
-                <div class="g_columna_12 g_m_b_10">
-                    @include('ecommerce.partials.aviso', [
-                        'p_elementos' => $data_aviso_1,
-                    ])
-                </div>
+                @include('ecommerce.partials.aviso', [
+                    'p_elementos' => $data_aviso_1,
+                ])
 
-                {{--<div class="g_m_b_10">
+                @include('ecommerce.partials.aviso', [
+                    'p_elementos' => $data_aviso_2,
+                ])
+
+                {{-- <div class="g_m_b_10">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
@@ -105,11 +107,7 @@
                     ])
                 </div>
 
-                <div class="g_columna_12 g_m_10_0">
-                    @include('ecommerce.partials.aviso', [
-                        'p_elementos' => $data_aviso_2,
-                    ])
-                </div>
+            
 
                 <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])

@@ -1,11 +1,10 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    <div x-data="dataAviso{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="initAviso()" class="contenedor_aviso">
+    <div x-data="dataAviso{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="initAviso()" class="partials_contenedor_aviso">
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_slide">
-            <!-- SLIDE -->
             @foreach ($p_elementos->imagenes as $index => $elemento)
-                <div class="slide">
+                <div class="item_slide">
                     <a href="{{ $elemento['link'] }}">
                         <img src="{{ $elemento['imagen'] }}" alt="" />
                     </a>
@@ -14,22 +13,22 @@
         </div>
 
         <!-- CONTROL BOTONES -->
-        <button @click="handlePrev()" :disabled="currentPage === 1"
-            class="control_slider_botones slider_boton_retroceder">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > totalElementos"
-            class="control_slider_botones slider_boton_siguiente">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
+        <div class="control_botones">
+            <button @click="handlePrev()" :disabled="currentPage === 1" class="boton_retroceder">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > totalElementos"
+                class="boton_siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
 
         <!-- PAGINACION BOTONES -->
         @if (count($p_elementos->imagenes) > 4)
-            <div class="slider_paginacion">
+            <div class="paginacion_botones">
                 @for ($page = 1; $page <= ceil(count($p_elementos->imagenes) / 4); $page++)
                     <button @click="setCurrentPage({{ $page }})"
-                        :class="{ 'activo': currentPage === ({{ $page }} - 1) * itemsPorPagina + 1 }"
-                        class="slider_paginacion_boton">
+                        :class="{ 'boton_activo': currentPage === ({{ $page }} - 1) * itemsPorPagina + 1 }">
                     </button>
                 @endfor
             </div>
