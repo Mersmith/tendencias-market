@@ -36,5 +36,4 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/temporizador.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/aviso.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/grid.css') }}">
-{{--<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">
---}}
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">

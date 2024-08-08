@@ -31,9 +31,9 @@
                     'p_elementos' => $data_temporizador_1,
                 ])
 
-                {{-- @include('ecommerce.partials.slider-productos', [
+                @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_productos_descuentos,
-                ]) --}}
+                ])
 
                 @include('ecommerce.partials.aviso', [
                     'p_elementos' => $data_aviso_1,

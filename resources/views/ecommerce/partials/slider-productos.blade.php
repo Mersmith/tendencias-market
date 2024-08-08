@@ -1,53 +1,52 @@
 <!-- slider-productos-seis-elementos.blade.php -->
-<div x-data="dataSliderProductosSeis({{ json_encode($p_elementos) }})" x-init="init()" class="contenedor_slider_producto">
+<div x-data="dataSliderProductos({{ count($p_elementos) }})" x-init="initSliderProductos()" class="partials_contenedor_slider_productos">
 
     <!-- SLIDER -->
-    <div x-ref="slider" class="slider">
-        <!-- SLIDE -->
-        <template x-for="(producto, index) in productos" :key="index">
-            <div class="slide">
-                <a :href="producto.producto_url">
+    <div x-ref="slider" class="contenedor_slide">
+        @foreach ($p_elementos as $index => $producto)
+            <div class="item_slide">
+                <a href="{{ $producto['producto_url'] }}">
                     <div class="contenedor_imagen">
-                        <img :src="producto.imagen.url" :alt="'Promoción ' + (index + 1)">
-                        <template x-if="producto.descuento">
-                            <span x-text="producto.descuento"></span>
-                        </template>
+                        <img src="{{ $producto['imagen']['url'] }}" alt="Promoción {{ $index + 1 }}">
+                        @if ($producto['descuento'])
+                            <span>{{ $producto['descuento'] }}%</span>
+                        @endif
                     </div>
                 </a>
-                <div class="marca" x-text="producto.marca"></div>
-                <div class="titulo" x-text="producto.producto_nombre"></div>
-                <template x-if="producto.card">
+                <div class="marca">{{ $producto['marca'] }}</div>
+                <div class="titulo">{{ $producto['producto_nombre'] }}</div>
+                @if (isset($producto['card']) && $producto['card'])
                     <div class="tarjeta">
-                        <img src="{{ asset('assets/ecommerce/imagenes/tarjetas/cmrIcon.svg') }}">
+                        <img src="{{ asset('assets/ecommerce/imagenes/tarjetas/cmrIcon.svg') }}" alt="Tarjeta">
                     </div>
-                </template>
-                <template x-if="producto.precio_oferta">
+                @endif
+                @if ($producto['precio_oferta'])
                     <div class="precio_oferta">
-                        <span x-text="producto.simbolo"></span>
-                        <span x-text="producto.precio_oferta"></span>
+                        <span>{{ $producto['simbolo'] }}</span>
+                        <span>{{ $producto['precio_oferta'] }}</span>
                     </div>
-                </template>
-                <template x-if="producto.precio_venta">
+                @endif
+                @if ($producto['precio_venta'])
                     <div class="precio_real">
-                        <span x-text="producto.simbolo"></span>
-                        <span x-text="producto.precio_venta"></span>
+                        <span>{{ $producto['simbolo'] }}</span>
+                        <span>{{ $producto['precio_venta'] }}</span>
                     </div>
-                </template>
-                <template x-if="producto.precio_antiguo">
+                @endif
+                @if ($producto['precio_antiguo'])
                     <div class="precio_antiguo">
-                        <span x-text="producto.simbolo"></span>
-                        <span x-text="producto.precio_antiguo"></span>
+                        <span>{{ $producto['simbolo'] }}</span>
+                        <span>{{ $producto['precio_antiguo'] }}</span>
                     </div>
-                </template>
+                @endif
             </div>
-        </template>
+        @endforeach
     </div>
 
     <!-- CONTROL BOTONES -->
     <button @click="handlePrev()" :disabled="currentPage === 1" class="control_slider_botones slider_boton_retroceder">
         <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo">
     </button>
-    <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > productos.length"
+    <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > totalElementos"
         class="control_slider_botones slider_boton_siguiente">
         <img src="{{ asset('assets/ecommerce/iconos/icono_siguiente.svg') }}" alt="Logo">
     </button>
@@ -63,31 +62,31 @@
 </div>
 
 <script>
-    function dataSliderProductosSeis(productos) {
+    function dataSliderProductos(totalProductos) {
         return {
-            productos,
+            totalElementos: totalProductos,
             cantidadElementosComputadora: 6,
             cantidadElementosTablet: 2,
             cantidadElementosMovil: 1,
             itemsPorPagina: 6,
             currentPage: 1,
-            totalPaginas: Math.ceil(productos.length / 6),
+            totalPaginas: Math.ceil(totalProductos / 6),
 
-            init() {
+            initSliderProductos() {
                 this.handleResize();
                 window.addEventListener('resize', this.handleResize.bind(this));
             },
 
             handleResize() {
                 const windowWidth = window.innerWidth;
-                if (windowWidth > 900) {
+                if (windowWidth > 1000) {
                     this.itemsPorPagina = this.cantidadElementosComputadora;
                 } else if (windowWidth > 700) {
                     this.itemsPorPagina = this.cantidadElementosTablet;
                 } else {
                     this.itemsPorPagina = this.cantidadElementosMovil;
                 }
-                this.totalPaginas = Math.ceil(this.productos.length / this.itemsPorPagina);
+                this.totalPaginas = Math.ceil(this.totalElementos / this.itemsPorPagina);
                 this.scrollToCurrentPage();
             },
 
@@ -97,7 +96,7 @@
             },
 
             handleNext() {
-                this.currentPage = Math.min(this.currentPage + this.itemsPorPagina, this.productos.length);
+                this.currentPage = Math.min(this.currentPage + this.itemsPorPagina, this.totalElementos);
                 this.scrollToCurrentPage();
             },
 
