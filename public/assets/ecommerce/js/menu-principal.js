@@ -27,15 +27,12 @@ function xDataLayoutEcommerce() {
     };
 }
 
-function xDataMenuEcommerce(categorias) {
+function xDataMenuEcommerce() {
 
     return {
-        dataMenuPrincipal: categorias || [],
         dataSubMenu1: [],
-        dataSubMenu2: [],
         estadoAsideAbierto: false,
         estadoNavSubcategoriasAbierto: false,
-        estadoNavItemsSubcategoriaAbierto: false,
         initMenuEcommerce() {
             this.$watch('estadoAsideAbierto', value => {
                 document.body.style.overflow = value ? 'hidden' : 'auto';
@@ -53,7 +50,6 @@ function xDataMenuEcommerce(categorias) {
         toggleContenedorSidebar() {
             this.estadoAsideAbierto = !this.estadoAsideAbierto
             this.estadoNavSubcategoriasAbierto = false
-            this.estadoNavItemsSubcategoriaAbierto = false
 
             if (this.estadoAsideAbierto) {
                 this.activarSuperponer();
@@ -68,26 +64,16 @@ function xDataMenuEcommerce(categorias) {
             this.dataSubMenu1 = dataMenu
         },
 
-        toggleContenedorSidebarItemsSubcategoria(dataMenu) {
-            this.estadoNavItemsSubcategoriaAbierto = true
-            this.dataSubMenu2 = dataMenu
-        },
 
         cerrarSidebars() {
             this.estadoAsideAbierto = false
             this.estadoNavSubcategoriasAbierto = false
-            this.estadoNavItemsSubcategoriaAbierto = false
             this.dataSubMenu1 = []
-            this.dataSubMenu2 = []
             this.cerrarSuperponer();
         },
 
         cerrarSidebarSubcategorias() {
             this.estadoNavSubcategoriasAbierto = false
-        },
-
-        cerrarSidebarItemsSubcategoria() {
-            this.estadoNavItemsSubcategoriaAbierto = false
         },
 
         activarSuperponer() {

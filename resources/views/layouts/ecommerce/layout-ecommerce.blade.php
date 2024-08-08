@@ -23,7 +23,10 @@
 
 
     <!--MENU PRINCIPAL-->
-    @livewire('ecommerce.menu.sidebar-principal-livewire')
+    {{--@livewire('ecommerce.menu.sidebar-principal-livewire')--}}
+    @include('layouts.ecommerce.menu.menu', [
+        'categorias' => $categorias,
+    ])
 
     <!--CONTENEDOR LAYOUT GENERAL-->
     <main class="contenedor_layout_ecommerce_pagina">
