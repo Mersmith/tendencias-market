@@ -59,7 +59,6 @@
     color: var(--color-texto-terciario);
 }
 
-
 /* SLIDER */
 .partials_contenedor_temporizador .contenedor_slide {
     width: 100%;
@@ -87,6 +86,58 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+/* CONTROL BOTONES */
+.partials_contenedor_temporizador .control_botones {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.partials_contenedor_temporizador .control_botones button {
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: var(--color-fondo-cuaternario);
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_temporizador .control_botones button:disabled {
+    display: none;
+}
+
+.partials_contenedor_temporizador .boton_retroceder {
+    left: 10px;
+}
+
+.partials_contenedor_temporizador .boton_siguiente {
+    right: 10px;
+}
+
+/* PAGINACION BOTONES */
+.partials_contenedor_temporizador .paginacion_botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.partials_contenedor_temporizador .paginacion_botones button {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: var(--color-fondo-cuaternario);
+    border-radius: 50%;
+    border: none;
+}
+
+.partials_contenedor_temporizador .paginacion_botones button.boton_activo {
+    width: 10px;
+    height: 10px;
 }
 
 @media (max-width: 1000px) {

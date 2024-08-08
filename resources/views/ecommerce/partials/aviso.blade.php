@@ -46,13 +46,7 @@
                 initAviso() {
                     this.anchoPantalla();
                     window.addEventListener('resize', this.anchoPantalla.bind(this));
-                },
-
-                iniciarIntervalo() {
-                    this.intervaloId = setInterval(() => {
-                        this.botonSiguiente();
-                    }, 5000);
-                },
+                },               
 
                 anchoPantalla() {
                     const windowWidth = window.innerWidth;
