@@ -3,7 +3,7 @@
         <div class="contenedor_enlaces_rapidos">
             <div class="g_centrar_contenido_pagina">
                 <div class="g_contenido_pagina">
-                    <div class="columna_12">
+                    <div class="g_columna_12">
                         <div class="grid_contenedor_items">
                             @foreach ($enlaces_rapidos as $index => $data)
                                 <div class="contenedor_item">
@@ -38,7 +38,7 @@
         <div class="footer">
             <div class="g_centrar_contenido_pagina">
                 <div class="g_contenido_pagina">
-                    <div class="columna_12">
+                    <div class="g_columna_12">
                         <!-- CONTENEDOR REDES - TERMINOS -->
                         <div class="contenedor_redes_terminos">
                             <!-- CONTENEDOR REDES -->

@@ -24,7 +24,6 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/menu/menu-sidebar-subcategoria-items.css') }}">
 
 <!--PIE-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/pie-pagina-enlaces.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pie/footer.css') }}">
 
@@ -38,3 +37,4 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/grid.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/slider-productos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/titulo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/enlaces-rapidos.css') }}">
