@@ -11,10 +11,10 @@
 <!----------------------ECOMMERCE---------------------->
 <!--ESTILOS-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/variables.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/estilos.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/estilos.css') }}">--}}
 
 <!--LAYOUT ERP-->
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/layout.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/layout.css') }}">--}}
 
 <!--LAYOUT MENU-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/menu/menu-cabecera.css') }}">

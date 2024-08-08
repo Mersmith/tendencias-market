@@ -12,7 +12,7 @@
     <title>{{ env('APP_NAME') }} | @yield('tituloPagina')</title>
 
     <!-- SCRIPTS -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/css/layout.css', 'resources/js/app.js'])
 
     <!-- STYLES -->
     @livewireStyles
