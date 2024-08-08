@@ -59,9 +59,8 @@
     color: var(--color-texto-terciario);
 }
 
-/*FIN CONTENEDOR FECHA HORA*/
 
-/*CONTENEDOR PROMOCIONES*/
+/* SLIDER */
 .partials_contenedor_temporizador .contenedor_slide {
     width: 100%;
     overflow-x: auto;
@@ -78,10 +77,10 @@
 }
 
 .partials_contenedor_temporizador .contenedor_slide .item_slide {
-    width: 50%;
     scroll-snap-align: start;
     flex: 0 0 auto;
     padding: 5px;
+    width: 50%;
 }
 
 .partials_contenedor_temporizador .contenedor_slide .item_slide img {

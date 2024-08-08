@@ -23,14 +23,18 @@
             </div>
         </div>
 
-        <div class="contenedor_slide">
-            @foreach ($p_elementos->imagenes as $index => $item)
-                <div class="item_slide">
-                    <a href="{{ $item['link'] }}">
-                        <img src="{{ $item['imagen'] }}" alt="Promoción {{ $index + 1 }}" />
-                    </a>
-                </div>
-            @endforeach
+        <div style="position: relative; width: 100%;">
+
+            <!-- SLIDER -->
+            <div class="contenedor_slide">
+                @foreach ($p_elementos->imagenes as $index => $item)
+                    <div class="item_slide">
+                        <a href="{{ $item['link'] }}">
+                            <img src="{{ $item['imagen'] }}" alt="Promoción {{ $index + 1 }}" />
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 

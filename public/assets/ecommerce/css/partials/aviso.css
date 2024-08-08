@@ -19,14 +19,14 @@
     border-radius: 5px;
 }
 
-.partials_contenedor_aviso .item_slide {
+.partials_contenedor_aviso .contenedor_slide .item_slide {
     scroll-snap-align: start;
     flex: 0 0 auto;
     padding: 5px;
     width: 25%;
 }
 
-.partials_contenedor_aviso .item_slide img {
+.partials_contenedor_aviso .contenedor_slide .item_slide img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -93,7 +93,7 @@
 }
 
 @media (max-width: 700px) {
-    
+
     .partials_contenedor_aviso .item_slide {
         width: 95%;
     }
