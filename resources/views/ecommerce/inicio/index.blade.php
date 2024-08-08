@@ -48,12 +48,6 @@
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
 
-                @include('ecommerce.partials.titulo', [
-                    'p_contenido' => 'Lo más TOP en zapatillas',
-                    'p_alineacion' => 'left',
-                    'p_color' => '#000000',
-                ])
-
                 @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_slide_producto,
                 ])
@@ -63,12 +57,6 @@
                 ])
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
-
-                @include('ecommerce.partials.titulo', [
-                    'p_contenido' => 'Novedades que te encantarán',
-                    'p_alineacion' => 'left',
-                    'p_color' => '#000000',
-                ])
 
                 @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_slide_producto,

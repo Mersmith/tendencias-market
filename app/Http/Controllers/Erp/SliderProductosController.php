@@ -13,24 +13,32 @@ class SliderProductosController extends Controller
     {
         $sliderProducto = SliderProductos::find($id);
 
-        if (!$sliderProducto) {
-            return null;
-        }
+        if ($sliderProducto) {
+            $almacenEcommerceId = $sliderProducto->almacen_ecommerce_id;
+            $listaPrecioEtiquetaId = $sliderProducto->lista_precio_etiqueta_id;
+            $categoriaId = $sliderProducto->categoria_id;
 
-        $almacenEcommerceId = $sliderProducto->almacen_ecommerce_id;
-        $listaPrecioEtiquetaId = $sliderProducto->lista_precio_etiqueta_id;
-        $categoriaId = $sliderProducto->categoria_id;
+            $productoData = null;
 
-        if ($categoriaId) {
-            return app(InventarioController::class)
-                ->getEcommerceProductosCategoria($almacenEcommerceId, $categoriaId, $listaPrecioEtiquetaId);
-        }
+            if ($categoriaId) {
+                $productoData = app(InventarioController::class)
+                    ->getEcommerceProductosCategoria($almacenEcommerceId, $categoriaId, $listaPrecioEtiquetaId);
+            } elseif ($sliderProducto->descuento) {
+                $productoData = app(InventarioController::class)
+                    ->getEcommerceProductosDescuento($almacenEcommerceId, $listaPrecioEtiquetaId);
+            }
 
-        if ($sliderProducto->descuento) {
-            return app(InventarioController::class)
-                ->getEcommerceProductosDescuento($almacenEcommerceId, $listaPrecioEtiquetaId);
+            if ($productoData) {
+                return [
+                    'slider' => $sliderProducto->toArray(),
+                    'productos' => $productoData,
+                ];
+            }
+
+            return $sliderProducto->toArray();
         }
 
         return null;
     }
+
 }

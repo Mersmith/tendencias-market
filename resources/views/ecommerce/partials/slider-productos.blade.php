@@ -1,9 +1,17 @@
-@if (!empty($p_elementos))
-    <div x-data="dataSliderProductos({{ count($p_elementos) }})" x-init="initSliderProductos()" class="partials_contenedor_slider_productos">
+@if (!empty($p_elementos) && !empty($p_elementos['productos']))
+
+    @include('ecommerce.partials.titulo', [
+        'p_contenido' => $p_elementos['slider']['titulo'],
+        'p_alineacion' => 'left',
+        'p_color' => '#000000',
+    ])
+
+    <div x-data="dataSliderProductos({{ count($p_elementos['productos']) }})" x-init="initSliderProductos()" class="partials_contenedor_slider_productos">
+
 
         <!-- SLIDER -->
         <div x-ref="slider" class="contenedor_slide">
-            @foreach ($p_elementos as $index => $producto)
+            @foreach ($p_elementos['productos'] as $index => $producto)
                 <div class="item_slide">
                     <a href="{{ $producto['producto_url'] }}">
                         <div class="contenedor_imagen">
