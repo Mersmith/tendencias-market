@@ -11,35 +11,21 @@
         <div class="g_centrar_contenido_pagina">
             <div class="g_contenido_pagina">
 
-                <div class="g_m_40_0">
-                    @include('ecommerce.partials.vitrina', [
-                        'p_elementos' => $data_vitrina_1,
-                    ])
-                </div>
+                @include('ecommerce.partials.vitrina', [
+                    'p_elementos' => $data_vitrina_1,
+                ])
 
-                <div class="g_m_40_0">
-                    @include('ecommerce.partials.mostrador', [
-                        'p_elementos' => $data_mostrador_1,
-                    ])
-                </div>
+                @include('ecommerce.partials.mostrador', [
+                    'p_elementos' => $data_mostrador_1,
+                ])
 
-                <div class="g_columna_12 g_m_40_0">
-                    @include('ecommerce.partials.temporizador', [
-                        'p_elementos' => $data_temporizador_1,
-                    ])
-                </div>
+                @include('ecommerce.partials.temporizador', [
+                    'p_elementos' => $data_temporizador_1,
+                ])
 
-                <div class="g_columna_12 g_m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Solo hoy',
-                        'p_alineacion' => 'left',
-                        'p_color' => '#000000',
-                    ])
-
-                    @include('ecommerce.partials.slider-productos', [
-                        'p_elementos' => $data_productos_descuentos,
-                    ])
-                </div>
+                {{--@include('ecommerce.partials.slider-productos', [
+                    'p_elementos' => $data_productos_descuentos,
+                ])--}}
 
                 <div class="g_columna_12 g_m_b_10">
                     @include('ecommerce.partials.aviso', [
@@ -47,7 +33,7 @@
                     ])
                 </div>
 
-                <div class="g_m_b_10">
+                {{--<div class="g_m_b_10">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
@@ -135,11 +121,11 @@
                             'p_elementos' => $data_mostrador_3,
                         ])
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
 
-        @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1])
+        {{-- @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1]) --}}
     </div>
 @endsection

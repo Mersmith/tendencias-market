@@ -1,6 +1,6 @@
 @if (!empty($p_elementos))
     <div x-data="dataSliderPrincipal({{ count($p_elementos->imagenes) }})" x-init="initSliderPrincipal" class="g_centrar_contenedor">
-        <div class="componente_contenedor_slider_principal">
+        <div class="partials_contenedor_slider_principal">
             <div class="slider">
                 @foreach ($p_elementos->imagenes as $index => $slide)
                     <div class="item_slider"

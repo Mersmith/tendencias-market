@@ -2,7 +2,7 @@
     <div x-data="dataAviso{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="initAviso()" class="contenedor_aviso">
 
         <!-- SLIDER -->
-        <div x-ref="slider" class="contenedor_promociones">
+        <div x-ref="slider" class="contenedor_slide">
             <!-- SLIDE -->
             @foreach ($p_elementos->imagenes as $index => $elemento)
                 <div class="slide">

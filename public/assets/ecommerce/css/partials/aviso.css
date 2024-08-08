@@ -21,17 +21,17 @@
 }
 
 /*CONTENEDOR PROMOCIONES*/
-.contenedor_promociones {
+.contenedor_slide {
     width: 100%;
     overflow-x: auto;
     display: flex;
 }
 
-.contenedor_promociones::-webkit-scrollbar {
+.contenedor_slide::-webkit-scrollbar {
     height: 5px;
 }
 
-.contenedor_promociones::-webkit-scrollbar-thumb {
+.contenedor_slide::-webkit-scrollbar-thumb {
     background-color: #b4b4b4;
     border-radius: 5px;
 }

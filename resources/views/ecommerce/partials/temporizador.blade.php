@@ -1,6 +1,6 @@
-<div x-data="dataSliderImaDosEleTiem('{{ $p_elementos['fecha_fin'] }}')">
+@if (!empty($p_elementos) && !empty($p_elementos->imagenes))
 
-    <div class="contenedor_slider_tiempo">
+    <div x-data="dataTemporizador('{{ $p_elementos['fecha_fin'] }}')" class="partials_contenedor_temporizador">
         <div class="contenedor_fecha_hora">
             <div class="contenedor_fecha">
                 <span> SOLO x HOY</span>
@@ -23,9 +23,9 @@
             </div>
         </div>
 
-        <div class="contenedor_promociones slider_img_dos_ele_ti">
+        <div class="contenedor_slide">
             @foreach ($p_elementos->imagenes as $index => $item)
-                <div class="slide">
+                <div class="item_slide">
                     <a href="{{ $item['link'] }}">
                         <img src="{{ $item['imagen'] }}" alt="Promoción {{ $index + 1 }}" />
                     </a>
@@ -33,37 +33,38 @@
             @endforeach
         </div>
     </div>
-</div>
-<script>
-    function dataSliderImaDosEleTiem(fecha_fin) {
-        const fechaFinal = new Date(fecha_fin);
 
-        return {
-            hora: 0,
-            minuto: 0,
-            segundo: 0,
+    <script>
+        function dataTemporizador(fecha_fin) {
+            const fechaFinal = new Date(fecha_fin);
 
-            padTwoDigits(valor) {
-                return valor.toString().padStart(2, '0').split('');
-            },
+            return {
+                hora: 0,
+                minuto: 0,
+                segundo: 0,
 
-            intervalo() {
-                const ahora = new Date();
-                const tiempoRestante = Math.floor((fechaFinal - ahora) / 1000);
+                padTwoDigits(valor) {
+                    return valor.toString().padStart(2, '0').split('');
+                },
 
-                if (tiempoRestante > 0) {
-                    this.hora = Math.floor(tiempoRestante / 3600) % 24;
-                    this.minuto = Math.floor(tiempoRestante / 60) % 60;
-                    this.segundo = tiempoRestante % 60;
-                }
-            },
+                intervalo() {
+                    const ahora = new Date();
+                    const tiempoRestante = Math.floor((fechaFinal - ahora) / 1000);
 
-            init() {
-                this.intervalo();
-                setInterval(() => {
+                    if (tiempoRestante > 0) {
+                        this.hora = Math.floor(tiempoRestante / 3600) % 24;
+                        this.minuto = Math.floor(tiempoRestante / 60) % 60;
+                        this.segundo = tiempoRestante % 60;
+                    }
+                },
+
+                init() {
                     this.intervalo();
-                }, 1000);
-            }
-        };
-    }
-</script>
+                    setInterval(() => {
+                        this.intervalo();
+                    }, 1000);
+                }
+            };
+        }
+    </script>
+@endif

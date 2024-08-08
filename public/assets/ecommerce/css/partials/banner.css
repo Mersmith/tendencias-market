@@ -1,4 +1,3 @@
-/*BANNER*/
 .partials_contenedor_banner {
     width: 100%;
 }
@@ -15,7 +14,6 @@
     display: none;
 }
 
-/* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
     .partials_contenedor_banner .imagen_computadora {

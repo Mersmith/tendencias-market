@@ -1,5 +1,4 @@
-/* CONTENEDOR GRID */
-.partials_contenedor_mostrador {
+.partials_contenedor_mostrador .grid_mostrador {
     display: grid;
     align-items: start;
     grid-template-columns: repeat(6, 1fr);
@@ -7,15 +6,25 @@
     margin: auto;
 }
 
+/* Ocultar todos los elementos después del sexto por defecto */
+.partials_contenedor_mostrador .grid_mostrador .item:nth-child(n+7) {
+    display: none;
+}
+
+/* Mostrar todos los elementos cuando showAll es true */
+.partials_contenedor_mostrador .grid_mostrador.mostrar_todos .item:nth-child(n+7) {
+    display: block;
+}
+
 /* LINK */
-.partials_contenedor_mostrador a {
+.partials_contenedor_mostrador .grid_mostrador a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.partials_contenedor_mostrador p {
+.partials_contenedor_mostrador .grid_mostrador p {
     width: 140px;
     margin-top: 15px;
     text-align: center;
@@ -25,60 +34,50 @@
 }
 
 /* IMAGENES */
-.partials_contenedor_mostrador img {
+.partials_contenedor_mostrador .grid_mostrador img {
     width: 120px;
     height: auto;
     border-radius: 50%;
 }
 
-/* Ocultar todos los elementos después del sexto por defecto */
-.partials_contenedor_mostrador .item:nth-child(n+7) {
-    display: none;
-}
-
-/* Mostrar todos los elementos cuando showAll es true */
-.partials_contenedor_mostrador.mostrar_todos .item:nth-child(n+7) {
-    display: block;
-}
-
 /*CONTROL MOSTRAR*/
-.contenedor_control_mostrar {
+.partials_contenedor_mostrador .contenedor_control_mostrar {
     margin-top: 20px;
     text-align: end;
 }
 
-.contenedor_control_mostrar p {
+.partials_contenedor_mostrador .contenedor_control_mostrar p {
     cursor: pointer;
     padding-right: 0.875rem;
     text-decoration: underline;
     letter-spacing: .1163rem;
-    color: #778089;
+    color: var(--color-texto-cuaternario);
 }
 
-.contenedor_control_mostrar span {
+.partials_contenedor_mostrador .contenedor_control_mostrar span {
     position: absolute;
 }
 
-.contenedor_control_mostrar .invertido {
+.partials_contenedor_mostrador .contenedor_control_mostrar .invertido {
     transform: translateY(-45%) rotate(180deg);
     margin-top: 10px;
 }
 
-.contenedor_control_mostrar .normal {
+.partials_contenedor_mostrador .contenedor_control_mostrar .normal {
     margin-top: 5px;
     margin-left: 2px;
 }
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
-    .partials_contenedor_mostrador {
+    .partials_contenedor_mostrador .grid_mostrador {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* RESPONSIVE MOVIL */
 @media (max-width: 700px) {
-    .partials_contenedor_mostrador {
+    .partials_contenedor_mostrador .grid_mostrador {
         grid-template-columns: repeat(2, 1fr);
     }
 }
