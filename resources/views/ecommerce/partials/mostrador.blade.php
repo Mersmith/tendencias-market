@@ -1,9 +1,9 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    {{-- @include('ecommerce.partials.titulo', [
+    @include('ecommerce.partials.titulo', [
         'p_contenido' => $p_elementos->nombre,
         'p_alineacion' => 'center',
         'p_color' => '#4a4a4a',
-    ]) --}}
+    ])
 
     <div x-data="dataMostrador{{ $p_elementos->id }}()" class="partials_contenedor_mostrador">
         <!-- CONTENEDOR GRID -->

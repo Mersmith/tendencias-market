@@ -1,10 +1,10 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
 
-    {{-- @include('ecommerce.partials.titulo', [
+    @include('ecommerce.partials.titulo', [
         'p_contenido' => $p_elementos->nombre,
         'p_alineacion' => 'center',
         'p_color' => '#000000',
-    ]) --}}
+    ])
 
     <div class="partials_contenedor_vitrina">
         @foreach ($p_elementos->imagenes as $item)

@@ -11,6 +11,24 @@
         <div class="g_centrar_contenido_pagina">
             <div class="g_contenido_pagina">
 
+                @include('ecommerce.partials.titulo', [
+                    'p_contenido' => 'Lo más TOP en zapatillas',
+                    'p_alineacion' => 'left',
+                    'p_color' => '#000000',
+                ])
+
+                @include('ecommerce.partials.titulo', [
+                    'p_contenido' => 'Novedades que te encantarán',
+                    'p_alineacion' => 'left',
+                    'p_color' => '#000000',
+                ])
+
+                @include('ecommerce.partials.titulo', [
+                    'p_contenido' => 'Lo más TOP en zapatillas',
+                    'p_alineacion' => 'left',
+                    'p_color' => '#000000',
+                ])
+
                 @include('ecommerce.partials.vitrina', [
                     'p_elementos' => $data_vitrina_1,
                 ])
@@ -51,61 +69,34 @@
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
 
-                <div class="g_columna_12">
-                    @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_1,
-                    ])
+                @include('ecommerce.partials.grid', [
+                    'p_elementos' => $data_grid_1,
+                ])
 
-                    @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_2,
-                    ])
+                @include('ecommerce.partials.grid', [
+                    'p_elementos' => $data_grid_2,
+                ])
 
-                    @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_1,
-                    ])
+                @include('ecommerce.partials.grid', [
+                    'p_elementos' => $data_grid_1,
+                ])
 
-                    @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_3,
-                    ])
+                @include('ecommerce.partials.grid', [
+                    'p_elementos' => $data_grid_3,
+                ])
 
-                    @include('ecommerce.partials.grid', [
-                        'p_elementos' => $data_grid_2,
-                    ])
-                </div>
-                {{-- 
-                <div class="g_columna_12 g_m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Lo más TOP en zapatillas',
-                        'p_alineacion' => 'left',
-                        'p_color' => '#000000',
-                    ])
+                @include('ecommerce.partials.grid', [
+                    'p_elementos' => $data_grid_2,
+                ])
 
-                    @include('ecommerce.partials.slider-productos', [
-                        'p_elementos' => $data_productos,
-                    ])
-                </div>
+                @include('ecommerce.partials.slider-productos', [
+                    'p_elementos' => $data_productos,
+                ])
 
-                <div class="g_columna_12 g_m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Novedades que te encantarán',
-                        'p_alineacion' => 'left',
-                        'p_color' => '#000000',
-                    ])                    
-                </div>
+                @include('ecommerce.partials.slider-productos', [
+                    'p_elementos' => $data_productos,
+                ])
 
-                <div class="g_columna_12 g_m_40_0">
-                    @include('ecommerce.partials.titulo', [
-                        'p_contenido' => 'Lo más TOP en zapatillas',
-                        'p_alineacion' => 'left',
-                        'p_color' => '#000000',
-                    ])
-
-                    @include('ecommerce.partials.slider-productos', [
-                        'p_elementos' => $data_productos,
-                    ])
-                </div>
-
-               --}}
 
             </div>
         </div>
