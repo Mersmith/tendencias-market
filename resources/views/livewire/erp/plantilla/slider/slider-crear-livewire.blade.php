@@ -128,7 +128,6 @@
         function dataSlider() {
             return {
                 handleSlider(item, position) {
-                    console.log(item, position);
                     Livewire.dispatch('handleSliderOn', {
                         item: item,
                         position: position,

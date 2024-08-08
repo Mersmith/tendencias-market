@@ -59,7 +59,6 @@
     <script>
         function dataTemporizador(fecha_fin, totalImagenes) {
             const fechaFinal = new Date(fecha_fin);
-            console.log(totalImagenes);
 
             return {
                 hora: 0,

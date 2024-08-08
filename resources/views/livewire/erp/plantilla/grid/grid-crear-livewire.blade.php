@@ -152,7 +152,6 @@
         function dataGrid() {
             return {
                 handleGrid(item, position) {
-                    console.log(item, position);
                     Livewire.dispatch('handleGridOn', {
                         item: item,
                         position: position,

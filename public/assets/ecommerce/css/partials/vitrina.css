@@ -17,6 +17,7 @@
     display: none;
 }
 
+/* RESPONSIVE LAPTOP */
 @media (max-width: 1000px) {
 
     .partials_contenedor_vitrina {

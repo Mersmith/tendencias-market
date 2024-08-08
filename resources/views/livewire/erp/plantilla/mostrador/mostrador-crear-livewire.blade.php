@@ -128,7 +128,6 @@
         function dataMostrador() {
             return {
                 handleMostrador(item, position) {
-                    console.log(item, position);
                     Livewire.dispatch('handleMostradorOn', {
                         item: item,
                         position: position,

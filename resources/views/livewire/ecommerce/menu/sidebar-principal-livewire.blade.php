@@ -248,8 +248,7 @@
                                 <div class="sidebar_cotenido_elemento">
                                     <a :href="dataMenu.url" class="sidebar_cotenido_elemento_imagen">
                                         <div class="sidebar_contenedor_imagen">
-                                            <img :src="dataMenu.imagen_url"
-                                                alt="">
+                                            <img :src="dataMenu.imagen_url" alt="">
                                         </div>
                                         <span x-text="dataMenu.nombre"></span>
                                     </a>
@@ -264,7 +263,7 @@
     </nav>
 
     <!-- CONTENEDOR ITEMS SUBCATEGORIA -->
-    {{--<div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
+    {{-- <div class="contenedor_sidebar_items_subcategoria" :x-show="estadoNavItemsSubcategoriaAbierto">
         <!-- SIDEBAR CONTENEDOR -->
         <div class="sidebar_contenedor">
             <!-- SIDEBAR CABECERA -->
@@ -304,5 +303,5 @@
                 </div>
             </div>
         </div>
-    </div>--}}
+    </div> --}}
 </div>
