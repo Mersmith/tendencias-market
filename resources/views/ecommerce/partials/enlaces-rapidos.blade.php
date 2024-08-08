@@ -1,8 +1,8 @@
 @if (!empty($p_elementos))
     <div x-data="dataEnlacesRapidos()" x-init="init()">
         <div class="contendor_enlaces_rapidos">
-            <div class="centrar_contenido_pagina">
-                <div class="contenido_pagina">
+            <div class="g_centrar_contenido_pagina">
+                <div class="g_contenido_pagina">
                     <div class="columna_12">
                         @include('ecommerce.partials.titulo-icono', [
                             'p_contenido' => $p_elementos->nombre,

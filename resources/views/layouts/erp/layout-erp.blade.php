@@ -33,7 +33,7 @@
             <!--CONTENIDO LAYOUT PAGINA-->
             <div class="contenido_layout_pagina">
                 <div class="centrar_pagina" @hasSection('anchoPantalla') style="max-width: @yield('anchoPantalla')" @endif">
-                    <main class="contenido_pagina">
+                    <main class="g_contenido_pagina">
                         @yield('content')
                         @if (isset($slot))
                             {{ $slot }}

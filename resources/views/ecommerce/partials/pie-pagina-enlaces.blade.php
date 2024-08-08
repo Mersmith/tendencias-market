@@ -58,8 +58,8 @@
 
 <div x-data="dataPiePagEnla({{ $dataEnlacesRapido }})">
     <div class="contenedor_enlaces_rapidos">
-        <div class="centrar_contenido_pagina">
-            <div class="contenido_pagina">
+        <div class="g_centrar_contenido_pagina">
+            <div class="g_contenido_pagina">
                 <div class="columna_12">
                     <div class="grid_contenedor_items">
                         <!-- CONTENEDOR ITEM -->

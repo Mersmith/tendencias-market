@@ -1,7 +1,7 @@
 <div x-data="dataFooter()">
     <div class="footer" :style="{ backgroundColor: backgroundColor }">
-        <div class="centrar_contenido_pagina">
-            <div class="contenido_pagina">
+        <div class="g_centrar_contenido_pagina">
+            <div class="g_contenido_pagina">
                 <div class="columna_12">
                     <!-- CONTENEDOR REDES - TERMINOS -->
                     <div class="contenedor_redes_terminos">

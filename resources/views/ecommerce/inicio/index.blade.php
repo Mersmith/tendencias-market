@@ -8,28 +8,28 @@
 
         @include('ecommerce.partials.slider-principal', ['p_elementos' => $data_slider_principal_1])
 
-        <div class="centrar_contenido_pagina">
-            <div class="contenido_pagina">
+        <div class="g_centrar_contenido_pagina">
+            <div class="g_contenido_pagina">
 
-                <div class="m_40_0">
+                <div class="g_m_40_0">
                     @include('ecommerce.partials.vitrina', [
                         'p_elementos' => $data_vitrina_1,
                     ])
                 </div>
 
-                <div class="m_40_0">
+                <div class="g_m_40_0">
                     @include('ecommerce.partials.mostrador', [
                         'p_elementos' => $data_mostrador_1,
                     ])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.temporizador', [
                         'p_elementos' => $data_temporizador_1,
                     ])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Solo hoy',
                         'p_alineacion' => 'left',
@@ -41,17 +41,17 @@
                     ])
                 </div>
 
-                <div class="columna_12 m_b_10">
+                <div class="g_columna_12 g_m_b_10">
                     @include('ecommerce.partials.aviso', [
                         'p_elementos' => $data_aviso_1,
                     ])
                 </div>
 
-                <div class="m_b_10">
+                <div class="g_m_b_10">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
-                <div class="columna_12">
+                <div class="g_columna_12">
                     @include('ecommerce.partials.grid', [
                         'p_elementos' => $data_grid_1,
                     ])
@@ -69,11 +69,11 @@
                     ])
                 </div>
 
-                <div class="m_b_10">
+                <div class="g_m_b_10">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Lo más TOP en zapatillas',
                         'p_alineacion' => 'left',
@@ -85,7 +85,7 @@
                     ])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Novedades que te encantarán',
                         'p_alineacion' => 'left',
@@ -97,11 +97,11 @@
                     ])
                 </div>
 
-                <div class="m_b_10">
+                <div class="g_m_b_10">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.titulo', [
                         'p_contenido' => 'Lo más TOP en zapatillas',
                         'p_alineacion' => 'left',
@@ -113,24 +113,24 @@
                     ])
                 </div>
 
-                <div class="m_40_0">
+                <div class="g_m_40_0">
                     @include('ecommerce.partials.mostrador', [
                         'p_elementos' => $data_mostrador_2,
                     ])
                 </div>
 
-                <div class="columna_12 m_10_0">
+                <div class="g_columna_12 g_m_10_0">
                     @include('ecommerce.partials.aviso', [
                         'p_elementos' => $data_aviso_2,
                     ])
                 </div>
 
-                <div class="columna_12 m_40_0">
+                <div class="g_columna_12 g_m_40_0">
                     @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
                 </div>
 
-                <div class="m_40_0">
-                    <div class="columna_12 m_10_0">
+                <div class="g_m_40_0">
+                    <div class="g_columna_12 g_m_10_0">
                         @include('ecommerce.partials.mostrador', [
                             'p_elementos' => $data_mostrador_3,
                         ])

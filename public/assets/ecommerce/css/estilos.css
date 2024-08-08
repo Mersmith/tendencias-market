@@ -1,4 +1,4 @@
-.centrar_contenido_pagina {
+.g_centrar_contenido_pagina {
     max-width: 1280px;
     width: 100%;
     margin-left: auto;
@@ -7,7 +7,7 @@
     padding-right: 15px;
 }
 
-.contenido_pagina {
+.g_contenido_pagina {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -21,19 +21,19 @@
     margin-right: auto;
 }
 
-.columna_12 {
+.g_columna_12 {
     flex: 0 0 100%;
     max-width: 100%;
 }
 
-.m_10_0 {
+.g_m_10_0 {
     margin: 10px 0px;
 }
 
-.m_b_10 {
+.g_m_b_10 {
     margin-bottom: 10px;
 }
 
-.m_40_0 {
+.g_m_40_0 {
     margin: 40px 0px;
 }
