@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Erp\AvisoController;
 use App\Http\Controllers\Erp\EnlacesRapidosController;
 use App\Http\Controllers\Erp\GridController;
-use App\Http\Controllers\Erp\InventarioController;
 use App\Http\Controllers\Erp\MostradorController;
 use App\Http\Controllers\Erp\SliderController;
+use App\Http\Controllers\Erp\SliderProductosController;
 use App\Http\Controllers\Erp\TemporizadorController;
 use App\Http\Controllers\Erp\VitrinaController;
 use App\Models\Banner;
@@ -35,13 +35,8 @@ class EcommerceInicioController extends Controller
         $data_grid_2 = app(GridController::class)->getEcommerceGrid(2);
         $data_grid_3 = app(GridController::class)->getEcommerceGrid(3);
 
-        $almacen_ecommerce = 1;
-        $lista_precio_etiqueta = 3;
-        $categoria_id = 1;
-        $dias_expirar = 2;
-
-        $data_productos = app(InventarioController::class)->getEcommerceProductosCategoria($almacen_ecommerce, $categoria_id, $lista_precio_etiqueta);
-        $data_productos_descuentos = app(InventarioController::class)->getEcommerceProductosDescuento($almacen_ecommerce, $lista_precio_etiqueta);
+        $data_slide_producto = app(SliderProductosController::class)->getEcommerceSliderProductos(1);
+        $data_slide_producto_descuentos = app(SliderProductosController::class)->getEcommerceSliderProductos(2);
 
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
@@ -67,8 +62,8 @@ class EcommerceInicioController extends Controller
                 'data_grid_1',
                 'data_grid_2',
                 'data_grid_3',
-                'data_productos',
-                'data_productos_descuentos',
+                'data_slide_producto',
+                'data_slide_producto_descuentos',
                 'data_aviso_2',
                 'data_enlaces_rapidos_1'
             )

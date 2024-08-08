@@ -55,7 +55,7 @@
                 ])
 
                 @include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_productos,
+                    'p_elementos' => $data_slide_producto,
                 ])
 
                 @include('ecommerce.partials.grid', [
@@ -71,11 +71,11 @@
                 ])
 
                 @include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_productos,
+                    'p_elementos' => $data_slide_producto,
                 ])
 
                 @include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_productos_descuentos,
+                    'p_elementos' => $data_slide_producto_descuentos,
                 ])
 
                 @include('ecommerce.partials.mostrador', [

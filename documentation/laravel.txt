@@ -171,3 +171,6 @@ php artisan make:livewire Erp/Plantilla/Vitrina/VitrinaCrearLivewire
 
 php artisan make:model Temporizador -mfsc
 php artisan make:livewire Erp/Plantilla/Temporizador/TemporizadorCrearLivewire
+
+php artisan make:model SliderProductos -mfsc
+php artisan make:livewire Erp/Plantilla/SliderProductos/SliderProductosCrearLivewire

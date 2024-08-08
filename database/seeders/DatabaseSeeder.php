@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /*$this->call(SedeSeeder::class);
+        $this->call(SedeSeeder::class);
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
         $this->call(SerieSeeder::class);
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductoDescuentoSeeder::class);
         $this->call(GuiaEntradaDirectoSeeder::class);
         $this->call(ImagenSeeder::class);
-        $this->call(ImagenablesSeeder::class);*/
+        $this->call(ImagenablesSeeder::class);
         $this->call(SliderSeeder::class);
         $this->call(BannerSeeder::class);
         $this->call(MostradorSeeder::class);
@@ -40,5 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EcommerceFooterSeeder::class);
         $this->call(VitrinaSeeder::class);
         $this->call(TemporizadorSeeder::class);
+        $this->call(SliderProductosSeeder::class);
     }
 }
