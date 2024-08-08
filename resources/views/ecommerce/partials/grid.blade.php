@@ -1,12 +1,11 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    <div x-data="dataGrid{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="init()" class="contenedor_grid">
+    <div x-data="dataGrid{{ $p_elementos->id }}({{ count($p_elementos->imagenes) }})" x-init="initGrid()" class="partials_contenedor_grid">
 
         <!-- SLIDER -->
-        <div x-ref="slider" class="contenedor_promociones slider">
-            <!-- SLIDE -->
+        <div x-ref="slider" class="contenedor_slide">
             @foreach ($p_elementos->imagenes as $index => $elemento)
                 <div
-                    class="slide {{ $elemento['width'] === 50 ? 'item_50' : ($elemento['width'] === 25 ? 'item_25' : '') }}">
+                    class="item_slide {{ $elemento['width'] === 50 ? 'item_50' : ($elemento['width'] === 25 ? 'item_25' : '') }}">
                     <a href="{{ $elemento['link'] }}">
                         <img src="{{ $elemento['imagenComputadora'] }}" alt="" class="imagen_computadora" />
                         <img src="{{ $elemento['imagenMovil'] }}" alt="" class="imagen_movil" />
@@ -16,26 +15,23 @@
         </div>
 
         <!-- CONTROL BOTONES -->
-        <button @click="handlePrev()" :disabled="currentPage === 1"
-            class="control_slider_botones slider_boton_retroceder">
-            <img src="{{ asset('assets/ecommerce/iconos/icono_retroceder.svg') }}" alt="Logo">
-        </button>
-        <button @click="handleNext()" :disabled="currentPage + itemsPorPagina > totalElementos"
-            class="control_slider_botones slider_boton_siguiente">
-            <img src="{{ asset('assets/ecommerce/iconos/icono_siguiente.svg') }}" alt="Logo">
-        </button>
+        <div class="control_botones" x-show="totalPaginas > 1">
+            <button @click="botonRetroceder()" :disabled="paginaActual === 1" class="boton_retroceder">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button @click="botonSiguiente()" :disabled="paginaActual + itemsPorPagina > totalElementos"
+                class="boton_siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
 
         <!-- PAGINACION BOTONES -->
-        @if (count($p_elementos->imagenes) > 3)
-            <div class="slider_paginacion">
-                @for ($page = 1; $page <= ceil(count($p_elementos->imagenes) / 3); $page++)
-                    <button @click="setCurrentPage({{ $page }})"
-                        :class="{ 'activo': currentPage === ({{ $page }} - 1) * itemsPorPagina + 1 }"
-                        class="slider_paginacion_boton">
-                    </button>
-                @endfor
-            </div>
-        @endif
+        <div class="paginacion_botones" x-show="totalPaginas > 1">
+            <template x-for="itemPagina in totalPaginas" :key="itemPagina">
+                <button @click="setPaginaActual(itemPagina)"
+                    :class="{ 'boton_activo': paginaActual === (itemPagina - 1) * itemsPorPagina + 1 }"></button>
+            </template>
+        </div>
     </div>
 
     <script>
@@ -46,17 +42,17 @@
                 cantidadElementosTablet: 2,
                 cantidadElementosMovil: 1,
                 itemsPorPagina: 3,
-                currentPage: 1,
+                paginaActual: 1,
                 totalPaginas: Math.ceil(totalImagenes / 3),
 
-                init() {
-                    this.handleResize();
-                    window.addEventListener('resize', this.handleResize.bind(this));
+                initGrid() {
+                    this.anchoPantalla();
+                    window.addEventListener('resize', this.anchoPantalla.bind(this));
                 },
 
-                handleResize() {
+                anchoPantalla() {
                     const windowWidth = window.innerWidth;
-                    if (windowWidth > 900) {
+                    if (windowWidth > 1000) {
                         this.itemsPorPagina = this.cantidadElementosComputadora;
                     } else if (windowWidth > 700) {
                         this.itemsPorPagina = this.cantidadElementosTablet;
@@ -64,27 +60,28 @@
                         this.itemsPorPagina = this.cantidadElementosMovil;
                     }
                     this.totalPaginas = Math.ceil(this.totalElementos / this.itemsPorPagina);
-                    this.scrollToCurrentPage();
+                    this.scrollPaginaActual();
                 },
 
-                handlePrev() {
-                    this.currentPage = Math.max(this.currentPage - this.itemsPorPagina, 1);
-                    this.scrollToCurrentPage();
+                botonRetroceder() {
+                    this.paginaActual = Math.max(this.paginaActual - this.itemsPorPagina, 1);
+                    this.scrollPaginaActual();
                 },
 
-                handleNext() {
-                    this.currentPage = Math.min(this.currentPage + this.itemsPorPagina, this.totalElementos);
-                    this.scrollToCurrentPage();
+                botonSiguiente() {
+                    this.paginaActual = Math.min(this.paginaActual + this.itemsPorPagina, this.totalElementos);
+                    this.scrollPaginaActual();
                 },
 
-                setCurrentPage(page) {
-                    this.currentPage = (page - 1) * this.itemsPorPagina + 1;
-                    this.scrollToCurrentPage();
+                setPaginaActual(itemPagina) {
+                    this.paginaActual = (itemPagina - 1) * this.itemsPorPagina + 1;
+                    this.scrollPaginaActual();
                 },
 
-                scrollToCurrentPage() {
+                scrollPaginaActual() {
                     if (this.$refs.slider) {
-                        const scrollAmount = (this.currentPage - 1) * (this.$refs.slider.clientWidth / this.itemsPorPagina);
+                        const scrollAmount = (this.paginaActual - 1) * (this.$refs.slider.clientWidth / this
+                            .itemsPorPagina);
                         this.$refs.slider.scrollTo({
                             left: scrollAmount,
                             behavior: 'smooth'
