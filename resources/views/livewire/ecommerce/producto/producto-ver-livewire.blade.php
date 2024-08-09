@@ -1,3 +1,5 @@
+<x-ecommerce-layout>
+
 <div>
     <style>
         .dividir {
@@ -128,3 +130,4 @@
 
     <button wire:click="enviar()">Enviar</button>
 </div>
+</x-ecommerce-layout>
