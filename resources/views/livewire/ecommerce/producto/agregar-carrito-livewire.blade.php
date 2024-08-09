@@ -1,5 +1,5 @@
-<div>
-    <div>
+<div class="agregar_carrito">
+    <div class="variacion_carrito">
         @if ($tipo_variacion == 'VARIA-COLOR-TALLA')
             <div>
                 <label>Selecciona un color:</label>
@@ -67,7 +67,7 @@
         @endif
     </div>
 
-    <div>
+    <div class="controles_carrito">
         <label for="cantidad">Cantidad:</label>
         <div>
             <button type="button" wire:click="decrementarCantidad">−</button>
@@ -76,23 +76,25 @@
         </div>
         <p>Máximo {{ $variacion_seleccionada ? $variacion_seleccionada->stock : '' }} unidades.</p>
         <button wire:click="agregarCarrito">Agregar al carrito</button>
+
+        <div>
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+        </div>
     </div>
 
-    <div>
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
 
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
 
-    </div>
-
-    <button wire:click="enviar()">Enviar</button>
+    {{-- <button wire:click="enviar()">Enviar</button> --}}
 
 </div>
