@@ -41,6 +41,15 @@
                             {{ \Carbon\Carbon::parse($producto->descuento_fecha_fin)->format('d/m/Y H:i') }}
                         </p>
                     @endif
+
+                    <div>
+                        @livewire('ecommerce.producto.agregar-carrito-livewire', [
+                            'tipo_variacion' => $tipo_variacion,
+                            'variacion_agrupada' => $variacion_agrupada,
+                            'color_seleccionado' => $color_seleccionado,
+                            'talla_seleccionado' => $talla_seleccionado,
+                        ])
+                    </div>
                 </div>
 
             </div>

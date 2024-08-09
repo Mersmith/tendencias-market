@@ -174,3 +174,5 @@ php artisan make:livewire Erp/Plantilla/Temporizador/TemporizadorCrearLivewire
 
 php artisan make:model SliderProductos -mfsc
 php artisan make:livewire Erp/Plantilla/SliderProductos/SliderProductosCrearLivewire
+
+php artisan make:livewire Ecommerce/Producto/AgregarCarritoLivewire
