@@ -88,11 +88,19 @@
                 },
 
                 botonRetrocederImagen() {
-                    this.posicionImagenActual = this.posicionImagenActual - 1
+                    if (this.posicionImagenActual === 0) {
+                        this.posicionImagenActual = this.totalElementos - 1; // Se mueve a la última imagen
+                    } else {
+                        this.posicionImagenActual = this.posicionImagenActual - 1;
+                    }
                 },
 
                 botonSiguienteImagen() {
-                    this.posicionImagenActual = this.posicionImagenActual + 1
+                    if (this.posicionImagenActual === this.totalElementos - 1) {
+                        this.posicionImagenActual = 0; // Se mueve a la primera imagen
+                    } else {
+                        this.posicionImagenActual = this.posicionImagenActual + 1;
+                    }
                 },
 
                 botonRetroceder() {
