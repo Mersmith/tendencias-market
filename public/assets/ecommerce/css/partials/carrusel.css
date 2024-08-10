@@ -1,0 +1,133 @@
+.partials_contenedor_carrusel {
+    position: relative;
+    width: 42%;
+    padding: 8px 12px 0 32px;
+}
+
+/* SLIDER */
+.partials_contenedor_carrusel .contenedor_slide {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partials_contenedor_carrusel .contenedor_slide::-webkit-scrollbar {
+    height: 5px;
+}
+
+.partials_contenedor_carrusel .contenedor_slide::-webkit-scrollbar-thumb {
+    background-color: var(--color-fondo-quinario);
+    border-radius: 5px;
+}
+
+.partials_contenedor_carrusel .item_slide {
+    width: 16.6%;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 5px;
+}
+
+.partials_contenedor_carrusel .contenedor_imagen {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partials_contenedor_carrusel .contenedor_imagen span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    background-color: rgb(235, 0, 41);
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14.4px;
+    color: rgb(255, 255, 255);
+}
+
+/* IMAGEN */
+.partials_contenedor_carrusel .item_slide img {
+    /*width: auto;*/
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* CONTROL BOTONES */
+.partials_contenedor_carrusel .control_botones {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.partials_contenedor_carrusel .control_botones button {
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: var(--color-fondo-cuaternario);
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_carrusel .control_botones button:disabled {
+    display: none;
+}
+
+.partials_contenedor_carrusel .boton_retroceder {
+    left: 10px;
+}
+
+.partials_contenedor_carrusel .boton_siguiente {
+    right: 10px;
+}
+
+/* PAGINACION BOTONES */
+.partials_contenedor_carrusel .paginacion_botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.partials_contenedor_carrusel .paginacion_botones button {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: var(--color-fondo-cuaternario);
+    border-radius: 50%;
+    border: none;
+}
+
+.partials_contenedor_carrusel .paginacion_botones button.boton_activo {
+    width: 10px;
+    height: 10px;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+
+    .partials_contenedor_carrusel .item_slide {
+        width: 25%;
+    }
+
+}
+
+/* RESPONSIVE MOVIL */
+@media (max-width: 700px) {
+
+    .partials_contenedor_carrusel .item_slide {
+        width: 20%;
+    }
+
+    .partials_contenedor_carrusel {
+        width: 100%;
+    }
+
+}

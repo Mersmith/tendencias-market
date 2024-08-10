@@ -30,7 +30,7 @@
 }
 
 /*IMAGENES PRODUCTO*/
-.contenedor_imagenes_producto {
+/*.contenedor_imagenes_producto {
     width: 42%;
     padding: 8px 12px 0 32px;
 }
@@ -46,7 +46,7 @@
     width: 70px;
     height: 70px;
     object-fit: cover;
-    transition: border-color 0.2s; /* Transición suave */
+    transition: border-color 0.2s
 }
 
 .borde_rojo {
@@ -58,15 +58,15 @@
 }
 
 .border-blue-500 {
-    border-color: #4299e1; /* Color de borde cuando está seleccionado */
+    border-color: #4299e1
 }
 
 .border-transparent {
-    border-color: red; /* Sin borde */
+    border-color: red; 
 }
 
 .previsualizacion-imagenes img:hover {
-    border-color: #ccc; /* Borde cuando el ratón pasa sobre la imagen */
+    border-color: #ccc; 
 }
 
 .controles-navegacion button {
@@ -82,7 +82,7 @@
     border: 1px solid #ccc;
     padding: 4px 8px;
 }
-
+*/
 
 
 /* FIN IMAGENES PRODUCTO*/
