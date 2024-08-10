@@ -93,6 +93,8 @@
                     } else {
                         this.posicionImagenActual = this.posicionImagenActual - 1;
                     }
+                    this.verificarScroll();
+
                 },
 
                 botonSiguienteImagen() {
@@ -101,6 +103,8 @@
                     } else {
                         this.posicionImagenActual = this.posicionImagenActual + 1;
                     }
+
+                    this.verificarScroll();
                 },
 
                 botonRetroceder() {
@@ -128,6 +132,18 @@
                         });
                     }
                 },
+
+                verificarScroll() {
+                    const paginaInicio = (this.paginaActual - 1) * this.itemsPorPagina;
+                    const paginaFin = this.paginaActual * this.itemsPorPagina;
+
+                    if (this.posicionImagenActual < paginaInicio || this.posicionImagenActual >= paginaFin) {
+                        this.paginaActual = Math.floor(this.posicionImagenActual / this.itemsPorPagina) * this
+                            .itemsPorPagina + 1;
+                        this.scrollPaginaActual();
+                    }
+                },
+
 
             };
         }
