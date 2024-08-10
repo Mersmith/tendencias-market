@@ -1,7 +1,10 @@
 .partials_contenedor_carrusel {
-    position: relative;
     width: 42%;
     padding: 8px 12px 0 32px;
+}
+
+.partials_contenedor_carrusel_pie {
+    position: relative;
     height: 78px;
 }
 
@@ -59,6 +62,19 @@
     border-radius: 8px;
 }
 
+.partials_contenedor_carrusel .imagen_activo {
+    display: block;
+}
+
+.partials_contenedor_carrusel .imagen_oculto {
+    display: none;
+}
+
+.partials_contenedor_carrusel .imagen_elegida {
+    border: 1px solid var(--color-borde-primario);
+
+}
+
 /* CONTROL BOTONES */
 .partials_contenedor_carrusel .control_botones {
     position: absolute;
@@ -69,7 +85,7 @@
     display: flex;
     justify-content: space-between;
     pointer-events: none;
-    height: 47px;
+    height: 60px;
 }
 
 .partials_contenedor_carrusel .control_botones button {
