@@ -2,11 +2,12 @@
     position: relative;
     width: 42%;
     padding: 8px 12px 0 32px;
+    height: 78px;
 }
 
 /* SLIDER */
 .partials_contenedor_carrusel .contenedor_slide {
-    width: 100%;
+    width: 90%;
     overflow-x: auto;
     display: flex;
     margin-left: auto;
@@ -61,12 +62,18 @@
 /* CONTROL BOTONES */
 .partials_contenedor_carrusel .control_botones {
     position: absolute;
-    width: 100%;
     top: 50%;
+    left: 0;
+    right: 0;
     transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    height: 47px;
 }
 
 .partials_contenedor_carrusel .control_botones button {
+    pointer-events: all;
     position: absolute;
     cursor: pointer;
     padding: 10px;
@@ -80,12 +87,15 @@
 }
 
 .partials_contenedor_carrusel .boton_retroceder {
+    position: absolute;
     left: 10px;
 }
 
 .partials_contenedor_carrusel .boton_siguiente {
+    position: absolute;
     right: 10px;
 }
+
 
 /* PAGINACION BOTONES */
 .partials_contenedor_carrusel .paginacion_botones {
