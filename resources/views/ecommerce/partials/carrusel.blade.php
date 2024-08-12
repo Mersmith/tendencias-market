@@ -2,6 +2,7 @@
 
     <div x-data="dataCarrusel({{ count($p_elementos) }})" x-init="initSliderProductos()" class="partials_contenedor_carrusel">
         <div class="partials_contenedor_carrusel_cabecera">
+            <!-- IMAGEN -->
             @foreach ($p_elementos as $index => $imagen)
                 <div>
                     <div
@@ -10,10 +11,10 @@
                     </div>
                 </div>
             @endforeach
-            <button @click="botonRetrocederImagen">
+            <button @click="botonRetrocederImagen" class="boton_retroceder">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button @click="botonSiguienteImagen">
+            <button @click="botonSiguienteImagen" class="boton_siguiente">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
@@ -89,7 +90,7 @@
 
                 botonRetrocederImagen() {
                     if (this.posicionImagenActual === 0) {
-                        this.posicionImagenActual = this.totalElementos - 1; // Se mueve a la última imagen
+                        this.posicionImagenActual = this.totalElementos - 1;
                     } else {
                         this.posicionImagenActual = this.posicionImagenActual - 1;
                     }
@@ -99,7 +100,7 @@
 
                 botonSiguienteImagen() {
                     if (this.posicionImagenActual === this.totalElementos - 1) {
-                        this.posicionImagenActual = 0; // Se mueve a la primera imagen
+                        this.posicionImagenActual = 0;
                     } else {
                         this.posicionImagenActual = this.posicionImagenActual + 1;
                     }
