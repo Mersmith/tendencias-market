@@ -9,7 +9,7 @@
     margin: 0 auto 12px auto;
     position: relative;
     overflow: hidden;
-    min-height: 410px;
+    /*min-height: 410px;*/
     max-height: 485px;
     max-width: 485px;
 }
@@ -32,7 +32,7 @@
     top: 50%;
     height: 64px;
     width: 34px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--color-fondo-opacidad);
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -41,22 +41,22 @@
     cursor: pointer;
     z-index: 4;
     outline: none;
+    color: var(--color-texto-cuaternario);
+    box-shadow: var(--sombra);
+
 }
 
 .partials_contenedor_carrusel_cabecera .boton_retroceder {
     left: 0;
-    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
 }
 
 .partials_contenedor_carrusel_cabecera .boton_siguiente {
     right: 0;
-    box-shadow: -2px 0 5px -2px rgba(0, 0, 0, 0.2);
 }
 
 /* PIE */
 .partials_contenedor_carrusel_pie {
     position: relative;
-    height: 78px;
 }
 
 /* SLIDER */
@@ -97,15 +97,14 @@
     width: auto;
 }
 
-
 .partials_contenedor_carrusel_pie .imagen_elegida {
-    border: 1px solid var(--color-borde-primario);
+    border: 1px solid var(--color-borde-quinario);
 }
 
 /* CONTROL BOTONES */
 .partials_contenedor_carrusel_pie .control_botones {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -121,8 +120,8 @@
     cursor: pointer;
     padding: 10px;
     border: none;
-    background-color: var(--color-fondo-cuaternario);
-    color: var(--color-texto-terciario);
+    background-color: none;
+    color: var(--color-texto-cuaternario);
 }
 
 .partials_contenedor_carrusel_pie .control_botones button:disabled {
@@ -152,7 +151,7 @@
     height: 8px;
     cursor: pointer;
     margin: 0 5px;
-    background-color: var(--color-fondo-cuaternario);
+    background-color: var(--color-fondo-sextenario);
     border-radius: 50%;
     border: none;
 }
@@ -160,6 +159,7 @@
 .partials_contenedor_carrusel_pie .paginacion_botones button.boton_activo {
     width: 10px;
     height: 10px;
+    background-color: var(--color-fondo-quinario);
 }
 
 /* RESPONSIVE TABLET */
@@ -174,12 +174,13 @@
 /* RESPONSIVE MOVIL */
 @media (max-width: 700px) {
 
-    .partials_contenedor_carrusel_pie .item_slide {
-        width: 20%;
-    }
-
     .partials_contenedor_carrusel {
         width: 100%;
+        padding: 10px;
+    }
+
+    .partials_contenedor_carrusel_pie .item_slide {
+        width: 20%;
     }
 
 }

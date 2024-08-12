@@ -11,21 +11,25 @@
     --ancho-espacio-pagina-computadora: 50px;
     --ancho-espacio-pagina-movil: 10px;
 
+    --color-fondo-opacidad: rgba(255, 255, 255, 0.4);
     --color-fondo-primario: #fafafa;
     --color-fondo-secundario: #fff;
     --color-fondo-terciario: #f10a0f;
     --color-fondo-cuaternario: #495867;
     --color-fondo-quinario: #778089;
+    --color-fondo-sextenario: #c0c0c0;
 
     --hover-color-fondo-primario: #fafafa;
 
     --color-borde-primario: #f10a0f;
     --color-borde-secundario: #e9e9e9;
+    --color-borde-quinario: #778089;
 
     --color-texto-primario: #495867;
     --color-texto-secundario: #f10a0f;
     --color-texto-terciario: #fff;
     --color-texto-cuaternario: #778089;
+    --color-texto-quinario: #c0c0c0;
 
     --ancho-sidebar-categoria: 300px;
     --ancho-sidebar-subcategoria: calc(700px);

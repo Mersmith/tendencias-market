@@ -4,11 +4,9 @@
         <div class="partials_contenedor_carrusel_cabecera">
             <!-- IMAGEN -->
             @foreach ($p_elementos as $index => $imagen)
-                <div>
-                    <div
-                        x-bind:class="posicionImagenActual === @json($index) ? 'imagen_activo' : 'imagen_oculto'">
-                        <img src="{{ $imagen->url }}" alt="" />
-                    </div>
+                <div
+                    x-bind:class="posicionImagenActual === @json($index) ? 'imagen_activo' : 'imagen_oculto'">
+                    <img src="{{ $imagen->url }}" alt="" />
                 </div>
             @endforeach
             <button @click="botonRetrocederImagen" class="boton_retroceder">
