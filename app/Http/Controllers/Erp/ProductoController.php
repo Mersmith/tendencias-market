@@ -96,6 +96,7 @@ class ProductoController extends Controller
                 'producto_descuentos.porcentaje_descuento',
                 'producto_descuentos.fecha_fin as descuento_fecha_fin',
                 'colors.nombre as color_nombre',
+                'colors.codigo_color',
                 'tallas.nombre as talla_nombre',
                 DB::raw('IF(producto_descuentos.porcentaje_descuento > 0 AND producto_descuentos.fecha_fin > NOW(), ROUND(producto_lista_precios.precio - (producto_lista_precios.precio * producto_descuentos.porcentaje_descuento / 100), 2), NULL) as precio_oferta')
             )

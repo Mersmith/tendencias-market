@@ -27,17 +27,19 @@
     padding: 2px;
     position: relative;
     border-radius: 4px;
-    border: 2px solid #464646;
     margin-right: 0;
     display: flex;
     align-items: center;
 }
 
+.contenedor_agregar_carrito .label_seleccionado {
+    border: 2px solid #464646;
+}
+
 .contenedor_agregar_carrito .contenedor_color label div {
     height: 100%;
     width: 100%;
-    border-radius: 4px;
-    background: #000;
+    border-radius: 4px;    
 }
 
 .contenedor_agregar_carrito .contenedor_color label input {
@@ -63,7 +65,7 @@
     border-radius: 3px;
     margin: 0px 8px 8px 0px;
     color: rgb(136, 136, 136);
-    border: 1.1px solid rgb(230, 230, 230);
+    /*border: 1.1px solid rgb(230, 230, 230);*/
     background-color: rgb(249, 249, 249);
 }
 

@@ -14,6 +14,20 @@ class AgregarCarritoLivewire extends Component
     public $variacion_seleccionada;
     public $cantidad = 1;
 
+    public function mount()
+    {
+        if ($this->tipo_variacion == "VARIA-COLOR-TALLA") {
+            $this->seleccionarVariacionColorTalla($this->color_seleccionado, $this->talla_seleccionado);
+        } elseif ($this->tipo_variacion == "VARIA-COLOR") {
+            $this->seleccionarVariacionColor();
+        } elseif ($this->tipo_variacion == "VARIA-TALLA") {
+            $this->seleccionarVariacionTalla();
+        } else {
+            $this->variacion_seleccionada = $this->variacion_agrupada->first();
+        }
+
+    }
+
     public function updatedColorSeleccionado()
     {
         $this->talla_seleccionado = null;
