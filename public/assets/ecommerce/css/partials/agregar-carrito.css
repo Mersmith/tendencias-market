@@ -1,5 +1,6 @@
 .contenedor_agregar_carrito {
     display: flex;
+    margin: 20px 0px;
 }
 
 .contenedor_agregar_carrito .variacion_carrito {

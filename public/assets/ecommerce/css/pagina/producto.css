@@ -62,7 +62,13 @@
     border-left: 1px solid #f8f8f8;
 }
 
+
+.contenedor_pagina_producto .contendor_detalle_producto .cabecera {
+    margin-bottom: 20px;
+}
+
 .contenedor_pagina_producto .contendor_detalle_producto h2 {
+    margin-bottom: 20px;
     font-size: 24px;
     line-height: 24px;
     margin: 4px 0;
@@ -87,6 +93,18 @@
     justify-content: space-between;
     margin: 2px 0;
 }
+
+.contenedor_pagina_producto .contenedor_precios .item_precio .oferta {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.contenedor_pagina_producto .contenedor_precios .item_precio .antes {
+    text-decoration: line-through;
+    font-weight: 400;
+    color: #717171;
+}
+
 
 
 @media (max-width: 700px) {

@@ -23,15 +23,26 @@
                     <div class="contendor_detalle_producto">
                         <div>
 
-                            <h2>{{ $producto->nombre }}</h2>
-                            <h3>{{ $producto->marca_nombre }}</h3>
+                            <div class="cabecera">
+                                <h2>{{ $producto->nombre }}</h2>
+                                <h3>{{ $producto->marca_nombre }}</h3>
+                            </div>
 
                             <!-- PRECIOS -->
                             <div class="contenedor_precios">
                                 @if ($producto->precio_oferta)
                                     <div class="item_precio">
                                         <div>Oferta</div>
-                                        <div>S/ {{ $producto->precio_oferta }} </div>
+                                        <div class="oferta">S/ {{ $producto->precio_oferta }} </div>
+                                    </div>
+                                @endif
+
+                                @if ($producto->porcentaje_descuento)
+                                    <div class="item_precio">
+                                        <div></div>
+                                        <div>Descuento {{ $producto->porcentaje_descuento }}% hasta
+                                            {{ \Carbon\Carbon::parse($producto->descuento_fecha_fin)->format('d/m/Y H:i') }}
+                                        </div>
                                     </div>
                                 @endif
 
@@ -43,22 +54,16 @@
                                 @if ($producto->precio_antiguo)
                                     <div class="item_precio">
                                         <div>Antes</div>
-                                        <div>S/ {{ $producto->precio_antiguo }} </div>
+                                        <div class="antes">S/ {{ $producto->precio_antiguo }} </div>
                                     </div>
                                 @endif
 
-                                @if ($producto->porcentaje_descuento)
-                                    <div class="item_precio">
-                                        <div>Descuento {{ $producto->porcentaje_descuento }}% </div>
-                                        <div>hasta
-                                            {{ \Carbon\Carbon::parse($producto->descuento_fecha_fin)->format('d/m/Y H:i') }}
-                                        </div>
-                                    </div>
-                                @endif
+
                             </div>
-                        </div>
 
-                        <hr>
+                            <hr>
+
+                        </div>
 
                         @livewire('ecommerce.producto.agregar-carrito-livewire', [
                             'tipo_variacion' => $tipo_variacion,
