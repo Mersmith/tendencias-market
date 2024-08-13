@@ -79,8 +79,10 @@ class ProductoController extends Controller
             })
             ->leftJoin('colors', 'variacions.color_id', '=', 'colors.id')
             ->leftJoin('tallas', 'variacions.talla_id', '=', 'tallas.id')
+            ->leftJoin('marcas', 'productos.marca_id', '=', 'marcas.id')
             ->select(
                 'productos.*',
+                'marcas.nombre as marca_nombre',
                 'variacions.id as variacion_id',
                 'variacions.color_id',
                 'variacions.talla_id',
@@ -94,7 +96,8 @@ class ProductoController extends Controller
                 'producto_descuentos.porcentaje_descuento',
                 'producto_descuentos.fecha_fin as descuento_fecha_fin',
                 'colors.nombre as color_nombre',
-                'tallas.nombre as talla_nombre'
+                'tallas.nombre as talla_nombre',
+                DB::raw('IF(producto_descuentos.porcentaje_descuento > 0 AND producto_descuentos.fecha_fin > NOW(), ROUND(producto_lista_precios.precio - (producto_lista_precios.precio * producto_descuentos.porcentaje_descuento / 100), 2), NULL) as precio_oferta')
             )
             ->where('productos.id', $id)
             ->where('inventarios.almacen_id', 1)

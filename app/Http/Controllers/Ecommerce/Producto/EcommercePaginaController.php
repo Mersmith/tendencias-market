@@ -54,6 +54,8 @@ class EcommercePaginaController extends Controller
             ]);
         }
 
+        //dd($data_primero_producto);
+
         return view('ecommerce.producto.producto-pagina', [
             'producto' => $data_primero_producto,
             'imagenes' => $data_imagenes,

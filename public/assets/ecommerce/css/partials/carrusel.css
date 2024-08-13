@@ -42,16 +42,17 @@
     z-index: 4;
     outline: none;
     color: var(--color-texto-cuaternario);
-    box-shadow: var(--sombra);
 
 }
 
 .partials_contenedor_carrusel_cabecera .boton_retroceder {
     left: 0;
+    box-shadow: var(--sombra-secundario-izquierda);
 }
 
 .partials_contenedor_carrusel_cabecera .boton_siguiente {
     right: 0;
+    box-shadow: var(--sombra-secundario-derecha);
 }
 
 /* PIE */
@@ -95,6 +96,7 @@
 .partials_contenedor_carrusel_pie .item_slide img {
     height: 100%;
     width: auto;
+    cursor: pointer;
 }
 
 .partials_contenedor_carrusel_pie .imagen_elegida {

@@ -13,6 +13,7 @@
     background-color: #fff;
 }
 
+/* MIGAJA */
 .contenedor_pagina_producto .contendor_migaja {
     display: flex;
     align-items: center;
@@ -21,6 +22,29 @@
     background-color: transparent;
 }
 
+.contenedor_pagina_producto .contendor_migaja ol {
+    list-style: none;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.contenedor_pagina_producto .contendor_migaja li {
+    color: #333;
+    margin: 3px 0;
+    text-decoration: underline;
+}
+
+.contenedor_pagina_producto .contendor_migaja li::before {
+    content: '>';
+    display: inline-flex;
+    padding: 0 3px;
+    color: #717171;
+}
+
+/* INFORMACION */
 .contenedor_pagina_producto .contenedor_informacion_producto {
     display: flex;
     flex-direction: row;
@@ -29,63 +53,7 @@
     padding-bottom: 20px;
 }
 
-/*IMAGENES PRODUCTO*/
-/*.contenedor_imagenes_producto {
-    width: 42%;
-    padding: 8px 12px 0 32px;
-}
-
-.imagen-seleccionada {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: border-color 0.2s;
-}
-
-.previsualizacion-imagenes img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    transition: border-color 0.2s
-}
-
-.borde_rojo {
-    border: 2px solid #e11c1c;
-}
-
-.borde_verde {
-    border: 2px solid #26a515;
-}
-
-.border-blue-500 {
-    border-color: #4299e1
-}
-
-.border-transparent {
-    border-color: red; 
-}
-
-.previsualizacion-imagenes img:hover {
-    border-color: #ccc; 
-}
-
-.controles-navegacion button {
-    background-color: #f3f3f3;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.btn-anterior,
-.btn-siguiente {
-    border: 1px solid #ccc;
-    padding: 4px 8px;
-}
-*/
-
-
-/* FIN IMAGENES PRODUCTO*/
+/* DETALLE */
 .contenedor_pagina_producto .contendor_detalle_producto {
     display: flex;
     width: 58%;
@@ -94,10 +62,30 @@
     border-left: 1px solid #f8f8f8;
 }
 
+.contenedor_pagina_producto .contendor_detalle_producto h2 {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 4px 0;
+    font-weight: 700;
+}
+
+.contenedor_pagina_producto .contendor_detalle_producto h3 {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* PRECIOS */
 .contenedor_pagina_producto .contenedor_precios {
+    margin: 20px 0px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+}
+
+.contenedor_pagina_producto .contenedor_precios .item_precio {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin: 2px 0;
 }
 
 /**/
