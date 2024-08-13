@@ -1,35 +1,42 @@
 <div class="contenedor_agregar_carrito">
-    {{-- <div class="variacion_carrito">
+
+    <!-- VARIACION -->
+    <div class="variacion_carrito">
         @if ($tipo_variacion == 'VARIA-COLOR-TALLA')
             <div>
-                <label>Selecciona un color:</label>
-                @foreach ($variacion_agrupada as $colorId => $items)
-                    <div class="color-option">
-                        <input type="radio" id="color_{{ $colorId }}" name="color" value="{{ $colorId }}"
-                            wire:model.live="color_seleccionado">
-                        <label for="color_{{ $colorId }}">Color {{ $items->first()->color_nombre }}</label>
-                    </div>
-                @endforeach
+                <label>Color: {{ $color_seleccionado }} </label>
+                <div class="contenedor_color">
+                    @foreach ($variacion_agrupada as $colorId => $items)
+                        <label for="color_{{ $colorId }}">
+                            <div>
+                                <input type="radio" id="color_{{ $colorId }}" name="color"
+                                    value="{{ $colorId }}" wire:model.live="color_seleccionado">
+                                {{-- $items->first()->color_nombre --}}
+                            </div>
+                        </label>
+                    @endforeach
+                </div>
             </div>
 
             <!-- Mostrar tallas según el color seleccionado -->
             @if ($color_seleccionado)
                 <div>
-                    <label>Selecciona una talla:</label>
-                    @foreach ($variacion_agrupada[$color_seleccionado] as $item)
-                        <div class="talla-option">
-                            <input type="radio" id="talla_{{ $item->talla_id }}" name="talla"
-                                value="{{ $item->talla_id }}" wire:model.live="talla_seleccionado">
-                            <label for="talla_{{ $item->talla_id }}">Talla {{ $item->talla_nombre }} - Stock:
-                                {{ $item->stock }}</label>
-                        </div>
-                    @endforeach
+                    <label>Talla:</label>
+                    <div class="contenedor_talla">
+                        @foreach ($variacion_agrupada[$color_seleccionado] as $item)
+                            <label for="talla_{{ $item->talla_id }}">
+                                <input type="radio" id="talla_{{ $item->talla_id }}" name="talla"
+                                    value="{{ $item->talla_id }}" wire:model.live="talla_seleccionado">
+                                {{ $item->talla_nombre }} {{-- $item->stock --}}
+                            </label>
+                        @endforeach
+                    </div>
                 </div>
             @endif
             <!-- Botón para agregar al carrito -->
         @elseif ($tipo_variacion == 'VARIA-COLOR')
             <div>
-                <label>Selecciona un color:</label>
+                <label>Color:</label>
                 @foreach ($variacion_agrupada as $colorId => $items)
                     @php
                         // Calcular el stock total para el color
@@ -45,7 +52,7 @@
             </div>
         @elseif ($tipo_variacion == 'VARIA-TALLA')
             <div>
-                <label>Selecciona una talla:</label>
+                <label>Talla:</label>
                 @foreach ($variacion_agrupada as $tallaId => $items)
                     @php
                         // Calcular el stock total para la talla
@@ -65,7 +72,7 @@
                 <p>Precio: {{ $variacion_agrupada->first()->precio }}</p>
             </div>
         @endif
-    </div> --}}
+    </div>
 
     <!-- CONTROLES -->
     <div class="controles_carrito">
