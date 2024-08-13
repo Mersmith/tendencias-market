@@ -39,5 +39,6 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/titulo.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/carrusel.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/agregar-carrito.css') }}">
 
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/producto.css') }}">

@@ -39,7 +39,7 @@
                                     <div>Precio</div>
                                     <div>S/ {{ $producto->precio }} </div>
                                 </div>
-                                
+
                                 @if ($producto->precio_antiguo)
                                     <div class="item_precio">
                                         <div>Antes</div>
@@ -60,12 +60,12 @@
 
                         <hr>
 
-                        {{-- @livewire('ecommerce.producto.agregar-carrito-livewire', [
+                        @livewire('ecommerce.producto.agregar-carrito-livewire', [
                             'tipo_variacion' => $tipo_variacion,
                             'variacion_agrupada' => $variacion_agrupada,
                             'color_seleccionado' => $color_seleccionado,
                             'talla_seleccionado' => $talla_seleccionado,
-                        ]) --}}
+                        ])
                     </div>
                 </div>
 

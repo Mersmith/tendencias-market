@@ -88,22 +88,6 @@
     margin: 2px 0;
 }
 
-/**/
-.agregar_carrito {
-    display: flex;
-}
-
-.variacion_carrito {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.controles_carrito {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
 
 @media (max-width: 700px) {
 
@@ -116,23 +100,6 @@
     }
 
     .contenedor_pagina_producto .contendor_detalle_producto {
-        width: 100%;
-    }
-
-    .agregar_carrito {
-        flex-direction: column;
-    }
-
-    .controles_carrito {
-        background-color: red;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px -3px 26px;
-        background-color: rgb(255, 255, 255);
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        padding: 8px 16px;
-        z-index: 19;
         width: 100%;
     }
 
