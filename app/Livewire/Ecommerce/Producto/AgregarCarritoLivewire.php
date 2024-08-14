@@ -2,7 +2,11 @@
 
 namespace App\Livewire\Ecommerce\Producto;
 
+use App\Models\Carrito;
+use App\Models\CarritoDetalle;
+use App\Models\Variacion;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class AgregarCarritoLivewire extends Component
 {
@@ -83,25 +87,37 @@ class AgregarCarritoLivewire extends Component
 
     public function agregarCarrito()
     {
-        if ($this->variacion_seleccionada) {
-            $exists = false;
-            foreach ($this->carrito as &$cartItem) {
-                if ($cartItem->variacion_id == $this->variacion_seleccionada->variacion_id) {
+        $user = Auth::user();
+
+        if ($user) {
+            if ($this->variacion_seleccionada) {
+                // Buscar o crear el carrito para el usuario autenticado
+                $cart = Carrito::firstOrCreate(['user_id' => $user->id]);
+
+                // Verificar si el detalle del carrito con la variación ya existe
+                $cartItem = CarritoDetalle::where('carrito_id', $cart->id)
+                    ->where('variacion_id', $this->variacion_seleccionada->variacion_id)
+                    ->first();
+
+                if ($cartItem) {
+                    // Si ya existe, sumamos la cantidad actual
                     $cartItem->cantidad += $this->cantidad;
-                    $exists = true;
-                    break;
+                    $cartItem->save();
+                } else {
+                    // Si no existe, creamos un nuevo registro
+                    CarritoDetalle::create([
+                        'carrito_id' => $cart->id,
+                        'variacion_id' => $this->variacion_seleccionada->variacion_id,
+                        'cantidad' => $this->cantidad,
+                        'precio' => $this->variacion_seleccionada->precio,
+                    ]);
                 }
-            }
 
-            if (!$exists) {
-                $this->variacion_seleccionada->cantidad = $this->cantidad;
-                $this->carrito[] = $this->variacion_seleccionada;
+                session()->flash('message', 'Producto agregado al carrito');
+                $this->reset(['cantidad']);
+            } else {
+                session()->flash('message', 'ERROR');
             }
-
-            session()->flash('message', 'Producto agregado al carrito');
-            $this->reset(['cantidad']);
-        } else {
-            session()->flash('message', 'ERROR');
         }
     }
 
