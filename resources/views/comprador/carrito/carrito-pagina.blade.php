@@ -67,8 +67,10 @@
         </div>
 
         <div>
-            <p>cantidad items: {{ $cantidadItems }} </p>
-            <p>Total: S/. {{ $totalGeneral }} </p>
+            <div>
+                <p id="cantidad-items">Cantidad items: {{ $cantidadItems }}</p>
+                <p id="total-general">Total: S/. {{ $totalGeneral }}</p>
+            </div>
         </div>
     </div>
 
@@ -85,7 +87,6 @@
                     })
                 })
                 .then(response => {
-                    console.log(response); // Añadido para inspeccionar la respuesta
                     if (!response.ok) {
                         throw new Error('Error en la respuesta del servidor');
                     }
@@ -95,28 +96,44 @@
                     if (data.success) {
                         // Actualiza la cantidad en el DOM
                         const cantidadElement = document.getElementById(`cantidad-${detalleId}`);
-                        cantidadElement.textContent = nuevaCantidad;
+                        if (cantidadElement) {
+                            cantidadElement.textContent = nuevaCantidad;
+                        }
 
                         // Actualiza el total por ítem en el DOM
                         const precioElement = document.querySelector(`#detalle-${detalleId} td[data-precio]`);
-                        const precioPorUnidad = parseFloat(precioElement.getAttribute('data-precio'));
-                        const nuevoTotal = nuevaCantidad * precioPorUnidad;
-                        const totalElement = document.getElementById(`total-${detalleId}`);
-                        totalElement.textContent = `S/. ${nuevoTotal.toFixed(2)}`;
+                        if (precioElement) {
+                            const precioPorUnidad = parseFloat(precioElement.getAttribute('data-precio'));
+                            const nuevoTotal = nuevaCantidad * precioPorUnidad;
+                            const totalElement = document.getElementById(`total-${detalleId}`);
+                            if (totalElement) {
+                                totalElement.textContent = `S/. ${nuevoTotal.toFixed(2)}`;
+                            }
+                        }
 
                         // Actualiza los botones para que reflejen la nueva cantidad
                         const filaDetalle = document.getElementById(`detalle-${detalleId}`);
-                        const decreaseButton = filaDetalle.querySelector('button:first-of-type');
-                        const increaseButton = filaDetalle.querySelector('button:last-of-type');
+                        if (filaDetalle) {
+                            const decreaseButton = filaDetalle.querySelector('button:first-of-type');
+                            const increaseButton = filaDetalle.querySelector('button:last-of-type');
 
-                        if (decreaseButton) {
-                            decreaseButton.setAttribute('onclick',
-                                `actualizarCantidad(${detalleId}, ${nuevaCantidad - 1})`);
-                            decreaseButton.disabled = nuevaCantidad <= 1;
+                            if (decreaseButton) {
+                                decreaseButton.setAttribute('onclick',
+                                    `actualizarCantidad(${detalleId}, ${nuevaCantidad - 1})`);
+                                decreaseButton.disabled = nuevaCantidad <= 1;
+                            }
+                            if (increaseButton) {
+                                increaseButton.setAttribute('onclick',
+                                    `actualizarCantidad(${detalleId}, ${nuevaCantidad + 1})`);
+                            }
                         }
-                        if (increaseButton) {
-                            increaseButton.setAttribute('onclick',
-                                `actualizarCantidad(${detalleId}, ${nuevaCantidad + 1})`);
+
+                        // Actualiza la cantidad de ítems y el total general
+                        const cantidadItemsElement = document.getElementById('cantidad-items');
+                        const totalGeneralElement = document.getElementById('total-general');
+                        if (cantidadItemsElement && totalGeneralElement) {
+                            cantidadItemsElement.textContent = `Cantidad items: ${data.cantidadItems}`;
+                            totalGeneralElement.textContent = `Total: S/. ${data.totalGeneral.toFixed(2)}`;
                         }
                     } else {
                         alert('No se pudo actualizar la cantidad.');
@@ -127,6 +144,7 @@
                     alert('Ocurrió un error al intentar actualizar la cantidad.');
                 });
         }
+
 
         function eliminarDetalle(detalleId) {
             fetch(`/carrito/detalle/${detalleId}/eliminar`, {
@@ -145,8 +163,20 @@
                 })
                 .then(data => {
                     if (data.success) {
+                        // Elimina la fila del detalle del DOM
                         const filaDetalle = document.getElementById(`detalle-${detalleId}`);
-                        filaDetalle.remove();
+                        if (filaDetalle) {
+                            filaDetalle.remove();
+                        }
+
+                        // Actualiza la cantidad de ítems y el total general
+                        const cantidadItemsElement = document.getElementById('cantidad-items');
+                        const totalGeneralElement = document.getElementById('total-general');
+
+                        if (cantidadItemsElement && totalGeneralElement) {
+                            cantidadItemsElement.textContent = `Cantidad items: ${data.cantidadItems}`;
+                            totalGeneralElement.textContent = `Total: S/. ${data.totalGeneral.toFixed(2)}`;
+                        }
                     } else {
                         alert('No se pudo eliminar el producto.');
                     }
@@ -157,4 +187,5 @@
                 });
         }
     </script>
+
 </x-ecommerce-layout>
