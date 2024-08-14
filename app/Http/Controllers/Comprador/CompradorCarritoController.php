@@ -21,7 +21,7 @@ class CompradorCarritoController extends Controller
         if ($user) {
             // Obtener el carrito del usuario con sus detalles
             $carrito = Carrito::where('user_id', $user->id)
-                ->with('detalle.variacion.producto') // Cargar las relaciones necesarias
+                ->with('detalle.variacion.producto.imagens') // Cargar las relaciones necesarias
                 ->first();
 
             if ($carrito) {

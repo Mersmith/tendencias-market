@@ -42,3 +42,4 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/agregar-carrito.css') }}">
 
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/producto.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/carrito.css') }}">
