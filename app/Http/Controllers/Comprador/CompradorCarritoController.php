@@ -35,16 +35,14 @@ class CompradorCarritoController extends Controller
     {
         $detalle = CarritoDetalle::findOrFail($id);
 
-        // Actualizar la cantidad sólo si es mayor que 0
         if ($request->cantidad > 0) {
             $detalle->cantidad = $request->cantidad;
             $detalle->save();
+            return response()->json(['success' => true]);
         } else {
-            // Si la cantidad es 0 o menos, eliminar el ítem del carrito
             $detalle->delete();
+            return response()->json(['success' => true]);
         }
-
-        return redirect()->back()->with('success', 'La cantidad del producto ha sido actualizada.');
     }
 
     public function eliminarDetalle($id)
@@ -52,6 +50,7 @@ class CompradorCarritoController extends Controller
         $detalle = CarritoDetalle::findOrFail($id);
         $detalle->delete();
 
-        return redirect()->back()->with('success', 'El producto ha sido eliminado del carrito.');
+        return response()->json(['success' => true]);
     }
+
 }
