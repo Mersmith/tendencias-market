@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Comprador\CompradorCarritoController;
 use App\Http\Controllers\Sesion\AdminController;
 use App\Http\Controllers\Sesion\CompradorController;
 use App\Http\Controllers\Sesion\VendedorController;
@@ -33,3 +34,5 @@ Route::controller(CompradorController::class)->group(function () {
     Route::get('comprador/login', 'ver')->name('comprador.login.vista.ver');
     Route::post('comprador/login', 'login')->name('comprador.login.ingresar');
 });
+
+Route::get('/cart', CompradorCarritoController::class)->name('carrito.vista.ver');
