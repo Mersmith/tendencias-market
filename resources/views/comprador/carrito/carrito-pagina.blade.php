@@ -65,6 +65,11 @@
                 <p>Tu carrito está vacío.</p>
             @endif
         </div>
+
+        <div>
+            <p>cantidad items: {{ $cantidadItems }} </p>
+            <p>Total: S/. {{ $totalGeneral }} </p>
+        </div>
     </div>
 
     <script>

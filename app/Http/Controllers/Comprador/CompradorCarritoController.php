@@ -23,11 +23,23 @@ class CompradorCarritoController extends Controller
                 ->with('detalle.variacion.producto') // Cargar las relaciones necesarias
                 ->first();
 
+            if ($carrito) {
+                // Cantidad de ítems (detalles) en el carrito
+                $cantidadItems = $carrito->detalle->count();
+
+                // Calcula el total general (suma de cantidad * precio por unidad)
+                $totalGeneral = $carrito->detalle->reduce(function ($carry, $detalle) {
+                    return $carry + ($detalle->cantidad * $detalle->precio);
+                }, 0);
+            }
+
             //dd($carrito);
         }
 
         return view('comprador.carrito.carrito-pagina', [
             'carrito' => $carrito,
+            'cantidadItems' => $cantidadItems,
+            'totalGeneral' => $totalGeneral
         ]);
     }
 
