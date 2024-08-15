@@ -1,4 +1,5 @@
 .partials_contenedor_carrusel {
+    position: relative;
     width: 42%;
     padding: 8px 12px 0 32px;
 }
@@ -31,12 +32,48 @@
 
 /* Estilo para el borde de la imagen seleccionada */
 .swiper-slide-selected img {
-    border: 2px solid #007bff; /* Puedes cambiar el color según tus preferencias */
+    border: 2px solid #007bff;
+    /* Puedes cambiar el color según tus preferencias */
 }
 
 /* Estilo para el borde de la imagen seleccionada en los thumbnails */
 .swiper-slide-thumb-active img {
-    border: 2px solid #007bff; /* Puedes cambiar el color según tus preferencias */
+    border: 2px solid #007bff;
+    /* Puedes cambiar el color según tus preferencias */
+}
+
+@media (min-width: 1000px) {
+
+    .partials_contenedor_carrusel {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .partials_contenedor_carrusel_cabecera {
+        width: 60%;
+    }
+
+    .partials_contenedor_carrusel_pie {
+        width: 40%;
+    }
+
+    .partials_contenedor_carrusel_pie {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .partials_contenedor_carrusel_pie .swiperThumbnails {
+        height: 600px;
+        width: 100px;
+        overflow: hidden;
+    }
+
+    .partials_contenedor_carrusel_pie .swiper-button-next,
+    .partials_contenedor_carrusel_pie .swiper-button-prev,
+    .partials_contenedor_carrusel_pie .swiper-pagination {
+        display: none;
+    }
 }
 
 @media (max-width: 700px) {

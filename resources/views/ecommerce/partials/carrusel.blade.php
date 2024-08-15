@@ -37,6 +37,7 @@
     <script>
         // Inicializar Swiper para las miniaturas
         var swiperThumbnails = new Swiper(".swiperThumbnails", {
+            direction: window.innerWidth > 1000 ? 'vertical' : 'horizontal',
             slidesPerView: 6,
             spaceBetween: 10,
             loop: false,
