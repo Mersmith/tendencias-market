@@ -58,7 +58,7 @@
             },
             slideToClickedSlide: true,
         });
-    
+
         // Inicializar Swiper para la imagen seleccionada y vincularlo con las miniaturas
         var swiperCabecera = new Swiper(".swiperCabecera", {
             slidesPerView: 1,
@@ -71,23 +71,28 @@
                 swiper: swiperThumbnails
             }
         });
-    
-        // Evento para actualizar el borde de la imagen seleccionada en el slider principal
-        swiperCabecera.on('slideChange', function() {
+
+        function updateActiveThumbnail() {
+            // Quitar la clase activa de todos los thumbnails
+            swiperThumbnails.slides.forEach(function(slide) {
+                slide.classList.remove('swiper-slide-thumb-active');
+            });
+            // Agregar la clase activa al thumbnail correspondiente
             var activeIndex = swiperCabecera.activeIndex;
-            swiperThumbnails.slides.removeClass('swiper-slide-thumb-active');
-            swiperThumbnails.slides.eq(activeIndex).addClass('swiper-slide-thumb-active');
-        });
-    
+            swiperThumbnails.slides[activeIndex].classList.add('swiper-slide-thumb-active');
+        }
+
+        // Evento para actualizar el borde de la imagen seleccionada en el slider principal
+        swiperCabecera.on('slideChange', updateActiveThumbnail);
+
         // Evento para actualizar el borde de la imagen seleccionada en los thumbnails
         swiperThumbnails.on('click', function(swiper) {
             swiperCabecera.slideTo(swiper.clickedIndex);
         });
-    
+
         swiperThumbnails.on('slideChange', function() {
             var activeIndex = swiperThumbnails.activeIndex;
             swiperCabecera.slideTo(activeIndex);
         });
     </script>
-    
 @endif
