@@ -11,7 +11,10 @@ class EcommercePaginaController extends Controller
 {
     public function __invoke($id, $slug = null)
     {
-        $data = app(ProductoController::class)->getEcommerceProducto($id);
+        $almacenEcommerceId = 1;
+        $listaPrecioEtiquetaId = 3;
+
+        $data = app(ProductoController::class)->getEcommercePaginaProducto($id, $almacenEcommerceId, $listaPrecioEtiquetaId);
 
         $data_productos_variaciones = $data['variaciones'];
         $data_primero_producto = $data_productos_variaciones->first();

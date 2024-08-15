@@ -62,19 +62,19 @@ class ProductoController extends Controller
         return $query->paginate(10);
     }
 
-    public function getEcommerceProducto($id)
+    public function getEcommercePaginaProducto($productoId, $almacenEcommerceId, $listaPrecioEtiquetaId)
     {
         $data_productos_variaciones = DB::table('productos')
             ->join('variacions', 'productos.id', '=', 'variacions.producto_id')
             ->join('inventarios', 'variacions.id', '=', 'inventarios.variacion_id')
-            ->join('producto_lista_precios', function ($join) {
+            ->join('producto_lista_precios', function ($join) use ($listaPrecioEtiquetaId) {
                 $join->on('productos.id', '=', 'producto_lista_precios.producto_id')
-                    ->where('producto_lista_precios.lista_precio_id', 3)
+                    ->where('producto_lista_precios.lista_precio_id', $listaPrecioEtiquetaId)
                     ->where('producto_lista_precios.precio', '>', 0);
             })
-            ->leftJoin('producto_descuentos', function ($join) {
+            ->leftJoin('producto_descuentos', function ($join) use ($listaPrecioEtiquetaId) {
                 $join->on('productos.id', '=', 'producto_descuentos.producto_id')
-                    ->where('producto_descuentos.lista_precio_id', 3)
+                    ->where('producto_descuentos.lista_precio_id', $listaPrecioEtiquetaId)
                     ->where('producto_descuentos.fecha_fin', '>', now());
             })
             ->leftJoin('colors', 'variacions.color_id', '=', 'colors.id')
@@ -100,8 +100,8 @@ class ProductoController extends Controller
                 'tallas.nombre as talla_nombre',
                 DB::raw('IF(producto_descuentos.porcentaje_descuento > 0 AND producto_descuentos.fecha_fin > NOW(), ROUND(producto_lista_precios.precio - (producto_lista_precios.precio * producto_descuentos.porcentaje_descuento / 100), 2), NULL) as precio_oferta')
             )
-            ->where('productos.id', $id)
-            ->where('inventarios.almacen_id', 1)
+            ->where('productos.id', $productoId)
+            ->where('inventarios.almacen_id', $almacenEcommerceId)
             ->where('inventarios.stock', '>', 0)
             ->get();
 
@@ -109,7 +109,7 @@ class ProductoController extends Controller
         if ($data_productos_variaciones) {
             $data_imagenes = DB::table('imagens')
                 ->join('imagenables', 'imagens.id', '=', 'imagenables.imagen_id')
-                ->where('imagenables.imagenable_id', $id)
+                ->where('imagenables.imagenable_id', $productoId)
                 ->where('imagenables.imagenable_type', 'App\Models\Producto')
                 ->select('imagens.*')
                 ->get();
@@ -120,5 +120,6 @@ class ProductoController extends Controller
             'imagenes' => $data_imagenes,
         ];
     }
+
 
 }
