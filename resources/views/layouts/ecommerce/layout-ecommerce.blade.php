@@ -43,6 +43,7 @@
 
     <!--SCRIPTS-->
     @include('layouts.ecommerce.assets.js')
+
     @stack('modals')
     @livewireScripts
     @stack('script')
