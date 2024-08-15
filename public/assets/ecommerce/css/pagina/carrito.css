@@ -17,7 +17,6 @@
     padding: 0 19px;
     background-color: transparent;
     list-style: none;
-    /* Elimina los bullets de la lista */
 }
 
 .contenedor_pagina_carrito .contenedor_migaja ul li {
@@ -181,4 +180,34 @@
     width: 100%;
     cursor: pointer;
     padding: 10px 0px;
+}
+
+@media (max-width: 700px) {
+
+    /* DETALLE CARRITO */
+    .contenedor_pagina_carrito .detalle_carrito {
+        flex-direction: column;
+    }
+
+    .contenedor_pagina_carrito .carrito {
+        width: 100%;
+    }
+
+    .contenedor_pagina_carrito .resumen_pago {
+        width: 100%;
+    }
+
+    .contenedor_pagina_carrito .resumen_pago {
+        background-color: red;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px -3px 26px;
+        background-color: rgb(255, 255, 255);
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 8px 16px;
+        z-index: 19;
+        width: 100%;
+    }
+
 }
