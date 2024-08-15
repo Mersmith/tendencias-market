@@ -1,150 +1,93 @@
 @if (!empty($p_elementos))
-
-    <div x-data="dataCarrusel({{ count($p_elementos) }})" x-init="initSliderProductos()" class="partials_contenedor_carrusel">
+    <div class="partials_contenedor_carrusel">
+        <!-- IMAGEN SELECCIONADA -->
         <div class="partials_contenedor_carrusel_cabecera">
-            <!-- IMAGEN -->
-            @foreach ($p_elementos as $index => $imagen)
-                <div
-                    x-bind:class="posicionImagenActual === @json($index) ? 'imagen_activo' : 'imagen_oculto'">
-                    <img src="{{ $imagen->url }}" alt="" />
+            <div class="swiper swiperCabecera">
+                <div class="swiper-wrapper">
+                    @foreach ($p_elementos as $index => $imagen)
+                        <div class="swiper-slide">
+                            <img src="{{ $imagen->url }}" alt="" />
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
-            <button @click="botonRetrocederImagen" class="boton_retroceder">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button @click="botonSiguienteImagen" class="boton_siguiente">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
 
+        <!-- SLIDER THUMBNAILS -->
         <div class="partials_contenedor_carrusel_pie">
-
-            <!-- SLIDER -->
-            <div x-ref="slider" class="contenedor_slide">
-                @foreach ($p_elementos as $index => $imagen)
-                    <div class="item_slide">
-                        <div class="contenedor_imagen" @click="setPosicionImagenActual({{ $index }})">
-                            <img src="{{ $imagen->url }}" alt=""
-                                :class="{ 'imagen_elegida': posicionImagenActual === {{ $index }} }" />
+            <div class="swiper swiperThumbnails">
+                <div class="swiper-wrapper">
+                    @foreach ($p_elementos as $index => $imagen)
+                        <div class="swiper-slide">
+                            <div class="contenedor_imagen">
+                                <img src="{{ $imagen->url }}" alt="" />
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- CONTROL BOTONES -->
-            <div class="control_botones" x-show="totalPaginas > 1">
-                <button @click="botonRetroceder()" :disabled="paginaActual === 1" class="boton_retroceder">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button @click="botonSiguiente()" :disabled="paginaActual + itemsPorPagina > totalElementos"
-                    class="boton_siguiente">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <!-- PAGINACION BOTONES -->
-            <div class="paginacion_botones" x-show="totalPaginas > 1">
-                <template x-for="itemPagina in totalPaginas" :key="itemPagina">
-                    <button @click="setPaginaActual(itemPagina)"
-                        :class="{ 'boton_activo': paginaActual === (itemPagina - 1) * itemsPorPagina + 1 }"></button>
-                </template>
+                    @endforeach
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
 
     <script>
-        function dataCarrusel(totalImagenes) {
-            return {
-                posicionImagenActual: 0,
-                totalElementos: totalImagenes,
-                cantidadElementosComputadora: 6,
-                cantidadElementosTablet: 4,
-                cantidadElementosMovil: 5,
-                itemsPorPagina: 6,
-                paginaActual: 1,
-                totalPaginas: Math.ceil(totalImagenes / 6),
-
-                initSliderProductos() {
-                    this.anchoPantalla();
-                    window.addEventListener('resize', this.anchoPantalla.bind(this));
+        // Inicializar Swiper para las miniaturas
+        var swiperThumbnails = new Swiper(".swiperThumbnails", {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            loop: false,
+            pagination: {
+                el: ".swiperThumbnails .swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiperThumbnails .swiper-button-next",
+                prevEl: ".swiperThumbnails .swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 4,
                 },
-
-                anchoPantalla() {
-                    const windowWidth = window.innerWidth;
-                    if (windowWidth > 1000) {
-                        this.itemsPorPagina = this.cantidadElementosComputadora;
-                    } else if (windowWidth > 700) {
-                        this.itemsPorPagina = this.cantidadElementosTablet;
-                    } else {
-                        this.itemsPorPagina = this.cantidadElementosMovil;
-                    }
-                    this.totalPaginas = Math.ceil(this.totalElementos / this.itemsPorPagina);
-                    this.scrollPaginaActual();
-                },
-
-                setPosicionImagenActual(index) {
-                    this.posicionImagenActual = index;
-                },
-
-                botonRetrocederImagen() {
-                    if (this.posicionImagenActual === 0) {
-                        this.posicionImagenActual = this.totalElementos - 1;
-                    } else {
-                        this.posicionImagenActual = this.posicionImagenActual - 1;
-                    }
-                    this.verificarScroll();
-
-                },
-
-                botonSiguienteImagen() {
-                    if (this.posicionImagenActual === this.totalElementos - 1) {
-                        this.posicionImagenActual = 0;
-                    } else {
-                        this.posicionImagenActual = this.posicionImagenActual + 1;
-                    }
-
-                    this.verificarScroll();
-                },
-
-                botonRetroceder() {
-                    this.paginaActual = Math.max(this.paginaActual - this.itemsPorPagina, 1);
-                    this.scrollPaginaActual();
-                },
-
-                botonSiguiente() {
-                    this.paginaActual = Math.min(this.paginaActual + this.itemsPorPagina, this.totalElementos);
-                    this.scrollPaginaActual();
-                },
-
-                setPaginaActual(itemPagina) {
-                    this.paginaActual = (itemPagina - 1) * this.itemsPorPagina + 1;
-                    this.scrollPaginaActual();
-                },
-
-                scrollPaginaActual() {
-                    if (this.$refs.slider) {
-                        const scrollAmount = (this.paginaActual - 1) * (this.$refs.slider.clientWidth / this
-                            .itemsPorPagina);
-                        this.$refs.slider.scrollTo({
-                            left: scrollAmount,
-                            behavior: 'smooth'
-                        });
-                    }
-                },
-
-                verificarScroll() {
-                    const paginaInicio = (this.paginaActual - 1) * this.itemsPorPagina;
-                    const paginaFin = this.paginaActual * this.itemsPorPagina;
-
-                    if (this.posicionImagenActual < paginaInicio || this.posicionImagenActual >= paginaFin) {
-                        this.paginaActual = Math.floor(this.posicionImagenActual / this.itemsPorPagina) * this
-                            .itemsPorPagina + 1;
-                        this.scrollPaginaActual();
-                    }
-                },
-
-
-            };
-        }
+                700: {
+                    slidesPerView: 6,
+                }
+            },
+            slideToClickedSlide: true,
+        });
+    
+        // Inicializar Swiper para la imagen seleccionada y vincularlo con las miniaturas
+        var swiperCabecera = new Swiper(".swiperCabecera", {
+            slidesPerView: 1,
+            loop: true,
+            navigation: {
+                nextEl: ".swiperCabecera .swiper-button-next",
+                prevEl: ".swiperCabecera .swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiperThumbnails
+            }
+        });
+    
+        // Evento para actualizar el borde de la imagen seleccionada en el slider principal
+        swiperCabecera.on('slideChange', function() {
+            var activeIndex = swiperCabecera.activeIndex;
+            swiperThumbnails.slides.removeClass('swiper-slide-thumb-active');
+            swiperThumbnails.slides.eq(activeIndex).addClass('swiper-slide-thumb-active');
+        });
+    
+        // Evento para actualizar el borde de la imagen seleccionada en los thumbnails
+        swiperThumbnails.on('click', function(swiper) {
+            swiperCabecera.slideTo(swiper.clickedIndex);
+        });
+    
+        swiperThumbnails.on('slideChange', function() {
+            var activeIndex = swiperThumbnails.activeIndex;
+            swiperCabecera.slideTo(activeIndex);
+        });
     </script>
+    
 @endif
