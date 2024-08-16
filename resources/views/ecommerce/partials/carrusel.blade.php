@@ -18,7 +18,7 @@
         <!-- SLIDER THUMBNAILS -->
         <div class="partials_contenedor_carrusel_pie">
             <div class="swiper swiperThumbnails">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper contenedor_thubnails">
                     @foreach ($p_elementos as $index => $imagen)
                         <div class="swiper-slide">
                             <div class="contenedor_imagen">
@@ -40,7 +40,7 @@
         function initializeSwipers() {
             swiperThumbnails = new Swiper(".swiperThumbnails", {
                 direction: window.innerWidth > 1000 ? 'vertical' : 'horizontal',
-                slidesPerView: window.innerWidth > 1000 ? 4 : 6,
+                slidesPerView: window.innerWidth > 1000 ? 5 : 6,
                 spaceBetween: 10,
                 loop: false,
                 pagination: {
@@ -87,7 +87,7 @@
         function updateSwipersOnResize() {
             if (window.innerWidth > 1000 && swiperThumbnails.params.direction !== 'vertical') {
                 swiperThumbnails.changeDirection('vertical');
-                swiperThumbnails.params.slidesPerView = 4;
+                swiperThumbnails.params.slidesPerView = 5;
                 swiperThumbnails.update();
             } else if (window.innerWidth <= 1000 && swiperThumbnails.params.direction !== 'horizontal') {
                 swiperThumbnails.changeDirection('horizontal');
