@@ -13,44 +13,13 @@
     background-color: #fff;
 }
 
-/* MIGAJA */
-.contenedor_pagina_producto .contendor_migaja {
-    display: flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 19px;
-    background-color: transparent;
-}
-
-.contenedor_pagina_producto .contendor_migaja ol {
-    list-style: none;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-}
-
-.contenedor_pagina_producto .contendor_migaja li {
-    color: #333;
-    margin: 3px 0;
-    text-decoration: underline;
-}
-
-.contenedor_pagina_producto .contendor_migaja li::before {
-    content: '>';
-    display: inline-flex;
-    padding: 0 3px;
-    color: #717171;
-}
-
 /* INFORMACION */
 .contenedor_pagina_producto .contenedor_informacion_producto {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: flex-start;
-    padding-bottom: 20px;
+    padding: 20px 0px;
 }
 
 /* DETALLE */
@@ -62,12 +31,11 @@
     border-left: 1px solid #f8f8f8;
 }
 
-
-.contenedor_pagina_producto .contendor_detalle_producto .cabecera {
-    margin-bottom: 20px;
+.contenedor_pagina_producto .cabecera {
+    margin-bottom: 10px;
 }
 
-.contenedor_pagina_producto .contendor_detalle_producto h2 {
+.contenedor_pagina_producto .cabecera h2 {
     margin-bottom: 20px;
     font-size: 24px;
     line-height: 24px;
@@ -75,28 +43,36 @@
     font-weight: 700;
 }
 
-.contenedor_pagina_producto .contendor_detalle_producto h3 {
+.contenedor_pagina_producto .cabecera h3 {
     font-size: 17px;
     font-weight: bold;
 }
 
 /* PRECIOS */
 .contenedor_pagina_producto .contenedor_precios {
-    margin: 20px 0px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-}
-
-.contenedor_pagina_producto .contenedor_precios .item_precio {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    margin: 2px 0;
 }
 
 .contenedor_pagina_producto .contenedor_precios .item_precio .oferta {
     font-size: 24px;
     font-weight: 700;
+    color: var(--color-texto-secundario);
+}
+
+.contenedor_pagina_producto .contenedor_precios .item_precio {
+    display: flex;
+    align-content: center;
+    margin: 2px 0;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor_pagina_producto .contenedor_precios .item_precio .normal {
+    font-weight: 500;
+    color: #717171;
+    font-size: 17px;
 }
 
 .contenedor_pagina_producto .contenedor_precios .item_precio .antes {
@@ -105,12 +81,37 @@
     color: #717171;
 }
 
+.contenedor_pagina_producto .contenedor_precios .descuento {
+    background-color: #EB0029;
+    color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+}
 
+.contenedor_pagina_producto .contenedor_precios .item_precio .texto {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.2rem;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.contenedor_pagina_producto .contenedor_precios .item_precio .numero {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
 @media (max-width: 700px) {
 
     .contenedor_pagina_producto .contenedor_informacion_producto {
         flex-direction: column;
+        padding: 0px 0px;
+
     }
 
     .contenedor_imagenes_producto {
@@ -119,6 +120,8 @@
 
     .contenedor_pagina_producto .contendor_detalle_producto {
         width: 100%;
+        padding: 10px;
+
     }
 
 }

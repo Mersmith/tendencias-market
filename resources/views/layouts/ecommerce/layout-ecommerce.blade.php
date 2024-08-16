@@ -9,7 +9,7 @@
     <meta name="description" content="@yield('descripcion')">
 
     <!--TITULO-->
-    <title>{{ env('APP_NAME') }} | @yield('tituloPagina')</title>
+    <title>@yield('tituloPagina')</title>
 
     <!-- SCRIPTS -->
     @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/css/layout.css', 'resources/js/app.js'])
