@@ -6,7 +6,9 @@
                 <div class="swiper-wrapper contenedor_seleccionado">
                     @foreach ($p_elementos as $index => $imagen)
                         <div class="swiper-slide">
-                            <img src="{{ $imagen->url }}" alt="" />
+                            <div class="contenedor_imagen">
+                                <img src="{{ $imagen->url }}" alt="" />
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -18,7 +20,7 @@
         <!-- SLIDER THUMBNAILS -->
         <div class="partials_contenedor_carrusel_pie">
             <div class="swiper swiperThumbnails">
-                <div class="swiper-wrapper contenedor_thubnails">
+                <div class="swiper-wrapper contenedor_seleccionado">
                     @foreach ($p_elementos as $index => $imagen)
                         <div class="swiper-slide">
                             <div class="contenedor_imagen">

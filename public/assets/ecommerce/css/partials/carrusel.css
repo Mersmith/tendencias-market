@@ -14,10 +14,23 @@
     display: flex;
 }
 
+.partials_contenedor_carrusel_cabecera .swiper-slide .contenedor_imagen {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /*border: 1px solid var(--color-borde-terciario);*/
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .partials_contenedor_carrusel_cabecera .swiper-slide img {
     width: 100%;
     height: auto;
-    margin: auto;
+    object-fit: cover;
+    max-height: 100%;
 }
 
 /* CONTROLES */
@@ -52,30 +65,41 @@
 }
 
 /* SLIDER THUMBNAILS */
-.partials_contenedor_carrusel_pie .contenedor_thubnails {
+.partials_contenedor_carrusel_pie .contenedor_seleccionado {
     position: relative;
-    margin-bottom: 40px;
-}
-
-.partials_contenedor_carrusel_pie .contenedor_imagen {
-    display: flex;
     height: 80px;
     width: 80px;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide {
+    display: flex;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide .contenedor_imagen {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid;
+    border-color: transparent;
 }
 
 .partials_contenedor_carrusel_pie .swiper-slide img {
     width: 100%;
     height: auto;
-    margin: auto;
-    border: 1px solid;
-    border-color: var(--color-borde-cuaternario);
+    object-fit: cover;
+    max-height: 100%;
 }
 
-.partials_contenedor_carrusel_pie .swiper-slide-selected img {
+.partials_contenedor_carrusel_pie .swiper-slide-selected .contenedor_imagen {
     border-color: var(--color-borde-terciario);
 }
 
-.partials_contenedor_carrusel_pie .swiper-slide-thumb-active img {
+.partials_contenedor_carrusel_pie .swiper-slide-thumb-active .contenedor_imagen {
     border-color: var(--color-borde-terciario);
 }
 
@@ -86,7 +110,7 @@
 }
 
 .partials_contenedor_carrusel_pie .swiper-pagination-bullet {
-    background-color: var( --color-fondo-sextenario);
+    background-color: var(--color-fondo-sextenario);
     width: 8px;
     height: 8px;
     opacity: 1;
@@ -94,7 +118,7 @@
 }
 
 .partials_contenedor_carrusel_pie .swiper-pagination-bullet-active {
-    background-color: var( --color-fondo-quinario);
+    background-color: var(--color-fondo-quinario);
 }
 
 .partials_contenedor_carrusel_pie .swiper-pagination {
@@ -102,7 +126,7 @@
 }
 
 .partials_contenedor_carrusel_pie .swiper-pagination-bullet:hover {
-    background-color: var( --color-fondo-quinario);
+    background-color: var(--color-fondo-quinario);
 }
 
 @media (min-width: 1000px) {
