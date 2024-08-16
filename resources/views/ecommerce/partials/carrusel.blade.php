@@ -38,9 +38,20 @@
         var swiperThumbnails, swiperCabecera;
 
         function initializeSwipers() {
+
+            var slidesPerView = 4; // Valor por defecto para menor a 500px
+
+            if (window.innerWidth > 1000) {
+                slidesPerView = 5;
+            } else if (window.innerWidth > 800) {
+                slidesPerView = 4;
+            } else if (window.innerWidth > 500) {
+                slidesPerView = 4;
+            }
+
             swiperThumbnails = new Swiper(".swiperThumbnails", {
                 direction: window.innerWidth > 1000 ? 'vertical' : 'horizontal',
-                slidesPerView: window.innerWidth > 1000 ? 5 : 6,
+                slidesPerView: slidesPerView,
                 spaceBetween: 10,
                 loop: false,
                 pagination: {
@@ -89,9 +100,18 @@
                 swiperThumbnails.changeDirection('vertical');
                 swiperThumbnails.params.slidesPerView = 5;
                 swiperThumbnails.update();
-            } else if (window.innerWidth <= 1000 && swiperThumbnails.params.direction !== 'horizontal') {
+            } else if (window.innerWidth <= 1000 && window.innerWidth > 700 && swiperThumbnails.params.direction !==
+                'horizontal') {
                 swiperThumbnails.changeDirection('horizontal');
                 swiperThumbnails.params.slidesPerView = 6;
+                swiperThumbnails.update();
+            } else if (window.innerWidth <= 700 && window.innerWidth > 500 && swiperThumbnails.params.slidesPerView !== 4) {
+                swiperThumbnails.changeDirection('horizontal');
+                swiperThumbnails.params.slidesPerView = 4;
+                swiperThumbnails.update();
+            } else if (window.innerWidth <= 500 && swiperThumbnails.params.slidesPerView !== 4) {
+                swiperThumbnails.changeDirection('horizontal');
+                swiperThumbnails.params.slidesPerView = 4;
                 swiperThumbnails.update();
             }
         }
