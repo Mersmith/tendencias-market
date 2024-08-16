@@ -38,35 +38,41 @@
             <!-- Botón para agregar al carrito -->
         @elseif ($tipo_variacion == 'VARIA-COLOR')
             <div>
-                <label>Color:</label>
-                @foreach ($variacion_agrupada as $colorId => $items)
-                    @php
-                        // Calcular el stock total para el color
-                        $totalStock = $items->sum('stock');
-                    @endphp
-                    <div class="color-option">
-                        <input type="radio" id="color_{{ $colorId }}" name="color"
-                            value="{{ $colorId }}" wire:model.live="color_seleccionado">
-                        <label for="color_{{ $colorId }}">Color {{ $items->first()->color_nombre }} - Stock:
-                            {{ $totalStock }}</label>
-                    </div>
-                @endforeach
+                <label>Color: {{ $variacion_seleccionada->color_nombre }} </label>
+                <div class="contenedor_color">
+                    @foreach ($variacion_agrupada as $colorId => $items)
+                        <label for="color_{{ $colorId }}"
+                            class="{{ $color_seleccionado == $colorId ? 'label_seleccionado' : '' }}">
+                            @php
+                                // Calcular el stock total para el color
+                                //$totalStock = $items->sum('stock');
+                            @endphp
+                            <div style="background: {{ $items->first()->codigo_color }}">
+                                <input type="radio" id="color_{{ $colorId }}" name="color"
+                                    value="{{ $colorId }}" wire:model.live="color_seleccionado">
+                                {{-- $items->first()->color_nombre --}} {{-- $totalStock --}}
+                            </div>
+                        </label>
+                    @endforeach
+                </div>
             </div>
         @elseif ($tipo_variacion == 'VARIA-TALLA')
             <div>
-                <label>Talla:</label>
-                @foreach ($variacion_agrupada as $tallaId => $items)
-                    @php
-                        // Calcular el stock total para la talla
-                        $totalStock = $items->sum('stock');
-                    @endphp
-                    <div class="talla-option">
-                        <input type="radio" id="talla_{{ $tallaId }}" name="talla"
-                            value="{{ $tallaId }}" wire:model.live="talla_seleccionado">
-                        <label for="talla_{{ $tallaId }}">Talla {{ $items->first()->talla_nombre }} - Stock:
-                            {{ $totalStock }}</label>
-                    </div>
-                @endforeach
+                <label>Talla</label>
+                <div class="contenedor_talla">
+                    @foreach ($variacion_agrupada as $tallaId => $items)
+                        <label for="talla_{{ $tallaId }}"
+                            class="{{ $talla_seleccionado == $tallaId ? 'label_seleccionado' : '' }}">
+                            @php
+                                // Calcular el stock total para la talla
+                                //$totalStock = $items->sum('stock');
+                            @endphp
+                            <input type="radio" id="talla_{{ $tallaId }}" name="talla"
+                                value="{{ $tallaId }}" wire:model.live="talla_seleccionado">
+                            {{ $items->first()->talla_nombre }} {{-- $totalStock --}}
+                        </label>
+                    @endforeach
+                </div>
             </div>
         @else
             <div>
