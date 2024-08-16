@@ -1,26 +1,61 @@
 .partials_contenedor_carrusel {
-    position: relative;
-    width: 60%;
+    width: 65%;
     padding: 8px 12px 0 32px;
+}
+
+/* IMAGEN SELECCIONADA */
+.partials_contenedor_carrusel_cabecera .contenedor_seleccionado {
+    position: relative;
+    height: 500px;
+    width: 500px;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-slide {
+    display: flex;
 }
 
 .partials_contenedor_carrusel_cabecera .swiper-slide img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    margin: auto;
 }
 
+.partials_contenedor_carrusel_cabecera .swiper-button-next,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-cuaternario);
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next:hover,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev:hover {
+    background: var(--color-fondo-quinario);
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next:after,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-prev {
+    left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next {
+    right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
+}
+
+/* PIE */
 .partials_contenedor_carrusel_pie .swiper-slide img {
     width: 100%;
     height: auto;
     object-fit: cover;
     cursor: pointer;
-}
-
-.partials_contenedor_carrusel_cabecera .swiper-slide img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
 }
 
 .partials_contenedor_carrusel_pie .swiper-slide img {
@@ -47,15 +82,16 @@
     .partials_contenedor_carrusel {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: space-between;
     }
 
-    .partials_contenedor_carrusel_cabecera {
+    /*.partials_contenedor_carrusel_cabecera {
         width: 60%;
-    }
+    }*/
 
-    .partials_contenedor_carrusel_pie {
+    /*.partials_contenedor_carrusel_pie {
         width: 40%;
-    }
+    }*/
 
     .partials_contenedor_carrusel_pie {
         display: flex;

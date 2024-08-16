@@ -3,7 +3,7 @@
         <!-- IMAGEN SELECCIONADA -->
         <div class="partials_contenedor_carrusel_cabecera">
             <div class="swiper swiperCabecera">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper contenedor_seleccionado">
                     @foreach ($p_elementos as $index => $imagen)
                         <div class="swiper-slide">
                             <img src="{{ $imagen->url }}" alt="" />
