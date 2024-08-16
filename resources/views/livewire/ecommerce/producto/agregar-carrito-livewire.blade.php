@@ -3,12 +3,12 @@
     <!-- VARIACION -->
     <div class="variacion_carrito">
         @if ($tipo_variacion == 'VARIA-COLOR-TALLA')
-            <div>
-                <label>Color: {{ $variacion_seleccionada->color_nombre }} </label>
+            <div class="contenedor_variacion">
+                <label class="texto">Color: <span>{{ $variacion_seleccionada->color_nombre }} </span></label>
                 <div class="contenedor_color">
                     @foreach ($variacion_agrupada as $colorId => $items)
                         <label for="color_{{ $colorId }}"
-                            class="{{ $color_seleccionado == $colorId ? 'label_seleccionado' : '' }}">
+                            class="{{ $color_seleccionado == $colorId ? 'label_color_seleccionado' : '' }}">
                             <div style="background: {{ $items->first()->codigo_color }}">
                                 <input type="radio" id="color_{{ $colorId }}" name="color"
                                     value="{{ $colorId }}" wire:model.live="color_seleccionado">
@@ -21,12 +21,12 @@
 
             <!-- Mostrar tallas según el color seleccionado -->
             @if ($color_seleccionado)
-                <div>
-                    <label>Talla</label>
+                <div class="contenedor_variacion">
+                    <label class="texto">Talla</label>
                     <div class="contenedor_talla">
                         @foreach ($variacion_agrupada[$color_seleccionado] as $item)
                             <label for="talla_{{ $item->talla_id }}"
-                                class="{{ $talla_seleccionado == $item->talla_id ? 'label_seleccionado' : '' }}">
+                                class="{{ $talla_seleccionado == $item->talla_id ? 'label_talla_seleccionado' : '' }}">
                                 <input type="radio" id="talla_{{ $item->talla_id }}" name="talla"
                                     value="{{ $item->talla_id }}" wire:model.live="talla_seleccionado">
                                 {{ $item->talla_nombre }} {{-- $item->stock --}}
@@ -37,12 +37,12 @@
             @endif
             <!-- Botón para agregar al carrito -->
         @elseif ($tipo_variacion == 'VARIA-COLOR')
-            <div>
-                <label>Color: {{ $variacion_seleccionada->color_nombre }} </label>
+            <div class="contenedor_variacion">
+                <label class="texto">Color: <span>{{ $variacion_seleccionada->color_nombre }} </span></label>
                 <div class="contenedor_color">
                     @foreach ($variacion_agrupada as $colorId => $items)
                         <label for="color_{{ $colorId }}"
-                            class="{{ $color_seleccionado == $colorId ? 'label_seleccionado' : '' }}">
+                            class="{{ $color_seleccionado == $colorId ? 'label_color_seleccionado' : '' }}">
                             @php
                                 // Calcular el stock total para el color
                                 //$totalStock = $items->sum('stock');
@@ -57,12 +57,12 @@
                 </div>
             </div>
         @elseif ($tipo_variacion == 'VARIA-TALLA')
-            <div>
-                <label>Talla</label>
+            <div class="contenedor_variacion">
+                <label class="texto">Talla</label>
                 <div class="contenedor_talla">
                     @foreach ($variacion_agrupada as $tallaId => $items)
                         <label for="talla_{{ $tallaId }}"
-                            class="{{ $talla_seleccionado == $tallaId ? 'label_seleccionado' : '' }}">
+                            class="{{ $talla_seleccionado == $tallaId ? 'label_talla_seleccionado' : '' }}">
                             @php
                                 // Calcular el stock total para la talla
                                 //$totalStock = $items->sum('stock');
@@ -75,10 +75,10 @@
                 </div>
             </div>
         @else
-            <div>
+            {{--<div class="contenedor_variacion">
                 <p>Stock disponible: {{ $variacion_agrupada->first()->stock }}</p>
                 <p>Precio: {{ $variacion_agrupada->first()->precio }}</p>
-            </div>
+            </div>--}}
         @endif
     </div>
 
@@ -92,7 +92,7 @@
 
         <p>Máximo {{ $variacion_seleccionada ? $variacion_seleccionada->stock : '' }} unidades.</p>
 
-        <button wire:click="agregarCarrito" class="boton_agregar_carrito">Agregar al carrito</button>
+        <a wire:click="agregarCarrito" class="boton_agregar_carrito">Agregar al carrito</a>
 
         <div>
             @if (session()->has('message'))
@@ -109,8 +109,6 @@
 
         </div>
     </div>
-
-
 
     {{-- <button wire:click="enviar()">Enviar</button> --}}
 
