@@ -13,7 +13,7 @@
 
     --color-fondo-opacidad: rgba(255, 255, 255, 0.4);
 
-    --color-fondo-primario: #fafafa;
+    /*--color-fondo-primario: #fafafa;
     --color-fondo-secundario: #fff;
     --color-fondo-terciario: #f10a0f;
     --color-fondo-cuaternario: #495867;
@@ -31,7 +31,7 @@
     --color-texto-secundario: #f10a0f;
     --color-texto-terciario: #fff;
     --color-texto-cuaternario: #778089;
-    --color-texto-quinario: #c0c0c0;
+    --color-texto-quinario: #c0c0c0;*/
 
     --ancho-sidebar-categoria: 300px;
     --ancho-sidebar-subcategoria: calc(700px);

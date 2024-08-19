@@ -17,7 +17,7 @@
 
 /* SIDEBAR CONTENEDOR */
 .ecommerce_sidebar_categorias .sidebar_contenedor {
-    background: var(--color-fondo-secundario);
+    background: var(--color-fondo-terciario);
     box-shadow: var(--sombra);
     z-index: 1;
 }
@@ -29,7 +29,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 42px 0px 24px;
-    background: var(--color-fondo-terciario);
+    background: var(--color-fondo-primario);
     box-sizing: border-box;
     color: var(--color-texto-terciario);
 }
@@ -55,7 +55,7 @@
 
 /* SIDEBAR CONTENIDO ITEM */
 .ecommerce_sidebar_categorias .sidebar_cotenido_item:not(:last-child) {
-    border-bottom: 1px solid var(--color-borde-secundario);
+    border-bottom: 1px solid var(--color-borde-quinario);
 }
 
 /* SIDEBAR CONTENIDO ITEM ELEMENTO */
@@ -75,7 +75,7 @@
     font-size: 11px;
     line-height: 13px;
     letter-spacing: .5px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
 }
 
 .ecommerce_sidebar_categorias .sidebar_cotenido_item_ul li {
@@ -95,11 +95,10 @@
     box-sizing: border-box;
     text-decoration: none;
     font-size: 15px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
 }
 
 .ecommerce_sidebar_categorias .sidebar_cotenido_elemento:hover {
-    background-color: var(--hover-color-fondo-primario);
     font-weight: 700;
 }
 

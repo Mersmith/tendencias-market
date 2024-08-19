@@ -19,7 +19,7 @@
     display: grid;
     grid-template-areas: "logo_computadora buscador_principal menu_hamburguesa_computadora menu_principal_usuarios";
     grid-template-columns: auto 1fr auto auto;
-    background-color: var(--color-fondo-primario);
+    background-color: var(--color-fondo-cuaternario);
     grid-gap: 40px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .ecommerce_menu_principal .menu_hamburguesa_movil i {
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-primario);
     font-size: 25px;
 }
 
@@ -76,13 +76,13 @@
 .ecommerce_menu_principal .contenedor_input_buscador_principal input[type="text"] {
     width: 100%;
     height: 100%;
-    background: var(--color-fondo-primario);
+    background: var(--color-fondo-cuaternario);
     border: none;
     outline: none;
     font-weight: 400;
     font-size: 17px;
     letter-spacing: .2px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
     box-shadow: none;
     border-radius: 35px;
 }
@@ -103,7 +103,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: var(--color-fondo-terciario);
+    background-color: var(--color-fondo-primario);
     border-radius: 35px;
     border: 1px solid var(--color-borde-primario);
     box-sizing: border-box;
@@ -129,7 +129,7 @@
 }
 
 .ecommerce_menu_principal .menu_hamburguesa_computadora i {
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-primario);
     font-size: 30px;
 }
 
@@ -137,7 +137,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-primario);
 }
 
 /*FIN MENU HAMBURGUESA COMPUTADORA */
@@ -162,13 +162,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
     font-size: 15px;
     font-weight: 600;
 }
 
 .ecommerce_menu_principal .menu_principal_usuarios li a i {
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-primario);
     font-size: 20px;
 }
 
@@ -193,7 +193,7 @@
     position: absolute;
     top: -15px;
     right: -2px;
-    background-color: var(--color-fondo-cuaternario);
+    background-color: var(--color-fondo-primario);
     color: var(--color-texto-terciario);
     border-radius: 50%;
     padding: 2px 6px;
@@ -214,9 +214,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px var(--ancho-espacio-pagina-computadora);
-    background-color: var(--color-fondo-secundario);
-    border-top: 1px solid var(--color-borde-secundario);
-    border-bottom: 1px solid var(--color-borde-secundario);
+    background-color: var(--color-fondo-terciario);
+    border-top: 1px solid var(--color-borde-quinario);
+    border-bottom: 1px solid var(--color-borde-quinario);
 }
 
 .ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion {
@@ -229,11 +229,11 @@
     font-weight: 700;
     font-size: 15px;
     line-height: 22px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
 }
 
 .ecommerce_menu_principal .menu_principal_abajo .contenedor_menu_ubicacion i {
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
 }
 
 .ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion {
@@ -251,11 +251,12 @@
     text-align: center;
     font-size: 14px;
     line-height: 14px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
+    font-weight: 600;
 }
 
 .ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion li a i {
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
 }
 
 /* FIN MENU ABAJO */

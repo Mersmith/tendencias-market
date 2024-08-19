@@ -79,13 +79,16 @@
             <div>
                 <h2 class="titulo">Resumen de tu pedido</h2>
             </div>
-            
+
             <div class="separacion"> </div>
 
             <div class="monto">
-                <p>Subtotal:</p>
-                <span> S/. {{ number_format($totalGeneral, 2) }}</span>
+                <p class="texto">Subtotal:</p>
+                <span class="numero"> S/. {{ number_format($totalGeneral, 2) }}</span>
             </div>
+
+            <div class="separacion"> </div>
+
             <a class="continuar_compra">
                 Continuar compra
             </a>

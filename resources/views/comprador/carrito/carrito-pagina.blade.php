@@ -3,8 +3,6 @@
 
         <div class="centrar">
             <div>
-                @include('ecommerce.partials.migaja')
-
                 <!-- DETALLE CARRITO -->
                 @livewire('comprador.carrito.detalle-carrito-livewire')
             </div>
