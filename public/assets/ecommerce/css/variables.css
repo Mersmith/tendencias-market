@@ -49,13 +49,22 @@
     /*1 ELEMENTO*/
     --slide-productos-movil: 95%;
 
-    /*--color-fondo-primario: #f10a0f;
+    --color-fondo-primario: #f10a0f;
     --color-fondo-secundario: #495867;
     --color-fondo-terciario: #fff;
     --color-fondo-cuaternario: #fafafa;
     --color-fondo-quinario: #e9e9e9;
     --color-fondo-senario: #c0c0c0;
     --color-fondo-septenario: #778089;
+
+    --color-texto-primario: #f10a0f;
+    --color-texto-secundario: #495867;
+    --color-texto-terciario: #fff;
+    --color-texto-cuaternario: #fafafa;
+    --color-texto-quinario: #e9e9e9;
+    --color-texto-senario: #c0c0c0;
+    --color-texto-septenario: #778089;
+    --color-texto-octanario: #333333;
 
     --color-borde-primario: #f10a0f;
     --color-borde-secundario: #495867;
@@ -64,14 +73,5 @@
     --color-borde-quinario: #e9e9e9;
     --color-borde-senario: #c0c0c0;
     --color-borde-septenario: #778089;
-
-    --color-texto-primario: #f10a0f;
-    --color-texto-secundario: #495867;
-    --color-texto-terciario: #fff;
-    --color-texto-cuaternario: #fafafa;
-    --color-texto-quinario: #e9e9e9;
-    --color-texto-senario: #c0c0c0;
-    --color-texto-septenario: #778089;*/
-
 
 }

@@ -1,5 +1,5 @@
 .contenedor_pagina_carrito {
-    background-color: #fff;
+    background-color: #eee;
     padding-bottom: 20px;
 }
 
@@ -9,32 +9,11 @@
     width: 100%;
 }
 
-/* MIGAJA */
-.contenedor_pagina_carrito .contenedor_migaja ul {
-    display: flex;
-    align-items: center;
-    min-height: 32px;
-    padding: 0 19px;
-    background-color: transparent;
-    list-style: none;
-}
-
-.contenedor_pagina_carrito .contenedor_migaja ul li {
-    position: relative;
-    margin: 0px 8px;
-}
-
-.contenedor_pagina_carrito .contenedor_migaja ul li::after {
-    content: '/';
-    position: absolute;
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #000;
-}
-
-.contenedor_pagina_carrito .contenedor_migaja ul li:last-child::after {
-    content: '';
+.contenedor_pagina_carrito .titulo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-texto-octanario);
+    padding: 15px 0px;
 }
 
 /* DETALLE CARRITO */
@@ -42,6 +21,7 @@
     display: flex;
     width: 100%;
     gap: 20px;
+    align-items: flex-start;
 }
 
 /* CARRITO */
@@ -49,6 +29,9 @@
     display: flex;
     flex-direction: column;
     width: 70%;
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
 }
 
 .contenedor_pagina_carrito .item_producto {
@@ -63,13 +46,18 @@
 }
 
 .contenedor_pagina_carrito .contenedor_imagen {
-    width: 100px;
     height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contenedor_pagina_carrito .contenedor_imagen img {
-    height: 100%;
+    width: 100px;
+    height: auto;
     object-fit: cover;
+    max-height: 100%;
 }
 
 .contenedor_pagina_carrito .contenedor_informacion {
@@ -77,12 +65,12 @@
     flex-direction: column;
 }
 
-.contenedor_pagina_carrito .contenedor_informacion h3 {
+.contenedor_pagina_carrito .contenedor_informacion .producto_nombre {
     font-size: 16px;
     font-weight: 700;
 }
 
-.contenedor_pagina_carrito .contenedor_informacion h4 {
+.contenedor_pagina_carrito .contenedor_informacion .marca_nombre {
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.733333px;
@@ -100,9 +88,37 @@
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .precio {
-    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.contenedor_pagina_carrito .contenedor_informacion .descuento {
+    background-color: #EB0029;
+    color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.contenedor_pagina_carrito .contenedor_informacion .precio_oferta {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-texto-secundario);
+}
+
+.contenedor_pagina_carrito .contenedor_informacion .precio_normal {
+    font-size: 16px;
     font-weight: 500;
     color: #717171;
+}
+
+.contenedor_pagina_carrito .contenedor_informacion .precio_antiguo {
+    font-size: 14px;
+    font-weight: 400;
+    color: #717171;
+    text-decoration: line-through;
 }
 
 .separacion {
@@ -111,7 +127,6 @@
     width: auto;
     height: auto;
     border-style: solid;
-
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     margin-inline-start: 0px;
@@ -126,6 +141,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 18px;
 }
 
 .contenedor_pagina_carrito .control_cantidad {
@@ -153,13 +169,14 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    padding: 20px 10px;
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
 }
 
 .contenedor_pagina_carrito .detalle_pago {
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .contenedor_pagina_carrito .detalle_pago .monto {
@@ -208,6 +225,10 @@
         padding: 8px 16px;
         z-index: 19;
         width: 100%;
+    }
+
+    .contenedor_pagina_carrito .item_producto {
+        flex-direction: column;
     }
 
 }
