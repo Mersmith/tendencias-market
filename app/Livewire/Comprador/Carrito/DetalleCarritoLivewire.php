@@ -71,29 +71,30 @@ class DetalleCarritoLivewire extends Component
                     })
                     ->where('carrito_detalles.carrito_id', $this->carrito->id)
                     ->select(
-                        'carrito_detalles.id as carrito_detalle_id',
                         'carrito_detalles.carrito_id',
+                        'carrito_detalles.id as carrito_detalle_id',
                         'carrito_detalles.variacion_id',
-                        'carrito_detalles.cantidad',
-                        'carrito_detalles.precio',
+                        'primer_imagen.imagen_url', // Seleccionar la URL de la primera imagen
                         'productos.nombre as producto_nombre',
-                        'producto_lista_precios.precio as precio_lista', // Seleccionar el precio de la lista
+                        'marcas.nombre as marca_nombre', // Seleccionar el nombre de la marca
+                        'colors.nombre as color_nombre', // Seleccionar el nombre del color
+                        'tallas.nombre as talla_nombre', // Seleccionar el nombre de la talla
+                        'carrito_detalles.cantidad',
+                        'inventarios.stock', // Seleccionar el stock
+                        'inventarios.stock_minimo', // Seleccionar el stock mínimo
+                        'producto_lista_precios.precio_antiguo',
+                        'producto_lista_precios.precio as precio_normal', // Seleccionar el precio de la lista
+                        DB::raw('IF(producto_descuentos.porcentaje_descuento > 0 AND producto_descuentos.fecha_fin > NOW(), ROUND(producto_lista_precios.precio - (producto_lista_precios.precio * producto_descuentos.porcentaje_descuento / 100), 2), NULL) as precio_oferta'),
                         'producto_descuentos.porcentaje_descuento',
                         'producto_descuentos.fecha_fin as descuento_fecha_fin',
-                        'tallas.nombre as talla_nombre', // Seleccionar el nombre de la talla
-                        'colors.nombre as color_nombre', // Seleccionar el nombre del color
-                        'marcas.nombre as marca_nombre', // Seleccionar el nombre de la marca
-                        'primer_imagen.imagen_url', // Seleccionar la URL de la primera imagen
-                        'inventarios.stock', // Seleccionar el stock
-                        'inventarios.stock_minimo' // Seleccionar el stock mínimo
                     )
                     ->get();
 
-                dd($detalles);
+                //dd($detalles);
 
                 $this->cantidadItems = $detalles->count();
                 $this->totalGeneral = $detalles->reduce(function ($carry, $detalle) {
-                    return $carry + ($detalle->cantidad * $detalle->precio_lista);
+                    return $carry + ($detalle->cantidad * $detalle->precio_normal);
                 }, 0);
 
                 $this->carrito->detalle = $detalles;

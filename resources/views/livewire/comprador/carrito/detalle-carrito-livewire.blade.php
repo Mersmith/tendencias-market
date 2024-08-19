@@ -29,7 +29,7 @@
                                             </p>
                                         @endif
 
-                                        <p class="precio">S/. {{ number_format($detalle->precio, 2) }}</p>
+                                        <p class="precio">S/. {{ number_format($detalle->precio_normal, 2) }}</p>
                                     </div>
                                 </div>
                                 <div class="controles">
