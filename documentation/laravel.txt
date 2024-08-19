@@ -188,3 +188,6 @@ php artisan make:middleware CheckComprador
 
 php artisan make:model Carrito -mfsc
 php artisan make:model CarritoDetalle -mfsc
+
+php artisan make:livewire Comprador/Carrito/DetalleCarritoLivewire
+

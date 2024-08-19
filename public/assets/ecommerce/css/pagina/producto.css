@@ -1,5 +1,5 @@
 .contenedor_pagina_producto {
-    background-color: #eee;
+    background-color: #fafafa;
     padding-bottom: 20px;
 }
 
@@ -92,6 +92,7 @@
 
 .contenedor_pagina_producto .contenedor_precios .item_precio .texto {
     text-align: left;
+    font-weight: 600;
     font-size: 14px;
     line-height: 1.2rem;
     color: #717171;
