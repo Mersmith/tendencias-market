@@ -18,8 +18,8 @@
 
                         <!-- CABECERA -->
                         <div class="cabecera">
-                            <h2>{{ $producto->nombre }}</h2>
-                            <h3>Marca <span>{{ $producto->marca_nombre }}</span></h3>
+                            <h2 class="producto_nombre">{{ $producto->nombre }}</h2>
+                            <h3 class="producto_marca">Marca <span>{{ $producto->marca_nombre }}</span></h3>
                         </div>
 
                         <!-- PRECIOS -->
@@ -27,13 +27,13 @@
                             @if ($producto->precio_oferta)
                                 <div class="item_precio">
                                     <div class="texto">Oferta</div>
-                                    <div class="numero oferta">S/ {{ $producto->precio_oferta }} </div>
+                                    <div class="precio precio_oferta">S/ {{ $producto->precio_oferta }} </div>
                                 </div>
                             @endif
 
                             <div class="item_precio">
                                 <div class="texto">Precio</div>
-                                <div class="numero {{ !$producto->precio_oferta ? 'oferta' : 'normal' }}">
+                                <div class="precio {{ !$producto->precio_oferta ? 'precio_oferta' : 'precio_normal' }}">
                                     S/ {{ $producto->precio }}
 
                                     @if ($producto->porcentaje_descuento)
@@ -47,12 +47,12 @@
                             @if ($producto->precio_antiguo)
                                 <div class="item_precio">
                                     <div class="texto">Antes</div>
-                                    <div class="numero antes">S/ {{ $producto->precio_antiguo }} </div>
+                                    <div class="precio precio_antiguo">S/ {{ $producto->precio_antiguo }} </div>
                                 </div>
                             @endif
                         </div>
 
-                        <hr>
+                        <div class="separacion"> </div>
 
                         <!-- VARIACION -->
                         @livewire('ecommerce.producto.agregar-carrito-livewire', [

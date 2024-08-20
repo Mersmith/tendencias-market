@@ -1,6 +1,5 @@
 .contenedor_pagina_producto {
-    background-color: #fafafa;
-    padding-bottom: 20px;
+    background-color: var(--color-fondo-cuaternario);
 }
 
 .contenedor_pagina_producto .centrar {
@@ -10,7 +9,7 @@
 }
 
 .contenedor_pagina_producto .contenedor_bloque {
-    background-color: #fff;
+    background-color: var(--color-fondo-terciario);
 }
 
 /* INFORMACION */
@@ -28,24 +27,26 @@
     width: 45%;
     flex-direction: column;
     padding: 0 44px 0 49px;
-    border-left: 1px solid #f8f8f8;
 }
 
 .contenedor_pagina_producto .cabecera {
     margin-bottom: 10px;
 }
 
-.contenedor_pagina_producto .cabecera h2 {
+.contenedor_pagina_producto .cabecera .producto_nombre {
     margin-bottom: 20px;
     font-size: 24px;
     line-height: 24px;
     margin: 4px 0;
     font-weight: 700;
+    color: var(--color-texto-secundario);
 }
 
-.contenedor_pagina_producto .cabecera h3 {
+.contenedor_pagina_producto .cabecera .producto_marca {
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 0.733333px;
+    color: var(--color-texto-secundario);
 }
 
 /* PRECIOS */
@@ -55,7 +56,7 @@
     flex-direction: column;
 }
 
-.contenedor_pagina_producto .contenedor_precios .item_precio .oferta {
+.contenedor_pagina_producto .contenedor_precios .item_precio .precio_oferta {
     font-size: 24px;
     font-weight: 700;
     color: var(--color-texto-secundario);
@@ -69,42 +70,56 @@
     gap: 10px;
 }
 
-.contenedor_pagina_producto .contenedor_precios .item_precio .normal {
-    font-weight: 500;
-    color: #717171;
-    font-size: 17px;
+.contenedor_pagina_producto .contenedor_precios .item_precio .texto {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2rem;
+    color: var(--color-texto-septenario);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.contenedor_pagina_producto .contenedor_precios .item_precio .antes {
-    text-decoration: line-through;
-    font-weight: 400;
-    color: #717171;
+.contenedor_pagina_producto .contenedor_precios .item_precio .precio {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .contenedor_pagina_producto .contenedor_precios .descuento {
-    background-color: #EB0029;
-    color: #ffffff;
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-terciario);
     padding: 2px 5px;
     border-radius: 3px;
     font-weight: 700;
     font-size: 12px;
 }
 
-.contenedor_pagina_producto .contenedor_precios .item_precio .texto {
-    text-align: left;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.2rem;
-    color: #717171;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+.contenedor_pagina_producto .contenedor_precios .item_precio .precio_normal {
+    font-weight: 500;
+    color: var(--color-texto-septenario);
+    font-size: 17px;
 }
 
-.contenedor_pagina_producto .contenedor_precios .item_precio .numero {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+.contenedor_pagina_producto .contenedor_precios .item_precio .precio_antiguo {
+    text-decoration: line-through;
+    font-weight: 400;
+    color: var(--color-texto-septenario);
+}
+
+.separacion {
+    align-self: stretch;
+    border-color: var(--color-borde-quinario);
+    width: auto;
+    height: auto;
+    border-style: solid;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    border-left-width: 0;
+    border-bottom-width: 1px;
 }
 
 @media (max-width:1024px) {
