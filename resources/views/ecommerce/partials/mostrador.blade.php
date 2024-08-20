@@ -1,9 +1,12 @@
 @if (!empty($p_elementos) && !empty($p_elementos->imagenes))
-    @include('ecommerce.partials.titulo', [
-        'p_contenido' => $p_elementos->nombre,
-        'p_alineacion' => 'center',
-        'p_color' => '#4a4a4a',
-    ])
+
+    @if ($p_elementos->nombre)
+        @include('ecommerce.partials.titulo', [
+            'p_contenido' => $p_elementos->nombre,
+            'p_alineacion' => 'center',
+            'p_color' => '#4a4a4a',
+        ])
+    @endif
 
     <div x-data="dataMostrador{{ $p_elementos->id }}()" class="partials_contenedor_mostrador">
         <!-- CONTENEDOR GRID -->
@@ -25,7 +28,7 @@
                 <p x-show="!mostrarTodos" @click="mostrarTodos = true">
                     Mostrar más <span class="invertido">^</span>
                 </p>
-                <p x-show="mostrarTodos" @click="mostrarTodos = false">
+                <p x-show="mostrarTodos" style="display: none;" @click="mostrarTodos = false">
                     Mostrar menos <span class="normal">^</span>
                 </p>
             </div>

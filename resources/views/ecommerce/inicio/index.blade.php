@@ -1,5 +1,5 @@
 <x-ecommerce-layout>
-    @section('tituloPagina', 'Inicio')
+    @section('tituloPagina', 'Tendencias Market | Todos los productos que quieres están aquí!')
     @section('descripcion', 'Tendencias Market')
 
     <div>
@@ -26,7 +26,7 @@
                     'p_elementos' => $data_aviso_1,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
+                {{-- @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2]) --}}
 
 
                 @include('ecommerce.partials.grid', [
@@ -45,7 +45,7 @@
                     'p_elementos' => $data_grid_3,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
+                {{--@include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])--}}
 
                 @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_slide_producto,
@@ -55,7 +55,7 @@
                     'p_elementos' => $data_grid_2,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
+                {{--@include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])--}}
 
                 @include('ecommerce.partials.slider-productos', [
                     'p_elementos' => $data_slide_producto,
@@ -65,19 +65,19 @@
                     'p_elementos' => $data_slide_producto_descuentos,
                 ])
 
-                @include('ecommerce.partials.mostrador', [
+                {{--@include('ecommerce.partials.mostrador', [
                     'p_elementos' => $data_mostrador_2,
-                ])
+                ])--}}
 
                 @include('ecommerce.partials.aviso', [
                     'p_elementos' => $data_aviso_2,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
+                {{--@include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])--}}
 
-                @include('ecommerce.partials.mostrador', [
+                {{--@include('ecommerce.partials.mostrador', [
                     'p_elementos' => $data_mostrador_3,
-                ])
+                ])--}}
 
             </div>
         </div>

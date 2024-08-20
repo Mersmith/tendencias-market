@@ -126,11 +126,6 @@
     background-color: var(--color-fondo-septenario);
 }
 
-
-.partials_contenedor_carrusel_pie .swiper-pagination-bullet:hover {
-    background-color: var(--color-fondo-septenario);
-}
-
 @media (min-width: 1000px) {
 
     .partials_contenedor_carrusel {

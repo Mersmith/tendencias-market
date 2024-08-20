@@ -38,8 +38,6 @@ class EcommerceInicioController extends Controller
         $data_slide_producto = app(SliderProductosController::class)->getEcommerceSliderProductos(1);
         $data_slide_producto_descuentos = app(SliderProductosController::class)->getEcommerceSliderProductos(2);
 
-        //dd($data_slide_producto);
-
         $data_enlaces_rapidos_1 = app(EnlacesRapidosController::class)->getEcommerceEnlaceRapido(1);
 
         $data_vitrina_1 = app(VitrinaController::class)->getEcommerceVitrina(1);
