@@ -4,39 +4,40 @@
 }
 
 /* SLIDER */
-.partials_contenedor_slider_productos .contenedor_slide {
-    width: 90%;
-    overflow-x: auto;
+.partials_contenedor_slider_productos .swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.partials_contenedor_slider_productos .swiper-wrapper {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.partials_contenedor_slider_productos .contenedor_slide::-webkit-scrollbar {
-    height: 5px;
+.partials_contenedor_slider_productos .swiper-slide {
+    width: 16.6%;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
-.partials_contenedor_slider_productos .contenedor_slide::-webkit-scrollbar-thumb {
-    background-color: var(--color-fondo-quinario);
-    border-radius: 5px;
-}
-
-.partials_contenedor_slider_productos .item_slide {
-    width: var(--slide-productos-computadora);
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-    padding: 15px;
-}
-
-.partials_contenedor_slider_productos .contenedor_imagen {
+/* IMAGEN */
+.partials_contenedor_slider_productos .swiper-slide .contenedor_imagen {
     position: relative;
-    height: 135.53px;
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.partials_contenedor_slider_productos .contenedor_imagen span {
+/* IMAGEN */
+.partials_contenedor_slider_productos .swiper-slide .contenedor_imagen img {
+    /*width: 100px;*/
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+.partials_contenedor_slider_productos .swiper-slide .contenedor_imagen span {
     position: absolute;
     top: 0;
     right: 0;
@@ -49,14 +50,7 @@
     color: rgb(255, 255, 255);
 }
 
-/* IMAGEN */
-.partials_contenedor_slider_productos .item_slide img {
-    /*width: auto;*/
-    height: 100%;
-    border-radius: 8px;
-}
-
-.partials_contenedor_slider_productos .marca {
+.partials_contenedor_slider_productos .swiper-slide .marca {
     max-width: 12rem;
     overflow: hidden;
     margin-bottom: 5px;
@@ -70,7 +64,7 @@
     color: #767676;
 }
 
-.partials_contenedor_slider_productos .titulo {
+.partials_contenedor_slider_productos .swiper-slide .titulo {
     height: 34px;
     overflow: hidden;
     margin-bottom: 8px;
@@ -80,21 +74,21 @@
     color: #4a4a4a;
 }
 
-.partials_contenedor_slider_productos .precio_oferta {
+.partials_contenedor_slider_productos .swiper-slide .precio_oferta {
     text-align: left;
     font-size: 18px;
     line-height: 1.2rem;
     color: #e4022d;
 }
 
-.partials_contenedor_slider_productos .precio_real {
+.partials_contenedor_slider_productos .swiper-slide .precio_real {
     text-align: left;
     font-size: 18px;
     line-height: 1.2rem;
     color: #717171;
 }
 
-.partials_contenedor_slider_productos .precio_antiguo {
+.partials_contenedor_slider_productos .swiper-slide .precio_antiguo {
     text-decoration: line-through;
     text-align: left;
     font-size: 14px;
@@ -102,89 +96,50 @@
     color: #717171;
 }
 
-.partials_contenedor_slider_productos .item_slide button {
-    width: 100%;
-    height: 36px;
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: #495867;
-    font-weight: bold;
-    font-size: 15px;
-    letter-spacing: 1px;
-    color: #fafafa;
-    visibility: hidden;
+/* CONTROLES */
+.partials_contenedor_slider_productos .swiper-button-next,
+.partials_contenedor_slider_productos .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-senario);
 }
 
-.partials_contenedor_slider_productos .item_slide:hover button {
-    visibility: visible;
+.partials_contenedor_slider_productos .swiper-button-next:hover,
+.partials_contenedor_slider_productos .swiper-button-prev:hover {
+    background: var(--color-fondo-senario);
+    color: var(--color-texto-septenario);
 }
 
-/* CONTROL BOTONES */
-.partials_contenedor_slider_productos .control_botones {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+.partials_contenedor_slider_productos .swiper-button-next:after,
+.partials_contenedor_slider_productos .swiper-button-prev:after {
+    font-size: 16px;
 }
 
-.partials_contenedor_slider_productos .control_botones button {
-    position: absolute;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    background-color: var(--color-fondo-cuaternario);
-    color: var(--color-texto-terciario);
-}
-
-.partials_contenedor_slider_productos .control_botones button:disabled {
-    display: none;
-}
-
-.partials_contenedor_slider_productos .boton_retroceder {
+.partials_contenedor_slider_productos .swiper-button-prev {
     left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
 }
 
-.partials_contenedor_slider_productos .boton_siguiente {
+.partials_contenedor_slider_productos .swiper-button-next {
     right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
 }
 
-/* PAGINACION BOTONES */
-.partials_contenedor_slider_productos .paginacion_botones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+/* SLIDER THUMBNAILS */
+.partials_contenedor_slider_productos .swiper-pagination {
+    position: initial;
 }
 
-.partials_contenedor_slider_productos .paginacion_botones button {
+.partials_contenedor_slider_productos .swiper-pagination-bullet {
+    background-color: var(--color-fondo-senario);
     width: 8px;
     height: 8px;
-    cursor: pointer;
-    margin: 0 5px;
-    background-color: var(--color-fondo-cuaternario);
+    opacity: 1;
     border-radius: 50%;
-    border: none;
 }
 
-.partials_contenedor_slider_productos .paginacion_botones button.boton_activo {
-    width: 10px;
-    height: 10px;
-}
-
-/* RESPONSIVE TABLET */
-@media (max-width: 1000px) {
-
-    .partials_contenedor_slider_productos .item_slide {
-        width: var(--slide-productos-tablet);
-    }
-
-}
-
-/* RESPONSIVE MOVIL */
-@media (max-width: 700px) {
-
-    .partials_contenedor_slider_productos .item_slide {
-        width: var(--slide-productos-movil);
-    }
- 
+.partials_contenedor_slider_productos .swiper-pagination-bullet-active {
+    background-color: var(--color-fondo-septenario);
 }
