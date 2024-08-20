@@ -1,18 +1,16 @@
 /*CONTENEDOR SLIDER TIEMPO*/
 .partials_contenedor_temporizador {
     padding: 10px;
-    background-color: var(--color-fondo-cuaternario);
-    border-radius: 1.4rem;
-    border-bottom-left-radius: 0.7rem;
-    border-bottom-right-radius: 0.7rem;
+    background-color: var(--color-fondo-secundario);
 }
 
 /*CONTENEDOR FECHA HORA*/
 .partials_contenedor_temporizador .contenedor_fecha_hora {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 2px;
     padding: 15px 10px;
+    flex-direction: column;
 }
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha {
@@ -22,14 +20,9 @@
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha span {
     font-weight: 700;
-    font-size: 25px;
+    font-size: 28px;
     letter-spacing: .125rem;
     color: var(--color-texto-terciario);
-}
-
-.partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha img {
-    width: 37px;
-    height: 39px;
 }
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_hora {
@@ -42,12 +35,12 @@
     height: 34px;
     display: inline-block;
     padding-top: 3px;
-    background-color: var(--color-fondo-secundario);
+    background-color: var(--color-fondo-terciario);
     border-radius: 5px;
     text-align: center;
     font-weight: 700;
     font-size: 22px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-secundario);
     vertical-align: middle;
     opacity: .95;
 }
@@ -60,84 +53,76 @@
 }
 
 /* SLIDER */
-.partials_contenedor_temporizador .contenedor_slide {
+.partials_contenedor_temporizador .partials_contenedor_slider_temporizador {
+    position: relative;
     width: 100%;
-    overflow-x: auto;
+}
+
+.partials_contenedor_temporizador .swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.partials_contenedor_temporizador .swiper-wrapper {
     display: flex;
 }
 
-.partials_contenedor_temporizador .contenedor_slide::-webkit-scrollbar {
-    height: 5px;
-}
-
-.partials_contenedor_temporizador .contenedor_slide::-webkit-scrollbar-thumb {
-    background-color: var(--color-fondo-quinario);
-    border-radius: 5px;
-}
-
-.partials_contenedor_temporizador .contenedor_slide .item_slide {
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-    padding: 5px;
+.partials_contenedor_temporizador .swiper-slide {
     width: 50%;
+    padding: 5px;
 }
 
-.partials_contenedor_temporizador .contenedor_slide .item_slide img {
+.partials_contenedor_temporizador .swiper-slide img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
 }
 
-/* CONTROL BOTONES */
-.partials_contenedor_temporizador .control_botones {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+/* CCONTROLES */
+.partials_contenedor_temporizador .swiper-button-next,
+.partials_contenedor_temporizador .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-senario);
 }
 
-.partials_contenedor_temporizador .control_botones button {
-    position: absolute;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    background-color: var(--color-fondo-cuaternario);
-    color: var(--color-texto-terciario);
+.partials_contenedor_temporizador .swiper-button-next:hover,
+.partials_contenedor_temporizador .swiper-button-prev:hover {
+    background: var(--color-fondo-senario);
+    color: var(--color-texto-septenario);
 }
 
-.partials_contenedor_temporizador .control_botones button:disabled {
-    display: none;
+.partials_contenedor_temporizador .swiper-button-next:after,
+.partials_contenedor_temporizador .swiper-button-prev:after {
+    font-size: 16px;
 }
 
-.partials_contenedor_temporizador .boton_retroceder {
+.partials_contenedor_temporizador .swiper-button-prev {
     left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
 }
 
-.partials_contenedor_temporizador .boton_siguiente {
+.partials_contenedor_temporizador .swiper-button-next {
     right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
 }
 
-/* PAGINACION BOTONES */
-.partials_contenedor_temporizador .paginacion_botones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+/* SLIDER THUMBNAILS */
+.partials_contenedor_temporizador .swiper-pagination {
+    position: initial;
 }
 
-.partials_contenedor_temporizador .paginacion_botones button {
+.partials_contenedor_temporizador .swiper-pagination-bullet {
+    background-color: var(--color-fondo-senario);
     width: 8px;
     height: 8px;
-    cursor: pointer;
-    margin: 0 5px;
-    background-color: var(--color-fondo-cuaternario);
+    opacity: 1;
     border-radius: 50%;
-    border: none;
 }
 
-.partials_contenedor_temporizador .paginacion_botones button.boton_activo {
-    width: 10px;
-    height: 10px;
+.partials_contenedor_temporizador .swiper-pagination-bullet-active {
+    background-color: var(--color-fondo-septenario);
 }
 
 @media (max-width: 1000px) {
