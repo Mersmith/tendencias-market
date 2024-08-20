@@ -77,7 +77,7 @@
     height: auto;
 }
 
-/* CCONTROLES */
+/* CONTROLES */
 .partials_contenedor_temporizador .swiper-button-next,
 .partials_contenedor_temporizador .swiper-button-prev {
     background: transparent;
@@ -125,11 +125,7 @@
     background-color: var(--color-fondo-septenario);
 }
 
-@media (max-width: 1000px) {
-
-    .partials_contenedor_temporizador .contenedor_slide .item_slide {
-        width: 95%;
-    }
+@media (max-width: 1000px) {    
 
     .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha span {
         font-size: 20px;

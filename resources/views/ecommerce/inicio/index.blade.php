@@ -69,9 +69,9 @@
                     'p_elementos' => $data_mostrador_2,
                 ])--}}
 
-                @include('ecommerce.partials.aviso', [
+                {{--@include('ecommerce.partials.aviso', [
                     'p_elementos' => $data_aviso_2,
-                ])
+                ])--}}
 
                 {{--@include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])--}}
 
