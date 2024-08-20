@@ -1,5 +1,5 @@
 .contenedor_pagina_carrito {
-    background-color: #eee;
+    background-color: var(--color-fondo-cuaternario);
 }
 
 .contenedor_pagina_carrito .centrar {
@@ -11,7 +11,7 @@
 .contenedor_pagina_carrito .titulo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--color-texto-octanario);
+    color: var(--color-texto-secundario);
     padding: 15px 0px;
 }
 
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     width: 70%;
-    background: white;
+    background: var(--color-fondo-terciario);
     padding: 16px;
 }
 
@@ -66,22 +66,24 @@
 .contenedor_pagina_carrito .contenedor_informacion .producto_nombre {
     font-size: 16px;
     font-weight: 700;
+    color: var(--color-texto-secundario);
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .marca_nombre {
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.733333px;
+    color: var(--color-texto-secundario);
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .variacion {
     font-size: 12px;
     font-weight: 600;
-    color: #5c5c5c;
+    color: var(--color-texto-septenario);
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .variacion span {
-    color: #333333;
+    color: var(--color-texto-septenario);
     font-weight: 700;
 }
 
@@ -92,8 +94,8 @@
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .descuento {
-    background-color: #EB0029;
-    color: #ffffff;
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-terciario);
     padding: 2px 5px;
     border-radius: 3px;
     font-weight: 700;
@@ -109,19 +111,19 @@
 .contenedor_pagina_carrito .contenedor_informacion .precio_normal {
     font-size: 16px;
     font-weight: 500;
-    color: #717171;
+    color: var(--color-texto-septenario);
 }
 
 .contenedor_pagina_carrito .contenedor_informacion .precio_antiguo {
     font-size: 14px;
     font-weight: 400;
-    color: #717171;
+    color: var(--color-texto-septenario);
     text-decoration: line-through;
 }
 
 .separacion {
     align-self: stretch;
-    border-color: #DDDDDD;
+    border-color: var(--color-borde-quinario);
     width: auto;
     height: auto;
     border-style: solid;
@@ -146,11 +148,11 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    color: var(--color-texto-secundario);
 }
 
 .contenedor_pagina_carrito .control_cantidad button {
-    color: #333;
-    background-color: #eee;
+    background-color: var(--color-fondo-quinario);
     border-radius: 2px;
     width: 30px;
     height: 30px;
@@ -162,6 +164,7 @@
     gap: 15px;
     font-size: 14px;
     font-weight: 600;
+    color: var(--color-texto-secundario);
 }
 
 /* RESUMEN PAGO */
@@ -169,7 +172,7 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    background: white;
+    background: var(--color-fondo-terciario);
     padding: 16px;
 }
 
@@ -186,7 +189,7 @@
 
 .contenedor_pagina_carrito .detalle_pago .texto {
     font-size: 14px;
-    color: rgb(51, 51, 51);
+    color: var(--color-texto-secundario);
     font-weight: 700;
 }
 
@@ -194,7 +197,7 @@
     display: inline-block;
     white-space: nowrap;
     font-size: 14px;
-    color: rgb(51, 51, 51);
+    color: var(--color-texto-secundario);
     font-weight: 700;
 }
 
@@ -202,9 +205,9 @@
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.5px;
-    color: #fff;
+    color: var(--color-texto-terciario);
     border-radius: 30px;
-    background-color: var(--color-texto-primario);
+    background-color: var(--color-fondo-primario);
     text-transform: none;
     text-align: center;
     width: 100%;
@@ -225,13 +228,7 @@
     }
 
     .contenedor_pagina_carrito .resumen_pago {
-        width: 100%;
-    }
-
-    .contenedor_pagina_carrito .resumen_pago {
-        background-color: red;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px -3px 26px;
-        background-color: rgb(255, 255, 255);
+        box-shadow: var(--sombra-secundario-arriba);
         position: fixed;
         bottom: 0px;
         left: 0px;
