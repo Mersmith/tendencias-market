@@ -42,12 +42,12 @@
     top: 0;
     right: 0;
     padding: 2px 5px;
-    background-color: rgb(235, 0, 41);
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-terciario);
     border-radius: 3px;
     font-weight: 700;
     font-size: 12px;
     line-height: 14.4px;
-    color: rgb(255, 255, 255);
 }
 
 .partials_contenedor_slider_productos .swiper-slide .marca {
@@ -61,7 +61,7 @@
     letter-spacing: 1px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #767676;
+    color: var(--color-texto-secundario);
 }
 
 .partials_contenedor_slider_productos .swiper-slide .titulo {
@@ -71,21 +71,21 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 1.2;
-    color: #4a4a4a;
+    color: var(--color-texto-secundario);
 }
 
 .partials_contenedor_slider_productos .swiper-slide .precio_oferta {
     text-align: left;
     font-size: 18px;
     line-height: 1.2rem;
-    color: #e4022d;
+    color: var(--color-texto-primario);
 }
 
 .partials_contenedor_slider_productos .swiper-slide .precio_real {
     text-align: left;
     font-size: 18px;
     line-height: 1.2rem;
-    color: #717171;
+    color: var(--color-texto-septenario);
 }
 
 .partials_contenedor_slider_productos .swiper-slide .precio_antiguo {
@@ -93,7 +93,7 @@
     text-align: left;
     font-size: 14px;
     line-height: 1.2rem;
-    color: #717171;
+    color: var(--color-texto-septenario);
 }
 
 /* CONTROLES */
