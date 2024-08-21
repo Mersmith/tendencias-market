@@ -5,7 +5,7 @@
     <div>
         @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
 
-        @include('ecommerce.partials.slider-principal', ['p_elementos' => $data_slider_principal_1])
+        @include('ecommerce.partials.slider-principal', ['p_elemento' => $data_slider_principal_1])
 
         <div class="g_centrar_contenido_pagina">
             <div class="g_contenido_pagina">
@@ -15,7 +15,7 @@
                 ])
 
                 @include('ecommerce.partials.mostrador', [
-                    'p_elementos' => $data_mostrador_1,
+                    'p_elemento' => $data_mostrador_1,
                 ])
 
                 @include('ecommerce.partials.temporizador', [
@@ -65,9 +65,9 @@
                     'p_elementos' => $data_slide_producto_descuentos,
                 ]) --}}
 
-                {{-- @include('ecommerce.partials.mostrador', [
-                    'p_elementos' => $data_mostrador_2,
-                ]) --}}
+                @include('ecommerce.partials.mostrador', [
+                    'p_elemento' => $data_mostrador_2,
+                ])
 
                 {{-- @include('ecommerce.partials.aviso', [
                     'p_elementos' => $data_aviso_2,
@@ -75,9 +75,9 @@
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_5])
 
-                {{-- @include('ecommerce.partials.mostrador', [
-                    'p_elementos' => $data_mostrador_3,
-                ]) --}}
+                @include('ecommerce.partials.mostrador', [
+                    'p_elemento' => $data_mostrador_3,
+                ])
 
             </div>
         </div>

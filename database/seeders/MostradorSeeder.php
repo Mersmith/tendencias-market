@@ -15,77 +15,77 @@ class MostradorSeeder extends Seeder
     {
         $mostradores = [
             [
-                'nombre' => 'Aquí hay de todo',
+                'nombre' => 'Mostrador 1',
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
-                        'titulo' => 'Navidad',
+                        'titulo' => 'Categoria 1',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-1.jpg',
                         'link' => 'https://example.com/link1'
                     ],
                     [
                         'id' => 2,
-                        'titulo' => 'Juguetería',
+                        'titulo' => 'Categoria 2',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-2.jpg',
                         'link' => 'https://example.com/link2'
                     ],
                     [
                         'id' => 3,
-                        'titulo' => 'Televisores',
+                        'titulo' => 'Categoria 3',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-3.jpg',
                         'link' => 'https://example.com/link3'
                     ],
                     [
                         'id' => 4,
-                        'titulo' => 'Zapatillas',
+                        'titulo' => 'Categoria 4',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-4.jpg',
                         'link' => 'https://example.com/link4'
                     ],
                     [
                         'id' => 5,
-                        'titulo' => 'Mascotas',
+                        'titulo' => 'Categoria 5',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-5.jpg',
                         'link' => 'https://example.com/link5'
                     ],
                     [
                         'id' => 6,
-                        'titulo' => 'Regalos expres',
+                        'titulo' => 'Categoria 6',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-6.jpg',
                         'link' => 'https://example.com/link6'
                     ],
                     [
                         'id' => 7,
-                        'titulo' => 'Lentes',
+                        'titulo' => 'Categoria 7',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-7.jpg',
                         'link' => 'https://example.com/link7'
                     ],
                     [
                         'id' => 8,
-                        'titulo' => 'Verano',
+                        'titulo' => 'Categoria 8',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-8.jpg',
                         'link' => 'https://example.com/link8'
                     ],
                     [
                         'id' => 9,
-                        'titulo' => 'Dermo y cuidado personal',
+                        'titulo' => 'Categoria 9',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-9.jpg',
                         'link' => 'https://example.com/link9'
                     ],
                     [
                         'id' => 10,
-                        'titulo' => 'Pequeños electros',
+                        'titulo' => 'Categoria 10',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-10.jpg',
                         'link' => 'https://example.com/link10'
                     ],
                     [
                         'id' => 11,
-                        'titulo' => 'Muebles',
+                        'titulo' => 'Categoria 11',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-11.jpg',
                         'link' => 'https://example.com/link11'
                     ],
                     [
                         'id' => 12,
-                        'titulo' => 'Supermercado',
+                        'titulo' => 'Categoria 12',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-1-12.jpg',
                         'link' => 'https://example.com/link12'
                     ]
@@ -93,7 +93,7 @@ class MostradorSeeder extends Seeder
                 'activo' => true
             ],
             [
-                'nombre' => 'Grandes marcas',
+                'nombre' => 'Mostrador 2',
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
@@ -171,41 +171,41 @@ class MostradorSeeder extends Seeder
                 'activo' => true
             ],
             [
-                'nombre' => 'Muchos beneficios',
+                'nombre' => 'Mostrador 3',
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
-                        'titulo' => 'Envío gratis en miles de productos desde S/99',
+                        'titulo' => 'Beneficio 1',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-1.jpg',
                         'link' => 'https://example.com/link1'
                     ],
                     [
                         'id' => 2,
-                        'titulo' => 'Promos y cupones',
+                        'titulo' => 'Beneficio 2',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-2.jpg',
                         'link' => 'https://example.com/link2'
                     ],
                     [
                         'id' => 3,
-                        'titulo' => 'Emprendedores',
+                        'titulo' => 'Beneficio 3',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-3.jpg',
                         'link' => 'https://example.com/link3'
                     ],
                     [
                         'id' => 4,
-                        'titulo' => 'Revisa tus pedidos en Mis Compras',
+                        'titulo' => 'Beneficio 4',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-4.jpg',
                         'link' => 'https://example.com/link4'
                     ],
                     [
                         'id' => 5,
-                        'titulo' => 'Regístrate y descubre todos los beneficios',
+                        'titulo' => 'Beneficio 5',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-5.jpg',
                         'link' => 'https://example.com/link5'
                     ],
                     [
                         'id' => 6,
-                        'titulo' => 'Regístrate y descubre todos los beneficios',
+                        'titulo' => 'Beneficio 6',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/mostrador/mostrador-tipo-2-6.jpg',
                         'link' => 'https://example.com/link6'
                     ]

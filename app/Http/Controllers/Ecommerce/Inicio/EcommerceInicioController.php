@@ -26,6 +26,8 @@ class EcommerceInicioController extends Controller
 
         $data_slider_principal_1 = $this->getEcommerceSlidersPrincipal(1);
 
+        $data_vitrina_1 = $this->getEcommerceVitrina(1);
+
         $data_mostrador_1 = $this->getEcommerceMostrador(1);
         $data_mostrador_2 = $this->getEcommerceMostrador(2);
         $data_mostrador_3 = $this->getEcommerceMostrador(3);
@@ -41,7 +43,6 @@ class EcommerceInicioController extends Controller
 
         $data_slide_producto_descuentos = $this->getEcommerceSliderProductos(2);
 
-        $data_vitrina_1 = $this->getEcommerceVitrina(1);
 
         $data_temporizador_1 = $this->getEcommerceTemporizador(1);
         $dataSliderImagenTresElementosTiempo = $this->getEcommerceTemporizador(2);
@@ -86,7 +87,9 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceSlidersPrincipal($id)
     {
-        $sliders = Slider::find($id);
+        $sliders = Slider::where('id', $id)
+            ->where('activo', true)
+            ->first();
         if ($sliders) {
             $sliders->imagenes = json_decode($sliders->imagenes, true);
         } else {
@@ -98,14 +101,16 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceMostrador($id)
     {
-        $mostrador_1 = Mostrador::find($id);
-        if ($mostrador_1) {
-            $mostrador_1->imagenes = json_decode($mostrador_1->imagenes, true);
+        $mostrador = Mostrador::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($mostrador) {
+            $mostrador->imagenes = json_decode($mostrador->imagenes, true);
         } else {
-            $mostrador_1 = null;
+            $mostrador = null;
         }
 
-        return $mostrador_1;
+        return $mostrador;
     }
 
     public function getEcommerceAviso($id)
