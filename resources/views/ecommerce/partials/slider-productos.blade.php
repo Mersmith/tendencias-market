@@ -13,17 +13,17 @@
                 @foreach ($p_elementos['productos'] as $index => $producto)
                     <div class="swiper-slide">
                         <div>
-                            <a href="{{ $producto['producto_url'] }}">
+                            <a href="{{ $producto->producto_url }}">
                                 <div class="contenedor_imagen">
-                                    <img src="{{ $producto['imagen']['url'] }}" alt="Promoción {{ $index + 1 }}">
-                                    @if ($producto['descuento'])
-                                        <span>{{ $producto['descuento'] }}%</span>
+                                    <img src="{{ $producto->imagen_url }}" alt="Promoción {{ $index + 1 }}">
+                                    @if ($producto->porcentaje_descuento)
+                                        <span>{{ $producto->porcentaje_descuento }}%</span>
                                     @endif
                                 </div>
                             </a>
-                            <div class="marca">{{ $producto['marca'] }}</div>
-                            <div class="titulo">{{ $producto['producto_nombre'] }}</div>
-                            @if (isset($producto['card']) && $producto['card'])
+                            <div class="marca">{{ $producto->marca_nombre }}</div>
+                            <div class="titulo">{{ $producto->producto_nombre }}</div>
+                            {{-- @if (isset($producto['card']) && $producto['card'])
                                 <div class="tarjeta">
                                     <img src="{{ asset('assets/ecommerce/imagenes/tarjetas/cmrIcon.svg') }}"
                                         alt="Tarjeta">
@@ -46,7 +46,7 @@
                                     <span>{{ $producto['simbolo'] }}</span>
                                     <span>{{ $producto['precio_antiguo'] }}</span>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 @endforeach

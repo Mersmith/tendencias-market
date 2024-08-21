@@ -14,9 +14,11 @@ class SliderProductosController extends Controller
         $sliderProducto = SliderProductos::find($id);
 
         if ($sliderProducto) {
-            $almacenEcommerceId = $sliderProducto->almacen_ecommerce_id;
-            $listaPrecioEtiquetaId = $sliderProducto->lista_precio_etiqueta_id;
-            $categoriaId = $sliderProducto->categoria_id;
+            $almacenEcommerceId = $sliderProducto->almacen_ecommerce_id;//1
+            $listaPrecioEtiquetaId = $sliderProducto->lista_precio_etiqueta_id;//3
+            $categoriaId = $sliderProducto->categoria_id;//1
+
+            //dd($almacenEcommerceId, $listaPrecioEtiquetaId, $categoriaId);
 
             $productoData = null;
 
@@ -30,12 +32,12 @@ class SliderProductosController extends Controller
 
             if ($productoData) {
                 return [
-                    'slider' => $sliderProducto->toArray(),
+                    'slider' => $sliderProducto,
                     'productos' => $productoData,
                 ];
             }
 
-            return $sliderProducto->toArray();
+            return $sliderProducto;
         }
 
         return null;
