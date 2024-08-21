@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Erp;
 
 use App\Http\Controllers\Controller;
 use App\Models\Inventario;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -40,8 +39,8 @@ class InventarioController extends Controller
                     ->where('producto_descuentos.lista_precio_id', '=', $listaPrecioId)
                     ->where('producto_descuentos.fecha_fin', '>', now());
             })
-            ->leftJoin('tallas', 'variacions.talla_id', '=', 'tallas.id')
-            ->leftJoin('colors', 'variacions.color_id', '=', 'colors.id')
+            //->leftJoin('tallas', 'variacions.talla_id', '=', 'tallas.id')
+            //->leftJoin('colors', 'variacions.color_id', '=', 'colors.id')
             ->leftJoin('marcas', 'productos.marca_id', '=', 'marcas.id')
             ->leftJoinSub($imagenSubquery, 'imagen_subquery', function ($join) {
                 $join->on('productos.id', '=', 'imagen_subquery.imagenable_id');
@@ -51,22 +50,22 @@ class InventarioController extends Controller
             ->where('productos.categoria_id', $categoriaId)
             ->select(
                 'productos.id as producto_id',
-                DB::raw('MAX(inventarios.id) as inventario_id'),
-                DB::raw('MAX(inventarios.almacen_id) as almacen_id'),
-                DB::raw('MAX(inventarios.stock) as stock'),
-                DB::raw('MAX(inventarios.stock_minimo) as stock_minimo'),
-                DB::raw('MAX(variacions.id) as variacion_id'),
+                //DB::raw('MAX(inventarios.id) as inventario_id'),
+                //DB::raw('MAX(inventarios.almacen_id) as almacen_id'),
+                //DB::raw('MAX(inventarios.stock) as stock'),
+                //DB::raw('MAX(inventarios.stock_minimo) as stock_minimo'),
+                //DB::raw('MAX(variacions.id) as variacion_id'),
                 'imagen_subquery.imagen_url',
                 DB::raw('MAX(productos.nombre) as producto_nombre'),
                 DB::raw('MAX(productos.slug) as producto_url'),
                 DB::raw('MAX(marcas.nombre) as marca_nombre'),
-                DB::raw('MAX(colors.nombre) as color_nombre'),
-                DB::raw('MAX(tallas.nombre) as talla_nombre'),
+                //DB::raw('MAX(colors.nombre) as color_nombre'),
+                //DB::raw('MAX(tallas.nombre) as talla_nombre'),
                 DB::raw('MAX(producto_lista_precios.precio_antiguo) as precio_antiguo'),
                 DB::raw('MAX(producto_lista_precios.precio) as precio_normal'),
                 DB::raw('IF(MAX(producto_descuentos.porcentaje_descuento) > 0 AND MAX(producto_descuentos.fecha_fin) > NOW(), ROUND(MAX(producto_lista_precios.precio) - (MAX(producto_lista_precios.precio) * MAX(producto_descuentos.porcentaje_descuento) / 100), 2), NULL) as precio_oferta'),
                 DB::raw('MAX(producto_descuentos.porcentaje_descuento) as porcentaje_descuento'),
-                DB::raw('MAX(producto_descuentos.fecha_fin) as descuento_fecha_fin')
+                //DB::raw('MAX(producto_descuentos.fecha_fin) as descuento_fecha_fin')
             )
             ->groupBy('productos.id')
             ->orderBy('productos.id', 'desc')

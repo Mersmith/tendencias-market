@@ -23,30 +23,25 @@
                             </a>
                             <div class="marca">{{ $producto->marca_nombre }}</div>
                             <div class="titulo">{{ $producto->producto_nombre }}</div>
-                            {{-- @if (isset($producto['card']) && $producto['card'])
-                                <div class="tarjeta">
-                                    <img src="{{ asset('assets/ecommerce/imagenes/tarjetas/cmrIcon.svg') }}"
-                                        alt="Tarjeta">
-                                </div>
-                            @endif
-                            @if ($producto['precio_oferta'])
+
+                            @if ($producto->precio_oferta)
                                 <div class="precio_oferta">
-                                    <span>{{ $producto['simbolo'] }}</span>
-                                    <span>{{ $producto['precio_oferta'] }}</span>
+                                    <span>S/.</span>
+                                    <span>{{ $producto->precio_oferta }}</span>
                                 </div>
                             @endif
-                            @if ($producto['precio_venta'])
+                            @if ($producto->precio_normal)
                                 <div class="precio_real">
-                                    <span>{{ $producto['simbolo'] }}</span>
-                                    <span>{{ $producto['precio_venta'] }}</span>
+                                    <span>S/.</span>
+                                    <span>{{ $producto->precio_normal }}</span>
                                 </div>
                             @endif
-                            @if ($producto['precio_antiguo'])
+                            @if ($producto->precio_antiguo)
                                 <div class="precio_antiguo">
-                                    <span>{{ $producto['simbolo'] }}</span>
-                                    <span>{{ $producto['precio_antiguo'] }}</span>
+                                    <span>S/.</span>
+                                    <span>{{ $producto->precio_antiguo }}</span>
                                 </div>
-                            @endif --}}
+                            @endif
                         </div>
                     </div>
                 @endforeach
