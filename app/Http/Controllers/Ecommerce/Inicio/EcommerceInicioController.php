@@ -18,9 +18,11 @@ class EcommerceInicioController extends Controller
 {
     public function __invoke()
     {
-        $data_baner_1 = Banner::find(1);
-        $data_banner_2 = Banner::find(2);
-        $data_banner_3 = Banner::find(3);
+        $data_baner_1 = $this->getEcommerceBanner(1);
+        $data_banner_2 = $this->getEcommerceBanner(2);
+        $data_banner_3 = $this->getEcommerceBanner(3);
+        $data_banner_4 = $this->getEcommerceBanner(4);
+        $data_banner_5 = $this->getEcommerceBanner(5);
 
         $data_slider_principal_1 = $this->getEcommerceSlidersPrincipal(1);
 
@@ -39,12 +41,12 @@ class EcommerceInicioController extends Controller
 
         $data_slide_producto_descuentos = $this->getEcommerceSliderProductos(2);
 
-        $data_enlaces_rapidos_1 = $this->getEcommerceEnlaceRapido(1);
-
         $data_vitrina_1 = $this->getEcommerceVitrina(1);
 
         $data_temporizador_1 = $this->getEcommerceTemporizador(1);
         $dataSliderImagenTresElementosTiempo = $this->getEcommerceTemporizador(2);
+
+        $data_enlaces_rapidos_1 = $this->getEcommerceEnlaceRapido(1);
 
         return view(
             'ecommerce.inicio.index',
@@ -52,6 +54,8 @@ class EcommerceInicioController extends Controller
                 'data_baner_1',
                 'data_banner_2',
                 'data_banner_3',
+                'data_banner_4',
+                'data_banner_5',
                 'data_slider_principal_1',
                 'data_vitrina_1',
                 'data_mostrador_1',
@@ -69,6 +73,15 @@ class EcommerceInicioController extends Controller
                 'data_enlaces_rapidos_1'
             )
         );
+    }
+
+    public function getEcommerceBanner($id)
+    {
+        $banner = Banner::where('id', $id)
+            ->where('activo', true)
+            ->first();
+
+        return $banner;
     }
 
     public function getEcommerceSlidersPrincipal($id)
