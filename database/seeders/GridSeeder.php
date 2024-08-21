@@ -93,6 +93,88 @@ class GridSeeder extends Seeder
                 'nombre' => 'Grid 3',
                 'imagenes' => json_encode([
                     [
+                        'id' => 1,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-50-1.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-1.jpg',
+                        'link' => 'https://example.com/link1',
+                        'width' => 50,
+                    ],
+                    [
+                        'id' => 2,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-50-1.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-1.jpg',
+                        'link' => 'https://example.com/link2',
+                        'width' => 50,
+                    ],
+                    [
+                        'id' => 3,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-3.jpg',
+                        'link' => 'https://example.com/link3',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 4,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-2.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-2.jpg',
+                        'link' => 'https://example.com/link4',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 5,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-50-1.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-1.jpg',
+                        'link' => 'https://example.com/link5',
+                        'width' => 50,
+                    ]
+                ]),
+                'activo' => true
+            ],
+            [
+                'nombre' => 'Grid 4',
+                'imagenes' => json_encode([
+                    [
+                        'id' => 1,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-3.jpg',
+                        'link' => 'https://example.com/link1',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 2,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-3.jpg',
+                        'link' => 'https://example.com/link2',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 3,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-3.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-3.jpg',
+                        'link' => 'https://example.com/link3',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 4,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-25-2.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-2.jpg',
+                        'link' => 'https://example.com/link4',
+                        'width' => 25,
+                    ],
+                    [
+                        'id' => 5,
+                        'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-50-1.jpg',
+                        'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-1.jpg',
+                        'link' => 'https://example.com/link5',
+                        'width' => 50,
+                    ]
+                ]),
+                'activo' => true
+            ],
+            [
+                'nombre' => 'Grid 5',
+                'imagenes' => json_encode([
+                    [
                         'id' => 4,
                         'imagenComputadora' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-computadora-50-1.jpg',
                         'imagenMovil' => 'http://127.0.0.1:8000/assets/imagenes/grid/grid-movil-1.jpg',

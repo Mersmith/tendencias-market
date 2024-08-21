@@ -29,19 +29,19 @@
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
 
                 @include('ecommerce.partials.grid', [
-                    'p_elementos' => $data_grid_1,
+                    'p_elemento' => $data_grid_1,
                 ])
 
                 @include('ecommerce.partials.grid', [
-                    'p_elementos' => $data_grid_2,
+                    'p_elemento' => $data_grid_2,
                 ])
 
                 @include('ecommerce.partials.grid', [
-                    'p_elementos' => $data_grid_1,
+                    'p_elemento' => $data_grid_3,
                 ])
 
                 @include('ecommerce.partials.grid', [
-                    'p_elementos' => $data_grid_3,
+                    'p_elemento' => $data_grid_4,
                 ])
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
@@ -51,7 +51,7 @@
                 ]) --}}
 
                 @include('ecommerce.partials.grid', [
-                    'p_elementos' => $data_grid_2,
+                    'p_elemento' => $data_grid_5,
                 ])
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_4])

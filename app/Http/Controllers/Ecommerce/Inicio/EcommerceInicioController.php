@@ -38,6 +38,8 @@ class EcommerceInicioController extends Controller
         $data_grid_1 = $this->getEcommerceGrid(1);
         $data_grid_2 = $this->getEcommerceGrid(2);
         $data_grid_3 = $this->getEcommerceGrid(3);
+        $data_grid_4 = $this->getEcommerceGrid(4);
+        $data_grid_5 = $this->getEcommerceGrid(5);
 
         $data_slide_producto = $this->getEcommerceSliderProductos(1);
 
@@ -68,6 +70,8 @@ class EcommerceInicioController extends Controller
                 'data_grid_1',
                 'data_grid_2',
                 'data_grid_3',
+                'data_grid_4',
+                'data_grid_5',
                 'data_slide_producto',
                 'data_slide_producto_descuentos',
                 'data_aviso_2',
@@ -143,14 +147,16 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceGrid($id)
     {
-        $grid_1 = Grid::find($id);
-        if ($grid_1) {
-            $grid_1->imagenes = json_decode($grid_1->imagenes, true);
+        $grid = Grid::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($grid) {
+            $grid->imagenes = json_decode($grid->imagenes, true);
         } else {
-            $grid_1 = null;
+            $grid = null;
         }
 
-        return $grid_1;
+        return $grid;
     }
 
     public function getEcommerceEnlaceRapido($id)

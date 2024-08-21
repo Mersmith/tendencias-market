@@ -1,9 +1,9 @@
-@if (!empty($p_elementos) && !empty($p_elementos->imagenes))
+@if (!empty($p_elemento) && !empty($p_elemento->imagenes))
     <div class="partials_contenedor_grid">
-        <div class="swiper SwiperGrid-{{ $p_elementos->id }}">
+        <div class="swiper SwiperGrid-{{ $p_elemento->id }}">
             <!-- SLIDER -->
             <div class="swiper-wrapper">
-                @foreach ($p_elementos->imagenes as $elemento)
+                @foreach ($p_elemento->imagenes as $elemento)
                     <div
                         class="swiper-slide {{ $elemento['width'] === 50 ? 'item_50' : ($elemento['width'] === 25 ? 'item_25' : '') }}">
                         <a href="{{ $elemento['link'] }}">
@@ -20,15 +20,15 @@
     </div>
 
     <script>
-        var swiper = new Swiper('.SwiperGrid-{{ $p_elementos->id }}', {
+        var swiper = new Swiper('.SwiperGrid-{{ $p_elemento->id }}', {
             slidesPerView: 'auto',
             spaceBetween: 0,
             navigation: {
-                nextEl: '.SwiperGrid-{{ $p_elementos->id }} .swiper-button-next',
-                prevEl: '.SwiperGrid-{{ $p_elementos->id }} .swiper-button-prev',
+                nextEl: '.SwiperGrid-{{ $p_elemento->id }} .swiper-button-next',
+                prevEl: '.SwiperGrid-{{ $p_elemento->id }} .swiper-button-prev',
             },
             pagination: {
-                el: '.SwiperGrid-{{ $p_elementos->id }} .swiper-pagination',
+                el: '.SwiperGrid-{{ $p_elemento->id }} .swiper-pagination',
                 clickable: true,
             },
             breakpoints: {
@@ -45,7 +45,7 @@
             /*on: {
                 init: function() {
                     // Ajuste del ancho basado en la clase
-                    var slides = document.querySelectorAll('.SwiperGrid-{{ $p_elementos->id }} .swiper-slide');
+                    var slides = document.querySelectorAll('.SwiperGrid-{{ $p_elemento->id }} .swiper-slide');
                     slides.forEach(function(slide) {
                         if (slide.classList.contains('item_50')) {
                             slide.style.width = '50%';

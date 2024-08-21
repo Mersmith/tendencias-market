@@ -36,10 +36,10 @@ class DatabaseSeeder extends Seeder
         $this->call(BannerSeeder::class);
         $this->call(SliderSeeder::class);
         $this->call(MostradorSeeder::class);
-        $this->call(VitrinaSeeder::class);*/
-        $this->call(AvisoSeeder::class);
-        /*$this->call(GridSeeder::class);
-        $this->call(EnlacesRapidosSeeder::class);
+        $this->call(VitrinaSeeder::class);
+        $this->call(AvisoSeeder::class);*/
+        $this->call(GridSeeder::class);
+        /*$this->call(EnlacesRapidosSeeder::class);
         $this->call(EcommerceFooterSeeder::class);
         $this->call(TemporizadorSeeder::class);
         $this->call(SliderProductosSeeder::class);*/
