@@ -1,12 +1,15 @@
-@if (!empty($p_elementos) && !empty($p_elementos->imagenes))
+@if (!empty($p_elemento) && !empty($p_elemento->imagenes))
     <div class="partials_contenedor_aviso">
         <!-- Swiper -->
-        <div class="swiper SwiperAviso-{{ $p_elementos->id }}">
+        <div class="swiper SwiperAviso-{{ $p_elemento->id }}">
             <div class="swiper-wrapper">
-                @foreach ($p_elementos->imagenes as $elemento)
+                @foreach ($p_elemento->imagenes as $elemento)
                     <div class="swiper-slide">
                         <a href="{{ $elemento['link'] }}">
                             <img src="{{ $elemento['imagen'] }}" alt="" />
+                            @if ($elemento['titulo'])
+                                <p>{{ $elemento['titulo'] }}</p>
+                            @endif
                         </a>
                     </div>
                 @endforeach
@@ -18,15 +21,15 @@
     </div>
 
     <script>
-        var swiper = new Swiper('.SwiperAviso-{{ $p_elementos->id }}', {
+        var swiper = new Swiper('.SwiperAviso-{{ $p_elemento->id }}', {
             slidesPerView: 4,
             spaceBetween: 0,
             navigation: {
-                nextEl: '.SwiperAviso-{{ $p_elementos->id }} .swiper-button-next',
-                prevEl: '.SwiperAviso-{{ $p_elementos->id }} .swiper-button-prev',
+                nextEl: '.SwiperAviso-{{ $p_elemento->id }} .swiper-button-next',
+                prevEl: '.SwiperAviso-{{ $p_elemento->id }} .swiper-button-prev',
             },
             pagination: {
-                el: '.SwiperAviso-{{ $p_elementos->id }} .swiper-pagination',
+                el: '.SwiperAviso-{{ $p_elemento->id }} .swiper-pagination',
                 clickable: true,
             },
             breakpoints: {

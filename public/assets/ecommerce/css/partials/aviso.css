@@ -18,6 +18,23 @@
     padding: 5px;
 }
 
+/* LINK */
+.partials_contenedor_aviso a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.partials_contenedor_aviso a p {
+    width: 140px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
 .partials_contenedor_aviso .swiper-slide img {
     width: 100%;
     height: auto;

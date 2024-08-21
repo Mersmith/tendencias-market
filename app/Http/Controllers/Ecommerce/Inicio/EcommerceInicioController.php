@@ -113,16 +113,32 @@ class EcommerceInicioController extends Controller
         return $mostrador;
     }
 
-    public function getEcommerceAviso($id)
+    public function getEcommerceVitrina($id)
     {
-        $grid_1 = Aviso::find($id);
-        if ($grid_1) {
-            $grid_1->imagenes = json_decode($grid_1->imagenes, true);
+        $vitrina = Vitrina::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($vitrina) {
+            $vitrina->imagenes = json_decode($vitrina->imagenes, true);
         } else {
-            $grid_1 = null;
+            $vitrina = null;
         }
 
-        return $grid_1;
+        return $vitrina;
+    }
+
+    public function getEcommerceAviso($id)
+    {
+        $aviso = Aviso::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($aviso) {
+            $aviso->imagenes = json_decode($aviso->imagenes, true);
+        } else {
+            $aviso = null;
+        }
+
+        return $aviso;
     }
 
     public function getEcommerceGrid($id)
@@ -147,18 +163,6 @@ class EcommerceInicioController extends Controller
         }
 
         return $categorias;
-    }
-
-    public function getEcommerceVitrina($id)
-    {
-        $data = Vitrina::find($id);
-        if ($data) {
-            $data->imagenes = json_decode($data->imagenes, true);
-        } else {
-            $data = null;
-        }
-
-        return $data;
     }
 
     public function getEcommerceTemporizador($id)

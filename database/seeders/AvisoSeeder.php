@@ -19,25 +19,25 @@ class AvisoSeeder extends Seeder
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
-                        'titulo' => 'Navidad',
+                        'titulo' => 'Titulo 1',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/aviso/aviso-tipo-1-1.jpg',
                         'link' => 'https://example.com/link1'
                     ],
                     [
                         'id' => 2,
-                        'titulo' => 'Juguetería',
+                        'titulo' => 'Titulo 2',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/aviso/aviso-tipo-1-2.jpg',
                         'link' => 'https://example.com/link2'
                     ],
                     [
                         'id' => 3,
-                        'titulo' => 'Televisores',
+                        'titulo' => 'Titulo 3',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/aviso/aviso-tipo-1-3.jpg',
                         'link' => 'https://example.com/link3'
                     ],
                     [
                         'id' => 4,
-                        'titulo' => 'Zapatillas',
+                        'titulo' => 'Titulo 4',
                         'imagen' => 'http://127.0.0.1:8000/assets/imagenes/aviso/aviso-tipo-1-4.jpg',
                         'link' => 'https://example.com/link4'
                     ]

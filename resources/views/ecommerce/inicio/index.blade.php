@@ -11,7 +11,7 @@
             <div class="g_contenido_pagina">
 
                 @include('ecommerce.partials.vitrina', [
-                    'p_elementos' => $data_vitrina_1,
+                    'p_elemento' => $data_vitrina_1,
                 ])
 
                 @include('ecommerce.partials.mostrador', [
@@ -23,11 +23,10 @@
                 ])
 
                 @include('ecommerce.partials.aviso', [
-                    'p_elementos' => $data_aviso_1,
+                    'p_elemento' => $data_aviso_1,
                 ])
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_2])
-
 
                 @include('ecommerce.partials.grid', [
                     'p_elementos' => $data_grid_1,
@@ -69,9 +68,9 @@
                     'p_elemento' => $data_mostrador_2,
                 ])
 
-                {{-- @include('ecommerce.partials.aviso', [
-                    'p_elementos' => $data_aviso_2,
-                ]) --}}
+                @include('ecommerce.partials.aviso', [
+                    'p_elemento' => $data_aviso_2,
+                ])
 
                 @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_5])
 
