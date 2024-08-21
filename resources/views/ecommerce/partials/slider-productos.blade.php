@@ -13,7 +13,7 @@
                 @foreach ($p_elementos['productos'] as $index => $producto)
                     <div class="swiper-slide">
                         <div>
-                            <a href="{{ $producto->producto_url }}">
+                            <a href="{{ url('product/' . $producto->producto_id . '/' . $producto->producto_url) }}">
                                 <div class="contenedor_imagen">
                                     <img src="{{ $producto->imagen_url }}" alt="Promoción {{ $index + 1 }}">
                                     @if ($producto->porcentaje_descuento)
