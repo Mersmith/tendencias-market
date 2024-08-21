@@ -164,14 +164,16 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceEnlaceRapido($id)
     {
-        $categorias = EnlacesRapidos::find($id);
-        if ($categorias) {
-            $categorias->enlaces = json_decode($categorias->enlaces, true);
+        $enlaces_rapidos = EnlacesRapidos::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($enlaces_rapidos) {
+            $enlaces_rapidos->enlaces = json_decode($enlaces_rapidos->enlaces, true);
         } else {
-            $categorias = null;
+            $enlaces_rapidos = null;
         }
 
-        return $categorias;
+        return $enlaces_rapidos;
     }
 
     public function getEcommerceTemporizador($id)

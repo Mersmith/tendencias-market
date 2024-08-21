@@ -52,17 +52,17 @@
                     'p_elemento' => $data_grid_4,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3]) --}}
+                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3]) 
 
                 @include('ecommerce.partials.slider-productos', [
                     'p_elemento' => $data_slide_producto_1,
                 ])
 
-                {{-- @include('ecommerce.partials.grid', [
+                @include('ecommerce.partials.grid', [
                     'p_elemento' => $data_grid_5,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_4]) --}}
+                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_4])
 
                 @include('ecommerce.partials.slider-productos', [
                     'p_elemento' => $data_slide_producto_2,
@@ -89,6 +89,6 @@
             </div>
         </div>
 
-        {{-- @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1]) --}}
+        @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1])
     </div>
 </x-ecommerce-layout>

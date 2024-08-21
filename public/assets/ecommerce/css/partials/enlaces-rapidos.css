@@ -2,8 +2,7 @@
     width: 100%;
     padding-top: 40px;
     padding-bottom: 60px;
-    background-color: #f6f6f6;
-    color: white;
+    background-color: var(--color-fondo-cuaternario);
 }
 
 .contendor_enlaces_rapidos .contenedor_enlaces {
@@ -53,7 +52,7 @@
     padding-right: 0.875rem;
     text-decoration: underline;
     letter-spacing: .1163rem;
-    color: var(--color-texto-cuaternario);
+    color: var(--color-texto-septenario);
 }
 
 .contendor_enlaces_rapidos .contenedor_control_mostrar span {
@@ -70,8 +69,7 @@
     margin-left: 2px;
 }
 
-/* RESPONSIVE TABLET */
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
 
     .contendor_enlaces_rapidos .contenedor_enlaces {
         grid-template-columns: repeat(2, 1fr);
@@ -79,11 +77,10 @@
 
 }
 
-/* RESPONSIVE MOVIL */
-@media (max-width: 700px) {
+/*@media (max-width: 700px) {
 
     .contendor_enlaces_rapidos .contenedor_enlaces {
         grid-template-columns: repeat(1, 1fr);
     }
 
-}
+}*/

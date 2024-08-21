@@ -28,7 +28,8 @@
                         <div class="contenedor_control_mostrar" x-show="cantidadElementos == 2">
                             <p @click="mostrarMas" x-show="!mostrarTodos">Mostrar más <span class="invertido">^</span>
                             </p>
-                            <p @click="mostrarMenos" x-show="mostrarTodos">Mostrar menos <span class="normal">^</span>
+                            <p @click="mostrarMenos" x-show="mostrarTodos" style="display: none;">Mostrar menos <span
+                                    class="normal">^</span>
                             </p>
                         </div>
                     </div>
@@ -50,7 +51,7 @@
 
                 anchoPantalla() {
                     const windowWidth = window.innerWidth;
-                    this.cantidadElementos = windowWidth > 900 ? 4 : 2;
+                    this.cantidadElementos = windowWidth > 1024 ? 4 : 2;
                 },
 
                 mostrarEnlaces(index) {
