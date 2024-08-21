@@ -13,7 +13,7 @@ use App\Models\SliderProductos;
 use App\Models\EnlacesRapidos;
 use App\Models\Vitrina;
 use App\Models\Temporizador;
-
+use Carbon\Carbon;
 class EcommerceInicioController extends Controller
 {
     public function __invoke()
@@ -41,13 +41,13 @@ class EcommerceInicioController extends Controller
         $data_grid_4 = $this->getEcommerceGrid(4);
         $data_grid_5 = $this->getEcommerceGrid(5);
 
+        $data_temporizador_1 = $this->getEcommerceTemporizador(1);
+        $data_temporizador_2 = $this->getEcommerceTemporizador(2);
+        $data_temporizador_3 = $this->getEcommerceTemporizador(3);
+
         $data_slide_producto = $this->getEcommerceSliderProductos(1);
 
         $data_slide_producto_descuentos = $this->getEcommerceSliderProductos(2);
-
-
-        $data_temporizador_1 = $this->getEcommerceTemporizador(1);
-        $dataSliderImagenTresElementosTiempo = $this->getEcommerceTemporizador(2);
 
         $data_enlaces_rapidos_1 = $this->getEcommerceEnlaceRapido(1);
 
@@ -65,7 +65,8 @@ class EcommerceInicioController extends Controller
                 'data_mostrador_2',
                 'data_mostrador_3',
                 'data_temporizador_1',
-                'dataSliderImagenTresElementosTiempo',
+                'data_temporizador_2',
+                'data_temporizador_3',
                 'data_aviso_1',
                 'data_grid_1',
                 'data_grid_2',
@@ -173,18 +174,25 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceTemporizador($id)
     {
-        $data = Temporizador::where('id', $id)
+        $temporizador = Temporizador::where('id', $id)
             ->where('fecha_fin', '>', now())
             ->where('activo', true)
             ->first();
 
-        if ($data) {
-            $data->imagenes = json_decode($data->imagenes, true);
+        if ($temporizador) {
+            $temporizador->imagenes = json_decode($temporizador->imagenes, true);
+
+            // Calcular la cantidad de días restantes
+            $fecha_fin = Carbon::parse($temporizador->fecha_fin);
+            $dias_restantes = now()->diffInDays($fecha_fin);
+
+            // Redondear a entero
+            $temporizador->dias = (int) $dias_restantes;
         } else {
-            $data = null;
+            $temporizador = null;
         }
 
-        return $data;
+        return $temporizador;
     }
 
     public function getEcommerceSliderProductos($id)

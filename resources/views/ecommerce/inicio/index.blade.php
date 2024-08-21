@@ -19,7 +19,15 @@
                 ])
 
                 @include('ecommerce.partials.temporizador', [
-                    'p_elementos' => $data_temporizador_1,
+                    'p_elemento' => $data_temporizador_1,
+                ])
+
+                @include('ecommerce.partials.temporizador', [
+                    'p_elemento' => $data_temporizador_2,
+                ])
+
+                @include('ecommerce.partials.temporizador', [
+                    'p_elemento' => $data_temporizador_3,
                 ])
 
                 @include('ecommerce.partials.aviso', [

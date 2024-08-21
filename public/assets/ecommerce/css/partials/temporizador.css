@@ -1,5 +1,7 @@
 /*CONTENEDOR SLIDER TIEMPO*/
 .partials_contenedor_temporizador {
+    position: relative;
+    width: 100%;
     padding: 10px;
     background-color: var(--color-fondo-secundario);
 }

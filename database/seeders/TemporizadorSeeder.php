@@ -20,8 +20,9 @@ class TemporizadorSeeder extends Seeder
         $temporizadores = [
             [
                 'nombre' => 'temporizador 1',
-                'titulo' => 'Solo x Hoy',
-                'fecha_fin' => Carbon::today()->endOfDay(),
+                'titulo' => 'Final de hoy',
+                'fecha_fin' => Carbon::today()->endOfDay(),//Final de hoy
+                'cantidad_mostrar' => 2,
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
@@ -43,8 +44,9 @@ class TemporizadorSeeder extends Seeder
             ],
             [
                 'nombre' => 'temporizador 2',
-                'titulo' => 'Solo x Hoy',
-                'fecha_fin' => Carbon::tomorrow()->endOfDay(),
+                'titulo' => 'Final de mañana',
+                'fecha_fin' => Carbon::tomorrow()->endOfDay(),//Final de mañana.
+                'cantidad_mostrar' => 3,
                 'imagenes' => json_encode([
                     [
                         'id' => 1,
@@ -66,8 +68,9 @@ class TemporizadorSeeder extends Seeder
             ],
             [
                 'nombre' => 'temporizador 3',
-                'titulo' => 'Solo x Hoy',
-                'fecha_fin' => Carbon::now()->addDays(7)->endOfDay(),
+                'titulo' => 'Final del día dentro de 7 días',
+                'fecha_fin' => Carbon::now()->addDays(7)->endOfDay(),// Final del día dentro de 7 días a partir de ahora.
+                'cantidad_mostrar' => 1,
                 'imagenes' => json_encode([
                     [
                         'id' => 1,

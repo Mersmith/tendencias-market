@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre')->unique();
             $table->string('titulo');
             $table->timestamp('fecha_fin')->nullable();
+            $table->integer('cantidad_mostrar');
             $table->json('imagenes');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 

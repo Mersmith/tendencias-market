@@ -9,6 +9,6 @@ class Temporizador extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'fecha_fin', 'imagenes', 'activo'];
+    protected $fillable = ['nombre', 'fecha_fin', 'cantidad_mostrar', 'imagenes', 'activo'];
 
 }
