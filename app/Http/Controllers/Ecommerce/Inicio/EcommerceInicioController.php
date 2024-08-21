@@ -199,7 +199,9 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceSliderProductos($id)
     {
-        $sliderProducto = SliderProductos::find($id);
+        $sliderProducto = SliderProductos::where('id', $id)
+            ->where('activo', true)
+            ->first();
 
         if ($sliderProducto) {
             $almacenEcommerceId = $sliderProducto->almacen_ecommerce_id;

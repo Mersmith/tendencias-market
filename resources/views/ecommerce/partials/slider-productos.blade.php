@@ -1,4 +1,4 @@
-@if (!empty($p_elemento) && !empty($p_elemento['productos']))
+@if (!empty($p_elemento) && $p_elemento['productos']->isNotEmpty())
 
     @include('ecommerce.partials.titulo', [
         'p_contenido' => $p_elemento['slider']['titulo'],
