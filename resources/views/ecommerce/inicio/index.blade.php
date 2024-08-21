@@ -3,14 +3,14 @@
     @section('descripcion', 'Tendencias Market')
 
     <div>
-        @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
+        {{-- @include('ecommerce.partials.banner', ['p_elemento' => $data_baner_1])
 
-        @include('ecommerce.partials.slider-principal', ['p_elemento' => $data_slider_principal_1])
+        @include('ecommerce.partials.slider-principal', ['p_elemento' => $data_slider_principal_1]) --}}
 
         <div class="g_centrar_contenido_pagina">
             <div class="g_contenido_pagina">
 
-                @include('ecommerce.partials.vitrina', [
+                {{-- @include('ecommerce.partials.vitrina', [
                     'p_elemento' => $data_vitrina_1,
                 ])
 
@@ -52,27 +52,27 @@
                     'p_elemento' => $data_grid_4,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3])
+                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_3]) --}}
 
-                {{-- include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_slide_producto,
-                ]) --}}
+                @include('ecommerce.partials.slider-productos', [
+                    'p_elemento' => $data_slide_producto_1,
+                ])
 
-                @include('ecommerce.partials.grid', [
+                {{-- @include('ecommerce.partials.grid', [
                     'p_elemento' => $data_grid_5,
                 ])
 
-                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_4])
+                @include('ecommerce.partials.banner', ['p_elemento' => $data_banner_4]) --}}
 
                 @include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_slide_producto,
+                    'p_elemento' => $data_slide_producto_2,
                 ])
 
-                {{-- @include('ecommerce.partials.slider-productos', [
-                    'p_elementos' => $data_slide_producto_descuentos,
-                ]) --}}
+                @include('ecommerce.partials.slider-productos', [
+                    'p_elemento' => $data_slide_producto_descuentos,
+                ])
 
-                @include('ecommerce.partials.mostrador', [
+                {{-- @include('ecommerce.partials.mostrador', [
                     'p_elemento' => $data_mostrador_2,
                 ])
 
@@ -84,11 +84,11 @@
 
                 @include('ecommerce.partials.mostrador', [
                     'p_elemento' => $data_mostrador_3,
-                ])
+                ]) --}}
 
             </div>
         </div>
 
-        @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1])
+        {{-- @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1]) --}}
     </div>
 </x-ecommerce-layout>

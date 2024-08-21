@@ -45,9 +45,10 @@ class EcommerceInicioController extends Controller
         $data_temporizador_2 = $this->getEcommerceTemporizador(2);
         $data_temporizador_3 = $this->getEcommerceTemporizador(3);
 
-        $data_slide_producto = $this->getEcommerceSliderProductos(1);
+        $data_slide_producto_1 = $this->getEcommerceSliderProductos(1);
+        $data_slide_producto_2 = $this->getEcommerceSliderProductos(2);
 
-        $data_slide_producto_descuentos = $this->getEcommerceSliderProductos(2);
+        $data_slide_producto_descuentos = $this->getEcommerceSliderProductos(3);
 
         $data_enlaces_rapidos_1 = $this->getEcommerceEnlaceRapido(1);
 
@@ -73,7 +74,8 @@ class EcommerceInicioController extends Controller
                 'data_grid_3',
                 'data_grid_4',
                 'data_grid_5',
-                'data_slide_producto',
+                'data_slide_producto_1',
+                'data_slide_producto_2',
                 'data_slide_producto_descuentos',
                 'data_aviso_2',
                 'data_enlaces_rapidos_1'
@@ -230,6 +232,13 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceProductosCategoria($almacenId, $categoriaId, $listaPrecioId)
     {
+        /*
+        1. Si trae producto, por más que no tenga imagen.
+        2. No trae producto, si no tiene su lista de precio id.
+        3. Si trae producto, tenga o no tenga descuento.
+        4. Si tiene descuento, trae el precio_oferta ya calculado, y si no tiene no lo trae.
+        */
+
         // Subconsulta para obtener el ID de la primera imagen para cada producto
         $subquery = DB::table('imagenables')
             ->join('imagens', 'imagenables.imagen_id', '=', 'imagens.id')
@@ -242,7 +251,7 @@ class EcommerceInicioController extends Controller
             ->joinSub($subquery, 'primera_imagen', function ($join) {
                 $join->on('imagens.id', '=', 'primera_imagen.primera_imagen_id');
             })
-            ->select('primera_imagen.imagenable_id', 'imagens.url as imagen_url');
+            ->select('primera_imagen.imagenable_id', 'imagens.url as imagen_url', 'imagens.descripcion as imagen_descripcion');
 
         // Consulta principal
         $query = DB::table('inventarios')
@@ -275,6 +284,7 @@ class EcommerceInicioController extends Controller
                 //DB::raw('MAX(inventarios.stock_minimo) as stock_minimo'),
                 //DB::raw('MAX(variacions.id) as variacion_id'),
                 'imagen_subquery.imagen_url',
+                'imagen_subquery.imagen_descripcion',
                 DB::raw('MAX(productos.nombre) as producto_nombre'),
                 DB::raw('MAX(productos.slug) as producto_url'),
                 DB::raw('MAX(marcas.nombre) as marca_nombre'),
@@ -296,6 +306,13 @@ class EcommerceInicioController extends Controller
 
     public function getEcommerceProductosDescuento($almacenId, $listaPrecioId)
     {
+        /*
+        1. Si trae producto, por más que no tenga imagen.
+        2. No trae producto, si no tiene su lista de precio id.
+        3. Si trae producto, que tengan solo descuento.
+        4. Si tiene descuento, trae el precio_oferta ya calculado, y si no tiene no lo trae.
+        */
+
         // Subconsulta para obtener el ID de la primera imagen para cada producto
         $subquery = DB::table('imagenables')
             ->join('imagens', 'imagenables.imagen_id', '=', 'imagens.id')
@@ -308,7 +325,7 @@ class EcommerceInicioController extends Controller
             ->joinSub($subquery, 'primera_imagen', function ($join) {
                 $join->on('imagens.id', '=', 'primera_imagen.primera_imagen_id');
             })
-            ->select('primera_imagen.imagenable_id', 'imagens.url as imagen_url');
+            ->select('primera_imagen.imagenable_id', 'imagens.url as imagen_url', 'imagens.descripcion as imagen_descripcion');
 
         $query = DB::table('inventarios')
             ->join('variacions', 'inventarios.variacion_id', '=', 'variacions.id')
@@ -318,7 +335,7 @@ class EcommerceInicioController extends Controller
                     ->where('producto_lista_precios.lista_precio_id', '=', $listaPrecioId)
                     ->where('producto_lista_precios.precio', '>', 0);
             })
-            ->leftJoin('producto_descuentos', function ($join) use ($listaPrecioId) {
+            ->join('producto_descuentos', function ($join) use ($listaPrecioId) {
                 $join->on('productos.id', '=', 'producto_descuentos.producto_id')
                     ->where('producto_descuentos.lista_precio_id', '=', $listaPrecioId)
                     ->whereDate('producto_descuentos.fecha_fin', '>', now()->format('Y-m-d'));
@@ -331,7 +348,6 @@ class EcommerceInicioController extends Controller
             })
             ->where('inventarios.almacen_id', $almacenId)
             ->where('inventarios.stock', '>', 0)
-            ->whereNotNull('producto_descuentos.porcentaje_descuento')
             ->select(
                 'productos.id as producto_id',
                 //DB::raw('MAX(inventarios.id) as inventario_id'),
@@ -340,6 +356,7 @@ class EcommerceInicioController extends Controller
                 //DB::raw('MAX(inventarios.stock_minimo) as stock_minimo'),
                 //DB::raw('MAX(variacions.id) as variacion_id'),
                 'imagen_subquery.imagen_url',
+                'imagen_subquery.imagen_descripcion',
                 DB::raw('MAX(productos.nombre) as producto_nombre'),
                 DB::raw('MAX(productos.slug) as producto_url'),
                 DB::raw('MAX(marcas.nombre) as marca_nombre'),
@@ -353,7 +370,7 @@ class EcommerceInicioController extends Controller
             )
             ->groupBy('productos.id')
             ->orderBy('productos.id', 'desc')
-            //->limit(18)
+            ->limit(18)
             ->get();
 
         return $query;

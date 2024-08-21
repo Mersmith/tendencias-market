@@ -1,28 +1,34 @@
-@if (!empty($p_elementos) && !empty($p_elementos['productos']))
+@if (!empty($p_elemento) && !empty($p_elemento['productos']))
 
     @include('ecommerce.partials.titulo', [
-        'p_contenido' => $p_elementos['slider']['titulo'],
+        'p_contenido' => $p_elemento['slider']['titulo'],
         'p_alineacion' => 'left',
         'p_color' => '#000000',
     ])
 
     <div class="partials_contenedor_slider_productos">
         <!-- Swiper -->
-        <div class="swiper SwiperSliderProducto">
+        <div class="swiper SwiperSliderProducto-{{ $p_elemento['id'] }}">
             <div class="swiper-wrapper">
-                @foreach ($p_elementos['productos'] as $index => $producto)
+                @foreach ($p_elemento['productos'] as $index => $producto)
                     <div class="swiper-slide">
                         <div>
                             <a href="{{ url('product/' . $producto->producto_id . '/' . $producto->producto_url) }}">
                                 <div class="contenedor_imagen">
-                                    <img src="{{ $producto->imagen_url }}" alt="Promoción {{ $index + 1 }}">
+                                    @if ($producto->imagen_url)
+                                        <img src="{{ $producto->imagen_url }}" alt="{{ $producto->imagen_descripcion }}">
+                                    @else
+                                        <img src="{{ asset('assets/imagenes/producto/producto-tipo-1-1.jpg') }}"
+                                            alt="">
+                                    @endif
+
                                     @if ($producto->porcentaje_descuento)
                                         <span>{{ $producto->porcentaje_descuento }}%</span>
                                     @endif
                                 </div>
                             </a>
                             <div class="marca">{{ $producto->marca_nombre }}</div>
-                            <div class="titulo">{{ $producto->producto_nombre }}</div>
+                            <div class="titulo">{{ $producto->producto_id . '' . $producto->producto_nombre }}</div>
 
                             @if ($producto->precio_oferta)
                                 <div class="precio_oferta">
@@ -53,15 +59,15 @@
     </div>
 
     <script>
-        var swiper = new Swiper('.SwiperSliderProducto', {
+        var swiper = new Swiper('.SwiperSliderProducto-{{ $p_elemento['id'] }}', {
             slidesPerView: 6,
             spaceBetween: 10,
             navigation: {
-                nextEl: '.SwiperSliderProducto .swiper-button-next',
-                prevEl: '.SwiperSliderProducto .swiper-button-prev',
+                nextEl: '.SwiperSliderProducto-{{ $p_elemento['id'] }} .swiper-button-next',
+                prevEl: '.SwiperSliderProducto-{{ $p_elemento['id'] }} .swiper-button-prev',
             },
             pagination: {
-                el: '.SwiperSliderProducto .swiper-pagination',
+                el: '.SwiperSliderProducto-{{ $p_elemento['id'] }} .swiper-pagination',
                 clickable: true,
             },
             breakpoints: {

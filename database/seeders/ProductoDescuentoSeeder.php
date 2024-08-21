@@ -20,7 +20,7 @@ class ProductoDescuentoSeeder extends Seeder
         $faker = Faker::create();
 
         // Obtener 50 variaciones aleatorias
-        $productos = Producto::inRandomOrder()->take(50)->get();
+        $productos = Producto::inRandomOrder()->take(30)->get();
 
         // Obtener 50 listas de precios aleatorias
         $listaPrecios = ListaPrecio::inRandomOrder()->take(50)->get();

@@ -16,7 +16,7 @@ class SliderProductosSeeder extends Seeder
         $slider_productos = [
             [
                 'nombre' => 'Slider1',
-                'titulo' => 'Productos novedosos',
+                'titulo' => 'Titulo 1',
                 'almacen_ecommerce_id' => 1,
                 'lista_precio_etiqueta_id' => 3,
                 'categoria_id' => 1,
@@ -25,7 +25,16 @@ class SliderProductosSeeder extends Seeder
             ],
             [
                 'nombre' => 'Slider2',
-                'titulo' => 'Productos en descuentos',
+                'titulo' => 'Titulo 2',
+                'almacen_ecommerce_id' => 1,
+                'lista_precio_etiqueta_id' => 3,
+                'categoria_id' => 2,
+                'descuento' => false,
+                'activo' => true
+            ],
+            [
+                'nombre' => 'Slider3',
+                'titulo' => 'Titulo 3',
                 'almacen_ecommerce_id' => 1,
                 'lista_precio_etiqueta_id' => 3,
                 'categoria_id' => null,
