@@ -33,6 +33,7 @@ class VariacionSeeder extends Seeder
                             'producto_id' => $producto->id,
                             'talla_id' => $talla->id,
                             'color_id' => $color->id,
+                            'activo' => true,
                         ]);
                     }
                 }
@@ -44,6 +45,7 @@ class VariacionSeeder extends Seeder
                         'producto_id' => $producto->id,
                         'talla_id' => $talla->id,
                         'color_id' => null,
+                        'activo' => true,
                     ]);
                 }
             }
@@ -54,6 +56,7 @@ class VariacionSeeder extends Seeder
                         'producto_id' => $producto->id,
                         'talla_id' => null,
                         'color_id' => $color->id,
+                        'activo' => true,
                     ]);
                 }
             }
@@ -63,6 +66,7 @@ class VariacionSeeder extends Seeder
                     'producto_id' => $producto->id,
                     'talla_id' => null,
                     'color_id' => null,
+                    'activo' => true,
                 ]);
             }
         }

@@ -279,6 +279,7 @@ class EcommerceInicioController extends Controller
             })
             ->where('inventarios.almacen_id', $almacenId)
             ->where('inventarios.stock', '>', 0)
+            ->where('productos.activo', true)
             ->where('productos.categoria_id', $categoriaId)
             ->select(
                 'productos.id as producto_id',
@@ -352,6 +353,7 @@ class EcommerceInicioController extends Controller
             })
             ->where('inventarios.almacen_id', $almacenId)
             ->where('inventarios.stock', '>', 0)
+            ->where('productos.activo', true)
             ->select(
                 'productos.id as producto_id',
                 //DB::raw('MAX(inventarios.id) as inventario_id'),

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class EcommercePaginaController extends Controller
+class EcommerceProductoController extends Controller
 {
     public function __invoke($id, $slug = null)
     {
@@ -83,7 +83,10 @@ class EcommercePaginaController extends Controller
         */
 
         $data_productos_variaciones = DB::table('productos')
-            ->join('variacions', 'productos.id', '=', 'variacions.producto_id')
+            ->join('variacions', function ($join) {
+                $join->on('productos.id', '=', 'variacions.producto_id')
+                    ->where('variacions.activo', true);
+            })
             ->join('inventarios', 'variacions.id', '=', 'inventarios.variacion_id')
             ->join('producto_lista_precios', function ($join) use ($listaPrecioEtiquetaId) {
                 $join->on('productos.id', '=', 'producto_lista_precios.producto_id')
@@ -116,7 +119,7 @@ class EcommercePaginaController extends Controller
                 'colors.nombre as color_nombre',
                 'colors.codigo_color',
                 'tallas.nombre as talla_nombre',
-                'marcas.nombre as marca_nombre',               
+                'marcas.nombre as marca_nombre',
                 'producto_lista_precios.precio_antiguo',
                 'producto_lista_precios.precio as precio_normal',
                 DB::raw('IF(producto_descuentos.porcentaje_descuento > 0 AND producto_descuentos.fecha_fin > NOW(), ROUND(producto_lista_precios.precio - (producto_lista_precios.precio * producto_descuentos.porcentaje_descuento / 100), 2), NULL) as precio_oferta'),
@@ -124,6 +127,7 @@ class EcommercePaginaController extends Controller
                 'producto_descuentos.fecha_fin as descuento_fecha_fin'
             )
             ->where('productos.id', $productoId)
+            ->where('productos.activo', true)
             ->where('inventarios.almacen_id', $almacenEcommerceId)
             ->where('inventarios.stock', '>', 0)
             ->get();

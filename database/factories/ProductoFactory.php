@@ -34,6 +34,7 @@ class ProductoFactory extends Factory
             'descripcion' => $this->faker->text(),
             'variacion_talla' => $this->faker->randomElement([true, false]),
             'variacion_color' => $this->faker->randomElement([true, false]),
+            'activo' => true,
         ];
     }
 }
