@@ -88,36 +88,34 @@ class AgregarCarritoLivewire extends Component
     {
         $user = Auth::user();
 
-        if ($user) {
-            dd($this->variacion_seleccionada);
-            if ($this->variacion_seleccionada) {
-                // Buscar o crear el carrito para el usuario autenticado
-                $cart = Carrito::firstOrCreate(['user_id' => $user->id]);
+        if (!$user || !$user->hasRole('comprador')) {
+            return;
+        }
 
-                // Verificar si el detalle del carrito con la variación ya existe
-                $cartItem = CarritoDetalle::where('carrito_id', $cart->id)
-                    ->where('variacion_id', $this->variacion_seleccionada->variacion_id)
-                    ->first();
+        if ($this->variacion_seleccionada) {
+            // Buscar o crear el carrito para el usuario autenticado
+            $cart = Carrito::firstOrCreate(['user_id' => $user->id]);
 
-                if ($cartItem) {
-                    // Si ya existe, sumamos la cantidad actual
-                    $cartItem->cantidad += $this->cantidad;
-                    $cartItem->save();
-                } else {
-                    // Si no existe, creamos un nuevo registro
-                    CarritoDetalle::create([
-                        'carrito_id' => $cart->id,
-                        'variacion_id' => $this->variacion_seleccionada->variacion_id,
-                        'cantidad' => $this->cantidad,
-                        'precio' => $this->variacion_seleccionada->precio_normal,
-                    ]);
-                }
+            // Verificar si el detalle del carrito con la variación ya existe
+            $cartItem = CarritoDetalle::where('carrito_id', $cart->id)
+                ->where('variacion_id', $this->variacion_seleccionada->variacion_id)
+                ->first();
 
-                session()->flash('message', 'Producto agregado al carrito');
-                $this->reset(['cantidad']);
+            if ($cartItem) {
+                // Si ya existe, sumamos la cantidad actual
+                $cartItem->cantidad += $this->cantidad;
+                $cartItem->save();
             } else {
-                session()->flash('message', 'ERROR');
+                // Si no existe, creamos un nuevo registro
+                CarritoDetalle::create([
+                    'carrito_id' => $cart->id,
+                    'variacion_id' => $this->variacion_seleccionada->variacion_id,
+                    'cantidad' => $this->cantidad,
+                    'precio' => $this->variacion_seleccionada->precio_normal,
+                ]);
             }
+
+            $this->reset(['cantidad']);
         }
     }
 
@@ -136,7 +134,7 @@ class AgregarCarritoLivewire extends Component
             $this->cantidad--;
         }
     }
-    
+
     public function render()
     {
         return view('livewire.ecommerce.producto.agregar-carrito-livewire');

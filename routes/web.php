@@ -34,9 +34,3 @@ Route::controller(CompradorController::class)->group(function () {
     Route::get('comprador/login', 'ver')->name('comprador.login.vista.ver');
     Route::post('comprador/login', 'login')->name('comprador.login.ingresar');
 });
-
-Route::controller(CompradorCarritoController::class)->group(function () {
-    Route::get('carrito', 'ver')->name('carrito.vista.verr');
-    Route::post('carrito/detalle/{id}/eliminar', 'eliminarDetalle')->name('carrito.detalle.eliminar');
-    Route::post('carrito/detalle/{id}/actualizar', 'actualizarCantidad')->name('carrito.detalle.actualizar');
-});

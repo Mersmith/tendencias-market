@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Comprador\Carrito;
 
-use App\Http\Controllers\CarritoDetalleController;
+use App\Http\Controllers\Comprador\CompradorCarritoController;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CarritoDetalle;
@@ -31,15 +31,22 @@ class DetalleCarritoLivewire extends Component
 
             if ($this->carrito) {
 
-                $detalles = app(CarritoDetalleController::class)
+                $detalles = app(CompradorCarritoController::class)
                     ->getEcommerceCarritoDetalle($almacenEcommerceId, $listaPrecioEtiquetaId, $this->carrito->id);
 
-                $this->cantidadItems = $detalles->count();
-                $this->totalGeneral = $detalles->reduce(function ($carry, $detalle) {
-                    return $carry + ($detalle->cantidad * $detalle->precio_normal);
-                }, 0);
+                if ($detalles && $detalles->isNotEmpty()) {
+                    $this->cantidadItems = $detalles->count();
+                    $this->totalGeneral = $detalles->reduce(function ($carry, $detalle) {
+                        return $carry + ($detalle->cantidad * $detalle->precio_normal);
+                    }, 0);
 
-                $this->carrito->detalle = $detalles;
+                    $this->carrito->detalle = $detalles;
+                } else {
+                    // Si no hay detalles en el carrito
+                    $this->cantidadItems = 0;
+                    $this->totalGeneral = 0;
+                    $this->carrito->detalle = collect();
+                }
             } else {
                 $this->cantidadItems = 0;
                 $this->totalGeneral = 0;

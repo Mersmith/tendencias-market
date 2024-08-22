@@ -90,26 +90,9 @@
             <button type="button" wire:click="incrementarCantidad"><i class="fa-solid fa-plus"></i></button>
         </div>
 
-        <p>Máximo {{ $variacion_seleccionada ? $variacion_seleccionada->stock : '' }} unidades.</p>
+        <p>Máximo {{ $variacion_seleccionada ? $variacion_seleccionada->stock : '' }} unidad(es).</p>
 
         <a wire:click="agregarCarrito" class="boton_agregar_carrito">Agregar al carrito</a>
-
-        <div>
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
-
-            @if (session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-        </div>
     </div>
-
-    {{-- <button wire:click="enviar()">Enviar</button> --}}
 
 </div>
