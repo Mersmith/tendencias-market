@@ -1,13 +1,13 @@
-@if ($data_footer_1)
+@if ($p_elementos)
 
-    @if (!empty($data_footer_1->enlaces_rapidos))
+    @if (!empty($p_elementos->enlaces_rapidos))
         <div x-data="dataEcommerceFooter">
             <div class="contenedor_enlaces_rapidos">
                 <div class="g_centrar_contenido_pagina">
                     <div class="g_contenido_pagina">
                         <div class="g_columna_12">
                             <div class="grid_contenedor_items">
-                                @foreach ($data_footer_1->enlaces_rapidos as $index => $data)
+                                @foreach ($p_elementos->enlaces_rapidos as $index => $data)
                                     <div class="contenedor_item">
                                         <!-- CONTENEDOR TITULO -->
                                         <div @click="toggleAccordion({{ $index }})" class="contenedor_titulo">
@@ -59,19 +59,19 @@
                     <!-- CONTENEDOR REDES - TERMINOS -->
                     <div class="contenedor_redes_terminos">
 
-                        @if (!empty($data_footer_1->redes_sociales))
+                        @if (!empty($p_elementos->redes_sociales))
                             <!-- CONTENEDOR REDES -->
                             <div class="contenedor_redes">
-                                @foreach ($data_footer_1->redes_sociales as $item)
+                                @foreach ($p_elementos->redes_sociales as $item)
                                     <a href="{{ $item['link'] }}" target="_blank">{!! $item['icono'] !!}</a>
                                 @endforeach
                             </div>
                         @endif
 
-                        @if (!empty($data_footer_1->terminos))
+                        @if (!empty($p_elementos->terminos))
                             <!-- CONTENEDOR TERMINOS -->
                             <div class="contenedor_terminos">
-                                @foreach ($data_footer_1->terminos as $item)
+                                @foreach ($p_elementos->terminos as $item)
                                     <a href="{{ $item['link'] }}" target="_blank">{{ $item['nombre'] }}</a>
                                 @endforeach
                             </div>
@@ -81,8 +81,8 @@
 
                     <!-- CONTENEDOR DERECHOS -->
                     <div class="contenedor_derechos">
-                        <p>{{ $data_footer_1->derechos }}</p>
-                        <span>{{ $data_footer_1->direccion }}</span>
+                        <p>{{ $p_elementos->derechos }}</p>
+                        <span>{{ $p_elementos->direccion }}</span>
                     </div>
                 </div>
             </div>

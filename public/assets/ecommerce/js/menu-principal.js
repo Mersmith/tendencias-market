@@ -60,10 +60,11 @@ function xDataMenuEcommerce() {
         },
 
         toggleContenedorSidebarSubcategorias(dataMenu) {
-            this.estadoNavSubcategoriasAbierto = true
-            this.dataSubMenu1 = dataMenu
+            if (dataMenu.subcategorias.length !== 0) {
+                this.estadoNavSubcategoriasAbierto = true
+                this.dataSubMenu1 = dataMenu
+            }
         },
-
 
         cerrarSidebars() {
             this.estadoAsideAbierto = false

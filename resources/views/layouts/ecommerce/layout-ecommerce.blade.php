@@ -36,7 +36,7 @@
     </main>
 
     @include('layouts.ecommerce.footer.footer', [
-        'p_elementos' => $data_footer_1,
+        'p_elementos' => $footer,
     ])
 
     <div class="contenedor_superponer" :x-show="estadoSuperponer" x-on:click="cerrarTodo"></div>

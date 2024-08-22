@@ -115,90 +115,102 @@
         </nav>
     </header>
 
-    <!-- CONTENEDOR SIDEBAR -->
-    <aside class="ecommerce_sidebar_categorias" :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
-        <!-- SIDEBAR CONTENEDOR -->
-        <div class="sidebar_contenedor">
-            <!-- SIDEBAR CABECERA -->
-            <div class="sidebar_cabecera">
-                <div class="saludo">¡Buen día!</div>
+    @if ($categorias)
+        <!-- CONTENEDOR SIDEBAR -->
+        <aside class="ecommerce_sidebar_categorias"
+            :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
+            <!-- SIDEBAR CONTENEDOR -->
+            <div class="sidebar_contenedor">
+                <!-- SIDEBAR CABECERA -->
+                <div class="sidebar_cabecera">
+                    <div class="saludo">¡Buen día!</div>
 
-                <span x-on:click="toggleContenedorSidebar">
-                    <i class="fa-solid fa-xmark"></i>
-                </span>
-            </div>
-
-            <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido">
-                <!-- CATEGORIAS -->
-                <div class="sidebar_cotenido_item">
-                    <ul class="sidebar_cotenido_item_ul">
-                        <h5>Categorias</h5>
-                        @foreach ($categorias as $categoria)
-                            <li x-on:click="toggleContenedorSidebarSubcategorias({{ json_encode($categoria) }})">
-                                <!-- SIDEBAR CONTENIDO ELEMENTO -->
-                                <div class="sidebar_cotenido_elemento">
-                                    <span>{{ $categoria['nombre'] }}</span>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <span x-on:click="toggleContenedorSidebar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
                 </div>
 
-                <!-- PIE -->
-                <div class="sidebar_cotenido_item sidebar_pie">
-                    <a href="#">
-                        <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
-                            alt="Tendencias Market" />
-                    </a>
+                <!-- SIDEBAR CONTENIDO -->
+                <div class="sidebar_contenido">
+                    <!-- CATEGORIAS -->
+                    <div class="sidebar_cotenido_item">
+                        <ul class="sidebar_cotenido_item_ul">
+                            <h5>Categorias</h5>
+                            @foreach ($categorias as $categoria)
+                                <li x-on:click="toggleContenedorSidebarSubcategorias({{ json_encode($categoria) }})">
+                                    <!-- SIDEBAR CONTENIDO ELEMENTO -->
+                                    <div class="sidebar_cotenido_elemento">
+                                        @if ($categoria['subcategorias'])
+                                            <span>{{ $categoria['nombre'] }}</span>
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        @else
+                                            <a href="{{ $categoria['url'] }} ">
+                                                <span>{{ $categoria['nombre'] }}</span>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <!-- PIE -->
+                    <div class="sidebar_cotenido_item sidebar_pie">
+                        <a href="#">
+                            <img src="{{ asset('assets/ecommerce/imagenes/logo/tendendecias-market-logo-computadora.svg') }}"
+                                alt="Tendencias Market" />
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </aside>
+        </aside>
 
-    <!-- CONTENEDOR SUBCATEGORIAS -->
-    <nav class="contenedor_sidebar_subcategorias" :x-show="estadoNavSubcategoriasAbierto">
-        <!-- SIDEBAR CONTENEDOR -->
-        <div class="sidebar_contenedor">
-            <!-- SIDEBAR CABECERA -->
-            <div class="sidebar_cabecera">
-                <div class="retroceder" x-on:click="cerrarSidebarSubcategorias">
-                    <i class="fa-solid fa-angle-left"></i>
-                    <span>Retroceder</span>
+        <!-- CONTENEDOR SUBCATEGORIAS -->
+        <nav class="contenedor_sidebar_subcategorias" :x-show="estadoNavSubcategoriasAbierto">
+            <!-- SIDEBAR CONTENEDOR -->
+            <div class="sidebar_contenedor">
+                <!-- SIDEBAR CABECERA -->
+                <div class="sidebar_cabecera">
+                    <div class="retroceder" x-on:click="cerrarSidebarSubcategorias">
+                        <i class="fa-solid fa-angle-left"></i>
+                        <span>Retroceder</span>
+                    </div>
+
+                    <span x-on:click="cerrarSidebars">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
                 </div>
 
-                <span x-on:click="cerrarSidebars">
-                    <i class="fa-solid fa-xmark"></i>
-                </span>
-            </div>
+                <div class="sidebar_cabecera_categoria">
+                    <a :href="dataSubMenu1.url" x-text="dataSubMenu1.nombre"></a>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
 
-            <div class="sidebar_cabecera_categoria">
-                <a :href="dataSubMenu1.url" x-text="dataSubMenu1.nombre"></a>
-                <i class="fa-solid fa-angle-right"></i>
-            </div>
-
-            <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido">
-                <div class="sidebar_cotenido_item">
-                    <ul class="sidebar_cotenido_item_ul">
-                        <template x-for="subcategoria in dataSubMenu1.subcategorias" :key="subcategoria.id">
-                            <li>
-                                <!-- SIDEBAR CONTENIDO ELEMENTO  -->
-                                <div class="sidebar_cotenido_elemento">
-                                    <a :href="subcategoria.url" class="sidebar_cotenido_elemento_imagen">
-                                        <div class="sidebar_contenedor_imagen">
-                                            <img :src="subcategoria.imagen_url" alt="">
-                                        </div>
-                                        <span x-text="subcategoria.nombre"></span>
-                                    </a>
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </div>
-                            </li>
-                        </template>
-                    </ul>
+                <!-- SIDEBAR CONTENIDO -->
+                <div class="sidebar_contenido">
+                    <div class="sidebar_cotenido_item">
+                        <ul class="sidebar_cotenido_item_ul">
+                            <template x-for="subcategoria in dataSubMenu1.subcategorias" :key="subcategoria.id">
+                                <li>
+                                    <!-- SIDEBAR CONTENIDO ELEMENTO  -->
+                                    <div class="sidebar_cotenido_elemento">
+                                        <a :href="subcategoria.url" class="sidebar_cotenido_elemento_imagen">
+                                            <div class="sidebar_contenedor_imagen">
+                                                <img :src="subcategoria.imagen_url ? subcategoria.imagen_url :
+                                                    '{{ asset('assets/imagenes/producto/producto-tipo-1-1.jpg') }}'"
+                                                    alt="">
+                                            </div>
+                                            <span x-text="subcategoria.nombre"></span>
+                                        </a>
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    @endif
+
 </div>

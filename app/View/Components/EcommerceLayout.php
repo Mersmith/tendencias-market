@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class EcommerceLayout extends Component
 {
-    public $data_footer_1;
+    public $footer;
     public $categorias;
 
     /**
@@ -17,10 +17,10 @@ class EcommerceLayout extends Component
      */
     public function __construct()
     {
-        $this->data_footer_1 = app(EcommerceLayoutController::class)->getEcommerceFooter(1);
-
-        $categoriaController = new CategoriaController();
+        $categoriaController = new EcommerceLayoutController();
+        $this->footer = $categoriaController->getEcommerceFooter(1);
         $this->categorias = $categoriaController->getEcommerceCategoriaAnidadas();
+        //dd($this->categorias);
     }
 
     /**
@@ -29,7 +29,7 @@ class EcommerceLayout extends Component
     public function render(): View
     {
         return view('layouts.ecommerce.layout-ecommerce', [
-            'data_footer_1' => $this->data_footer_1,
+            'footer' => $this->footer,
             'categorias' => $this->categorias,
         ]);
     }

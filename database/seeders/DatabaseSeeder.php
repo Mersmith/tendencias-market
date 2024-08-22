@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SedeSeeder::class);
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
-        $this->call(SerieSeeder::class);
+        $this->call(SerieSeeder::class);*/
         $this->call(CategoriaSeeder::class);
-        $this->call(MarcaSeeder::class);
+        /*$this->call(MarcaSeeder::class);
         $this->call(CategoriaMarcaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GridSeeder::class);
         $this->call(TemporizadorSeeder::class);
         $this->call(SliderProductosSeeder::class);
-        $this->call(EnlacesRapidosSeeder::class);*/
-        $this->call(EcommerceFooterSeeder::class);
+        $this->call(EnlacesRapidosSeeder::class);
+        $this->call(EcommerceFooterSeeder::class);*/
     }
 }
