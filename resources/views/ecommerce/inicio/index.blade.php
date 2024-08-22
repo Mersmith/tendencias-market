@@ -89,6 +89,6 @@
             </div>
         </div>
 
-        @include('ecommerce.partials.enlaces-rapidos', ['p_elementos' => $data_enlaces_rapidos_1])
+        @include('ecommerce.partials.enlaces-rapidos', ['p_elemento' => $data_enlaces_rapidos_1])
     </div>
 </x-ecommerce-layout>

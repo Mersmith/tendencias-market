@@ -1,19 +1,22 @@
-@if (!empty($p_elementos))
-    <div x-data="dataEnlacesRapidos()" x-init="initEnlacesRapidos()">
+@if (!empty($p_elemento) && !empty($p_elemento->enlaces))
+    <div x-data="dataEnlacesRapidos{{ $p_elemento->id }}()">
         <div class="contendor_enlaces_rapidos">
             <div class="g_centrar_contenido_pagina">
                 <div class="g_contenido_pagina">
                     <div class="g_columna_12">
-                        @include('ecommerce.partials.titulo-icono', [
-                            'p_contenido' => $p_elementos->nombre,
-                            'p_alineacion' => 'center',
-                            'p_color' => '#4a4a4a',
-                        ])
+
+                        @if ($p_elemento->nombre)
+                            @include('ecommerce.partials.titulo', [
+                                'p_contenido' => $p_elemento->nombre,
+                                'p_alineacion' => 'center',
+                                'p_color' => '#4a4a4a',
+                            ])
+                        @endif
 
                         <!-- CONTENEDOR ENLACES -->
-                        <div class="contenedor_enlaces">
-                            @foreach ($p_elementos->enlaces as $index => $categoria)
-                                <div x-show="mostrarEnlaces({{ $index }})">
+                        <div class="grid_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
+                            @foreach ($p_elemento->enlaces as $index => $categoria)
+                                <div class="item">
                                     <p>{{ $categoria['titulo'] }}</p>
                                     <ul>
                                         @foreach ($categoria['elementos'] as $elemento)
@@ -25,13 +28,15 @@
                         </div>
 
                         <!-- CONTENEDOR CONTROL -->
-                        <div class="contenedor_control_mostrar" x-show="cantidadElementos == 2">
-                            <p @click="mostrarMas" x-show="!mostrarTodos">Mostrar más <span class="invertido">^</span>
+                        <div class="contenedor_control_mostrar">
+                            <p x-show="!mostrarTodos" @click="mostrarTodos = true">
+                                Mostrar más <span class="invertido">^</span>
                             </p>
-                            <p @click="mostrarMenos" x-show="mostrarTodos" style="display: none;">Mostrar menos <span
-                                    class="normal">^</span>
+                            <p x-show="mostrarTodos" style="display: none;" @click="mostrarTodos = false">
+                                Mostrar menos <span class="normal">^</span>
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -39,33 +44,10 @@
     </div>
 
     <script>
-        function dataEnlacesRapidos() {
+        function dataEnlacesRapidos{{ $p_elemento->id }}() {
             return {
-                cantidadElementos: 4,
-                mostrarTodos: false,
-
-                initEnlacesRapidos() {
-                    this.anchoPantalla();
-                    window.addEventListener('resize', this.anchoPantalla.bind(this));
-                },
-
-                anchoPantalla() {
-                    const windowWidth = window.innerWidth;
-                    this.cantidadElementos = windowWidth > 1024 ? 4 : 2;
-                },
-
-                mostrarEnlaces(index) {
-                    return this.mostrarTodos || index < this.cantidadElementos;
-                },
-
-                mostrarMas() {
-                    this.mostrarTodos = true;
-                },
-
-                mostrarMenos() {
-                    this.mostrarTodos = false;
-                }
-            };
+                mostrarTodos: false
+            }
         }
     </script>
 @endif

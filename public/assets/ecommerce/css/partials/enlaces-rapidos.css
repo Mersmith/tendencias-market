@@ -5,38 +5,36 @@
     background-color: var(--color-fondo-cuaternario);
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces {
+.contendor_enlaces_rapidos .grid_mostrador {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces p {
+.contendor_enlaces_rapidos .grid_mostrador p {
     max-width: 100%;
     overflow: hidden;
     font-weight: 400;
     font-size: 1rem;
     margin: 0 auto 0.625rem;
     text-overflow: ellipsis;
-    color: #4a4a4a;
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces ul {
+.contendor_enlaces_rapidos .grid_mostrador ul {
     padding-left: 1rem;
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces ul li {
+.contendor_enlaces_rapidos .grid_mostrador ul li {
     list-style: disc;
-    color: #888;
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces ul li a {
+.contendor_enlaces_rapidos .grid_mostrador ul li a {
     text-decoration: underline;
     font-weight: 400;
     font-size: .875rem;
 }
 
-.contendor_enlaces_rapidos .contenedor_enlaces img {
+.contendor_enlaces_rapidos .grid_mostrador img {
     width: 100%;
     height: auto;
 }
@@ -45,6 +43,7 @@
 .contendor_enlaces_rapidos .contenedor_control_mostrar {
     margin-top: 20px;
     text-align: end;
+    display: none;
 }
 
 .contendor_enlaces_rapidos .contenedor_control_mostrar p {
@@ -71,16 +70,22 @@
 
 @media (max-width: 1024px) {
 
-    .contendor_enlaces_rapidos .contenedor_enlaces {
+    .contendor_enlaces_rapidos .grid_mostrador {
         grid-template-columns: repeat(2, 1fr);
     }
 
-}
-
-/*@media (max-width: 700px) {
-
-    .contendor_enlaces_rapidos .contenedor_enlaces {
-        grid-template-columns: repeat(1, 1fr);
+    /* Ocultar todos los elementos después del sexto por defecto */
+    .contendor_enlaces_rapidos .grid_mostrador .item:nth-child(n+3) {
+        display: none;
     }
 
-}*/
+    /* Mostrar todos los elementos cuando showAll es true */
+    .contendor_enlaces_rapidos .grid_mostrador.mostrar_todos .item:nth-child(n+3) {
+        display: block;
+    }
+
+    .contendor_enlaces_rapidos .contenedor_control_mostrar {
+        display: block;
+    }
+
+}
