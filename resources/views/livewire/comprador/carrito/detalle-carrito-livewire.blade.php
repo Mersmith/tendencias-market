@@ -58,7 +58,6 @@
                                         wire:click="incrementarCantidad({{ $detalle->carrito_detalle_id }})">+</button>
                                 </div>
                                 <div class="enlaces">
-                                    <button>Para después</button>
                                     <button
                                         wire:click="eliminarDetalle({{ $detalle->carrito_detalle_id }})">Eliminar</button>
                                 </div>
@@ -81,6 +80,11 @@
             </div>
 
             <div class="separacion"> </div>
+
+            <div class="monto">
+                <p class="texto">Descuento por promo:</p>
+                <span class="numero">- S/. {{ number_format($totalDescuento, 2) }}</span>
+            </div>
 
             <div class="monto">
                 <p class="texto">Subtotal:</p>

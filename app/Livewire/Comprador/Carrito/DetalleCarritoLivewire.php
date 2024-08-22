@@ -12,6 +12,7 @@ class DetalleCarritoLivewire extends Component
     public $carrito;
     public $cantidadItems;
     public $totalGeneral;
+    public $totalDescuento;
 
     public function mount()
     {
@@ -35,9 +36,24 @@ class DetalleCarritoLivewire extends Component
                     ->getEcommerceCarritoDetalle($almacenEcommerceId, $listaPrecioEtiquetaId, $this->carrito->id);
 
                 if ($detalles && $detalles->isNotEmpty()) {
+                    //dd($detalles);
                     $this->cantidadItems = $detalles->count();
+
                     $this->totalGeneral = $detalles->reduce(function ($carry, $detalle) {
-                        return $carry + ($detalle->cantidad * $detalle->precio_normal);
+                        // Usa el precio_oferta si existe, de lo contrario usa precio_normal
+                        $precioFinal = $detalle->precio_oferta ?? $detalle->precio_normal;
+
+                        return $carry + ($detalle->cantidad * $precioFinal);
+                    }, 0);
+
+                    $this->totalDescuento = $detalles->reduce(function ($carry, $detalle) {
+                        // Si hay un precio_oferta, calcular el descuento
+                        if ($detalle->precio_oferta) {
+                            $descuento = $detalle->precio_normal - $detalle->precio_oferta;
+                            return $carry + ($detalle->cantidad * $descuento);
+                        }
+
+                        return $carry;
                     }, 0);
 
                     $this->carrito->detalle = $detalles;
@@ -45,11 +61,13 @@ class DetalleCarritoLivewire extends Component
                     // Si no hay detalles en el carrito
                     $this->cantidadItems = 0;
                     $this->totalGeneral = 0;
+                    $this->totalDescuento = 0;
                     $this->carrito->detalle = collect();
                 }
             } else {
                 $this->cantidadItems = 0;
                 $this->totalGeneral = 0;
+                $this->totalDescuento = 0;
                 $this->carrito->detalle = collect();
             }
         }

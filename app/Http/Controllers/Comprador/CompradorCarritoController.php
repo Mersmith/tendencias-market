@@ -16,7 +16,6 @@ class CompradorCarritoController extends Controller
     {
         /*
         1. Si la variacion no tiene stock, no trae.
-        2. Si 
         */
 
         // Subconsulta para obtener el ID de la primera imagen para cada producto
