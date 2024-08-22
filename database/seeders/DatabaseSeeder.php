@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,14 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /*$this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(SedeSeeder::class);
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
-        $this->call(SerieSeeder::class);*/
+        $this->call(SerieSeeder::class);
         $this->call(CategoriaSeeder::class);
-        /*$this->call(MarcaSeeder::class);
+        $this->call(MarcaSeeder::class);
         $this->call(CategoriaMarcaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
@@ -42,6 +41,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TemporizadorSeeder::class);
         $this->call(SliderProductosSeeder::class);
         $this->call(EnlacesRapidosSeeder::class);
-        $this->call(EcommerceFooterSeeder::class);*/
+        $this->call(EcommerceFooterSeeder::class);
     }
 }

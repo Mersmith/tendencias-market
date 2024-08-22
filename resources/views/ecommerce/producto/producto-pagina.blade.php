@@ -1,6 +1,6 @@
 <x-ecommerce-layout>
-    @section('tituloPagina', $producto->nombre)
-    @section('descripcion', $producto->descripcion)
+    @section('tituloPagina', $producto->producto_nombre)
+    @section('descripcion', $producto->producto_descripcion)
 
     <div class="contenedor_pagina_producto">
         <div class="centrar">
@@ -18,7 +18,7 @@
 
                         <!-- CABECERA -->
                         <div class="cabecera">
-                            <h2 class="producto_nombre">{{ $producto->nombre }}</h2>
+                            <h2 class="producto_nombre">{{ $producto->producto_nombre }}</h2>
                             <h3 class="producto_marca">Marca <span>{{ $producto->marca_nombre }}</span></h3>
                         </div>
 
@@ -34,7 +34,7 @@
                             <div class="item_precio">
                                 <div class="texto">Precio</div>
                                 <div class="precio {{ !$producto->precio_oferta ? 'precio_oferta' : 'precio_normal' }}">
-                                    S/ {{ $producto->precio }}
+                                    S/ {{ $producto->precio_normal }}
 
                                     @if ($producto->porcentaje_descuento)
                                         <span class="descuento">

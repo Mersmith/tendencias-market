@@ -4,7 +4,6 @@ namespace App\Livewire\Ecommerce\Producto;
 
 use App\Models\Carrito;
 use App\Models\CarritoDetalle;
-use App\Models\Variacion;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,6 +89,7 @@ class AgregarCarritoLivewire extends Component
         $user = Auth::user();
 
         if ($user) {
+            dd($this->variacion_seleccionada);
             if ($this->variacion_seleccionada) {
                 // Buscar o crear el carrito para el usuario autenticado
                 $cart = Carrito::firstOrCreate(['user_id' => $user->id]);
@@ -109,7 +109,7 @@ class AgregarCarritoLivewire extends Component
                         'carrito_id' => $cart->id,
                         'variacion_id' => $this->variacion_seleccionada->variacion_id,
                         'cantidad' => $this->cantidad,
-                        'precio' => $this->variacion_seleccionada->precio,
+                        'precio' => $this->variacion_seleccionada->precio_normal,
                     ]);
                 }
 
@@ -136,12 +136,7 @@ class AgregarCarritoLivewire extends Component
             $this->cantidad--;
         }
     }
-
-    public function enviar()
-    {
-        dd($this->carrito);
-    }
-
+    
     public function render()
     {
         return view('livewire.ecommerce.producto.agregar-carrito-livewire');

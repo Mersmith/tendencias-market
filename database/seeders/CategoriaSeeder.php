@@ -30,7 +30,7 @@ class CategoriaSeeder extends Seeder
             ]);
 
             // Crear subcategorías
-            /*for ($j = 1; $j <= 15; $j++) {
+            for ($j = 1; $j <= 15; $j++) {
                 $nombreHijo = 'SUB ' . $faker->word . ' ' . $faker->word;
                 $hijo = Categoria::create([
                     'nombre' => $nombreHijo,
@@ -41,7 +41,7 @@ class CategoriaSeeder extends Seeder
                     'categoria_padre_id' => $padre->id,
                     'orden' => $j,
                 ]);
-            }*/
+            }
         }
     }
 }
