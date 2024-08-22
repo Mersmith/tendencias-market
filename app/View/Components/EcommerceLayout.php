@@ -2,9 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Http\Controllers\Ecommerce\Layout\EcommerceLayoutController;
 use App\Http\Controllers\Erp\CategoriaController;
-use App\Http\Controllers\Erp\EcommerceFooterController;
-use App\Models\Banner;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -18,7 +17,7 @@ class EcommerceLayout extends Component
      */
     public function __construct()
     {
-        $this->data_footer_1 = app(EcommerceFooterController::class)->getEcommerceFooter(1);
+        $this->data_footer_1 = app(EcommerceLayoutController::class)->getEcommerceFooter(1);
 
         $categoriaController = new CategoriaController();
         $this->categorias = $categoriaController->getEcommerceCategoriaAnidadas();
