@@ -16,4 +16,9 @@ class Comprador extends Model
         return $this->hasMany(CompradorDireccion::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

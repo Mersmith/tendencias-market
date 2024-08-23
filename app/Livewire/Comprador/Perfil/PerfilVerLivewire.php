@@ -15,6 +15,9 @@ class PerfilVerLivewire extends Component
     public $celular;
     public $email;
 
+    public $clave_actual;
+    public $clave_nueva;
+
     public function mount()
     {
         $comprador = Comprador::where('user_id', Auth::id())->firstOrFail();
@@ -28,7 +31,7 @@ class PerfilVerLivewire extends Component
         $this->email = $comprador->email;
     }
 
-    public function actualizar()
+    public function actualizarDatos()
     {
         // Validar los datos
         $validatedData = $this->validate([
@@ -50,6 +53,35 @@ class PerfilVerLivewire extends Component
 
         // Redirigir con un mensaje de éxito
         session()->flash('success', 'Perfil actualizado correctamente.');
+    }
+
+    public function actualizarClave()
+    {
+        // Validar las contraseñas
+        $validatedData = $this->validate([
+            'clave_actual' => 'required|string',
+            'clave_nueva' => 'required|string|min:8',
+        ]);
+
+        // Obtener el comprador autenticado
+        $comprador = Comprador::where('user_id', Auth::id())->firstOrFail();
+
+        // Verificar si la contraseña actual coincide
+        if (!\Hash::check($this->clave_actual, $comprador->user->password)) {
+            $this->addError('clave_actual', 'La contraseña actual no es correcta.');
+            return;
+        }
+
+        // Actualizar la contraseña con la nueva
+        $comprador->user->update([
+            'password' => bcrypt($this->clave_nueva),
+        ]);
+
+        // Limpiar los campos de la contraseña después de la actualización
+        $this->reset(['clave_actual', 'clave_nueva']);
+
+        // Redirigir con un mensaje de éxito
+        session()->flash('success', 'Contraseña actualizada correctamente.');
     }
 
     public function render()
