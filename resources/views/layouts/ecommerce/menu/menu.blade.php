@@ -41,10 +41,30 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <a href="{{ route('comprador.login.vista.ver') }}">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Cuenta</span>
-                    </a>
+                    <x-dropdown align="right" width="60">
+                        <x-slot name="trigger">
+                            <a>
+                                <i class="fa-regular fa-user"></i>
+                                <span>Cuenta</span>
+                            </a>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            @if (Auth::check() && Auth::user()->hasRole('comprador'))
+                                <a>Perfil</a>
+                                <a>Compras</a>
+                                <a>Direccion</a>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();">Cerrar</a>
+                                </form>
+                            @else
+                                <a href="{{ route('comprador.login.vista.ver') }}">Iniciar sesión</a>
+                                <a href="#">Registrarse</a>
+                            @endif
+                        </x-slot>
+                    </x-dropdown>
                 </li>
 
                 <!-- ITEM FAVORITOS -->
@@ -56,12 +76,12 @@
                 </li>
 
                 <!-- ITEM PUNTOS  -->
-                {{--<li>
+                {{-- <li>
                     <a href="#">
                         <i class="fa-regular fa-circle-dot"></i>
                         <span>Puntos</span>
                     </a>
-                </li>--}}
+                </li> --}}
 
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
