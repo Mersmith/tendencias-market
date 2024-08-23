@@ -22,6 +22,7 @@
                     <div>
                         <button wire:click="editDireccion({{ $direccion->id }})">EDITAR</button>
                         <button wire:click="confirmDelete({{ $direccion->id }})">Eliminar</button>
+                        <button wire:click="establecerPrincipal({{ $direccion->id }})">Establecer principal</button>
                     </div>
                 </div>
                 <br>

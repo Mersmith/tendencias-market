@@ -35,7 +35,7 @@ class DireccionTodasLivewire extends Component
         $comprador = Auth::user()->comprador;
 
         if ($comprador) {
-            $this->direcciones = $comprador->direcciones;
+            $this->direcciones = $comprador->direcciones()->orderBy('es_principal', 'desc')->get();
         } else {
             $this->direcciones = collect();
         }
@@ -133,6 +133,24 @@ class DireccionTodasLivewire extends Component
         $this->editModalVisible = false;
         $this->mount();
         $this->resetValuesForm();
+    }
+
+    public function establecerPrincipal($direccionId)
+    {
+        $comprador = Auth::user()->comprador;
+
+        // Desactivar la dirección principal actual
+        CompradorDireccion::where('comprador_id', $comprador->id)
+            ->where('es_principal', true)
+            ->update(['es_principal' => false]);
+
+        // Establecer la nueva dirección como principal
+        CompradorDireccion::where('id', $direccionId)
+            ->where('comprador_id', $comprador->id)
+            ->update(['es_principal' => true]);
+
+        // Recargar las direcciones para reflejar el cambio
+        $this->mount();
     }
 
     public function resetValuesForm()
