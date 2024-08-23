@@ -204,3 +204,5 @@ php artisan make:seeder ProvinciasSeeder
 php artisan make:seeder DistritosSeeder
 
 php artisan make:model CompradorDireccion -mfsc
+
+php artisan make:livewire Comprador/Direccion/DireccionTodasLivewire

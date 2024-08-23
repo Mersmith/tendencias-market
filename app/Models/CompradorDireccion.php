@@ -28,4 +28,19 @@ class CompradorDireccion extends Model
     {
         return $this->belongsTo(Comprador::class);
     }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
+
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class);
+    }
 }
