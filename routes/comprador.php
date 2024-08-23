@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\Comprador\CompradorCarritoController;
+use App\Http\Controllers\Comprador\CompradorPerfilController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return "COMPRADOR";
-})->name('inicio');
-
+Route::controller(CompradorPerfilController::class)->group(function () {
+    Route::get('/', 'ver')->name('perfil.vista.ver');
+});
 
 Route::controller(CompradorCarritoController::class)->group(function () {
     Route::get('carrito', 'ver')->name('carrito.vista.ver');

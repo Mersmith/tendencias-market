@@ -21,7 +21,7 @@ class CompradorController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->hasRole('comprador')) {
-                return redirect()->route('comprador.inicio');
+                return redirect()->route('comprador.perfil.vista.ver');
             }
             Auth::logout();
             return redirect()->back()->withErrors(['email' => 'No tienes permisos para acceder como comprador.']);
