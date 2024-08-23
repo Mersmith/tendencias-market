@@ -1,0 +1,4 @@
+.comprador_menu_pricipal{
+    display: flex;
+    flex-direction: column;
+}

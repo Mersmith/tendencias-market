@@ -1,3 +1,5 @@
+@include('layouts.comprador.css')
+
 <div class="contenedor_layout_comprador">
     <div class="centrar">
         <div class="grid_layout_cliente">

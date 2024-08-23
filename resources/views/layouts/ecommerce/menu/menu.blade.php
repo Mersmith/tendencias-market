@@ -51,9 +51,12 @@
 
                         <x-slot name="content">
                             @if (Auth::check() && Auth::user()->hasRole('comprador'))
-                                <a>Perfil</a>
-                                <a>Compras</a>
-                                <a>Direccion</a>
+                                <a href="{{ route('comprador.perfil.vista.ver') }}">Perfil</a>
+                                <a>Mis Compras</a>
+                                <a href="">Configurar mi cuenta</a>
+                                <a href="">Direcciones</a>
+                                <a href="">Reembolso</a>
+                                <a href="">Favoritos</a>
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
