@@ -81,4 +81,9 @@ class User extends Authenticatable
             $query->where('name', $permissionName);
         })->exists();
     }
+
+    public function comprador()
+    {
+        return $this->hasOne(Comprador::class, 'user_id', 'id');
+    }
 }
