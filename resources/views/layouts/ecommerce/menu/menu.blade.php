@@ -41,7 +41,7 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <a href="#">
+                    <a href="{{ route('comprador.login.vista.ver') }}">
                         <i class="fa-regular fa-user"></i>
                         <span>Cuenta</span>
                     </a>
@@ -56,21 +56,19 @@
                 </li>
 
                 <!-- ITEM PUNTOS  -->
-                <li>
+                {{--<li>
                     <a href="#">
                         <i class="fa-regular fa-circle-dot"></i>
                         <span>Puntos</span>
                     </a>
-                </li>
+                </li>--}}
 
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
-                    <a href="#">
+                    <a href="{{ route('comprador.carrito.vista.ver') }}">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Carrito</span>
-                        <div class="carrito_numero">
-                            <p>0</p>
-                        </div>
+                        @livewire('ecommerce.menu.menu-carrito-livewire')
                     </a>
                 </li>
             </ul>

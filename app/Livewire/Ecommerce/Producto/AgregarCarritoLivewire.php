@@ -113,6 +113,8 @@ class AgregarCarritoLivewire extends Component
                     'cantidad' => $this->cantidad,
                     'precio' => $this->variacion_seleccionada->precio_normal,
                 ]);
+
+                $this->dispatch('handleCantidadDetalleCarritoOn', $user->id);
             }
 
             $this->reset(['cantidad']);

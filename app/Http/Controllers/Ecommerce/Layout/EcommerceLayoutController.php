@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Ecommerce\Layout;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrito;
 use App\Models\EcommerceFooter;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EcommerceLayoutController extends Controller
 {
@@ -82,4 +84,27 @@ class EcommerceLayoutController extends Controller
 
         return $categorias_anidadas;
     }
+
+    public function getEcommerceCantidadItemsCarrito()
+    {
+
+        $user = Auth::user();
+
+        if (!$user || !$user->hasRole('comprador')) {
+            return 0; // Retorna 0 si el usuario no está autenticado o no es un comprador
+        }
+
+        // Busca el carrito asociado al usuario
+        $carrito = Carrito::where('user_id', $user->id)->first();
+
+        if (!$carrito) {
+            return 0; // Retorna 0 si no se encuentra un carrito para el usuario
+        }
+
+        // Cuenta los ítems en el carrito
+        $cantidadItems = $carrito->detalle()->count();
+
+        return $cantidadItems;
+    }
+
 }

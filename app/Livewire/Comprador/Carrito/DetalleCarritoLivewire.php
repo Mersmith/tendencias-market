@@ -95,10 +95,14 @@ class DetalleCarritoLivewire extends Component
 
     public function eliminarDetalle($detalleId)
     {
+        $user = Auth::user();
+
         $detalle = CarritoDetalle::find($detalleId);
         if ($detalle) {
             $detalle->delete();
             $this->actualizarCarrito();
+
+            $this->dispatch('handleCantidadDetalleCarritoOn', $user->id);
         }
     }
 
