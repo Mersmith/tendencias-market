@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(CompradorPerfilController::class)->group(function () {
     Route::get('/', 'ver')->name('perfil.vista.ver');
+    Route::put('/', 'actualizar')->name('perfil.actualizar');
 });
 
 Route::controller(CompradorCarritoController::class)->group(function () {
