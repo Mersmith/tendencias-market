@@ -202,3 +202,5 @@ php artisan make:migration create_distrito_table
 php artisan make:seeder DepartamentosSeeder
 php artisan make:seeder ProvinciasSeeder
 php artisan make:seeder DistritosSeeder
+
+php artisan make:model CompradorDireccion -mfsc

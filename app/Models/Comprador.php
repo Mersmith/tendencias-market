@@ -11,4 +11,9 @@ class Comprador extends Model
 
     protected $guarded = ['id', 'created_at', 'update_at'];
 
+    public function direcciones()
+    {
+        return $this->hasMany(CompradorDireccion::class);
+    }
+
 }
