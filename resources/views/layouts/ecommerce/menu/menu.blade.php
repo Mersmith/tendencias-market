@@ -76,12 +76,12 @@
                 </li>
 
                 <!-- ITEM PUNTOS  -->
-                {{-- <li>
+                <li>
                     <a href="#">
                         <i class="fa-regular fa-circle-dot"></i>
                         <span>Puntos</span>
                     </a>
-                </li> --}}
+                </li>
 
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
