@@ -11,24 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class DireccionTodasLivewire extends Component
 {
     public $direcciones;
-    public $editingDireccion;
+    public $direccion_seleccionada;
     public $editModalVisible = false;
     public $deleteModalVisible = false;
-    public $deleteDireccionId;
+    public $newModalVisible = false;
 
-    // Variables para los selects anidados
     public $departamentos;
     public $provincias = [];
     public $distritos = [];
+    public $departamento_id = null;
+    public $provincia_id = null;
+    public $distrito_id = null;
+    public $recibe_nombres = null;
+    public $recibe_celular = null;
+    public $direccion = null;
+    public $direccion_numero = null;
+    public $codigo_postal = null;
 
-    public $selectedDepartamento = null;
-    public $selectedProvincia = null;
-    public $selectedDistrito = null;
-    public $edit_recibe_nombres = null;
-    public $edit_recibe_celular = null;
-    public $edit_direccion = null;
-    public $edit_direccion_numero = null;
-    public $edit_codigo_postal = null;
+    public $eliminar_direccion_id;
 
     public function mount()
     {
@@ -40,48 +40,25 @@ class DireccionTodasLivewire extends Component
             $this->direcciones = collect();
         }
 
-        // Cargar todos los departamentos al montar el componente
         $this->departamentos = Departamento::all();
     }
 
-    public function editDireccion($direccionId)
+    public function updatedDepartamentoId($value)
     {
-        $this->editingDireccion = CompradorDireccion::find($direccionId);
-        $this->edit_recibe_nombres = $this->editingDireccion->recibe_nombres;
-        $this->edit_recibe_celular = $this->editingDireccion->recibe_celular;
-        $this->edit_direccion = $this->editingDireccion->direccion;
-        $this->edit_direccion_numero = $this->editingDireccion->direccion_numero;
-        $this->edit_codigo_postal = $this->editingDireccion->codigo_postal;
-
-
-        $this->editModalVisible = true;
-
-        // Cargar provincias y distritos según la dirección a editar
-        $this->selectedDepartamento = $this->editingDireccion->departamento_id;
-        $this->loadProvincias();
-        $this->selectedProvincia = $this->editingDireccion->provincia_id;
-        $this->loadDistritos();
-        $this->selectedDistrito = $this->editingDireccion->distrito_id;
-    }
-
-    public function updatedSelectedDepartamento($value)
-    {
-        // Reiniciar provincias y distritos cuando se cambia el departamento
-        $this->selectedProvincia = null;
+        $this->provincia_id = null;
         $this->provincias = [];
         $this->distritos = [];
-        $this->selectedDistrito = null;
+        $this->distrito_id = null;
 
         if ($value) {
             $this->loadProvincias();
         }
     }
 
-    public function updatedSelectedProvincia($value)
+    public function updatedProvinciaId($value)
     {
-        // Reiniciar distritos cuando se cambia la provincia
         $this->distritos = [];
-        $this->selectedDistrito = null;
+        $this->distrito_id = null;
 
         if ($value) {
             $this->loadDistritos();
@@ -90,49 +67,102 @@ class DireccionTodasLivewire extends Component
 
     public function loadProvincias()
     {
-        if (!is_null($this->selectedDepartamento)) {
-            $this->provincias = Provincia::where('departamento_id', $this->selectedDepartamento)->get();
+        if (!is_null($this->departamento_id)) {
+            $this->provincias = Provincia::where('departamento_id', $this->departamento_id)->get();
         }
     }
 
     public function loadDistritos()
     {
-        if (!is_null($this->selectedProvincia)) {
-            $this->distritos = Distrito::where('provincia_id', $this->selectedProvincia)->get();
+        if (!is_null($this->provincia_id)) {
+            $this->distritos = Distrito::where('provincia_id', $this->provincia_id)->get();
         }
+    }
+
+    public function createDireccion()
+    {
+        $direccion = new CompradorDireccion();
+        $direccion->comprador_id = Auth::user()->comprador->id;
+        $direccion->recibe_nombres = $this->recibe_nombres;
+        $direccion->recibe_celular = $this->recibe_celular;
+        $direccion->direccion = $this->direccion;
+        $direccion->direccion_numero = $this->direccion_numero;
+        $direccion->codigo_postal = $this->codigo_postal;
+        $direccion->departamento_id = $this->departamento_id;
+        $direccion->provincia_id = $this->provincia_id;
+        $direccion->distrito_id = $this->distrito_id;
+
+        $direccion->save();
+
+        $this->newModalVisible = false;
+        $this->mount();
+        $this->resetValuesForm();
+    }
+
+    public function editDireccion($direccionId)
+    {
+        $this->direccion_seleccionada = CompradorDireccion::find($direccionId);
+        $this->recibe_nombres = $this->direccion_seleccionada->recibe_nombres;
+        $this->recibe_celular = $this->direccion_seleccionada->recibe_celular;
+        $this->direccion = $this->direccion_seleccionada->direccion;
+        $this->direccion_numero = $this->direccion_seleccionada->direccion_numero;
+        $this->codigo_postal = $this->direccion_seleccionada->codigo_postal;
+
+        $this->editModalVisible = true;
+
+        $this->departamento_id = $this->direccion_seleccionada->departamento_id;
+        $this->loadProvincias();
+        $this->provincia_id = $this->direccion_seleccionada->provincia_id;
+        $this->loadDistritos();
+        $this->distrito_id = $this->direccion_seleccionada->distrito_id;
     }
 
     public function updateDireccion()
     {
-        // Actualizar la dirección con los IDs seleccionados
-        $this->editingDireccion->recibe_nombres = $this->edit_recibe_nombres;
-        $this->editingDireccion->recibe_celular = $this->edit_recibe_celular;
-        $this->editingDireccion->direccion = $this->edit_direccion;
-        $this->editingDireccion->direccion_numero = $this->edit_direccion_numero;
-        $this->editingDireccion->codigo_postal = $this->edit_codigo_postal;
+        $this->direccion_seleccionada->recibe_nombres = $this->recibe_nombres;
+        $this->direccion_seleccionada->recibe_celular = $this->recibe_celular;
+        $this->direccion_seleccionada->direccion = $this->direccion;
+        $this->direccion_seleccionada->direccion_numero = $this->direccion_numero;
+        $this->direccion_seleccionada->codigo_postal = $this->codigo_postal;
 
-        $this->editingDireccion->departamento_id = $this->selectedDepartamento;
-        $this->editingDireccion->provincia_id = $this->selectedProvincia;
-        $this->editingDireccion->distrito_id = $this->selectedDistrito;
+        $this->direccion_seleccionada->departamento_id = $this->departamento_id;
+        $this->direccion_seleccionada->provincia_id = $this->provincia_id;
+        $this->direccion_seleccionada->distrito_id = $this->distrito_id;
 
-        $this->editingDireccion->save();
+        $this->direccion_seleccionada->save();
         $this->editModalVisible = false;
-        $this->mount(); // Refrescar las direcciones después de la actualización
+        $this->mount();
+        $this->resetValuesForm();
+    }
+
+    public function resetValuesForm()
+    {
+        $this->reset([
+            'recibe_nombres',
+            'recibe_celular',
+            'direccion',
+            'direccion_numero',
+            'codigo_postal',
+            'departamento_id',
+            'provincia_id',
+            'distrito_id',
+            'eliminar_direccion_id',
+        ]);
     }
 
     public function confirmDelete($direccionId)
     {
-        $this->deleteDireccionId = $direccionId;
+        $this->eliminar_direccion_id = $direccionId;
         $this->deleteModalVisible = true;
     }
 
     public function deleteDireccion()
     {
-        CompradorDireccion::destroy($this->deleteDireccionId);
+        CompradorDireccion::destroy($this->eliminar_direccion_id);
         $this->deleteModalVisible = false;
-        $this->mount(); // Refrescar las direcciones después de la eliminación
+        $this->mount();
+        $this->resetValuesForm();
     }
-
 
     public function render()
     {

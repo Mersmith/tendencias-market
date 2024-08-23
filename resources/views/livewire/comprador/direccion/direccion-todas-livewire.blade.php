@@ -1,4 +1,7 @@
 <div>
+    <!-- Botón para abrir el modal de nueva dirección -->
+    <button wire:click="$set('newModalVisible', true)">Agregar Nueva Dirección</button>
+
     <div>
         @if ($direcciones->isEmpty())
             <p>No tienes direcciones registradas.</p>
@@ -32,27 +35,27 @@
             <div class="modal-content">
                 <h3>Editar Dirección</h3>
 
-                <input type="text" wire:model.live="edit_recibe_nombres">
-                <input type="text" wire:model.live="edit_recibe_celular" >
-                <input type="text" wire:model.live="edit_direccion" >
-                <input type="text" wire:model.live="edit_direccion_numero" >
-                <input type="text" wire:model.live="edit_codigo_postal" >
+                <input type="text" wire:model.live="recibe_nombres">
+                <input type="text" wire:model.live="recibe_celular">
+                <input type="text" wire:model.live="direccion">
+                <input type="text" wire:model.live="direccion_numero">
+                <input type="text" wire:model.live="codigo_postal">
 
-                <select wire:model.live="selectedDepartamento">
+                <select wire:model.live="departamento_id">
                     <option value="">Selecciona un Departamento</option>
                     @foreach ($departamentos as $departamento)
                         <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
                     @endforeach
                 </select>
 
-                <select wire:model.live="selectedProvincia">
+                <select wire:model.live="provincia_id">
                     <option value="">Selecciona una Provincia</option>
                     @foreach ($provincias as $provincia)
                         <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
                     @endforeach
                 </select>
 
-                <select wire:model.live="selectedDistrito">
+                <select wire:model.live="distrito_id">
                     <option value="">Selecciona un Distrito</option>
                     @foreach ($distritos as $distrito)
                         <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
@@ -72,6 +75,45 @@
                 <h3>¿Estás seguro de que deseas eliminar esta dirección?</h3>
                 <button wire:click="deleteDireccion">Eliminar</button>
                 <button wire:click="$set('deleteModalVisible', false)">Cancelar</button>
+            </div>
+        </div>
+    @endif
+
+    <!-- Modal de creación de nueva dirección -->
+    @if ($newModalVisible)
+        <div class="modal">
+            <div class="modal-content">
+                <h3>Nueva Dirección</h3>
+
+                <input type="text" wire:model.live="recibe_nombres" placeholder="Nombres">
+                <input type="text" wire:model.live="recibe_celular" placeholder="Celular">
+                <input type="text" wire:model.live="direccion" placeholder="Dirección">
+                <input type="text" wire:model.live="direccion_numero" placeholder="Número de Dirección">
+                <input type="text" wire:model.live="codigo_postal" placeholder="Código Postal">
+
+                <select wire:model.live="departamento_id">
+                    <option value="">Selecciona un Departamento</option>
+                    @foreach ($departamentos as $departamento)
+                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                    @endforeach
+                </select>
+
+                <select wire:model.live="provincia_id">
+                    <option value="">Selecciona una Provincia</option>
+                    @foreach ($provincias as $provincia)
+                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                    @endforeach
+                </select>
+
+                <select wire:model.live="distrito_id">
+                    <option value="">Selecciona un Distrito</option>
+                    @foreach ($distritos as $distrito)
+                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                    @endforeach
+                </select>
+
+                <button wire:click="createDireccion">Guardar Dirección</button>
+                <button wire:click="$set('newModalVisible', false)">Cancelar</button>
             </div>
         </div>
     @endif
