@@ -191,6 +191,7 @@ php artisan make:model Carrito -mfsc
 php artisan make:model CarritoDetalle -mfsc
 
 php artisan make:livewire Comprador/Carrito/DetalleCarritoLivewire
+php artisan make:livewire Comprador/Favorito/DetalleFavoritoLivewire
 
 php artisan make:livewire Ecommerce/Menu/MenuCarritoLivewire
 
