@@ -16,10 +16,13 @@ class CuponSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 20) as $index) {
+            // Decide whether to use a fixed discount or a percentage discount
+            $useFixedDiscount = $faker->boolean(50); // 50% chance to use fixed discount
+
             DB::table('cupons')->insert([
                 'codigo' => $faker->unique()->word . '-' . $faker->unique()->numberBetween(1000, 9999),
-                'descuento' => $faker->optional()->randomFloat(2, 5, 50), // Monto fijo de descuento, opcional
-                'porcentaje_descuento' => $faker->optional()->numberBetween(5, 50), // Descuento en porcentaje, opcional
+                'descuento' => $useFixedDiscount ? $faker->randomFloat(2, 5, 50) : null, // Monto fijo de descuento, opcional
+                'porcentaje_descuento' => $useFixedDiscount ? null : $faker->numberBetween(5, 50), // Descuento en porcentaje, opcional
                 'monto_minimo' => $faker->optional()->randomFloat(2, 50, 200), // Monto mínimo de compra, opcional
                 'usos_totales' => $faker->numberBetween(1, 10),
                 'usos_restantes' => $faker->numberBetween(0, 10),

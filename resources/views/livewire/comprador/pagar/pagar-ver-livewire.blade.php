@@ -21,6 +21,24 @@
 
             <div class="separacion"> </div>
 
+            @if ($carritoCantidadItems == 1)
+                <div class="monto">
+                    <p class="texto">Cupón descuento:</p>
+                    <span class="numero"> S/. {{ number_format($cupon_descuento, 2) }}</span>
+                </div>
+
+                <!-- INPUT Y BOTONES DE CUPÓN -->
+                <div class="cupon">
+                    <input type="text" wire:model="codigoCupon" placeholder="Ingresa tu código de cupón" />
+                    <button wire:click="aplicarCupon" class="aplicar_cupon">Aplicar cupón</button>
+                    <button wire:click="eliminarCupon" class="eliminar_cupon">Eliminar cupón</button>
+
+                    @if ($mensajeCupon)
+                        <p class="mensaje_cupon">{{ $mensajeCupon }}</p>
+                    @endif
+                </div>
+            @endif
+
             <a href="{{ route('comprador.pagar.vista.ver') }}" class="continuar_compra">
                 Pagar
             </a>
