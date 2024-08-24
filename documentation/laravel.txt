@@ -207,3 +207,14 @@ php artisan make:model CompradorDireccion -mfsc
 
 php artisan make:livewire Comprador/Direccion/DireccionTodasLivewire
 php artisan make:livewire Comprador/Perfil/PerfilVerLivewire
+
+php artisan make:model Banco -mfsc
+php artisan make:model TipoCuenta -mfsc
+
+php artisan make:model Favorito -mfsc
+php artisan make:model FavoritoDetalle -mfsc
+
+php artisan make:model Cupon -mfsc
+
+php artisan make:model Venta -mfsc
+php artisan make:model VentaDetalle -mfsc

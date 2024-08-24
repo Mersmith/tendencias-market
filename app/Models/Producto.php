@@ -50,6 +50,11 @@ class Producto extends Model
         return $this->hasMany(ProductoDescuento::class);
     }
 
+    public function cupons()
+    {
+        return $this->hasMany(Cupon::class, 'producto_id');
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

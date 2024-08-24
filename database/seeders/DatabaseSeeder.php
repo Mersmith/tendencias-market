@@ -46,5 +46,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderProductosSeeder::class);
         $this->call(EnlacesRapidosSeeder::class);
         $this->call(EcommerceFooterSeeder::class);
+        $this->call(BancoSeeder::class);
+        $this->call(TipoCuentaSeeder::class);
+        $this->call(CuponSeeder::class);
     }
 }

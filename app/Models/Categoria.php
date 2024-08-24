@@ -46,6 +46,11 @@ class Categoria extends Model
         return $this->morphToMany(Imagen::class, 'imagenable');
     }
 
+    public function cupons()
+    {
+        return $this->hasMany(Cupon::class, 'categoria_id');
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {
