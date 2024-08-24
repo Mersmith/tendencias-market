@@ -5,8 +5,16 @@
 
             <br>
 
-            @livewire('comprador.pagar.pagar-ver-livewire')
-
+            @if ($carrito)
+                @livewire('comprador.pagar.pagar-ver-livewire', [
+                    'carrito' => $carrito,
+                    'carritoCantidadItems' => $cantidadItems,
+                    'carritoTotalGeneral' => $totalGeneral,
+                    'carritoTotalDescuento' => $totalDescuento,
+                ])
+            @else
+                <p>No hay información de carrito disponible.</p>
+            @endif
         </div>
     </div>
 </x-ecommerce-layout>
