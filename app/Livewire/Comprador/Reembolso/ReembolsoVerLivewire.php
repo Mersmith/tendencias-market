@@ -13,34 +13,35 @@ class ReembolsoVerLivewire extends Component
     public $bancos;
     public $tipoCuentas;
 
+    protected $rules = [
+        'reembolso.banco_id' => 'required|exists:bancos,id',
+        'reembolso.tipo_cuenta_id' => 'required|exists:tipo_cuentas,id',
+        'reembolso.cuenta_interbancaria' => 'required|string|max:20',
+        'reembolso.cuenta_bancaria' => 'required|string|max:20',
+    ];
+
     public function mount()
     {
         $user = Auth::user();
         
-        if ($user) {
-            // Obtener el primer reembolso del usuario autenticado
-            $this->reembolso = CompradorReembolso::where('user_id', $user->id)->first();
-            
-            // Cargar bancos y tipos de cuenta para los selects
-            $this->bancos = Banco::all();
-            $this->tipoCuentas = TipoCuenta::all();
-        }
+        // Obtener el primer reembolso del usuario autenticado o crear una nueva instancia
+        $this->reembolso = CompradorReembolso::firstOrNew(['user_id' => $user->id]);
+
+        // Cargar bancos y tipos de cuenta para los selects
+        $this->bancos = Banco::all();
+        $this->tipoCuentas = TipoCuenta::all();
     }
 
     public function updateReembolso()
     {
-        $this->validate([
-            'reembolso.banco_id' => 'required|exists:bancos,id',
-            'reembolso.tipo_cuenta_id' => 'required|exists:tipo_cuentas,id',
-            'reembolso.cuenta_interbancaria' => 'required|string|max:20',
-            'reembolso.cuenta_bancaria' => 'required|string|max:20',
-        ]);
+        $this->validate();
 
+        // Guardar o actualizar el reembolso
+        $this->reembolso->user_id = Auth::id(); // Asegurar que el user_id esté configurado
         $this->reembolso->save();
 
-        session()->flash('message', 'Reembolso actualizado con éxito.');
+        session()->flash('message', 'Reembolso guardado/actualizado con éxito.');
     }
-
 
     public function render()
     {
