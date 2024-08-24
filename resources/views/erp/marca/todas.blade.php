@@ -79,9 +79,9 @@
                                         </td>
                                         <td class="g_inferior">
                                             @if ($item->trashed())
-                                                Eliminado
+                                                Si
                                             @else
-                                                Activo
+                                                No
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">
