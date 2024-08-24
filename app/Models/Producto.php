@@ -4,15 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Producto extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $guarded = ['id', 'created_at', 'update_at'];
 
-    const ACTIVADO = 1;
-    const DESACTIVADO = 2;
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::deleting(function ($producto) {
+            $producto->activo = false;
+            $producto->save();
+        });
+    }
+    
     public function variaciones()
     {
         return $this->hasMany(Variacion::class);
@@ -31,7 +39,7 @@ class Producto extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
-    } 
+    }
 
     public function listaPrecios()
     {

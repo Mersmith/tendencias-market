@@ -12,7 +12,7 @@ class MarcaController extends Controller
 {
     public function vistaTodas()
     {
-        $marcas = Marca::all();
+        $marcas = Marca::withTrashed()->get();
         return view('erp.marca.todas', compact('marcas'));
     }
 
@@ -34,13 +34,13 @@ class MarcaController extends Controller
 
     public function vistaEditar($id)
     {
-        $marca = Marca::find($id);
+        $marca = Marca::withTrashed()->find($id);
         return view('erp.marca.editar', compact('marca'));
     }
 
     public function editar(MarcaRequest $request, $id)
     {
-        $marca = Marca::findOrFail($id);
+        $marca = Marca::withTrashed()->findOrFail($id);
         $marca->nombre = $request->nombre;
         $marca->descripcion = $request->descripcion;
         $marca->activo = $request->activo;
@@ -49,9 +49,18 @@ class MarcaController extends Controller
         return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Actualizado');
     }
 
+    public function restaurar($id)
+    {
+        $marca = Marca::withTrashed()->findOrFail($id);
+
+        $marca->restore();
+
+        return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Actualizado');
+    }
+
     public function eliminar($id)
     {
-        $marca = Marca::find($id);
+        $marca = Marca::withTrashed()->find($id);
         $marca->delete();
 
         return redirect()->route('erp.marca.vista.todas')->with('alerta', 'Eliminado');

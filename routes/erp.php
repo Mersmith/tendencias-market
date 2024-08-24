@@ -106,6 +106,7 @@ Route::controller(MarcaController::class)->group(function () {//ok
     Route::get('marca/editar/{id}', 'vistaEditar')->name('marca.vista.editar');
     Route::put('marca/editar/{id}', 'editar')->name('marca.editar');
     Route::delete('marca/eliminar/{id}', 'eliminar')->name('marca.eliminar');
+    Route::post('/marca/restaurar/{id}', 'restaurar')->name('marca.restaurar');
 });
 
 Route::controller(TallaController::class)->group(function () {//ok

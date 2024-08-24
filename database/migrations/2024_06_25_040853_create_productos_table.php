@@ -19,7 +19,7 @@ return new class extends Migration {
 
             $table->string('nombre')->unique();
             $table->string('slug')->unique();
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('imagen_ruta')->nullable();
             $table->boolean('variacion_talla')->default(false);
             $table->boolean('variacion_color')->default(false);
@@ -28,8 +28,20 @@ return new class extends Migration {
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
 
+            $table->softDeletes(); // Asegura que el campo `deleted_at` se agregue correctamente
             $table->timestamps();
         });
+
+        // Agregar el trigger para prevenir eliminaciones
+        DB::unprepared('
+          CREATE TRIGGER prevenir_eliminar_producto 
+          BEFORE DELETE ON productos
+          FOR EACH ROW
+          BEGIN
+              SIGNAL SQLSTATE "45000" 
+              SET MESSAGE_TEXT = "No se permite eliminar registros de la tabla productos.";
+          END;
+      ');
     }
 
     /**
@@ -37,6 +49,9 @@ return new class extends Migration {
      */
     public function down(): void
     {
+        // Eliminar el trigger antes de eliminar la tabla
+        DB::unprepared('DROP TRIGGER IF EXISTS prevenir_eliminar_producto');
+
         Schema::dropIfExists('productos');
     }
 };

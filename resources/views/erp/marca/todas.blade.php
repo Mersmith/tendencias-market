@@ -56,6 +56,7 @@
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Activo</th>
+                                    <th>Eliminado</th> <!-- Nueva columna -->
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -67,12 +68,20 @@
                                         <td class="g_resaltar"> {{ $item->nombre }} </td>
                                         <td class="g_inferior g_resumir"> {{ $item->descripcion }}</td>
                                         <td class="g_inferior">
-                                            <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}"><i
-                                                    class="fa-solid fa-circle"></i></span>
+                                            <span class="estado {{ $item->activo == 1 ? 'g_activo' : 'g_desactivado' }}">
+                                                <i class="fa-solid fa-circle"></i>
+                                            </span>
                                             @if ($item->activo == 1)
                                                 Activo
                                             @else
                                                 Desactivo
+                                            @endif
+                                        </td>
+                                        <td class="g_inferior">
+                                            @if ($item->trashed())
+                                                Eliminado
+                                            @else
+                                                Activo
                                             @endif
                                         </td>
                                         <td class="centrar_iconos">

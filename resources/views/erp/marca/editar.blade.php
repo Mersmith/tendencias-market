@@ -17,14 +17,26 @@
                 <a href="{{ route('erp.marca.vista.crear') }}" class="g_boton g_boton_primary">
                     Crear <i class="fa-solid fa-square-plus"></i></a>
 
-                <button class="g_boton g_boton_danger" id="eliminarMarca">
-                    Eliminar <i class="fa-solid fa-trash-can"></i>
-                </button>
-                <form action="{{ route('erp.marca.eliminar', $marca->id) }}" method="POST" id="formEliminarMarca"
-                    style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
+
+
+                @if ($marca->deleted_at)
+                    <form action="{{ route('erp.marca.restaurar', $marca->id) }}" method="POST" id="formRestaurarMarca"
+                        style="display: inline;">
+                        @csrf
+                        <button type="submit" class="g_boton g_boton_success" id="restaurarMarca">
+                            Restaurar <i class="fa-solid fa-undo"></i>
+                        </button>
+                    </form>
+                @else
+                    <form action="{{ route('erp.marca.eliminar', $marca->id) }}" method="POST" id="formEliminarMarca"
+                        style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="g_boton g_boton_danger" id="eliminarMarca">
+                            Eliminar <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
+                @endif
 
                 <a href="{{ route('erp.marca.vista.todas') }}" class="g_boton g_boton_darkt">
                     <i class="fa-solid fa-arrow-left"></i> Regresar</a>
@@ -108,6 +120,26 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         document.getElementById('formEliminarMarca').submit();
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('restaurarMarca').addEventListener('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Quieres restaurar?',
+                    text: "Este registro será restaurado.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, restaurar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('formRestaurarMarca').submit();
                     }
                 });
             });

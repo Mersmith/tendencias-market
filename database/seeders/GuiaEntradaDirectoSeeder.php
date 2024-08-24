@@ -18,7 +18,7 @@ class GuiaEntradaDirectoSeeder extends Seeder
      */
     public function run()
     {
-        GuiaEntradaDirecto::factory(350)->create()->each(function ($guiaEntradaDirecto) {
+        GuiaEntradaDirecto::factory(100)->create()->each(function ($guiaEntradaDirecto) {
             // Obtener todas las variaciones y mezclarlas
             $variaciones = Variacion::inRandomOrder()->get();
 

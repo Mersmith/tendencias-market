@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(PermissionSeeder::class);
-        $this->call(DepartamentosSeeder::class);
+        /*$this->call(DepartamentosSeeder::class);
         $this->call(ProvinciasSeeder::class);
         $this->call(DistritosSeeder::class);
         $this->call(CompradorDireccionSeeder::class);
@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AlmacenSeeder::class);
         $this->call(TipoDocumentoSeeder::class);
         $this->call(SerieSeeder::class);
-        $this->call(CategoriaSeeder::class);
+        $this->call(CategoriaSeeder::class);*/
         $this->call(MarcaSeeder::class);
-        $this->call(CategoriaMarcaSeeder::class);
+        /*$this->call(CategoriaMarcaSeeder::class);
         $this->call(TallaSeeder::class);
         $this->call(ColorSeeder::class);
         $this->call(ProductoSeeder::class);
@@ -48,6 +48,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EcommerceFooterSeeder::class);
         $this->call(BancoSeeder::class);
         $this->call(TipoCuentaSeeder::class);
-        $this->call(CuponSeeder::class);
+        $this->call(CuponSeeder::class);*/
     }
 }
