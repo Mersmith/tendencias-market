@@ -86,4 +86,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Comprador::class, 'user_id', 'id');
     }
+
+    public function compradorReembolsos()
+    {
+        return $this->hasMany(CompradorReembolso::class);
+    }
 }

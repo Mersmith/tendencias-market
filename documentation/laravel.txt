@@ -220,3 +220,5 @@ php artisan make:model Cupon -mfsc
 
 php artisan make:model Venta -mfsc
 php artisan make:model VentaDetalle -mfsc
+
+php artisan make:model CompradorReembolso -mfsc

@@ -11,4 +11,10 @@ class Banco extends Model
 
     protected $fillable = ['nombre'];
 
+    // Relación uno a muchos con CompradorReembolso
+    public function compradorReembolsos()
+    {
+        return $this->hasMany(CompradorReembolso::class);
+    }
+
 }

@@ -11,4 +11,9 @@ class TipoCuenta extends Model
 
     protected $fillable = ['nombre'];
 
+    public function compradorReembolsos()
+    {
+        return $this->hasMany(CompradorReembolso::class);
+    }
+
 }
