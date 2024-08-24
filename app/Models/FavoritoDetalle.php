@@ -9,7 +9,7 @@ class FavoritoDetalle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['carrito_id', 'variacion_id'];
+    protected $fillable = ['favorito_id', 'producto_id'];
 
     // Relación con el carrito
     public function favorito()
@@ -18,8 +18,8 @@ class FavoritoDetalle extends Model
     }
 
     // Relación con la variacion del producto
-    public function variacion()
+    public function producto()
     {
-        return $this->belongsTo(Variacion::class);
+        return $this->belongsTo(Producto::class);
     }
 }

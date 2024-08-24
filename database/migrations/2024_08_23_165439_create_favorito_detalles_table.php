@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('favorito_detalles', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('carrito_id');
-            $table->unsignedBigInteger('variacion_id');
+            $table->unsignedBigInteger('favorito_id');
+            $table->unsignedBigInteger('producto_id');
 
-            $table->foreign('carrito_id')->references('id')->on('carritos')->onDelete('cascade');
-            $table->foreign('variacion_id')->references('id')->on('variacions')->onDelete('cascade');
+            $table->foreign('favorito_id')->references('id')->on('favoritos')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -176,6 +176,7 @@ php artisan make:model SliderProductos -mfsc
 php artisan make:livewire Erp/Plantilla/SliderProductos/SliderProductosCrearLivewire
 
 php artisan make:livewire Ecommerce/Producto/AgregarCarritoLivewire
+php artisan make:livewire Ecommerce/Producto/AgregarFavoritoLivewire
 
 php artisan make:model Role -mfsc
 php artisan make:model Permission -mfsc

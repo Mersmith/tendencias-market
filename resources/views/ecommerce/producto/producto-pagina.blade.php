@@ -20,6 +20,7 @@
                         <div class="cabecera">
                             <h2 class="producto_nombre">{{ $producto->producto_nombre }}</h2>
                             <h3 class="producto_marca">Marca <span>{{ $producto->marca_nombre }}</span></h3>
+                            @livewire('ecommerce.producto.agregar-favorito-livewire', ['productoId' => $producto->producto_id])
                         </div>
 
                         <!-- PRECIOS -->
