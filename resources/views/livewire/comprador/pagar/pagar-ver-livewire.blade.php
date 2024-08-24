@@ -23,8 +23,17 @@
 
             @if ($carritoCantidadItems == 1)
                 <div class="monto">
-                    <p class="texto">Cupón descuento:</p>
-                    <span class="numero"> S/. {{ number_format($cupon_descuento, 2) }}</span>
+                    <p class="texto">Cupón descuento: {{ $cupon_tipo }} </p>
+
+                    @if ($cupon_tipo)
+                        <span class="numero">
+                            @if ($cupon_tipo == 'FIJO')
+                                S/. {{ number_format($cupon_descuento, 2) }}
+                            @else
+                                % {{ $cupon_descuento }}
+                            @endif
+                        </span>
+                    @endif
                 </div>
 
                 <!-- INPUT Y BOTONES DE CUPÓN -->
