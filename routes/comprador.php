@@ -4,6 +4,7 @@ use App\Http\Controllers\Comprador\CompradorCarritoController;
 use App\Http\Controllers\Comprador\CompradorDireccionController;
 use App\Http\Controllers\Comprador\CompradorFavoritoController;
 use App\Http\Controllers\Comprador\CompradorPerfilController;
+use App\Http\Controllers\Comprador\CompradorReembolsoController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(CompradorPerfilController::class)->group(function () {
@@ -23,4 +24,8 @@ Route::controller(CompradorCarritoController::class)->group(function () {
 
 Route::controller(CompradorFavoritoController::class)->group(function () {
     Route::get('/favorito', 'ver')->name('favorito.vista.ver');
+});
+
+Route::controller(CompradorReembolsoController::class)->group(function () {
+    Route::get('/reembolso', 'ver')->name('reembolso.vista.ver');
 });
