@@ -1,7 +1,6 @@
 <div class="comprador_menu_pricipal">
     <a href="{{ route('comprador.perfil.vista.ver') }}">Perfil</a>
     <a href="">Mis compras</a>
-    <a href="">Configurar mi cuenta</a>
     <a href="{{ route('comprador.direccion.vista.ver') }}">Direcciones</a>
     <a href="">Reembolso</a>
     <a href="{{ route('comprador.favorito.vista.ver') }}">Favoritos</a>
