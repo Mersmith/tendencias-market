@@ -15,7 +15,6 @@ class PagarVerLivewire extends Component
 
     public $codigoCupon;
     public $mensajeCupon;
-
     public $cupon_descuento = 0;
     public $cupon_tipo = "";
     public function aplicarCupon()
@@ -66,7 +65,6 @@ class PagarVerLivewire extends Component
             $this->mensajeCupon = 'Cupón inválido o expirado.';
         }
     }
-
 
     public function eliminarCupon()
     {
