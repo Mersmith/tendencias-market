@@ -52,6 +52,113 @@
                 Pagar
             </a>
         </div>
+
+        <div>
+            @if ($direccionEnvio)
+                <div class="direccionEnvio-item">
+                    <h3>{{ $direccionEnvio->recibe_nombres }}</h3>
+                    <p>Teléfono: {{ $direccionEnvio->recibe_celular }}</p>
+                    <p>Dirección: {{ $direccionEnvio->direccionEnvio }}
+                        {{ $direccionEnvio->direccion_numero }}</p>
+                    <p>
+                        {{ $direccionEnvio->departamento->nombre }} /
+                        {{ $direccionEnvio->provincia->nombre }} /
+                        {{ $direccionEnvio->distrito->nombre }}</p>
+                    <p>Código Postal: {{ $direccionEnvio->codigo_postal }}</p>
+                    @if ($direccionEnvio->es_principal)
+                        <p><strong>Dirección principal</strong></p>
+                    @endif
+
+                    <div>
+                        <button wire:click="abrirModalSeleccionarDireccion()">CAMBIAR DIRECCION</button>
+                    </div>
+                </div>
+            @else
+                <p>No tienes direcciones registradas.</p>
+            @endif
+            <br>
+
+            <!-- Modal de seleccionadri dirección -->
+            @if ($modalSeleccionarDireccion)
+                <div class="modal">
+                    <div class="modal-content">
+                        <h3>Direcciones</h3>
+
+                        <div>
+                            @if ($direcciones->isEmpty())
+                                <p>No tienes direcciones registradas.</p>
+                            @else
+                                @foreach ($direcciones as $direccion)
+                                    <div class="direccion-item">
+                                        <h3>{{ $direccion->recibe_nombres }}</h3>
+                                        <p>Teléfono: {{ $direccion->recibe_celular }}</p>
+                                        <p>Dirección: {{ $direccion->direccion }} {{ $direccion->direccion_numero }}
+                                        </p>
+                                        <p>
+                                            {{ $direccion->departamento->nombre }} /
+                                            {{ $direccion->provincia->nombre }} /
+                                            {{ $direccion->distrito->nombre }}</p>
+                                        <p>Código Postal: {{ $direccion->codigo_postal }}</p>
+                                        @if ($direccion->es_principal)
+                                            <p><strong>Dirección principal</strong></p>
+                                        @endif
+                                        <!-- Botón para seleccionar esta dirección -->
+                                        <button wire:click="seleccionarDireccion({{ $direccion->id }})">Seleccionar
+                                            esta dirección</button>
+
+                                        <button wire:click="editarDireccion({{ $direccion->id }})">Editar
+                                            esta dirección</button>
+                                    </div>
+                                    <br>
+                                @endforeach
+                            @endif
+                        </div>
+
+                        <button wire:click="$set('modalSeleccionarDireccion', false)">Cancelar</button>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Modal de edición dirección -->
+            @if ($modalEditarDireccion)
+                <div class="modal">
+                    <div class="modal-content">
+                        <h3>Editar Dirección</h3>
+
+                        <input type="text" wire:model.live="recibe_nombres">
+                        <input type="text" wire:model.live="recibe_celular">
+                        <input type="text" wire:model.live="direccion">
+                        <input type="text" wire:model.live="direccion_numero">
+                        <input type="text" wire:model.live="codigo_postal">
+
+                        <select wire:model.live="departamento_id">
+                            <option value="">Selecciona un Departamento</option>
+                            @foreach ($departamentos as $departamento)
+                                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                            @endforeach
+                        </select>
+
+                        <select wire:model.live="provincia_id">
+                            <option value="">Selecciona una Provincia</option>
+                            @foreach ($provincias as $provincia)
+                                <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                            @endforeach
+                        </select>
+
+                        <select wire:model.live="distrito_id">
+                            <option value="">Selecciona un Distrito</option>
+                            @foreach ($distritos as $distrito)
+                                <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                            @endforeach
+                        </select>
+
+                        <button wire:click="updateDireccion">Guardar Cambios</button>
+                        <button wire:click="$set('editModalVisible', false)">Cancelar</button>
+                    </div>
+                </div>
+            @endif
+
+        </div>
     </div>
 
     <!-- CARRITO -->
