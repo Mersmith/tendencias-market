@@ -1,5 +1,4 @@
 <div class="detalle_carrito">
-
     <!-- RESUMEN PAGO -->
     <div class="resumen_pago">
         <div class="detalle_pago">
@@ -22,28 +21,29 @@
             <div class="separacion"> </div>
 
             @if ($carritoCantidadItems == 1)
-                <div class="monto">
-                    <p class="texto">Cupón descuento: {{ $cupon_tipo }} </p>
-
-                    @if ($cupon_tipo)
-                        <span class="numero">
+                @if ($cupon_tipo)
+                    <div class="monto">
+                        <p class="texto">
+                            Cupón descuento: {{ $cupon_tipo }}
                             @if ($cupon_tipo == 'FIJO')
                                 S/. {{ number_format($cupon_descuento, 2) }}
                             @else
                                 % {{ $cupon_descuento }}
                             @endif
-                        </span>
-                    @endif
-                </div>
+                        </p>
+
+                        <span class="numero">- S/. {{ number_format($cupon_total_descuento, 2) }}</span>
+                    </div>
+                @endif
 
                 <!-- INPUT Y BOTONES DE CUPÓN -->
                 <div class="cupon">
-                    <input type="text" wire:model="codigoCupon" placeholder="Ingresa tu código de cupón" />
+                    <input type="text" wire:model="cupon_codigo" placeholder="Ingresa tu código de cupón" />
                     <button wire:click="aplicarCupon" class="aplicar_cupon">Aplicar cupón</button>
                     <button wire:click="eliminarCupon" class="eliminar_cupon">Eliminar cupón</button>
 
-                    @if ($mensajeCupon)
-                        <p class="mensaje_cupon">{{ $mensajeCupon }}</p>
+                    @if ($cupon_mensaje)
+                        <p class="mensaje_cupon">{{ $cupon_mensaje }}</p>
                     @endif
                 </div>
             @endif
