@@ -93,7 +93,7 @@
 
             <div class="separacion"> </div>
 
-            <a class="continuar_compra">
+            <a href="{{ route('comprador.pagar.vista.ver') }}" class="continuar_compra">
                 Continuar compra
             </a>
         </div>
