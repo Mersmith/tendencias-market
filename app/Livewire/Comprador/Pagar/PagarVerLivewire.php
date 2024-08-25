@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Departamento;
 use App\Models\Distrito;
 use App\Models\Provincia;
+use App\Models\CompradorDireccion;
 
 class PagarVerLivewire extends Component
 {
@@ -30,11 +31,11 @@ class PagarVerLivewire extends Component
 
     public $direcciones;
 
+    /* FORMULARIO DIRECCION */
     public $modalEditarDireccion = false;
+    public $modalCrearDireccion = false;
 
     public $direccion_seleccionada;
-
-    /* FORMULARIO DIRECCION */
     public $departamentos;
     public $provincias = [];
     public $distritos = [];
@@ -62,6 +63,11 @@ class PagarVerLivewire extends Component
     {
         $this->modalSeleccionarDireccion = true;
 
+        $this->traerDireccionesCliente();
+    }
+
+    public function traerDireccionesCliente()
+    {
         $comprador = Auth::user()->comprador;
 
         if ($comprador) {
@@ -79,7 +85,6 @@ class PagarVerLivewire extends Component
             $this->direccionEnvio = $comprador->direcciones()->find($direccionId);
         }
 
-        // Cerrar el modal
         $this->modalSeleccionarDireccion = false;
     }
 
@@ -121,26 +126,42 @@ class PagarVerLivewire extends Component
         $this->direccion_seleccionada->provincia_id = $this->provincia_id;
         $this->direccion_seleccionada->distrito_id = $this->distrito_id;
 
-        // Guardar los cambios en la base de datos
         $this->direccion_seleccionada->save();
 
-        // Verificar si la dirección editada es la dirección seleccionada para el envío
         if ($this->direccionEnvio && $this->direccionEnvio->id == $this->direccion_seleccionada->id) {
-            // Actualizar la dirección seleccionada para el envío
             $this->direccionEnvio = $this->direccion_seleccionada;
         }
 
-        // Refrescar la lista de direcciones después de guardar los cambios
-        $this->abrirModalSeleccionarDireccion();
-
-        // Cerrar el modal de edición
+        $this->traerDireccionesCliente();
         $this->modalEditarDireccion = false;
-
-        // Resetear los valores del formulario
         $this->resetValuesForm();
     }
 
+    public function abrirModalCrearDireccion()
+    {
+        $this->departamentos = Departamento::all();
 
+        $this->modalCrearDireccion = true;
+    }
+
+    public function createDireccion()
+    {
+        $direccion = new CompradorDireccion();
+        $direccion->comprador_id = Auth::user()->comprador->id;
+        $direccion->recibe_nombres = $this->recibe_nombres;
+        $direccion->recibe_celular = $this->recibe_celular;
+        $direccion->direccion = $this->direccion;
+        $direccion->direccion_numero = $this->direccion_numero;
+        $direccion->codigo_postal = $this->codigo_postal;
+        $direccion->departamento_id = $this->departamento_id;
+        $direccion->provincia_id = $this->provincia_id;
+        $direccion->distrito_id = $this->distrito_id;
+        $direccion->save();
+
+        $this->traerDireccionesCliente();
+        $this->modalCrearDireccion = false;
+        $this->resetValuesForm();
+    }
 
     public function resetValuesForm()
     {
