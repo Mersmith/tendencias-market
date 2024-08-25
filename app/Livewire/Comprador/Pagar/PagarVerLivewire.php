@@ -22,16 +22,16 @@ class PagarVerLivewire extends Component
     public $cupon_codigo;
     public $cupon_mensaje;
     public $cupon_descuento = 0;
-    public $cupon_total_descuento = 0;
+    public $cuponTotalDescuento = 0;
     public $cupon_tipo = "";
 
     /* DELIVERY  */
-    public $modalSeleccionarDireccion = false;
     public $direccionEnvio;
-
-    public $direcciones;
+    public $deliveryTotalCosto = 50;
 
     /* FORMULARIO DIRECCION */
+    public $modalSeleccionarDireccion = false;
+    public $direcciones;
     public $modalEditarDireccion = false;
     public $modalCrearDireccion = false;
 
@@ -244,12 +244,12 @@ class PagarVerLivewire extends Component
                     if ($cupon->descuento) {
                         // Descuento fijo
                         $this->cupon_descuento = $cupon->descuento;
-                        $this->cupon_total_descuento = $cupon->descuento;
+                        $this->cuponTotalDescuento = $cupon->descuento;
                         $this->cupon_tipo = "FIJO";
                     } elseif ($cupon->porcentaje_descuento) {
                         // Descuento en porcentaje
                         $this->cupon_descuento = $cupon->porcentaje_descuento;
-                        $this->cupon_total_descuento = ($this->carritoTotalGeneral * ($cupon->porcentaje_descuento / 100));
+                        $this->cuponTotalDescuento = ($this->carritoTotalGeneral * ($cupon->porcentaje_descuento / 100));
                         $this->cupon_tipo = "PORCENTAJE";
                     }
                     $this->cupon_mensaje = 'Cupón aplicado con éxito.';
@@ -268,7 +268,7 @@ class PagarVerLivewire extends Component
         $this->cupon_descuento = 0;
         $this->cupon_mensaje = 'Cupón eliminado.';
         $this->cupon_codigo = '';
-        $this->cupon_total_descuento = 0;
+        $this->cuponTotalDescuento = 0;
         $this->cupon_tipo = "";
     }
 

@@ -32,7 +32,7 @@
                             @endif
                         </p>
 
-                        <span class="numero">- S/. {{ number_format($cupon_total_descuento, 2) }}</span>
+                        <span class="numero">- S/. {{ number_format($cuponTotalDescuento, 2) }}</span>
                     </div>
                 @endif
 
@@ -45,6 +45,13 @@
                     @if ($cupon_mensaje)
                         <p class="mensaje_cupon">{{ $cupon_mensaje }}</p>
                     @endif
+                </div>
+            @endif
+
+            @if ($direccionEnvio)
+                <div class="monto">
+                    <p class="texto">Delivery:</p>
+                    <span class="numero"> S/. {{ number_format($deliveryTotalCosto, 2) }}</span>
                 </div>
             @endif
 
