@@ -43,3 +43,4 @@
 
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/producto.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/carrito.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/comprador/css/pagina-pagar.css') }}">
