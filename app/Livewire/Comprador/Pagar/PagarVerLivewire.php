@@ -48,12 +48,16 @@ class PagarVerLivewire extends Component
     public $direccion_numero = null;
     public $codigo_postal = null;
 
+    public $total_a_pagar = 0;
+
     public function mount()
     {
         $comprador = Auth::user()->comprador;
 
         if ($comprador) {
             $this->direccionEnvio = $comprador->direcciones()->where('es_principal', true)->first();
+
+            $this->total_a_pagar = $this->carritoTotalGeneral + $this->deliveryTotalCosto;
         } else {
             $this->direccionEnvio = null;
         }
@@ -252,6 +256,7 @@ class PagarVerLivewire extends Component
                         $this->cuponTotalDescuento = ($this->carritoTotalGeneral * ($cupon->porcentaje_descuento / 100));
                         $this->cupon_tipo = "PORCENTAJE";
                     }
+                    $this->total_a_pagar = ($this->carritoTotalGeneral - $this->cuponTotalDescuento + $this->deliveryTotalCosto);
                     $this->cupon_mensaje = 'Cupón aplicado con éxito.';
                 } else {
                     $this->cupon_mensaje = 'El cupón ha agotado sus usos.';
@@ -270,6 +275,8 @@ class PagarVerLivewire extends Component
         $this->cupon_codigo = '';
         $this->cuponTotalDescuento = 0;
         $this->cupon_tipo = "";
+        $this->total_a_pagar = ($this->carritoTotalGeneral + $this->cuponTotalDescuento + $this->deliveryTotalCosto);
+
     }
 
     public function render()

@@ -55,6 +55,11 @@
                 </div>
             @endif
 
+            <div class="monto">
+                <p class="texto">Total a pagar:</p>
+                <span class="numero"> S/. {{ number_format($total_a_pagar, 2) }}</span>
+            </div>
+
             <a href="{{ route('comprador.pagar.vista.ver') }}" class="continuar_compra">
                 Pagar
             </a>
