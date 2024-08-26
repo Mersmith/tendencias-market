@@ -279,6 +279,11 @@ class PagarVerLivewire extends Component
 
     }
 
+    public function pagarAhora()
+    {
+        dd("GA");
+    }
+
     public function render()
     {
         return view('livewire.comprador.pagar.pagar-ver-livewire');
