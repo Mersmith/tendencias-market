@@ -23,13 +23,19 @@
     align-items: flex-start;
 }
 
+/*PANEL*/
+.contenedor_pagina_pagar .panel {
+    background: var(--color-fondo-terciario);
+    margin-bottom: 20px;
+    padding: 16px ;
+
+}
+
 /* CARRITO */
-.contenedor_pagina_pagar .carrito {
+.contenedor_pagina_pagar .resumen_detalle_pago {
     display: flex;
     flex-direction: column;
     width: 70%;
-    background: var(--color-fondo-terciario);
-    padding: 16px;
 }
 
 .contenedor_pagina_pagar .item_producto {
@@ -223,7 +229,7 @@
         flex-direction: column;
     }
 
-    .contenedor_pagina_pagar .carrito {
+    .contenedor_pagina_pagar .resumen_detalle_pago {
         width: 100%;
     }
 
