@@ -3,12 +3,16 @@
 namespace App\Livewire\Comprador\Pagar;
 
 use App\Models\Cupon;
+use App\Models\Inventario;
+use App\Models\Venta;
+use App\Models\VentaDetalle;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Departamento;
 use App\Models\Distrito;
 use App\Models\Provincia;
 use App\Models\CompradorDireccion;
+use DB;
 
 class PagarVerLivewire extends Component
 {
@@ -281,7 +285,52 @@ class PagarVerLivewire extends Component
 
     public function pagarAhora()
     {
-        dd("GA");
+        $user = Auth::user();
+
+        // Verifica si el usuario está autenticado y tiene el rol de comprador
+        if (!$user || !$user->hasRole('comprador')) {
+            return;
+        }
+
+        // Iniciar una transacción para asegurar la consistencia de los datos
+        DB::transaction(function () use ($user) {
+
+            // Verificar que haya suficiente stock para cada detalle del carrito
+            foreach ($this->carrito->detalle as $detalle) {
+                $inventario = Inventario::where('almacen_id', 1)
+                    ->where('variacion_id', $detalle->variacion_id)
+                    ->first();
+
+                if (!$inventario || $inventario->stock < $detalle->cantidad) {
+                    // Si no hay suficiente stock, cancelar la operación
+                    throw new \Exception("No hay suficiente stock para la variación {$detalle->variacion_id}.");
+                }
+            }
+
+            // Crear la venta
+            $venta = Venta::create([
+                'user_id' => $user->id,
+                'total' => $this->total_a_pagar,
+                'comprador_direccion_id' => $this->direccionEnvio->id,
+            ]);
+
+            // Iterar sobre los detalles del carrito y crear los detalles de la venta
+            foreach ($this->carrito->detalle as $detalle) {
+                // Crear el detalle de la venta
+                VentaDetalle::create([
+                    'venta_id' => $venta->id,
+                    'variacion_id' => $detalle->variacion_id,
+                    'cantidad' => $detalle->cantidad,
+                    'precio' => $detalle->precio_oferta ?? $detalle->precio_normal,
+                    'subtotal' => ($detalle->precio_oferta ?? $detalle->precio_normal) * $detalle->cantidad,
+                ]);
+
+                // Descontar el stock en el inventario
+                Inventario::where('almacen_id', 1)
+                    ->where('variacion_id', $detalle->variacion_id)
+                    ->decrement('stock', $detalle->cantidad);
+            }
+        });
     }
 
     public function render()
