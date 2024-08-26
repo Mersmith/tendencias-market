@@ -24,6 +24,7 @@ class PagarVerLivewire extends Component
 
     /* CUPON  */
     public $cupon_codigo;
+    public $cupon_id;
     public $cupon_mensaje;
     public $cupon_descuento = 0;
     public $cuponTotalDescuento = 0;
@@ -260,6 +261,7 @@ class PagarVerLivewire extends Component
                         $this->cuponTotalDescuento = ($this->carritoTotalGeneral * ($cupon->porcentaje_descuento / 100));
                         $this->cupon_tipo = "PORCENTAJE";
                     }
+                    $this->cupon_id = $cupon->id;
                     $this->total_a_pagar = ($this->carritoTotalGeneral - $this->cuponTotalDescuento + $this->deliveryTotalCosto);
                     $this->cupon_mensaje = 'Cupón aplicado con éxito.';
                 } else {
@@ -307,10 +309,20 @@ class PagarVerLivewire extends Component
                 }
             }
 
+            // Verificar si el cupón es válido y tiene usos restantes
+            if ($this->cupon_id) {
+                $cupon = Cupon::find($this->cupon_id);
+                if (!$cupon || !$cupon->activo || $cupon->usos_restantes <= 0) {
+                    throw new \Exception("El cupón no es válido o ya ha sido utilizado el máximo número de veces.");
+                }
+            }
+
             // Crear la venta
             $venta = Venta::create([
                 'user_id' => $user->id,
                 'total' => $this->total_a_pagar,
+                'costo_envio' => $this->deliveryTotalCosto,
+                'cupon_id' => $this->cupon_id,
                 'comprador_direccion_id' => $this->direccionEnvio->id,
             ]);
 
@@ -329,6 +341,16 @@ class PagarVerLivewire extends Component
                 Inventario::where('almacen_id', 1)
                     ->where('variacion_id', $detalle->variacion_id)
                     ->decrement('stock', $detalle->cantidad);
+            }
+
+            // Si se utilizó un cupón, actualizar los usos restantes
+            if ($this->cupon_id) {
+                $cupon->decrement('usos_restantes');
+
+                // Asegurarse de que los usos restantes no excedan los usos totales
+                if ($cupon->usos_restantes < 0) {
+                    throw new \Exception("Error al aplicar el cupón: los usos restantes no pueden ser negativos.");
+                }
             }
         });
     }
