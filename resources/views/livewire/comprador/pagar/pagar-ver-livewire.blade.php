@@ -28,62 +28,61 @@
                 @endif
             </div>
 
-            <!-- Modal de seleccionadri dirección -->
+            <!-- MODAL SELECCIONAR DIRECCION -->
             @if ($modalSeleccionarDireccion)
-                <x-dialog-modal wire:model="modalSeleccionarDireccion">
-                    <x-slot name="title">
-                        <div>
-                            <!--TITULO-->
-                            <h4 class="g_panel_titulo">Editar</h4>
+                <div class="contenedor_modal_direccion">
+                    <div class="modal_contenedor">
+                        <button class="modal_cerrar">&times;</button>
+                        <div class="modal_titulo">
+                            <h4>Mis direcciones</h4>
                         </div>
-                    </x-slot>
-                    <x-slot name="content">
 
-                        <div class="modal">
-                            <div class="modal-content">
-                                <h3>Direcciones</h3>
-                                <button wire:click="abrirModalCrearDireccion()">Agregar Nueva Dirección</button>
-
-                                <div>
-                                    @if ($direcciones->isEmpty())
-                                        <p>No tienes direcciones registradas.</p>
-                                    @else
-                                        @foreach ($direcciones as $direccion)
-                                            <div class="direccion-item">
-                                                <h3>{{ $direccion->recibe_nombres }}</h3>
-                                                <p>Teléfono: {{ $direccion->recibe_celular }}</p>
-                                                <p>Dirección: {{ $direccion->direccion }}
-                                                    {{ $direccion->direccion_numero }}
+                        <div class="modal_cuerpo">
+                            <div class="contenedor_direccion">
+                                @if ($direcciones->isEmpty())
+                                    <p>No tienes direcciones registradas.</p>
+                                @else
+                                    @foreach ($direcciones as $direccion)
+                                        <div class="direccion_item">
+                                            <div>
+                                                <input type="radio" name="direccion" value="{{ $direccion->id }}"
+                                                    wire:click="seleccionarDireccion({{ $direccion->id }})"
+                                                    @checked($direccionEnvio && $direccionEnvio->id == $direccion->id)>
+                                            </div>
+                                            <div>
+                                                <p>Recibe: <span>{{ $direccion->recibe_nombres }}</span></p>
+                                                <p>Teléfono: <span>{{ $direccion->recibe_celular }}</span></p>
+                                                <p>Dirección:
+                                                    <span>
+                                                        {{ $direccion->departamento->nombre }} /
+                                                        {{ $direccion->provincia->nombre }} /
+                                                        {{ $direccion->distrito->nombre }}
+                                                        {{ $direccion->direccion }} /
+                                                        {{ $direccion->direccion_numero }}
+                                                    </span>
                                                 </p>
-                                                <p>
-                                                    {{ $direccion->departamento->nombre }} /
-                                                    {{ $direccion->provincia->nombre }} /
-                                                    {{ $direccion->distrito->nombre }}</p>
-                                                <p>Código Postal: {{ $direccion->codigo_postal }}</p>
+                                                <p>Código Posta: <span>{{ $direccion->codigo_postal }}</span></p>
                                                 @if ($direccion->es_principal)
                                                     <p><strong>Dirección principal</strong></p>
                                                 @endif
-                                                <!-- Botón para seleccionar esta dirección -->
-                                                <button
-                                                    wire:click="seleccionarDireccion({{ $direccion->id }})">Seleccionar
-                                                    esta dirección</button>
-
                                                 <button wire:click="editarDireccion({{ $direccion->id }})">Editar
                                                     esta dirección</button>
                                             </div>
-                                            <br>
-                                        @endforeach
-                                    @endif
-                                </div>
-
+                                        </div>
+                                        <br>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
-                    </x-slot>
-                    <x-slot name="footer">
-                        <button wire:click="$set('modalSeleccionarDireccion', false)">Cancelar</button>
-                    </x-slot>
-                </x-dialog-modal>
+                        <div class="modal_pie">
+                            <button class="modal_boton_aceptar" wire:click="abrirModalCrearDireccion()">Crear nueva
+                                dirección</button>
 
+                            <button class="modal_boton_cancelar"
+                                wire:click="$set('modalSeleccionarDireccion', false)">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             @endif
 
             <!-- Modal de edición dirección -->

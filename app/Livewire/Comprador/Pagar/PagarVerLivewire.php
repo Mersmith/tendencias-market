@@ -94,7 +94,7 @@ class PagarVerLivewire extends Component
             $this->direccionEnvio = $comprador->direcciones()->find($direccionId);
         }
 
-        $this->modalSeleccionarDireccion = false;
+        //$this->modalSeleccionarDireccion = false;
     }
 
     public function editarDireccion($direccionId)
