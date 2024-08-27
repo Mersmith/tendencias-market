@@ -85,106 +85,98 @@
                 </div>
             @endif
 
-            <!-- Modal de edición dirección -->
+            <!-- MODAL EDITAR DIRECCION -->
             @if ($modalEditarDireccion)
-                <x-dialog-modal wire:model="modalEditarDireccion">
-                    <x-slot name="title">
-                        <div>
-                            <!--TITULO-->
-                            <h4 class="g_panel_titulo">Editar</h4>
+                <div class="contenedor_modal_direccion">
+                    <div class="modal_contenedor">
+                        <button class="modal_cerrar">&times;</button>
+                        <div class="modal_titulo">
+                            <h4>Editar dirección</h4>
                         </div>
-                    </x-slot>
-                    <x-slot name="content">
 
-                        <div class="modal">
-                            <div class="modal-content">
-                                <h3>Editar Dirección</h3>
+                        <div class="modal_cuerpo">
 
-                                <input type="text" wire:model.live="recibe_nombres">
-                                <input type="text" wire:model.live="recibe_celular">
-                                <input type="text" wire:model.live="direccion">
-                                <input type="text" wire:model.live="direccion_numero">
-                                <input type="text" wire:model.live="codigo_postal">
+                            <input type="text" wire:model.live="recibe_nombres">
+                            <input type="text" wire:model.live="recibe_celular">
+                            <input type="text" wire:model.live="direccion">
+                            <input type="text" wire:model.live="direccion_numero">
+                            <input type="text" wire:model.live="codigo_postal">
 
-                                <select wire:model.live="departamento_id">
-                                    <option value="">Selecciona un Departamento</option>
-                                    @foreach ($departamentos as $departamento)
-                                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                            <select wire:model.live="departamento_id">
+                                <option value="">Selecciona un Departamento</option>
+                                @foreach ($departamentos as $departamento)
+                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
 
-                                <select wire:model.live="provincia_id">
-                                    <option value="">Selecciona una Provincia</option>
-                                    @foreach ($provincias as $provincia)
-                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                    @endforeach
-                                </select>
+                            <select wire:model.live="provincia_id">
+                                <option value="">Selecciona una Provincia</option>
+                                @foreach ($provincias as $provincia)
+                                    <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                @endforeach
+                            </select>
 
-                                <select wire:model.live="distrito_id">
-                                    <option value="">Selecciona un Distrito</option>
-                                    @foreach ($distritos as $distrito)
-                                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <select wire:model.live="distrito_id">
+                                <option value="">Selecciona un Distrito</option>
+                                @foreach ($distritos as $distrito)
+                                    <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    </x-slot>
-                    <x-slot name="footer">
-                        <button wire:click="updateDireccion">Guardar Cambios</button>
-                        <button wire:click="$set('modalEditarDireccion', false)">Cancelar</button>
-                    </x-slot>
-                </x-dialog-modal>
+
+                        <div class="modal_pie">
+                            <button wire:click="updateDireccion">Guardar Cambios</button>
+                            <button wire:click="$set('modalEditarDireccion', false)">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             @endif
 
+            <!-- MODAL CREAR DIRECCION -->
             @if ($modalCrearDireccion)
-                <x-dialog-modal wire:model="modalEditarDireccion">
-                    <x-slot name="title">
-                        <div>
-                            <!--TITULO-->
-                            <h4 class="g_panel_titulo">Editar</h4>
+                <div class="contenedor_modal_direccion">
+                    <div class="modal_contenedor">
+                        <button class="modal_cerrar">&times;</button>
+                        <div class="modal_titulo">
+                            <h4>Crear dirección</h4>
                         </div>
-                    </x-slot>
-                    <x-slot name="content">
-                        <div class="modal">
-                            <div class="modal-content">
-                                <h3>Nueva Dirección</h3>
 
-                                <input type="text" wire:model.live="recibe_nombres" placeholder="Nombres">
-                                <input type="text" wire:model.live="recibe_celular" placeholder="Celular">
-                                <input type="text" wire:model.live="direccion" placeholder="Dirección">
-                                <input type="text" wire:model.live="direccion_numero"
-                                    placeholder="Número de Dirección">
-                                <input type="text" wire:model.live="codigo_postal" placeholder="Código Postal">
+                        <div class="modal_cuerpo">
+                            <input type="text" wire:model.live="recibe_nombres" placeholder="Nombres">
+                            <input type="text" wire:model.live="recibe_celular" placeholder="Celular">
+                            <input type="text" wire:model.live="direccion" placeholder="Dirección">
+                            <input type="text" wire:model.live="direccion_numero" placeholder="Número de Dirección">
+                            <input type="text" wire:model.live="codigo_postal" placeholder="Código Postal">
 
-                                <select wire:model.live="departamento_id">
-                                    <option value="">Selecciona un Departamento</option>
-                                    @foreach ($departamentos as $departamento)
-                                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
-                                    @endforeach
-                                </select>
+                            <select wire:model.live="departamento_id">
+                                <option value="">Selecciona un Departamento</option>
+                                @foreach ($departamentos as $departamento)
+                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                                @endforeach
+                            </select>
 
-                                <select wire:model.live="provincia_id">
-                                    <option value="">Selecciona una Provincia</option>
-                                    @foreach ($provincias as $provincia)
-                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                    @endforeach
-                                </select>
+                            <select wire:model.live="provincia_id">
+                                <option value="">Selecciona una Provincia</option>
+                                @foreach ($provincias as $provincia)
+                                    <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                @endforeach
+                            </select>
 
-                                <select wire:model.live="distrito_id">
-                                    <option value="">Selecciona un Distrito</option>
-                                    @foreach ($distritos as $distrito)
-                                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <select wire:model.live="distrito_id">
+                                <option value="">Selecciona un Distrito</option>
+                                @foreach ($distritos as $distrito)
+                                    <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    </x-slot>
-                    <x-slot name="footer">
-                        <button wire:click="createDireccion">Guardar Dirección</button>
-                        <button wire:click="$set('modalCrearDireccion', false)">Cancelar</button>
-                    </x-slot>
-                </x-dialog-modal>
+
+                        <div class="modal_pie">
+                            <button wire:click="createDireccion">Guardar Dirección</button>
+                            <button wire:click="$set('modalCrearDireccion', false)">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
 
