@@ -43,29 +43,29 @@
                                     <p>No tienes direcciones registradas.</p>
                                 @else
                                     @foreach ($direcciones as $direccion)
-                                        <div class="direccion_item">
+                                        <div
+                                            class="direccion_item {{ $direccionEnvio && $direccionEnvio->id == $direccion->id ? 'direccion_seleccionada' : '' }}">
                                             <div>
                                                 <input type="radio" name="direccion" value="{{ $direccion->id }}"
                                                     wire:click="seleccionarDireccion({{ $direccion->id }})"
                                                     @checked($direccionEnvio && $direccionEnvio->id == $direccion->id)>
                                             </div>
                                             <div>
-                                                <p>Recibe: <span>{{ $direccion->recibe_nombres }}</span></p>
-                                                <p>Teléfono: <span>{{ $direccion->recibe_celular }}</span></p>
-                                                <p>Dirección:
-                                                    <span>
-                                                        {{ $direccion->departamento->nombre }} /
-                                                        {{ $direccion->provincia->nombre }} /
-                                                        {{ $direccion->distrito->nombre }}
-                                                        {{ $direccion->direccion }} /
-                                                        {{ $direccion->direccion_numero }}
-                                                    </span>
+                                                <p><span>Recibe: </span>{{ $direccion->recibe_nombres }}</p>
+                                                <p><span>Teléfono: </span> {{ $direccion->recibe_celular }}</p>
+                                                <p><span>Dirección: </span>
+                                                    {{ $direccion->departamento->nombre }} /
+                                                    {{ $direccion->provincia->nombre }} /
+                                                    {{ $direccion->distrito->nombre }}
+                                                    {{ $direccion->direccion }} /
+                                                    {{ $direccion->direccion_numero }}
                                                 </p>
-                                                <p>Código Posta: <span>{{ $direccion->codigo_postal }}</span></p>
+                                                <p><span>Código Posta: </span>{{ $direccion->codigo_postal }}</p>
                                                 @if ($direccion->es_principal)
                                                     <p><strong>Dirección principal</strong></p>
                                                 @endif
-                                                <button wire:click="editarDireccion({{ $direccion->id }})">Editar
+                                                <button class="editar_direccion"
+                                                    wire:click="editarDireccion({{ $direccion->id }})">Editar
                                                     esta dirección</button>
                                             </div>
                                         </div>

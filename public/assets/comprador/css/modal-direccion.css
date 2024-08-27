@@ -65,15 +65,29 @@
     color: #fff;
 }
 
-/*.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion {
-    background: gray;
-}*/
-
-.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item{
+.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item {
     border-radius: 20px;
     border: solid 1px red;
     padding: 10px;
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item.direccion_seleccionada {
+    border: solid 2px blue;
+    background-color: #f0f8ff;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item p {
+    font-size: 16px;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item p span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item .editar_direccion {
+    color: red;
 }
