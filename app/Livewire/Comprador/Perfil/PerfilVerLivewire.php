@@ -33,8 +33,8 @@ class PerfilVerLivewire extends Component
 
     public function actualizarDatos()
     {
-        // Validar los datos
-        $validatedData = $this->validate([
+        // Reglas de validación para actualizar datos
+        $rules = [
             'nombre' => 'nullable|string|max:255',
             'apellido_paterno' => 'nullable|string|max:255',
             'apellido_materno' => 'nullable|string|max:255',
@@ -45,7 +45,23 @@ class PerfilVerLivewire extends Component
                 Rule::unique('compradors')->ignore(Auth::id(), 'user_id'),
             ],
             'celular' => 'nullable|string|max:15',
-        ]);
+        ];
+
+        $messages = [
+            'dni.required' => 'El :attribute es obligatorio.',
+            'dni.size' => 'El :attribute debe tener exactamente :size caracteres.',
+            'dni.unique' => 'El :attribute ya está en uso.',
+        ];
+
+        $validationAttributes = [
+            'nombre' => 'nombre',
+            'apellido_paterno' => 'apellido paterno',
+            'apellido_materno' => 'apellido materno',
+            'dni' => 'DNI',
+            'celular' => 'número de celular',
+        ];
+
+        $validatedData = $this->validate($rules, $messages, $validationAttributes);
 
         // Actualizar los datos del comprador
         $comprador = Comprador::where('user_id', Auth::id())->firstOrFail();
@@ -57,11 +73,24 @@ class PerfilVerLivewire extends Component
 
     public function actualizarClave()
     {
-        // Validar las contraseñas
-        $validatedData = $this->validate([
+        // Reglas de validación para actualizar clave
+        $rules = [
             'clave_actual' => 'required|string',
             'clave_nueva' => 'required|string|min:8',
-        ]);
+        ];
+
+        $messages = [
+            'clave_actual.required' => 'La :attribute es obligatoria.',
+            'clave_nueva.required' => 'La :attribute es obligatoria.',
+            'clave_nueva.min' => 'La :attribute debe tener al menos :min caracteres.',
+        ];
+
+        $validationAttributes = [
+            'clave_actual' => 'contraseña actual',
+            'clave_nueva' => 'nueva contraseña',
+        ];
+
+        $this->validate($rules, $messages, $validationAttributes);
 
         // Obtener el comprador autenticado
         $comprador = Comprador::where('user_id', Auth::id())->firstOrFail();
@@ -83,6 +112,7 @@ class PerfilVerLivewire extends Component
         // Redirigir con un mensaje de éxito
         session()->flash('success', 'Contraseña actualizada correctamente.');
     }
+
 
     public function render()
     {

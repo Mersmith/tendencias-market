@@ -104,10 +104,15 @@
     padding: 15px;
     font-weight: 600;
     font-size: 15px;
+    margin-bottom: 15px;
 }
 
 .comprador_alerta.exito {
     background-color: rgb(196, 232, 141);
+}
+
+.comprador_alerta.error {
+    background-color: rgb(232, 141, 141);
 }
 
 @media (max-width: 1024px) {

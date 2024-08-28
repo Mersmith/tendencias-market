@@ -5,6 +5,12 @@
         </div>
     @endif
 
+    @if (session()->has('error'))
+        <div class="comprador_alerta error">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="comprador_panel">
         <div class="comprador_titulo">
             <h2>Mi perfil</h2>
@@ -67,12 +73,6 @@
     </div>
 
     <div class="comprador_panel">
-        @if (session()->has('success'))
-            <div class="comprador_alerta exito">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <div class="comprador_titulo">
             <h2>Cambiar contraseña</h2>
         </div>
