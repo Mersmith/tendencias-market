@@ -1,35 +1,59 @@
 <div>
     <!-- Botón para abrir el modal de nueva dirección -->
-    <button wire:click="$set('newModalVisible', true)">Agregar Nueva Dirección</button>
 
-    <div>
-        @if ($direcciones->isEmpty())
-            <p>No tienes direcciones registradas.</p>
-        @else
-            @foreach ($direcciones as $direccion)
-                <div class="direccion-item">
-                    <h3>{{ $direccion->recibe_nombres }}</h3>
-                    <p>Teléfono: {{ $direccion->recibe_celular }}</p>
-                    <p>Dirección: {{ $direccion->direccion }} {{ $direccion->direccion_numero }}</p>
-                    <p>
-                        {{ $direccion->departamento->nombre }} / {{ $direccion->provincia->nombre }} /
-                        {{ $direccion->distrito->nombre }}</p>
-                    <p>Código Postal: {{ $direccion->codigo_postal }}</p>
-                    @if ($direccion->es_principal)
-                        <p><strong>Dirección principal</strong></p>
-                    @endif
+    <div class="comprador_panel">
 
-                    <div>
-                        <button wire:click="editDireccion({{ $direccion->id }})">EDITAR</button>
-                        <button wire:click="confirmDelete({{ $direccion->id }})">Eliminar</button>
-                        <button wire:click="establecerPrincipal({{ $direccion->id }})">Establecer principal</button>
+        <div class="comprador_titulo">
+            <h2>Mis direcciones</h2>
+        </div>
+
+        <div class="comprador_lista">
+            @if ($direcciones->isEmpty())
+                <p>No tienes direcciones registradas.</p>
+            @else
+                @foreach ($direcciones as $direccion)
+                    <div class="lista_item">
+                        <div class="dos_bloques">
+                            <div>
+                                @if ($direccion->es_principal)
+                                    <i class="fa-solid fa-heart"></i>
+                                @else
+                                    <i class="fa-regular fa-heart"
+                                        wire:click="establecerPrincipal({{ $direccion->id }})"></i>
+                                @endif
+                            </div>
+
+                            <div>
+                                <p><span>Recibe: </span>{{ $direccion->recibe_nombres }}</p>
+                                <p><span>Teléfono: </span>{{ $direccion->recibe_celular }}</p>
+                                <p><span>Dirección: </span>{{ $direccion->direccion }}
+                                    {{ $direccion->direccion_numero }}
+                                </p>
+                                <p><span>Dirección: </span>
+                                    {{ $direccion->departamento->nombre }} / {{ $direccion->provincia->nombre }} /
+                                    {{ $direccion->distrito->nombre }}</p>
+                                <p><span>Código Postal:</span>{{ $direccion->codigo_postal }}</p>
+                                @if ($direccion->es_principal)
+                                    <p>Dirección principal</p>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="botones">
+                            <button wire:click="editDireccion({{ $direccion->id }})">Editar</button>
+                            <button wire:click="confirmDelete({{ $direccion->id }})">Eliminar</button>
+                        </div>
                     </div>
-                </div>
-                <br>
-            @endforeach
-        @endif
-    </div>
+                    <br>
+                @endforeach
+            @endif
+        </div>
 
+        <div class="comprador_formulario_boton">
+            <button wire:click="$set('newModalVisible', true)" class="guardar">Agregar Nueva Dirección</button>
+        </div>
+
+    </div>
     <!-- Modal de edición -->
     @if ($editModalVisible)
         <div class="modal">

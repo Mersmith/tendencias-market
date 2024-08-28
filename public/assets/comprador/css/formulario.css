@@ -115,6 +115,53 @@
     background-color: rgb(232, 141, 141);
 }
 
+/* LISTA */
+.comprador_lista {
+    display: flex;
+    flex-direction: column;
+}
+
+.comprador_lista .lista_item {
+    padding: 15px;
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comprador_lista .lista_item .dos_bloques {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.comprador_lista .lista_item .dos_bloques  i {
+   cursor: pointer;
+}
+
+.comprador_lista .lista_item .botones {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+}
+
+.comprador_lista .lista_item  p {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #29343d;
+    font-size: 14px;
+}
+
+.comprador_lista .lista_item  span {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #29343d;
+    font-size: 14px;
+}
+
 @media (max-width: 1024px) {
 
     .bloque.tres_columnas {
