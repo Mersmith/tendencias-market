@@ -56,39 +56,117 @@
     </div>
     <!-- Modal de edición -->
     @if ($editModalVisible)
-        <div class="modal">
-            <div class="modal-content">
-                <h3>Editar Dirección</h3>
+        <div class="comprador_modal">
+            <div class="modal_contenedor">
+                <div class="modal_cerrar">
+                    <button wire:click="$set('editModalVisible', false)">&times;</button>
+                </div>
 
-                <input type="text" wire:model.live="recibe_nombres">
-                <input type="text" wire:model.live="recibe_celular">
-                <input type="text" wire:model.live="direccion">
-                <input type="text" wire:model.live="direccion_numero">
-                <input type="text" wire:model.live="codigo_postal">
+                <div class="modal_titulo comprador_titulo">
+                    <h2>Editar dirección</h2>
+                </div>
 
-                <select wire:model.live="departamento_id">
-                    <option value="">Selecciona un Departamento</option>
-                    @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
-                    @endforeach
-                </select>
+                <div class="modal_cuerpo comprador_formulario">
+                    <div class="bloque">
+                        <div class="item_formulario">
+                            <label for="recibe_nombres">Nombres de quién recibe</label>
+                            <input type="recibe_nombres" wire:model="recibe_nombres" id="recibe_nombres">
+                            @error('recibe_nombres')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
-                <select wire:model.live="provincia_id">
-                    <option value="">Selecciona una Provincia</option>
-                    @foreach ($provincias as $provincia)
-                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                    @endforeach
-                </select>
+                    <div class="bloque">
+                        <div class="item_formulario">
+                            <label for="recibe_celular">Celular a contactar</label>
+                            <input type="recibe_celular" wire:model="recibe_celular" id="recibe_celular">
+                            @error('recibe_celular')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
-                <select wire:model.live="distrito_id">
-                    <option value="">Selecciona un Distrito</option>
-                    @foreach ($distritos as $distrito)
-                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                    @endforeach
-                </select>
+                    <div class="bloque">
+                        <div class="codigo_postal">
+                            <label for="departamento_id">Departamento</label>
+                            <select wire:model.live="departamento_id">
+                                <option value="">Selecciona un Departamento</option>
+                                @foreach ($departamentos as $departamento)
+                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('departamento_id')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
-                <button wire:click="updateDireccion">Guardar Cambios</button>
-                <button wire:click="$set('editModalVisible', false)">Cancelar</button>
+                    <div class="bloque">
+                        <div class="codigo_postal">
+                            <label for="provincia_id">Provincia</label>
+                            <select wire:model.live="provincia_id">
+                                <option value="">Selecciona una Provincia</option>
+                                @foreach ($provincias as $provincia)
+                                    <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('provincia_id')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="bloque">
+                        <div class="codigo_postal">
+                            <label for="distrito_id">Distrito</label>
+                            <select wire:model.live="distrito_id">
+                                <option value="">Selecciona un Distrito</option>
+                                @foreach ($distritos as $distrito)
+                                    <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('distrito_id')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="bloque">
+                        <div class="item_formulario">
+                            <label for="direccion">Avenida / Calle / Jirón</label>
+                            <input type="text" wire:model="direccion" id="direccion">
+                            @error('direccion')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="bloque">
+                        <div class="item_formulario">
+                            <label for="direccion_numero">Número</label>
+                            <input type="text" wire:model="direccion_numero" id="direccion_numero">
+                            @error('direccion_numero')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="bloque">
+                        <div class="codigo_postal">
+                            <label for="codigo_postal">Código postal</label>
+                            <input type="text" wire:model="codigo_postal" id="codigo_postal">
+                            @error('codigo_postal')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comprador_formulario_boton">
+                    <button wire:click="$set('editModalVisible', false)" class="cancelar">Cancelar</button>
+                    <button wire:click="updateDireccion" class="guardar">Guardar Cambios</button>
+                </div>
             </div>
         </div>
     @endif

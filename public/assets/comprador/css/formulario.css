@@ -46,6 +46,11 @@
     color: #333;
     font-size: 14px;
     line-height: 1.5;
+
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
 }
 
 .comprador_formulario *:disabled {
@@ -84,6 +89,8 @@
 
 .comprador_formulario_boton {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .comprador_formulario_boton button {
@@ -96,6 +103,11 @@
 .comprador_formulario_boton .guardar {
     background-color: #343E49;
     color: white;
+}
+
+.comprador_formulario_boton .cancelar {
+    background-color: inherit;
+    color: #343E49;
 }
 
 /* ALERTAS */
@@ -131,13 +143,12 @@
 
 .comprador_lista .lista_item .dos_bloques {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 15px;
 }
 
-.comprador_lista .lista_item .dos_bloques  i {
-   cursor: pointer;
+.comprador_lista .lista_item .dos_bloques i {
+    cursor: pointer;
 }
 
 .comprador_lista .lista_item .botones {
@@ -148,18 +159,67 @@
     color: var(--color-texto-secundario);
 }
 
-.comprador_lista .lista_item  p {
+.comprador_lista .lista_item p {
     margin-bottom: 5px;
     font-weight: 500;
     color: #29343d;
     font-size: 14px;
 }
 
-.comprador_lista .lista_item  span {
+.comprador_lista .lista_item span {
     margin-bottom: 5px;
     font-weight: 600;
     color: #29343d;
     font-size: 14px;
+}
+
+/*  MODAL */
+.comprador_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.comprador_modal .modal_contenedor {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.comprador_modal .modal_cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}
+
+.comprador_modal .modal_titulo {
+    margin-bottom: 15px;
+}
+
+.comprador_modal .modal_cuerpo {
+    margin-bottom: 20px;
+}
+
+.comprador_modal .modal_pie {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 @media (max-width: 1024px) {
@@ -179,5 +239,21 @@
     .bloque.dos_columnas {
         grid-template-columns: repeat(1, 1fr);
     }
+
+
+    .comprador_lista .lista_item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .comprador_lista .lista_item .dos_bloques {
+        width: 100%;
+    }
+
+    .comprador_lista .lista_item .botones {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
 
 }
