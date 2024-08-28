@@ -39,6 +39,7 @@
 }
 
 .comprador_formulario input,
+.comprador_formulario textarea,
 .comprador_formulario select {
     width: 100%;
     border: 1px solid #ccc;
@@ -60,6 +61,8 @@
 
 .comprador_formulario input:focus,
 .comprador_formulario input:active,
+.comprador_formulario textarea:focus,
+.comprador_formulario textarea:active,
 .comprador_formulario select:focus,
 .comprador_formulario select:active {
     outline: none;

@@ -27,6 +27,8 @@ class DireccionTodasLivewire extends Component
     public $direccion = null;
     public $direccion_numero = null;
     public $codigo_postal = null;
+    public $opcional = null;
+    public $instrucciones = null;
 
     public $eliminar_direccion_id;
 
@@ -91,6 +93,8 @@ class DireccionTodasLivewire extends Component
         $direccion->departamento_id = $this->departamento_id;
         $direccion->provincia_id = $this->provincia_id;
         $direccion->distrito_id = $this->distrito_id;
+        $direccion->opcional = $this->opcional;
+        $direccion->instrucciones = $this->instrucciones;
 
         $direccion->save();
 
