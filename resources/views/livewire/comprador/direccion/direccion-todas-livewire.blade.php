@@ -322,11 +322,24 @@
 
     <!-- MODAL CONFIRMAR ELIMINAR DIRECCION -->
     @if ($deleteModalVisible)
-        <div class="modal">
-            <div class="modal-content">
-                <h3>¿Estás seguro de que deseas eliminar esta dirección?</h3>
-                <button wire:click="deleteDireccion">Eliminar</button>
-                <button wire:click="$set('deleteModalVisible', false)">Cancelar</button>
+        <div class="comprador_modal">
+            <div class="modal_contenedor">
+                <div class="modal_cerrar">
+                    <button wire:click="$set('deleteModalVisible', false)"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="modal_titulo comprador_titulo">
+                    <h2>Eliminar dirección</h2>
+                </div>
+
+                <div class="modal_cuerpo comprador_formulario">
+                    <p>¿Realmente quieres eliminar la dirección?</p>
+                </div>
+
+                <div class="comprador_formulario_boton">
+                    <button wire:click="$set('deleteModalVisible', false)" class="cancelar">Cancelar</button>
+                    <button wire:click="deleteDireccion" class="guardar">Eliminar</button>
+                </div>
             </div>
         </div>
     @endif
