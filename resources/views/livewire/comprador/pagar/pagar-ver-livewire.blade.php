@@ -96,33 +96,36 @@
 
                         <div class="modal_cuerpo">
 
-                            <input type="text" wire:model.live="recibe_nombres">
-                            <input type="text" wire:model.live="recibe_celular">
-                            <input type="text" wire:model.live="direccion">
-                            <input type="text" wire:model.live="direccion_numero">
-                            <input type="text" wire:model.live="codigo_postal">
+                            <div class="formulario">
+                                <input type="text" wire:model.live="recibe_nombres">
+                                <input type="text" wire:model.live="recibe_celular">
+                                <input type="text" wire:model.live="direccion">
+                                <input type="text" wire:model.live="direccion_numero">
+                                <input type="text" wire:model.live="codigo_postal">
 
-                            <select wire:model.live="departamento_id">
-                                <option value="">Selecciona un Departamento</option>
-                                @foreach ($departamentos as $departamento)
-                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
-                                    </option>
-                                @endforeach
-                            </select>
+                                <select wire:model.live="departamento_id">
+                                    <option value="">Selecciona un Departamento</option>
+                                    @foreach ($departamentos as $departamento)
+                                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
 
-                            <select wire:model.live="provincia_id">
-                                <option value="">Selecciona una Provincia</option>
-                                @foreach ($provincias as $provincia)
-                                    <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                @endforeach
-                            </select>
+                                <select wire:model.live="provincia_id">
+                                    <option value="">Selecciona una Provincia</option>
+                                    @foreach ($provincias as $provincia)
+                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                    @endforeach
+                                </select>
 
-                            <select wire:model.live="distrito_id">
-                                <option value="">Selecciona un Distrito</option>
-                                @foreach ($distritos as $distrito)
-                                    <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                @endforeach
-                            </select>
+                                <select wire:model.live="distrito_id">
+                                    <option value="">Selecciona un Distrito</option>
+                                    @foreach ($distritos as $distrito)
+                                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
 
                         <div class="modal_pie">
@@ -143,32 +146,67 @@
                         </div>
 
                         <div class="modal_cuerpo">
-                            <input type="text" wire:model.live="recibe_nombres" placeholder="Nombres">
-                            <input type="text" wire:model.live="recibe_celular" placeholder="Celular">
-                            <input type="text" wire:model.live="direccion" placeholder="Dirección">
-                            <input type="text" wire:model.live="direccion_numero" placeholder="Número de Dirección">
-                            <input type="text" wire:model.live="codigo_postal" placeholder="Código Postal">
+                            <div class="formulario">
+                                <div>
+                                    <label for="recibe_nombres">Nombres</label>
+                                    <input type="text" id="recibe_nombres" name="recibe_nombres"
+                                        wire:model.live="recibe_nombres">
+                                </div>
 
-                            <select wire:model.live="departamento_id">
-                                <option value="">Selecciona un Departamento</option>
-                                @foreach ($departamentos as $departamento)
-                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
-                                @endforeach
-                            </select>
+                                <div>
+                                    <label for="recibe_celular">Celular</label>
+                                    <input type="text" id="recibe_celular" name="recibe_celular"
+                                        wire:model.live="recibe_celular">
+                                </div>
 
-                            <select wire:model.live="provincia_id">
-                                <option value="">Selecciona una Provincia</option>
-                                @foreach ($provincias as $provincia)
-                                    <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                @endforeach
-                            </select>
+                                <div>
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" id="direccion" name="direccion" wire:model.live="direccion">
+                                </div>
 
-                            <select wire:model.live="distrito_id">
-                                <option value="">Selecciona un Distrito</option>
-                                @foreach ($distritos as $distrito)
-                                    <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                @endforeach
-                            </select>
+                                <div>
+                                    <label for="direccion_numero">Dirección</label>
+                                    <input type="text" id="direccion_numero" name="direccion_numero"
+                                        wire:model.live="direccion_numero">
+                                </div>
+
+                                <div>
+                                    <label for="codigo_postal">Código postal</label>
+                                    <input type="text" id="codigo_postal" name="codigo_postal"
+                                        wire:model.live="codigo_postal">
+                                </div>
+
+                                <div>
+                                    <label for="codigo_postal">Departamento</label>
+                                    <select wire:model.live="departamento_id">
+                                        <option value="">Selecciona un Departamento</option>
+                                        @foreach ($departamentos as $departamento)
+                                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="codigo_postal">Provincia</label>
+                                    <select wire:model.live="provincia_id">
+                                        <option value="">Selecciona una Provincia</option>
+                                        @foreach ($provincias as $provincia)
+                                            <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="codigo_postal">Distrito</label>
+                                    <select wire:model.live="distrito_id">
+                                        <option value="">Selecciona un Distrito</option>
+                                        @foreach ($distritos as $distrito)
+                                            <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="modal_pie">

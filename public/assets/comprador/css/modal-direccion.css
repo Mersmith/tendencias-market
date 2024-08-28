@@ -91,3 +91,39 @@
 .contenedor_modal_direccion .modal_cuerpo .contenedor_direccion .direccion_item .editar_direccion {
     color: red;
 }
+
+/* FORMULARIO */
+.contenedor_modal_direccion .modal_cuerpo .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .formulario label {
+    display: flex;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #29343d;
+    font-size: 14px;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .formulario input,
+.contenedor_modal_direccion .modal_cuerpo .formulario select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.contenedor_modal_direccion .modal_cuerpo .formulario input:focus,
+.contenedor_modal_direccion .modal_cuerpo .formulario input:active,
+.contenedor_modal_direccion .modal_cuerpo .formulario select:focus,
+.contenedor_modal_direccion .modal_cuerpo .formulario select:active {
+    outline: none;
+    box-shadow: none;
+    border-color: #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
