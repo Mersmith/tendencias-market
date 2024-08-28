@@ -10,10 +10,10 @@ use Livewire\Attributes\On;
 class DireccionTodasLivewire extends Component
 {
     public $direcciones;
-    public $direccion_seleccionada;
     public $editModalVisible = false;
     public $deleteModalVisible = false;
     public $newModalVisible = false;
+    public $editar_direccion_id;
     public $eliminar_direccion_id;
 
     public function mount()
@@ -35,40 +35,8 @@ class DireccionTodasLivewire extends Component
 
     public function editDireccion($direccionId)
     {
-        $this->resetValuesForm();
-
-        $this->direccion_seleccionada = CompradorDireccion::find($direccionId);
-        $this->recibe_nombres = $this->direccion_seleccionada->recibe_nombres;
-        $this->recibe_celular = $this->direccion_seleccionada->recibe_celular;
-        $this->direccion = $this->direccion_seleccionada->direccion;
-        $this->direccion_numero = $this->direccion_seleccionada->direccion_numero;
-        $this->codigo_postal = $this->direccion_seleccionada->codigo_postal;
-
         $this->editModalVisible = true;
-
-        $this->departamento_id = $this->direccion_seleccionada->departamento_id;
-        $this->loadProvincias();
-        $this->provincia_id = $this->direccion_seleccionada->provincia_id;
-        $this->loadDistritos();
-        $this->distrito_id = $this->direccion_seleccionada->distrito_id;
-    }
-
-    public function updateDireccion()
-    {
-        $this->direccion_seleccionada->recibe_nombres = $this->recibe_nombres;
-        $this->direccion_seleccionada->recibe_celular = $this->recibe_celular;
-        $this->direccion_seleccionada->direccion = $this->direccion;
-        $this->direccion_seleccionada->direccion_numero = $this->direccion_numero;
-        $this->direccion_seleccionada->codigo_postal = $this->codigo_postal;
-
-        $this->direccion_seleccionada->departamento_id = $this->departamento_id;
-        $this->direccion_seleccionada->provincia_id = $this->provincia_id;
-        $this->direccion_seleccionada->distrito_id = $this->distrito_id;
-
-        $this->direccion_seleccionada->save();
-        $this->editModalVisible = false;
-        $this->mount();
-        $this->resetValuesForm();
+        $this->editar_direccion_id = $direccionId;
     }
 
     public function establecerPrincipal($direccionId)
@@ -89,25 +57,16 @@ class DireccionTodasLivewire extends Component
         $this->mount();
     }
 
-    public function resetValuesForm()
-    {
-        $this->reset([
-            'recibe_nombres',
-            'recibe_celular',
-            'direccion',
-            'direccion_numero',
-            'codigo_postal',
-            'departamento_id',
-            'provincia_id',
-            'distrito_id',
-            'eliminar_direccion_id',
-        ]);
-    }
-
     #[On('emitCompradorCerrarModalCrearDireccion')]
-    public function closeCreateModal()
+    public function cerrarCrearEditar()
     {
         $this->newModalVisible = false;
+    }
+
+    #[On('emitCompradorCerrarModalEditarDireccion')]
+    public function cerrarModalEditar()
+    {
+        $this->editModalVisible = false;
     }
 
     public function confirmDelete($direccionId)
@@ -119,9 +78,9 @@ class DireccionTodasLivewire extends Component
     public function deleteDireccion()
     {
         CompradorDireccion::destroy($this->eliminar_direccion_id);
-        $this->deleteModalVisible = false;
         $this->mount();
-        $this->resetValuesForm();
+        $this->reset(['eliminar_direccion_id']);
+        $this->deleteModalVisible = false;
     }
 
     public function render()

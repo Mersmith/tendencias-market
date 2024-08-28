@@ -210,6 +210,7 @@ php artisan make:model CompradorDireccion -mfsc
 
 php artisan make:livewire Comprador/Direccion/DireccionTodasLivewire
 php artisan make:livewire Comprador/Direccion/DireccionCrearLivewire
+php artisan make:livewire Comprador/Direccion/DireccionEditarLivewire
 php artisan make:livewire Comprador/Perfil/PerfilVerLivewire
 php artisan make:livewire Comprador/Reembolso/ReembolsoVerLivewire
 

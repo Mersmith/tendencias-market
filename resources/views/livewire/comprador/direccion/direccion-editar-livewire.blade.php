@@ -1,20 +1,18 @@
 <div class="comprador_modal">
     <div class="modal_contenedor">
-
         <div class="modal_cerrar">
-            <button wire:click="cerrarCrearModal"><i class="fa-solid fa-xmark"></i></button>
+            <button wire:click="cerrarEditarModal"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
         <div class="modal_titulo comprador_titulo">
-            <h2>Nueva dirección</h2>
+            <h2>Editar dirección</h2>
         </div>
 
         <div class="modal_cuerpo comprador_formulario">
-
             <div class="bloque">
                 <div class="item_formulario">
                     <label for="recibe_nombres">Nombres de quién recibe</label>
-                    <input type="text" wire:model.live="recibe_nombres"
+                    <input type="recibe_nombres" wire:model="recibe_nombres" id="recibe_nombres"
                         placeholder="Nombres y apellidos de quien recibe">
                     @error('recibe_nombres')
                         <span class="error">{{ $message }}</span>
@@ -25,7 +23,8 @@
             <div class="bloque dos_columnas">
                 <div class="item_formulario">
                     <label for="recibe_celular">Celular a contactar</label>
-                    <input type="text" wire:model.live="recibe_celular" placeholder="Celular a contactar">
+                    <input type="recibe_celular" wire:model="recibe_celular" id="recibe_celular"
+                        placeholder="Celular a contactar">
                     @error('recibe_celular')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -76,7 +75,7 @@
             <div class="bloque dos_columnas">
                 <div class="item_formulario">
                     <label for="direccion">Avenida / Calle / Jirón</label>
-                    <input type="text" wire:model.live="direccion" placeholder="Nombre de la calle">
+                    <input type="text" wire:model="direccion" id="direccion" placeholder="Nombre de la calle">
                     @error('direccion')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -84,7 +83,8 @@
 
                 <div class="item_formulario">
                     <label for="direccion_numero">Número</label>
-                    <input type="text" wire:model.live="direccion_numero" placeholder="Número de la calle">
+                    <input type="text" wire:model="direccion_numero" id="direccion_numero"
+                        placeholder="Número de la calle">
                     @error('direccion_numero')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -100,9 +100,9 @@
                     @enderror
                 </div>
 
-                <div class="item_formulario">
+                <div class="codigo_postal">
                     <label for="codigo_postal">Código postal</label>
-                    <input type="text" wire:model.live="codigo_postal" placeholder="Código postal">
+                    <input type="text" wire:model="codigo_postal" id="codigo_postal">
                     @error('codigo_postal')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -122,8 +122,8 @@
         </div>
 
         <div class="comprador_formulario_boton">
-            <button wire:click="cerrarCrearModal" class="cancelar">Cancelar</button>
-            <button wire:click="createDireccion" class="guardar">Guardar Dirección</button>
+            <button wire:click="cerrarEditarModal" class="cancelar">Cancelar</button>
+            <button wire:click="updateDireccion" class="guardar">Guardar Cambios</button>
         </div>
     </div>
 </div>

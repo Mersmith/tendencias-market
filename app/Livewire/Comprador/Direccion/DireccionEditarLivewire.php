@@ -7,10 +7,10 @@ use App\Models\Departamento;
 use App\Models\Distrito;
 use App\Models\Provincia;
 use App\Models\CompradorDireccion;
-use Illuminate\Support\Facades\Auth;
 
-class DireccionCrearLivewire extends Component
+class DireccionEditarLivewire extends Component
 {
+    public $direccion_seleccionada;
     public $departamentos;
     public $provincias = [];
     public $distritos = [];
@@ -25,31 +25,46 @@ class DireccionCrearLivewire extends Component
     public $opcional = null;
     public $instrucciones = null;
 
-    public function mount()
+    public function mount($direccionId)
     {
+        $this->editDireccion($direccionId);
         $this->departamentos = Departamento::all();
     }
 
-    public function createDireccion()
+    public function editDireccion($direccionId)
     {
-        $direccion = new CompradorDireccion();
-        $direccion->comprador_id = Auth::user()->comprador->id;
-        $direccion->recibe_nombres = $this->recibe_nombres;
-        $direccion->recibe_celular = $this->recibe_celular;
-        $direccion->direccion = $this->direccion;
-        $direccion->direccion_numero = $this->direccion_numero;
-        $direccion->codigo_postal = $this->codigo_postal;
-        $direccion->departamento_id = $this->departamento_id;
-        $direccion->provincia_id = $this->provincia_id;
-        $direccion->distrito_id = $this->distrito_id;
-        $direccion->opcional = $this->opcional;
-        $direccion->instrucciones = $this->instrucciones;
+        $this->direccion_seleccionada = CompradorDireccion::find($direccionId);
+        $this->recibe_nombres = $this->direccion_seleccionada->recibe_nombres;
+        $this->recibe_celular = $this->direccion_seleccionada->recibe_celular;
+        $this->direccion = $this->direccion_seleccionada->direccion;
+        $this->direccion_numero = $this->direccion_seleccionada->direccion_numero;
+        $this->codigo_postal = $this->direccion_seleccionada->codigo_postal;
 
-        $direccion->save();
+
+        $this->departamento_id = $this->direccion_seleccionada->departamento_id;
+        $this->loadProvincias();
+        $this->provincia_id = $this->direccion_seleccionada->provincia_id;
+        $this->loadDistritos();
+        $this->distrito_id = $this->direccion_seleccionada->distrito_id;
+    }
+
+    public function updateDireccion()
+    {
+        $this->direccion_seleccionada->recibe_nombres = $this->recibe_nombres;
+        $this->direccion_seleccionada->recibe_celular = $this->recibe_celular;
+        $this->direccion_seleccionada->direccion = $this->direccion;
+        $this->direccion_seleccionada->direccion_numero = $this->direccion_numero;
+        $this->direccion_seleccionada->codigo_postal = $this->codigo_postal;
+
+        $this->direccion_seleccionada->departamento_id = $this->departamento_id;
+        $this->direccion_seleccionada->provincia_id = $this->provincia_id;
+        $this->direccion_seleccionada->distrito_id = $this->distrito_id;
+
+        $this->direccion_seleccionada->save();
 
         $this->dispatch('emitCompradorRefreshDirecciones');
         $this->resetValuesForm();
-        $this->cerrarCrearModal();
+        $this->cerrarEditarModal();
     }
 
     public function updatedDepartamentoId($value)
@@ -88,9 +103,9 @@ class DireccionCrearLivewire extends Component
         }
     }
 
-    public function cerrarCrearModal()
+    public function cerrarEditarModal()
     {
-        $this->dispatch('emitCompradorCerrarModalCrearDireccion');
+        $this->dispatch('emitCompradorCerrarModalEditarDireccion');
     }
 
     public function resetValuesForm()
@@ -109,6 +124,6 @@ class DireccionCrearLivewire extends Component
 
     public function render()
     {
-        return view('livewire.comprador.direccion.direccion-crear-livewire');
+        return view('livewire.comprador.direccion.direccion-editar-livewire');
     }
 }
