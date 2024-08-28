@@ -83,6 +83,8 @@ class DireccionTodasLivewire extends Component
 
     public function createDireccion()
     {
+        $this->resetValuesForm();
+
         $direccion = new CompradorDireccion();
         $direccion->comprador_id = Auth::user()->comprador->id;
         $direccion->recibe_nombres = $this->recibe_nombres;
@@ -105,6 +107,8 @@ class DireccionTodasLivewire extends Component
 
     public function editDireccion($direccionId)
     {
+        $this->resetValuesForm();
+
         $this->direccion_seleccionada = CompradorDireccion::find($direccionId);
         $this->recibe_nombres = $this->direccion_seleccionada->recibe_nombres;
         $this->recibe_celular = $this->direccion_seleccionada->recibe_celular;
