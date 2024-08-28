@@ -3,11 +3,10 @@
 namespace App\Livewire\Comprador\Direccion;
 
 use App\Models\CompradorDireccion;
-use App\Models\Departamento;
-use App\Models\Distrito;
-use App\Models\Provincia;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
+
 class DireccionTodasLivewire extends Component
 {
     public $direcciones;
@@ -15,24 +14,15 @@ class DireccionTodasLivewire extends Component
     public $editModalVisible = false;
     public $deleteModalVisible = false;
     public $newModalVisible = false;
-
-    public $departamentos;
-    public $provincias = [];
-    public $distritos = [];
-    public $departamento_id = null;
-    public $provincia_id = null;
-    public $distrito_id = null;
-    public $recibe_nombres = null;
-    public $recibe_celular = null;
-    public $direccion = null;
-    public $direccion_numero = null;
-    public $codigo_postal = null;
-    public $opcional = null;
-    public $instrucciones = null;
-
     public $eliminar_direccion_id;
 
     public function mount()
+    {
+        $this->refreshDirecciones();
+    }
+
+    #[On('emitCompradorRefreshDirecciones')]
+    public function refreshDirecciones()
     {
         $comprador = Auth::user()->comprador;
 
@@ -41,68 +31,6 @@ class DireccionTodasLivewire extends Component
         } else {
             $this->direcciones = collect();
         }
-
-        $this->departamentos = Departamento::all();
-    }
-
-    public function updatedDepartamentoId($value)
-    {
-        $this->provincia_id = null;
-        $this->provincias = [];
-        $this->distritos = [];
-        $this->distrito_id = null;
-
-        if ($value) {
-            $this->loadProvincias();
-        }
-    }
-
-    public function updatedProvinciaId($value)
-    {
-        $this->distritos = [];
-        $this->distrito_id = null;
-
-        if ($value) {
-            $this->loadDistritos();
-        }
-    }
-
-    public function loadProvincias()
-    {
-        if (!is_null($this->departamento_id)) {
-            $this->provincias = Provincia::where('departamento_id', $this->departamento_id)->get();
-        }
-    }
-
-    public function loadDistritos()
-    {
-        if (!is_null($this->provincia_id)) {
-            $this->distritos = Distrito::where('provincia_id', $this->provincia_id)->get();
-        }
-    }
-
-    public function createDireccion()
-    {
-        $this->resetValuesForm();
-
-        $direccion = new CompradorDireccion();
-        $direccion->comprador_id = Auth::user()->comprador->id;
-        $direccion->recibe_nombres = $this->recibe_nombres;
-        $direccion->recibe_celular = $this->recibe_celular;
-        $direccion->direccion = $this->direccion;
-        $direccion->direccion_numero = $this->direccion_numero;
-        $direccion->codigo_postal = $this->codigo_postal;
-        $direccion->departamento_id = $this->departamento_id;
-        $direccion->provincia_id = $this->provincia_id;
-        $direccion->distrito_id = $this->distrito_id;
-        $direccion->opcional = $this->opcional;
-        $direccion->instrucciones = $this->instrucciones;
-
-        $direccion->save();
-
-        $this->newModalVisible = false;
-        $this->mount();
-        $this->resetValuesForm();
     }
 
     public function editDireccion($direccionId)
@@ -174,6 +102,12 @@ class DireccionTodasLivewire extends Component
             'distrito_id',
             'eliminar_direccion_id',
         ]);
+    }
+
+    #[On('emitCompradorCerrarModalCrearDireccion')]
+    public function closeCreateModal()
+    {
+        $this->newModalVisible = false;
     }
 
     public function confirmDelete($direccionId)
