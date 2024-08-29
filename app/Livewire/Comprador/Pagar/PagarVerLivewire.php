@@ -29,7 +29,7 @@ class PagarVerLivewire extends Component
 
     /* DELIVERY  */
     public $direccionEnvio;
-    public $deliveryTotalCosto = 50;
+    public $deliveryTotalCosto = 0;
 
     /* FORMULARIO DIRECCION */
     public $estadoModalEditar = false;

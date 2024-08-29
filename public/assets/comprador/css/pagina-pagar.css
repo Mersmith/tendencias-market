@@ -1,5 +1,5 @@
 .contenedor_pagina_pagar {
-    background-color: var(--color-fondo-cuaternario);
+    background-color: #f1f1f1;
 }
 
 .contenedor_pagina_pagar .centrar {
@@ -9,10 +9,30 @@
 }
 
 .contenedor_pagina_pagar .titulo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--color-texto-secundario);
-    padding: 15px 0px;
+}
+
+.separacion {
+    align-self: stretch;
+    border-color: var(--color-borde-quinario);
+    width: auto;
+    height: auto;
+    border-style: solid;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    border-left-width: 0;
+    border-bottom-width: 1px;
+}
+
+.contenedor_pagina_pagar .panel {
+    background: var(--color-fondo-terciario);
+    margin-bottom: 20px;
+    padding: 16px;
+
 }
 
 /* DETALLE CARRITO */
@@ -23,15 +43,60 @@
     align-items: flex-start;
 }
 
-/*PANEL*/
-.contenedor_pagina_pagar .panel {
-    background: var(--color-fondo-terciario);
-    margin-bottom: 20px;
-    padding: 16px ;
-
+/* CONTENEDOR DIRECCION*/
+.contenedor_pagina_pagar .contenedor_direccion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* CARRITO */
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item .dos_bloques {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item span {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(51, 51, 51);
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item p {
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(51, 51, 51);
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones button {
+    font-size: 13px;
+    font-weight: normal;
+    color: rgb(136, 136, 136);
+    border-bottom: 1px solid rgb(136, 136, 136);
+    white-space: normal;
+    display: flex;
+    gap: 5px;
+}
+
+.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones .precio {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(24, 111, 7);
+}
+
+/* RESUMEN DETALLE PAGO */
 .contenedor_pagina_pagar .resumen_detalle_pago {
     display: flex;
     flex-direction: column;
@@ -127,19 +192,6 @@
     text-decoration: line-through;
 }
 
-.separacion {
-    align-self: stretch;
-    border-color: var(--color-borde-quinario);
-    width: auto;
-    height: auto;
-    border-style: solid;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    border-left-width: 0;
-    border-bottom-width: 1px;
-}
 
 /* CONTROLES */
 .contenedor_pagina_pagar .controles {
