@@ -7,8 +7,8 @@
                 <h2 class="titulo">Dirección de envio</h2>
             </div>
 
+            <!-- DELIVERY -->
             <div class="contenedor_direccion">
-                <!-- DELIVERY -->
                 <div class="direccion_item comprador_seleccionado activo">
                     <div class="dos_bloques">
                         <div>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div>
-                            <p><span>Recibe: </span>{{ $direccionEnvio->recibe_nombres }}</p>
+                            <p><span>Recibe: </span>En tienda.</p>
                         </div>
                     </div>
 
