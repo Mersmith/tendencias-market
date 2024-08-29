@@ -38,36 +38,35 @@
                         </div>
 
                         <div class="botones">
-                            <button wire:click="editDireccion({{ $direccion->id }})">Editar</button>
+                            <button wire:click="editarDireccion({{ $direccion->id }})">Editar</button>
                             <button wire:click="confirmDelete({{ $direccion->id }})">Eliminar</button>
                         </div>
                     </div>
-                    <br>
                 @endforeach
             @endif
         </div>
 
         <div class="comprador_formulario_boton">
-            <button wire:click="$set('newModalVisible', true)" class="guardar">Agregar Nueva Dirección</button>
+            <button wire:click="$set('estadoModalCrear', true)" class="guardar">Agregar Nueva Dirección</button>
         </div>
     </div>
 
     <!-- MODAL CREAR DIRECCION -->
-    @if ($newModalVisible)
-        @livewire('comprador.direccion.direccion-crear-livewire')
+    @if ($estadoModalCrear)
+        @livewire('comprador.direccion.direccion-crear-livewire', ['origen' => ''])
     @endif
 
     <!-- MODAL EDITAR DIRECCION -->
-    @if ($editModalVisible)
-        @livewire('comprador.direccion.direccion-editar-livewire', ['direccionId' => $editar_direccion_id])       
+    @if ($estadoModalEditar)
+        @livewire('comprador.direccion.direccion-editar-livewire', ['direccionId' => $editar_direccion_id, 'origen' => ''])
     @endif
 
     <!-- MODAL CONFIRMAR ELIMINAR DIRECCION -->
-    @if ($deleteModalVisible)
+    @if ($estadoModalEliminar)
         <div class="comprador_modal">
             <div class="modal_contenedor">
                 <div class="modal_cerrar">
-                    <button wire:click="$set('deleteModalVisible', false)"><i class="fa-solid fa-xmark"></i></button>
+                    <button wire:click="$set('estadoModalEliminar', false)"><i class="fa-solid fa-xmark"></i></button>
                 </div>
 
                 <div class="modal_titulo comprador_titulo">
@@ -79,7 +78,7 @@
                 </div>
 
                 <div class="comprador_formulario_boton">
-                    <button wire:click="$set('deleteModalVisible', false)" class="cancelar">Cancelar</button>
+                    <button wire:click="$set('estadoModalEliminar', false)" class="cancelar">Cancelar</button>
                     <button wire:click="deleteDireccion" class="guardar">Eliminar</button>
                 </div>
             </div>

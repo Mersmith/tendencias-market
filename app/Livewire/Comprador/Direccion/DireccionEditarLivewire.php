@@ -25,9 +25,12 @@ class DireccionEditarLivewire extends Component
     public $opcional = null;
     public $instrucciones = null;
 
-    public function mount($direccionId)
+    public $origen = '';
+
+    public function mount($direccionId, $origen)
     {
         $this->editDireccion($direccionId);
+        $this->origen = $origen;
         $this->departamentos = Departamento::all();
     }
 
@@ -62,7 +65,11 @@ class DireccionEditarLivewire extends Component
 
         $this->direccion_seleccionada->save();
 
-        $this->dispatch('emitCompradorRefreshDirecciones');
+        if ($this->origen == 'comprador-pagar') {
+            $this->dispatch('emitCompradorPagarRefreshDirecciones');
+        } else {
+            $this->dispatch('emitCompradorRefreshDirecciones');
+        }        
         $this->resetValuesForm();
         $this->cerrarEditarModal();
     }
@@ -105,7 +112,11 @@ class DireccionEditarLivewire extends Component
 
     public function cerrarEditarModal()
     {
-        $this->dispatch('emitCompradorCerrarModalEditarDireccion');
+        if ($this->origen == 'comprador-pagar') {
+            $this->dispatch('emitCompradorPagarCerrarModalEditarDireccion');
+        } else {
+            $this->dispatch('emitCompradorCerrarModalEditarDireccion');
+        }
     }
 
     public function resetValuesForm()

@@ -25,8 +25,11 @@ class DireccionCrearLivewire extends Component
     public $opcional = null;
     public $instrucciones = null;
 
-    public function mount()
+    public $origen = '';
+
+    public function mount($origen)
     {
+        $this->origen = $origen;
         $this->departamentos = Departamento::all();
     }
 
@@ -47,7 +50,11 @@ class DireccionCrearLivewire extends Component
 
         $direccion->save();
 
-        $this->dispatch('emitCompradorRefreshDirecciones');
+        if ($this->origen == 'comprador-pagar') {
+            $this->dispatch('emitCompradorPagarRefreshDirecciones');
+        } else {
+            $this->dispatch('emitCompradorRefreshDirecciones');
+        }
         $this->resetValuesForm();
         $this->cerrarCrearModal();
     }
@@ -90,7 +97,12 @@ class DireccionCrearLivewire extends Component
 
     public function cerrarCrearModal()
     {
-        $this->dispatch('emitCompradorCerrarModalCrearDireccion');
+        if ($this->origen == 'comprador-pagar') {
+            $this->dispatch('emitCompradorPagarCerrarModalCrearDireccion');
+        } else {
+            $this->dispatch('emitCompradorCerrarModalCrearDireccion');
+        }
+        
     }
 
     public function resetValuesForm()

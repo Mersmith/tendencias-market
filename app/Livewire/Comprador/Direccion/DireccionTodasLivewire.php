@@ -10,9 +10,9 @@ use Livewire\Attributes\On;
 class DireccionTodasLivewire extends Component
 {
     public $direcciones;
-    public $editModalVisible = false;
-    public $deleteModalVisible = false;
-    public $newModalVisible = false;
+    public $estadoModalEditar = false;
+    public $estadoModalEliminar = false;
+    public $estadoModalCrear = false;
     public $editar_direccion_id;
     public $eliminar_direccion_id;
 
@@ -33,9 +33,9 @@ class DireccionTodasLivewire extends Component
         }
     }
 
-    public function editDireccion($direccionId)
+    public function editarDireccion($direccionId)
     {
-        $this->editModalVisible = true;
+        $this->estadoModalEditar = true;
         $this->editar_direccion_id = $direccionId;
     }
 
@@ -43,36 +43,33 @@ class DireccionTodasLivewire extends Component
     {
         $comprador = Auth::user()->comprador;
 
-        // Desactivar la dirección principal actual
         CompradorDireccion::where('comprador_id', $comprador->id)
             ->where('es_principal', true)
             ->update(['es_principal' => false]);
 
-        // Establecer la nueva dirección como principal
         CompradorDireccion::where('id', $direccionId)
             ->where('comprador_id', $comprador->id)
             ->update(['es_principal' => true]);
 
-        // Recargar las direcciones para reflejar el cambio
         $this->mount();
     }
 
     #[On('emitCompradorCerrarModalCrearDireccion')]
-    public function cerrarCrearEditar()
+    public function cerrarModalCrear()
     {
-        $this->newModalVisible = false;
+        $this->estadoModalCrear = false;
     }
 
     #[On('emitCompradorCerrarModalEditarDireccion')]
     public function cerrarModalEditar()
     {
-        $this->editModalVisible = false;
+        $this->estadoModalEditar = false;
     }
 
     public function confirmDelete($direccionId)
     {
         $this->eliminar_direccion_id = $direccionId;
-        $this->deleteModalVisible = true;
+        $this->estadoModalEliminar = true;
     }
 
     public function deleteDireccion()
@@ -80,7 +77,7 @@ class DireccionTodasLivewire extends Component
         CompradorDireccion::destroy($this->eliminar_direccion_id);
         $this->mount();
         $this->reset(['eliminar_direccion_id']);
-        $this->deleteModalVisible = false;
+        $this->estadoModalEliminar = false;
     }
 
     public function render()

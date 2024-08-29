@@ -29,192 +29,79 @@
             </div>
 
             <!-- MODAL SELECCIONAR DIRECCION -->
-            @if ($modalSeleccionarDireccion)
-                <div class="contenedor_modal_direccion">
+            @if ($estadoModalSeleccionarDireccion)
+                <div class="comprador_modal">
                     <div class="modal_contenedor">
-                        <button class="modal_cerrar">&times;</button>
-                        <div class="modal_titulo">
-                            <h4>Mis direcciones</h4>
+                        <div class="modal_cerrar">
+                            <button wire:click="$set('estadoModalSeleccionarDireccion', false)"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <div class="comprador_titulo">
+                            <h2>Mis direcciones</h2>
                         </div>
 
                         <div class="modal_cuerpo">
-                            <div class="contenedor_direccion">
+                            <div class="comprador_lista">
                                 @if ($direcciones->isEmpty())
                                     <p>No tienes direcciones registradas.</p>
                                 @else
                                     @foreach ($direcciones as $direccion)
                                         <div
-                                            class="direccion_item {{ $direccionEnvio && $direccionEnvio->id == $direccion->id ? 'direccion_seleccionada' : '' }}">
-                                            <div>
-                                                <input type="radio" name="direccion" value="{{ $direccion->id }}"
-                                                    wire:click="seleccionarDireccion({{ $direccion->id }})"
-                                                    @checked($direccionEnvio && $direccionEnvio->id == $direccion->id)>
+                                            class="lista_item comprador_seleccionado {{ $direccionEnvio && $direccionEnvio->id == $direccion->id ? 'activo' : '' }}">
+
+                                            <div class="dos_bloques">
+                                                <div>
+                                                    <input type="radio" name="direccion" value="{{ $direccion->id }}"
+                                                        wire:click="seleccionarDireccion({{ $direccion->id }})"
+                                                        @checked($direccionEnvio && $direccionEnvio->id == $direccion->id)>
+                                                </div>
+                                                <div>
+                                                    <p><span>Recibe: </span>{{ $direccion->recibe_nombres }}</p>
+                                                    <p><span>Teléfono: </span>{{ $direccion->recibe_celular }}</p>
+                                                    <p><span>Dirección: </span>{{ $direccion->direccion }}
+                                                        {{ $direccion->direccion_numero }}
+                                                    </p>
+                                                    <p><span>Dirección: </span>
+                                                        {{ $direccion->departamento->nombre }} /
+                                                        {{ $direccion->provincia->nombre }} /
+                                                        {{ $direccion->distrito->nombre }}</p>
+                                                    <p><span>Código Postal:</span>{{ $direccion->codigo_postal }}</p>
+                                                    @if ($direccion->es_principal)
+                                                        <p>Dirección principal</p>
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p><span>Recibe: </span>{{ $direccion->recibe_nombres }}</p>
-                                                <p><span>Teléfono: </span> {{ $direccion->recibe_celular }}</p>
-                                                <p><span>Dirección: </span>
-                                                    {{ $direccion->departamento->nombre }} /
-                                                    {{ $direccion->provincia->nombre }} /
-                                                    {{ $direccion->distrito->nombre }}
-                                                    {{ $direccion->direccion }} /
-                                                    {{ $direccion->direccion_numero }}
-                                                </p>
-                                                <p><span>Código Posta: </span>{{ $direccion->codigo_postal }}</p>
-                                                @if ($direccion->es_principal)
-                                                    <p><strong>Dirección principal</strong></p>
-                                                @endif
+
+                                            <div class="botones">
                                                 <button class="editar_direccion"
-                                                    wire:click="editarDireccion({{ $direccion->id }})">Editar
-                                                    esta dirección</button>
+                                                    wire:click="editarDireccion({{ $direccion->id }})">Editar</button>
                                             </div>
                                         </div>
-                                        <br>
                                     @endforeach
                                 @endif
                             </div>
                         </div>
-                        <div class="modal_pie">
-                            <button class="modal_boton_aceptar" wire:click="abrirModalCrearDireccion()">Crear nueva
+
+                        <div class="comprador_formulario_boton">
+                            <button wire:click="$set('estadoModalSeleccionarDireccion', false)"
+                                class="cancelar">Cancelar</button>
+
+                            <button wire:click="$set('estadoModalCrear', true)" class="guardar">Crear nueva
                                 dirección</button>
-
-                            <button class="modal_boton_cancelar"
-                                wire:click="$set('modalSeleccionarDireccion', false)">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-            <!-- MODAL EDITAR DIRECCION -->
-            @if ($modalEditarDireccion)
-                <div class="contenedor_modal_direccion">
-                    <div class="modal_contenedor">
-                        <button class="modal_cerrar">&times;</button>
-                        <div class="modal_titulo">
-                            <h4>Editar dirección</h4>
-                        </div>
-
-                        <div class="modal_cuerpo">
-
-                            <div class="formulario">
-                                <input type="text" wire:model.live="recibe_nombres">
-                                <input type="text" wire:model.live="recibe_celular">
-                                <input type="text" wire:model.live="direccion">
-                                <input type="text" wire:model.live="direccion_numero">
-                                <input type="text" wire:model.live="codigo_postal">
-
-                                <select wire:model.live="departamento_id">
-                                    <option value="">Selecciona un Departamento</option>
-                                    @foreach ($departamentos as $departamento)
-                                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                                <select wire:model.live="provincia_id">
-                                    <option value="">Selecciona una Provincia</option>
-                                    @foreach ($provincias as $provincia)
-                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                    @endforeach
-                                </select>
-
-                                <select wire:model.live="distrito_id">
-                                    <option value="">Selecciona un Distrito</option>
-                                    @foreach ($distritos as $distrito)
-                                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="modal_pie">
-                            <button wire:click="updateDireccion">Guardar Cambios</button>
-                            <button wire:click="$set('modalEditarDireccion', false)">Cancelar</button>
                         </div>
                     </div>
                 </div>
             @endif
 
             <!-- MODAL CREAR DIRECCION -->
-            @if ($modalCrearDireccion)
-                <div class="contenedor_modal_direccion">
-                    <div class="modal_contenedor">
-                        <button class="modal_cerrar">&times;</button>
-                        <div class="modal_titulo">
-                            <h4>Crear dirección</h4>
-                        </div>
+            @if ($estadoModalCrear)
+                @livewire('comprador.direccion.direccion-crear-livewire', ['origen' => 'comprador-pagar'])
+            @endif
 
-                        <div class="modal_cuerpo">
-                            <div class="formulario">
-                                <div>
-                                    <label for="recibe_nombres">Nombres</label>
-                                    <input type="text" id="recibe_nombres" name="recibe_nombres"
-                                        wire:model.live="recibe_nombres">
-                                </div>
-
-                                <div>
-                                    <label for="recibe_celular">Celular</label>
-                                    <input type="text" id="recibe_celular" name="recibe_celular"
-                                        wire:model.live="recibe_celular">
-                                </div>
-
-                                <div>
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" id="direccion" name="direccion" wire:model.live="direccion">
-                                </div>
-
-                                <div>
-                                    <label for="direccion_numero">Dirección</label>
-                                    <input type="text" id="direccion_numero" name="direccion_numero"
-                                        wire:model.live="direccion_numero">
-                                </div>
-
-                                <div>
-                                    <label for="codigo_postal">Código postal</label>
-                                    <input type="text" id="codigo_postal" name="codigo_postal"
-                                        wire:model.live="codigo_postal">
-                                </div>
-
-                                <div>
-                                    <label for="codigo_postal">Departamento</label>
-                                    <select wire:model.live="departamento_id">
-                                        <option value="">Selecciona un Departamento</option>
-                                        @foreach ($departamentos as $departamento)
-                                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label for="codigo_postal">Provincia</label>
-                                    <select wire:model.live="provincia_id">
-                                        <option value="">Selecciona una Provincia</option>
-                                        @foreach ($provincias as $provincia)
-                                            <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label for="codigo_postal">Distrito</label>
-                                    <select wire:model.live="distrito_id">
-                                        <option value="">Selecciona un Distrito</option>
-                                        @foreach ($distritos as $distrito)
-                                            <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal_pie">
-                            <button wire:click="createDireccion">Guardar Dirección</button>
-                            <button wire:click="$set('modalCrearDireccion', false)">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- MODAL EDITAR DIRECCION -->
+            @if ($estadoModalEditar)
+                @livewire('comprador.direccion.direccion-editar-livewire', ['direccionId' => $editar_direccion_id, 'origen' => 'comprador-pagar'])
             @endif
         </div>
 

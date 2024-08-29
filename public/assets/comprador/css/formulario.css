@@ -134,6 +134,7 @@
 .comprador_lista {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .comprador_lista .lista_item {
@@ -227,6 +228,15 @@
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+}
+
+/* SELECCIONADO */
+.comprador_seleccionado{
+    border: solid 1px none;
+}
+
+.comprador_seleccionado.activo {
+    border: solid 1px #29343d;
 }
 
 @media (max-width: 1024px) {
