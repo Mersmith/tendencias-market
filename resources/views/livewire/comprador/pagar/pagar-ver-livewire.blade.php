@@ -106,8 +106,8 @@
         </div>
 
         <!-- CUPON -->
-        <div class="panel">
-            @if ($carritoCantidadItems == 1)
+        @if ($carritoCantidadItems == 1)
+            <div class="panel">
                 @if ($cupon_tipo)
                     <div class="monto">
                         <p class="texto">
@@ -133,8 +133,8 @@
                         <p class="mensaje_cupon">{{ $cupon_mensaje }}</p>
                     @endif
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
 
         <!-- CARRITO -->
         <div class="panel">

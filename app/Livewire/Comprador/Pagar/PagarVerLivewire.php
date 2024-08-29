@@ -8,10 +8,6 @@ use App\Models\Venta;
 use App\Models\VentaDetalle;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Departamento;
-use App\Models\Distrito;
-use App\Models\Provincia;
-use App\Models\CompradorDireccion;
 use DB;
 use Livewire\Attributes\On;
 
@@ -164,7 +160,6 @@ class PagarVerLivewire extends Component
         $this->cuponTotalDescuento = 0;
         $this->cupon_tipo = "";
         $this->total_a_pagar = ($this->carritoTotalGeneral + $this->cuponTotalDescuento + $this->deliveryTotalCosto);
-
     }
 
     public function pagarAhora()
