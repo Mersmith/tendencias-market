@@ -4,15 +4,33 @@
         <!-- DIRECCION -->
         <div class="panel">
             <div>
-                <h2 class="titulo">Dirección de envio</h2>
+                <h2 class="titulo">Tipo de entrega</h2>
             </div>
 
-            <!-- DELIVERY -->
+            <!-- ENTREGA -->
             <div class="contenedor_direccion">
-                <div class="direccion_item comprador_seleccionado activo">
+                <!-- TIENDA -->
+                <div class="direccion_item comprador_seleccionado @if ($tipoEntrega === 'tienda') activo @endif">
                     <div class="dos_bloques">
                         <div>
-                            <input type="radio" name="tipo_envio">
+                            <input type="radio" name="tipo_entrega" value="tienda" wire:model.live="tipoEntrega">
+                        </div>
+
+                        <div>
+                            <p><span>Recoge: </span>En tienda.</p>
+                        </div>
+                    </div>
+
+                    <div class="acciones">
+                        <p class="precio">Gratis</p>
+                    </div>
+                </div>
+
+                <!-- CASA -->
+                <div class="direccion_item comprador_seleccionado @if ($tipoEntrega === 'casa') activo @endif">
+                    <div class="dos_bloques">
+                        <div>
+                            <input type="radio" name="tipo_entrega" value="casa" wire:model.live="tipoEntrega">
                         </div>
 
                         <div>
@@ -40,23 +58,6 @@
                         </button>
 
                         <p class="precio">S/.{{ $deliveryTotalCosto }} </p>
-                    </div>
-                </div>
-
-                <!-- TIENDA -->
-                <div class="direccion_item comprador_seleccionado">
-                    <div class="dos_bloques">
-                        <div>
-                            <input type="radio" name="tipo_envio">
-                        </div>
-
-                        <div>
-                            <p><span>Recibe: </span>En tienda.</p>
-                        </div>
-                    </div>
-
-                    <div class="acciones">
-                        <p class="precio">Gratis</p>
                     </div>
                 </div>
             </div>
@@ -274,12 +275,20 @@
                 @endif
             @endif
 
-
-            @if ($direccionEnvio)
-                <div class="monto">
-                    <p class="texto">Delivery:</p>
-                    <span class="numero"> S/. {{ number_format($deliveryTotalCosto, 2) }}</span>
-                </div>
+            @if ($tipoEntrega == 'casa')
+                @if ($direccionEnvio)
+                    <div class="monto">
+                        <p class="texto">Entrega:</p>
+                        <span class="numero"> Gratis</span>
+                    </div>
+                @endif
+            @else
+                @if ($direccionEnvio)
+                    <div class="monto">
+                        <p class="texto">Entrega:</p>
+                        <span class="numero"> S/. {{ number_format($deliveryTotalCosto, 2) }}</span>
+                    </div>
+                @endif
             @endif
 
             <div class="separacion"> </div>

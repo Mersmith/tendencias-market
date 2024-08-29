@@ -28,6 +28,7 @@ class PagarVerLivewire extends Component
     public $cupon_tipo = "";
 
     /* DELIVERY  */
+    public $tipoEntrega = 'tienda';
     public $direccionEnvio;
     public $deliveryTotalCosto = 0;
 
@@ -99,7 +100,7 @@ class PagarVerLivewire extends Component
     {
         $this->estadoModalCrear = false;
     }
-   
+
     public function aplicarCupon()
     {
         // Buscar el cupón en la base de datos

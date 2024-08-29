@@ -1,5 +1,6 @@
 .contenedor_pagina_pagar {
     background-color: #f1f1f1;
+    padding: 15px;
 }
 
 .contenedor_pagina_pagar .centrar {
@@ -35,6 +36,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    border-radius: 15px;
 }
 
 /* DETALLE CARRITO */
@@ -57,6 +59,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    border-radius: 15px;
+
 }
 
 .contenedor_pagina_pagar .contenedor_direccion .direccion_item .dos_bloques {
