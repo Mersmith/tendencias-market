@@ -231,8 +231,8 @@
 }
 
 /* SELECCIONADO */
-.comprador_seleccionado{
-    border: solid 1px none;
+.comprador_seleccionado {
+    border: solid 1px rgb(227, 227, 227);
 }
 
 .comprador_seleccionado.activo {
