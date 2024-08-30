@@ -278,7 +278,7 @@
                     @endif
                 @endif
 
-                @if ($tipoEntrega == 'casa')
+                @if ($tipoEntrega == 'tienda')
                     @if ($direccionEnvio)
                         <div class="monto">
                             <p class="texto">Entrega:</p>
