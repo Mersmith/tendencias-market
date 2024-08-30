@@ -9,8 +9,31 @@
     width: 100%;
 }
 
+.contenedor_pagina_pagar .detalle_pagar {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* RESUMEN DETALLE PAGO */
+.contenedor_pagina_pagar .resumen_detalle_pago {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 15px;
+}
+
+/* RESUMEN PAGO */
+.contenedor_pagina_pagar .resumen_pago {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 15px;
+}
+
 .contenedor_pagina_pagar .titulo {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--color-texto-secundario);
 }
@@ -31,7 +54,6 @@
 
 .contenedor_pagina_pagar .panel {
     background: var(--color-fondo-terciario);
-    margin-bottom: 20px;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -39,15 +61,7 @@
     border-radius: 15px;
 }
 
-/* DETALLE CARRITO */
-.contenedor_pagina_pagar .detalle_carrito {
-    display: flex;
-    width: 100%;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-/* CONTENEDOR DIRECCION*/
+/* DIRECCION*/
 .contenedor_pagina_pagar .contenedor_direccion {
     display: flex;
     flex-direction: column;
@@ -60,7 +74,6 @@
     align-items: center;
     padding: 15px;
     border-radius: 15px;
-
 }
 
 .contenedor_pagina_pagar .contenedor_direccion .direccion_item .dos_bloques {
@@ -103,34 +116,34 @@
     color: rgb(24, 111, 7);
 }
 
-/* RESUMEN DETALLE PAGO */
-.contenedor_pagina_pagar .resumen_detalle_pago {
+/* CARRITO */
+.contenedor_pagina_pagar .contenedor_carrito {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    gap: 15px;
 }
 
-.contenedor_pagina_pagar .item_producto {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 10px;
-}
-
-.contenedor_pagina_pagar .info_producto {
+.contenedor_pagina_pagar .contenedor_carrito .item_producto {
     display: flex;
     gap: 10px;
 }
 
+.contenedor_pagina_pagar .info_producto {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
 .contenedor_pagina_pagar .contenedor_imagen {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .contenedor_pagina_pagar .contenedor_imagen img {
-    width: 100px;
     height: auto;
     object-fit: cover;
     max-height: 100%;
@@ -142,7 +155,7 @@
 }
 
 .contenedor_pagina_pagar .contenedor_informacion .producto_nombre {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-texto-secundario);
 }
@@ -165,13 +178,13 @@
     font-weight: 700;
 }
 
-.contenedor_pagina_pagar .contenedor_informacion .precio {
+.contenedor_pagina_pagar .contenedor_precios .precio {
     display: flex;
     align-items: center;
     gap: 3px;
 }
 
-.contenedor_pagina_pagar .contenedor_informacion .descuento {
+.contenedor_pagina_pagar .contenedor_precios .descuento {
     background-color: var(--color-fondo-primario);
     color: var(--color-texto-terciario);
     padding: 2px 5px;
@@ -180,85 +193,43 @@
     font-size: 12px;
 }
 
-.contenedor_pagina_pagar .contenedor_informacion .precio_oferta {
-    font-size: 18px;
+.contenedor_pagina_pagar .contenedor_precios .precio_oferta {
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-texto-secundario);
 }
 
-.contenedor_pagina_pagar .contenedor_informacion .precio_normal {
-    font-size: 16px;
+.contenedor_pagina_pagar .contenedor_precios .precio_normal {
+    font-size: 13px;
     font-weight: 500;
     color: var(--color-texto-septenario);
 }
 
-.contenedor_pagina_pagar .contenedor_informacion .precio_antiguo {
-    font-size: 14px;
+.contenedor_pagina_pagar .contenedor_precios .precio_antiguo {
+    font-size: 12px;
     font-weight: 400;
     color: var(--color-texto-septenario);
     text-decoration: line-through;
-}
-
-
-/* CONTROLES */
-.contenedor_pagina_pagar .controles {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 18px;
-}
-
-.contenedor_pagina_pagar .control_cantidad {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--color-texto-secundario);
-}
-
-.contenedor_pagina_pagar .control_cantidad button {
-    background-color: var(--color-fondo-quinario);
-    border-radius: 2px;
-    width: 30px;
-    height: 30px;
-}
-
-.contenedor_pagina_pagar .enlaces {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-texto-secundario);
 }
 
 /* RESUMEN PAGO */
 .contenedor_pagina_pagar .resumen_pago {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    background: var(--color-fondo-terciario);
-    padding: 16px;
 }
 
-.contenedor_pagina_pagar .detalle_pago {
-    display: flex;
-    flex-direction: column;
-}
-
-.contenedor_pagina_pagar .detalle_pago .monto {
+.contenedor_pagina_pagar .contenedor_pagar .monto {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0px;
 }
 
-.contenedor_pagina_pagar .detalle_pago .texto {
+.contenedor_pagina_pagar .contenedor_pagar .texto {
     font-size: 14px;
     color: var(--color-texto-secundario);
     font-weight: 700;
 }
 
-.contenedor_pagina_pagar .detalle_pago .numero {
+.contenedor_pagina_pagar .contenedor_pagar .numero {
     display: inline-block;
     white-space: nowrap;
     font-size: 14px;
@@ -266,7 +237,7 @@
     font-weight: 700;
 }
 
-.contenedor_pagina_pagar .detalle_pago .continuar_compra {
+.contenedor_pagina_pagar .contenedor_pagar .continuar_compra {
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.5px;
@@ -283,8 +254,7 @@
 
 @media (max-width: 700px) {
 
-    /* DETALLE CARRITO */
-    .contenedor_pagina_pagar .detalle_carrito {
+    .contenedor_pagina_pagar .detalle_pagar {
         flex-direction: column;
     }
 
@@ -301,15 +271,11 @@
         padding: 8px 16px;
         z-index: 19;
         width: 100%;
+        background-color: white;
     }
 
-    .contenedor_pagina_pagar .item_producto {
+    .contenedor_pagina_pagar .info_producto {
         flex-direction: column;
-    }
-
-    .contenedor_pagina_pagar .controles {
-        display: flex;
-        flex-direction: row-reverse;
     }
 
 }
