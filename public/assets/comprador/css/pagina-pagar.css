@@ -29,7 +29,6 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    gap: 15px;
 }
 
 .contenedor_pagina_pagar .titulo {
@@ -213,11 +212,6 @@
 }
 
 /* RESUMEN PAGO */
-.contenedor_pagina_pagar .resumen_pago {
-    display: flex;
-    flex-direction: column;
-}
-
 .contenedor_pagina_pagar .contenedor_pagar {
     display: flex;
     flex-direction: column;
@@ -258,6 +252,24 @@
     margin-top: 10px;
 }
 
+.contenedor_pagina_pagar .resumen_pago .icono_resumen_pago {
+    display: none;
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+}
+
+.contenedor_pagina_pagar .resumen_pago .icono_resumen_pago span {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 700px) {
 
     .contenedor_pagina_pagar .detalle_pagar {
@@ -274,7 +286,6 @@
         bottom: 0px;
         left: 0px;
         right: 0px;
-        padding: 8px 16px;
         z-index: 19;
         width: 100%;
         background-color: white;
@@ -282,6 +293,14 @@
 
     .contenedor_pagina_pagar .info_producto {
         flex-direction: column;
+    }
+
+    .contenedor_pagina_pagar .resumen_pago .icono_resumen_pago {
+        display: flex;
+    }
+
+    .contenedor_pagina_pagar .resumen_pago .ocultar {
+        display: none;
     }
 
 }

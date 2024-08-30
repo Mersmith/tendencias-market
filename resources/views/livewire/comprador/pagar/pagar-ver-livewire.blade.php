@@ -239,13 +239,17 @@
     </div>
 
     <!-- RESUMEN PAGO -->
-    <div class="resumen_pago">
+    <div class="resumen_pago" x-data="{ isVisible: false }">
+        <div @click="isVisible = !isVisible" class="icono_resumen_pago">
+            <span><i :class="{ 'fa-chevron-down': isVisible, 'fa-chevron-up': !isVisible }" class="fa-solid"></i></span>
+        </div>
+
         <div class="panel">
             <div>
                 <h2 class="titulo">Resumen de tu pedido</h2>
             </div>
 
-            <div class="contenedor_pagar">
+            <div class="contenedor_pagar" :class="{ 'ocultar': !isVisible }">
                 <div class="monto">
                     <p class="texto">Descuento por promo:</p>
                     <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
@@ -294,7 +298,7 @@
                     @endif
                 @endif
 
-                <div class="separacion"> </div>           
+                <div class="separacion"> </div>
             </div>
 
             <div class="monto">
