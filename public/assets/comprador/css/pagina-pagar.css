@@ -224,18 +224,18 @@
     gap: 10px;
 }
 
-.contenedor_pagina_pagar .contenedor_pagar .monto {
+.contenedor_pagina_pagar .resumen_pago .monto {
     display: flex;
     justify-content: space-between;
 }
 
-.contenedor_pagina_pagar .contenedor_pagar .texto {
+.contenedor_pagina_pagar .resumen_pago .texto {
     font-size: 14px;
     color: var(--color-texto-secundario);
     font-weight: 700;
 }
 
-.contenedor_pagina_pagar .contenedor_pagar .numero {
+.contenedor_pagina_pagar .resumen_pago .numero {
     display: inline-block;
     white-space: nowrap;
     font-size: 14px;
@@ -243,7 +243,7 @@
     font-weight: 700;
 }
 
-.contenedor_pagina_pagar .contenedor_pagar .continuar_compra {
+.contenedor_pagina_pagar .resumen_pago .continuar_compra {
     font-weight: bold;
     line-height: 23px;
     letter-spacing: 0.5px;

@@ -294,17 +294,17 @@
                     @endif
                 @endif
 
-                <div class="separacion"> </div>
-
-                <div class="monto">
-                    <p class="texto">Total a pagar:</p>
-                    <span class="numero"> S/. {{ number_format($total_a_pagar, 2) }}</span>
-                </div>
-
-                <button wire:click="pagarAhora" class="continuar_compra">
-                    Pagar
-                </button>
+                <div class="separacion"> </div>           
             </div>
+
+            <div class="monto">
+                <p class="texto">Total a pagar:</p>
+                <span class="numero"> S/. {{ number_format($total_a_pagar, 2) }}</span>
+            </div>
+
+            <button wire:click="pagarAhora" class="continuar_compra">
+                Pagar
+            </button>
         </div>
     </div>
 </div>
