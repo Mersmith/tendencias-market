@@ -239,9 +239,9 @@
     </div>
 
     <!-- RESUMEN PAGO -->
-    <div class="resumen_pago" x-data="{ isVisible: false }">
-        <div @click="isVisible = !isVisible" class="icono_resumen_pago">
-            <span><i :class="{ 'fa-chevron-down': isVisible, 'fa-chevron-up': !isVisible }" class="fa-solid"></i></span>
+    <div class="resumen_pago" x-data="{ mostrarMas: false }">
+        <div @click="mostrarMas = !mostrarMas" class="icono_resumen_pago">
+            <span><i :class="{ 'fa-chevron-down': mostrarMas, 'fa-chevron-up': !mostrarMas }" class="fa-solid"></i></span>
         </div>
 
         <div class="panel">
@@ -249,7 +249,7 @@
                 <h2 class="titulo">Resumen de tu pedido</h2>
             </div>
 
-            <div class="contenedor_pagar" :class="{ 'ocultar': !isVisible }">
+            <div class="contenedor_pagar" :class="{ 'ocultar': !mostrarMas }">
                 <div class="monto">
                     <p class="texto">Descuento por promo:</p>
                     <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
