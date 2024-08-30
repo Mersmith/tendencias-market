@@ -246,12 +246,12 @@
             </div>
 
             <div class="contenedor_pagar">
-                {{-- <div class="monto">
-                <p class="texto">Descuento por promo:</p>
-                <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
-            </div>
+                <div class="monto">
+                    <p class="texto">Descuento por promo:</p>
+                    <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
+                </div>
 
-            <div class="separacion"> </div> --}}
+                <div class="separacion"> </div>
 
                 <div class="monto">
                     <p class="texto">Subtotal:</p>
