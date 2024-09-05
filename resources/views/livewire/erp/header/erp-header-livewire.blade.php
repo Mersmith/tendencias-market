@@ -2,6 +2,9 @@
     <span class="layout_menu_hamburguesa_celular" x-on:click="toggleContenedorAside"><i
             class="fa-solid fa-bars"></i></span>
     <div>
-        <p>HEADER</p>
+        <form method="POST" action="{{ route('logout') }}" x-data>
+            @csrf
+            <a href="{{ route('logout') }}" @click.prevent="$root.submit();">Cerrar</a>
+        </form>
     </div>
 </header>
