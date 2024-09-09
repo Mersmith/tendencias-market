@@ -19,7 +19,6 @@
 
 <body>
     <div>
-        <h2>LOGIN</h2>
         @yield('content')
         @if (isset($slot))
             {{ $slot }}

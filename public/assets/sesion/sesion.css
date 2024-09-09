@@ -1,46 +1,117 @@
-/* resources/css/app.css */
-.login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+.layout_sesion_contenedor_login {
+    height: 100vh;
+    display: grid;
+    grid-template-areas: "elemento_grid_imagen  elemento_grid_formulario";
+    grid-template-columns: 50% 50%;
+    justify-items: center;
 }
 
-.login-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
+/* GRID IMAGEN */
+.layout_sesion_contenedor_login .elemento_grid_imagen {
+    grid-area: elemento_grid_imagen;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #009eff;
 }
 
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.input-group input {
+.layout_sesion_contenedor_login .elemento_grid_imagen img {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
 }
 
-.btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+.layout_sesion_contenedor_login .elemento_grid_imagen div {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+}
+
+.layout_sesion_contenedor_login .c div h2,
+.layout_sesion_contenedor_login .elemento_grid_imagen div h3,
+.layout_sesion_contenedor_login .elemento_grid_imagen div p {
     color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.596);
 }
 
-.btn:hover {
-    background-color: #0056b3;
+.layout_sesion_contenedor_login .elemento_grid_imagen div h2 {
+    font-size: 34px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_imagen div h3 {
+    font-size: 24px;
+}
+
+/* GRID FORMULARIO */
+.layout_sesion_contenedor_login .elemento_grid_formulario {
+    grid-area: elemento_grid_formulario;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .centrar_formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_logo img {
+    width: 250px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .titulo h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .titulo p {
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 29px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+@media (max-width: 900px) {
+
+    .layout_sesion_contenedor_login {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "elemento_grid_formulario"
+            "elemento_grid_imagen";
+    }
+
 }
