@@ -14,7 +14,7 @@
     <div class="elemento_grid_formulario">
         <div class="centrar_formulario">
             <div class="contenedor_registrate">
-                <span>¿Ya tienes cuenta?</span>
+                <span>¿No tienes cuenta?</span>
                 <a href="">Registrate</a>
             </div>
 
@@ -40,7 +40,8 @@
                 <div class="bloque">
                     <div class="item_formulario">
                         <label for="email">Correo electrónico:</label>
-                        <input type="email" wire:model="email" required>
+                        <input type="email" wire:model="email" required name="email" id="email"
+                            autocomplete="email">
                         @error('email')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -50,7 +51,8 @@
                 <div class="bloque">
                     <div class="item_formulario">
                         <label for="password">Contraseña:</label>
-                        <input type="password" wire:model="password" required>
+                        <input type="password" wire:model="password" required name="password" id="password"
+                            autocomplete="current-password">
                         @error('password')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -59,9 +61,10 @@
 
                 <div class="bloque">
                     <div class="item_formulario">
-                        <label for="recordarme"> <input type="checkbox" wire:model="recordarme" name="recordarme"
-                                id="recordarme"> Recordar sesión</label>
-
+                        <label for="recordarme">
+                            <input type="checkbox" wire:model="recordarme" name="recordarme" id="recordarme"> Recordar
+                            sesión
+                        </label>
                         @error('recordarme')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -75,9 +78,8 @@
 
             <div class="contenedor_olvidaste">
                 <span>¿Olvidaste tu contraseña?</span>
-                <a href="">Recuperalo</a>
+                <a href="">Recupéralo</a>
             </div>
-
         </div>
     </div>
 </div>

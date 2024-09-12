@@ -65,10 +65,11 @@
     justify-content: flex-end;
     align-items: center;
     gap: 15px;
+    font-size: 14px;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate a{
-    background-color: red;
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate a {
+    background-color: #f10a0f;
     padding: 10px 15px;
     color: white;
     font-weight: 600;
@@ -96,7 +97,7 @@
 .layout_sesion_contenedor_login .elemento_grid_formulario .titulo h1 {
     color: #333;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 29px;
 }
 
