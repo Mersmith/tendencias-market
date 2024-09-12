@@ -228,3 +228,5 @@ php artisan make:model VentaDetalle -mfsc
 php artisan make:model CompradorReembolso -mfsc
 
 php artisan make:livewire Session/Administrador/AdministradorLoginLivewire
+php artisan make:livewire Session/Comprador/CompradorLoginLivewire
+php artisan make:livewire Session/Vendedor/VendedorLoginLivewire

@@ -1,5 +1,3 @@
 <x-sesion-layout>
-    <div>
-        @livewire('session.administrador.administrador-login-livewire')       
-    </div>
+    @livewire('session.administrador.administrador-login-livewire')
 </x-sesion-layout>

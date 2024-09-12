@@ -19,12 +19,10 @@
 </head>
 
 <body>
-    <div>
-        @yield('content')
-        @if (isset($slot))
-            {{ $slot }}
-        @endif
-    </div>
+    @yield('content')
+    @if (isset($slot))
+        {{ $slot }}
+    @endif
 
     @livewireScripts
 </body>

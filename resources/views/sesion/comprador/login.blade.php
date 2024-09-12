@@ -1,15 +1,3 @@
-<div>
-    <h1>Login Comprador</h1>
-    <form method="POST" action="{{ route('comprador.login.ingresar') }}">
-        @csrf
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-</div>
+<x-sesion-layout>
+    @livewire('session.comprador.comprador-login-livewire')
+</x-sesion-layout>
