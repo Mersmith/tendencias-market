@@ -30,30 +30,47 @@
                 <p>Inicie sesión con los datos que se te proporciono. </p>
             </div>
 
-            <form wire:submit.prevent="login">
+            <form wire:submit.prevent="login" class="g_formulario">
                 @if (session()->has('error'))
-                    <div class="alert alert-danger">
+                    <div>
                         {{ session('error') }}
                     </div>
                 @endif
 
-                <div class="input-group">
-                    <label for="email">Email:</label>
-                    <input type="email" wire:model="email" required>
-                    @error('email')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
+                <div class="bloque">
+                    <div class="item_formulario">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" wire:model="email" required>
+                        @error('email')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="password">Password:</label>
-                    <input type="password" wire:model="password" required>
-                    @error('password')
-                        <span class="error">{{ $message }}</span>
-                    @enderror
+                <div class="bloque">
+                    <div class="item_formulario">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" wire:model="password" required>
+                        @error('password')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Ingresar</button>
+                <div class="bloque">
+                    <div class="item_formulario">
+                        <label for="recordarme"> <input type="checkbox" wire:model="recordarme" name="recordarme"
+                                id="recordarme"> Recordar sesión</label>
+
+                        @error('recordarme')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="g_formulario_boton">
+                    <button type="submit" class="guardar">Ingresar</button>
+                </div>
             </form>
 
             <div class="contenedor_olvidaste">

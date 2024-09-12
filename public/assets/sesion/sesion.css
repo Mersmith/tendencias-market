@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #009eff;
+    background-color: #f10a0f;
 }
 
 .layout_sesion_contenedor_login .elemento_grid_imagen img {
@@ -63,7 +63,17 @@
 .layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 15px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate a{
+    background-color: red;
+    padding: 10px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-left: 5px;
 }
 
 .layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_logo {
@@ -101,6 +111,12 @@
     display: flex;
     justify-content: flex-start;
     gap: 15px;
+    font-size: 14px;
+}
+
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste a {
+    border-bottom: 1px solid #495867;
+    font-weight: 500;
 }
 
 @media (max-width: 900px) {
