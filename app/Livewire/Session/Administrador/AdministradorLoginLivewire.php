@@ -8,19 +8,18 @@ use Illuminate\Support\Facades\Auth;
 class AdministradorLoginLivewire extends Component
 {
 
-    public $email, $password;
+    public $email, $password, $recordarme = false;
 
     public function login()
     {
         $this->validate([
             'email' => 'required|email',
-            //'password' => 'required|min:6',
             'password' => 'required',
         ]);
 
         $credentials = ['email' => $this->email, 'password' => $this->password];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $this->recordarme)) {
             $user = Auth::user();
             if ($user->hasRole('admin')) {
                 return redirect()->route('erp.inicio');

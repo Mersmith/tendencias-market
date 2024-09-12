@@ -3,7 +3,7 @@
     <div class="elemento_grid_imagen">
         <img src="{{ asset('assets/imagenes/sesion/sesion-1.jpg') }}" alt="" />
 
-        <div>
+        <div class="contenedor_texto">
             <h2>"Canjea tus puntos para que ahorres."</h2>
             <h3>Nickol Sinchi </h3>
             <p>Odontologa</p>
@@ -13,7 +13,7 @@
     <!-- GRID FORMULARIO -->
     <div class="elemento_grid_formulario">
         <div class="centrar_formulario">
-            <div class="contenedor_registrate">
+            <div class="contenedor_registrate_ingresar">
                 <span>¿No tienes cuenta?</span>
                 <a href="">Registrate</a>
             </div>
@@ -76,7 +76,7 @@
                 </div>
             </form>
 
-            <div class="contenedor_olvidaste">
+            <div class="contenedor_olvidaste_ingresar">
                 <span>¿Olvidaste tu contraseña?</span>
                 <a href="">Recupéralo</a>
             </div>

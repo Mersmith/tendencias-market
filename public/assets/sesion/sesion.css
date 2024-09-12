@@ -2,8 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-areas: "elemento_grid_imagen  elemento_grid_formulario";
-    grid-template-columns: 50% 50%;
-    justify-items: center;
+    grid-template-columns: 1fr 1fr;
 }
 
 /* GRID IMAGEN */
@@ -23,26 +22,26 @@
     opacity: 0.2;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_imagen div {
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto {
     display: flex;
     flex-direction: column;
     position: absolute;
     align-items: center;
 }
 
-.layout_sesion_contenedor_login .c div h2,
-.layout_sesion_contenedor_login .elemento_grid_imagen div h3,
-.layout_sesion_contenedor_login .elemento_grid_imagen div p {
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto h2,
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto h3,
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto p {
     color: white;
     text-align: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.596);
 }
 
-.layout_sesion_contenedor_login .elemento_grid_imagen div h2 {
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto h2 {
     font-size: 34px;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_imagen div h3 {
+.layout_sesion_contenedor_login .elemento_grid_imagen .contenedor_texto h3 {
     font-size: 24px;
 }
 
@@ -52,6 +51,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+
 }
 
 .layout_sesion_contenedor_login .elemento_grid_formulario .centrar_formulario {
@@ -60,7 +61,7 @@
     gap: 30px;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate {
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate_ingresar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -68,7 +69,7 @@
     font-size: 14px;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate a {
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_registrate_ingresar a {
     background-color: #f10a0f;
     padding: 10px 15px;
     color: white;
@@ -99,6 +100,7 @@
     font-size: 24px;
     font-weight: 500;
     line-height: 29px;
+    text-align: center;
 }
 
 .layout_sesion_contenedor_login .elemento_grid_formulario .titulo p {
@@ -106,16 +108,17 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 29px;
+    text-align: center;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste {
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste_ingresar {
     display: flex;
     justify-content: flex-start;
     gap: 15px;
     font-size: 14px;
 }
 
-.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste a {
+.layout_sesion_contenedor_login .elemento_grid_formulario .contenedor_olvidaste_ingresar a {
     border-bottom: 1px solid #495867;
     font-weight: 500;
 }
