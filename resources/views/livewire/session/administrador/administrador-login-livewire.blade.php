@@ -1,4 +1,4 @@
-<div class="layout_sesion_contenedor_login">
+<div class="layout_sesion_contenedor">
     <!-- GRID IMAGEN -->
     <div class="elemento_grid_imagen">
         <img src="{{ asset('assets/imagenes/sesion/sesion-1.jpg') }}" alt="" />
