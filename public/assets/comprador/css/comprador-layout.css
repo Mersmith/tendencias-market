@@ -9,7 +9,6 @@
 }
 
 .contenedor_layout_comprador .grid_layout_cliente {
-    margin-top: 40px;
     width: 100%;
     display: grid;
     grid-template-areas: "contenedor_nav_links contenido_pagina";
@@ -24,7 +23,6 @@
 
 .contenedor_layout_comprador .contenido_pagina {
     grid-area: contenido_pagina;
-    padding: 10px;
 }
 
 @media (max-width: 1024px) {
