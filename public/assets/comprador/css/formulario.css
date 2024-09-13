@@ -78,11 +78,11 @@
     margin-bottom: 15px;
 }
 
-.bloque.tres_columnas {
+.comprador_formulario .bloque.tres_columnas {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.bloque.dos_columnas {
+.comprador_formulario .bloque.dos_columnas {
     grid-template-columns: repeat(2, 1fr);
 }
 

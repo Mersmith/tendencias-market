@@ -12,7 +12,7 @@
     <title>@yield('tituloPagina')</title>
 
     <!-- SCRIPTS -->
-    @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/css/layout.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/estilos.css', 'resources/css/layout.css', 'resources/css/formulario.css', 'resources/css/lista.css', 'resources/css/modal.css', 'resources/js/app.js'])
 
     <!-- STYLES -->
     @livewireStyles

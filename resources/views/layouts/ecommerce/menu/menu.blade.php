@@ -20,7 +20,8 @@
             <!-- BUSCADOR PRINCIPAL -->
             <div class="buscador_principal">
                 <div class="contenedor_input_buscador_principal">
-                    <input type="text" placeholder="Busca las mejores Tendencias" />
+                    <input type="text" placeholder="Busca las mejores Tendencias" name="buscar_producto"
+                        id="buscar_producto" />
                 </div>
 
                 <button>
