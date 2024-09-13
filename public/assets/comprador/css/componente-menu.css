@@ -33,3 +33,13 @@
 .comprador_menu_pricipal form {
     width: 100%;
 }
+
+.comprador_menu_pricipal a.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+.comprador_menu_pricipal a.active i {
+    color: #333;
+}
