@@ -21,7 +21,7 @@ class CompradorLoginLivewire extends Component
         if (Auth::attempt($credentials, $this->recordarme)) {
             $user = Auth::user();
             if ($user->hasRole('comprador')) {
-                return redirect()->route('comprador.perfil.vista.ver');
+                return redirect()->intended(route('comprador.perfil.vista.ver'));
             } else {
                 Auth::logout();
                 session()->flash('error', 'No tienes permisos para acceder como administrador.');
