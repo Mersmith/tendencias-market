@@ -4,18 +4,19 @@
     flex-direction: column;
     width: 100%;
     background: var(--color-fondo-terciario);
-    padding: 16px;
+    gap: 15px;
 }
 
 .g_carrito .item_producto {
     display: flex;
-    justify-content: space-between;
-    padding: 20px 10px;
+    gap: 10px;
 }
 
 .g_carrito .info_producto {
+    width: 100%;
     display: flex;
     gap: 10px;
+    justify-content: space-between;
 }
 
 .g_carrito .contenedor_imagen {
@@ -62,13 +63,13 @@
     font-weight: 700;
 }
 
-.g_carrito .contenedor_informacion .precio {
+.g_carrito .contenedor_precios .precio {
     display: flex;
     align-items: center;
     gap: 3px;
 }
 
-.g_carrito .contenedor_informacion .descuento {
+.g_carrito .contenedor_precios .descuento {
     background-color: var(--color-fondo-primario);
     color: var(--color-texto-terciario);
     padding: 2px 5px;
@@ -77,19 +78,19 @@
     font-size: 12px;
 }
 
-.g_carrito .contenedor_informacion .precio_oferta {
+.g_carrito .contenedor_precios .precio_oferta {
     font-size: 18px;
     font-weight: 700;
     color: var(--color-texto-secundario);
 }
 
-.g_carrito .contenedor_informacion .precio_normal {
+.g_carrito .contenedor_precios .precio_normal {
     font-size: 16px;
     font-weight: 500;
     color: var(--color-texto-septenario);
 }
 
-.g_carrito .contenedor_informacion .precio_antiguo {
+.g_carrito .contenedor_precios .precio_antiguo {
     font-size: 14px;
     font-weight: 400;
     color: var(--color-texto-septenario);
@@ -143,15 +144,82 @@
     border-bottom-width: 1px;
 }
 
+/* RESUMEN PAGO */
+.g_resumen_pagar .contenedor_pagar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.g_resumen_pagar .monto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.g_resumen_pagar .texto {
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+    font-weight: 700;
+}
+
+.g_resumen_pagar .numero {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+    font-weight: 700;
+}
+
+.g_resumen_pagar .continuar_compra {
+    font-weight: bold;
+    line-height: 23px;
+    letter-spacing: 0.5px;
+    color: var(--color-texto-terciario);
+    border-radius: 30px;
+    background-color: var(--color-fondo-primario);
+    text-transform: none;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 0px;
+    margin-top: 20px;
+}
+
+.g_icono_resumen_pago {
+    display: none;
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+}
+
+.g_icono_resumen_pago span {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 700px) {
 
-    .g_carrito .item_producto {
+    .g_carrito .info_producto {
         flex-direction: column;
     }
 
     .g_carrito .controles {
         display: flex;
         flex-direction: row-reverse;
+    }
+
+    .g_icono_resumen_pago {
+        display: flex;
+    }
+
+    .g_resumen_pagar .ocultar {
+        display: none;
     }
 
 }

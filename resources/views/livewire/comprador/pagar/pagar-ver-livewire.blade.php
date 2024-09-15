@@ -177,7 +177,7 @@
                 <h2 class="titulo">Productos ({{ $carritoCantidadItems }})</h2>
             </div>
 
-            <div class="contenedor_carrito">
+            <div class="g_carrito">
                 @if ($carrito && $carrito->detalle->count() > 0)
                     @foreach ($carrito->detalle as $detalle)
                         <div class="item_producto">
@@ -240,8 +240,9 @@
 
     <!-- RESUMEN PAGO -->
     <div class="resumen_pago" x-data="{ mostrarMas: false }">
-        <div @click="mostrarMas = !mostrarMas" class="icono_resumen_pago">
-            <span><i :class="{ 'fa-chevron-down': mostrarMas, 'fa-chevron-up': !mostrarMas }" class="fa-solid"></i></span>
+        <div @click="mostrarMas = !mostrarMas" class="g_icono_resumen_pago">
+            <span><i :class="{ 'fa-chevron-down': mostrarMas, 'fa-chevron-up': !mostrarMas }"
+                    class="fa-solid"></i></span>
         </div>
 
         <div class="panel">
@@ -249,66 +250,68 @@
                 <h2 class="titulo">Resumen de tu pedido</h2>
             </div>
 
-            <div class="contenedor_pagar" :class="{ 'ocultar': !mostrarMas }">
-                <div class="monto">
-                    <p class="texto">Descuento por promo:</p>
-                    <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
+            <div class="g_resumen_pagar">
+                <div class="contenedor_pagar" :class="{ 'ocultar': !mostrarMas }">
+                    <div class="monto">
+                        <p class="texto">Descuento por promo:</p>
+                        <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
+                    </div>
+
+                    <div class="separacion"> </div>
+
+                    <div class="monto">
+                        <p class="texto">Subtotal:</p>
+                        <span class="numero"> S/. {{ number_format($carritoTotalGeneral, 2) }}</span>
+                    </div>
+
+                    <div class="separacion"> </div>
+
+                    @if ($carritoCantidadItems == 1)
+                        @if ($cupon_tipo)
+                            <div class="monto">
+                                <p class="texto">
+                                    Cupón descuento:
+                                    @if ($cupon_tipo == 'FIJO')
+                                        - S/. {{ number_format($cupon_descuento, 2) }}
+                                    @else
+                                        - % {{ $cupon_descuento }}
+                                    @endif
+                                </p>
+
+                                <span class="numero">- S/. {{ number_format($cuponTotalDescuento, 2) }}</span>
+                            </div>
+                            <div class="separacion"> </div>
+                        @endif
+                    @endif
+
+                    @if ($tipoEntrega == 'tienda')
+                        @if ($direccionEnvio)
+                            <div class="monto">
+                                <p class="texto">Entrega:</p>
+                                <span class="numero"> Gratis</span>
+                            </div>
+                        @endif
+                    @else
+                        @if ($direccionEnvio)
+                            <div class="monto">
+                                <p class="texto">Entrega:</p>
+                                <span class="numero"> S/. {{ number_format($deliveryTotalCosto, 2) }}</span>
+                            </div>
+                        @endif
+                    @endif
+
+                    <div class="separacion"> </div>
                 </div>
 
-                <div class="separacion"> </div>
-
                 <div class="monto">
-                    <p class="texto">Subtotal:</p>
-                    <span class="numero"> S/. {{ number_format($carritoTotalGeneral, 2) }}</span>
+                    <p class="texto">Total a pagar:</p>
+                    <span class="numero"> S/. {{ number_format($total_a_pagar, 2) }}</span>
                 </div>
 
-                <div class="separacion"> </div>
-
-                @if ($carritoCantidadItems == 1)
-                    @if ($cupon_tipo)
-                        <div class="monto">
-                            <p class="texto">
-                                Cupón descuento:
-                                @if ($cupon_tipo == 'FIJO')
-                                    - S/. {{ number_format($cupon_descuento, 2) }}
-                                @else
-                                    - % {{ $cupon_descuento }}
-                                @endif
-                            </p>
-
-                            <span class="numero">- S/. {{ number_format($cuponTotalDescuento, 2) }}</span>
-                        </div>
-                        <div class="separacion"> </div>
-                    @endif
-                @endif
-
-                @if ($tipoEntrega == 'tienda')
-                    @if ($direccionEnvio)
-                        <div class="monto">
-                            <p class="texto">Entrega:</p>
-                            <span class="numero"> Gratis</span>
-                        </div>
-                    @endif
-                @else
-                    @if ($direccionEnvio)
-                        <div class="monto">
-                            <p class="texto">Entrega:</p>
-                            <span class="numero"> S/. {{ number_format($deliveryTotalCosto, 2) }}</span>
-                        </div>
-                    @endif
-                @endif
-
-                <div class="separacion"> </div>
+                <button wire:click="pagarAhora" class="continuar_compra">
+                    Pagar
+                </button>
             </div>
-
-            <div class="monto">
-                <p class="texto">Total a pagar:</p>
-                <span class="numero"> S/. {{ number_format($total_a_pagar, 2) }}</span>
-            </div>
-
-            <button wire:click="pagarAhora" class="continuar_compra">
-                Pagar
-            </button>
         </div>
     </div>
 </div>
