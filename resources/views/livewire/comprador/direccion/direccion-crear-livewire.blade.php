@@ -16,7 +16,7 @@
                     <input type="text" wire:model.live="recibe_nombres" id="recibe_nombres" name="recibe_nombres"
                         placeholder="Nombres y apellidos de quien recibe">
                     @error('recibe_nombres')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <input type="text" wire:model.live="recibe_celular" id="recibe_celular" name="recibe_celular"
                         placeholder="Celular a contactar">
                     @error('recibe_celular')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -40,7 +40,7 @@
                         @endforeach
                     </select>
                     @error('departamento_id')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         @endforeach
                     </select>
                     @error('provincia_id')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -68,7 +68,7 @@
                         @endforeach
                     </select>
                     @error('distrito_id')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     <input type="text" wire:model.live="direccion" id="direccion" name="direccion"
                         placeholder="Nombre de la calle">
                     @error('direccion')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -88,7 +88,7 @@
                     <input type="text" wire:model.live="direccion_numero" id="direccion_numero"
                         name="direccion_numero" placeholder="Número de la calle">
                     @error('direccion_numero')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <input type="text" wire:model.live="opcional" id="opcional" name="opcional"
                         placeholder="Ejem: Casa 1 piso, lote 15.">
                     @error('opcional')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -108,7 +108,7 @@
                     <input type="text" wire:model.live="codigo_postal" id="codigo_postal" name="codigo_postal"
                         placeholder="Código postal">
                     @error('codigo_postal')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <textarea id="instrucciones" name="instrucciones" wire:model="instrucciones" rows="3"
                         placeholder="Detalle para el delivery o entrega del producto"></textarea>
                     @error('instrucciones')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>

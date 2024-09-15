@@ -1,12 +1,12 @@
 <div>
     @if (session()->has('success'))
-        <div class="g_alerta exito">
+        <div class="g_alerta alerta_exito">
             {{ session('success') }}
         </div>
     @endif
 
     @if (session()->has('error'))
-        <div class="g_alerta error">
+        <div class="g_alerta alerta_error">
             {{ session('error') }}
         </div>
     @endif
@@ -27,7 +27,7 @@
                         @endforeach
                     </select>
                     @error('banco_id')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -40,7 +40,7 @@
                         @endforeach
                     </select>
                     @error('tipo_cuenta_id')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <label for="clave_actual">Cuenta Interbancaria</label>
                     <input type="text" wire:model="cuenta_interbancaria" id="clave_actual" name="clave_actual">
                     @error('cuenta_interbancaria')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -58,7 +58,7 @@
                     <label for="clave_nueva">Cuenta Bancaria</label>
                     <input type="text" wire:model="cuenta_bancaria" id="clave_nueva" name="clave_nueva">
                     @error('clave_nueva')
-                        <span class="error">{{ $message }}</span>
+                        <span class="formulario_error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>

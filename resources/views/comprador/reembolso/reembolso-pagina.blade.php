@@ -1,7 +1,5 @@
 <x-ecommerce-layout>
     <x-comprador-layout>
-        <div class="contenedor_pagina_perfil">
-            @livewire('comprador.reembolso.reembolso-ver-livewire')
-        </div>
+        @livewire('comprador.reembolso.reembolso-ver-livewire')
     </x-comprador-layout>
 </x-ecommerce-layout>
