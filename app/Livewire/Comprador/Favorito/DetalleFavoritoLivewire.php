@@ -14,9 +14,11 @@ class DetalleFavoritoLivewire extends Component
     public function mount()
     {
         $this->loadFavoritos();
+
+        //dd($this->favoritos);
     }
 
-    public function loadFavoritos()
+    /*public function loadFavoritos()
     {
         $almacenEcommerceId = 1;
         $listaPrecioEtiquetaId = 3;
@@ -35,6 +37,25 @@ class DetalleFavoritoLivewire extends Component
                     ->where('favorito_id', $favorito->id)
                     ->get()
                     ->pluck('producto');
+            } else {
+                $this->favoritos = collect([]);
+            }
+        } else {
+            $this->favoritos = collect([]);
+        }
+    }*/
+
+    public function loadFavoritos()
+    {
+        $almacenEcommerceId = 1;
+        $listaPrecioEtiquetaId = 3;
+
+        $user = Auth::user();
+        if ($user) {
+            $favorito = Favorito::where('user_id', $user->id)->first();
+            if ($favorito) {
+                $this->favoritos = app(CompradorFavoritoController::class)
+                    ->getCompradorFavorito($almacenEcommerceId, $listaPrecioEtiquetaId, $favorito->id);
             } else {
                 $this->favoritos = collect([]);
             }
