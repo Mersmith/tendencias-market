@@ -4,7 +4,6 @@
         <h2>Mis Favoritos</h2>
     </div>
 
-
     @if ($favoritos->isEmpty())
         <p>No tienes productos en tus favoritos.</p>
     @else
