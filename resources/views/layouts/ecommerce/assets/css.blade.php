@@ -46,5 +46,5 @@
 <link rel="stylesheet" href="{{ asset('assets/comprador/css/pagina-pagar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/comprador/css/modal-direccion.css') }}">
 
-<link rel="stylesheet" href="{{ asset('assets/comprador/css/formulario.css') }}">
+{{--- --<link rel="stylesheet" href="{{ asset('assets/comprador/css/formulario.css') }}">---}}
 

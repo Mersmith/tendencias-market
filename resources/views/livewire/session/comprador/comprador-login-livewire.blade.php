@@ -32,7 +32,7 @@
 
             <form wire:submit.prevent="login" class="g_formulario">
                 @if (session()->has('error'))
-                    <div>
+                    <div class="g_alerta alerta_error">
                         {{ session('error') }}
                     </div>
                 @endif
@@ -43,7 +43,7 @@
                         <input type="email" wire:model="email" required name="email" id="email"
                             autocomplete="email">
                         @error('email')
-                            <span class="error">{{ $message }}</span>
+                            <span class="formulario_error">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <input type="password" wire:model="password" required name="password" id="password"
                             autocomplete="current-password">
                         @error('password')
-                            <span class="error">{{ $message }}</span>
+                            <span class="formulario_error">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                             sesión
                         </label>
                         @error('recordarme')
-                            <span class="error">{{ $message }}</span>
+                            <span class="formulario_error">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>

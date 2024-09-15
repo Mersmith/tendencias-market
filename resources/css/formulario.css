@@ -34,7 +34,7 @@
     gap: 5px;
 }
 
-.g_formulario .error {
+.g_formulario .formulario_error {
     font-weight: 400;
     font-size: 14px;
     color: rgb(228, 2, 45);
@@ -140,15 +140,15 @@
     display: flex;
     padding: 15px;
     font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: 14px;
+    margin-bottom: 15px;    
 }
 
-.g_alerta.exito {
+.g_alerta.alerta_exito {
     background-color: rgb(196, 232, 141);
 }
 
-.g_alerta.error {
+.g_alerta.alerta_error {
     background-color: rgb(232, 141, 141);
 }
 
