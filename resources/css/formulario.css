@@ -1,17 +1,28 @@
+.g_contenedor_pagina {
+    background-color: #f1f1f1;
+    padding: 15px;
+}
+
+.g_contenedor_pagina .centrar_pagina {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+}
+
 /* PANEL */
 .g_panel {
     padding: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-bottom: 12px;
-    background-color: rgb(255, 255, 255);
+    /*margin-bottom: 12px;*/
+    background-color: var(--color-fondo-terciario);
     gap: 15px;
 }
 
 /* TITULO */
 .g_titulo {
-    color: #333;
+    color: var(--color-texto-secundario);
     font-size: 22px;
     font-weight: 500;
 }
@@ -38,6 +49,12 @@
     font-weight: 400;
     font-size: 14px;
     color: rgb(228, 2, 45);
+}
+
+.g_formulario .formulario_exito {
+    font-weight: 400;
+    font-size: 14px;
+    color: #333;
 }
 
 .g_formulario input[type="text"],
@@ -141,7 +158,7 @@
     padding: 15px;
     font-weight: 600;
     font-size: 14px;
-    margin-bottom: 15px;    
+    margin-bottom: 15px;
 }
 
 .g_alerta.alerta_exito {
@@ -150,6 +167,10 @@
 
 .g_alerta.alerta_error {
     background-color: rgb(232, 141, 141);
+}
+
+.g_alerta.alerta_neutro {
+    background-color: rgb(250, 250, 250);
 }
 
 @media (max-width: 1024px) {

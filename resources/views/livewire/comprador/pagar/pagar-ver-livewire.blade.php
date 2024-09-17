@@ -2,15 +2,15 @@
     <!-- RESUMEN DETALLE PAGO -->
     <div class="resumen_detalle_pago">
         <!-- DIRECCION -->
-        <div class="panel">
+        <div class="g_panel">
             <div>
-                <h2 class="titulo">Tipo de entrega</h2>
+                <h2 class="g_titulo">Tipo de entrega</h2>
             </div>
 
             <!-- ENTREGA -->
-            <div class="contenedor_direccion">
+            <div class="g_lista">
                 <!-- TIENDA -->
-                <div class="direccion_item comprador_seleccionado @if ($tipoEntrega === 'tienda') activo @endif">
+                <div class="lista_item g_seleccionado @if ($tipoEntrega === 'tienda') seleccionado_activo @endif">
                     <div class="dos_bloques">
                         <div>
                             <input type="radio" name="tipo_entrega" value="tienda" wire:model.live="tipoEntrega">
@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- CASA -->
-                <div class="direccion_item comprador_seleccionado @if ($tipoEntrega === 'casa') activo @endif">
+                <div class="lista_item g_seleccionado @if ($tipoEntrega === 'casa') seleccionado_activo @endif">
                     <div class="dos_bloques">
                         <div>
                             <input type="radio" name="tipo_entrega" value="casa" wire:model.live="tipoEntrega">
@@ -64,25 +64,25 @@
 
             <!-- MODAL SELECCIONAR DIRECCION -->
             @if ($estadoModalSeleccionarDireccion)
-                <div class="comprador_modal">
+                <div class="g_modal">
                     <div class="modal_contenedor">
                         <div class="modal_cerrar">
                             <button wire:click="$set('estadoModalSeleccionarDireccion', false)"><i
                                     class="fa-solid fa-xmark"></i></button>
                         </div>
 
-                        <div class="comprador_titulo">
+                        <div class="g_titulo">
                             <h2>Mis direcciones</h2>
                         </div>
 
                         <div class="modal_cuerpo">
-                            <div class="comprador_lista">
+                            <div class="g_lista">
                                 @if ($direcciones->isEmpty())
                                     <p>No tienes direcciones registradas.</p>
                                 @else
                                     @foreach ($direcciones as $direccion)
                                         <div
-                                            class="lista_item comprador_seleccionado {{ $direccionEnvio && $direccionEnvio->id == $direccion->id ? 'activo' : '' }}">
+                                            class="lista_item g_seleccionado {{ $direccionEnvio && $direccionEnvio->id == $direccion->id ? 'seleccionado_activo' : '' }}">
 
                                             <div class="dos_bloques">
                                                 <div>
@@ -118,7 +118,7 @@
                             </div>
                         </div>
 
-                        <div class="comprador_formulario_boton">
+                        <div class="g_formulario_boton">
                             <button wire:click="$set('estadoModalSeleccionarDireccion', false)"
                                 class="cancelar">Cancelar</button>
 
@@ -142,39 +142,46 @@
 
         <!-- CUPON -->
         @if ($carritoCantidadItems == 1)
-            <div class="panel">
-                @if ($cupon_tipo)
-                    <div class="monto">
-                        <p class="texto">
-                            Cupón descuento: {{ $cupon_tipo }}
-                            @if ($cupon_tipo == 'FIJO')
-                                S/. {{ number_format($cupon_descuento, 2) }}
-                            @else
-                                % {{ $cupon_descuento }}
+            <div class="g_panel">
+                <div>
+                    <h2 class="g_titulo">Cupón</h2>
+                </div>
+
+                <div class="g_formulario">
+                    <div class="g_bloque">
+                        <div class="item_formulario">
+                            <label for="recibe_nombres">Cupón
+                                @if ($cupon_tipo)
+                                    {{ $cupon_tipo }} -
+                                    @if ($cupon_tipo == 'FIJO')
+                                        S/. {{ number_format($cupon_descuento, 2) }}
+                                    @else
+                                        % {{ $cupon_descuento }}
+                                    @endif descuento
+                                    = S/. {{ number_format($cuponTotalDescuento, 2) }}
+                                @endif
+                            </label>
+                            <input type="text" wire:model="cupon_codigo" placeholder="Ingresa tu código de cupón" />
+                            @if ($cupon_mensaje)
+                                <span class="formulario_exito">{{ $cupon_mensaje }}</span>
                             @endif
-                        </p>
-
-                        <span class="numero">- S/. {{ number_format($cuponTotalDescuento, 2) }}</span>
+                        </div>
                     </div>
-                @endif
 
-                <!-- INPUT Y BOTONES DE CUPÓN -->
-                <div class="cupon">
-                    <input type="text" wire:model="cupon_codigo" placeholder="Ingresa tu código de cupón" />
-                    <button wire:click="aplicarCupon" class="aplicar_cupon">Aplicar cupón</button>
-                    <button wire:click="eliminarCupon" class="eliminar_cupon">Eliminar cupón</button>
-
-                    @if ($cupon_mensaje)
-                        <p class="mensaje_cupon">{{ $cupon_mensaje }}</p>
-                    @endif
+                    <div class="g_bloque dos_columnas">
+                        <div class="g_formulario_boton">
+                            <button wire:click="aplicarCupon" class="guardar">Aplicar cupón</button>
+                            <button wire:click="eliminarCupon" class="cancelar">Eliminar cupón</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif
 
         <!-- CARRITO -->
-        <div class="panel">
+        <div class="g_panel">
             <div>
-                <h2 class="titulo">Productos ({{ $carritoCantidadItems }})</h2>
+                <h2 class="g_titulo">Productos ({{ $carritoCantidadItems }})</h2>
             </div>
 
             <div class="g_carrito">
@@ -228,7 +235,7 @@
                             </div>
                         </div>
                         @if (!$loop->last)
-                            <div class="separacion"></div>
+                            <div class="g_separacion"></div>
                         @endif
                     @endforeach
                 @else
@@ -245,26 +252,26 @@
                     class="fa-solid"></i></span>
         </div>
 
-        <div class="panel">
+        <div class="g_panel">
             <div>
-                <h2 class="titulo">Resumen de tu pedido</h2>
+                <h2 class="g_titulo">Resumen de tu pedido</h2>
             </div>
 
             <div class="g_resumen_pagar">
-                <div class="contenedor_pagar" :class="{ 'ocultar': !mostrarMas }">
+                <div class="contenedor_pagar" :class="{ 'ocultar_pagar': !mostrarMas }">
                     <div class="monto">
                         <p class="texto">Descuento por promo:</p>
                         <span class="numero">- S/. {{ number_format($carritoTotalDescuento, 2) }}</span>
                     </div>
 
-                    <div class="separacion"> </div>
+                    <div class="g_separacion"> </div>
 
                     <div class="monto">
                         <p class="texto">Subtotal:</p>
                         <span class="numero"> S/. {{ number_format($carritoTotalGeneral, 2) }}</span>
                     </div>
 
-                    <div class="separacion"> </div>
+                    <div class="g_separacion"> </div>
 
                     @if ($carritoCantidadItems == 1)
                         @if ($cupon_tipo)
@@ -280,7 +287,7 @@
 
                                 <span class="numero">- S/. {{ number_format($cuponTotalDescuento, 2) }}</span>
                             </div>
-                            <div class="separacion"> </div>
+                            <div class="g_separacion"> </div>
                         @endif
                     @endif
 
@@ -300,7 +307,7 @@
                         @endif
                     @endif
 
-                    <div class="separacion"> </div>
+                    <div class="g_separacion"> </div>
                 </div>
 
                 <div class="monto">

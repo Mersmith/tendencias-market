@@ -1,15 +1,4 @@
-.contenedor_pagina_pagar {
-    background-color: #f1f1f1;
-    padding: 15px;
-}
-
-.contenedor_pagina_pagar .centrar {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 100%;
-}
-
-.contenedor_pagina_pagar .detalle_pagar {
+.detalle_pagar {
     display: flex;
     width: 100%;
     gap: 15px;
@@ -17,7 +6,7 @@
 }
 
 /* RESUMEN DETALLE PAGO */
-.contenedor_pagina_pagar .resumen_detalle_pago {
+.detalle_pagar .resumen_detalle_pago {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -25,107 +14,23 @@
 }
 
 /* RESUMEN PAGO */
-.contenedor_pagina_pagar .resumen_pago {
+.detalle_pagar .resumen_pago {
     display: flex;
     flex-direction: column;
     width: 30%;
 }
 
-.contenedor_pagina_pagar .titulo {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-texto-secundario);
-}
-
-.separacion {
-    align-self: stretch;
-    border-color: var(--color-borde-quinario);
-    width: auto;
-    height: auto;
-    border-style: solid;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    border-left-width: 0;
-    border-bottom-width: 1px;
-}
-
-.contenedor_pagina_pagar .panel {
-    background: var(--color-fondo-terciario);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border-radius: 15px;
-}
-
-/* DIRECCION*/
-.contenedor_pagina_pagar .contenedor_direccion {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item .dos_bloques {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item span {
-    font-size: 14px;
-    font-weight: 700;
-    color: rgb(51, 51, 51);
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item p {
-    font-size: 14px;
-    font-weight: normal;
-    color: rgb(51, 51, 51);
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones button {
-    font-size: 13px;
-    font-weight: normal;
-    color: rgb(136, 136, 136);
-    border-bottom: 1px solid rgb(136, 136, 136);
-    white-space: normal;
-    display: flex;
-    gap: 5px;
-}
-
-.contenedor_pagina_pagar .contenedor_direccion .direccion_item .acciones .precio {
-    font-size: 14px;
-    font-weight: 700;
-    color: rgb(24, 111, 7);
-}
-
 @media (max-width: 700px) {
 
-    .contenedor_pagina_pagar .detalle_pagar {
+    .detalle_pagar .detalle_pagar {
         flex-direction: column;
     }
 
-    .contenedor_pagina_pagar .resumen_detalle_pago {
+    .detalle_pagar .resumen_detalle_pago {
         width: 100%;
     }
 
-    .contenedor_pagina_pagar .resumen_pago {
+    .detalle_pagar .resumen_pago {
         box-shadow: var(--sombra-secundario-arriba);
         position: fixed;
         bottom: 0px;

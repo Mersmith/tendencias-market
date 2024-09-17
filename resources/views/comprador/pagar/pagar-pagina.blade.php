@@ -1,7 +1,7 @@
 <x-ecommerce-layout>
-    <div class="contenedor_pagina_pagar">
+    <div class="g_contenedor_pagina">
 
-        <div class="centrar">
+        <div class="centrar_pagina">
             <div>
                 @if ($carrito)
                     @livewire('comprador.pagar.pagar-ver-livewire', [
