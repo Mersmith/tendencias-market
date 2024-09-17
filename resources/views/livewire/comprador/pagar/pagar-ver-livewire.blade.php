@@ -150,7 +150,7 @@
                 <div class="g_formulario">
                     <div class="g_bloque">
                         <div class="item_formulario">
-                            <label for="recibe_nombres">Cupón
+                            <label for="recibe_nombres">
                                 @if ($cupon_tipo)
                                     {{ $cupon_tipo }} -
                                     @if ($cupon_tipo == 'FIJO')
