@@ -3,9 +3,9 @@
     @if (!empty($p_elementos->enlaces_rapidos))
         <div x-data="dataEcommerceFooter">
             <div class="contenedor_enlaces_rapidos">
-                <div class="g_centrar_contenido_pagina">
-                    <div class="g_contenido_pagina">
-                        <div class="g_columna_12">
+                <div class="g_centrar_pagina">
+                    <div class="">
+                        <div class="">
                             <div class="grid_contenedor_items">
                                 @foreach ($p_elementos->enlaces_rapidos as $index => $data)
                                     <div class="contenedor_item">
@@ -53,9 +53,9 @@
     @endif
 
     <div class="footer">
-        <div class="g_centrar_contenido_pagina">
-            <div class="g_contenido_pagina">
-                <div class="g_columna_12">
+        <div class="g_centrar_pagina">
+            <div class="">
+                <div class="">
                     <!-- CONTENEDOR REDES - TERMINOS -->
                     <div class="contenedor_redes_terminos">
 

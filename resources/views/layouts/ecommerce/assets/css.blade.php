@@ -13,10 +13,6 @@
 <!----------------------ECOMMERCE---------------------->
 <!--ESTILOS-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/variables.css') }}">
-{{-- <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/estilos.css') }}"> --}}
-
-<!--LAYOUT ERP-->
-{{-- <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/layout.css') }}"> --}}
 
 <!--LAYOUT MENU-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/menu/menu-cabecera.css') }}">
@@ -41,4 +37,5 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/carrusel.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/agregar-carrito.css') }}">
 
+<!--PAGINA-->
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/producto.css') }}">

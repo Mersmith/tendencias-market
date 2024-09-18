@@ -1,5 +1,4 @@
 @if (!empty($p_elemento) && !empty($p_elemento->imagenes))
-
     <div x-data="dataTemporizador{{ $p_elemento->id }}('{{ $p_elemento['fecha_fin'] }}')" x-init="initTemporizador()" class="partials_contenedor_temporizador">
         <div class="contenedor_fecha_hora">
             <div class="contenedor_fecha">

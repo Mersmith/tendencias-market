@@ -1,3 +1,9 @@
+.gaaaaaaaaaaa{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 /* CONTENEDOR LAYOUT ECOMMERCE */
 .contenedor_layout_ecommerce {
     width: 100%;
@@ -14,13 +20,33 @@
 
 /* CONTENEDOR PAGINA */
 .g_contenedor_pagina {
-    background-color: #f1f1f1;
+    background-color: var(--color-fondo-cuaternario);
 }
 
-.g_contenedor_pagina .centrar_pagina {
+.g_centrar_pagina {
     margin: 0 auto;
     max-width: 1280px;
     width: 100%;
+}
+
+/* CENTRAR CONTENEDOR */
+.g_centrar_contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* MARGENES */
+.g_m_10_0 {
+    margin: 10px 0px;
+}
+
+.g_m_b_10 {
+    margin-bottom: 10px;
+}
+
+.g_m_40_0 {
+    margin: 40px 0px;
 }
 
 /* CONTENEDOR SUPONER */
