@@ -42,7 +42,7 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <x-dropdown align="right" width="48">
+                    <x-dropdown align="left" width="40">
                         <x-slot name="trigger">
                             <a class="principal_usuarios_item">
                                 <i class="fa-regular fa-user"></i>
@@ -53,24 +53,30 @@
                         <x-slot name="content">
                             <div class="g_dropdown">
                                 @if (Auth::check() && Auth::user()->hasRole('comprador'))
-                                    <a class="dropdown_item" href="{{ route('comprador.perfil.vista.ver') }}"> Perfil</a>
+                                    <a class="dropdown_item" href="{{ route('comprador.perfil.vista.ver') }}">
+                                        Perfil</a>
 
-                                    <a class="dropdown_item" href="{{ route('comprador.compra.vista.ver') }}">Mis compras</a>
+                                    <a class="dropdown_item" href="{{ route('comprador.compra.vista.ver') }}">Mis
+                                        compras</a>
 
-                                    <a class="dropdown_item" href="{{ route('comprador.direccion.vista.ver') }}">Direcciones</a>
+                                    <a class="dropdown_item"
+                                        href="{{ route('comprador.direccion.vista.ver') }}">Direcciones</a>
 
-                                    <a class="dropdown_item" href="{{ route('comprador.reembolso.vista.ver') }}">Reembolso</a>
+                                    <a class="dropdown_item"
+                                        href="{{ route('comprador.reembolso.vista.ver') }}">Reembolso</a>
 
-                                    <a class="dropdown_item" href="{{ route('comprador.favorito.vista.ver') }}">Favoritos</a>
+                                    <a class="dropdown_item"
+                                        href="{{ route('comprador.favorito.vista.ver') }}">Favoritos</a>
 
                                     <form method="POST" action="{{ route('logout') }}" x-data>
                                         @csrf
-                                        <a class="dropdown_item" href="{{ route('logout') }}" @click.prevent="$root.submit();">Cerrar </a>
+                                        <a class="dropdown_item" href="{{ route('logout') }}"
+                                            @click.prevent="$root.submit();">Cerrar </a>
                                     </form>
                                 @else
-                                    <a href="{{ route('comprador.login.vista.ver') }}">Perfil</a>
+                                    <a href="{{ route('comprador.login.vista.ver') }}" class="dropdown_item">Login</a>
 
-                                    <a href="#">Registrarse</a>
+                                    <a href="#" class="dropdown_item">Registrarse</a>
                                 @endif
                             </div>
                         </x-slot>
@@ -79,7 +85,7 @@
 
                 <!-- ITEM FAVORITOS -->
                 <li>
-                    <a href="#">
+                    <a href="#" class="principal_usuarios_item">
                         <i class="fa-regular fa-heart"></i>
                         <span>Favoritos</span>
                     </a>
@@ -87,7 +93,7 @@
 
                 <!-- ITEM PUNTOS  -->
                 <li>
-                    <a href="#">
+                    <a href="#" class="principal_usuarios_item">
                         <i class="fa-regular fa-circle-dot"></i>
                         <span>Puntos</span>
                     </a>
@@ -95,7 +101,7 @@
 
                 <!-- ITEM CARRITO  -->
                 <li class="menu_carrito">
-                    <a href="{{ route('comprador.carrito.vista.ver') }}">
+                    <a href="{{ route('comprador.carrito.vista.ver') }}" class="principal_usuarios_item">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Carrito</span>
                         @livewire('ecommerce.menu.menu-carrito-livewire')
