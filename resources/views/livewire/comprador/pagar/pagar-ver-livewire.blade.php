@@ -1,6 +1,6 @@
-<div class="detalle_pagar">
+<div class="g_contenedor_70_30">
     <!-- RESUMEN DETALLE PAGO -->
-    <div class="resumen_detalle_pago">
+    <div class="contenedor_70">
         <!-- DIRECCION -->
         <div class="g_panel">
             <div>
@@ -234,6 +234,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @if (!$loop->last)
                             <div class="g_separacion"></div>
                         @endif
@@ -246,7 +247,7 @@
     </div>
 
     <!-- RESUMEN PAGO -->
-    <div class="resumen_pago" x-data="{ mostrarMas: false }">
+    <div class="contenedor_30 g_sidebar_resumen_pedido" x-data="{ mostrarMas: false }">
         <div @click="mostrarMas = !mostrarMas" class="g_icono_resumen_pago">
             <span><i :class="{ 'fa-chevron-down': mostrarMas, 'fa-chevron-up': !mostrarMas }"
                     class="fa-solid"></i></span>

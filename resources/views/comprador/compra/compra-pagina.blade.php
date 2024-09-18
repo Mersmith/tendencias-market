@@ -2,7 +2,7 @@
     <div class="g_contenedor_pagina">
         <div class="centrar_pagina">
             <div>
-                @livewire('comprador.carrito.detalle-carrito-livewire')
+                <h2>MIS COMPRAS</h2>
             </div>
         </div>
     </div>

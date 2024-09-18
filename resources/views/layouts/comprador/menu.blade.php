@@ -1,11 +1,12 @@
 <div class="comprador_menu_pricipal">
     <a href="{{ route('comprador.perfil.vista.ver') }}"
         class="{{ request()->routeIs('comprador.perfil.vista.ver') ? 'active' : '' }}">
-        <span><i class="fa-solid fa-address-card"></i> Perfil</span>
+        <span><i class="fa-solid fa-address-card"></i>Perfil</span>
         <i class="fa-solid fa-chevron-right"></i>
     </a>
 
-    <a href="" class="{{ request()->is('comprador/compras') ? 'active' : '' }}">
+    <a href="{{ route('comprador.compra.vista.ver') }}"
+        class="{{ request()->routeIs('comprador.compra.vista.ver') ? 'active' : '' }}">
         <span><i class="fa-solid fa-basket-shopping"></i> Mis compras</span>
         <i class="fa-solid fa-chevron-right"></i>
     </a>

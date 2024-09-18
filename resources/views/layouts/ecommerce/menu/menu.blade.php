@@ -42,31 +42,37 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <x-dropdown align="right" width="60">
+                    <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <a>
+                            <a class="principal_usuarios_item">
                                 <i class="fa-regular fa-user"></i>
                                 <span>Cuenta</span>
                             </a>
                         </x-slot>
 
                         <x-slot name="content">
-                            @if (Auth::check() && Auth::user()->hasRole('comprador'))
-                                <a href="{{ route('comprador.perfil.vista.ver') }}">Perfil</a>
-                                <a>Mis Compras</a>
-                                <a href="">Configurar mi cuenta</a>
-                                <a href="">Direcciones</a>
-                                <a href="">Reembolso</a>
-                                <a href="">Favoritos</a>
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();">Cerrar</a>
-                                </form>
-                            @else
-                                <a href="{{ route('comprador.login.vista.ver') }}">Iniciar sesión</a>
-                                <a href="#">Registrarse</a>
-                            @endif
+                            <div class="g_dropdown">
+                                @if (Auth::check() && Auth::user()->hasRole('comprador'))
+                                    <a class="dropdown_item" href="{{ route('comprador.perfil.vista.ver') }}"> Perfil</a>
+
+                                    <a class="dropdown_item" href="{{ route('comprador.compra.vista.ver') }}">Mis compras</a>
+
+                                    <a class="dropdown_item" href="{{ route('comprador.direccion.vista.ver') }}">Direcciones</a>
+
+                                    <a class="dropdown_item" href="{{ route('comprador.reembolso.vista.ver') }}">Reembolso</a>
+
+                                    <a class="dropdown_item" href="{{ route('comprador.favorito.vista.ver') }}">Favoritos</a>
+
+                                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                        @csrf
+                                        <a class="dropdown_item" href="{{ route('logout') }}" @click.prevent="$root.submit();">Cerrar </a>
+                                    </form>
+                                @else
+                                    <a href="{{ route('comprador.login.vista.ver') }}">Perfil</a>
+
+                                    <a href="#">Registrarse</a>
+                                @endif
+                            </div>
                         </x-slot>
                     </x-dropdown>
                 </li>

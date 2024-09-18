@@ -97,7 +97,6 @@
     text-decoration: line-through;
 }
 
-/* CONTROLES */
 .g_carrito .controles {
     display: flex;
     flex-direction: column;
@@ -127,21 +126,6 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--color-texto-secundario);
-}
-
-/* SEPARACION */
-.g_separacion {
-    align-self: stretch;
-    border-color: var(--color-borde-quinario);
-    width: auto;
-    height: auto;
-    border-style: solid;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    border-left-width: 0;
-    border-bottom-width: 1px;
 }
 
 /* RESUMEN PAGO */
@@ -185,6 +169,7 @@
     margin-top: 20px;
 }
 
+/* ICONO RESUMEN PAGO */
 .g_icono_resumen_pago {
     display: none;
     cursor: pointer;
@@ -203,10 +188,9 @@
     justify-content: center;
 }
 
-/* CUPON */
-
 @media (max-width: 700px) {
 
+    /* CARRITO */
     .g_carrito .info_producto {
         flex-direction: column;
     }
@@ -216,12 +200,26 @@
         flex-direction: row-reverse;
     }
 
+    /* RESUMEN PAGO */
+    .g_resumen_pagar .ocultar_pagar {
+        display: none;
+    }
+
+    /* ICONO RESUMEN PAGO */
     .g_icono_resumen_pago {
         display: flex;
     }
 
-    .g_resumen_pagar .ocultar_pagar {
-        display: none;
+    /* SIDEBAR RESUMEN PEDIDO*/
+    .g_sidebar_resumen_pedido {
+        box-shadow: var(--sombra-secundario-arriba);
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 19;
+        width: 100%;
+        background-color: white;
     }
 
 }

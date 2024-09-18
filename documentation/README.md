@@ -19,3 +19,12 @@ NOTA DE ENTRADA 1
 //Que se agregue descuento si tienen lista de precio.
 //Que se ve la lista de precio y cuanto se desconto.
 //Crud marca a categorias asignar
+
+
+COMPRADOR
+PÁGINA CARRITO
+PÁGINA PAGAR
+PÁGINA PERFIL
+PÁGINA DIRECCION
+PÁGINA FAVORITO
+PÁGINA REEMBOLSO

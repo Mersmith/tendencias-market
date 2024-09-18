@@ -42,12 +42,3 @@
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/partials/agregar-carrito.css') }}">
 
 <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/producto.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/ecommerce/css/pagina/carrito.css') }}">
-
-
-<!--COMPRADOR-->
-<link rel="stylesheet" href="{{ asset('assets/comprador/css/pagina-pagar.css') }}">
-{{--- <link rel="stylesheet" href="{{ asset('assets/comprador/css/modal-direccion.css') }}">---}}
-
-{{--- --<link rel="stylesheet" href="{{ asset('assets/comprador/css/formulario.css') }}">---}}
-

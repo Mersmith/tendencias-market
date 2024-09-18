@@ -1,4 +1,4 @@
-<div>
+<div class="g_contenedor_100">
     @if (session()->has('success'))
         <div class="g_alerta alerta_exito">
             {{ session('success') }}
